@@ -425,12 +425,13 @@ Use the index of the value in the list surrounded by square brackets to get to t
 
 List append will add the item at the end. If you want to add at the beginning, you can use the insert function.
 
+.. code-block:: python
+   :linenos:
 
-list = ["Movies", "Music", "Pictures"] 
-list.append("Documents" ) # will add "Document" to the list
+   list = ["Movies", "Music", "Pictures"] 
+   list.append("Documents" ) # will add "Document" to the list
+   list 
 
-
->>> list 
 ["Movies", "Music", "Pictures", "Documents"]   
 
 |
@@ -441,10 +442,13 @@ list.append("Documents" ) # will add "Document" to the list
 
 You can sort a list with the following code:
 
-list = ["Movies", "Pictures", "Actors", "Cinemas"] 
-list.sort() 
+.. code-block:: python
+   :linenos:
 
->>> list
+   list = ["Movies", "Pictures", "Actors", "Cinemas"] 
+   list.sort() 
+   list
+
 ['Actors', 'Cinemas', 'Movies', 'Pictures']
 
 
@@ -470,8 +474,6 @@ You can sum a list with the following code:
 **g. Adding Two List Elements**
 
 Lists cannot be added with the simple use of an addition sign, i.e., list1 + list2. We have to iterate the list, then get the corresponding values and do the addition.
-
-
 
 .. code-block:: python
    :linenos:
@@ -569,6 +571,8 @@ If there is no value before the first colon, it means to start at the beginning 
 first colon, it means to go all the way to the end of the list.
 
 
+|
+
 
 Tuples
 -------
@@ -582,7 +586,7 @@ Coordinate values whose sequence must be maintained to draw a polygon can be sto
 >>> tup1 = ('physics', 'chemistry', 1997, 2000)
 >>> tup2 = (1, 2, 3, 4, 5, 6, 7 )
 
-
+|
 
 Basic Tuples Operations
 -------------------------
@@ -602,7 +606,7 @@ Tuple operations are similar to list operations
  1 2 3  -  Iteration
 
 
-
+|
 
 **References**
 

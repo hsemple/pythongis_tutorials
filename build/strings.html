@@ -410,23 +410,23 @@ age = “24”</p>
 </div>
 <p><strong>d. Append values to a List</strong></p>
 <p>List append will add the item at the end. If you want to add at the beginning, you can use the insert function.</p>
-<p>list = [“Movies”, “Music”, “Pictures”]
-list.append(“Documents” ) # will add “Document” to the list</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span>
-<span class="go">[&quot;Movies&quot;, &quot;Music&quot;, &quot;Pictures&quot;, &quot;Documents&quot;]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Movies&quot;</span><span class="p">,</span> <span class="s2">&quot;Music&quot;</span><span class="p">,</span> <span class="s2">&quot;Pictures&quot;</span><span class="p">]</span>
+<span class="linenos">2</span><span class="nb">list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Documents&quot;</span> <span class="p">)</span> <span class="c1"># will add &quot;Document&quot; to the list</span>
+<span class="linenos">3</span><span class="nb">list</span>
 </pre></div>
 </div>
+<p>[“Movies”, “Music”, “Pictures”, “Documents”]</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>e. Sorting a List</strong></p>
 <p>You can sort a list with the following code:</p>
-<p>list = [“Movies”, “Pictures”, “Actors”, “Cinemas”]
-list.sort()</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span>
-<span class="go">[&#39;Actors&#39;, &#39;Cinemas&#39;, &#39;Movies&#39;, &#39;Pictures&#39;]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Movies&quot;</span><span class="p">,</span> <span class="s2">&quot;Pictures&quot;</span><span class="p">,</span> <span class="s2">&quot;Actors&quot;</span><span class="p">,</span> <span class="s2">&quot;Cinemas&quot;</span><span class="p">]</span>
+<span class="linenos">2</span><span class="nb">list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="linenos">3</span><span class="nb">list</span>
 </pre></div>
 </div>
+<p>[‘Actors’, ‘Cinemas’, ‘Movies’, ‘Pictures’]</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -519,6 +519,9 @@ list.sort()</p>
 </div>
 <p>If there is no value before the first colon, it means to start at the beginning index of the list. If there isn’t a value after the
 first colon, it means to go all the way to the end of the list.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </section>
 <section id="tuples">
 <h2><span class="section-number">4.5. </span>Tuples<a class="headerlink" href="#tuples" title="Permalink to this heading"></a></h2>
@@ -528,6 +531,9 @@ Coordinate values whose sequence must be maintained to draw a polygon can be sto
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tup1</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;physics&#39;</span><span class="p">,</span> <span class="s1">&#39;chemistry&#39;</span><span class="p">,</span> <span class="mi">1997</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tup2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span> <span class="p">)</span>
 </pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
 </section>
 <section id="basic-tuples-operations">
@@ -548,6 +554,9 @@ Coordinate values whose sequence must be maintained to draw a polygon can be sto
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="nb">print</span> <span class="n">x</span><span class="p">,</span>
 <span class="go"> 1 2 3  -  Iteration</span>
 </pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
 <p><strong>References</strong></p>
 <p><a class="reference external" href="https://www.techbeamers.com/python-add-two-list-elements/">https://www.techbeamers.com/python-add-two-list-elements/</a></p>
