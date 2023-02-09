@@ -455,40 +455,46 @@ list.sort()
 
 You can sum a list with the following code:
 
+.. code-block:: python
+   :linenos:
 
-list = [890, 786, 1234, 65, 345, 500]
-Sumlist = sum(list)
-print (Sumlist)
->>> 3820
+   list = [890, 786, 1234, 65, 345, 500]
+   Sumlist = sum(list)
+   print (Sumlist)
+
+3820
 
 | 
 
 
 **g. Adding Two List Elements**
 
-Lists cannot be added with the simple use of an addition sign, i.e., list1 + list2. We have to iterate the list, grab the corresponding values and do the addition.
+Lists cannot be added with the simple use of an addition sign, i.e., list1 + list2. We have to iterate the list, then get the corresponding values and do the addition.
 
 
-# Set up the lists 
-list1 = [11, 21, 34, 12, 31, 26]
-list2 = [23, 25, 54, 24, 20, 35]
 
+.. code-block:: python
+   :linenos:
 
-#Create an empty list to store the sum of values at the same index position
-result_list = []
+   # Set up the lists 
+   list1 = [11, 21, 34, 12, 31, 26]
+   list2 = [23, 25, 54, 24, 20, 35]
 
-#Get the length of one of the lists. If the list lengths are unequal, use the shorter list.
-list_to_iterate = len(list1)
+   #Create an empty list to store the sum of values at the same index position
+   result_list = []
 
-#Iterate the list adding the corresponding values at the running index from the
-# two lists, and insert the sum in a new list.
+   #Get the length of one of the lists. If the list lengths are unequal, use the shorter list.
+   list_to_iterate = len(list1)
 
+   #Iterate the list adding the corresponding values at the running index from the two lists, and insert the sum into a new list.
 
-for i in range(0, list_to_iterate):
-    result_list.append(list1[i] + list2[i])
+   for i in range(0, list_to_iterate):
+       result_list.append(list1[i] + list2[i])
 
-# Print resultant list 
-print ("Test Result: ********** is: " + str(result_list))
+   # Print resultant list 
+   print ("Test Result is: " + str(result_list))
+
+Test Result is: [34, 46, 88, 36, 51, 61]
 
 We can use the same logic for subtracting, multiplying and dividing two lists.
 
@@ -498,19 +504,22 @@ We can use the same logic for subtracting, multiplying and dividing two lists.
 
 **h.  Graphing a List**
 
-You can graph a list with the following code:
+You can graph a list with the code below:
 
 
-import matplotlib.pyplot as plt
+.. code-block:: python
+   :linenos:
 
-cases = [890, 786, 1234, 65, 345, 500]
-year = (1950, 1960,1970,1980,1990,2000)
+   import matplotlib.pyplot as plt
 
-plt.plot (year, cases)
+   cases = [890, 786, 1234, 65, 345, 500]
+   year = (1950, 1960,1970,1980,1990,2000)
 
-plt.xlabel ("Year")
-plt.ylabel ("Cases")
-plt.show()
+   plt.plot (year, cases)
+
+   plt.xlabel ("Year")
+   plt.ylabel ("Cases")
+   plt.show()
 
 
 |
@@ -535,11 +544,8 @@ listname (start, stop, step)
 >>> my_list[1:4] # Prints out the numbers between 1 and 4, but not including 4.
  [1,2,3]
 
- 
 
- 
-
-my_list[1:8:2] # Prints out the numbers between 1 and 8, skipping every other number. 
+>>> my_list[1:8:2] #Prints out the numbers between 1 and 8, skipping every other number. 
  [1,3,5,7]
 
 
@@ -547,6 +553,8 @@ my_list[1:8:2] # Prints out the numbers between 1 and 8, skipping every other nu
 
 
 **i. Negative Slicing**
+
+>>> my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 >>> my_list[-1] # Prints out the last number in the list. 
  9
@@ -571,8 +579,8 @@ A List is a collection which is ordered and changeable. Allows duplicate members
 A tuple is similar to a list, but the ordering of the values do not change once created.
 Coordinate values whose sequence must be maintained to draw a polygon can be stored as tuples.
 
-tup1 = ('physics', 'chemistry', 1997, 2000)
-tup2 = (1, 2, 3, 4, 5, 6, 7 )
+>>> tup1 = ('physics', 'chemistry', 1997, 2000)
+>>> tup2 = (1, 2, 3, 4, 5, 6, 7 )
 
 
 
