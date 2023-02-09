@@ -4,12 +4,12 @@ Strings and Lists
 
 |
 
-Srrings
+Strings
 ---------
 
 A string is a sequence of characters, e.g.,
 
-   >>> "Hello. My name is Tom Jones"
+   >>> "Hello. I am a GIS Analyst"
 
 
 
@@ -19,7 +19,7 @@ Strings in Python are surrounded by either single quotation marks, or double quo
 
 
 
-Strings can be stored as variables: 
+Strings can be stored as variables, e.g.,: 
 
    >>> y = 'Hello' is the same as "Hello".
 
@@ -59,7 +59,7 @@ Concatenating strings means joining strings by linking them end-to-end.
 |
 
 
-**b Converting Non-String Objects to String**
+**b. Converting Non-String Objects to String**
 
 Virtually any object in Python can be rendered as a string. The str(obj) returns the string representation of object obj:
 
@@ -82,6 +82,7 @@ Virtually any object in Python can be rendered as a string. The str(obj) returns
 TypeError: cannot concatenate 'str' and 'int' objects
 
 >>> print ("The temperature is " + str(temp) + " degrees")
+The temperature is 100 degrees
 
 
 |
@@ -93,14 +94,14 @@ TypeError: cannot concatenate 'str' and 'int' objects
 The * operator is used to perform perform repetition
 
 >>> 'Semple ' * 3
->>> 'Semple Semple Semple'
+ 'Semple Semple Semple'
 
 |
 
 
 **e. Changing Cases**
 
-string.lower()      
+*string.lower()*    
 
 >>> text = "I LOVE WRITING PYTHON CODE"
 
@@ -109,9 +110,8 @@ string.lower()
 i love writing python code
 
 
-|
 
-string.upper()  
+*string.upper()* 
 
 text = "I love learning Javascript"
 
@@ -126,7 +126,7 @@ I LOVE LEARNING JAVASCRIPT
 
 **f. Returning the Length of a String**
 
-With len(), you can check the length of Python strings.  The len(s) method returns the number of characters in the variable:  
+The len() method returns the number of characters in the variable.  With len(), you can check the length of Python strings.   
 
 >>> s = 'I am a string.'
 >>> len(s)
@@ -143,9 +143,6 @@ In Python, strings are ordered sequences of character data, and thus can be inde
 
 String indexing in Python is zero-based: the first character in the string has index 0, the next has index 1, and so on. The index of the last character will be the length of the string minus one.
 
-A schematic diagram of the indices of the string 'foobar' would look like this:
-String index 1
- 
 The individual characters can be accessed by index as follows:
 
 >>> s = 'foobar'
@@ -189,14 +186,14 @@ String indices can also be specified with negative numbers, in which case indexi
 
 **h. String Slicing**
 
-Python also allows a form of indexing syntax that extracts substrings from a string, known as string slicing. If s is a string, an expression of the form  s[m:n]  returns the portion of  s starting with position m, and up to but not including position n:
+Python also allows a form of indexing syntax that extracts substrings from a string, known as string slicing. If 's' is a string, an expression of the form  s[m:n]  returns the portion of  s starting with position m, and up to but not including position n:
 
 >>> s = 'foobar'
 >>> s[2:5]
 'oba'
 
  
-Again, the second index specifies the first character that is not included in the result—the character 'r' (s[5]) in the example above. That may seem slightly unintuitive, but it produces this result which makes sense: the expression s[m:n] will return a substring that is n-m characters in length, in this case, 5 -2 =3. 
+Again, the second index specifies the first character that is not included in the result—the character 'r' in the example above. This may seem slightly unintuitive, but after a while you will get used to it.  The expression s[m:n] will return a substring that is n minus m characters in length, in this case, 5 minus 2 = 3. 
  
 
 If you omit the first index, the slice starts at the beginning of the string. Thus, s[:m] and s[0:m] are equivalent:
@@ -284,7 +281,7 @@ You can specify a negative stride value as well, in which case Python steps back
 'rbo'
  
 
-
+|
 
 **j. Formatting String Variables Using the % Operator**
 The program below illustrates the use of string formatting using the % operator.    With this method,  the percentage sign followed by a letter and some numbers indicate how a variable should be formatted. The variable itself is stored as a tuple to the right of the string.   Here are some basic argument specifiers you should know:
@@ -304,9 +301,7 @@ num = float(input('Enter a number: '))
 num_sqrt = num ** 0.5
 print ('The square root of %0.2f is %0.4f' %(num, num_sqrt))
 
- 
 
- 
 
 #This program also illustrates the use of format strings (%0.2f)  to format the output. 
 
