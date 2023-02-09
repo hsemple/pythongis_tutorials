@@ -46,7 +46,7 @@ Here is a another example:
       print ("The sky is blue.")
 
 
- |
+|
 
 
 **The If.. Else Conditional Structure**
@@ -652,6 +652,24 @@ Looping and GIS
 Looping is used repeatedly in GIS scripting. For example, you might need to iterate through rows in a table, or fields in a table, or feature classes in a folder. You might even need to loop through the vertices of a geographic feature and do something with the vertices.  The scripts below show examples of looping in GIS using the ArcPy library.
 
 
+**Looping through a list**
+
+Use a for loop to step through the list, doing something with each element of the list
+
+
+.. code-block:: python
+   :linenos:
+
+
+   listOfRoadTypes = [‘Highway’,’Street’,’Boulevard’]
+   for RoadType in listOfRoadTypes:
+       print RoadType.upper()
+
+
+
+|
+
+
 
 **Getting a List of fields in a Shapefile's Attribute Table**
 
@@ -686,6 +704,95 @@ Get a List of all the Feature Classes in a Directory or a Geodatabase
     for fc in fcList:
         print (fc)  
 
+
+
+|
+
+Get a List of all the rasters in a Directory or a Geodatabase.
+
+.. code-block:: python
+   :linenos:
+
+   import arcpy
+
+   # Set the current workspace
+   arcpy.env.workspace = "c:/data/DEMS"
+
+   # Get and print a list of GRIDs from the workspace
+   rasters = arcpy.ListRasters("*", "GRID")
+
+   for raster in rasters:
+      print(raster)
+  
+
+  |
+
+**Methods in ArcPy that Return Lists**
+
+* ListFields
+* ListFeatureClasses
+* ListWorkspaces
+* ListFiles
+* ListRasters
+* ListDataFrames
+* ListLayers
+* ListBrokenDataSources
+
+
+Each of these methods return a list of something.  In some cases, the list may consist of one just element.  You can use wildcards to  
+limit the results. Also, some lists return a list of objects, while other return a list of strings.
+
+
+|
+
+**List all layers in QGIS**
+
+
+.. code-block:: python
+   :linenos:
+
+   from qgis.core import QgsProject
+
+   QgsProject.instance().mapLayers().values()
+
+
+
+   |
+
+
+
+**Get features**
+
+.. code-block:: python
+   :linenos:
+
+   for f in layer.getFeatures():
+      print (f)
+
+
+|
+   
+**Get selected features**
+
+.. code-block:: python
+   :linenos:
+
+   for f in layer.selectedFeatures():
+       print (f)
+
+
+
+|
+
+
+.. code-block:: python
+   :linenos:
+
+    for feature in layer.getFeatures(): 
+        print(feature) 
+        print(feature.id()) 
+        print(feature['NAME']) 
+        print('-----') 
 
 
 

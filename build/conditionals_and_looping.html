@@ -107,6 +107,15 @@
 </pre></div>
 </div>
 <p>Here is a another example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">var1</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">if</span>  <span class="n">var1</span><span class="p">:</span>
+<span class="linenos">4</span>   <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The sky is blue.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p><strong>The If.. Else Conditional Structure</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>  <span class="c1"># if condition is true.</span>
 <span class="linenos">2</span>    <span class="n">execute</span> <span class="n">this</span> <span class="n">statement</span>
@@ -570,6 +579,16 @@ range (1,6) is a python function that takes a lower and upper value. It gives nu
 <section id="looping-and-gis">
 <h2><span class="section-number">5.7. </span>Looping and GIS<a class="headerlink" href="#looping-and-gis" title="Permalink to this heading"></a></h2>
 <p>Looping is used repeatedly in GIS scripting. For example, you might need to iterate through rows in a table, or fields in a table, or feature classes in a folder. You might even need to loop through the vertices of a geographic feature and do something with the vertices.  The scripts below show examples of looping in GIS using the ArcPy library.</p>
+<p><strong>Looping through a list</strong></p>
+<p>Use a for loop to step through the list, doing something with each element of the list</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>listOfRoadTypes = [‘Highway’,’Street’,’Boulevard’]
+<span class="linenos">2</span>for RoadType in listOfRoadTypes:
+<span class="linenos">3</span>    print RoadType.upper()
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p><strong>Getting a List of fields in a Shapefile’s Attribute Table</strong></p>
 <p>The syntax is: ListFields (dataset, {wild_card}, {field_type})</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">arcpy</span>
@@ -590,6 +609,59 @@ range (1,6) is a python function that takes a lower and upper value. It gives nu
 <span class="linenos">4</span><span class="n">fcList</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFeatureClasses</span> <span class="p">()</span>
 <span class="linenos">5</span> <span class="k">for</span> <span class="n">fc</span> <span class="ow">in</span> <span class="n">fcList</span><span class="p">:</span>
 <span class="linenos">6</span>     <span class="nb">print</span> <span class="p">(</span><span class="n">fc</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Get a List of all the rasters in a Directory or a Geodatabase.</p>
+<p><strong>Methods in ArcPy that Return Lists</strong></p>
+<ul class="simple">
+<li><p>ListFields</p></li>
+<li><p>ListFeatureClasses</p></li>
+<li><p>ListWorkspaces</p></li>
+<li><p>ListFiles</p></li>
+<li><p>ListRasters</p></li>
+<li><p>ListDataFrames</p></li>
+<li><p>ListLayers</p></li>
+<li><p>ListBrokenDataSources</p></li>
+</ul>
+<p>Each of these methods return a list of something.  In some cases, the list may consist of one just element.  You can use wildcards to
+limit the results. Also, some lists return a list of objects, while other return a list of strings.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>List all layers in QGIS</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProject</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="o">|</span>
+</pre></div>
+</div>
+<p><strong>Get features</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
+<span class="linenos">2</span>   <span class="nb">print</span> <span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Get selected features</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">selectedFeatures</span><span class="p">():</span>
+<span class="linenos">2</span>    <span class="nb">print</span> <span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
+<span class="linenos">2</span>     <span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+<span class="linenos">3</span>     <span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">id</span><span class="p">())</span>
+<span class="linenos">4</span>     <span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">])</span>
+<span class="linenos">5</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
