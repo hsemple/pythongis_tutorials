@@ -20,3 +20,4 @@ These tutorials provide an introduction to the use of Python in GIS. Topics cove
    getting_started.rst
    intro_programs.rst
    strings.rst
+   conditionals_and_looping.rst
