@@ -7,11 +7,11 @@ Conditional Statements and Looping
 Conditionals 
 ------------
 
-Unless otherwise directed, lines of codes in a procedure run sequentially, from first to last. Conditional statements can change the sequential flow of program based on whether a given condition is true or false.
+Unless otherwise directed, lines of codes in a procedure run sequentially, from first to last. Conditional statements can change the sequential flow of a program based on whether a given condition is true or false.
 
-Python uses the If statement for testing conditions. If the condition is true, then the code block following the if statement is executed. If it is isn’t true, the program jumps to the end of the code block.A colon is placed at the end of the condition statement, and the lines below the condition statement are indented. 
+Python uses the If statement for testing conditions. If the condition is true, then the code block following the if statement is executed. If it is not true, the program jumps to the end of the code block.
 
-
+In Python, a colon is placed at the end of the conditional statement, and the lines below the condition statement are indented. 
 
 There are three types of conditional structures in Python:
 
@@ -25,7 +25,7 @@ There are three types of conditional structures in Python:
 
 **The If.. Conditional Structure**
 
-If the condition is true, tht is, if the variable is defined, then the block following will be executed.
+The structure of the if .. conditional statement is shown below.  
 
  
 .. code-block:: python
@@ -35,7 +35,8 @@ If the condition is true, tht is, if the variable is defined, then the block fol
        execute statement
 
 
-Here is a another example:
+
+If the condition is true, that is, if the variable is defined, then the block following will be executed. An example of the structure is shown below.
 
 .. code-block:: python
    :linenos:
@@ -46,10 +47,46 @@ Here is a another example:
       print ("The sky is blue.")
 
 
+Here is a another example involving the if statement.
+
+.. code-block:: python
+   :linenos:
+
+    number = 10
+
+    if number > 0:
+
+    print('Number is', number)
+
+
+
+|
+
+Here is an example from QGIS. 
+
+.. code-block:: python
+   :linenos:
+
+   activeLayer = iface.activeLayer()
+   if activeLayer.type() == QgsMapLayer.VectorLayer: 
+      print('The layer is a vector layer!')
+
+
+The numbered elements in the illustration below show how to run the code in QGIS.  First click on Plugin in the main menu, then click on Pyhton Console. When the Python Console opens, click on the Editor and paste the code into the Editor, Next click the Save button then run the code by clicking on the green player button. 
+ 
+.. image:: img/activeLayer.png
+   :alt: Display Active Layer
+
+
+In the code sample, the iface object is used to retrieve the active layer in the Canvas. Once the layer is retrieved, the code checks if the active layer is a vector layer. If it is, then it prints a statements to that effect.
+
 |
 
 
+
 **The If.. Else Conditional Structure**
+
+The if-else statement is designed to execute what follows after either the true part or false part of a condition.  If the condition evaluates to true, then the if block code is executed.  If the condition is false, the else block code is executed.
 
 .. code-block:: python
    :linenos:
@@ -59,23 +96,44 @@ Here is a another example:
 
    else:
 
-     execute these statement
+     execute this statement
 
 
+Here is an example of the if .. else statement.
 
 .. code-block:: python
    :linenos:
 
-    answer = int (input("Please enter a number: "))
-    if answer == 5:
-    print ("My lucky number.")
-       print ("That is not my lucky number")
+   answer = int (input("Please enter a number: "))
 
+   if answer == 15:
+       print ("The number " + str(answer) + " is my lucky number.")
+   else:
+       print (The number " + str(answer) + " is not my lucky number.")
  
+|
+
+Here is another example of the use of an if .. else statement.
+
+.. code-block:: python
+   :linenos:
+
+   x =  int(input ("Please enter a number between 0 and 100: "))
+
+   if x%2 == 0:
+       print('{} is divisible by 2'.format(x))
+   else:
+       print('{} is not divisible by 2'.format(x))
 
 
 
-** The If.. elif.. Else Conditional Structure**
+|
+
+
+
+**The If.. elif.. Else Conditional Structure**
+
+The if.. elif.. else statement is designed to test multiple conditions and make decisions.  The basic structure is given below:
 
 
 .. code-block:: python
@@ -91,6 +149,8 @@ Here is a another example:
     statements
 
  
+
+Here is a simple example of the use of an if.. elif.. else statement.
 
 
 .. code-block:: python
@@ -131,22 +191,22 @@ Python has many different operators for testing conditions including:
 
 **Equal Sign vs Double Equal Sign**
 
- =  The single equal sign is used to assign values to variables.  The double equal sign is used to test for equality of two variables.
+A single equal sign '==' is used to assign values to variables.  The double equal sign '==' is used to test for equality of two variables.
 
  
-
 
 Testing Equality
 
 .. code-block:: python
    :linenos:
    
-   list1 = [11, 21, 34, 12, 31, 26]
+   list1 = [11, 21, 34, 12, 31, 26, 70, 67]
    list2 = [23, 25, 54, 24, 20, 35, 40, 46]
 
-   if len(list1) != len(list2):
-        print("Error:  Lists have unequal lengths")
-
+   if len(list1) == len(list2):
+       print("The lists have equal lengths")
+   else:
+      print("The lists have unequal lengths")
 
 
 |
@@ -198,8 +258,8 @@ General Pattern
 
  
 Notes:
-num is a made-up variable name. You can use any name
-range (1,6) is a python function that takes a lower and upper value. It gives numbers between the given range
+num is a made-up variable name. You can use any name.
+range () is a python function that takes a lower and upper value (1,6). The range function returns a list of numbers between the given range.
 
 
 |
@@ -429,10 +489,8 @@ You can also use the plus equal term "+=" to add another value to the variable's
        print (x)
    x += 1 # counter
 
-|
 
 Operators such as -=, *=, /= do similar for subtraction, multiplication and division.
-
 
 |
 
@@ -704,25 +762,41 @@ Get a List of all the Feature Classes in a Directory or a Geodatabase
     for fc in fcList:
         print (fc)  
 
+|
+
+
+Get a List of all the rasters in a Directory or a Geodatabase
+
+.. code-block:: python
+   :linenos:
+   
+   import arcpy
+   #Set the current workspace
+   arcpy.env.workspace = "C:/data/DEMS"
+
+   rasters = arcpy.ListRasters("*", "GRID")
+   for raster in rasters:
+        print (fc)  
+
 
 
 |
 
-Get a List of all the rasters in a Directory or a Geodatabase.
+
+
 
 .. code-block:: python
-   :linenos:
+   :linenos: 
 
    import arcpy
-
-   # Set the current workspace
+   Set the current workspace
    arcpy.env.workspace = "c:/data/DEMS"
 
-   # Get and print a list of GRIDs from the workspace
+   
    rasters = arcpy.ListRasters("*", "GRID")
 
    for raster in rasters:
-      print(raster)
+       print(raster)
   
 
   |

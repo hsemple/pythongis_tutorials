@@ -123,6 +123,36 @@ I LOVE LEARNING JAVASCRIPT
 
 |
 
+**Using Strings with ArcGIS Pro Field Calculator**
+
+
+Using the field calculator in ArcGIS Pro Calculator, capitalize the first character of the string in the CITY_NAME field.
+
+>>> !CITY_NAME!.capitalize()
+
+
+
+|
+
+
+Remove any space from the end of the string in the CITY_NAME field.
+
+!CITY_NAME!.rstrip()
+
+|
+
+Replace any occurrences of "california" with "California" in the STATE_NAME field.
+
+!STATE_NAME!.replace("california", "California")
+
+
+
+|
+
+
+
+
+
 
 **f. Returning the Length of a String**
 
@@ -608,6 +638,11 @@ Tuple operations are similar to list operations
 
 |
 
+
+
+
+
 **References**
 
-https://www.techbeamers.com/python-add-two-list-elements/
+* https://www.techbeamers.com/python-add-two-list-elements/
+* `List and describe datasets with Python <https://learn.arcgis.com/en/projects/list-and-describe-datasets-with-python/>`_

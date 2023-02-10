@@ -20,6 +20,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Conditional Statements and Looping" href="conditionals_and_looping.html" />
     <link rel="prev" title="3. Introduction the Python Language" href="intro_programs.html" /> 
 </head>
 
@@ -52,6 +53,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#basic-tuples-operations">4.6. Basic Tuples Operations</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">5. Conditional Statements and Looping</a></li>
 </ul>
 
         </div>
@@ -175,6 +177,24 @@
 <p># convert message to lowercase
 print(text.upper())
 I LOVE LEARNING JAVASCRIPT</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Using Strings with ArcGIS Pro Field Calculator</strong></p>
+<p>Using the field calculator in ArcGIS Pro Calculator, capitalize the first character of the string in the CITY_NAME field.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; !CITY_NAME!.capitalize()
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Remove any space from the end of the string in the CITY_NAME field.</p>
+<p>!CITY_NAME!.rstrip()</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Replace any occurrences of “california” with “California” in the STATE_NAME field.</p>
+<p>!STATE_NAME!.replace(“california”, “California”)</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -559,7 +579,10 @@ Coordinate values whose sequence must be maintained to draw a polygon can be sto
 <div class="line"><br /></div>
 </div>
 <p><strong>References</strong></p>
-<p><a class="reference external" href="https://www.techbeamers.com/python-add-two-list-elements/">https://www.techbeamers.com/python-add-two-list-elements/</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.techbeamers.com/python-add-two-list-elements/">https://www.techbeamers.com/python-add-two-list-elements/</a></p></li>
+<li><p><a class="reference external" href="https://learn.arcgis.com/en/projects/list-and-describe-datasets-with-python/">List and describe datasets with Python</a></p></li>
+</ul>
 </section>
 </section>
 
@@ -568,6 +591,7 @@ Coordinate values whose sequence must be maintained to draw a polygon can be sto
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="intro_programs.html" class="btn btn-neutral float-left" title="3. Introduction the Python Language" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="conditionals_and_looping.html" class="btn btn-neutral float-right" title="5. Conditional Statements and Looping" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

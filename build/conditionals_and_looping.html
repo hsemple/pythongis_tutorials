@@ -87,8 +87,9 @@
 </div>
 <section id="conditionals">
 <h2><span class="section-number">5.1. </span>Conditionals<a class="headerlink" href="#conditionals" title="Permalink to this heading"></a></h2>
-<p>Unless otherwise directed, lines of codes in a procedure run sequentially, from first to last. Conditional statements can change the sequential flow of program based on whether a given condition is true or false.</p>
-<p>Python uses the If statement for testing conditions. If the condition is true, then the code block following the if statement is executed. If it is isn’t true, the program jumps to the end of the code block.A colon is placed at the end of the condition statement, and the lines below the condition statement are indented.</p>
+<p>Unless otherwise directed, lines of codes in a procedure run sequentially, from first to last. Conditional statements can change the sequential flow of a program based on whether a given condition is true or false.</p>
+<p>Python uses the If statement for testing conditions. If the condition is true, then the code block following the if statement is executed. If it is not true, the program jumps to the end of the code block.</p>
+<p>In Python, a colon is placed at the end of the conditional statement, and the lines below the condition statement are indented.</p>
 <p>There are three types of conditional structures in Python:</p>
 <blockquote>
 <div><div class="line-block">
@@ -101,37 +102,77 @@
 <div class="line"><br /></div>
 </div>
 <p><strong>The If.. Conditional Structure</strong></p>
-<p>If the condition is true, tht is, if the variable is defined, then the block following will be executed.</p>
+<p>The structure of the if .. conditional statement is shown below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>  <span class="c1"># if the variable is defined</span>
 <span class="linenos">2</span>    <span class="n">execute</span> <span class="n">statement</span>
 </pre></div>
 </div>
-<p>Here is a another example:</p>
+<p>If the condition is true, that is, if the variable is defined, then the block following will be executed. An example of the structure is shown below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">var1</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="k">if</span>  <span class="n">var1</span><span class="p">:</span>
 <span class="linenos">4</span>   <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The sky is blue.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Here is a another example involving the if statement.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span> <span class="k">if</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number is&#39;</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Here is an example from QGIS.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">activeLayer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="linenos">2</span><span class="k">if</span> <span class="n">activeLayer</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">QgsMapLayer</span><span class="o">.</span><span class="n">VectorLayer</span><span class="p">:</span>
+<span class="linenos">3</span>   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The layer is a vector layer!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The numbered elements in the illustration below show how to run the code in QGIS.  First click on Plugin in the main menu, then click on Pyhton Console. When the Python Console opens, click on the Editor and paste the code into the Editor, Next click the Save button then run the code by clicking on the green player button.</p>
+<img alt="Display Active Layer" src="_images/activeLayer.png" />
+<p>In the code sample, the iface object is used to retrieve the active layer in the Canvas. Once the layer is retrieved, the code checks if the active layer is a vector layer. If it is, then it prints a statements to that effect.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>The If.. Else Conditional Structure</strong></p>
+<p>The if-else statement is designed to execute what follows after either the true part or false part of a condition.  If the condition evaluates to true, then the if block code is executed.  If the condition is false, the else block code is executed.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>  <span class="c1"># if condition is true.</span>
 <span class="linenos">2</span>    <span class="n">execute</span> <span class="n">this</span> <span class="n">statement</span>
 <span class="linenos">3</span>
 <span class="linenos">4</span><span class="k">else</span><span class="p">:</span>
 <span class="linenos">5</span>
-<span class="linenos">6</span>  <span class="n">execute</span> <span class="n">these</span> <span class="n">statement</span>
+<span class="linenos">6</span>  <span class="n">execute</span> <span class="n">this</span> <span class="n">statement</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">answer</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter a number: &quot;</span><span class="p">))</span>
-<span class="linenos">2</span> <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
-<span class="linenos">3</span> <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;My lucky number.&quot;</span><span class="p">)</span>
-<span class="linenos">4</span>    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;That is not my lucky number&quot;</span><span class="p">)</span>
+<p>Here is an example of the if .. else statement.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">answer</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter a number: &quot;</span><span class="p">))</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="mi">15</span><span class="p">:</span>
+<span class="linenos">4</span>    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The number &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; is my lucky number.&quot;</span><span class="p">)</span>
+<span class="linenos">5</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">6</span>    <span class="nb">print</span> <span class="p">(</span><span class="n">The</span> <span class="n">number</span> <span class="s2">&quot; + str(answer) + &quot;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">my</span> <span class="n">lucky</span> <span class="n">number</span><span class="o">.</span><span class="s2">&quot;)</span>
 </pre></div>
 </div>
-<p>** The If.. elif.. Else Conditional Structure**</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Here is another example of the use of an if .. else statement.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">x</span> <span class="o">=</span>  <span class="nb">int</span><span class="p">(</span><span class="nb">input</span> <span class="p">(</span><span class="s2">&quot;Please enter a number between 0 and 100: &quot;</span><span class="p">))</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">if</span> <span class="n">x</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">4</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> is divisible by 2&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="linenos">5</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">6</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> is not divisible by 2&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>The If.. elif.. Else Conditional Structure</strong></p>
+<p>The if.. elif.. else statement is designed to test multiple conditions and make decisions.  The basic structure is given below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
 <span class="linenos">2</span>   <span class="n">execute</span> <span class="n">statements</span>
 <span class="linenos">3</span>
@@ -142,6 +183,7 @@
 <span class="linenos">8</span> <span class="n">statements</span>
 </pre></div>
 </div>
+<p>Here is a simple example of the use of an if.. elif.. else statement.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># Guess a number</span>
 <span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">random</span>
 <span class="linenos"> 3</span>
@@ -177,15 +219,15 @@
 </dd>
 </dl>
 <p><strong>Equal Sign vs Double Equal Sign</strong></p>
-<blockquote>
-<div><p>=  The single equal sign is used to assign values to variables.  The double equal sign is used to test for equality of two variables.</p>
-</div></blockquote>
+<p>A single equal sign ‘==’ is used to assign values to variables.  The double equal sign ‘==’ is used to test for equality of two variables.</p>
 <p>Testing Equality</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">26</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">67</span><span class="p">]</span>
 <span class="linenos">2</span><span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">46</span><span class="p">]</span>
 <span class="linenos">3</span>
-<span class="linenos">4</span><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list2</span><span class="p">):</span>
-<span class="linenos">5</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error:  Lists have unequal lengths&quot;</span><span class="p">)</span>
+<span class="linenos">4</span><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">list2</span><span class="p">):</span>
+<span class="linenos">5</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The lists have equal lengths&quot;</span><span class="p">)</span>
+<span class="linenos">6</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">7</span>   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The lists have unequal lengths&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -221,8 +263,8 @@
 </pre></div>
 </div>
 <p>Notes:
-num is a made-up variable name. You can use any name
-range (1,6) is a python function that takes a lower and upper value. It gives numbers between the given range</p>
+num is a made-up variable name. You can use any name.
+range () is a python function that takes a lower and upper value (1,6). The range function returns a list of numbers between the given range.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -404,9 +446,6 @@ range (1,6) is a python function that takes a lower and upper value. It gives nu
 </pre></div>
 </div>
 </div></blockquote>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>Operators such as -=, <a href="#id1"><span class="problematic" id="id2">*</span></a>=, /= do similar for subtraction, multiplication and division.</p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -614,7 +653,19 @@ range (1,6) is a python function that takes a lower and upper value. It gives nu
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Get a List of all the rasters in a Directory or a Geodatabase.</p>
+<p>Get a List of all the rasters in a Directory or a Geodatabase</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="linenos">2</span><span class="c1">#Set the current workspace</span>
+<span class="linenos">3</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data/DEMS&quot;</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="n">rasters</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListRasters</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;GRID&quot;</span><span class="p">)</span>
+<span class="linenos">6</span><span class="k">for</span> <span class="n">raster</span> <span class="ow">in</span> <span class="n">rasters</span><span class="p">:</span>
+<span class="linenos">7</span>     <span class="nb">print</span> <span class="p">(</span><span class="n">fc</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p><strong>Methods in ArcPy that Return Lists</strong></p>
 <ul class="simple">
 <li><p>ListFields</p></li>
