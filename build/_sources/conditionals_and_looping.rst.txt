@@ -42,7 +42,6 @@ If the condition is true, that is, if the variable is defined, then the block fo
    :linenos:
 
    var1 = "blue"
-
    if  var1:
       print ("The sky is blue.")
 
@@ -53,16 +52,14 @@ Here is a another example involving the if statement.
    :linenos:
 
     number = 10
-
     if number > 0:
-
     print('Number is', number)
 
 
 
 |
 
-Here is an example from QGIS. 
+The code sample below contains an if statement and should be run in QGIS.  It tests whether the active layer in the Table of Content is a vector layer. In the code sample, the iface object is used to retrieve the active layer in the Canvas. Once the active layer is retrieved, the code checks if it is a vector layer. If it is vector layer, then it prints a message indicating that the layer is a vector layer.   
 
 .. code-block:: python
    :linenos:
@@ -72,13 +69,10 @@ Here is an example from QGIS.
       print('The layer is a vector layer!')
 
 
-The numbered elements in the illustration below show how to run the code in QGIS.  First click on Plugin in the main menu, then click on Pyhton Console. When the Python Console opens, click on the Editor and paste the code into the Editor, Next click the Save button then run the code by clicking on the green player button. 
+To run the code, look at the numbered elements in the illustration below.  First, click on Plugin in the main menu, then click on Python Console. When the Python Console opens, click on the Show Editor button and paste the code into the Editor.  Next, click the Save button then run the code by clicking on the green player button. 
  
 .. image:: img/activeLayer.png
    :alt: Display Active Layer
-
-
-In the code sample, the iface object is used to retrieve the active layer in the Canvas. Once the layer is retrieved, the code checks if the active layer is a vector layer. If it is, then it prints a statements to that effect.
 
 |
 
@@ -93,10 +87,8 @@ The if-else statement is designed to execute what follows after either the true 
 
    if condition:  # if condition is true.
        execute this statement
-
    else:
-
-     execute this statement
+        execute this statement
 
 
 Here is an example of the if .. else statement.
@@ -105,7 +97,6 @@ Here is an example of the if .. else statement.
    :linenos:
 
    answer = int (input("Please enter a number: "))
-
    if answer == 15:
        print ("The number " + str(answer) + " is my lucky number.")
    else:
@@ -126,8 +117,30 @@ Here is another example of the use of an if .. else statement.
        print('{} is not divisible by 2'.format(x))
 
 
+|
+
+This 'if .. else' example should be run in QGIS.  
+
+.. code-block:: python
+   :linenos:
+
+    activeLayer = iface.activeLayer()
+    if activeLayer.type() == QgsMapLayer.VectorLayer:
+        print('The layer is a vector layer!')
+    else:
+         if activeLayer.type() == QgsMapLayer.RasterLayer:
+              print('The layer is a raster layer!')  
+       
+
+
+.. image:: img/active_raster_layer.png
+   :alt: Display Active Layer
+
+
+
 
 |
+
 
 
 
@@ -171,8 +184,8 @@ Here is a simple example of the use of an if.. elif.. else statement.
    elif answer > x:
        print ("That number is too large to be my lucky number")
 
-else:
-    print ("That's too small to be my lucky number")
+   else:
+       print ("That's too small to be my lucky number")
 
 
 |
@@ -196,6 +209,7 @@ A single equal sign '==' is used to assign values to variables.  The double equa
  
 
 Testing Equality
+Here we are testing whether the two lists have the same length.
 
 .. code-block:: python
    :linenos:
@@ -218,7 +232,7 @@ Looping
 
 In programming, looping is used to execute a block of code repeatedly until a certain condition is met.  It is a simple concept that has widespread usage in programming.
 
-Python uses the for loop and the while loop for iteration or repetitions.  For loops are used when you know beforehand the amount of times you want to loop.m While Loops enable you to test for a particular condition and are used when you don’t know beforehand how many times the loop will occur.
+Python uses the for loop and the while loop for iteration or repetitions.  For loops are used when you know, beforehand, the amount of times you want to loop.  While Loops enable you to test for a particular condition and are used when you don’t know beforehand how many times the loop will occur.
 
 
 |
@@ -227,7 +241,7 @@ Python uses the for loop and the while loop for iteration or repetitions.  For l
 For Loops
 ----------
 
-General Pattern
+The general pattern of the for loop is illustrated below.  
 
 
 .. code-block:: python
@@ -258,8 +272,7 @@ General Pattern
 
  
 Notes:
-num is a made-up variable name. You can use any name.
-range () is a python function that takes a lower and upper value (1,6). The range function returns a list of numbers between the given range.
+The variable name "num" is a made-up one.  You can use any name.  In Pyhton, range () is a function that takes a lower and upper value (1,6). The range function returns a list of numbers between the given range.
 
 
 |
@@ -274,13 +287,13 @@ For loops are great for manipulating lists
 
    a = [‘cat’, ‘dog’, ‘window’, ‘Main Street’]
    for x in a:
-      vprint (x)
+      print (x)
  
-| Results
 | cat
 | dog
 | window
 | Main Street
+
 
 |
 
@@ -300,12 +313,13 @@ For loops are great for manipulating lists
       print ( " " )
 
 
-In the above example you enter the first loop visiting “Spades”, then immediately jump to the nested loop printing out the value for each card.  When the program reachs the end of the list of “values’, it jumps out of the nested loop and return to the first loop to get to “Clubs. Then you loop through all values in the second suit and print the card names. This process continues until all the suits and values have been looped through.
+In the above code, the program enters the first loop visiting “Spades”, then immediately jumps to the nested loop printing out the value for each card.  When the program reaches the end of the list of “values’, it jumps out of the nested loop and return to the first loop to get to “Clubs. Next, it loops through all values in the second suit and print the card names. This process continues until all the suits and values have been looped through.
 
 
 |
 
 **Multiplication Tables**
+
 
 
 .. code-block:: python
@@ -317,17 +331,157 @@ In the above example you enter the first loop visiting “Spades”, then immedi
       print ("")
 
 
+Note:  In the above code, end="\t" put a tab after each multiplication.
+
+
+|
+
+**Looping through a list of Roads**
+
+The code below uses a 'for loop' to step through a list of road types. For each each element of the list, an action is performed, i.e., the item is printed out in upper case.  Normally, more complex action is performed. 
+
+
+.. code-block:: python
+   :linenos:
+
+
+   listOfRoadTypes = [‘Highway’,’Street’,’Boulevard’]
+   for RoadType in listOfRoadTypes:
+       print RoadType.upper()
+
+
+|
+
+
+**Using ArcPy to Loop through a List of fields in a Shapefile's Attribute Table**
+
+Run the code in Jupyter Notebook that is attached to ArcGIS Pro or Python 2.7 that comes with ArcGIS Pro.
+
+
+
+.. code-block:: python
+   :linenos:
+   
+   import arcpy
+   arcpy.env.workspace = "c:/data"
+
+   fieldlist = arcpy.ListFields("roads.shp")
+          for field in fieldlist:
+                print (field.name, field.type, field.length)
+
+
+|
+
+
+**Using ArcPy to Loop through a List of all the Feature Classes in a Directory or a Geodatabase**
+
+.. code-block:: python
+   :linenos:
+   
+   import arcpy
+   arcpy.env.workspace = "C:/data"
+
+   fcList = arcpy.ListFeatureClasses ()
+    for fc in fcList:
+        print (fc)  
+
 |
 
 
 
-For Loops  with Break and Continue
+**Using Arcpy to get a List of all the rasters in a Directory or a Geodatabase**
+
+.. code-block:: python
+   :linenos:
+   
+   import arcpy
+   arcpy.env.workspace = "C:/data/dems"
+
+   rasters = arcpy.ListRasters("*", "GRID")
+   for raster in rasters:
+       print(raster) 
+
+
+|
+
+
+
+
+**Using QGIS to Get a list of features in a shapefile**
+
+.. code-block:: python
+   :linenos:
+
+   for f in layer.getFeatures():
+      print (f)
+
+
+|
+   
+**QGIS - Get selected features**
+
+.. code-block:: python
+   :linenos:
+
+   activeLayer = iface.activeLayer()
+   if activeLayer.type() == QgsMapLayer.VectorLayer:
+       print('The layer is a vector layer!')
+   
+   for f in activeLayer.selectedFeatures():
+        print (f.attributes())
+        print ("")
+
+
+
+.. image:: img/qgis_selected_feature.png
+   :alt: Selected Features 
+
+
+
+
+|
+
+
+**QGIS - Getting the attributes of the active shapefile**
+
+.. code-block:: python
+   :linenos:
+
+   activeLayer = iface.activeLayer()
+   if activeLayer.type() == QgsMapLayer.VectorLayer:
+       print('The layer is a vector layer!')
+
+
+   for f in activeLayer.getFeatures():
+       print (f.attributes())
+       print ("")
+
+
+
+|
+
+.. code-block:: python
+   :linenos:
+
+    for feature in layer.getFeatures(): 
+        print(feature) 
+        print(feature.id()) 
+        print(feature['NAME']) 
+        print('-----') 
+
+
+
+|
+
+
+
+
+For Loops with Break and Continue
 -----------------------------------------
- 
 
 **Break**
 
-Break is typically part of a conditional \ looping situation in the program.  If the "if condition"  evaluates to false, break will not be  activated and the program will keep looping normally.   If the condition evaluates to true, 'break' is activated and the code jumps out of the loop entirely and moves to the next block in the program.
+Break is typically part of a conditional looping situation in the program.  If the "if condition" evaluates to false, break will not be activated and the program will keep looping normally.   If the condition evaluates to true, 'break' is activated and the code jumps out of the loop entirely and moves to the next block in the program.
 
 
 
@@ -336,8 +490,6 @@ Run the code below to study "break"
 
 .. code-block:: python
    :linenos:
-
-   #1st code block
 
    for letter in 'Python':
       print (letter)
@@ -355,8 +507,8 @@ Run the code below to study "break"
 |
 
 
-#2nd code block
-
+#2nd Example
+Although the maximum value in the range is 100 million, as soon as the loop gets to 5, the condition evaluates to true, so the program breaks out of the pattern. 
 
 .. code-block:: python
    :linenos:
@@ -430,11 +582,7 @@ Try the code below to see how 'continue' works.
 While Loops
 -------------
 
-While loops are used when you cannot predict at runtime the number of times an operation will occur.
-
-
-
-**While Loop Structure**
+While loops are used when you cannot predict at runtime the number of times an operation will occur. The basic while loop structure is shown below:
 
  .. code-block:: python
    :linenos:
@@ -461,7 +609,9 @@ Example 1
 | 3
 | 4
 
+
 |
+
 
 **Use of Plus Equal**
 
@@ -490,7 +640,7 @@ You can also use the plus equal term "+=" to add another value to the variable's
    x += 1 # counter
 
 
-Operators such as -=, *=, /= do similar for subtraction, multiplication and division.
+Operators such as "-=", "*=", /= behave similarly similar for subtraction, multiplication and division.
 
 |
 
@@ -536,9 +686,9 @@ Example 3
     else:
         print ('Incorrect Guess. Too high. Try again')
 
- 
-
- 
+ 
+|
+ 
 
 **While Loop with "Continue"**
 # Continue causes the program to break out of the particular iteration it is executing. See example below:
@@ -561,7 +711,7 @@ Example 3
        else:
              print ('No, it is lower than that.')
 
- 
+
 
 |
 
@@ -591,7 +741,7 @@ While Loop Example With "Break"
 
 
 
-Repeating a program until the user wants to quit.
+**Repeating a program until the user wants to quit**
 
  .. code-block:: python
    :linenos:
@@ -614,11 +764,12 @@ Repeating a program until the user wants to quit.
            break
            print("")
 
- 
 
- 
+|
 
-Looping, Performing Calculations and Populating an Empty List
+
+
+**Looping, Performing Calculations and Populating an Empty List**
 
 Example
 
@@ -635,9 +786,10 @@ Example
 |
 
 
+
 **List Comprehension**
 
-The code below represents a typical way to loop and perform an operation on a set of numbers:
+List comprehensions provide a concise way of looping, populating lists, and performing operations. The code below represents a typical way to loop and perform an operation on a set of numbers:
 
 
  .. code-block:: python
@@ -655,11 +807,11 @@ The code below represents a typical way to loop and perform an operation on a se
 
 
 
-List comprehensions provide a concise way of looping, populating lists, and performing operations. Instead of populating a list using the method shown above, you can reduce your looping code by using a list comprehension.  The general syntax is:
+ Instead of populating a list using the method shown above, you can reduce your looping code by using a list comprehension.  The general syntax is:
 
  
 
-new_list = [expression for member in iterable object]
+new_list = [expression for member in iterable object, for loop to generate the numbers to feed into the expression]
 
 
 
@@ -702,171 +854,6 @@ The syntax can be expanded to include more than 1 for clause.  It can also inclu
 
 | 
 
-
-
-Looping and GIS
------------------
-
-Looping is used repeatedly in GIS scripting. For example, you might need to iterate through rows in a table, or fields in a table, or feature classes in a folder. You might even need to loop through the vertices of a geographic feature and do something with the vertices.  The scripts below show examples of looping in GIS using the ArcPy library.
-
-
-**Looping through a list**
-
-Use a for loop to step through the list, doing something with each element of the list
-
-
-.. code-block:: python
-   :linenos:
-
-
-   listOfRoadTypes = [‘Highway’,’Street’,’Boulevard’]
-   for RoadType in listOfRoadTypes:
-       print RoadType.upper()
-
-
-
-|
-
-
-
-**Getting a List of fields in a Shapefile's Attribute Table**
-
-
-The syntax is: ListFields (dataset, {wild_card}, {field_type})
-
-
-
-.. code-block:: python
-   :linenos:
-   
-   import arcpy
-   arcpy.env.workspace = "c:/data"
-
-   fieldlist = arcpy.ListFields("roads.shp")
-          for field in fieldlist:
-                print (field.name, field.type, field.length)
-
-
-|
-
-
-Get a List of all the Feature Classes in a Directory or a Geodatabase
-
-.. code-block:: python
-   :linenos:
-   
-   import arcpy
-   arcpy.env.workspace = "C:/data"
-
-   fcList = arcpy.ListFeatureClasses ()
-    for fc in fcList:
-        print (fc)  
-
-|
-
-
-Get a List of all the rasters in a Directory or a Geodatabase
-
-.. code-block:: python
-   :linenos:
-   
-   import arcpy
-   #Set the current workspace
-   arcpy.env.workspace = "C:/data/DEMS"
-
-   rasters = arcpy.ListRasters("*", "GRID")
-   for raster in rasters:
-        print (fc)  
-
-
-
-|
-
-
-
-
-.. code-block:: python
-   :linenos: 
-
-   import arcpy
-   Set the current workspace
-   arcpy.env.workspace = "c:/data/DEMS"
-
-   
-   rasters = arcpy.ListRasters("*", "GRID")
-
-   for raster in rasters:
-       print(raster)
-  
-
-  |
-
-**Methods in ArcPy that Return Lists**
-
-* ListFields
-* ListFeatureClasses
-* ListWorkspaces
-* ListFiles
-* ListRasters
-* ListDataFrames
-* ListLayers
-* ListBrokenDataSources
-
-
-Each of these methods return a list of something.  In some cases, the list may consist of one just element.  You can use wildcards to  
-limit the results. Also, some lists return a list of objects, while other return a list of strings.
-
-
-|
-
-**List all layers in QGIS**
-
-
-.. code-block:: python
-   :linenos:
-
-   from qgis.core import QgsProject
-
-   QgsProject.instance().mapLayers().values()
-
-
-
-   |
-
-
-
-**Get features**
-
-.. code-block:: python
-   :linenos:
-
-   for f in layer.getFeatures():
-      print (f)
-
-
-|
-   
-**Get selected features**
-
-.. code-block:: python
-   :linenos:
-
-   for f in layer.selectedFeatures():
-       print (f)
-
-
-
-|
-
-
-.. code-block:: python
-   :linenos:
-
-    for feature in layer.getFeatures(): 
-        print(feature) 
-        print(feature.id()) 
-        print(feature['NAME']) 
-        print('-----') 
 
 
 

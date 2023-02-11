@@ -49,9 +49,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#comparison-operators">5.2. Comparison Operators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#looping">5.3. Looping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#for-loops">5.4. For Loops</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#for-loops-with-break-and-continue">5.5. For Loops  with Break and Continue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#for-loops-with-break-and-continue">5.5. For Loops with Break and Continue</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#while-loops">5.6. While Loops</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#looping-and-gis">5.7. Looping and GIS</a></li>
 </ul>
 </li>
 </ul>
@@ -109,31 +108,27 @@
 </div>
 <p>If the condition is true, that is, if the variable is defined, then the block following will be executed. An example of the structure is shown below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">var1</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span>
-<span class="linenos">2</span>
-<span class="linenos">3</span><span class="k">if</span>  <span class="n">var1</span><span class="p">:</span>
-<span class="linenos">4</span>   <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The sky is blue.&quot;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="k">if</span>  <span class="n">var1</span><span class="p">:</span>
+<span class="linenos">3</span>   <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The sky is blue.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Here is a another example involving the if statement.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="linenos">2</span>
-<span class="linenos">3</span> <span class="k">if</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<span class="linenos">4</span>
-<span class="linenos">5</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number is&#39;</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>
+<span class="linenos">2</span> <span class="k">if</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">3</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number is&#39;</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Here is an example from QGIS.</p>
+<p>The code sample below contains an if statement and should be run in QGIS.  It tests whether the active layer in the Table of Content is a vector layer. In the code sample, the iface object is used to retrieve the active layer in the Canvas. Once the active layer is retrieved, the code checks if it is a vector layer. If it is vector layer, then it prints a message indicating that the layer is a vector layer.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">activeLayer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 <span class="linenos">2</span><span class="k">if</span> <span class="n">activeLayer</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">QgsMapLayer</span><span class="o">.</span><span class="n">VectorLayer</span><span class="p">:</span>
 <span class="linenos">3</span>   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The layer is a vector layer!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The numbered elements in the illustration below show how to run the code in QGIS.  First click on Plugin in the main menu, then click on Pyhton Console. When the Python Console opens, click on the Editor and paste the code into the Editor, Next click the Save button then run the code by clicking on the green player button.</p>
+<p>To run the code, look at the numbered elements in the illustration below.  First, click on Plugin in the main menu, then click on Python Console. When the Python Console opens, click on the Show Editor button and paste the code into the Editor.  Next, click the Save button then run the code by clicking on the green player button.</p>
 <img alt="Display Active Layer" src="_images/activeLayer.png" />
-<p>In the code sample, the iface object is used to retrieve the active layer in the Canvas. Once the layer is retrieved, the code checks if the active layer is a vector layer. If it is, then it prints a statements to that effect.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -141,19 +136,16 @@
 <p>The if-else statement is designed to execute what follows after either the true part or false part of a condition.  If the condition evaluates to true, then the if block code is executed.  If the condition is false, the else block code is executed.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>  <span class="c1"># if condition is true.</span>
 <span class="linenos">2</span>    <span class="n">execute</span> <span class="n">this</span> <span class="n">statement</span>
-<span class="linenos">3</span>
-<span class="linenos">4</span><span class="k">else</span><span class="p">:</span>
-<span class="linenos">5</span>
-<span class="linenos">6</span>  <span class="n">execute</span> <span class="n">this</span> <span class="n">statement</span>
+<span class="linenos">3</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">4</span>     <span class="n">execute</span> <span class="n">this</span> <span class="n">statement</span>
 </pre></div>
 </div>
 <p>Here is an example of the if .. else statement.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">answer</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter a number: &quot;</span><span class="p">))</span>
-<span class="linenos">2</span>
-<span class="linenos">3</span><span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="mi">15</span><span class="p">:</span>
-<span class="linenos">4</span>    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The number &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; is my lucky number.&quot;</span><span class="p">)</span>
-<span class="linenos">5</span><span class="k">else</span><span class="p">:</span>
-<span class="linenos">6</span>    <span class="nb">print</span> <span class="p">(</span><span class="n">The</span> <span class="n">number</span> <span class="s2">&quot; + str(answer) + &quot;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">my</span> <span class="n">lucky</span> <span class="n">number</span><span class="o">.</span><span class="s2">&quot;)</span>
+<span class="linenos">2</span><span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="mi">15</span><span class="p">:</span>
+<span class="linenos">3</span>    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The number &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; is my lucky number.&quot;</span><span class="p">)</span>
+<span class="linenos">4</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">5</span>    <span class="nb">print</span> <span class="p">(</span><span class="n">The</span> <span class="n">number</span> <span class="s2">&quot; + str(answer) + &quot;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">my</span> <span class="n">lucky</span> <span class="n">number</span><span class="o">.</span><span class="s2">&quot;)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -168,6 +160,19 @@
 <span class="linenos">6</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> is not divisible by 2&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>This ‘if .. else’ example should be run in QGIS.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">activeLayer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="linenos">2</span> <span class="k">if</span> <span class="n">activeLayer</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">QgsMapLayer</span><span class="o">.</span><span class="n">VectorLayer</span><span class="p">:</span>
+<span class="linenos">3</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The layer is a vector layer!&#39;</span><span class="p">)</span>
+<span class="linenos">4</span> <span class="k">else</span><span class="p">:</span>
+<span class="linenos">5</span>      <span class="k">if</span> <span class="n">activeLayer</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">QgsMapLayer</span><span class="o">.</span><span class="n">RasterLayer</span><span class="p">:</span>
+<span class="linenos">6</span>           <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The layer is a raster layer!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Display Active Layer" src="_images/active_raster_layer.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -198,12 +203,11 @@
 <span class="linenos">12</span>
 <span class="linenos">13</span><span class="k">elif</span> <span class="n">answer</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">:</span>
 <span class="linenos">14</span>    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;That number is too large to be my lucky number&quot;</span><span class="p">)</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">17</span>    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;That&#39;s too small to be my lucky number&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<dl class="simple">
-<dt>else:</dt><dd><p>print (“That’s too small to be my lucky number”)</p>
-</dd>
-</dl>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -220,7 +224,8 @@
 </dl>
 <p><strong>Equal Sign vs Double Equal Sign</strong></p>
 <p>A single equal sign ‘==’ is used to assign values to variables.  The double equal sign ‘==’ is used to test for equality of two variables.</p>
-<p>Testing Equality</p>
+<p>Testing Equality
+Here we are testing whether the two lists have the same length.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">67</span><span class="p">]</span>
 <span class="linenos">2</span><span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">46</span><span class="p">]</span>
 <span class="linenos">3</span>
@@ -237,14 +242,14 @@
 <section id="looping">
 <h2><span class="section-number">5.3. </span>Looping<a class="headerlink" href="#looping" title="Permalink to this heading"></a></h2>
 <p>In programming, looping is used to execute a block of code repeatedly until a certain condition is met.  It is a simple concept that has widespread usage in programming.</p>
-<p>Python uses the for loop and the while loop for iteration or repetitions.  For loops are used when you know beforehand the amount of times you want to loop.m While Loops enable you to test for a particular condition and are used when you don’t know beforehand how many times the loop will occur.</p>
+<p>Python uses the for loop and the while loop for iteration or repetitions.  For loops are used when you know, beforehand, the amount of times you want to loop.  While Loops enable you to test for a particular condition and are used when you don’t know beforehand how many times the loop will occur.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </section>
 <section id="for-loops">
 <h2><span class="section-number">5.4. </span>For Loops<a class="headerlink" href="#for-loops" title="Permalink to this heading"></a></h2>
-<p>General Pattern</p>
+<p>The general pattern of the for loop is illustrated below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>  <span class="c1"># for each item of a variable that is in a particular sequence</span>
 <span class="linenos">2</span>     <span class="n">statements</span>       <span class="c1"># do something.</span>
 </pre></div>
@@ -263,8 +268,7 @@
 </pre></div>
 </div>
 <p>Notes:
-num is a made-up variable name. You can use any name.
-range () is a python function that takes a lower and upper value (1,6). The range function returns a list of numbers between the given range.</p>
+The variable name “num” is a made-up one.  You can use any name.  In Pyhton, range () is a function that takes a lower and upper value (1,6). The range function returns a list of numbers between the given range.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -272,11 +276,10 @@ range () is a python function that takes a lower and upper value (1,6). The rang
 <p>For loops are great for manipulating lists</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>a = [‘cat’, ‘dog’, ‘window’, ‘Main Street’]
 <span class="linenos">2</span>for x in a:
-<span class="linenos">3</span>   vprint (x)
+<span class="linenos">3</span>   print (x)
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">Results</div>
 <div class="line">cat</div>
 <div class="line">dog</div>
 <div class="line">window</div>
@@ -295,7 +298,7 @@ range () is a python function that takes a lower and upper value (1,6). The rang
 <span class="linenos">7</span>   <span class="nb">print</span> <span class="p">(</span> <span class="s2">&quot; &quot;</span> <span class="p">)</span>
 </pre></div>
 </div>
-<p>In the above example you enter the first loop visiting “Spades”, then immediately jump to the nested loop printing out the value for each card.  When the program reachs the end of the list of “values’, it jumps out of the nested loop and return to the first loop to get to “Clubs. Then you loop through all values in the second suit and print the card names. This process continues until all the suits and values have been looped through.</p>
+<p>In the above code, the program enters the first loop visiting “Spades”, then immediately jumps to the nested loop printing out the value for each card.  When the program reaches the end of the list of “values’, it jumps out of the nested loop and return to the first loop to get to “Clubs. Next, it loops through all values in the second suit and print the card names. This process continues until all the suits and values have been looped through.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -306,22 +309,114 @@ range () is a python function that takes a lower and upper value (1,6). The rang
 <span class="linenos">4</span>   <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Note:  In the above code, end=”t” put a tab after each multiplication.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Looping through a list of Roads</strong></p>
+<p>The code below uses a ‘for loop’ to step through a list of road types. For each each element of the list, an action is performed, i.e., the item is printed out in upper case.  Normally, more complex action is performed.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>listOfRoadTypes = [‘Highway’,’Street’,’Boulevard’]
+<span class="linenos">2</span>for RoadType in listOfRoadTypes:
+<span class="linenos">3</span>    print RoadType.upper()
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Using ArcPy to Loop through a List of fields in a Shapefile’s Attribute Table</strong></p>
+<p>Run the code in Jupyter Notebook that is attached to ArcGIS Pro or Python 2.7 that comes with ArcGIS Pro.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="linenos">2</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;c:/data&quot;</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="n">fieldlist</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFields</span><span class="p">(</span><span class="s2">&quot;roads.shp&quot;</span><span class="p">)</span>
+<span class="linenos">5</span>       <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fieldlist</span><span class="p">:</span>
+<span class="linenos">6</span>             <span class="nb">print</span> <span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Using ArcPy to Loop through a List of all the Feature Classes in a Directory or a Geodatabase</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="linenos">2</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data&quot;</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="n">fcList</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFeatureClasses</span> <span class="p">()</span>
+<span class="linenos">5</span> <span class="k">for</span> <span class="n">fc</span> <span class="ow">in</span> <span class="n">fcList</span><span class="p">:</span>
+<span class="linenos">6</span>     <span class="nb">print</span> <span class="p">(</span><span class="n">fc</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Using Arcpy to get a List of all the rasters in a Directory or a Geodatabase</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="linenos">2</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data/dems&quot;</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="n">rasters</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListRasters</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;GRID&quot;</span><span class="p">)</span>
+<span class="linenos">5</span><span class="k">for</span> <span class="n">raster</span> <span class="ow">in</span> <span class="n">rasters</span><span class="p">:</span>
+<span class="linenos">6</span>    <span class="nb">print</span><span class="p">(</span><span class="n">raster</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Using QGIS to Get a list of features in a shapefile</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
+<span class="linenos">2</span>   <span class="nb">print</span> <span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>QGIS - Get selected features</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">activeLayer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="linenos">2</span><span class="k">if</span> <span class="n">activeLayer</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">QgsMapLayer</span><span class="o">.</span><span class="n">VectorLayer</span><span class="p">:</span>
+<span class="linenos">3</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The layer is a vector layer!&#39;</span><span class="p">)</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">activeLayer</span><span class="o">.</span><span class="n">selectedFeatures</span><span class="p">():</span>
+<span class="linenos">6</span>     <span class="nb">print</span> <span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">attributes</span><span class="p">())</span>
+<span class="linenos">7</span>     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Selected Features" src="_images/qgis_selected_feature.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>QGIS - Getting the attributes of the active shapefile</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">activeLayer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="linenos">2</span><span class="k">if</span> <span class="n">activeLayer</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">QgsMapLayer</span><span class="o">.</span><span class="n">VectorLayer</span><span class="p">:</span>
+<span class="linenos">3</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The layer is a vector layer!&#39;</span><span class="p">)</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">activeLayer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
+<span class="linenos">7</span>    <span class="nb">print</span> <span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">attributes</span><span class="p">())</span>
+<span class="linenos">8</span>    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
+<span class="linenos">2</span>     <span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+<span class="linenos">3</span>     <span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">id</span><span class="p">())</span>
+<span class="linenos">4</span>     <span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">])</span>
+<span class="linenos">5</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </section>
 <section id="for-loops-with-break-and-continue">
-<h2><span class="section-number">5.5. </span>For Loops  with Break and Continue<a class="headerlink" href="#for-loops-with-break-and-continue" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">5.5. </span>For Loops with Break and Continue<a class="headerlink" href="#for-loops-with-break-and-continue" title="Permalink to this heading"></a></h2>
 <p><strong>Break</strong></p>
-<p>Break is typically part of a conditional looping situation in the program.  If the “if condition”  evaluates to false, break will not be  activated and the program will keep looping normally.   If the condition evaluates to true, ‘break’ is activated and the code jumps out of the loop entirely and moves to the next block in the program.</p>
+<p>Break is typically part of a conditional looping situation in the program.  If the “if condition” evaluates to false, break will not be activated and the program will keep looping normally.   If the condition evaluates to true, ‘break’ is activated and the code jumps out of the loop entirely and moves to the next block in the program.</p>
 <p>Run the code below to study “break”</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">#1st code block</span>
-<span class="linenos">2</span>
-<span class="linenos">3</span><span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="s1">&#39;Python&#39;</span><span class="p">:</span>
-<span class="linenos">4</span>   <span class="nb">print</span> <span class="p">(</span><span class="n">letter</span><span class="p">)</span>
-<span class="linenos">5</span>   <span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="s1">&#39;h&#39;</span><span class="p">:</span>
-<span class="linenos">6</span>      <span class="k">break</span>
-<span class="linenos">7</span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="s1">&#39;Python&#39;</span><span class="p">:</span>
+<span class="linenos">2</span>   <span class="nb">print</span> <span class="p">(</span><span class="n">letter</span><span class="p">)</span>
+<span class="linenos">3</span>   <span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="s1">&#39;h&#39;</span><span class="p">:</span>
+<span class="linenos">4</span>      <span class="k">break</span>
+<span class="linenos">5</span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -334,7 +429,8 @@ range () is a python function that takes a lower and upper value (1,6). The rang
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>#2nd code block</p>
+<p>#2nd Example
+Although the maximum value in the range is 100 million, as soon as the loop gets to 5, the condition evaluates to true, so the program breaks out of the pattern.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">100000000</span><span class="p">):</span>
 <span class="linenos">2</span>    <span class="nb">print</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="linenos">3</span>
@@ -397,8 +493,7 @@ range () is a python function that takes a lower and upper value (1,6). The rang
 </section>
 <section id="while-loops">
 <h2><span class="section-number">5.6. </span>While Loops<a class="headerlink" href="#while-loops" title="Permalink to this heading"></a></h2>
-<p>While loops are used when you cannot predict at runtime the number of times an operation will occur.</p>
-<p><strong>While Loop Structure</strong></p>
+<p>While loops are used when you cannot predict at runtime the number of times an operation will occur. The basic while loop structure is shown below:</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">while</span> <span class="n">condition</span><span class="p">:</span>
 <span class="linenos">2</span>    <span class="n">statements</span>
@@ -446,7 +541,7 @@ range () is a python function that takes a lower and upper value (1,6). The rang
 </pre></div>
 </div>
 </div></blockquote>
-<p>Operators such as -=, <a href="#id1"><span class="problematic" id="id2">*</span></a>=, /= do similar for subtraction, multiplication and division.</p>
+<p>Operators such as “-=”, “<a href="#id1"><span class="problematic" id="id2">*</span></a>=”, /= behave similarly similar for subtraction, multiplication and division.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -486,6 +581,9 @@ range () is a python function that takes a lower and upper value (1,6). The rang
 </pre></div>
 </div>
 </div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p><strong>While Loop with “Continue”</strong>
 # Continue causes the program to break out of the particular iteration it is executing. See example below:</p>
 <blockquote>
@@ -528,7 +626,7 @@ range () is a python function that takes a lower and upper value (1,6). The rang
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Repeating a program until the user wants to quit.</p>
+<p><strong>Repeating a program until the user wants to quit</strong></p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
 <span class="linenos"> 2</span>    <span class="n">num1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the first number: &quot;</span><span class="p">))</span>
@@ -550,7 +648,10 @@ range () is a python function that takes a lower and upper value (1,6). The rang
 </pre></div>
 </div>
 </div></blockquote>
-<p>Looping, Performing Calculations and Populating an Empty List</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Looping, Performing Calculations and Populating an Empty List</strong></p>
 <p>Example</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
@@ -565,7 +666,7 @@ range () is a python function that takes a lower and upper value (1,6). The rang
 <div class="line"><br /></div>
 </div>
 <p><strong>List Comprehension</strong></p>
-<p>The code below represents a typical way to loop and perform an operation on a set of numbers:</p>
+<p>List comprehensions provide a concise way of looping, populating lists, and performing operations. The code below represents a typical way to loop and perform an operation on a set of numbers:</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="linenos">2</span><span class="n">results</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span>
@@ -577,8 +678,10 @@ range () is a python function that takes a lower and upper value (1,6). The rang
 </div>
 </div></blockquote>
 <p>[0.5, 1.0, 1.5, 2.0]</p>
-<p>List comprehensions provide a concise way of looping, populating lists, and performing operations. Instead of populating a list using the method shown above, you can reduce your looping code by using a list comprehension.  The general syntax is:</p>
-<p>new_list = [expression for member in iterable object]</p>
+<blockquote>
+<div><p>Instead of populating a list using the method shown above, you can reduce your looping code by using a list comprehension.  The general syntax is:</p>
+</div></blockquote>
+<p>new_list = [expression for member in iterable object, for loop to generate the numbers to feed into the expression]</p>
 <p>#Example.  Square the values in the list</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
@@ -613,107 +716,6 @@ range () is a python function that takes a lower and upper value (1,6). The rang
 </div></blockquote>
 <div class="line-block">
 <div class="line"><br /></div>
-</div>
-</section>
-<section id="looping-and-gis">
-<h2><span class="section-number">5.7. </span>Looping and GIS<a class="headerlink" href="#looping-and-gis" title="Permalink to this heading"></a></h2>
-<p>Looping is used repeatedly in GIS scripting. For example, you might need to iterate through rows in a table, or fields in a table, or feature classes in a folder. You might even need to loop through the vertices of a geographic feature and do something with the vertices.  The scripts below show examples of looping in GIS using the ArcPy library.</p>
-<p><strong>Looping through a list</strong></p>
-<p>Use a for loop to step through the list, doing something with each element of the list</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>listOfRoadTypes = [‘Highway’,’Street’,’Boulevard’]
-<span class="linenos">2</span>for RoadType in listOfRoadTypes:
-<span class="linenos">3</span>    print RoadType.upper()
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p><strong>Getting a List of fields in a Shapefile’s Attribute Table</strong></p>
-<p>The syntax is: ListFields (dataset, {wild_card}, {field_type})</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">arcpy</span>
-<span class="linenos">2</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;c:/data&quot;</span>
-<span class="linenos">3</span>
-<span class="linenos">4</span><span class="n">fieldlist</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFields</span><span class="p">(</span><span class="s2">&quot;roads.shp&quot;</span><span class="p">)</span>
-<span class="linenos">5</span>       <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fieldlist</span><span class="p">:</span>
-<span class="linenos">6</span>             <span class="nb">print</span> <span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>Get a List of all the Feature Classes in a Directory or a Geodatabase</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">arcpy</span>
-<span class="linenos">2</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data&quot;</span>
-<span class="linenos">3</span>
-<span class="linenos">4</span><span class="n">fcList</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFeatureClasses</span> <span class="p">()</span>
-<span class="linenos">5</span> <span class="k">for</span> <span class="n">fc</span> <span class="ow">in</span> <span class="n">fcList</span><span class="p">:</span>
-<span class="linenos">6</span>     <span class="nb">print</span> <span class="p">(</span><span class="n">fc</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>Get a List of all the rasters in a Directory or a Geodatabase</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">arcpy</span>
-<span class="linenos">2</span><span class="c1">#Set the current workspace</span>
-<span class="linenos">3</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data/DEMS&quot;</span>
-<span class="linenos">4</span>
-<span class="linenos">5</span><span class="n">rasters</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListRasters</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;GRID&quot;</span><span class="p">)</span>
-<span class="linenos">6</span><span class="k">for</span> <span class="n">raster</span> <span class="ow">in</span> <span class="n">rasters</span><span class="p">:</span>
-<span class="linenos">7</span>     <span class="nb">print</span> <span class="p">(</span><span class="n">fc</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p><strong>Methods in ArcPy that Return Lists</strong></p>
-<ul class="simple">
-<li><p>ListFields</p></li>
-<li><p>ListFeatureClasses</p></li>
-<li><p>ListWorkspaces</p></li>
-<li><p>ListFiles</p></li>
-<li><p>ListRasters</p></li>
-<li><p>ListDataFrames</p></li>
-<li><p>ListLayers</p></li>
-<li><p>ListBrokenDataSources</p></li>
-</ul>
-<p>Each of these methods return a list of something.  In some cases, the list may consist of one just element.  You can use wildcards to
-limit the results. Also, some lists return a list of objects, while other return a list of strings.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p><strong>List all layers in QGIS</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProject</span>
-<span class="linenos">2</span>
-<span class="linenos">3</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
-<span class="linenos">4</span>
-<span class="linenos">5</span>
-<span class="linenos">6</span>
-<span class="linenos">7</span><span class="o">|</span>
-</pre></div>
-</div>
-<p><strong>Get features</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
-<span class="linenos">2</span>   <span class="nb">print</span> <span class="p">(</span><span class="n">f</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p><strong>Get selected features</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">selectedFeatures</span><span class="p">():</span>
-<span class="linenos">2</span>    <span class="nb">print</span> <span class="p">(</span><span class="n">f</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
-<span class="linenos">2</span>     <span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
-<span class="linenos">3</span>     <span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">id</span><span class="p">())</span>
-<span class="linenos">4</span>     <span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">])</span>
-<span class="linenos">5</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----&#39;</span><span class="p">)</span>
-</pre></div>
 </div>
 </section>
 </section>

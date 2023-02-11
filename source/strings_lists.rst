@@ -604,6 +604,44 @@ first colon, it means to go all the way to the end of the list.
 |
 
 
+
+**Methods in ArcPy that Return Lists**
+
+* ListFields
+* ListFeatureClasses
+* ListWorkspaces
+* ListFiles
+* ListRasters
+* ListDataFrames
+* ListLayers
+* ListBrokenDataSources
+
+
+Each of these methods return a list of something.  In some cases, the list may consist of just one element.  You can use wildcards to  
+limit the results. Also, some lists return a list of objects, while other return a list of strings.
+
+
+|
+
+
+
+**List all layers in QGIS**
+
+
+.. code-block:: python
+   :linenos:
+
+   from qgis.core import QgsProject
+
+   QgsProject.instance().mapLayers().values()
+
+
+
+   |
+
+
+
+
 Tuples
 -------
 
