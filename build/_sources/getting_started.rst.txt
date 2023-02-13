@@ -42,6 +42,9 @@ Many people still use the core Python distribution to run their code. However, b
 
 
 5. To install new packages, you need to install Pip.  Click `this link <https://phoenixnap.com/kb/install-pip-windows>`_ to learn more about how to work with Pip.  
+
+
+
 |
  
 
@@ -89,16 +92,16 @@ Anaconda is a large Python distribution that has become very popular over the la
 Jupyter Notebook within ArcGIS Pro
 -------------------------------------
 
-1. If you have ArcGIS Pro installed on your computer, you can run Python using Jupyter Notebook that is installed with ArcGIS Pro. 
+1. If you have ArcGIS Pro installed on your computer, you can run Python using Jupyter Notebook that is installed with ArcGIS Pro.  This is a good development environment to use  as the connection between Python and Jupyter Notebook is already configured.   
 
 
-2. This tutorial shows how to run Python using Jupyter Notebook that is installed with ArcGIS Pro. This is a good option as the connection between Python and Jupyter Notebook has been already configured.   
+2. To run Python using Jupyter Notebook that is installed with ArcGIS Pro, open ArcGIS Pro, then click on Project | Python | Python Notebook, This shown in the illustration below.
 
  .. image:: img/python_notebook.png
    :alt: Python's Notebook in ArcGIS Pro 
 
 
-3. If you wish to add new libraries to ArcGIS, you will first have to clone Python's default environment in ArcGIS Pro then install the new libraries to the cloned environment.  This tutorial shows you how to clone Python's default environment within ArcGIS Pro and install new libraries to the cloned environment.
+3. If you wish to add new libraries to ArcGIS, you will first have to clone Python's default environment in ArcGIS Pro then install the new libraries to the cloned environment.  This `ESRI tutorial <https://support.esri.com/en/technical-article/000020560>`_shows  how to clone Python's default environment within ArcGIS Pro.
  
 
  
