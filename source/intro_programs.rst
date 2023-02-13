@@ -2,6 +2,15 @@
 Introduction the Python Language
 ==================================
 
+Python is an open-source programming language that can be used for a wide variety of programming tasks, from basic scripts to complex and intricate applications.
+
+Python is an interpreted language. This means that the program code is compiled into machine readable code at the moment it is run by the  interpreter.  This is in contrast to a compiled language like C++, or Java where the program code is compiled into machine readable code by a language compiler before the code is run. The compiler creates an executable in the machine's native language that can then be run many times.   
+
+Python is dynamically typed (i.e. you don’t have to declare variables; just assign a value to a variable), case sensitive (i.e. var and VAR are two different variables) and object-oriented (i.e. everything is an object).
+
+Python is made up of  core modules, plus hundreds of specialized libraries, e.g., SciPy, Numpy, Arcpy, etc.
+
+
 In this module, we will look at the following aspects of the Python language:
 
 * Hello World
@@ -11,15 +20,145 @@ In this module, we will look at the following aspects of the Python language:
 * Basic Python Statements
 * Simple programs 
 
+|
+
+
+
+**Hello World**
+
+>>> print('Hello, world!')
+Hello, world!
+
+
+|
+
+**Variables**
+
+In programming, a variable is a piece of information stored in the computer’s memory. Think of it as a container for storing values used in a program
+Values are assigned to variables using the assignment operator “=“.  
+  
+>>> my_age = 29           
+>>> P1 = input("Please input the size of the first city: ")
+
+
+Many programming languages require variables to be declared before being assigned a value and used in the program.  Python does not require a variable to be declared.  A variable is created the moment you first assign a value to it.  To initialize a variable in Python, we create a name for the variable and then assign it a value in one statement. The values stored in variables may change during the course of program execution. Please note that Variables are case sensitive. 
+
+Although a variable need not be assigned to any particular data type, if you want to specify the data type of a variable, this can be done with casting. For example:. 
+
+
+.. code-block:: python
+    :linenos:
+     
+    x = str(10)      # x will be '10'
+    y = int(55)      # y will be 55
+    z = float(3.8)   # z will be 3.8
+
+|
+
+
+
+**Data Types**
+
+Python has several data types. The list below comes from W3Schools.  
+
+* Numeric Types: 	    int, float, complex
+* Sequence Types: 	list, tuple, range
+* Mapping Type: 	    dict
+* Set Types: 	        set, frozenset
+* Boolean Type: 	    bool
+* Binary Types: 	    bytes, bytearray, memoryview
+* None Type: 	        NoneType
+
+
+*Integers*
+1. Integers are whole numbers, i.e., numbers without decimals, e.g, 23, 123, 4567, etc 
+
+2. Integers are assigned to variables using the "=" sign.
+   ...  a = 10    # Normal assignment
+
+3. Convert a number to integer
+     int(3.45)
+     >>> 3
+
+
+*Floats*
+
+1. Floats are numbers that include decimals
+
+2. To make sure a variable becomes a float, use a decimal somewhere in the declaration/calculations, e.g., 
+ 
+   >>> pi = 3.1415927
+   >>> f = 5.0 # declare float
+
+
+3. To convert a number to a float, use the float function, e.g.,
+
+     >>> float(3)
+          3.0
+
+
+|
+
+**Comments**
+
+*Single Line Comments*
+
+Comments are plain English descriptions of what your code is doing. Comments make it easy for you to debug, maintain and update your code. In Python, single line comments start with ‘#’
+
+
+ .. code-block:: python
+    :linenos:
+    
+    #Get the user's input
+    P1 = input("Please input the size of the first city: ")
+     
+    #Calculate the interaction ,with output of decimal format
+    PI= (int(P1)*int(P2))/(float(Distance)*float(Distance))
+
+
+*Multiple Line Comments*
+
+
+You can create multi-line strings with triple quotes (triple double quotes work, too. 
+
+.. code-block:: python
+    :linenos:
+
+
+    ''' I'm very long-winded and I really need to take up more than one line. 
+    That way I can say all the very important' things which I must tell you.  
+    Strings like me are useful when you must print a long set of instructions, etc.'''      
+
+    P1 = input("Please input the size of the first city: ")
+    PI= (int(P1)*int(P2))/(float(Distance)*float(Distance))
+
+|
+
+
+**Program Statements**
+
+Program statements is a block of code that that expresses some action to be carried out.
+
+.. code-block:: python
+    :linenos:
+
+    #Calculate the interaction ,with output of decimal format
+    PI= (int(P1)*int(P2))/(float(Distance)*float(Distance))
+ 
+
+|
+
+
 Please vist the websites below to learn about the Python concepts listed above.
 
-* `Python Basics <https://www.learnpython.org/en/Basic_Operators>`_
 
-* `Creating Variables and Assigning Data <https://vimeo.com/104028282>`_
+* `Python Basics <https://automatetheboringstuff.com/2e/chapter1/>`_
 
-* `Python Statements <https://pynative.com/python-statements/>`_
+* `Variables expressions and statements <http://www.openbookproject.net/thinkcs/python/english2e/ch02.html>`_
 
-* `Basic Python Statements <https://vimeo.com/105271585>`_
+* `Your first program <https://greenteapress.com/thinkpython2/html/thinkpython2002.html>`_
+
+* `Free Books <https://pythonbooks.revolunet.com/>`_
 
 
 |
@@ -29,28 +168,28 @@ Please vist the websites below to learn about the Python concepts listed above.
 Practice Programs 
 ------------------
 
-If you do not have a Python' interpreter already installed, you can can use the interpreter at this `website <https://www.programiz.com/python-programming/online-compiler/>`_.
+The scripts below are intended to show how to use Python statements to create programs.  The programs are all sequential meaning that each line in the program is run after the preceding line.  Also there is no testing of conditions or repeating of operations.
+
+
+The first nine program examples do not require any specialized Python packages. They can all be run using Python's standard library. If you do not have a Python' interpreter already installed, you can can use the interpreter at this `website <https://www.programiz.com/python-programming/online-compiler/>`_
+
+For examples 10 through 12, the arcpy package must be loaded into memory using the import statement. If arcpy is not installed, the scripts will return an error.
 
 
 
+1. **Write a program to calculate the average of three scores**
 
-**1. Write a program to calculate the average of three scores**
+Key functions in the program below are the inpt function, the float function, and the round function.
 
-# Key functions in the program below are: input(), float(), and round().  
+ .. code-block:: python
+    :linenos:
 
-.. code-block:: python
-   :linenos: 
+    num1 = float(input("Enter the first number: "))
+    num2 = float(input("Enter the second number: "))
+    num3 = float(input("Enter  the third number: "))
 
-   # Get the three scores
-   num1 = float(input("Enter the first number: "))
-   num2 = float(input("Enter the second number: "))
-   num3 = float(input("Enter  the third number: "))
-   
-   # Calculate the average
-   average = (num1 + num2 + num3) / 3
-
-   # Print out the test score
-   print ("the average score is: ", round(average,2))
+    average = (num1 + num2 + num3) / 3
+    print ("the average score is: ", round(average,2))
 
 
  |
@@ -129,10 +268,11 @@ In the code below, %0.2f and %0.4f' are formatted place holders for two variable
    :alt: Spatial Interpolation Concept
 
    
+The example code is given below.
+
 
 .. code-block:: python
-   :linenos: 
-
+   :linenos:
 
    print ("Welcome to the gravity model calculation program")
    print ("------------------------------------------------")
@@ -246,10 +386,11 @@ The script below illustrates how to import the calendar library and use a functi
 |
 
 
-Lab 1
-----------
 
-Write a program that interpolates a single point value using the IDW method. (Links to an external site.)Links to an external site. As shown in the illustration below, we are trying to estimate a value for the unknown point (?) based on the nearest four surrounding values. Instead of calculating a simple average, we are weighting each z-value by the inverse of the distance between the location of the  z-value and the location of the point whose z-value is being calculated.
+
+**10.  Write a program that interpolates a single point value using the IDW method**
+
+As shown in the illustration below, we are trying to estimate a value for the unknown point (?) based on the nearest four surrounding values. Instead of calculating a simple average, we are weighting each z-value by the inverse of the distance between the location of the  z-value and the location of the point whose z-value is being calculated.
 
 .. image:: img/interpolation.png
    :alt: Spatial Interpolation Concept
@@ -265,6 +406,52 @@ Formula for Spatial Interpolation
 
 
 |
+
+
+**11. Buffer a line using Jupyter Notebook**
+
+The code below is written for the arcpy environment and is intentended to be run as a standalone script or from Jupyter Notebook.  Copy the script and paste it into you development environment. Notice that the script first imports the arcpy package.  It is the arcpy package that supplies the additional capability that Python needs to execute ArcGIS commands.
+
+
+.. code-block:: python
+   :linenos:
+
+   import arcpy
+   arcpy.env.overwriteOutput = True
+   arcpy.env.workspace = "C:/data"
+ 
+   # Get the input parameters for the Buffer tool
+   infile = "cities.shp"
+   outfile = "buffered_cities.shp"
+   bufferDistance = 100
+ 
+   # Run the Buffer tool
+   arcpy.Buffer_analysis(inPath, outPath, bufferDistance)
+ 
+
+   # Report any error messages that the Buffer tool might have generated    
+   arcpy.AddMessage(arcpy.GetMessages())
+
+
+|
+
+**12. Buffer a line using the Python Window in ArcGIS Pro**
+
+The code below is written for the arcpy environment and is intentended to be run in ArcGIS Pro Python Window.  Copy the script and paste it into the Python Window.
+
+
+
+.. code-block:: python
+   :linenos:
+
+   import arcpy
+   arcpy.env.workspace = "C:/data"
+   arcpy.Buffer_analysis("roads", "C:/output/majorrdsBuffered", "100 Feet", "FULL", "ROUND", "LIST", "Distance")
+
+
+|
+
+
 
 
 **Deliverables**

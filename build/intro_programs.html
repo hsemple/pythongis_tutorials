@@ -20,7 +20,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="4. Strings and Lists" href="strings.html" />
+    <link rel="next" title="4. Strings and Lists" href="strings_lists.html" />
     <link rel="prev" title="2. Getting Started" href="getting_started.html" /> 
 </head>
 
@@ -45,10 +45,10 @@
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">2. Getting Started</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">3. Introduction the Python Language</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#practice-programs">3.1. Practice Programs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#lab-1">3.2. Lab 1</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="strings.html">4. Strings and Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings_lists.html">4. Strings and Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">5. Conditional Statements and Looping</a></li>
 </ul>
 
         </div>
@@ -77,6 +77,10 @@
              
   <section id="introduction-the-python-language">
 <h1><span class="section-number">3. </span>Introduction the Python Language<a class="headerlink" href="#introduction-the-python-language" title="Permalink to this heading"></a></h1>
+<p>Python is an open-source programming language that can be used for a wide variety of programming tasks, from basic scripts to complex and intricate applications.</p>
+<p>Python is an interpreted language. This means that the program code is compiled into machine readable code at the moment it is run by the  interpreter.  This is in contrast to a compiled language like C++, or Java where the program code is compiled into machine readable code by a language compiler before the code is run. The compiler creates an executable in the machine’s native language that can then be run many times.</p>
+<p>Python is dynamically typed (i.e. you don’t have to declare variables; just assign a value to a variable), case sensitive (i.e. var and VAR are two different variables) and object-oriented (i.e. everything is an object).</p>
+<p>Python is made up of  core modules, plus hundreds of specialized libraries, e.g., SciPy, Numpy, Arcpy, etc.</p>
 <p>In this module, we will look at the following aspects of the Python language:</p>
 <ul class="simple">
 <li><p>Hello World</p></li>
@@ -86,21 +90,142 @@
 <li><p>Basic Python Statements</p></li>
 <li><p>Simple programs</p></li>
 </ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Hello World</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">)</span>
+<span class="go">Hello, world!</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Variables</strong></p>
+<p>In programming, a variable is a piece of information stored in the computer’s memory. Think of it as a container for storing values used in a program
+Values are assigned to variables using the assignment operator “=“.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_age</span> <span class="o">=</span> <span class="mi">29</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">P1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please input the size of the first city: &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Many programming languages require variables to be declared before being assigned a value and used in the program.  Python does not require a variable to be declared.  A variable is created the moment you first assign a value to it.  To initialize a variable in Python, we create a name for the variable and then assign it a value in one statement. The values stored in variables may change during the course of program execution. Please note that Variables are case sensitive.</p>
+<p>Although a variable need not be assigned to any particular data type, if you want to specify the data type of a variable, this can be done with casting. For example:.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">x</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>      <span class="c1"># x will be &#39;10&#39;</span>
+<span class="linenos">2</span><span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">55</span><span class="p">)</span>      <span class="c1"># y will be 55</span>
+<span class="linenos">3</span><span class="n">z</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mf">3.8</span><span class="p">)</span>   <span class="c1"># z will be 3.8</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Data Types</strong></p>
+<p>Python has several data types. The list below comes from W3Schools.</p>
+<ul class="simple">
+<li><p>Numeric Types:            int, float, complex</p></li>
+<li><p>Sequence Types:       list, tuple, range</p></li>
+<li><p>Mapping Type:             dict</p></li>
+<li><p>Set Types:            set, frozenset</p></li>
+<li><p>Boolean Type:             bool</p></li>
+<li><p>Binary Types:             bytes, bytearray, memoryview</p></li>
+<li><p>None Type:            NoneType</p></li>
+</ul>
+<p><em>Integers</em>
+1. Integers are whole numbers, i.e., numbers without decimals, e.g, 23, 123, 4567, etc</p>
+<ol class="arabic simple" start="2">
+<li><p>Integers are assigned to variables using the “=” sign.
+…  a = 10    # Normal assignment</p></li>
+<li><dl class="simple">
+<dt>Convert a number to integer</dt><dd><p>int(3.45)
+&gt;&gt;&gt; 3</p>
+</dd>
+</dl>
+</li>
+</ol>
+<p><em>Floats</em></p>
+<ol class="arabic">
+<li><p>Floats are numbers that include decimals</p></li>
+<li><p>To make sure a variable becomes a float, use a decimal somewhere in the declaration/calculations, e.g.,</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.1415927</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="mf">5.0</span> <span class="c1"># declare float</span>
+</pre></div>
+</div>
+</li>
+<li><p>To convert a number to a float, use the float function, e.g.,</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">     3.0</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Comments</strong></p>
+<p><em>Single Line Comments</em></p>
+<p>Comments are plain English descriptions of what your code is doing. Comments make it easy for you to debug, maintain and update your code. In Python, single line comments start with ‘#’</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">#Get the user&#39;s input</span>
+<span class="linenos">2</span><span class="n">P1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please input the size of the first city: &quot;</span><span class="p">)</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="c1">#Calculate the interaction ,with output of decimal format</span>
+<span class="linenos">5</span><span class="n">PI</span><span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">P1</span><span class="p">)</span><span class="o">*</span><span class="nb">int</span><span class="p">(</span><span class="n">P2</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">Distance</span><span class="p">)</span><span class="o">*</span><span class="nb">float</span><span class="p">(</span><span class="n">Distance</span><span class="p">))</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><em>Multiple Line Comments</em></p>
+<p>You can create multi-line strings with triple quotes (triple double quotes work, too.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="sd">&#39;&#39;&#39; I&#39;m very long-winded and I really need to take up more than one line.</span>
+<span class="linenos">2</span><span class="sd">That way I can say all the very important&#39; things which I must tell you.</span>
+<span class="linenos">3</span><span class="sd">Strings like me are useful when you must print a long set of instructions, etc.&#39;&#39;&#39;</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="n">P1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please input the size of the first city: &quot;</span><span class="p">)</span>
+<span class="linenos">6</span><span class="n">PI</span><span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">P1</span><span class="p">)</span><span class="o">*</span><span class="nb">int</span><span class="p">(</span><span class="n">P2</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">Distance</span><span class="p">)</span><span class="o">*</span><span class="nb">float</span><span class="p">(</span><span class="n">Distance</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Program Statements</strong></p>
+<p>Program statements is a block of code that that expresses some action to be carried out.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">#Calculate the interaction ,with output of decimal format</span>
+<span class="linenos">2</span><span class="n">PI</span><span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">P1</span><span class="p">)</span><span class="o">*</span><span class="nb">int</span><span class="p">(</span><span class="n">P2</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">Distance</span><span class="p">)</span><span class="o">*</span><span class="nb">float</span><span class="p">(</span><span class="n">Distance</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p>Please vist the websites below to learn about the Python concepts listed above.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.learnpython.org/en/Basic_Operators">Python Basics</a></p></li>
-<li><p><a class="reference external" href="https://vimeo.com/104028282">Creating Variables and Assigning Data</a></p></li>
-<li><p><a class="reference external" href="https://pynative.com/python-statements/">Python Statements</a></p></li>
-<li><p><a class="reference external" href="https://vimeo.com/105271585">Basic Python Statements</a></p></li>
+<li><p><a class="reference external" href="https://automatetheboringstuff.com/2e/chapter1/">Python Basics</a></p></li>
+<li><p><a class="reference external" href="http://www.openbookproject.net/thinkcs/python/english2e/ch02.html">Variables expressions and statements</a></p></li>
+<li><p><a class="reference external" href="https://greenteapress.com/thinkpython2/html/thinkpython2002.html">Your first program</a></p></li>
+<li><p><a class="reference external" href="https://pythonbooks.revolunet.com/">Free Books</a></p></li>
 </ul>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <section id="practice-programs">
 <h2><span class="section-number">3.1. </span>Practice Programs<a class="headerlink" href="#practice-programs" title="Permalink to this heading"></a></h2>
-<p>If you do not have a Python’ interpreter already installed, you can can use the interpreter at this <a class="reference external" href="https://www.programiz.com/python-programming/online-compiler/">website</a>.</p>
-<p><strong>1. Write a program to calculate the average of three scores</strong></p>
-<p># Key functions in the program below are: input(), float(), and round().</p>
+<p>The scripts below are intended to show how to use Python statements to create programs.  The programs are all sequential meaning that each line in the program is run after the preceding line.  Also there is no testing of conditions or repeating of operations.</p>
+<p>The first nine program examples do not require any specialized Python packages. They can all be run using Python’s standard library. If you do not have a Python’ interpreter already installed, you can can use the interpreter at this <a class="reference external" href="https://www.programiz.com/python-programming/online-compiler/">website</a></p>
+<p>For examples 10 through 12, the arcpy package must be loaded into memory using the import statement. If arcpy is not installed, the scripts will return an error.</p>
+<ol class="arabic simple">
+<li><p><strong>Write a program to calculate the average of three scores</strong></p></li>
+</ol>
+<p>Key functions in the program below are the inpt function, the float function, and the round function.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">num1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the first number: &quot;</span><span class="p">))</span>
+<span class="linenos">2</span><span class="n">num2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the second number: &quot;</span><span class="p">))</span>
+<span class="linenos">3</span><span class="n">num3</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter  the third number: &quot;</span><span class="p">))</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="n">average</span> <span class="o">=</span> <span class="p">(</span><span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span> <span class="o">+</span> <span class="n">num3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">3</span>
+<span class="linenos">6</span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;the average score is: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">average</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div></blockquote>
 <p><strong>2. Write a program that converts the temperature in Fahrenheit to Celsius</strong></p>
 <p># Note the formatting of the results in the print statement.  str(round(Celsius,2)) converts formats the results to two decimal places then converts the value to a string.   The plus sign concatenates or joins the first string with the second second string.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">Fahrenheit</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the temperature in Fahrenheit: &quot;</span><span class="p">))</span>
@@ -147,6 +272,7 @@
 </div>
 <p><strong>5. Write a program that calculates the spatial interaction between two places using a simple form of the gravity model.</strong></p>
 <img alt="Spatial Interpolation Concept" src="_images/interaction.png" />
+<p>The example code is given below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>print (&quot;Welcome to the gravity model calculation program&quot;)
 <span class="linenos"> 2</span>print (&quot;------------------------------------------------&quot;)
 <span class="linenos"> 3</span>print (&quot;&quot;)
@@ -232,14 +358,44 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</section>
-<section id="lab-1">
-<h2><span class="section-number">3.2. </span>Lab 1<a class="headerlink" href="#lab-1" title="Permalink to this heading"></a></h2>
-<p>Write a program that interpolates a single point value using the IDW method. (Links to an external site.)Links to an external site. As shown in the illustration below, we are trying to estimate a value for the unknown point (?) based on the nearest four surrounding values. Instead of calculating a simple average, we are weighting each z-value by the inverse of the distance between the location of the  z-value and the location of the point whose z-value is being calculated.</p>
+<p><strong>10.  Write a program that interpolates a single point value using the IDW method</strong></p>
+<p>As shown in the illustration below, we are trying to estimate a value for the unknown point (?) based on the nearest four surrounding values. Instead of calculating a simple average, we are weighting each z-value by the inverse of the distance between the location of the  z-value and the location of the point whose z-value is being calculated.</p>
 <img alt="Spatial Interpolation Concept" src="_images/interpolation.png" />
 <p>In terms of program flow, your program should prompt the user for each of the known points, zi.  (Tip: repeat the input statement z-values four times).  Next, it should also prompt the user for the distance of each of the z-value to the point that is being calculated (Tip: repeat the input statement for distance values four times).   Once all the z-values and distances are collected, the program should use these values along with the formula below to compute the z-value at the unknown location.   Demonstrate that your program works using the data in the above diagram.</p>
 <p>Formula for Spatial Interpolation</p>
 <img alt="IDW Formula" src="_images/idw_formula.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>11. Buffer a line using Jupyter Notebook</strong></p>
+<p>The code below is written for the arcpy environment and is intentended to be run as a standalone script or from Jupyter Notebook.  Copy the script and paste it into you development environment. Notice that the script first imports the arcpy package.  It is the arcpy package that supplies the additional capability that Python needs to execute ArcGIS commands.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="linenos"> 2</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos"> 3</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data&quot;</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c1"># Get the input parameters for the Buffer tool</span>
+<span class="linenos"> 6</span><span class="n">infile</span> <span class="o">=</span> <span class="s2">&quot;cities.shp&quot;</span>
+<span class="linenos"> 7</span><span class="n">outfile</span> <span class="o">=</span> <span class="s2">&quot;buffered_cities.shp&quot;</span>
+<span class="linenos"> 8</span><span class="n">bufferDistance</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="c1"># Run the Buffer tool</span>
+<span class="linenos">11</span><span class="n">arcpy</span><span class="o">.</span><span class="n">Buffer_analysis</span><span class="p">(</span><span class="n">inPath</span><span class="p">,</span> <span class="n">outPath</span><span class="p">,</span> <span class="n">bufferDistance</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="c1"># Report any error messages that the Buffer tool might have generated</span>
+<span class="linenos">15</span><span class="n">arcpy</span><span class="o">.</span><span class="n">AddMessage</span><span class="p">(</span><span class="n">arcpy</span><span class="o">.</span><span class="n">GetMessages</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>12. Buffer a line using the Python Window in ArcGIS Pro</strong></p>
+<p>The code below is written for the arcpy environment and is intentended to be run in ArcGIS Pro Python Window.  Copy the script and paste it into the Python Window.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="linenos">2</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data&quot;</span>
+<span class="linenos">3</span><span class="n">arcpy</span><span class="o">.</span><span class="n">Buffer_analysis</span><span class="p">(</span><span class="s2">&quot;roads&quot;</span><span class="p">,</span> <span class="s2">&quot;C:/output/majorrdsBuffered&quot;</span><span class="p">,</span> <span class="s2">&quot;100 Feet&quot;</span><span class="p">,</span> <span class="s2">&quot;FULL&quot;</span><span class="p">,</span> <span class="s2">&quot;ROUND&quot;</span><span class="p">,</span> <span class="s2">&quot;LIST&quot;</span><span class="p">,</span> <span class="s2">&quot;Distance&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -255,7 +411,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="getting_started.html" class="btn btn-neutral float-left" title="2. Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="strings.html" class="btn btn-neutral float-right" title="4. Strings and Lists" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="strings_lists.html" class="btn btn-neutral float-right" title="4. Strings and Lists" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

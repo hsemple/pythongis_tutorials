@@ -8,99 +8,105 @@ Getting Started
 |
 
 
-Accessing Python
+Python Environments
 --------------------
 
-1. Anaconda is a large Python distribution that has become very popular over the last several years.  One reason for its popularity is that it comes with many libraries already pre-installed. Also, we can run our code using Jupyter Notebook.  I strongly recommend that you download the `Anaconda Distribution <https://www.anaconda.com/products/distribution>`_. 
- 
-2. Some people  use the core Python software to run their code. However, by default this software lacks many libraries that you will need for GIS so you will have to install additional libraries. To download, visit Python's `homepage <https://www.python.org/downloads/>`_. Download the latest version.
-
-3. Python is preinstalled in ArcGIS Pro and QGIS, so you can use Python from within these environment to run your code.
-
-
-|
-
-
-
-Setting up your Python Working Environment
---------------------------------------------
-
-Setting up your Python working environment depends on the Python distribution you are using. Below I provide information on a few approaches to this task.
-
-
- 
-**Anaconda/ Jupyter Notebook**
-
-* Click on this `link <https://www.edlitera.com/en/blog/posts/guide-how-to-start-jupyter-notebook#mcetoc_1gcqvj0h63>`_ for information on how to open a Jupyter Notebook on Mac OS or Windows.
-
-*  To create a new conda environment we can run:
-
-           conda create --name arcgis4
-
-
-*  If you need to install a new package, open the Anaconda folder in Windows, look for Anaconda prompt.  When the Anaconda prompt starts, enter the command below to search for an install a new package.
-
-           conda install package_name
- 
-
-Conda installs many libraries with ease, however, installation of the arcpy library needs some special attention. The links below are workflows for installing arcpy in Anaconda.
-  * `Set up Anaconda with ArcGIS  <https://developers.arcgis.com/python/guide/understanding-conda/>`_
-  * `Anaconda Conda Jupyter Notebooks and ArcGIS Pro <https://www.esri.com/arcgis-blog/products/api-python/administration/python-api-core-concepts-part-2/>`_
-
-   
+For these tutorials, we will run Python in the following environments: Base Python, Anaconda, ArcGIS Pro, and QGIS. We will also use ArcGIS API for Python. 
 
 
 
 |
 
 
-**Configuring the Python Core Distribution**
+Configuring the Python Core Distribution 
+-----------------------------------------
+
+Many people still use the core Python distribution to run their code. However, by default this distribution lacks many packages and their dependencies  that you will need for GIS so you will have to install them manually. 
 
 
-After installing the core Python software, you will need to do the following:
+1. To download the Python Core Distribution, visit Python's `homepage <https://www.python.org/downloads/>`_. Download the latest version.
 
-a. Add the Python 2.7 Directory to your System Path Environment Variable. ...
-b. Install pip to Manage Your Python Packages. 
-c. Install virtualenv to Create Local Python Environments for Your Projects.
 
-Click `here <https://aaronstannard.com/how-to-setup-a-proper-python-environment-on-windows/>`_ for more details.
+2. After downloading, install the program on your computer.
 
-    
  .. image:: img/install_python.png
    :alt: Install Python
 
- 
+3. Follow the `instructions <https://aaronstannard.com/how-to-setup-a-proper-python-environment-on-windows/>`_ on this page to do the following:
 
-*Writing, Saving and Running Python Programs with IDLE*
+  a. Add the Python 2.7 Directory to your System Path Environment Variable. ...
+  b. Install pip to Manage Your Python Packages. 
+  c. Install virtualenv to Create Local Python Environments for Your Projects.
 
-Python has a shell window called IDLE  which gives you access to the Python interactive mode. It also has a file editor that lets you create and edit existing Python source files. 
+   
+4. To begin entering code into Python, start the Python Interpreter or IDLE.  IDLE is an integrated development environment  that lets you create and edit Python scripts. 
+
+
+ .. image:: img/interpreter_idle.png
+   :alt: Install Python
 
 
 |
  
 
 
-**Using Jupyter Notebook that is already installed with ArcGIS Pro.**
+ 
+**Accessing Jupyter Notebook in Anaconda to Run GIS Packages**
 
-If you have ArcGIS Pro installed on your computer, you can run Python using Jupyter Notebook that is installed with ArcGIS Pro. 
+Anaconda is a large Python distribution that has become very popular over the last several years.  One reason for its popularity is that it comes with many packages already pre-installed. Also, users can run their code using Jupyter Notebook, which is a nice, browser-based environment for running code. I strongly recommend that you use Jupyter Notebook for your Python GIS programming.
 
 
-This tutorial shows how to run Python using Jupyter Notebook that is installed with ArcGIS Pro. This is a good option as the connection between Python and Jupyter Notebook has been already configured.   
+1. Download the Anaconda Distribution at `this site <https://www.anaconda.com/products/distribution>`_. 
+
+
+2. Start Anaconda, then launch the Jupyter Notebook. 
+
+
+ .. image:: img/jupyter_notebook.png
+   :alt: Install Python
+
+
+3.  Click on this `link <https://www.edlitera.com/en/blog/posts/guide-how-to-start-jupyter-notebook#mcetoc_1gcqvj0h63>`_ for information on how to open a Jupyter Notebook on Mac OS or Windows.
+
+
+4. If you need to install a new package, open the Anaconda folder in Windows, look for Anaconda prompt.  When the Anaconda prompt starts, enter the command below to search for an install a new package. Conda installs many packages with ease, so you should use it often.
+
+           conda install package_name
+
+
+5. Alternatively, you can install new packages from within Anaconda Navigatot.
+
+ .. image:: img/install_packages.png
+   :alt: Install Python
+
+
+ 
+|
+
+
+Using Jupyter Notebook within ArcGIS Pro
+-------------------------------------------
+
+1. If you have ArcGIS Pro installed on your computer, you can run Python using Jupyter Notebook that is installed with ArcGIS Pro. 
+
+
+2. This tutorial shows how to run Python using Jupyter Notebook that is installed with ArcGIS Pro. This is a good option as the connection between Python and Jupyter Notebook has been already configured.   
 
  .. image:: img/python_notebook.png
    :alt: Python's Notebook in ArcGIS Pro 
 
 
+3. If you wish to add new libraries to ArcGIS, you will first have to clone Python's default environment in ArcGIS Pro then install the new libraries to the cloned environment.  This tutorial shows you how to clone Python's default environment within ArcGIS Pro and install new libraries to the cloned environment.
  
-If you wish to add new libraries to ArcGIS, you will first have to clone Python's default environment in ArcGIS Pro, then install the new libraries to the cloned environment.  This tutorial shows you how to clone Python's default environment within ArcGIS Pro and install new libraries to the cloned environment.
- 
+
  
 
 |
 
-**Running Scripts from within ArcGIS Pro Using the Python Window**
+Running Python Scripts from the Python Window in ArcGIS Pro 
+---------------------------------------------------------------
 
-In ArcGIS Pro, select the Analysis tab. Depending on your version of ArcGIS Pro, you will be able to select the Python Window. As shown below, in Python 2.7, you can click the drop-down menu to the right of the Python button and click Python Window. In other versions, or you may just have to click on the Python Window.
+1. In ArcGIS Pro, select the Analysis tab. Depending on your version of ArcGIS Pro, you will be able to select the Python Window. As shown below, in Python 2.7, you can click the drop-down menu to the right of the Python button and click Python Window. In other versions, or you may just have to click on the Python Window.
   
 
  .. image:: img/new_jupyter_notebook.png
@@ -108,37 +114,39 @@ In ArcGIS Pro, select the Analysis tab. Depending on your version of ArcGIS Pro,
 
   
  
- 
-This opens the Python window.
+ 2. This opens the Python window.
    
 
  .. image:: img/arcgis_python_window.png
    :alt: ArcGIS Python Notebook
 
 
-The top section of the Python Window is called the transcript, and the bottom section is called the prompt. The transcript is initially blank. The transcript provides a record of previously entered code and its results.
+3. The top section of the Python Window is called the transcript, and the bottom section is called the prompt. The transcript is initially blank. The transcript provides a record of previously entered code and its results.
 
-The prompt is where you type your code. When the Python window first opens, the message in the prompt reads Initializing Python interpreter, which means the window is getting ready to receive your code. After a few seconds the message is replaced with Enter Python code here, which means you can start typing your code. After you have opened the Python window for the first time, these messages don’t appear again in the current session.
+4. The prompt is where you type your code. When the Python window first opens, the message in the prompt reads Initializing Python interpreter, which means the window is getting ready to receive your code. After a few seconds the message is replaced with Enter Python code here, which means you can start typing your code. After you have opened the Python window for the first time, these messages don’t appear again in the current session.
 See this link for a tutorial.
  
+
+
+|
+
+
+ArcGIS API for Python
+-----------------------
+
+The ArcGIS API for Python is distributed as a conda package named *arcgis*. It can be run from within Anaconda and other Python Distributions.  See this `hyperlink <https://developers.arcgis.com/python/guide/install-and-set-up/>`_ for more information. 
+
 
 
 
 |
 
-**Running Python Using Spyder**
- 
- * Setting up Spyder to work with ArcGIS Pro 
+
+Running Python from within QGIS
+---------------------------------
 
 
-
- |
-
-
-**Running Python from within QGIS**
-
-
-*Running Python from the Console Shell*
+**Running Python from the Console Shell**
 
 
 1. Open QGIS and add this WFS layer. To do so, click on Add Layer | Add WFS Layer..., then select New and provide this URL: https://maps.gns.cri.nz/geology/wfs
@@ -173,7 +181,6 @@ See this link for a tutorial.
      'NZL_GNS_250K_faults'
 
 
-
 9. Now, let us get a count of the number of features in the layer:
 
 >>> layer.featureCount()
@@ -182,7 +189,7 @@ See this link for a tutorial.
 |
 
 
-*Accessing the QGIS Python Editor**
+**Accessing the QGIS Python Editor**
 
 1.  The editor is used to write scripts that would be too lengthy to run from the Console Shell.   It can be accessed by right-clicking Show Editor in the upper part of the console.
 
@@ -213,77 +220,10 @@ See this link for a tutorial.
 **Using Jupyter Notebook with QGIS**
  
 
-1. If you are familiar with Jupyter notebook, then you can use it with QGIS.  First, you must install the pyqgis modules into an environment. After than, you can with QGIS outside of the application itself. 
+1. It is possible to run Jupyter notebook from within QGIS.  First, you must install the pyqgis modules into an environment. After than, you can with QGIS outside of the application itself. 
 
 2. Create a Python GIS environment  - https://autogis-site.readthedocs.io/en/latest/course-info/create-python-gis-environment.html
 
-
-
-|
-
-
-
-
-**Create an Anaconda environment that is compatible with ArcGIS Pro**
-
-
-1. You can install the latest Anaconda for Windows via this link https://repo.anaconda.com/archive/Anaconda3-2020.11-Windows-x86_64.exe 
-
-2. To avoid breaking ArcGIS (or other software), uncheck the checkboxes (a) make Anaconda the default Python and (b) add Anaconda's Python to the PATH. I will install Anaconda3 at C:/Anaconda3
-
-3. You can follow step-by-step above in macOS Spatial Stack section on creating environment, activate and deactivate, install package via channel.
-Workflow to set up Anaconda with ArcGIS Pro 2.7
-
-    
-4. Copy the folder arcgispro-py3 from C:\Program Files\ArcGIS\Pro\bin\Python\envs and paste to C:\Anaconda3\envs
-
-5. Rename the copied folder arcgispro-py3 in C:\Anaconda3\envs to arcgispro
-
-6. Test the virtual environment
-
-     * At the Anaconda Command Prompt, type: conda activate arcgispro
-     * Type: conda list. You can see the list of packages installed
-
-7. Add more packages
-
-     * Let's add the Python Spatial Analysis Library (pysal) module.
-     * Type the following command at the Anaconda Prompt: conda install pysal
-
-8. Configure ArcGIS to see Anaconda and vice versa
-
-        Anaconda Python to ArcPy
-
-            Edit the ArcGISPro.pth (path) file within "C:\Anaconda3\envs\arcgispro\lib\site-packages".
-
-            Change the relative ArcPy path to C:\Program Files\ArcGIS\Pro\Resources\ArcPy
-
-            Change the relative ArcToolBox path to C:\Program Files\ArcGIS\Pro\Resources\ArcToolBox\Script
-
-        Arcpy to Anaconda Python
-
-            Create a zconda.pth (path) file with the content "C:\Anaconda3\envs\arcgispro\lib\site-packages" in it.
-
-            Then Copy zconda.pth to C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages
-
-        
-        Testing in ArcGIS Pro
-
-            Start ArcGIS Pro, open the Python window
-
-            type "import pysal"
-
-            type "pysal." A popup menu with a list of pysal-provided functions is a pretty good sign the install succeeded.
-
-        Testing in PyCharm
-
-            Start PyCharm, in File\Settings…, choose Project then Project Interpreter
-
-            Ignore the drop down list for Project Interpreter, and click the cog button to Add Local, and in the file browser pick C:\Anaconda3\envs\arcgispro\python.exe
-
-            
-            To run your script, right click it in the Project window, and choose either Run or Debug
-
-            Restart PyCharm for the Python Console to use the arcpro environment.
 
 
 

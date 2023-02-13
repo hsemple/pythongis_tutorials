@@ -202,14 +202,11 @@ Python has many different operators for testing conditions including:
 
 
 
-**Equal Sign vs Double Equal Sign**
-
-A single equal sign '==' is used to assign values to variables.  The double equal sign '==' is used to test for equality of two variables.
+A single equal sign '=' is used to assign values to variables.  The double equal sign '==' is used to test for equality of two variables. An exclamation mark and an equal sign are use to test for inequality.
 
  
 
-Testing Equality
-Here we are testing whether the two lists have the same length.
+The code sample below shows a simple test for inequality. The code tests whether two lists have the same length.
 
 .. code-block:: python
    :linenos:

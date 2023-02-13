@@ -5,12 +5,12 @@
 
 
 
-Welcome Python GIS Tutorials
+Welcome to Python GIS Tutorials
 ==========================================
-These tutorials provide an introduction to the use of Python in GIS. Topics covered by the different tutorials include loading data from different sources, thematic mapping, setting map projections, attribute and spatial queries, terrain mapping and analysis, geocoding, geoprocessing, spatial interpolation, spatial statistics, and web mapping.
+The scripts presented on this website provide an introduction to the use of Python in GIS. Topics covered include fundamentals of Python, loading data from different sources, thematic mapping, setting map projections, attribute and spatial queries, terrain mapping and analysis, geocoding, geoprocessing, spatial interpolation, spatial statistics, and web mapping.
 
 
-Since Python has broad-based usages in GIS, some of the example scripts are from various Python spatial libraries. Other example scripts are for ArcGIS Pro, ArcGIS API, QGIS. This approach is taken because the various mapping libraries provide different approaches to solving a problem and the scripts cannot be interchanged.  This approach is intended to give students a broad-based approach to working with Python in GIS.
+Since Python users in GIS utilize different spatial libraries, the example scripts provided in the lessons are drawn from different Python spatial libraries.  This approach is intended to give students a broad-based exposure to working with Python in GIS. Students will be exposed to arcpy for the ArcGIS Desktop platform, PyQGIS for QGIS, and ArcGIS API for those working with ESRI products in a web-based environment. Examples will also come from the numerous spatial libraries for those doing GIS in a purely Python environment.
 
 
 .. toctree::
