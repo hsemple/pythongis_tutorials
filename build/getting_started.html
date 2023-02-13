@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2. Getting Started &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+  <title>2. Development Environments &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -42,14 +42,15 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Overview</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Getting Started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#python-environments">2.1. Python Environments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configuring-the-python-core-distribution">2.2. Configuring the Python Core Distribution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#using-jupyter-notebook-within-arcgis-pro">2.3. Using Jupyter Notebook within ArcGIS Pro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#running-python-scripts-from-the-python-window-in-arcgis-pro">2.4. Running Python Scripts from the Python Window in ArcGIS Pro</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Development Environments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-python-core-distribution">2.1. The Python Core Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jupyter-notebook-in-anaconda">2.2. Jupyter Notebook in Anaconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jupyter-notebook-within-arcgis-pro">2.3. Jupyter Notebook within ArcGIS Pro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-window-in-arcgis-pro">2.4. Python Window in ArcGIS Pro</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#arcgis-api-for-python">2.5. ArcGIS API for Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#running-python-from-within-qgis">2.6. Running Python from within QGIS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#resources">2.7. Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-python-console-within-qgis">2.6. The Python Console within QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jupyter-notebook-with-qgis">2.7. Jupyter Notebook with QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resources">2.8. Resources</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="intro_programs.html">3. Introduction the Python Language</a></li>
@@ -71,7 +72,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">2. </span>Getting Started</li>
+      <li class="breadcrumb-item active"><span class="section-number">2. </span>Development Environments</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/getting_started.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -81,20 +82,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="getting-started">
-<h1><span class="section-number">2. </span>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h1>
+  <section id="development-environments">
+<h1><span class="section-number">2. </span>Development Environments<a class="headerlink" href="#development-environments" title="Permalink to this heading"></a></h1>
+<p>For these tutorials, we will run Python in the following development environments: The Standard Python Distribution, Anaconda Distribution, ArcGIS Pro, ArcGIS APII for Python, and QGIS.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<section id="python-environments">
-<h2><span class="section-number">2.1. </span>Python Environments<a class="headerlink" href="#python-environments" title="Permalink to this heading"></a></h2>
-<p>For these tutorials, we will run Python in the following environments: Base Python, Anaconda, ArcGIS Pro, and QGIS. We will also use ArcGIS API for Python.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</section>
-<section id="configuring-the-python-core-distribution">
-<h2><span class="section-number">2.2. </span>Configuring the Python Core Distribution<a class="headerlink" href="#configuring-the-python-core-distribution" title="Permalink to this heading"></a></h2>
+<section id="the-python-core-distribution">
+<h2><span class="section-number">2.1. </span>The Python Core Distribution<a class="headerlink" href="#the-python-core-distribution" title="Permalink to this heading"></a></h2>
 <p>Many people still use the core Python distribution to run their code. However, by default this distribution lacks many packages and their dependencies  that you will need for GIS so you will have to install them manually.</p>
 <ol class="arabic simple">
 <li><p>To download the Python Core Distribution, visit Python’s <a class="reference external" href="https://www.python.org/downloads/">homepage</a>. Download the latest version.</p></li>
@@ -119,10 +114,11 @@
 <blockquote>
 <div><img alt="Install Python" src="_images/interpreter_idle.png" />
 </div></blockquote>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p><strong>Accessing Jupyter Notebook in Anaconda to Run GIS Packages</strong></p>
+<p>5. To install new packages, you need to install Pip.  Click <a class="reference external" href="https://phoenixnap.com/kb/install-pip-windows">this link</a> to learn more about how to work with Pip.
+|</p>
+</section>
+<section id="jupyter-notebook-in-anaconda">
+<h2><span class="section-number">2.2. </span>Jupyter Notebook in Anaconda<a class="headerlink" href="#jupyter-notebook-in-anaconda" title="Permalink to this heading"></a></h2>
 <p>Anaconda is a large Python distribution that has become very popular over the last several years.  One reason for its popularity is that it comes with many packages already pre-installed. Also, users can run their code using Jupyter Notebook, which is a nice, browser-based environment for running code. I strongly recommend that you use Jupyter Notebook for your Python GIS programming.</p>
 <ol class="arabic simple">
 <li><p>Download the Anaconda Distribution at <a class="reference external" href="https://www.anaconda.com/products/distribution">this site</a>.</p></li>
@@ -131,8 +127,13 @@
 <blockquote>
 <div><img alt="Install Python" src="_images/jupyter_notebook.png" />
 </div></blockquote>
-<ol class="arabic" start="3">
-<li><p>Click on this <a class="reference external" href="https://www.edlitera.com/en/blog/posts/guide-how-to-start-jupyter-notebook#mcetoc_1gcqvj0h63">link</a> for information on how to open a Jupyter Notebook on Mac OS or Windows.</p></li>
+<ol class="arabic simple" start="3">
+<li><p>Click on this <a class="reference external" href="https://www.edlitera.com/en/blog/posts/guide-how-to-start-jupyter-notebook#mcetoc_1gcqvj0h63">link</a> for information on how to open a Jupyter Notebook on Mac OS or Windows.  The Jupyter development environment should appear as shown below.</p></li>
+</ol>
+<blockquote>
+<div><img alt="Install Python" src="_images/jupyter_dev_environment.png" />
+</div></blockquote>
+<ol class="arabic" start="4">
 <li><p>If you need to install a new package, open the Anaconda folder in Windows, look for Anaconda prompt.  When the Anaconda prompt starts, enter the command below to search for an install a new package. Conda installs many packages with ease, so you should use it often.</p>
 <blockquote>
 <div><p>conda install package_name</p>
@@ -147,8 +148,8 @@
 <div class="line"><br /></div>
 </div>
 </section>
-<section id="using-jupyter-notebook-within-arcgis-pro">
-<h2><span class="section-number">2.3. </span>Using Jupyter Notebook within ArcGIS Pro<a class="headerlink" href="#using-jupyter-notebook-within-arcgis-pro" title="Permalink to this heading"></a></h2>
+<section id="jupyter-notebook-within-arcgis-pro">
+<h2><span class="section-number">2.3. </span>Jupyter Notebook within ArcGIS Pro<a class="headerlink" href="#jupyter-notebook-within-arcgis-pro" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>If you have ArcGIS Pro installed on your computer, you can run Python using Jupyter Notebook that is installed with ArcGIS Pro.</p></li>
 <li><p>This tutorial shows how to run Python using Jupyter Notebook that is installed with ArcGIS Pro. This is a good option as the connection between Python and Jupyter Notebook has been already configured.</p></li>
@@ -163,8 +164,8 @@
 <div class="line"><br /></div>
 </div>
 </section>
-<section id="running-python-scripts-from-the-python-window-in-arcgis-pro">
-<h2><span class="section-number">2.4. </span>Running Python Scripts from the Python Window in ArcGIS Pro<a class="headerlink" href="#running-python-scripts-from-the-python-window-in-arcgis-pro" title="Permalink to this heading"></a></h2>
+<section id="python-window-in-arcgis-pro">
+<h2><span class="section-number">2.4. </span>Python Window in ArcGIS Pro<a class="headerlink" href="#python-window-in-arcgis-pro" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>In ArcGIS Pro, select the Analysis tab. Depending on your version of ArcGIS Pro, you will be able to select the Python Window. As shown below, in Python 2.7, you can click the drop-down menu to the right of the Python button and click Python Window. In other versions, or you may just have to click on the Python Window.</p></li>
 </ol>
@@ -191,8 +192,8 @@ See this link for a tutorial.</p>
 <div class="line"><br /></div>
 </div>
 </section>
-<section id="running-python-from-within-qgis">
-<h2><span class="section-number">2.6. </span>Running Python from within QGIS<a class="headerlink" href="#running-python-from-within-qgis" title="Permalink to this heading"></a></h2>
+<section id="the-python-console-within-qgis">
+<h2><span class="section-number">2.6. </span>The Python Console within QGIS<a class="headerlink" href="#the-python-console-within-qgis" title="Permalink to this heading"></a></h2>
 <p><strong>Running Python from the Console Shell</strong></p>
 <ol class="arabic simple">
 <li><p>Open QGIS and add this WFS layer. To do so, click on Add Layer | Add WFS Layer…, then select New and provide this URL: <a class="reference external" href="https://maps.gns.cri.nz/geology/wfs">https://maps.gns.cri.nz/geology/wfs</a></p></li>
@@ -254,7 +255,9 @@ See this link for a tutorial.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Using Jupyter Notebook with QGIS</strong></p>
+</section>
+<section id="jupyter-notebook-with-qgis">
+<h2><span class="section-number">2.7. </span>Jupyter Notebook with QGIS<a class="headerlink" href="#jupyter-notebook-with-qgis" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>It is possible to run Jupyter notebook from within QGIS.  First, you must install the pyqgis modules into an environment. After than, you can with QGIS outside of the application itself.</p></li>
 <li><p>Create a Python GIS environment  - <a class="reference external" href="https://autogis-site.readthedocs.io/en/latest/course-info/create-python-gis-environment.html">https://autogis-site.readthedocs.io/en/latest/course-info/create-python-gis-environment.html</a></p></li>
@@ -264,7 +267,7 @@ See this link for a tutorial.</p>
 </div>
 </section>
 <section id="resources">
-<h2><span class="section-number">2.7. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">2.8. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
 <p>Getting Started With Python Programming (QGIS3) - <a class="reference external" href="https://www.qgistutorials.com/en/docs/3/getting_started_with_pyqgis.html">https://www.qgistutorials.com/en/docs/3/getting_started_with_pyqgis.html</a></p>
 <p>Customizing QGIS with Python (Full Course Material) - <a class="reference external" href="https://courses.spatialthoughts.com/pyqgis-in-a-day.html">https://courses.spatialthoughts.com/pyqgis-in-a-day.html</a></p>
 <p>Free and Open Source GIS Ramblings - <a class="reference external" href="https://anitagraser.com/pyqgis-101-introduction-to-qgis-python-programming-for-non-programmers/">https://anitagraser.com/pyqgis-101-introduction-to-qgis-python-programming-for-non-programmers/</a></p>

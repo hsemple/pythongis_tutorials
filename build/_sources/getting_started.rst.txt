@@ -1,24 +1,18 @@
 
 
 
-Getting Started
-=================
+
+
+Development Environments
+==========================
+
+For these tutorials, we will run Python in the following development environments: The Standard Python Distribution, Anaconda Distribution, ArcGIS Pro, ArcGIS APII for Python, and QGIS. 
 
 
 |
 
 
-Python Environments
---------------------
-
-For these tutorials, we will run Python in the following environments: Base Python, Anaconda, ArcGIS Pro, and QGIS. We will also use ArcGIS API for Python. 
-
-
-
-|
-
-
-Configuring the Python Core Distribution 
+The Python Core Distribution 
 -----------------------------------------
 
 Many people still use the core Python distribution to run their code. However, by default this distribution lacks many packages and their dependencies  that you will need for GIS so you will have to install them manually. 
@@ -31,6 +25,7 @@ Many people still use the core Python distribution to run their code. However, b
 
  .. image:: img/install_python.png
    :alt: Install Python
+
 
 3. Follow the `instructions <https://aaronstannard.com/how-to-setup-a-proper-python-environment-on-windows/>`_ on this page to do the following:
 
@@ -46,12 +41,14 @@ Many people still use the core Python distribution to run their code. However, b
    :alt: Install Python
 
 
+5. To install new packages, you need to install Pip.  Click `this link <https://phoenixnap.com/kb/install-pip-windows>`_ to learn more about how to work with Pip.  
 |
  
 
 
  
-**Accessing Jupyter Notebook in Anaconda to Run GIS Packages**
+Jupyter Notebook in Anaconda 
+-------------------------------
 
 Anaconda is a large Python distribution that has become very popular over the last several years.  One reason for its popularity is that it comes with many packages already pre-installed. Also, users can run their code using Jupyter Notebook, which is a nice, browser-based environment for running code. I strongly recommend that you use Jupyter Notebook for your Python GIS programming.
 
@@ -66,7 +63,12 @@ Anaconda is a large Python distribution that has become very popular over the la
    :alt: Install Python
 
 
-3.  Click on this `link <https://www.edlitera.com/en/blog/posts/guide-how-to-start-jupyter-notebook#mcetoc_1gcqvj0h63>`_ for information on how to open a Jupyter Notebook on Mac OS or Windows.
+3. Click on this `link <https://www.edlitera.com/en/blog/posts/guide-how-to-start-jupyter-notebook#mcetoc_1gcqvj0h63>`_ for information on how to open a Jupyter Notebook on Mac OS or Windows.  The Jupyter development environment should appear as shown below.
+
+
+ .. image:: img/jupyter_dev_environment.png
+   :alt: Install Python
+
 
 
 4. If you need to install a new package, open the Anaconda folder in Windows, look for Anaconda prompt.  When the Anaconda prompt starts, enter the command below to search for an install a new package. Conda installs many packages with ease, so you should use it often.
@@ -84,8 +86,8 @@ Anaconda is a large Python distribution that has become very popular over the la
 |
 
 
-Using Jupyter Notebook within ArcGIS Pro
--------------------------------------------
+Jupyter Notebook within ArcGIS Pro
+-------------------------------------
 
 1. If you have ArcGIS Pro installed on your computer, you can run Python using Jupyter Notebook that is installed with ArcGIS Pro. 
 
@@ -103,8 +105,8 @@ Using Jupyter Notebook within ArcGIS Pro
 
 |
 
-Running Python Scripts from the Python Window in ArcGIS Pro 
----------------------------------------------------------------
+Python Window in ArcGIS Pro 
+-----------------------------
 
 1. In ArcGIS Pro, select the Analysis tab. Depending on your version of ArcGIS Pro, you will be able to select the Python Window. As shown below, in Python 2.7, you can click the drop-down menu to the right of the Python button and click Python Window. In other versions, or you may just have to click on the Python Window.
   
@@ -142,7 +144,7 @@ The ArcGIS API for Python is distributed as a conda package named *arcgis*. It c
 |
 
 
-Running Python from within QGIS
+The Python Console within QGIS
 ---------------------------------
 
 
@@ -217,8 +219,9 @@ Running Python from within QGIS
 
 |
 
-**Using Jupyter Notebook with QGIS**
- 
+
+Jupyter Notebook with QGIS
+-----------------------------
 
 1. It is possible to run Jupyter notebook from within QGIS.  First, you must install the pyqgis modules into an environment. After than, you can with QGIS outside of the application itself. 
 
@@ -230,6 +233,8 @@ Running Python from within QGIS
 |
 
 
+
+
 Resources
 ------------
 
@@ -238,7 +243,6 @@ Getting Started With Python Programming (QGIS3) - https://www.qgistutorials.com/
 Customizing QGIS with Python (Full Course Material) - https://courses.spatialthoughts.com/pyqgis-in-a-day.html
 
 Free and Open Source GIS Ramblings - https://anitagraser.com/pyqgis-101-introduction-to-qgis-python-programming-for-non-programmers/
-
 
 GIS Python API documentation - https://qgis.org/pyqgis/master/
 

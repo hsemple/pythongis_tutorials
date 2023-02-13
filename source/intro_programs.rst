@@ -71,6 +71,7 @@ Python has several data types. The list below comes from W3Schools.
 
 
 *Integers*
+
 1. Integers are whole numbers, i.e., numbers without decimals, e.g, 23, 123, 4567, etc 
 
 2. Integers are assigned to variables using the "=" sign.
@@ -137,13 +138,17 @@ You can create multi-line strings with triple quotes (triple double quotes work,
 
 **Program Statements**
 
-Program statements is a block of code that that expresses some action to be carried out.
+A program statement is a block of code that expresses some action to be carried out. The program statement below converts kilometers into miles.
+
 
 .. code-block:: python
     :linenos:
 
-    #Calculate the interaction ,with output of decimal format
-    PI= (int(P1)*int(P2))/(float(Distance)*float(Distance))
+    kilometer = float (input ("Please enter the kilometer to covert))
+    conversion_ratio =0.621371 
+    miles = kilometer * conversion_ratio 
+    print ("The converted value is:  ", miles) 
+
  
 
 |
