@@ -133,10 +133,6 @@ In the code below, %0.2f and %0.4f' are formatted place holders for two variable
    :linenos: 
 
 
-   print ("Welcome to the gravity model calculation program")
-   print ("------------------------------------------------")
-   print ("")
-
    #Get the user's input
    P1 = input("Please input the size of the first city: ")
    P2 = input("Please input the size of the second city: ")
