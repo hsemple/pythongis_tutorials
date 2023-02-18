@@ -218,10 +218,10 @@ In programming, a statement is a line of code that expresses some action to be c
 Practice Programs 
 ------------------
 
-The scripts below are intended to show how to use Python statements to create programs.  The programs are all sequential meaning that each line in the program is run after the preceding line.  Also there is no testing of conditions or repeating of operations.
+The scripts below are intended to show how to use Python statements to create programs.  The programs are all sequential meaning that each line in the program is run after the preceding line.  There is no testing of conditions or repeating of operations.
 
 
-The first nine program examples do not require any specialized Python packages. They can all be run using Python's standard library. If you do not have a Python' interpreter already installed, you can can use the interpreter at this `website <https://www.programiz.com/python-programming/online-compiler/>`_
+The program examples do not require any specialized Python packages. They can all be run using Python's standard library. If you do not have a Python' interpreter already installed, you can can use the interpreter at this `website <https://www.programiz.com/python-programming/online-compiler/>`_
 
 For examples 10 through 12, the arcpy package must be loaded into memory using the import statement. If arcpy is not installed, the scripts will return an error.
 
@@ -364,10 +364,7 @@ In the code below, %0.2f and %0.4f' are formatted place holders for two variable
 |
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
 **6. String formatting with the format method**
 
 Curly braces can serve as place-holders for the variables you would like to store inside a string. In order to pass variables to a string you must call upon the .format() method.
@@ -391,14 +388,13 @@ John Doe is 24 years old.
 
 Note: For the print statement, you can also use the line below where the number indicate the position of the placeholders
 
-<<<<<<< HEAD
+
 print ("{0} {1} is {2} years old." .format(fname, lname, age))
 =======
 .. code-block:: python
    :linenos:
 
    print ("{0} {1} is {2} years old." .format(fname, lname, age))
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
 
 
 
@@ -412,7 +408,6 @@ The script below illustrates how to import a library (math) and use a function f
 
 .. code-block:: python
    :linenos:
-<<<<<<< HEAD
 
    # Get inputs from the user
    import math
@@ -427,14 +422,12 @@ The script below illustrates how to import a library (math) and use a function f
    radius = float(input("Enter the radius of the circle: "))
 
    # Perform calculatin
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
    circle_area = math.pi * radius ** 2
 
    # Display the results
    print('The area of the circle is', circle_area)
 
-<<<<<<< HEAD
-=======
+
    #format results
    print('The area of the circle is', round(circle_area,2))
 
@@ -457,10 +450,8 @@ The script below illustrates how to import the calendar library and use a functi
 .. code-block:: python
    :linenos:
 
-<<<<<<< HEAD
-=======
+
    #import calendar library
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
    import calendar
 
    # Get the month and year from the user
@@ -495,12 +486,9 @@ The script below illustrates how to import the calendar library and use a functi
 |
 
 
-<<<<<<< HEAD
-Lab 1
-----------
 
-Write a program that interpolates a single point value using the IDW method. (Links to an external site.)Links to an external site. As shown in the illustration below, we are trying to estimate a value for the unknown point (?) based on the nearest four surrounding values. Instead of calculating a simple average, we are weighting each z-value by the inverse of the distance between the location of the  z-value and the location of the point whose z-value is being calculated.
-=======
+
+
 
 Exercises
 ------------
@@ -520,7 +508,6 @@ In the formula below P1 and P2 are the population of the two places while *d* is
 *2. Write a program that interpolates a single point value using the IDW method*
 
 As shown in the illustration below, we are trying to estimate a value for the unknown point (?) based on the nearest four surrounding values. Instead of calculating a simple average, we are weighting each z-value by the inverse of the distance between the location of the  z-value and the location of the point whose z-value is being calculated.
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
 
 .. image:: img/interpolation.png
    :alt: Spatial Interpolation Concept
@@ -538,13 +525,13 @@ Formula for Spatial Interpolation
 |
 
 
-<<<<<<< HEAD
 **Deliverables**
 
 
 1. Submit the source code of your program as well as screenshot showing that the program successfully ran in Python.
-=======
-3. Write a Python program that calculates population growth using the formula below. The programm will first prompt the user for a current population as an integer, a specific growth rate as a floating point number, and the number of years for which growth is to be calculated as an integer. For each successive year, the program will output an estimate for the size of the new population to within an accuracy of two decimal places (it is not necessary to print trailing zeros, and you can use the round() function). Finally, the program should print out the total growth in population.
+
+
+2. Write a Python program that calculates population growth using the formula below. The programm will first prompt the user for a current population as an integer, a specific growth rate as a floating point number, and the number of years for which growth is to be calculated as an integer. For each successive year, the program will output an estimate for the size of the new population to within an accuracy of two decimal places (it is not necessary to print trailing zeros, and you can use the round() function). Finally, the program should print out the total growth in population.
 
 .. image:: img/population_growth.png
    :alt: Population Growth Formula
@@ -625,6 +612,11 @@ The code below is written for the arcpy environment and is intentended to be run
 1. Submit the source code of your programs as well as screenshots showing that the programs successfully ran in Python.
 
 
+
+Lab 1
+----------
+
+Write a program that interpolates a single point value using the IDW method. (Links to an external site.)Links to an external site. As shown in the illustration below, we are trying to estimate a value for the unknown point (?) based on the nearest four surrounding values. Instead of calculating a simple average, we are weighting each z-value by the inverse of the distance between the location of the  z-value and the location of the point whose z-value is being calculated.
 
 
 |
