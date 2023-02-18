@@ -393,7 +393,21 @@ The script below illustrates how to import the calendar library and use a functi
 
 
 
-**10.  Write a program that interpolates a single point value using the IDW method**
+Exercises
+------------
+
+*1. Write a program that calculates the spatial interaction between two places using a simple form of the gravity model*
+In the formula below P1 and P2 are the population of the two places while *d* is the distance between the places.*
+
+
+.. image:: img/interaction.png
+   :alt: Spatial Interpolation Concept
+
+
+|
+
+
+*2. Write a program that interpolates a single point value using the IDW method*
 
 As shown in the illustration below, we are trying to estimate a value for the unknown point (?) based on the nearest four surrounding values. Instead of calculating a simple average, we are weighting each z-value by the inverse of the distance between the location of the  z-value and the location of the point whose z-value is being calculated.
 
@@ -413,9 +427,39 @@ Formula for Spatial Interpolation
 |
 
 
-**11. Buffer a line using Jupyter Notebook**
 
-The code below is written for the arcpy environment and is intentended to be run as a standalone script or from Jupyter Notebook.  Copy the script and paste it into you development environment. Notice that the script first imports the arcpy package.  It is the arcpy package that supplies the additional capability that Python needs to execute ArcGIS commands.
+3. Write a Python program that calculates population growth using the formula below. The programm will first prompt the user for a current population as an integer, a specific growth rate as a floating point number, and the number of years for which growth is to be calculated as an integer. For each successive year, the program will output an estimate for the size of the new population to within an accuracy of two decimal places (it is not necessary to print trailing zeros, and you can use the round() function). Finally, the program should print out the total growth in population.
+
+.. image:: img/population_growth.png
+   :alt: Population Growth Formula
+
+
+
+|
+
+
+4. Run the program below that plots average montly temperature values for Ypsilanti for 2022. The programs depends on a library called matplotlib to do the graphing. If matplotlib is not installed on your computer the program will fail. Therefore, you must first install matplotlib for the program to work. Matplotlib is installed with Jupyter Notebook, therefore, one option is run this program within Jupyter Notebook. 
+
+
+.. code-block:: python
+   :linenos:
+
+   import matplotlib.pyplot as plt
+
+  
+   x = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+   y = [31,35,46,59,71,80,84,82,75,62,48,36]
+   plt.plot(x,y)
+   plt.ylabel('Average Monthly Temperature (°F), Ann Arbor, MI')
+   plt.show()
+
+
+|
+
+
+*5. Buffer a line using Jupyter Notebook*
+
+The program below depends on an ESRI library called arcpy.  It is the arcpy library that supplies the additional capability that Python needs to execute ArcGIS commands. The code is intentended to run as a standalone script or from Jupyter Notebook within ArcGIS Pro.  Copy the script and paste it into Jupyter Notebook within ArcGIS Pro and run it. 
 
 
 .. code-block:: python
@@ -431,7 +475,7 @@ The code below is written for the arcpy environment and is intentended to be run
    bufferDistance = 100
  
    # Run the Buffer tool
-   arcpy.Buffer_analysis(inPath, outPath, bufferDistance)
+   arcpy.Buffer_analysis(infile, outfile, bufferDistance)
  
 
    # Report any error messages that the Buffer tool might have generated    
@@ -440,7 +484,7 @@ The code below is written for the arcpy environment and is intentended to be run
 
 |
 
-**12. Buffer a line using the Python Window in ArcGIS Pro**
+*6. Buffer a line using the Python Window in ArcGIS Pro*
 
 The code below is written for the arcpy environment and is intentended to be run in ArcGIS Pro Python Window.  Copy the script and paste it into the Python Window.
 
@@ -451,7 +495,7 @@ The code below is written for the arcpy environment and is intentended to be run
 
    import arcpy
    arcpy.env.workspace = "C:/data"
-   arcpy.Buffer_analysis("roads", "C:/output/majorrdsBuffered", "100 Feet", "FULL", "ROUND", "LIST", "Distance")
+   arcpy.Buffer_analysis("roads", "C:/output/major_roadsBuffered", "100 Feet", "FULL", "ROUND", "LIST", "Distance")
 
 
 |
@@ -462,5 +506,8 @@ The code below is written for the arcpy environment and is intentended to be run
 **Deliverables**
 
 
-1. Submit the source code of your program as well as screenshot showing that the program successfully ran in Python.
+Submit the source code of your programs as well as screenshots showing that the programs successfully ran in Python.
+
+
+
 
