@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2. Getting Started &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="1. Overview" href="welcome.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Python GIS Tutorials
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#accessing-python">2.1. Accessing Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-your-python-working-environment">2.2. Setting up your Python Working Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resources">2.3. Resources</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python GIS Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2. </span>Getting Started</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/getting_started.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started">
+<h1><span class="section-number">2. </span>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h1>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="accessing-python">
+<h2><span class="section-number">2.1. </span>Accessing Python<a class="headerlink" href="#accessing-python" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Anaconda is a large Python distribution that has become very popular over the last several years.  One reason for its popularity is that it comes with many libraries already pre-installed. Also, we can run our code using Jupyter Notebook.  I strongly recommend that you download the <a class="reference external" href="https://www.anaconda.com/products/distribution">Anaconda Distribution</a>.</p></li>
+<li><p>Some people  use the core Python software to run their code. However, by default this software lacks many libraries that you will need for GIS so you will have to install additional libraries. To download, visit Python’s <a class="reference external" href="https://www.python.org/downloads/">homepage</a>. Download the latest version.</p></li>
+<li><p>Python is preinstalled in ArcGIS Pro and QGIS, so you can use Python from within these environment to run your code.</p></li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="setting-up-your-python-working-environment">
+<h2><span class="section-number">2.2. </span>Setting up your Python Working Environment<a class="headerlink" href="#setting-up-your-python-working-environment" title="Permalink to this heading"></a></h2>
+<p>Setting up your Python working environment depends on the Python distribution you are using. Below I provide information on a few approaches to this task.</p>
+<p><strong>Anaconda/ Jupyter Notebook</strong></p>
+<ul>
+<li><p>Click on this <a class="reference external" href="https://www.edlitera.com/en/blog/posts/guide-how-to-start-jupyter-notebook#mcetoc_1gcqvj0h63">link</a> for information on how to open a Jupyter Notebook on Mac OS or Windows.</p></li>
+<li><p>To create a new conda environment we can run:</p>
+<blockquote>
+<div><p>conda create –name arcgis4</p>
+</div></blockquote>
+</li>
+<li><p>If you need to install a new package, open the Anaconda folder in Windows, look for Anaconda prompt.  When the Anaconda prompt starts, enter the command below to search for an install a new package.</p>
+<blockquote>
+<div><p>conda install package_name</p>
+</div></blockquote>
+</li>
+</ul>
+<dl class="simple">
+<dt>Conda installs many libraries with ease, however, installation of the arcpy library needs some special attention. The links below are workflows for installing arcpy in Anaconda.</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://developers.arcgis.com/python/guide/understanding-conda/">Set up Anaconda with ArcGIS</a></p></li>
+<li><p><a class="reference external" href="https://www.esri.com/arcgis-blog/products/api-python/administration/python-api-core-concepts-part-2/">Anaconda Conda Jupyter Notebooks and ArcGIS Pro</a></p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Configuring the Python Core Distribution</strong></p>
+<p>After installing the core Python software, you will need to do the following:</p>
+<ol class="loweralpha simple">
+<li><p>Add the Python 2.7 Directory to your System Path Environment Variable. …</p></li>
+<li><p>Install pip to Manage Your Python Packages.</p></li>
+<li><p>Install virtualenv to Create Local Python Environments for Your Projects.</p></li>
+</ol>
+<p>Click <a class="reference external" href="https://aaronstannard.com/how-to-setup-a-proper-python-environment-on-windows/">here</a> for more details.</p>
+<blockquote>
+<div><img alt="Install Python" src="_images/install_python.png" />
+</div></blockquote>
+<p><em>Writing, Saving and Running Python Programs with IDLE</em></p>
+<p>Python has a shell window called IDLE  which gives you access to the Python interactive mode. It also has a file editor that lets you create and edit existing Python source files.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Using Jupyter Notebook that is already installed with ArcGIS Pro.</strong></p>
+<p>If you have ArcGIS Pro installed on your computer, you can run Python using Jupyter Notebook that is installed with ArcGIS Pro.</p>
+<p>This tutorial shows how to run Python using Jupyter Notebook that is installed with ArcGIS Pro. This is a good option as the connection between Python and Jupyter Notebook has been already configured.</p>
+<blockquote>
+<div><img alt="Python's Notebook in ArcGIS Pro" src="_images/python_notebook.png" />
+</div></blockquote>
+<p>If you wish to add new libraries to ArcGIS, you will first have to clone Python’s default environment in ArcGIS Pro, then install the new libraries to the cloned environment.  This tutorial shows you how to clone Python’s default environment within ArcGIS Pro and install new libraries to the cloned environment.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Running Scripts from within ArcGIS Pro Using the Python Window</strong></p>
+<p>In ArcGIS Pro, select the Analysis tab. Depending on your version of ArcGIS Pro, you will be able to select the Python Window. As shown below, in Python 2.7, you can click the drop-down menu to the right of the Python button and click Python Window. In other versions, or you may just have to click on the Python Window.</p>
+<blockquote>
+<div><img alt="New Python Notebook" src="_images/new_jupyter_notebook.png" />
+</div></blockquote>
+<p>This opens the Python window.</p>
+<blockquote>
+<div><img alt="ArcGIS Python Notebook" src="_images/arcgis_python_window.png" />
+</div></blockquote>
+<p>The top section of the Python Window is called the transcript, and the bottom section is called the prompt. The transcript is initially blank. The transcript provides a record of previously entered code and its results.</p>
+<p>The prompt is where you type your code. When the Python window first opens, the message in the prompt reads Initializing Python interpreter, which means the window is getting ready to receive your code. After a few seconds the message is replaced with Enter Python code here, which means you can start typing your code. After you have opened the Python window for the first time, these messages don’t appear again in the current session.
+See this link for a tutorial.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Running Python Using Spyder</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Setting up Spyder to work with ArcGIS Pro</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div></blockquote>
+<p><strong>Running Python from within QGIS</strong></p>
+<p><em>Running Python from the Console Shell</em></p>
+<ol class="arabic simple">
+<li><p>Open QGIS and add this WFS layer. To do so, click on Add Layer | Add WFS Layer…, then select New and provide this URL: <a class="reference external" href="https://maps.gns.cri.nz/geology/wfs">https://maps.gns.cri.nz/geology/wfs</a></p></li>
+<li><p>Highlight the layer called NZL_GNS_250K_faults and select Add Layer to Project.</p></li>
+</ol>
+<img alt="The NZL_GNS_250K_faults layer" src="_images/python_wfsLayer.png" />
+<ol class="arabic simple" start="3">
+<li><p>From the main menu in QGIS, select Plugins | Python Console.  This will cause the Python Console to appear. It may open up towards the bottom of the application, however, if you wish, you can detach it from the main window and place it whereever you wish.</p></li>
+<li><p>The lower part of the Console display with the &gt;&gt;&gt; prompt. This is is where you type commands.</p></li>
+<li><p>The Python commands can be pure Python commands that have nothing to do with GIS or QGIS, or they can be Python commands ained at manipulating QGIS commands or user data.</p></li>
+<li><p>The iface class is used to access most graphical QGIS components. For example, to get a reference to the active layer, we can write:</p></li>
+</ol>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+</pre></div>
+</div>
+<ol class="arabic" start="7">
+<li><p>Once you get a reference to the active layer object, you can access methods and properties associated with this object. For example, to get the name of the active layer, we write:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">layer</span><span class="o">.</span><span class="n">sourceName</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p>You should get the response in the upper half of the console</p>
+<blockquote>
+<div><p>‘NZL_GNS_250K_faults’</p>
+</div></blockquote>
+</li>
+<li><p>Now, let us get a count of the number of features in the layer:</p></li>
+</ol>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">layer</span><span class="o">.</span><span class="n">featureCount</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><em>Accessing the QGIS Python Editor*</em></p>
+<ol class="arabic">
+<li><p>The editor is used to write scripts that would be too lengthy to run from the Console Shell.   It can be accessed by right-clicking Show Editor in the upper part of the console.</p></li>
+<li><p>We will write a simple script to print the names of the fields in the attribute table of the WFC layer</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">fld</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">fld</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<img alt="Python Script Print Name of Attribute Fields" src="_images/python_script1.png" />
+<ol class="arabic" start="3">
+<li><p>The script below get the length of each fault segment and maintains keeps a running total of the lengths</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="n">lengths</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">fault</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
+    <span class="n">lengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fault</span><span class="o">.</span><span class="n">attribute</span><span class="p">(</span><span class="s2">&quot;shape_len&quot;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">lengths</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Using Jupyter Notebook with QGIS</strong></p>
+<ol class="arabic simple">
+<li><p>If you are familiar with Jupyter notebook, then you can use it with QGIS.  First, you must install the pyqgis modules into an environment. After than, you can with QGIS outside of the application itself.</p></li>
+<li><p>Create a Python GIS environment  - <a class="reference external" href="https://autogis-site.readthedocs.io/en/latest/course-info/create-python-gis-environment.html">https://autogis-site.readthedocs.io/en/latest/course-info/create-python-gis-environment.html</a></p></li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Create an Anaconda environment that is compatible with ArcGIS Pro</strong></p>
+<ol class="arabic simple">
+<li><p>You can install the latest Anaconda for Windows via this link <a class="reference external" href="https://repo.anaconda.com/archive/Anaconda3-2020.11-Windows-x86_64.exe">https://repo.anaconda.com/archive/Anaconda3-2020.11-Windows-x86_64.exe</a></p></li>
+<li><p>To avoid breaking ArcGIS (or other software), uncheck the checkboxes (a) make Anaconda the default Python and (b) add Anaconda’s Python to the PATH. I will install Anaconda3 at C:/Anaconda3</p></li>
+</ol>
+<p>3. You can follow step-by-step above in macOS Spatial Stack section on creating environment, activate and deactivate, install package via channel.
+Workflow to set up Anaconda with ArcGIS Pro 2.7</p>
+<ol class="arabic" start="4">
+<li><p>Copy the folder arcgispro-py3 from C:Program FilesArcGISProbinPythonenvs and paste to C:Anaconda3envs</p></li>
+<li><p>Rename the copied folder arcgispro-py3 in C:Anaconda3envs to arcgispro</p></li>
+<li><p>Test the virtual environment</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>At the Anaconda Command Prompt, type: conda activate arcgispro</p></li>
+<li><p>Type: conda list. You can see the list of packages installed</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Add more packages</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Let’s add the Python Spatial Analysis Library (pysal) module.</p></li>
+<li><p>Type the following command at the Anaconda Prompt: conda install pysal</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Configure ArcGIS to see Anaconda and vice versa</p>
+<blockquote>
+<div><p>Anaconda Python to ArcPy</p>
+<blockquote>
+<div><p>Edit the ArcGISPro.pth (path) file within “C:Anaconda3envsarcgisprolibsite-packages”.</p>
+<p>Change the relative ArcPy path to C:Program FilesArcGISProResourcesArcPy</p>
+<p>Change the relative ArcToolBox path to C:Program FilesArcGISProResourcesArcToolBoxScript</p>
+</div></blockquote>
+<p>Arcpy to Anaconda Python</p>
+<blockquote>
+<div><p>Create a zconda.pth (path) file with the content “C:Anaconda3envsarcgisprolibsite-packages” in it.</p>
+<p>Then Copy zconda.pth to C:Program FilesArcGISProbinPythonenvsarcgispro-py3libsite-packages</p>
+</div></blockquote>
+<p>Testing in ArcGIS Pro</p>
+<blockquote>
+<div><p>Start ArcGIS Pro, open the Python window</p>
+<p>type “import pysal”</p>
+<p>type “pysal.” A popup menu with a list of pysal-provided functions is a pretty good sign the install succeeded.</p>
+</div></blockquote>
+<p>Testing in PyCharm</p>
+<blockquote>
+<div><p>Start PyCharm, in FileSettings…, choose Project then Project Interpreter</p>
+<p>Ignore the drop down list for Project Interpreter, and click the cog button to Add Local, and in the file browser pick C:Anaconda3envsarcgispropython.exe</p>
+<p>To run your script, right click it in the Project window, and choose either Run or Debug</p>
+<p>Restart PyCharm for the Python Console to use the arcpro environment.</p>
+</div></blockquote>
+</div></blockquote>
+</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="resources">
+<h2><span class="section-number">2.3. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
+<p>Getting Started With Python Programming (QGIS3) - <a class="reference external" href="https://www.qgistutorials.com/en/docs/3/getting_started_with_pyqgis.html">https://www.qgistutorials.com/en/docs/3/getting_started_with_pyqgis.html</a></p>
+<p>Customizing QGIS with Python (Full Course Material) - <a class="reference external" href="https://courses.spatialthoughts.com/pyqgis-in-a-day.html">https://courses.spatialthoughts.com/pyqgis-in-a-day.html</a></p>
+<p>Free and Open Source GIS Ramblings - <a class="reference external" href="https://anitagraser.com/pyqgis-101-introduction-to-qgis-python-programming-for-non-programmers/">https://anitagraser.com/pyqgis-101-introduction-to-qgis-python-programming-for-non-programmers/</a></p>
+<p>GIS Python API documentation - <a class="reference external" href="https://qgis.org/pyqgis/master/">https://qgis.org/pyqgis/master/</a></p>
+<p>PyQGIS Developer Cookbook - <a class="reference external" href="https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/index.html">https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/index.html</a></p>
+<p>Streamlining GIS with Automation - <a class="reference external" href="https://www.geospatialworld.net/prime/technology-and-innovation/streamlining-gis-with-automation/">https://www.geospatialworld.net/prime/technology-and-innovation/streamlining-gis-with-automation/</a></p>
+<p>Getting started with Anaconda - <a class="reference external" href="https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-nav-mac">https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-nav-mac</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="welcome.html" class="btn btn-neutral float-left" title="1. Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Hugh Semple.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
