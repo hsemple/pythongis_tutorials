@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5. Conditional Statements and Looping &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="4. Strings and Lists" href="strings_lists.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Python GIS Tutorials
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">2. Development Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_programs.html">3. Introduction to the Python Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings_lists.html">4. Strings and Lists</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Conditional Statements and Looping</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#conditionals">5.1. Conditionals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comparison-operators">5.2. Comparison Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#looping">5.3. Looping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#for-loops">5.4. For Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#for-loops-with-break-and-continue">5.5. For Loops with Break and Continue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#while-loops">5.6. While Loops</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python GIS Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">5. </span>Conditional Statements and Looping</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/conditionals_and_looping.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="conditional-statements-and-looping">
+<h1><span class="section-number">5. </span>Conditional Statements and Looping<a class="headerlink" href="#conditional-statements-and-looping" title="Permalink to this heading"></a></h1>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="conditionals">
+<h2><span class="section-number">5.1. </span>Conditionals<a class="headerlink" href="#conditionals" title="Permalink to this heading"></a></h2>
+<p>Unless otherwise directed, lines of codes in a procedure run sequentially, from first to last. Conditional statements can change the sequential flow of a program based on whether a given condition is true or false.</p>
+<p>Python uses the If statement for testing conditions. If the condition is true, then the code block following the if statement is executed. If it is not true, the program jumps to the end of the code block.</p>
+<p>In Python, a colon is placed at the end of the conditional statement, and the lines below the condition statement are indented.</p>
+<p>There are three types of conditional structures in Python:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">– if ..</div>
+<div class="line">– if.. else</div>
+<div class="line">– if ..elif .. else</div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>The If.. Conditional Structure</strong></p>
+<p>The structure of the if .. conditional statement is shown below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>  <span class="c1"># if the variable is defined</span>
+<span class="linenos">2</span>    <span class="n">execute</span> <span class="n">statement</span>
+</pre></div>
+</div>
+<p>If the condition is true, that is, if the variable is defined, then the block following will be executed. An example of the structure is shown below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">var1</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span>
+<span class="linenos">2</span><span class="k">if</span>  <span class="n">var1</span><span class="p">:</span>
+<span class="linenos">3</span>   <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The sky is blue.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here is a another example involving the if statement.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="linenos">2</span> <span class="k">if</span> <span class="n">number</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">3</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number is&#39;</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The code sample below contains an if statement and should be run in QGIS.  It tests whether the active layer in the Table of Content is a vector layer. In the code sample, the iface object is used to retrieve the active layer in the Canvas. Once the active layer is retrieved, the code checks if it is a vector layer. If it is vector layer, then it prints a message indicating that the layer is a vector layer.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">activeLayer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="linenos">2</span><span class="k">if</span> <span class="n">activeLayer</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">QgsMapLayer</span><span class="o">.</span><span class="n">VectorLayer</span><span class="p">:</span>
+<span class="linenos">3</span>   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The layer is a vector layer!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To run the code, look at the numbered elements in the illustration below.  First, click on Plugin in the main menu, then click on Python Console. When the Python Console opens, click on the Show Editor button and paste the code into the Editor.  Next, click the Save button then run the code by clicking on the green player button.</p>
+<img alt="Display Active Layer" src="_images/activeLayer.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>The If.. Else Conditional Structure</strong></p>
+<p>The if-else statement is designed to execute what follows after either the true part or false part of a condition.  If the condition evaluates to true, then the if block code is executed.  If the condition is false, the else block code is executed.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>  <span class="c1"># if condition is true.</span>
+<span class="linenos">2</span>    <span class="n">execute</span> <span class="n">this</span> <span class="n">statement</span>
+<span class="linenos">3</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">4</span>     <span class="n">execute</span> <span class="n">this</span> <span class="n">statement</span>
+</pre></div>
+</div>
+<p>Here is an example of the if .. else statement.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">answer</span> <span class="o">=</span> <span class="nb">int</span> <span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter a number: &quot;</span><span class="p">))</span>
+<span class="linenos">2</span><span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="mi">15</span><span class="p">:</span>
+<span class="linenos">3</span>    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The number &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; is my lucky number.&quot;</span><span class="p">)</span>
+<span class="linenos">4</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">5</span>    <span class="nb">print</span> <span class="p">(</span><span class="n">The</span> <span class="n">number</span> <span class="s2">&quot; + str(answer) + &quot;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">my</span> <span class="n">lucky</span> <span class="n">number</span><span class="o">.</span><span class="s2">&quot;)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Here is another example of the use of an if .. else statement.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">x</span> <span class="o">=</span>  <span class="nb">int</span><span class="p">(</span><span class="nb">input</span> <span class="p">(</span><span class="s2">&quot;Please enter a number between 0 and 100: &quot;</span><span class="p">))</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">if</span> <span class="n">x</span><span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">4</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> is divisible by 2&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="linenos">5</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">6</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> is not divisible by 2&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>This ‘if .. else’ example should be run in QGIS.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">activeLayer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="linenos">2</span> <span class="k">if</span> <span class="n">activeLayer</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">QgsMapLayer</span><span class="o">.</span><span class="n">VectorLayer</span><span class="p">:</span>
+<span class="linenos">3</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The layer is a vector layer!&#39;</span><span class="p">)</span>
+<span class="linenos">4</span> <span class="k">else</span><span class="p">:</span>
+<span class="linenos">5</span>      <span class="k">if</span> <span class="n">activeLayer</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">QgsMapLayer</span><span class="o">.</span><span class="n">RasterLayer</span><span class="p">:</span>
+<span class="linenos">6</span>           <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The layer is a raster layer!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Display Active Layer" src="_images/active_raster_layer.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>The If.. elif.. Else Conditional Structure</strong></p>
+<p>The if.. elif.. else statement is designed to test multiple conditions and make decisions.  The basic structure is given below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
+<span class="linenos">2</span>   <span class="n">execute</span> <span class="n">statements</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="k">elif</span> <span class="n">condition</span><span class="p">:</span>
+<span class="linenos">5</span>   <span class="n">statements</span> <span class="o">...</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">8</span> <span class="n">statements</span>
+</pre></div>
+</div>
+<p>Here is a simple example of the use of an if.. elif.. else statement.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># Guess a number</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">answer</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span> <span class="p">(</span><span class="s2">&quot;Please enter a number between 0 and 100: &quot;</span><span class="p">))</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;You entered&quot;</span><span class="p">,</span> <span class="n">answer</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="n">x</span><span class="p">:</span>
+<span class="linenos">11</span>    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;That&#39;s my lucky number.&quot;</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="k">elif</span> <span class="n">answer</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">:</span>
+<span class="linenos">14</span>    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;That number is too large to be my lucky number&quot;</span><span class="p">)</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">17</span>    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;That&#39;s too small to be my lucky number&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="comparison-operators">
+<h2><span class="section-number">5.2. </span>Comparison Operators<a class="headerlink" href="#comparison-operators" title="Permalink to this heading"></a></h2>
+<dl>
+<dt>Python has many different operators for testing conditions including:</dt><dd><div class="line-block">
+<div class="line">== (Double equal sign) : tests equality, is equal to</div>
+<div class="line">!= (Excl. mark and equal sign): tests inequality, is not equal to</div>
+<div class="line">&gt;, &lt; (greater than, less than)</div>
+</div>
+</dd>
+</dl>
+<p>A single equal sign ‘=’ is used to assign values to variables.  The double equal sign ‘==’ is used to test for equality of two variables. An exclamation mark and an equal sign are use to test for inequality.</p>
+<p>The code sample below shows a simple test for inequality. The code tests whether two lists have the same length.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">67</span><span class="p">]</span>
+<span class="linenos">2</span><span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">46</span><span class="p">]</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">list2</span><span class="p">):</span>
+<span class="linenos">5</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The lists have equal lengths&quot;</span><span class="p">)</span>
+<span class="linenos">6</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">7</span>   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The lists have unequal lengths&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="looping">
+<h2><span class="section-number">5.3. </span>Looping<a class="headerlink" href="#looping" title="Permalink to this heading"></a></h2>
+<p>In programming, looping is used to execute a block of code repeatedly until a certain condition is met.  It is a simple concept that has widespread usage in programming.</p>
+<p>Python uses the for loop and the while loop for iteration or repetitions.  For loops are used when you know, beforehand, the amount of times you want to loop.  While Loops enable you to test for a particular condition and are used when you don’t know beforehand how many times the loop will occur.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="for-loops">
+<h2><span class="section-number">5.4. </span>For Loops<a class="headerlink" href="#for-loops" title="Permalink to this heading"></a></h2>
+<p>The general pattern of the for loop is illustrated below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>  <span class="c1"># for each item of a variable that is in a particular sequence</span>
+<span class="linenos">2</span>     <span class="n">statements</span>       <span class="c1"># do something.</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Examples</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="linenos">2</span><span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+<span class="linenos">3</span>    <span class="nb">print</span> <span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="nb">print</span> <span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Notes:
+The variable name “num” is a made-up one.  You can use any name.  In Pyhton, range () is a function that takes a lower and upper value (1,6). The range function returns a list of numbers between the given range.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>For Loops and Lists</strong></p>
+<p>For loops are great for manipulating lists</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>a = [‘cat’, ‘dog’, ‘window’, ‘Main Street’]
+<span class="linenos">2</span>for x in a:
+<span class="linenos">3</span>   print (x)
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">cat</div>
+<div class="line">dog</div>
+<div class="line">window</div>
+<div class="line">Main Street</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Nested For Loops</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">suits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Spades&#39;</span><span class="p">,</span> <span class="s1">&#39;Clubs&#39;</span><span class="p">,</span> <span class="s1">&#39;Diamonds&#39;</span><span class="p">,</span> <span class="s1">&#39;Hearts&#39;</span><span class="p">]</span>
+<span class="linenos">2</span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Ace&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;Jack&#39;</span><span class="p">,</span> <span class="s1">&#39;Queen&#39;</span><span class="p">,</span> <span class="s1">&#39;King&#39;</span><span class="p">]</span>
+<span class="linenos">3</span><span class="k">for</span> <span class="n">suit</span> <span class="ow">in</span> <span class="n">suits</span><span class="p">:</span>
+<span class="linenos">4</span>   <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<span class="linenos">5</span>       <span class="nb">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; of &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">suit</span><span class="p">))</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span>   <span class="nb">print</span> <span class="p">(</span> <span class="s2">&quot; &quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>In the above code, the program enters the first loop visiting “Spades”, then immediately jumps to the nested loop printing out the value for each card.  When the program reaches the end of the list of “values’, it jumps out of the nested loop and return to the first loop to get to “Clubs. Next, it loops through all values in the second suit and print the card names. This process continues until all the suits and values have been looped through.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Multiplication Tables</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">13</span><span class="p">):</span>
+<span class="linenos">2</span>   <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">13</span><span class="p">):</span>
+<span class="linenos">3</span>        <span class="nb">print</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">j</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">4</span>   <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note:  In the above code, end=”t” put a tab after each multiplication.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Looping through a list of Roads</strong></p>
+<p>The code below uses a ‘for loop’ to step through a list of road types. For each each element of the list, an action is performed, i.e., the item is printed out in upper case.  Normally, more complex action is performed.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>listOfRoadTypes = [‘Highway’,’Street’,’Boulevard’]
+<span class="linenos">2</span>for RoadType in listOfRoadTypes:
+<span class="linenos">3</span>    print RoadType.upper()
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Using ArcPy to Loop through a List of fields in a Shapefile’s Attribute Table</strong></p>
+<p>Run the code in Jupyter Notebook that is attached to ArcGIS Pro or Python 2.7 that comes with ArcGIS Pro.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="linenos">2</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;c:/data&quot;</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="n">fieldlist</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFields</span><span class="p">(</span><span class="s2">&quot;roads.shp&quot;</span><span class="p">)</span>
+<span class="linenos">5</span>       <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fieldlist</span><span class="p">:</span>
+<span class="linenos">6</span>             <span class="nb">print</span> <span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Using ArcPy to Loop through a List of all the Feature Classes in a Directory or a Geodatabase</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="linenos">2</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data&quot;</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="n">fcList</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFeatureClasses</span> <span class="p">()</span>
+<span class="linenos">5</span> <span class="k">for</span> <span class="n">fc</span> <span class="ow">in</span> <span class="n">fcList</span><span class="p">:</span>
+<span class="linenos">6</span>     <span class="nb">print</span> <span class="p">(</span><span class="n">fc</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Using Arcpy to get a List of all the rasters in a Directory or a Geodatabase</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="linenos">2</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data/dems&quot;</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="n">rasters</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListRasters</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;GRID&quot;</span><span class="p">)</span>
+<span class="linenos">5</span><span class="k">for</span> <span class="n">raster</span> <span class="ow">in</span> <span class="n">rasters</span><span class="p">:</span>
+<span class="linenos">6</span>    <span class="nb">print</span><span class="p">(</span><span class="n">raster</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Using QGIS to Get a list of features in a shapefile</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
+<span class="linenos">2</span>   <span class="nb">print</span> <span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>QGIS - Get selected features</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">activeLayer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="linenos">2</span><span class="k">if</span> <span class="n">activeLayer</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">QgsMapLayer</span><span class="o">.</span><span class="n">VectorLayer</span><span class="p">:</span>
+<span class="linenos">3</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The layer is a vector layer!&#39;</span><span class="p">)</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">activeLayer</span><span class="o">.</span><span class="n">selectedFeatures</span><span class="p">():</span>
+<span class="linenos">6</span>     <span class="nb">print</span> <span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">attributes</span><span class="p">())</span>
+<span class="linenos">7</span>     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Selected Features" src="_images/qgis_selected_feature.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>QGIS - Getting the attributes of the active shapefile</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">activeLayer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="linenos">2</span><span class="k">if</span> <span class="n">activeLayer</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">QgsMapLayer</span><span class="o">.</span><span class="n">VectorLayer</span><span class="p">:</span>
+<span class="linenos">3</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The layer is a vector layer!&#39;</span><span class="p">)</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">activeLayer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
+<span class="linenos">7</span>    <span class="nb">print</span> <span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">attributes</span><span class="p">())</span>
+<span class="linenos">8</span>    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
+<span class="linenos">2</span>     <span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+<span class="linenos">3</span>     <span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">id</span><span class="p">())</span>
+<span class="linenos">4</span>     <span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">])</span>
+<span class="linenos">5</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-----&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="for-loops-with-break-and-continue">
+<h2><span class="section-number">5.5. </span>For Loops with Break and Continue<a class="headerlink" href="#for-loops-with-break-and-continue" title="Permalink to this heading"></a></h2>
+<p><strong>Break</strong></p>
+<p>Break is typically part of a conditional looping situation in the program.  If the “if condition” evaluates to false, break will not be activated and the program will keep looping normally.   If the condition evaluates to true, ‘break’ is activated and the code jumps out of the loop entirely and moves to the next block in the program.</p>
+<p>Run the code below to study “break”</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="s1">&#39;Python&#39;</span><span class="p">:</span>
+<span class="linenos">2</span>   <span class="nb">print</span> <span class="p">(</span><span class="n">letter</span><span class="p">)</span>
+<span class="linenos">3</span>   <span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="s1">&#39;h&#39;</span><span class="p">:</span>
+<span class="linenos">4</span>      <span class="k">break</span>
+<span class="linenos">5</span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">P</div>
+<div class="line">y</div>
+<div class="line">t</div>
+<div class="line">h</div>
+<div class="line">Hello World</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>#2nd Example
+Although the maximum value in the range is 100 million, as soon as the loop gets to 5, the condition evaluates to true, so the program breaks out of the pattern.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">100000000</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="nb">print</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span>    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+<span class="linenos">5</span>        <span class="k">break</span>
+<span class="linenos">6</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">7</span>        <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">0</div>
+<div class="line">hello</div>
+<div class="line">1</div>
+<div class="line">hello</div>
+<div class="line">2</div>
+<div class="line">hello</div>
+<div class="line">3</div>
+<div class="line">hello</div>
+<div class="line">4</div>
+<div class="line">hello</div>
+<div class="line">5</div>
+<div class="line">hello</div>
+<div class="line">6</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Run the code below to study “continue”</strong></p>
+<p>When the condition evaluates to false, the program will keep looping. normally. When it evaluates to true, it will stop executing that particular iteration of the loop and continue on to the next iteration in the loop.</p>
+<p>Try the code below to see how ‘continue’ works.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="s1">&#39;Python&#39;</span><span class="p">:</span>
+<span class="linenos">2</span>   <span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="s1">&#39;h&#39;</span><span class="p">:</span>
+<span class="linenos">3</span>       <span class="k">continue</span>
+<span class="linenos">4</span>   <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Current Letter :&#39;</span><span class="p">,</span> <span class="n">letter</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Current Letter : P</div>
+<div class="line">Current Letter : y</div>
+<div class="line">Current Letter : t</div>
+<div class="line">Current Letter : o</div>
+<div class="line">Current Letter : n</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="linenos">2</span>     <span class="nb">print</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">3</span>     <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+<span class="linenos">4</span>        <span class="k">continue</span>
+<span class="linenos">5</span>     <span class="k">else</span><span class="p">:</span>
+<span class="linenos">6</span>        <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="while-loops">
+<h2><span class="section-number">5.6. </span>While Loops<a class="headerlink" href="#while-loops" title="Permalink to this heading"></a></h2>
+<p>While loops are used when you cannot predict at runtime the number of times an operation will occur. The basic while loop structure is shown below:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">while</span> <span class="n">condition</span><span class="p">:</span>
+<span class="linenos">2</span>    <span class="n">statements</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>As long as the condition is true, the while statement will execute. When the expression is evaluated as False, the loop halts.</p>
+<p>Example 1</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos">2</span><span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>  <span class="c1"># condition</span>
+<span class="linenos">3</span>      <span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="linenos">4</span>      <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>   <span class="c1"># counter</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">1</div>
+<div class="line">2</div>
+<div class="line">3</div>
+<div class="line">4</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Use of Plus Equal</strong></p>
+<p>When writing counters, you can write  x = x + 1</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos">2</span><span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span> <span class="c1"># condition</span>
+<span class="linenos">3</span>     <span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="linenos">4</span>     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># counter</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>You can also use the plus equal term “+=” to add another value to the variable’s value and assign a  new value to the variable.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos">2</span><span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span> <span class="c1"># condition</span>
+<span class="linenos">3</span>    <span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="linenos">4</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># counter</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Operators such as “-=”, “<a href="#id1"><span class="problematic" id="id2">*</span></a>=”, /= behave similarly similar for subtraction, multiplication and division.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Example 2</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">max</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="linenos">2</span><span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos">3</span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span> <span class="c1"># Create empty list</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">:</span>
+<span class="linenos">6</span>     <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="mf">1.0</span><span class="o">/</span><span class="n">n</span><span class="p">),</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># Append element to list</span>
+<span class="linenos">7</span>     <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">8</span>  <span class="nb">print</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>[1.0, 0.5, 0.33, 0.25]</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Example 3</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="linenos"> 2</span> <span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span> <span class="k">while</span> <span class="n">running</span><span class="p">:</span>
+<span class="linenos"> 5</span>     <span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter an integer : &#39;</span><span class="p">))</span>
+<span class="linenos"> 6</span>     <span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
+<span class="linenos"> 7</span>     <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Congratulations, you guessed it.&#39;</span><span class="p">)</span>
+<span class="linenos"> 8</span>     <span class="n">running</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># this causes the while loop to stop</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span> <span class="k">elif</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">:</span>
+<span class="linenos">11</span>     <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;No, your guess is too low.&#39;</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span> <span class="k">else</span><span class="p">:</span>
+<span class="linenos">14</span>     <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Incorrect Guess. Too high. Try again&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>While Loop with “Continue”</strong>
+# Continue causes the program to break out of the particular iteration it is executing. See example below:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">number</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+<span class="linenos"> 4</span>    <span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;Enter an integer : &#39;</span><span class="p">))</span>
+<span class="linenos"> 5</span>    <span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
+<span class="linenos"> 6</span>       <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;You guessed the correct number&quot;</span><span class="p">)</span>
+<span class="linenos"> 7</span>       <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Start a new round of guessing!&quot;</span><span class="p">)</span>
+<span class="linenos"> 8</span>       <span class="k">continue</span>
+<span class="linenos"> 9</span>    <span class="k">elif</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">:</span>
+<span class="linenos">10</span>          <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;No, it is a little higher than that.&#39;</span><span class="p">)</span>
+<span class="linenos">11</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">12</span>          <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;No, it is lower than that.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>While Loop Example With “Break”
+“Break” causes the program to jump out of the loop and move to the next block in the program” if one exists.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">number</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+<span class="linenos"> 4</span>     <span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter an integer : &#39;</span><span class="p">))</span>
+<span class="linenos"> 5</span>     <span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">number</span><span class="p">:</span>
+<span class="linenos"> 6</span>         <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;You guessed the correct number.&#39;</span><span class="p">)</span>
+<span class="linenos"> 7</span>         <span class="k">break</span>
+<span class="linenos"> 8</span>     <span class="k">elif</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">number</span><span class="p">:</span>
+<span class="linenos"> 9</span>         <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;No, it is a little higher than that.&#39;</span><span class="p">)</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span>     <span class="k">else</span><span class="p">:</span>
+<span class="linenos">12</span>         <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;No, it is lower than that.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Repeating a program until the user wants to quit</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+<span class="linenos"> 2</span>    <span class="n">num1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the first number: &quot;</span><span class="p">))</span>
+<span class="linenos"> 3</span>    <span class="n">num2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the second number: &quot;</span><span class="p">))</span>
+<span class="linenos"> 4</span>    <span class="n">num3</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the third number: &quot;</span><span class="p">))</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The average of the numbers is&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span> <span class="o">+</span> <span class="n">num3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>    <span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Do you want to repeat? Enter 1 for yes, 2 for No&quot;</span><span class="p">))</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span>    <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<span class="linenos">13</span>       <span class="k">continue</span>
+<span class="linenos">14</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">15</span>        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;End of Program&quot;</span><span class="p">)</span>
+<span class="linenos">16</span>        <span class="k">break</span>
+<span class="linenos">17</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Looping, Performing Calculations and Populating an Empty List</strong></p>
+<p>Example</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="linenos">2</span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span>
+<span class="linenos">3</span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+<span class="linenos">4</span>   <span class="n">squares</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="linenos">5</span>   <span class="nb">print</span><span class="p">(</span><span class="n">squares</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>List Comprehension</strong></p>
+<p>List comprehensions provide a concise way of looping, populating lists, and performing operations. The code below represents a typical way to loop and perform an operation on a set of numbers:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="linenos">2</span><span class="n">results</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span>
+<span class="linenos">3</span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+<span class="linenos">4</span>    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>[0.5, 1.0, 1.5, 2.0]</p>
+<blockquote>
+<div><p>Instead of populating a list using the method shown above, you can reduce your looping code by using a list comprehension.  The general syntax is:</p>
+</div></blockquote>
+<p>new_list = [expression for member in iterable object, for loop to generate the numbers to feed into the expression]</p>
+<p>#Example.  Square the values in the list</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="linenos">2</span><span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">/</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">]</span>
+<span class="linenos">3</span><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>[0.5, 1.0, 1.5, 2.0]</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>To use the syntax, do the following:</p>
+<ul class="simple">
+<li><p>Define your list that you wish to iterate</p></li>
+<li><p>Come up with a descriptive name for the result list, e.g., ‘results’.</p></li>
+<li><p>Open a pair of square brackets and define the expression that will generate the values you want to store in the new list. In this example the expression is x/2, which divides each value in the list by 2.</p></li>
+<li><p>Write a for loop to generate the numbers you want to feed into the expression.  Notice that no colon is used at the end of the ‘for’ statement. The result is the same list of square numbers you saw earlier</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The syntax can be expanded to include more than 1 for clause.  It can also include if statements.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="linenos">2</span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nums</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">]</span>
+<span class="linenos">3</span><span class="nb">print</span><span class="p">(</span><span class="n">squares</span><span class="p">)]</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="n">The</span> <span class="nb">list</span> <span class="n">comprehension</span> <span class="n">always</span> <span class="n">returns</span> <span class="n">a</span> <span class="n">result</span> <span class="nb">list</span><span class="o">.</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="strings_lists.html" class="btn btn-neutral float-left" title="4. Strings and Lists" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Hugh Semple.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

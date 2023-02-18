@@ -4,12 +4,12 @@ Strings and Lists
 
 |
 
-Srrings
+Strings
 ---------
 
 A string is a sequence of characters, e.g.,
 
-   >>> "Hello. My name is Tom Jones"
+   >>> "Hello. I am a GIS Analyst"
 
 
 
@@ -19,7 +19,7 @@ Strings in Python are surrounded by either single quotation marks, or double quo
 
 
 
-Strings can be stored as variables: 
+Strings can be stored as variables, e.g.,: 
 
    >>> y = 'Hello' is the same as "Hello".
 
@@ -59,7 +59,7 @@ Concatenating strings means joining strings by linking them end-to-end.
 |
 
 
-**b Converting Non-String Objects to String**
+**b. Converting Non-String Objects to String**
 
 Virtually any object in Python can be rendered as a string. The str(obj) returns the string representation of object obj:
 
@@ -82,6 +82,7 @@ Virtually any object in Python can be rendered as a string. The str(obj) returns
 TypeError: cannot concatenate 'str' and 'int' objects
 
 >>> print ("The temperature is " + str(temp) + " degrees")
+The temperature is 100 degrees
 
 
 |
@@ -93,14 +94,14 @@ TypeError: cannot concatenate 'str' and 'int' objects
 The * operator is used to perform perform repetition
 
 >>> 'Semple ' * 3
->>> 'Semple Semple Semple'
+ 'Semple Semple Semple'
 
 |
 
 
 **e. Changing Cases**
 
-string.lower()      
+*string.lower()*    
 
 >>> text = "I LOVE WRITING PYTHON CODE"
 
@@ -109,9 +110,8 @@ string.lower()
 i love writing python code
 
 
-|
 
-string.upper()  
+*string.upper()* 
 
 text = "I love learning Javascript"
 
@@ -123,10 +123,40 @@ I LOVE LEARNING JAVASCRIPT
 
 |
 
+**Using Strings with ArcGIS Pro Field Calculator**
+
+
+Using the field calculator in ArcGIS Pro Calculator, capitalize the first character of the string in the CITY_NAME field.
+
+>>> !CITY_NAME!.capitalize()
+
+
+
+|
+
+
+Remove any space from the end of the string in the CITY_NAME field.
+
+!CITY_NAME!.rstrip()
+
+|
+
+Replace any occurrences of "california" with "California" in the STATE_NAME field.
+
+!STATE_NAME!.replace("california", "California")
+
+
+
+|
+
+
+
+
+
 
 **f. Returning the Length of a String**
 
-With len(), you can check the length of Python strings.  The len(s) method returns the number of characters in the variable:  
+The len() method returns the number of characters in the variable.  With len(), you can check the length of Python strings.   
 
 >>> s = 'I am a string.'
 >>> len(s)
@@ -143,9 +173,6 @@ In Python, strings are ordered sequences of character data, and thus can be inde
 
 String indexing in Python is zero-based: the first character in the string has index 0, the next has index 1, and so on. The index of the last character will be the length of the string minus one.
 
-A schematic diagram of the indices of the string 'foobar' would look like this:
-String index 1
- 
 The individual characters can be accessed by index as follows:
 
 >>> s = 'foobar'
@@ -189,14 +216,14 @@ String indices can also be specified with negative numbers, in which case indexi
 
 **h. String Slicing**
 
-Python also allows a form of indexing syntax that extracts substrings from a string, known as string slicing. If s is a string, an expression of the form  s[m:n]  returns the portion of  s starting with position m, and up to but not including position n:
+Python also allows a form of indexing syntax that extracts substrings from a string, known as string slicing. If 's' is a string, an expression of the form  s[m:n]  returns the portion of  s starting with position m, and up to but not including position n:
 
 >>> s = 'foobar'
 >>> s[2:5]
 'oba'
 
  
-Again, the second index specifies the first character that is not included in the result—the character 'r' (s[5]) in the example above. That may seem slightly unintuitive, but it produces this result which makes sense: the expression s[m:n] will return a substring that is n-m characters in length, in this case, 5 -2 =3. 
+Again, the second index specifies the first character that is not included in the result—the character 'r' in the example above. This may seem slightly unintuitive, but after a while you will get used to it.  The expression s[m:n] will return a substring that is n minus m characters in length, in this case, 5 minus 2 = 3. 
  
 
 If you omit the first index, the slice starts at the beginning of the string. Thus, s[:m] and s[0:m] are equivalent:
@@ -284,7 +311,7 @@ You can specify a negative stride value as well, in which case Python steps back
 'rbo'
  
 
-
+|
 
 **j. Formatting String Variables Using the % Operator**
 The program below illustrates the use of string formatting using the % operator.    With this method,  the percentage sign followed by a letter and some numbers indicate how a variable should be formatted. The variable itself is stored as a tuple to the right of the string.   Here are some basic argument specifiers you should know:
@@ -304,9 +331,7 @@ num = float(input('Enter a number: '))
 num_sqrt = num ** 0.5
 print ('The square root of %0.2f is %0.4f' %(num, num_sqrt))
 
- 
 
- 
 
 #This program also illustrates the use of format strings (%0.2f)  to format the output. 
 
@@ -430,12 +455,13 @@ Use the index of the value in the list surrounded by square brackets to get to t
 
 List append will add the item at the end. If you want to add at the beginning, you can use the insert function.
 
+.. code-block:: python
+   :linenos:
 
-list = ["Movies", "Music", "Pictures"] 
-list.append("Documents" ) # will add "Document" to the list
+   list = ["Movies", "Music", "Pictures"] 
+   list.append("Documents" ) # will add "Document" to the list
+   list 
 
-
->>> list 
 ["Movies", "Music", "Pictures", "Documents"]   
 
 |
@@ -446,10 +472,13 @@ list.append("Documents" ) # will add "Document" to the list
 
 You can sort a list with the following code:
 
-list = ["Movies", "Pictures", "Actors", "Cinemas"] 
-list.sort() 
+.. code-block:: python
+   :linenos:
 
->>> list
+   list = ["Movies", "Pictures", "Actors", "Cinemas"] 
+   list.sort() 
+   list
+
 ['Actors', 'Cinemas', 'Movies', 'Pictures']
 
 
@@ -460,40 +489,44 @@ list.sort()
 
 You can sum a list with the following code:
 
+.. code-block:: python
+   :linenos:
 
-list = [890, 786, 1234, 65, 345, 500]
-Sumlist = sum(list)
-print (Sumlist)
->>> 3820
+   list = [890, 786, 1234, 65, 345, 500]
+   Sumlist = sum(list)
+   print (Sumlist)
+
+3820
 
 | 
 
 
 **g. Adding Two List Elements**
 
-Lists cannot be added with the simple use of an addition sign, i.e., list1 + list2. We have to iterate the list, grab the corresponding values and do the addition.
+Lists cannot be added with the simple use of an addition sign, i.e., list1 + list2. We have to iterate the list, then get the corresponding values and do the addition.
 
+.. code-block:: python
+   :linenos:
 
-# Set up the lists 
-list1 = [11, 21, 34, 12, 31, 26]
-list2 = [23, 25, 54, 24, 20, 35]
+   # Set up the lists 
+   list1 = [11, 21, 34, 12, 31, 26]
+   list2 = [23, 25, 54, 24, 20, 35]
 
+   #Create an empty list to store the sum of values at the same index position
+   result_list = []
 
-#Create an empty list to store the sum of values at the same index position
-result_list = []
+   #Get the length of one of the lists. If the list lengths are unequal, use the shorter list.
+   list_to_iterate = len(list1)
 
-#Get the length of one of the lists. If the list lengths are unequal, use the shorter list.
-list_to_iterate = len(list1)
+   #Iterate the list adding the corresponding values at the running index from the two lists, and insert the sum into a new list.
 
-#Iterate the list adding the corresponding values at the running index from the
-# two lists, and insert the sum in a new list.
+   for i in range(0, list_to_iterate):
+       result_list.append(list1[i] + list2[i])
 
+   # Print resultant list 
+   print ("Test Result is: " + str(result_list))
 
-for i in range(0, list_to_iterate):
-    result_list.append(list1[i] + list2[i])
-
-# Print resultant list 
-print ("Test Result: ********** is: " + str(result_list))
+Test Result is: [34, 46, 88, 36, 51, 61]
 
 We can use the same logic for subtracting, multiplying and dividing two lists.
 
@@ -503,19 +536,22 @@ We can use the same logic for subtracting, multiplying and dividing two lists.
 
 **h.  Graphing a List**
 
-You can graph a list with the following code:
+You can graph a list with the code below:
 
 
-import matplotlib.pyplot as plt
+.. code-block:: python
+   :linenos:
 
-cases = [890, 786, 1234, 65, 345, 500]
-year = (1950, 1960,1970,1980,1990,2000)
+   import matplotlib.pyplot as plt
 
-plt.plot (year, cases)
+   cases = [890, 786, 1234, 65, 345, 500]
+   year = (1950, 1960,1970,1980,1990,2000)
 
-plt.xlabel ("Year")
-plt.ylabel ("Cases")
-plt.show()
+   plt.plot (year, cases)
+
+   plt.xlabel ("Year")
+   plt.ylabel ("Cases")
+   plt.show()
 
 
 |
@@ -540,11 +576,8 @@ listname (start, stop, step)
 >>> my_list[1:4] # Prints out the numbers between 1 and 4, but not including 4.
  [1,2,3]
 
- 
 
- 
-
-my_list[1:8:2] # Prints out the numbers between 1 and 8, skipping every other number. 
+>>> my_list[1:8:2] #Prints out the numbers between 1 and 8, skipping every other number. 
  [1,3,5,7]
 
 
@@ -552,6 +585,8 @@ my_list[1:8:2] # Prints out the numbers between 1 and 8, skipping every other nu
 
 
 **i. Negative Slicing**
+
+>>> my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 >>> my_list[-1] # Prints out the last number in the list. 
  9
@@ -566,6 +601,46 @@ If there is no value before the first colon, it means to start at the beginning 
 first colon, it means to go all the way to the end of the list.
 
 
+|
+
+
+
+**Methods in ArcPy that Return Lists**
+
+* ListFields
+* ListFeatureClasses
+* ListWorkspaces
+* ListFiles
+* ListRasters
+* ListDataFrames
+* ListLayers
+* ListBrokenDataSources
+
+
+Each of these methods return a list of something.  In some cases, the list may consist of just one element.  You can use wildcards to  
+limit the results. Also, some lists return a list of objects, while other return a list of strings.
+
+
+|
+
+
+
+**List all layers in QGIS**
+
+
+.. code-block:: python
+   :linenos:
+
+   from qgis.core import QgsProject
+
+   QgsProject.instance().mapLayers().values()
+
+
+
+   |
+
+
+
 
 Tuples
 -------
@@ -576,10 +651,10 @@ A List is a collection which is ordered and changeable. Allows duplicate members
 A tuple is similar to a list, but the ordering of the values do not change once created.
 Coordinate values whose sequence must be maintained to draw a polygon can be stored as tuples.
 
-tup1 = ('physics', 'chemistry', 1997, 2000)
-tup2 = (1, 2, 3, 4, 5, 6, 7 )
+>>> tup1 = ('physics', 'chemistry', 1997, 2000)
+>>> tup2 = (1, 2, 3, 4, 5, 6, 7 )
 
-
+|
 
 Basic Tuples Operations
 -------------------------
@@ -599,8 +674,13 @@ Tuple operations are similar to list operations
  1 2 3  -  Iteration
 
 
+|
+
+
+
 
 
 **References**
 
-https://www.techbeamers.com/python-add-two-list-elements/
+* https://www.techbeamers.com/python-add-two-list-elements/
+* `List and describe datasets with Python <https://learn.arcgis.com/en/projects/list-and-describe-datasets-with-python/>`_
