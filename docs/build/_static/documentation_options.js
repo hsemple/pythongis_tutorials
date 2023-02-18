@@ -10,5 +10,9 @@ var DOCUMENTATION_OPTIONS = {
     SOURCELINK_SUFFIX: '.txt',
     NAVIGATION_WITH_KEYS: false,
     SHOW_SEARCH_SUMMARY: true,
+<<<<<<< HEAD
     ENABLE_SEARCH_SHORTCUTS: true,
+=======
+    ENABLE_SEARCH_SHORTCUTS: false,
+>>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
 };
