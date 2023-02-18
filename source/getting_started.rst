@@ -13,7 +13,7 @@ For these tutorials, we will run Python in the following development environment
 
 
 The Python Core Distribution 
------------------------------------------
+--------------------------------- 
 
 Many people still use the core Python distribution to run their code. However, by default this distribution lacks many packages and their dependencies  that you will need for GIS so you will have to install them manually. 
 

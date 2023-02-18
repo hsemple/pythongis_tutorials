@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-Introduction the Python Language
-==================================
 
-In this module, we will look at the following aspects of the Python language:
-
-* Hello World
-=======
 
 Introduction to the Python Language
 =====================================
@@ -24,29 +17,19 @@ Basic Aspects of Python
 In this module, we will look at the following aspects of the Python language:
 
 * Hello World program
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
 * Variables
 * Data Types
 * Comments
 * Basic Python Statements
 * Simple programs 
 
-<<<<<<< HEAD
-Please vist the websites below to learn about the Python concepts listed above.
 
-* `Python Basics <https://www.learnpython.org/en/Basic_Operators>`_
 
-* `Creating Variables and Assigning Data <https://vimeo.com/104028282>`_
-
-* `Python Statements <https://pynative.com/python-statements/>`_
-
-* `Basic Python Statements <https://vimeo.com/105271585>`_
-=======
 |
 
 
 
-**Hello World**
+**Hello World Program**
 
 >>> print('Hello, world!')
 Hello, world!
@@ -137,21 +120,11 @@ A dictionary is a data structure used to store groups of objects whose values oc
 
 In the example above, the names of the students is called the key while the test scores are the values.  A dictionary allows many operations to be performed on the key value pairs.  For example, new key values pairs can be inserted into the dictionary while existing ones can be deleted.
 
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
 
 
 |
 
 
-
-<<<<<<< HEAD
-Practice Programs 
-------------------
-
-If you do not have a Python' interpreter already installed, you can can use the interpreter at this `website <https://www.programiz.com/python-programming/online-compiler/>`_.
-
-
-=======
 **Comments**
 
 Comments are plain descriptions of what your code is doing. Comments make it easy for you to debug, maintain and update your code. In Python, single line comments start with ‘#’ while multiple line lines are enclosed in triple quotes.
@@ -214,6 +187,22 @@ In programming, a statement is a line of code that expresses some action to be c
 
 
 
+Please vist the websites below to learn about the Python concepts listed above.
+
+* `Python Basics <https://www.learnpython.org/en/Basic_Operators>`_
+
+* `Creating Variables and Assigning Data <https://vimeo.com/104028282>`_
+
+* `Python Statements <https://pynative.com/python-statements/>`_
+
+* `Basic Python Statements <https://vimeo.com/105271585>`_
+ 
+
+
+|
+
+
+
 
 Practice Programs 
 ------------------
@@ -221,17 +210,16 @@ Practice Programs
 The scripts below are intended to show how to use Python statements to create programs.  The programs are all sequential meaning that each line in the program is run after the preceding line.  There is no testing of conditions or repeating of operations.
 
 
-The program examples do not require any specialized Python packages. They can all be run using Python's standard library. If you do not have a Python' interpreter already installed, you can can use the interpreter at this `website <https://www.programiz.com/python-programming/online-compiler/>`_
+The first six examples do not require any specialized Python packages. They can all be run using Python's standard library. If you do not have a Python' interpreter already installed, you can can use the interpreter at this `website <https://www.programiz.com/python-programming/online-compiler/>`_
 
-For examples 10 through 12, the arcpy package must be loaded into memory using the import statement. If arcpy is not installed, the scripts will return an error.
+For Examples 7 through 10, the arcpy package must be loaded into memory using the import statement. If arcpy is not installed, the scripts will return an error.
 
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
 
 
 **1. Write a program to calculate the average of three scores**
 
-<<<<<<< HEAD
-# Key functions in the program below are: input(), float(), and round().  
+
+# Key functions in the program below are the input function, the float function, and the round function.
 
 .. code-block:: python
    :linenos: 
@@ -246,19 +234,7 @@ For examples 10 through 12, the arcpy package must be loaded into memory using t
 
    # Print out the test score
    print ("the average score is: ", round(average,2))
-=======
-Key functions in the program below are the inpt function, the float function, and the round function.
 
- .. code-block:: python
-    :linenos:
-
-    num1 = float(input("Enter the first number: "))
-    num2 = float(input("Enter the second number: "))
-    num3 = float(input("Enter  the third number: "))
-
-    average = (num1 + num2 + num3) / 3
-    print ("the average score is:", round(average,2))
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
 
 
  |
@@ -325,7 +301,6 @@ In the code below, %0.2f and %0.4f' are formatted place holders for two variable
    triangle_area = (base * height) / 2
 
    # Display the results
-<<<<<<< HEAD
    print ('The area of the triangle is',  triangle_area)
 
 |
@@ -356,9 +331,7 @@ In the code below, %0.2f and %0.4f' are formatted place holders for two variable
  
    #End of the program
    print ("Thanks for using this program...")
-=======
    print ('The area of the triangle is', triangle_area)
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
 
 
 |
@@ -378,24 +351,6 @@ Curly braces can serve as place-holders for the variables you would like to stor
 
    print ("{} {} is {} years old." .format(fname, lname, age))
 
-<<<<<<< HEAD
-John Doe is 24 years old.
-=======
-   John Doe is 24 years old.
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
-
-
-
-Note: For the print statement, you can also use the line below where the number indicate the position of the placeholders
-
-
-print ("{0} {1} is {2} years old." .format(fname, lname, age))
-=======
-.. code-block:: python
-   :linenos:
-
-   print ("{0} {1} is {2} years old." .format(fname, lname, age))
-
 
 
 |
@@ -404,7 +359,7 @@ print ("{0} {1} is {2} years old." .format(fname, lname, age))
 
 **7. Write a program to calculate the area of a circle**
 
-The script below illustrates how to import a library (math) and use a function from the math library. Note that the dot notation is used to show that the pi function is related to the math library. 
+The script below illustrates how to import a library (math) and use a function from the math library. Note that the dot notation is used to show that the pi function is related to the math library. 
 
 .. code-block:: python
    :linenos:
@@ -412,8 +367,7 @@ The script below illustrates how to import a library (math) and use a function f
    # Get inputs from the user
    import math
    radius = float(input("Enter the radius of the circle: "))
- 
-=======
+
    
    #import the math library that contains math functions
    import math
@@ -431,8 +385,6 @@ The script below illustrates how to import a library (math) and use a function f
    #format results
    print('The area of the circle is', round(circle_area,2))
 
-
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
 
 |
 
@@ -501,7 +453,6 @@ In the formula below P1 and P2 are the population of the two places while *d* is
    :alt: Spatial Interpolation Concept
 
 
-
 |
 
 
@@ -525,13 +476,8 @@ Formula for Spatial Interpolation
 |
 
 
-**Deliverables**
 
-
-1. Submit the source code of your program as well as screenshot showing that the program successfully ran in Python.
-
-
-2. Write a Python program that calculates population growth using the formula below. The programm will first prompt the user for a current population as an integer, a specific growth rate as a floating point number, and the number of years for which growth is to be calculated as an integer. For each successive year, the program will output an estimate for the size of the new population to within an accuracy of two decimal places (it is not necessary to print trailing zeros, and you can use the round() function). Finally, the program should print out the total growth in population.
+3. Write a Python program that calculates population growth using the formula below. The programm will first prompt the user for a current population as an integer, a specific growth rate as a floating point number, and the number of years for which growth is to be calculated as an integer. For each successive year, the program will output an estimate for the size of the new population to within an accuracy of two decimal places (it is not necessary to print trailing zeros, and you can use the round() function). Finally, the program should print out the total growth in population.
 
 .. image:: img/population_growth.png
    :alt: Population Growth Formula
@@ -609,14 +555,9 @@ The code below is written for the arcpy environment and is intentended to be run
 **Deliverables**
 
 
-1. Submit the source code of your programs as well as screenshots showing that the programs successfully ran in Python.
+Submit the source code of your programs as well as screenshots showing that the programs successfully ran in Python.
 
 
-
-Lab 1
-----------
-
-Write a program that interpolates a single point value using the IDW method. (Links to an external site.)Links to an external site. As shown in the illustration below, we are trying to estimate a value for the unknown point (?) based on the nearest four surrounding values. Instead of calculating a simple average, we are weighting each z-value by the inverse of the distance between the location of the  z-value and the location of the point whose z-value is being calculated.
 
 
 |
@@ -635,6 +576,4 @@ Please vist the websites below to learn about the Python concepts listed above.
 * `Free Books <https://pythonbooks.revolunet.com/>`_
 
 
-|
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
 

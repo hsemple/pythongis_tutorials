@@ -57,22 +57,14 @@ const _removeChildren = (element) => {
 const _escapeRegExp = (string) =>
   string.replace(/[.*+\-?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
 
-<<<<<<< HEAD
-const _displayItem = (item, searchTerms) => {
-=======
 const _displayItem = (item, highlightTerms, searchTerms) => {
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
   const docBuilder = DOCUMENTATION_OPTIONS.BUILDER;
   const docUrlRoot = DOCUMENTATION_OPTIONS.URL_ROOT;
   const docFileSuffix = DOCUMENTATION_OPTIONS.FILE_SUFFIX;
   const docLinkSuffix = DOCUMENTATION_OPTIONS.LINK_SUFFIX;
   const showSearchSummary = DOCUMENTATION_OPTIONS.SHOW_SEARCH_SUMMARY;
 
-<<<<<<< HEAD
-  const [docName, title, anchor, descr, score, _filename] = item;
-=======
   const [docName, title, anchor, descr] = item;
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
 
   let listItem = document.createElement("li");
   let requestUrl;
@@ -90,14 +82,6 @@ const _displayItem = (item, highlightTerms, searchTerms) => {
     requestUrl = docUrlRoot + docName + docFileSuffix;
     linkUrl = docName + docLinkSuffix;
   }
-<<<<<<< HEAD
-  let linkEl = listItem.appendChild(document.createElement("a"));
-  linkEl.href = linkUrl + anchor;
-  linkEl.dataset.score = score;
-  linkEl.innerHTML = title;
-  if (descr)
-    listItem.appendChild(document.createElement("span")).innerHTML =
-=======
   const params = new URLSearchParams();
   params.set("highlight", [...highlightTerms].join(" "));
   let linkEl = listItem.appendChild(document.createElement("a"));
@@ -105,7 +89,6 @@ const _displayItem = (item, highlightTerms, searchTerms) => {
   linkEl.innerHTML = title;
   if (descr)
     listItem.appendChild(document.createElement("span")).innerText =
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
       " (" + descr + ")";
   else if (showSearchSummary)
     fetch(requestUrl)
@@ -113,11 +96,7 @@ const _displayItem = (item, highlightTerms, searchTerms) => {
       .then((data) => {
         if (data)
           listItem.appendChild(
-<<<<<<< HEAD
-            Search.makeSearchSummary(data, searchTerms)
-=======
             Search.makeSearchSummary(data, searchTerms, highlightTerms)
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
           );
       });
   Search.output.appendChild(listItem);
@@ -137,24 +116,15 @@ const _finishSearch = (resultCount) => {
 const _displayNextItem = (
   results,
   resultCount,
-<<<<<<< HEAD
-=======
   highlightTerms,
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
   searchTerms
 ) => {
   // results left, load the summary and display it
   // this is intended to be dynamic (don't sub resultsCount)
   if (results.length) {
-<<<<<<< HEAD
-    _displayItem(results.pop(), searchTerms);
-    setTimeout(
-      () => _displayNextItem(results, resultCount, searchTerms),
-=======
     _displayItem(results.pop(), highlightTerms, searchTerms);
     setTimeout(
       () => _displayNextItem(results, resultCount, highlightTerms, searchTerms),
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
       5
     );
   }
@@ -185,15 +155,10 @@ const Search = {
   _pulse_status: -1,
 
   htmlToText: (htmlString) => {
-<<<<<<< HEAD
-    const htmlElement = new DOMParser().parseFromString(htmlString, 'text/html');
-    htmlElement.querySelectorAll(".headerlink").forEach((el) => { el.remove() });
-=======
     const htmlElement = document
       .createRange()
       .createContextualFragment(htmlString);
     _removeChildren(htmlElement.querySelectorAll(".headerlink"));
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
     const docContent = htmlElement.querySelector('[role="main"]');
     if (docContent !== undefined) return docContent.textContent;
     console.warn(
@@ -274,15 +239,6 @@ const Search = {
    * execute search (requires search index to be loaded)
    */
   query: (query) => {
-<<<<<<< HEAD
-    const filenames = Search._index.filenames;
-    const docNames = Search._index.docnames;
-    const titles = Search._index.titles;
-    const allTitles = Search._index.alltitles;
-    const indexEntries = Search._index.indexentries;
-
-=======
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
     // stem the search terms and add them to the correct list
     const stemmer = new Stemmer();
     const searchTerms = new Set();
@@ -310,13 +266,6 @@ const Search = {
       }
     });
 
-<<<<<<< HEAD
-    if (SPHINX_HIGHLIGHT_ENABLED) {  // set in sphinx_highlight.js
-      localStorage.setItem("sphinx_highlight_terms", [...highlightTerms].join(" "))
-    }
-
-=======
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
     // console.debug("SEARCH: searching for:");
     // console.info("required: ", [...searchTerms]);
     // console.info("excluded: ", [...excludedTerms]);
@@ -325,43 +274,6 @@ const Search = {
     let results = [];
     _removeChildren(document.getElementById("search-progress"));
 
-<<<<<<< HEAD
-    const queryLower = query.toLowerCase();
-    for (const [title, foundTitles] of Object.entries(allTitles)) {
-      if (title.toLowerCase().includes(queryLower) && (queryLower.length >= title.length/2)) {
-        for (const [file, id] of foundTitles) {
-          let score = Math.round(100 * queryLower.length / title.length)
-          results.push([
-            docNames[file],
-            titles[file] !== title ? `${titles[file]} > ${title}` : title,
-            id !== null ? "#" + id : "",
-            null,
-            score,
-            filenames[file],
-          ]);
-        }
-      }
-    }
-
-    // search for explicit entries in index directives
-    for (const [entry, foundEntries] of Object.entries(indexEntries)) {
-      if (entry.includes(queryLower) && (queryLower.length >= entry.length/2)) {
-        for (const [file, id] of foundEntries) {
-          let score = Math.round(100 * queryLower.length / entry.length)
-          results.push([
-            docNames[file],
-            titles[file],
-            id ? "#" + id : "",
-            null,
-            score,
-            filenames[file],
-          ]);
-        }
-      }
-    }
-
-=======
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
     // lookup as object
     objectTerms.forEach((term) =>
       results.push(...Search.performObjectSearch(term, objectTerms))
@@ -408,11 +320,7 @@ const Search = {
     // console.info("search results:", Search.lastresults);
 
     // print the results
-<<<<<<< HEAD
-    _displayNextItem(results, results.length, searchTerms);
-=======
     _displayNextItem(results, results.length, highlightTerms, searchTerms);
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
   },
 
   /**
@@ -493,13 +401,8 @@ const Search = {
     // prepare search
     const terms = Search._index.terms;
     const titleTerms = Search._index.titleterms;
-<<<<<<< HEAD
-    const filenames = Search._index.filenames;
-    const docNames = Search._index.docnames;
-=======
     const docNames = Search._index.docnames;
     const filenames = Search._index.filenames;
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
     const titles = Search._index.titles;
 
     const scoreMap = new Map();
@@ -596,17 +499,6 @@ const Search = {
   /**
    * helper function to return a node containing the
    * search summary for a given text. keywords is a list
-<<<<<<< HEAD
-   * of stemmed words.
-   */
-  makeSearchSummary: (htmlText, keywords) => {
-    const text = Search.htmlToText(htmlText);
-    if (text === "") return null;
-
-    const textLower = text.toLowerCase();
-    const actualStartPosition = [...keywords]
-      .map((k) => textLower.indexOf(k.toLowerCase()))
-=======
    * of stemmed words, highlightWords is the list of normal, unstemmed
    * words. the first one is used to find the occurrence, the
    * latter for highlighting it.
@@ -617,7 +509,6 @@ const Search = {
 
     const actualStartPosition = [...keywords]
       .map((k) => text.indexOf(k.toLowerCase()))
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
       .filter((i) => i > -1)
       .slice(-1)[0];
     const startWithContext = Math.max(actualStartPosition - 120, 0);
@@ -625,11 +516,6 @@ const Search = {
     const top = startWithContext === 0 ? "" : "...";
     const tail = startWithContext + 240 < text.length ? "..." : "";
 
-<<<<<<< HEAD
-    let summary = document.createElement("p");
-    summary.classList.add("context");
-    summary.textContent = top + text.substr(startWithContext, 240).trim() + tail;
-=======
     let summary = document.createElement("div");
     summary.classList.add("context");
     summary.innerText = top + text.substr(startWithContext, 240).trim() + tail;
@@ -637,7 +523,6 @@ const Search = {
     highlightWords.forEach((highlightWord) =>
       _highlightText(summary, highlightWord, "highlighted")
     );
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
 
     return summary;
   },

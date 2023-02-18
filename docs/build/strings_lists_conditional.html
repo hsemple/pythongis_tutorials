@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>4. Strings, Lists, and Conditional Statements &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+  <title>Strings and Lists &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -16,11 +16,9 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="3. Introduction the Python Language" href="intro_programs.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -28,26 +26,31 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> Python GIS Tutorials
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Python GIS Tutorials
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="getting_started.html">2. Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="intro_programs.html">3. Introduction the Python Language</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Strings, Lists, and Conditional Statements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#strings">4.1. Strings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#string-operations">4.2. String Operations</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">2. Development Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html#python-has-a-shell-window-called-idle-which-gives-you-access-to-the-python-interactive-mode-it-also-has-a-file-editor-that-lets-you-create-and-edit-existing-python-source-files">3. Python has a shell window called IDLE  which gives you access to the Python interactive mode. It also has a file editor that lets you create and edit existing Python source files.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html#this-tutorial-shows-how-to-run-python-using-jupyter-notebook-that-is-installed-with-arcgis-pro-this-is-a-good-option-as-the-connection-between-python-and-jupyter-notebook-has-been-already-configured">4. This tutorial shows how to run Python using Jupyter Notebook that is installed with ArcGIS Pro. This is a good option as the connection between Python and Jupyter Notebook has been already configured.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html#the-prompt-is-where-you-type-your-code-when-the-python-window-first-opens-the-message-in-the-prompt-reads-initializing-python-interpreter-which-means-the-window-is-getting-ready-to-receive-your-code-after-a-few-seconds-the-message-is-replaced-with-enter-python-code-here-which-means-you-can-start-typing-your-code-after-you-have-opened-the-python-window-for-the-first-time-these-messages-dont-appear-again-in-the-current-session">5. The prompt is where you type your code. When the Python window first opens, the message in the prompt reads Initializing Python interpreter, which means the window is getting ready to receive your code. After a few seconds the message is replaced with Enter Python code here, which means you can start typing your code. After you have opened the Python window for the first time, these messages don’t appear again in the current session.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html#the-iface-class-is-used-to-access-most-graphical-qgis-components-for-example-to-get-a-reference-to-the-active-layer-we-can-write">6. 6.  The iface class is used to access most graphical QGIS components. For example, to get a reference to the active layer, we can write:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html#we-will-write-a-simple-script-to-print-the-names-of-the-fields-in-the-attribute-table-of-the-wfc-layer">7. 2.  We will write a simple script to print the names of the fields in the attribute table of the WFC layer ::</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html#if-you-are-familiar-with-jupyter-notebook-then-you-can-use-it-with-qgis-first-you-must-install-the-pyqgis-modules-into-an-environment-after-than-you-can-with-qgis-outside-of-the-application-itself">8. 1. If you are familiar with Jupyter notebook, then you can use it with QGIS.  First, you must install the pyqgis modules into an environment. After than, you can with QGIS outside of the application itself.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_programs.html">9. Introduction to the Python Language</a></li>
 </ul>
 
         </div>
@@ -63,8 +66,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">4. </span>Strings, Lists, and Conditional Statements</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Strings and Lists</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/strings_lists_conditional.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -74,10 +77,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="strings-lists-and-conditional-statements">
-<h1><span class="section-number">4. </span>Strings, Lists, and Conditional Statements<a class="headerlink" href="#strings-lists-and-conditional-statements" title="Permalink to this heading"></a></h1>
-<section id="strings">
-<h2><span class="section-number">4.1. </span>Strings<a class="headerlink" href="#strings" title="Permalink to this heading"></a></h2>
+  <section id="strings-and-lists">
+<h1>Strings and Lists<a class="headerlink" href="#strings-and-lists" title="Permalink to this heading"></a></h1>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="srrings">
+<h2>Srrings<a class="headerlink" href="#srrings" title="Permalink to this heading"></a></h2>
 <p>A string is a sequence of characters, e.g.,</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Hello. My name is Tom Jones&quot;</span>
 </pre></div>
@@ -95,9 +101,10 @@
 </div>
 </section>
 <section id="string-operations">
-<h2><span class="section-number">4.2. </span>String Operations<a class="headerlink" href="#string-operations" title="Permalink to this heading"></a></h2>
+<h2>String Operations<a class="headerlink" href="#string-operations" title="Permalink to this heading"></a></h2>
 <p>Various operations can be performed on string variables. Some of these are presented below:</p>
-<p><strong>a.  Concatenation - joining strings by linking them end-to-end</strong></p>
+<p><strong>a.  Concatenation</strong></p>
+<p>Concatenating strings means joining strings by linking them end-to-end.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;James&#39;</span> <span class="o">+</span> <span class="s1">&#39;Brown&#39;</span><span class="p">)</span>
 <span class="linenos"> 2</span><span class="c1">#The output of this statement is JamesBrown.</span>
 <span class="linenos"> 3</span>
@@ -151,15 +158,29 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>e. Change Cases</strong></p>
-<p>string.lower()       &gt;&gt; string</p>
-<p>string.upper()       &gt;&gt; STRING</p>
-<p>string.capitalize()  &gt;&gt; String</p>
+<p><strong>e. Changing Cases</strong></p>
+<p>string.lower()</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;I LOVE WRITING PYTHON CODE&quot;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># convert message to lowercase</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+<span class="go">i love writing python code</span>
+</pre></div>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>f. Returning the length of a string</strong></p>
-<p>With len(),  you can check the length of Python strings.  The len(s) method returns the number of characters in the variable s:</p>
+<p>string.upper()</p>
+<p>text = “I love learning Javascript”</p>
+<p># convert message to lowercase
+print(text.upper())
+I LOVE LEARNING JAVASCRIPT</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>f. Returning the Length of a String</strong></p>
+<p>With len(), you can check the length of Python strings.  The len(s) method returns the number of characters in the variable:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;I am a string.&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="go">14</span>
@@ -192,19 +213,16 @@ String index 1</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
 </pre></div>
 </div>
-<dl>
-<dt>Traceback (most recent call last):</dt><dd><blockquote>
-<div><dl class="simple">
-<dt>File “&lt;pyshell#17&gt;”, line 1, in &lt;module&gt;</dt><dd><p>s[6]</p>
+<dl class="simple">
+<dt>Traceback (most recent call last):</dt><dd><p>File “&lt;pyshell#17&gt;”, line 1, in &lt;module&gt;
+s[6]
+IndexError: string index out of range</p>
 </dd>
 </dl>
-</div></blockquote>
-<p>IndexError: string index out of range</p>
-</dd>
-</dl>
-<p>String indices can also be specified with negative numbers, in which case indexing occurs from the end of the string backward: -1 refers to the last character, -2 the second-to-last character, and so on. Here is the same diagram showing both the positive and negative indices into the string ‘foobar’.</p>
-<p>String index 2</p>
-<p>Here are some examples of negative indexing:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>String indices can also be specified with negative numbers, in which case indexing occurs from the end of the string backward: -1 refers to the last character, -2 the second-to-last character, and so on.  Here are some examples of negative indexing:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;foobar&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="go">&#39;r&#39;</span>
@@ -219,7 +237,7 @@ String index 1</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>String Slicing</strong></p>
+<p><strong>h. String Slicing</strong></p>
 <p>Python also allows a form of indexing syntax that extracts substrings from a string, known as string slicing. If s is a string, an expression of the form  s[m:n]  returns the portion of  s starting with position m, and up to but not including position n:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;foobar&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
@@ -246,7 +264,7 @@ String index 1</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">s</span><span class="p">[:]</span>
 </pre></div>
 </div>
-<p><strong>Slicing with Negative indices</strong></p>
+<p><strong>i. Slicing with Negative indices</strong></p>
 <p>Negative indices can be used with slicing as well. -1 refers to the last character, -2, the second-to-last, and so on, just as with simple indexing. The diagram below shows how to slice the substring ‘oob’ from the string ‘foobar’ using both positive and negative indices:
 String index 3</p>
 <p>Here is the corresponding Python code:</p>
@@ -293,7 +311,7 @@ String stride 2</p>
 <span class="go">&#39;rbo&#39;</span>
 </pre></div>
 </div>
-<p><strong>Formatting String Variables Using the % Operator</strong>
+<p><strong>j. Formatting String Variables Using the % Operator</strong>
 The program below illustrates the use of string formatting using the % operator.    With this method,  the percentage sign followed by a letter and some numbers indicate how a variable should be formatted. The variable itself is stored as a tuple to the right of the string.   Here are some basic argument specifiers you should know:</p>
 <p>%s - means format the variable as a string
 %d - means format the variable as an integer
@@ -316,7 +334,7 @@ print (‘The area of the triangle is %0.2f’ % triangle_area)</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>String formatting with the format method</strong></p>
+<p><strong>k. String formatting with the format method</strong></p>
 <p>This is another method for formatting strings. When you use the curly braces or {} operators, they serve as place-holders for the variables you would like to store inside a string. In order to pass variables to a string you must call upon the .format() method.</p>
 <p>fname = “John”
 lname = “Doe”
@@ -326,19 +344,203 @@ age = “24”</p>
 <p>Note: You can also use:</p>
 <p>print (“{0} {1} is {2} years old.” .format(fname, lname, age))</p>
 <p>Where the number indicate the position of the placeholders</p>
-<ol class="loweralpha simple">
-<li><p>In general, mathematical operations on strings are illegal:</p></li>
-</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>l. Mathematical Opeerations and Strings</strong></p>
+<p>In general, mathematical operations on strings are illegal:</p>
 <p>‘2’-‘1’    ‘eggs’/’easy’    ‘third’ * ‘a charm’</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="lists">
+<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this heading"></a></h2>
+<p>Lists are collections of items (strings, integers, or even other lists), e.g.,</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; y = [1,2,3, “Jim”]
+</pre></div>
+</div>
+<p>Lists are widely used in GIS, e.g., list of feature classes, list of records, list of fields, list of numbers, etc.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>List Creation</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="s1">&#39;four&#39;</span><span class="p">,</span> <span class="s1">&#39;five&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">numlist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list1</span><span class="o">=</span> <span class="p">[</span> <span class="p">]</span>   <span class="c1"># creates an empty list</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="list-operations">
+<h2>List Operations<a class="headerlink" href="#list-operations" title="Permalink to this heading"></a></h2>
+<p><strong>a. Get the length of a List</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list1</span> <span class="o">=</span>  <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;world&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span> <span class="c1"># Use the len function</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>4</p>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>b. Accessing members of a list</strong></p>
+<p>Use the index of the value in the list surrounded by square brackets to get to the members of the list.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="p">(</span><span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">list1</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>c. Deleting List Elements</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">list1</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>d. Append values to a List</strong></p>
+<p>List append will add the item at the end. If you want to add at the beginning, you can use the insert function.</p>
+<p>list = [“Movies”, “Music”, “Pictures”]
+list.append(“Documents” ) # will add “Document” to the list</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span>
+<span class="go">[&quot;Movies&quot;, &quot;Music&quot;, &quot;Pictures&quot;, &quot;Documents&quot;]</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>e. Sorting a List</strong></p>
+<p>You can sort a list with the following code:</p>
+<p>list = [“Movies”, “Pictures”, “Actors”, “Cinemas”]
+list.sort()</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span>
+<span class="go">[&#39;Actors&#39;, &#39;Cinemas&#39;, &#39;Movies&#39;, &#39;Pictures&#39;]</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>f. Summing a List</strong></p>
+<p>You can sum a list with the following code:</p>
+<p>list = [890, 786, 1234, 65, 345, 500]
+Sumlist = sum(list)
+print (Sumlist)
+&gt;&gt;&gt; 3820</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>g. Adding Two List Elements</strong></p>
+<p>Lists cannot be added with the simple use of an addition sign, i.e., list1 + list2. We have to iterate the list, grab the corresponding values and do the addition.</p>
+<p># Set up the lists
+list1 = [11, 21, 34, 12, 31, 26]
+list2 = [23, 25, 54, 24, 20, 35]</p>
+<p>#Create an empty list to store the sum of values at the same index position
+result_list = []</p>
+<p>#Get the length of one of the lists. If the list lengths are unequal, use the shorter list.
+list_to_iterate = len(list1)</p>
+<p>#Iterate the list adding the corresponding values at the running index from the
+# two lists, and insert the sum in a new list.</p>
+<dl class="simple">
+<dt>for i in range(0, list_to_iterate):</dt><dd><p>result_list.append(list1[i] + list2[i])</p>
+</dd>
+</dl>
+<p># Print resultant list
+print (“Test Result: <strong>******</strong> is: ” + str(result_list))</p>
+<p>We can use the same logic for subtracting, multiplying and dividing two lists.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>h.  Graphing a List</strong></p>
+<p>You can graph a list with the following code:</p>
+<p>import matplotlib.pyplot as plt</p>
+<p>cases = [890, 786, 1234, 65, 345, 500]
+year = (1950, 1960,1970,1980,1990,2000)</p>
+<p>plt.plot (year, cases)</p>
+<p>plt.xlabel (“Year”)
+plt.ylabel (“Cases”)
+plt.show()</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>i. List Slicing</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>To retrieve a number from the list, just type the list name with the index number in square brackets, e.g.,</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">my_list</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>    <span class="c1"># This prints out 5, which is the 4th number in the list counting from zero.</span>
+</pre></div>
+</div>
+<p>The syntax for slicing is</p>
+<p>listname (start, stop, step)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="c1"># Prints out the numbers between 1 and 4, but not including 4.</span>
+<span class="go"> [1,2,3]</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>my_list[1:8:2] # Prints out the numbers between 1 and 8, skipping every other number.</dt><dd><p>[1,3,5,7]</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>i. Negative Slicing</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Prints out the last number in the list.</span>
+<span class="go"> 9</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_list</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#</span>
+<span class="go"> [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</span>
+</pre></div>
+</div>
+<p>If there is no value before the first colon, it means to start at the beginning index of the list. If there isn’t a value after the
+first colon, it means to go all the way to the end of the list.</p>
+</section>
+<section id="tuples">
+<h2>Tuples<a class="headerlink" href="#tuples" title="Permalink to this heading"></a></h2>
+<p>A List is a collection which is ordered and changeable. Allows duplicate members. On the other hand, a tuple is a collection which is ordered and unchangeable. Allows duplicate members.</p>
+<p>A tuple is similar to a list, but the ordering of the values do not change once created.
+Coordinate values whose sequence must be maintained to draw a polygon can be stored as tuples.</p>
+<p>tup1 = (‘physics’, ‘chemistry’, 1997, 2000)
+tup2 = (1, 2, 3, 4, 5, 6, 7 )</p>
+</section>
+<section id="basic-tuples-operations">
+<h2>Basic Tuples Operations<a class="headerlink" href="#basic-tuples-operations" title="Permalink to this heading"></a></h2>
+<p>Tuple operations are similar to list operations</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="go"> 3    - Length</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go"> (1, 2, 3, 4, 5, 6)   - Concatenation</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="s1">&#39;Hi!&#39;</span><span class="p">,)</span> <span class="o">*</span> <span class="mi">4</span>
+<span class="go">(&#39;Hi!&#39;, &#39;Hi!&#39;, &#39;Hi!&#39;, &#39;Hi!&#39;)   - Repetition</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="nb">print</span> <span class="n">x</span><span class="p">,</span>
+<span class="go"> 1 2 3  -  Iteration</span>
+</pre></div>
+</div>
+<p><strong>References</strong></p>
+<p><a class="reference external" href="https://www.techbeamers.com/python-add-two-list-elements/">https://www.techbeamers.com/python-add-two-list-elements/</a></p>
 </section>
 </section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="intro_programs.html" class="btn btn-neutral float-left" title="3. Introduction the Python Language" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-    </div>
+          <footer>
 
   <hr/>
 

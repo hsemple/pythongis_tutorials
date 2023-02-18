@@ -10,16 +10,6 @@
  */
 "use strict";
 
-<<<<<<< HEAD
-const BLACKLISTED_KEY_CONTROL_ELEMENTS = new Set([
-  "TEXTAREA",
-  "INPUT",
-  "SELECT",
-  "BUTTON",
-]);
-
-=======
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
 const _ready = (callback) => {
   if (document.readyState !== "loading") {
     callback();
@@ -29,8 +19,6 @@ const _ready = (callback) => {
 };
 
 /**
-<<<<<<< HEAD
-=======
  * highlight a given string on a node by wrapping it in
  * span elements with the given class name.
  */
@@ -92,15 +80,11 @@ const _highlightText = (thisNode, text, className) => {
 };
 
 /**
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
  * Small JavaScript module for the documentation.
  */
 const Documentation = {
   init: () => {
-<<<<<<< HEAD
-=======
     Documentation.highlightSearchWords();
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
     Documentation.initDomainIndexTable();
     Documentation.initOnKeyListeners();
   },
@@ -143,8 +127,6 @@ const Documentation = {
   },
 
   /**
-<<<<<<< HEAD
-=======
    * highlight the search words provided in the url in the text
    */
   highlightSearchWords: () => {
@@ -190,7 +172,6 @@ const Documentation = {
   },
 
   /**
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
    * helper function to focus on search bar
    */
   focusSearchBar: () => {
@@ -229,13 +210,6 @@ const Documentation = {
     )
       return;
 
-<<<<<<< HEAD
-    document.addEventListener("keydown", (event) => {
-      // bail for input elements
-      if (BLACKLISTED_KEY_CONTROL_ELEMENTS.has(document.activeElement.tagName)) return;
-      // bail with special keys
-      if (event.altKey || event.ctrlKey || event.metaKey) return;
-=======
     const blacklistedElements = new Set([
       "TEXTAREA",
       "INPUT",
@@ -245,7 +219,6 @@ const Documentation = {
     document.addEventListener("keydown", (event) => {
       if (blacklistedElements.has(document.activeElement.tagName)) return; // bail for input elements
       if (event.altKey || event.ctrlKey || event.metaKey) return; // bail with special keys
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
 
       if (!event.shiftKey) {
         switch (event.key) {
@@ -267,13 +240,10 @@ const Documentation = {
               event.preventDefault();
             }
             break;
-<<<<<<< HEAD
-=======
           case "Escape":
             if (!DOCUMENTATION_OPTIONS.ENABLE_SEARCH_SHORTCUTS) break;
             Documentation.hideSearchWords();
             event.preventDefault();
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
         }
       }
 

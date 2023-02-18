@@ -5,7 +5,7 @@ Conditional Statements and Looping
 |
 
 Conditionals 
-------------
+---------------
 
 Unless otherwise directed, lines of codes in a procedure run sequentially, from first to last. Conditional statements can change the sequential flow of a program based on whether a given condition is true or false.
 
