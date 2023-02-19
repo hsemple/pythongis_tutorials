@@ -44,7 +44,7 @@ In programming, a variable is a piece of information stored in the computer’s 
 >>> my_age = 29           
 
 
-As mentioned earlier, Python does not require a variable to be declared.  A variable is created the moment you first assign a value to it.  To initialize a variable in Python, we create a name for the variable and then assign it a value in one statement. The values stored in variables may change during the course of program execution. 
+To initialize a variable in Python, we create a name for the variable and then assign it a value in one statement. The values stored in variables may change during the course of program execution. 
 
 Although a variable need not be assigned to any particular data type, if you want to specify the data type of a variable, this can be done with casting. For example: 
 
@@ -64,14 +64,16 @@ Although a variable need not be assigned to any particular data type, if you wan
 
 Python has several data types. The list below comes from W3Schools.  
 
-* Numeric Types: 	    int, float, complex
-* Sequence Types: 	    list, tuple, range
-* Mapping Type: 	    dict
-* Boolean Type: 	    bool
+* Numeric Types: 	     int, float, complex
+* Sequence Types: 	  list, tuple, range
+* Mapping Type: 	     dict
+* Boolean Type: 	     bool
 * Set Types: 	        set, frozenset
-* Binary Types: 	    bytes, bytearray, memoryview
+* Binary Types: 	     bytes, bytearray, memoryview
 * None Type: 	        NoneType
 
+
+|
 
 
 *Integers*
@@ -79,11 +81,16 @@ Python has several data types. The list below comes from W3Schools.
 1. Integers are whole numbers, i.e., numbers without decimals, e.g, 23, 123, 4567, etc 
 
 2. Integers are assigned to variables using the "=" sign.
-   ...  a = 10    # Normal assignment
+
+   >>>  a = 10    # Normal assignment
+
 
 3. Convert a number to integer
-     >>> int(3.45)
-     >>> 3
+
+   >>> int(3.45)
+       3
+
+|
 
 
 *Floats*
@@ -98,10 +105,10 @@ Python has several data types. The list below comes from W3Schools.
 
 3. To convert a number to a float, use the float function, e.g.,
 
-     >>> float(3)
-          3.0
+   >>> float(3)
+      3.0
 
-
+|
 
 *Dictionaries*
 
@@ -187,20 +194,6 @@ In programming, a statement is a line of code that expresses some action to be c
 
 
 
-Please vist the websites below to learn about the Python concepts listed above.
-
-* `Python Basics <https://www.learnpython.org/en/Basic_Operators>`_
-
-* `Creating Variables and Assigning Data <https://vimeo.com/104028282>`_
-
-* `Python Statements <https://pynative.com/python-statements/>`_
-
-* `Basic Python Statements <https://vimeo.com/105271585>`_
- 
-
-
-|
-
 
 
 
@@ -216,13 +209,10 @@ For Examples 7 through 10, the arcpy package must be loaded into memory using th
 
 
 
-**1. Write a program to calculate the average of three scores**
+**1.** Write a program to calculate the average of three scores. Key functions in the program below are the input function, the float function, and the round function.
 
-
-# Key functions in the program below are the input function, the float function, and the round function.
 
 .. code-block:: python
-   :linenos: 
 
    # Get the three scores
    num1 = float(input("Enter the first number: "))
@@ -237,12 +227,12 @@ For Examples 7 through 10, the arcpy package must be loaded into memory using th
 
 
 
- |
+|
 
 
-**2. Write a program that converts the temperature in Fahrenheit to Celsius**
+**2.** Write a program that converts the temperature in Fahrenheit to Celsius
 
-# Note the formatting of the results in the print statement.  str(round(Celsius,2)) converts formats the results to two decimal places then converts the value to a string.   The plus sign concatenates or joins the first string with the second second string.
+Please note the formatting of the results in the print statement. The function, str(round(Celsius,2)), converts formats the results to two decimal places then converts the value to a string.   The plus sign concatenates or joins the first string with the second second string.
 
 .. code-block:: python
    :linenos:
@@ -253,22 +243,10 @@ For Examples 7 through 10, the arcpy package must be loaded into memory using th
 
  
 
-Note:
-
-We can format the output even more as shown in the example below.
-
-.. code-block:: python
-   :linenos:
-
-   Fahrenheit = float(input("Enter the temperature in Fahrenheit: "))
-   Celsius = (Fahrenheit - 32) * 5.0/9.0
-   print (str(round(Fahrenheit,2)) + " degrees Fahrenheit = " + str(round(Celsius,2)) + " degrees Celsius")
-
-
 
 |
 
-**3. Write a program to calculate the square root of a number**
+**3.** Write a program to calculate the square root of a number
 
 In the code below, %0.2f and %0.4f' are formatted place holders for two variables. The variables appear at the end of the string in the form of a tuple preceded by a % sign. 
 
@@ -285,13 +263,11 @@ In the code below, %0.2f and %0.4f' are formatted place holders for two variable
 |
 
 
-**4. Write a Python Program to find the area of triangle**
+**4.** Write a program to calculate the area of a triangle.
 
 
 .. code-block:: python
    :linenos:
-
-   #This program also illustrates the use of format strings (%0.2f)  to format the output. 
 
    # Get inputs from the user
    base = float(input('Enter length of the base of the triangle: '))
@@ -307,7 +283,38 @@ In the code below, %0.2f and %0.4f' are formatted place holders for two variable
 
 
 
-**5. Write a program that calculates the spatial interaction between two places using a simple form of the gravity model.**
+**5.** Write a program to calculate the area of a circle.
+
+The script below illustrates how to import a library (math) and use a function from the math library. Note that the dot notation is used to show that the pi function is related to the math library. 
+
+.. code-block:: python
+   :linenos:
+
+   
+   #import the math library that contains math functions
+   import math
+
+
+   # Get inputs from the user
+   radius = float(input("Enter the radius of the circle: "))
+
+
+   # Perform calculation
+   circle_area = math.pi * radius ** 2
+
+   # Display the results
+   print('The area of the circle is', circle_area)
+
+
+   #format results
+   print('The area of the circle is', round(circle_area,2))
+
+
+|
+
+
+
+**6.** Write a program that calculates the spatial interaction between two places using a simple form of the gravity model.
 
 .. image:: img/interaction.png
    :alt: Spatial Interpolation Concept
@@ -338,65 +345,11 @@ In the code below, %0.2f and %0.4f' are formatted place holders for two variable
 
 
 
-**6. String formatting with the format method**
 
-Curly braces can serve as place-holders for the variables you would like to store inside a string. In order to pass variables to a string you must call upon the .format() method.
-
-.. code-block:: python
-   :linenos:
-
-   fname = "John"
-   lname = "Doe"
-   age = "24"
-
-   print ("{} {} is {} years old." .format(fname, lname, age))
+**7.**  Write a Python program to display the calendar for any given month of a specified year.
 
 
-
-|
-
-
-
-**7. Write a program to calculate the area of a circle**
-
-The script below illustrates how to import a library (math) and use a function from the math library. Note that the dot notation is used to show that the pi function is related to the math library. 
-
-.. code-block:: python
-   :linenos:
-
-   # Get inputs from the user
-   import math
-   radius = float(input("Enter the radius of the circle: "))
-
-   
-   #import the math library that contains math functions
-   import math
-
-   # Get inputs from the user
-   radius = float(input("Enter the radius of the circle: "))
-
-   # Perform calculatin
-   circle_area = math.pi * radius ** 2
-
-   # Display the results
-   print('The area of the circle is', circle_area)
-
-
-   #format results
-   print('The area of the circle is', round(circle_area,2))
-
-
-|
-
-
-
-**8.  Write a Python program to display calendar of given month of the year**
-
-<<<<<<< HEAD
-The script below illustrates how to import the calendar library and use a function from the calendar library.
-=======
-The script below illustrates how to import the calendar library and use a function from the calendar library. Enter month and year as integers.
->>>>>>> 46e4da9bdd6f75a5d9039bf89d369caeca931420
+The script below illustrates how to import the calendar library and use a function from the calendar library. Enter month and year as integers. 
 
 
 .. code-block:: python
@@ -416,7 +369,7 @@ The script below illustrates how to import the calendar library and use a functi
 
 |
 
-**9. Write a program to create a time stamp**
+**8.** Write a program to create a time stamp**
 
 .. code-block:: python
    :linenos:
@@ -445,8 +398,7 @@ The script below illustrates how to import the calendar library and use a functi
 Exercises
 ------------
 
-*1. Write a program that calculates the spatial interaction between two places using a simple form of the gravity model*
-In the formula below P1 and P2 are the population of the two places while *d* is the distance between the places.*
+**1.** Geographers use gravity model to estimate the amount of spatial interaction between two or more places. Write a program that calculates the spatial interaction between two places using a simple form of the gravity model shown in the formula below.  In the formula, P1 and P2 are the population of the two places while *d* is the distance between the places.*
 
 
 .. image:: img/interaction.png
@@ -456,7 +408,7 @@ In the formula below P1 and P2 are the population of the two places while *d* is
 |
 
 
-*2. Write a program that interpolates a single point value using the IDW method*
+**2.** Write a program that interpolates a single point value using the IDW method
 
 As shown in the illustration below, we are trying to estimate a value for the unknown point (?) based on the nearest four surrounding values. Instead of calculating a simple average, we are weighting each z-value by the inverse of the distance between the location of the  z-value and the location of the point whose z-value is being calculated.
 
@@ -464,10 +416,8 @@ As shown in the illustration below, we are trying to estimate a value for the un
    :alt: Spatial Interpolation Concept
 
 
-In terms of program flow, your program should prompt the user for each of the known points, zi.  (Tip: repeat the input statement z-values four times).  Next, it should also prompt the user for the distance of each of the z-value to the point that is being calculated (Tip: repeat the input statement for distance values four times).   Once all the z-values and distances are collected, the program should use these values along with the formula below to compute the z-value at the unknown location.   Demonstrate that your program works using the data in the above diagram.
+The formula to estimate spatial interpolation is given below.  In terms of program flow, your program should prompt the user for the z-value for each of the known points, zi.  (Tip: repeat the input statement z-values four times).  Next, it should prompt the user for the distance of each of the z-value to the point that is being calculated (Tip: repeat the input statement for distance values four times).   Once all the z-values and distances are collected, the program should use these values along with the formula below to compute the z-value at the unknown location.   Demonstrate that your program works using the data in the above diagram.
 
-
-Formula for Spatial Interpolation
 
 .. image:: img/idw_formula.png
    :alt: IDW Formula
@@ -477,7 +427,9 @@ Formula for Spatial Interpolation
 
 
 
-3. Write a Python program that calculates population growth using the formula below. The programm will first prompt the user for a current population as an integer, a specific growth rate as a floating point number, and the number of years for which growth is to be calculated as an integer. For each successive year, the program will output an estimate for the size of the new population to within an accuracy of two decimal places (it is not necessary to print trailing zeros, and you can use the round() function). Finally, the program should print out the total growth in population.
+**3.** Write a Python program that calculates population growth using the formula below. 
+
+The programm will first prompt the user for a current population as an integer, a specific growth rate as a floating point number, and the number of years for which growth is to be calculated as an integer. For each successive year, the program will output an estimate for the size of the new population to within an accuracy of two decimal places (it is not necessary to print trailing zeros, and you can use the round() function). Finally, the program should print out the total growth in population.
 
 .. image:: img/population_growth.png
    :alt: Population Growth Formula
@@ -487,7 +439,7 @@ Formula for Spatial Interpolation
 |
 
 
-4. Run the program below that plots average montly temperature values for Ypsilanti for 2022. The programs depends on a library called matplotlib to do the graphing. If matplotlib is not installed on your computer the program will fail. Therefore, you must first install matplotlib for the program to work. Matplotlib is installed with Jupyter Notebook, therefore, one option is run this program within Jupyter Notebook. 
+**4.** Run the program below that plots average monthly temperature values for Ann Arbor for 2022. The programs depends on a library called matplotlib to do the graphing. If matplotlib is not installed on your computer the program will fail. Therefore, you must first install matplotlib for the program to work. Matplotlib is installed with Jupyter Notebook, therefore, one option is run this program within Jupyter Notebook. 
 
 
 .. code-block:: python
@@ -506,7 +458,11 @@ Formula for Spatial Interpolation
 
 
 
-*5. Buffer a line using Jupyter Notebook*
+**5.** Write a program to calculate the area of a circle
+
+
+
+**6.** Buffer a line using Jupyter Notebook 
 
 The program below depends on an ESRI library called arcpy.  It is the arcpy library that supplies the additional capability that Python needs to execute ArcGIS commands. The code is intentended to run as a standalone script or from Jupyter Notebook within ArcGIS Pro.  Copy the script and paste it into Jupyter Notebook within ArcGIS Pro and run it. 
 
@@ -533,7 +489,7 @@ The program below depends on an ESRI library called arcpy.  It is the arcpy libr
 
 |
 
-*6. Buffer a line using the Python Window in ArcGIS Pro*
+**7.** Buffer a line using the Python Window in ArcGIS Pro 
 
 The code below is written for the arcpy environment and is intentended to be run in ArcGIS Pro Python Window.  Copy the script and paste it into the Python Window.
 

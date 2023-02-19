@@ -135,7 +135,27 @@ With len(), you can check the length of Python strings.  The len(s) method retur
 
 |
 
-**g. String Indexing**
+
+
+**g.String formatting with the format method**
+
+Curly braces can serve as place-holders for the variables you would like to store inside a string. In order to pass variables to a string you must call upon the .format() method.
+
+.. code-block:: python
+   :linenos:
+
+   fname = "John"
+   lname = "Doe"
+   age = "24"
+
+   print ("{} {} is {} years old." .format(fname, lname, age))
+
+
+
+
+|
+
+**h. String Indexing**
 
 In programming, individual items in an ordered set of data can be accessed directly using a numeric index or key value. This process is referred to as indexing.
 
@@ -187,7 +207,7 @@ String indices can also be specified with negative numbers, in which case indexi
 
 |
 
-**h. String Slicing**
+**i. String Slicing**
 
 Python also allows a form of indexing syntax that extracts substrings from a string, known as string slicing. If s is a string, an expression of the form  s[m:n]  returns the portion of  s starting with position m, and up to but not including position n:
 
@@ -224,7 +244,7 @@ Omitting both indices returns the original string, in its entirety.
 
 
 
-**i. Slicing with Negative indices**
+**j. Slicing with Negative indices**
 
 Negative indices can be used with slicing as well. -1 refers to the last character, -2, the second-to-last, and so on, just as with simple indexing. The diagram below shows how to slice the substring 'oob' from the string 'foobar' using both positive and negative indices:
 String index 3

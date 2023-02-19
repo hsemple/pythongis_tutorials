@@ -2,7 +2,7 @@
 Development Environments
 ==========================
 
-For these tutorials, we will run Python in the following development environments: The Standard Python Distribution, Anaconda Distribution, ArcGIS Pro, ArcGIS APII for Python, and QGIS. 
+For these tutorials, we will run Python at various times in the following development environments: The Standard Python Distribution, Anaconda Distribution, ArcGIS Pro, ArcGIS API for Python, and QGIS. This will give users an opportunity to familiarize themselves with these various platforms.
 
 
 |
@@ -11,10 +11,10 @@ For these tutorials, we will run Python in the following development environment
 The Python Core Distribution 
 -------------------------------
 
-Many people still use the core Python distribution to run their code. However, by default this distribution lacks many packages and their dependencies  that you will need for GIS so you will have to install them manually. 
+Many people use the standard Python distribution as the central platform for development. Scripts are typically run in IDLE, which is an integrated development environment that lets you create and edit long Python scripts.  By default, this platform lacks many packages that is needed for GIS and related work so you will have to install these manually. Sometimes, installing these packages and their dependencies can be challenging, but these situations are great opportunities for learning the inner details of Python.
 
 
-1. To download the Python Core Distribution, visit Python's `homepage <https://www.python.org/downloads/>`_. Download the latest version.
+1. To download the Standard Python Distribution, visit Python's `homepage <https://www.python.org/downloads/>`_. Download the latest version.
 
 
 2. After downloading, install the program on your computer.
@@ -23,14 +23,14 @@ Many people still use the core Python distribution to run their code. However, b
    :alt: Install Python
 
 
-3. Follow the `instructions <https://aaronstannard.com/how-to-setup-a-proper-python-environment-on-windows/>`_ on this page to do the following:
+3. Follow the `instructions <https://aaronstannard.com/how-to-setup-a-proper-python-environment-on-windows/>`_ on this page and ensure that:
 
-  a. Add the Python 2.7 Directory to your System Path Environment Variable. ...
-  b. Install pip to Manage Your Python Packages. 
-  c. Install virtualenv to Create Local Python Environments for Your Projects.
+  a. the Python 3x Directory is added to your System Path Environment Variable.  
+  b. Pip is installed to manage your Python packages. 
+  c. Virtualenv is installed to create local Python environments for your projects.
 
    
-4. To begin entering code into Python, start the Python Interpreter or IDLE.  IDLE is an integrated development environment  that lets you create and edit Python scripts. 
+4. To begin entering code into Python, start either the Python Interpreter or IDLE.  
 
 
  .. image:: img/interpreter_idle.png
@@ -97,7 +97,7 @@ Jupyter Notebook within ArcGIS Pro
    :alt: Python's Notebook in ArcGIS Pro 
 
 
-3. If you wish to add new libraries to ArcGIS, you will first have to clone Python's default environment in ArcGIS Pro then install the new libraries to the cloned environment.  This `ESRI tutorial <https://support.esri.com/en/technical-article/000020560>`_shows  how to clone Python's default environment within ArcGIS Pro.
+3. If you wish to add new libraries to ArcGIS, you will first have to clone Python's default environment in ArcGIS Pro then install the new libraries to the cloned environment.  This `ESRI tutorial <https://support.esri.com/en/technical-article/000020560>`_ shows how to clone Python's default environment within ArcGIS Pro.
  
 
  

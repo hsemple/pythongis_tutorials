@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Strings and Lists &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+  <title>4. Strings and Lists &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,7 +18,9 @@
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Conditional Statements and Looping" href="conditionals_and_looping.html" />
+    <link rel="prev" title="3. Introduction to the Python Language" href="intro_programs.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -41,11 +43,20 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">2. Development Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="intro_programs.html">3. Introduction to the Python Language</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">4. Conditional Statements and Looping</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Strings and Lists</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#srrings">4.1. Srrings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#string-operations">4.2. String Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lists">4.3. Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-operations">4.4. List Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tuples">4.5. Tuples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-tuples-operations">4.6. Basic Tuples Operations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">5. Conditional Statements and Looping</a></li>
 </ul>
 
         </div>
@@ -62,7 +73,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Strings and Lists</li>
+      <li class="breadcrumb-item active"><span class="section-number">4. </span>Strings and Lists</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/strings_lists_conditional.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -73,12 +84,12 @@
            <div itemprop="articleBody">
              
   <section id="strings-and-lists">
-<h1>Strings and Lists<a class="headerlink" href="#strings-and-lists" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">4. </span>Strings and Lists<a class="headerlink" href="#strings-and-lists" title="Permalink to this heading"></a></h1>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <section id="srrings">
-<h2>Srrings<a class="headerlink" href="#srrings" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.1. </span>Srrings<a class="headerlink" href="#srrings" title="Permalink to this heading"></a></h2>
 <p>A string is a sequence of characters, e.g.,</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Hello. My name is Tom Jones&quot;</span>
 </pre></div>
@@ -96,7 +107,7 @@
 </div>
 </section>
 <section id="string-operations">
-<h2>String Operations<a class="headerlink" href="#string-operations" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.2. </span>String Operations<a class="headerlink" href="#string-operations" title="Permalink to this heading"></a></h2>
 <p>Various operations can be performed on string variables. Some of these are presented below:</p>
 <p><strong>a.  Concatenation</strong></p>
 <p>Concatenating strings means joining strings by linking them end-to-end.</p>
@@ -184,7 +195,19 @@ I LOVE LEARNING JAVASCRIPT</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>g. String Indexing</strong></p>
+<p><strong>g.String formatting with the format method</strong></p>
+<p>Curly braces can serve as place-holders for the variables you would like to store inside a string. In order to pass variables to a string you must call upon the .format() method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;John&quot;</span>
+<span class="linenos">2</span><span class="n">lname</span> <span class="o">=</span> <span class="s2">&quot;Doe&quot;</span>
+<span class="linenos">3</span><span class="n">age</span> <span class="o">=</span> <span class="s2">&quot;24&quot;</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> is </span><span class="si">{}</span><span class="s2"> years old.&quot;</span> <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">lname</span><span class="p">,</span> <span class="n">age</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>h. String Indexing</strong></p>
 <p>In programming, individual items in an ordered set of data can be accessed directly using a numeric index or key value. This process is referred to as indexing.</p>
 <p>In Python, strings are ordered sequences of character data, and thus can be indexed in this way. Individual characters in a string can be accessed by specifying the string name followed by a number in square brackets [ ].</p>
 <p>String indexing in Python is zero-based: the first character in the string has index 0, the next has index 1, and so on. The index of the last character will be the length of the string minus one.</p>
@@ -232,7 +255,7 @@ IndexError: string index out of range</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>h. String Slicing</strong></p>
+<p><strong>i. String Slicing</strong></p>
 <p>Python also allows a form of indexing syntax that extracts substrings from a string, known as string slicing. If s is a string, an expression of the form  s[m:n]  returns the portion of  s starting with position m, and up to but not including position n:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;foobar&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
@@ -259,7 +282,7 @@ IndexError: string index out of range</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">s</span><span class="p">[:]</span>
 </pre></div>
 </div>
-<p><strong>i. Slicing with Negative indices</strong></p>
+<p><strong>j. Slicing with Negative indices</strong></p>
 <p>Negative indices can be used with slicing as well. -1 refers to the last character, -2, the second-to-last, and so on, just as with simple indexing. The diagram below shows how to slice the substring ‘oob’ from the string ‘foobar’ using both positive and negative indices:
 String index 3</p>
 <p>Here is the corresponding Python code:</p>
@@ -350,7 +373,7 @@ age = “24”</p>
 </div>
 </section>
 <section id="lists">
-<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.3. </span>Lists<a class="headerlink" href="#lists" title="Permalink to this heading"></a></h2>
 <p>Lists are collections of items (strings, integers, or even other lists), e.g.,</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; y = [1,2,3, “Jim”]
 </pre></div>
@@ -374,7 +397,7 @@ age = “24”</p>
 </div>
 </section>
 <section id="list-operations">
-<h2>List Operations<a class="headerlink" href="#list-operations" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.4. </span>List Operations<a class="headerlink" href="#list-operations" title="Permalink to this heading"></a></h2>
 <p><strong>a. Get the length of a List</strong></p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list1</span> <span class="o">=</span>  <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;world&quot;</span><span class="p">]</span>
 </pre></div>
@@ -501,7 +524,7 @@ plt.show()</p>
 first colon, it means to go all the way to the end of the list.</p>
 </section>
 <section id="tuples">
-<h2>Tuples<a class="headerlink" href="#tuples" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.5. </span>Tuples<a class="headerlink" href="#tuples" title="Permalink to this heading"></a></h2>
 <p>A List is a collection which is ordered and changeable. Allows duplicate members. On the other hand, a tuple is a collection which is ordered and unchangeable. Allows duplicate members.</p>
 <p>A tuple is similar to a list, but the ordering of the values do not change once created.
 Coordinate values whose sequence must be maintained to draw a polygon can be stored as tuples.</p>
@@ -509,7 +532,7 @@ Coordinate values whose sequence must be maintained to draw a polygon can be sto
 tup2 = (1, 2, 3, 4, 5, 6, 7 )</p>
 </section>
 <section id="basic-tuples-operations">
-<h2>Basic Tuples Operations<a class="headerlink" href="#basic-tuples-operations" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.6. </span>Basic Tuples Operations<a class="headerlink" href="#basic-tuples-operations" title="Permalink to this heading"></a></h2>
 <p>Tuple operations are similar to list operations</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="go"> 3    - Length</span>
@@ -535,7 +558,10 @@ tup2 = (1, 2, 3, 4, 5, 6, 7 )</p>
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="intro_programs.html" class="btn btn-neutral float-left" title="3. Introduction to the Python Language" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="conditionals_and_looping.html" class="btn btn-neutral float-right" title="5. Conditional Statements and Looping" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

@@ -57,6 +57,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="intro_programs.html">3. Introduction to the Python Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings_lists_conditional.html">4. Strings and Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">5. Conditional Statements and Looping</a></li>
 </ul>
 
         </div>
@@ -85,32 +87,32 @@
              
   <section id="development-environments">
 <h1><span class="section-number">2. </span>Development Environments<a class="headerlink" href="#development-environments" title="Permalink to this heading"></a></h1>
-<p>For these tutorials, we will run Python in the following development environments: The Standard Python Distribution, Anaconda Distribution, ArcGIS Pro, ArcGIS APII for Python, and QGIS.</p>
+<p>For these tutorials, we will run Python at various times in the following development environments: The Standard Python Distribution, Anaconda Distribution, ArcGIS Pro, ArcGIS API for Python, and QGIS. This will give users an opportunity to familiarize themselves with these various platforms.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <section id="the-python-core-distribution">
 <h2><span class="section-number">2.1. </span>The Python Core Distribution<a class="headerlink" href="#the-python-core-distribution" title="Permalink to this heading"></a></h2>
-<p>Many people still use the core Python distribution to run their code. However, by default this distribution lacks many packages and their dependencies  that you will need for GIS so you will have to install them manually.</p>
+<p>Many people use the standard Python distribution as the central platform for development. Scripts are typically run in IDLE, which is an integrated development environment that lets you create and edit long Python scripts.  By default, this platform lacks many packages that is needed for GIS and related work so you will have to install these manually. Sometimes, installing these packages and their dependencies can be challenging, but these situations are great opportunities for learning the inner details of Python.</p>
 <ol class="arabic simple">
-<li><p>To download the Python Core Distribution, visit Python’s <a class="reference external" href="https://www.python.org/downloads/">homepage</a>. Download the latest version.</p></li>
+<li><p>To download the Standard Python Distribution, visit Python’s <a class="reference external" href="https://www.python.org/downloads/">homepage</a>. Download the latest version.</p></li>
 <li><p>After downloading, install the program on your computer.</p></li>
 </ol>
 <blockquote>
 <div><img alt="Install Python" src="_images/install_python.png" />
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li><p>Follow the <a class="reference external" href="https://aaronstannard.com/how-to-setup-a-proper-python-environment-on-windows/">instructions</a> on this page to do the following:</p></li>
+<li><p>Follow the <a class="reference external" href="https://aaronstannard.com/how-to-setup-a-proper-python-environment-on-windows/">instructions</a> on this page and ensure that:</p></li>
 </ol>
 <blockquote>
 <div><ol class="loweralpha simple">
-<li><p>Add the Python 2.7 Directory to your System Path Environment Variable. …</p></li>
-<li><p>Install pip to Manage Your Python Packages.</p></li>
-<li><p>Install virtualenv to Create Local Python Environments for Your Projects.</p></li>
+<li><p>the Python 3x Directory is added to your System Path Environment Variable.</p></li>
+<li><p>Pip is installed to manage your Python packages.</p></li>
+<li><p>Virtualenv is installed to create local Python environments for your projects.</p></li>
 </ol>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li><p>To begin entering code into Python, start the Python Interpreter or IDLE.  IDLE is an integrated development environment  that lets you create and edit Python scripts.</p></li>
+<li><p>To begin entering code into Python, start either the Python Interpreter or IDLE.</p></li>
 </ol>
 <blockquote>
 <div><img alt="Install Python" src="_images/interpreter_idle.png" />
@@ -163,7 +165,7 @@
 <div><img alt="Python's Notebook in ArcGIS Pro" src="_images/python_notebook.png" />
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li><p>If you wish to add new libraries to ArcGIS, you will first have to clone Python’s default environment in ArcGIS Pro then install the new libraries to the cloned environment.  This <a href="#id1"><span class="problematic" id="id2">`</span></a>ESRI tutorial &lt;<a class="reference external" href="https://support.esri.com/en/technical-article/000020560">https://support.esri.com/en/technical-article/000020560</a>&gt;`_shows  how to clone Python’s default environment within ArcGIS Pro.</p></li>
+<li><p>If you wish to add new libraries to ArcGIS, you will first have to clone Python’s default environment in ArcGIS Pro then install the new libraries to the cloned environment.  This <a class="reference external" href="https://support.esri.com/en/technical-article/000020560">ESRI tutorial</a> shows how to clone Python’s default environment within ArcGIS Pro.</p></li>
 </ol>
 <div class="line-block">
 <div class="line"><br /></div>
