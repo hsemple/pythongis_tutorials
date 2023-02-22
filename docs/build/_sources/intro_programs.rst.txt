@@ -313,8 +313,43 @@ The script below illustrates how to import a library (math) and use a function f
 |
 
 
+**6.**  Write a program to calculate the mean of a set of numbers.
 
-**6.** Write a program that calculates the spatial interaction between two places using a simple form of the gravity model.
+This code uses the mean() function within a module named numpy module to calculate the mean.  The function takes a list of numbers as an imput.
+
+
+.. code-block:: python
+   :linenos:
+
+    import numpy
+
+    arr_mean = numpy.mean([31,35,46,59,71,80,84,82,75,62,48,36]) 
+ 
+    print("The arithmetic mean is :", arr_mean)
+
+
+
+|
+
+
+
+**7.** Write a program that reads a simple text file with one entry per line.  Once the list is read and parsed, use it to calculate the mean. 
+
+.. code-block:: python
+   :linenos:
+
+    import numpy as np
+    data = np.loadtxt("/Users/hsemple/Desktop/equqke_depth.csv", skiprows=1, dtype='float')
+
+    print (data)
+    
+    arr_mean = numpy.mean([data]) 
+    print("The arithmetic mean is :", round(arr_mean,4))
+
+
+
+
+**8.** Write a program that calculates the spatial interaction between two places using a simple form of the gravity model.
 
 .. image:: img/interaction.png
    :alt: Spatial Interpolation Concept
@@ -342,6 +377,15 @@ The script below illustrates how to import a library (math) and use a function f
 
 
 |
+
+
+
+
+
+Maximum
+Minimum
+Standard Deviation
+Variance
 
 
 
@@ -389,8 +433,6 @@ The script below illustrates how to import the calendar library and use a functi
 
 
 |
-
-
 
 
 
@@ -456,10 +498,9 @@ The programm will first prompt the user for a current population as an integer, 
 
 
 
+**5.** Write a program that reads a simple text file with one entry per line.  Once the list is read and parsed, use it to calculate the following" maximum value, minimum value, standard deviation, variance. 
 
-
-**5.** Write a program to calculate the area of a circle
-
+ 
 
 
 **6.** Buffer a line using Jupyter Notebook 
@@ -530,6 +571,11 @@ Please vist the websites below to learn about the Python concepts listed above.
 * `Your first program <https://greenteapress.com/thinkpython2/html/thinkpython2002.html>`_
 
 * `Free Books <https://pythonbooks.revolunet.com/>`_
+
+* `Introduction to Python for Geographic Data Analysis <https://pythongis.org/index.html>`_
+
+* `Geographic Data Science with Python <https://geographicdata.science/book/notebooks/08_point_pattern_analysis.html>`_
+
 
 
 

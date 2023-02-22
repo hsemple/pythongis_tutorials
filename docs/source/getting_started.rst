@@ -2,83 +2,163 @@
 Development Environments
 ==========================
 
-For these tutorials, we will run Python at various times in the following development environments: The Standard Python Distribution, Anaconda Distribution, ArcGIS Pro, ArcGIS API for Python, and QGIS. This will give users an opportunity to familiarize themselves with these various platforms.
+For these tutorials, we will run our Python scripts in the following development environments depending on what needs to be accomplished: the Standard Python Distribution, Anaconda Distribution, ArcGIS Pro, ArcGIS API for Python, and QGIS. This will give users an opportunity to familiarize themselves with these various platforms.
 
 
 |
 
 
-The Python Core Distribution 
--------------------------------
+The Standard Python Distribution 
+-----------------------------------
 
-Many people use the standard Python distribution as the central platform for development. Scripts are typically run in IDLE, which is an integrated development environment that lets you create and edit long Python scripts.  By default, this platform lacks many packages that is needed for GIS and related work so you will have to install these manually. Sometimes, installing these packages and their dependencies can be challenging, but these situations are great opportunities for learning the inner details of Python.
+Many people use the standard Python distribution as the central platform for development. Scripts are in executed in IDLE, which is Python's default integrated development environment.  By default, the standard Python distribution lacks many packages that are needed for GIS and related work so you will have to install these manually. Sometimes, installing these packages and their dependencies can be challenging, but these challenges are great opportunities for learning the inner details of Python.
 
 
 1. To download the Standard Python Distribution, visit Python's `homepage <https://www.python.org/downloads/>`_. Download the latest version.
 
 
-2. After downloading, install the program on your computer.
+2. If you are using a Windows computer, after downloading, install the program on your computer.
 
  .. image:: img/install_python.png
    :alt: Install Python
 
 
-3. Follow the `instructions <https://aaronstannard.com/how-to-setup-a-proper-python-environment-on-windows/>`_ on this page and ensure that:
+3. If you are using a mac, first download `Homebrew <https://brew.sh/)>`_ . Homebrew is a package manager that helps users to quickly install software packages on Mac computers using the command line.  Prior to installing homebrew, you need to install Xcode’s Command Line Tools. Xcode is a macOS integrated development environment (IDE). You can use it to make apps for all mac OSs, iOS, iPad OS, watch OS, and tv OS. To download and install it, run the following command in the Terminal:
 
-  a. the Python 3x Directory is added to your System Path Environment Variable.  
-  b. Pip is installed to manage your Python packages. 
-  c. Virtualenv is installed to create local Python environments for your projects.
+   >>> xcode-select --install
+
+Accept starting the installation and the license and it will be installed automatically.
+
+
+4.  To install Homebrew automatically, run the below command:
+
+
+ >>> /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+
+
+5. After installing Python on Windows or MacOs check the following:
+
+  a. the version of Python that will be run from the command prompt. To do this type:
+
+     >>> which python3
+
+     You should get  /usr/local/bin/python3 or something similar.
+
+
+
+  b. that the Python 3x Directory has been added to your System Path Environment Variable.  To check for this type, type:
+    >>>
+
+
+  c. that Pip has been installed to manage your Python packages.  To check for pip, type:
+
+    >>> 
+
+
+  
+
+6. To install new packages, you need to use Pip.  The basic structure of the command is:
+    >>> pip install <package_name>
+
+   To install a library name *matplotlib*, type:
+
+    >>> pip install matplotlib
 
    
-4. To begin entering code into Python, start either the Python Interpreter or IDLE.  
+7. To begin entering code into Python, start either the Python Interpreter or IDLE then enter the code.  
 
 
  .. image:: img/interpreter_idle.png
-   :alt: Install Python
+   :alt: Python Interpreter and IDLE
 
-
-5. To install new packages, you need to install Pip.  Click `this link <https://phoenixnap.com/kb/install-pip-windows>`_ to learn more about how to work with Pip.  
 
 
 
 |
+
+
+Python Virtual Environments
+-----------------------------
+
+When working with Python, it is a good idea to work with virtual environments. Virtual environments are isolated environments that Python developers can use to install and run packages for a specific project.  Thus, instead of installing the packages for the entire system, users can install the packages needed for a particukar project. This allows each project to have its own dependencies, regardless of what dependencies other projects may be using.   
+
+
+
+**How to Install and Create Virtual Environment**
+
+
+1. At the Python prompt, type
+
+>>> pip3 install virtualenv
+
+
+2. Make a new directory to keep all your virtual environments in one place.
+
+>>> mkdir python-virtual-environments && cd python-virtual-environments
+
+
+3. Create a new virtual environment inside the 'python-virtual-environments' directory.
+
+>>> python3 -m venv project_env
+
+
+4. To activate the 'project_env virtual envirnonment' you created in the previous step, run the code below.  
+
+>>> source project_env/bin/activate
+
+
+5. Notice how your prompt is now prefixed with the name of your environment (project_env, in our case). This indicates that 'project_env' is currently active, which means the python executable will only use this environment’s packages and settings.
+
+
+6. To stop using the virtual environment, run the code below.
+
+>>> deactivate
  
+
+
+
+
+|
+
+
 
 
  
 Jupyter Notebook in Anaconda 
 ------------------------------
 
-Anaconda is a large Python distribution that has become very popular over the last several years.  One reason for its popularity is that it comes with many packages already pre-installed. Also, users can run their code using Jupyter Notebook, which is a nice, browser-based environment for running code. I strongly recommend that you use Jupyter Notebook for your Python GIS programming.
+Anaconda is a large Python distribution that has become very popular over the last several years.  One reason for its popularity is that it comes  pre-installed with many packages. Also, users can run their code using Jupyter Notebook, which is a nice, browser-based environment for running code. I strongly recommend that you use Jupyter Notebook as much as you can for your Python GIS programming.
 
 
-1. Download the Anaconda Distribution at `this site <https://www.anaconda.com/products/distribution>`_. 
+1. Download the Anaconda Distribution at `this site <https://www.anaconda.com/products/distribution>`_ (https://www.anaconda.com/products/distribution). 
 
 
-2. Start Anaconda, then launch the Jupyter Notebook. 
+2. After intallation, start Anaconda, then launch the Jupyter Notebook. 
 
 
  .. image:: img/jupyter_notebook.png
-   :alt: Install Python
+   :alt: Anaconda Navigator
 
 
-3. Click on this `link <https://www.edlitera.com/en/blog/posts/guide-how-to-start-jupyter-notebook#mcetoc_1gcqvj0h63>`_ for information on how to open a Jupyter Notebook on Mac OS or Windows.  The Jupyter development environment should appear as shown below.
+3. Click on this `link <https://www.edlitera.com/en/blog/posts/guide-how-to-start-jupyter-notebook#mcetoc_1gcqvj0h63>`_ (https://www.edlitera.com/en/blog/posts/guide-how-to-start-jupyter-notebook#mcetoc_1gcqvj0h63) for information on how to open a Jupyter Notebook on macOS or Windows.  The Jupyter development environment should appear as shown below.
 
 
  .. image:: img/jupyter_dev_environment.png
-   :alt: Install Python
+   :alt: Jupyter Notebook Development Environment
 
 
 
-4. If you need to install a new package, open the Anaconda folder in Windows, look for Anaconda prompt.  When the Anaconda prompt starts, enter the command below to search for an install a new package. Conda installs many packages with ease, so you should use it often.
+4. If you need to install new package, including spatial packakes, look for the Anaconda folder at the Windows Start button, then click on Anaconda prompt.  When the Anaconda prompt appears, enter the command below to install a new package. Conda installs many packages with ease, so you should use it often.
 
            conda install package_name
 
 
-5. Alternatively, you can install new packages from within Anaconda Navigatot.
+5. Alternatively, you can install new packages from within Anaconda Navigator. This works for either Windows or macOS.
 
  .. image:: img/install_packages.png
-   :alt: Install Python
+   :alt: Anaconda Navigator Environment
+
 
 
  
@@ -93,7 +173,7 @@ Jupyter Notebook within ArcGIS Pro
 
 2. To run Python using Jupyter Notebook that is installed with ArcGIS Pro, open ArcGIS Pro, then click on Project | Python | Python Notebook, This shown in the illustration below.
 
- .. image:: img/python_notebook.png
+ .. image:: img/jupyter_notebook_arcgis_pro.png
    :alt: Python's Notebook in ArcGIS Pro 
 
 
@@ -107,14 +187,13 @@ Jupyter Notebook within ArcGIS Pro
 Python Window in ArcGIS Pro 
 -----------------------------
 
-1. In ArcGIS Pro, select the Analysis tab. Depending on your version of ArcGIS Pro, you will be able to select the Python Window. As shown below, in Python 2.7, you can click the drop-down menu to the right of the Python button and click Python Window. In other versions, or you may just have to click on the Python Window.
+1. In ArcGIS Pro, click on Project | Python | Python Window.  
   
 
- .. image:: img/new_jupyter_notebook.png
+ .. image:: img/jupyter_notebook_arcgis_pro2.png
    :alt: New Python Notebook
 
   
- 
  2. This opens the Python window.
    
 
@@ -122,10 +201,10 @@ Python Window in ArcGIS Pro
    :alt: ArcGIS Python Notebook
 
 
-3. The top section of the Python Window is called the transcript, and the bottom section is called the prompt. The transcript is initially blank. The transcript provides a record of previously entered code and its results.
+3. The top section of the Python Window is called the transcript. The bottom section is called the prompt. The transcript is initially blank. The transcript provides a record of previously entered code and its results.
 
-4. The prompt is where you type your code. When the Python window first opens, the message in the prompt reads Initializing Python interpreter, which means the window is getting ready to receive your code. After a few seconds the message is replaced with Enter Python code here, which means you can start typing your code. After you have opened the Python window for the first time, these messages don’t appear again in the current session.
-See this link for a tutorial.
+
+4. The prompt is where you type your code. When the Python window first opens, the message in the prompt reads Initializing Python interpreter, which means the window is getting ready to receive your code. After a few seconds the message is replaced with Enter Python code here, which means you can start typing your code. See this link for a tutorial.
  
 
 
@@ -150,41 +229,19 @@ The Python Console within QGIS
 **Running Python from the Console Shell**
 
 
-1. Open QGIS and add this WFS layer. To do so, click on Add Layer | Add WFS Layer..., then select New and provide this URL: https://maps.gns.cri.nz/geology/wfs
-
-2. Highlight the layer called NZL_GNS_250K_faults and select Add Layer to Project. 
-
-.. image:: img/python_wfsLayer.png
-   :alt: The NZL_GNS_250K_faults layer
+1. Open QGIS.  From the main menu in QGIS, select Plugins | Python Console.  This will cause the Python Console to appear. It may open up towards the bottom of the application, however, if you wish, you can detach it from the main window and place it whereever you wish.
 
 
-3. From the main menu in QGIS, select Plugins | Python Console.  This will cause the Python Console to appear. It may open up towards the bottom of the application, however, if you wish, you can detach it from the main window and place it whereever you wish.
+ .. image:: img/qgis_python_console1.png
+   :alt: New Python Notebook
 
 
-4. The lower part of the Console display with the >>> prompt. This is is where you type commands.  
+2. The lower part of the Console display with the >>> prompt. This is is where you type commands.  
 
 
-5. The Python commands can be pure Python commands that have nothing to do with GIS or QGIS, or they can be Python commands ained at manipulating QGIS commands or user data.
+3. The Python statements can be pure Python commands that have nothing to do with QGIS, or they can be Python statements ained at manipulating QGIS cser data i QGIS.
 
 
-6.  The iface class is used to access most graphical QGIS components. For example, to get a reference to the active layer, we can write:   
-
-   >>> layer = iface.activeLayer()
-
-
-7. Once you get a reference to the active layer object, you can access methods and properties associated with this object. For example, to get the name of the active layer, we write:
-   
-   >>> layer.sourceName()
-
-
-8.  You should get the response in the upper half of the console
-
-     'NZL_GNS_250K_faults'
-
-
-9. Now, let us get a count of the number of features in the layer:
-
->>> layer.featureCount()
 
 
 |
@@ -192,27 +249,22 @@ The Python Console within QGIS
 
 **Accessing the QGIS Python Editor**
 
-1.  The editor is used to write scripts that would be too lengthy to run from the Console Shell.   It can be accessed by right-clicking Show Editor in the upper part of the console.
-
-2.  We will write a simple script to print the names of the fields in the attribute table of the WFC layer ::
-
-      layer = iface.activeLayer()
-
-      for fld in layer.fields():
-          print(fld.name())
+1.  The editor is used to write scripts that are too lengthy to be edited and executed from the Console Shell.   It can be accessed by clicking "Show Editor" in the upper part of the console.
 
 
-.. image:: img/python_script1.png
+
+2.  To illustrate the use of the editor, we will execute a simple script to print the mean of a set of numbers. The script is provided below along with an illustration of how it appers in QGIS.
+
+.. code-block:: python
+   :linenos:
+
+   import numpy
+   arr_mean = numpy.mean([31,35,46,59,71,80,84,82,75,62,48,36])
+   print("The arithmetic mean is :", arr_mean)
+
+
+.. image:: img/qgis_python_console2.png
    :alt: Python Script Print Name of Attribute Fields
-
-
-3. The script below get the length of each fault segment and maintains keeps a running total of the lengths ::
-
-    layer = iface.activeLayer()
-    lengths = []
-    for fault in layer.getFeatures():
-        lengths.append(fault.attribute("shape_len"))
-        print(sum(lengths))
 
 
 
@@ -224,9 +276,7 @@ Jupyter Notebook with QGIS
 
 1. It is possible to run Jupyter notebook from within QGIS.  First, you must install the pyqgis modules into an environment. After than, you can with QGIS outside of the application itself. 
 
-2. Create a Python GIS environment  - https://autogis-site.readthedocs.io/en/latest/course-info/create-python-gis-environment.html
-
-
+2. Create a Python GIS environment  - https://lerryws.xyz/posts/Install-Jupyter-Notebook-in-QGIS3
 
 
 |
@@ -237,20 +287,25 @@ Jupyter Notebook with QGIS
 Resources
 ------------
 
-Getting Started With Python Programming (QGIS3) - https://www.qgistutorials.com/en/docs/3/getting_started_with_pyqgis.html
+* Getting Started With Python Programming (QGIS3) - https://www.qgistutorials.com/en/docs/3/getting_started_with_pyqgis.html
 
-Customizing QGIS with Python (Full Course Material) - https://courses.spatialthoughts.com/pyqgis-in-a-day.html
+* Customizing QGIS with Python (Full Course Material) - https://courses.spatialthoughts.com/pyqgis-in-a-day.html
 
-Free and Open Source GIS Ramblings - https://anitagraser.com/pyqgis-101-introduction-to-qgis-python-programming-for-non-programmers/
+* GIS Python API documentation - https://qgis.org/pyqgis/master/
 
-GIS Python API documentation - https://qgis.org/pyqgis/master/
+* PyQGIS Developer Cookbook - https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/index.html
 
-PyQGIS Developer Cookbook - https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/index.html
+* Streamlining GIS with Automation - https://www.geospatialworld.net/prime/technology-and-innovation/streamlining-gis-with-automation/
 
-Streamlining GIS with Automation - https://www.geospatialworld.net/prime/technology-and-innovation/streamlining-gis-with-automation/
+* Getting started with Anaconda - https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-nav-mac
 
-Getting started with Anaconda - https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-nav-mac
+* Python Virtual Environments - https://autogis-site.readthedocs.io/en/latest/course-info/create-python-gis-environment.html
 
+* Python GIS environment - https://gist.github.com/ThomasG77/223064813d8aefda5b3cdb05c2588fa1
+
+* QGIS Developers Cookbook - https://docs.qgis.org/2.18/pdf/en/QGIS-2.18-PyQGISDeveloperCookbook-en.pdf
+
+* Getting Started With Python Programming - http://www.qgistutorials.com/en/docs/getting_started_with_pyqgis.html
 
  
 

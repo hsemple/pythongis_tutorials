@@ -311,7 +311,29 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>6.</strong> Write a program that calculates the spatial interaction between two places using a simple form of the gravity model.</p>
+<p><strong>6.</strong>  Write a program to calculate the mean of a set of numbers.</p>
+<p>This code uses the mean() function within a module named numpy module to calculate the mean.  The function takes a list of numbers as an imput.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="kn">import</span> <span class="nn">numpy</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span> <span class="n">arr_mean</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="mi">31</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">46</span><span class="p">,</span><span class="mi">59</span><span class="p">,</span><span class="mi">71</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">82</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">62</span><span class="p">,</span><span class="mi">48</span><span class="p">,</span><span class="mi">36</span><span class="p">])</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The arithmetic mean is :&quot;</span><span class="p">,</span> <span class="n">arr_mean</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>7.</strong> Write a program that reads a simple text file with one entry per line.  Once the list is read and parsed, use it to calculate the mean.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos">2</span> <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;/Users/hsemple/Desktop/equqke_depth.csv&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span> <span class="nb">print</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span> <span class="n">arr_mean</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">data</span><span class="p">])</span>
+<span class="linenos">7</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The arithmetic mean is :&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">arr_mean</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>8.</strong> Write a program that calculates the spatial interaction between two places using a simple form of the gravity model.</p>
 <img alt="Spatial Interpolation Concept" src="_images/interaction.png" />
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>#Get the user&#39;s input
 <span class="linenos"> 2</span>P1 = input(&quot;Please input the size of the first city: &quot;)
@@ -332,6 +354,10 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<p>Maximum
+Minimum
+Standard Deviation
+Variance</p>
 <p><strong>7.</strong>  Write a Python program to display the calendar for any given month of a specified year.</p>
 <p>The script below illustrates how to import the calendar library and use a function from the calendar library. Enter month and year as integers.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">#import calendar library</span>
@@ -399,7 +425,7 @@
 <span class="linenos">8</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>5.</strong> Write a program to calculate the area of a circle</p>
+<p><strong>5.</strong> Write a program that reads a simple text file with one entry per line.  Once the list is read and parsed, use it to calculate the following” maximum value, minimum value, standard deviation, variance.</p>
 <p><strong>6.</strong> Buffer a line using Jupyter Notebook</p>
 <p>The program below depends on an ESRI library called arcpy.  It is the arcpy library that supplies the additional capability that Python needs to execute ArcGIS commands. The code is intentended to run as a standalone script or from Jupyter Notebook within ArcGIS Pro.  Copy the script and paste it into Jupyter Notebook within ArcGIS Pro and run it.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">arcpy</span>
@@ -444,6 +470,8 @@
 <li><p><a class="reference external" href="http://www.openbookproject.net/thinkcs/python/english2e/ch02.html">Variables expressions and statements</a></p></li>
 <li><p><a class="reference external" href="https://greenteapress.com/thinkpython2/html/thinkpython2002.html">Your first program</a></p></li>
 <li><p><a class="reference external" href="https://pythonbooks.revolunet.com/">Free Books</a></p></li>
+<li><p><a class="reference external" href="https://pythongis.org/index.html">Introduction to Python for Geographic Data Analysis</a></p></li>
+<li><p><a class="reference external" href="https://geographicdata.science/book/notebooks/08_point_pattern_analysis.html">Geographic Data Science with Python</a></p></li>
 </ul>
 </section>
 </section>
