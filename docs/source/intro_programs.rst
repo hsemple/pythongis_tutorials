@@ -31,8 +31,10 @@ In this module, we will look at the following aspects of the Python language:
 
 **Hello World Program**
 
+Enter the program below in Jupyter Notebook or any other Python development that you are working in and then run the code.  You will have to look up how to run the code in the development environment in which you are working.  Do not enter ">>>". That symbol is to indicate the compiler's prompt if there is one. 
+
 >>> print('Hello, world!')
-Hello, world!
+ 
 
 
 |
