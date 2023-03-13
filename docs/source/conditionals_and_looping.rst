@@ -853,7 +853,11 @@ The syntax can be expanded to include more than 1 for clause.  It can also inclu
 
 
 
-**Exercises**
+Exercises
+-----------
+
+
+
 
 1. Complete the practice exercises below. Submit screenshots as proofs that you completed the exercises:
 
@@ -863,34 +867,35 @@ The syntax can be expanded to include more than 1 for clause.  It can also inclu
 
 
 
-2. Given the list below, write a program that loops through the list the prints out each elements in the list.
+2. Given the list below, write a program that loops through the list and prints out each element in the list. Submit a screenshot showing your program code and the results of running the code.
 
     my_list = [1,4,5,10, 34, 67, 89, 90, 124]
 
 
-3. Write a program that squares each value in the list above and prints out the squared values.
+3. Write a program that squares each value in the list below and then prints out the squared values.
+  
+     my_list = [11,14,15,100, 34, 67, 89, 90, 98]
 
 
 4. Write a program that loops through values from zero to 50 and prints out every other value in the range.
 
 
-5. Write a program that adds the elements of th two list below.
+5. Write a program that cumulatively adds the elements of the list below and prints out the results after each addition.
 
-    list1 = [11,21, 34, 12, 31, 55]
-    list2 = [23, 24, 100, 56,90, 100] 
+    list1 = [11,21, 34, 12, 31, 55, 23, 24, 100, 56,90, 100] 
 
 
-6. Enhance the spatial interpolation porgram you worked on in the first lab by adding looping functionality to the program.  The program should work in this way: once the initial round of calculations are completed and the results printed to the screen, the code should prompt the user to enter data once again for a new set of z-values and associated distance values.  The program should make the next round of calculations and then prompt the user again for values for an additional round of calculation. The program keep looping until no more calculation is needed. At that stage, the user should be able to quit the program gracefully.
+6. Extend the spatial interpolation program you worked on in the first lab by adding looping functionality to the program.  The program should work in this way: once the initial round of calculations are completed and the results printed to the screen, the code should prompt the user to enter a new set of z-values and associated distance values.  The program should carry out the next round of calculations and then prompt the user again for values for an additional round of calculation. The program should keep looping until no more rounds of calculation are needed. At that stage, the user should be able to quit the program gracefully.
 
 
 7. Look up how to work with ArcPy's ListFeatureClass function, then write Python code that uses a ArcPy's ListFeature Classes function to print out a list of feature classes in one of your folders.
 
-8. Run the code towards the beginning of this document that deals with displaying layers in QGIS if the layer is an active layer. Run the code using your own data and show that you can display either a raster or vector in QGIS if it is an active layer.
+8. Run the code in Section 5.1 of this document that deals with displaying layers in QGIS if the layer is an active layer. Run the code using your own data and show that you can display either a raster or vector in QGIS if it is an active layer.
 
 
-9. In what way is "Break" different from "Continue" in Python. Give coding examples to show the difference.
+9. In what way is "Break" in Python different from "Continue". Give coding examples to show the difference.
 
-10. when is a for loop used in Python as opposed to a while loop. Give coding examples to support your answer.
+10. When is a "for loop" used in Python as opposed to a while loop. Give coding examples to support your answer.
 
 
 
