@@ -103,50 +103,31 @@
 <div><img alt="Install Python" src="_images/install_python.png" />
 </div></blockquote>
 <ol class="arabic" start="3">
-<li><p>If you are using a mac, first download <a class="reference external" href="https://brew.sh/)">Homebrew</a> . Homebrew is a package manager that helps users to quickly install software packages on Mac computers using the command line.  Prior to installing homebrew, you need to install Xcode’s Command Line Tools. Xcode is a macOS integrated development environment (IDE). You can use it to make apps for all mac OSs, iOS, iPad OS, watch OS, and tv OS. To download and install it, run the following command in the Terminal:</p>
+<li><p>If you are using a mac computer, first download and install <a class="reference external" href="https://brew.sh/)">Homebrew</a> . Homebrew is a package manager that helps users to quickly install software packages on Mac computers using the command line.  Prior to installing homebrew, you need to install Xcode’s Command Line Tools. Xcode is a macOS integrated development environment (IDE). You can use it to make apps for all mac OSs, iOS, iPad OS, watch OS, and tv OS. To download and install it, run the following command in the Terminal:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">xcode</span><span class="o">-</span><span class="n">select</span> <span class="o">--</span><span class="n">install</span>
 </pre></div>
 </div>
 </li>
-</ol>
-<p>Accept starting the installation and the license and it will be installed automatically.</p>
-<ol class="arabic simple" start="4">
-<li><p>To install Homebrew automatically, run the below command:</p></li>
+<li><p>Accept starting the installation and the license and it will be installed automatically.</p></li>
+<li><p>To install Homebrew automatically, run the command below:</p></li>
 </ol>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
-<li><p>After installing Python on Windows or MacOs check the following:</p></li>
-</ol>
-<blockquote>
-<div><ol class="loweralpha">
-<li><p>the version of Python that will be run from the command prompt. To do this type:</p>
+<ol class="arabic" start="6">
+<li><p>After installing Python on Windows or macOS check the version of Python that will be run from the command prompt. To do this type:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">which</span> <span class="n">python3</span>
 </pre></div>
 </div>
-<p>You should get  /usr/local/bin/python3 or something similar.</p>
 </li>
-<li><p>that the Python 3x Directory has been added to your System Path Environment Variable.  To check for this type, type:</p></li>
+<li><p>You should get  /usr/local/bin/python3 or something similar.</p></li>
+<li><p>Check also that the Python 3x Directory has been added to your System Path Environment Variable.  To check for this type, type:</p></li>
 </ol>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $PATH
 </pre></div>
 </div>
-<ol class="loweralpha simple" start="3">
-<li><p>that Pip has been installed to manage your Python packages.  To check for pip, type:</p></li>
-</ol>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic" start="6">
-<li><dl>
-<dt>To install new packages, you need to use Pip.  The basic structure of the command is:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</dd>
-</dl>
-<p>To install a library name <em>matplotlib</em>, type:</p>
+<ol class="arabic" start="9">
+<li><p>To install new packages, you need to use Pip.  The basic structure of the command is “pip install &lt;package_name&gt;”. To install a library nameD <em>matplotlib</em>, type:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
 </pre></div>
 </div>
@@ -216,7 +197,7 @@
 <div><img alt="Jupyter Notebook Development Environment" src="_images/jupyter_dev_environment.png" />
 </div></blockquote>
 <ol class="arabic" start="4">
-<li><p>If you need to install a new package, look for the Anaconda folder at the Windows Start button, then click on Anaconda prompt.  When the Anaconda prompt appears, enter the command below to install a new package. Conda installs many packages with ease, so you should use it often.</p>
+<li><p>If you need to install new package, including spatial packakes, look for the Anaconda folder at the Windows Start button, then click on Anaconda prompt.  When the Anaconda prompt appears, enter the command below to install a new package. Conda installs many packages with ease, so you should use it often.</p>
 <blockquote>
 <div><p>conda install package_name</p>
 </div></blockquote>
@@ -284,15 +265,15 @@
 </div></blockquote>
 <ol class="arabic simple" start="2">
 <li><p>The lower part of the Console display with the &gt;&gt;&gt; prompt. This is is where you type commands.</p></li>
-<li><p>The Python commands can be pure Python commands that have nothing to do with GIS or QGIS, or they can be Python commands ained at manipulating QGIS commands or user data.</p></li>
+<li><p>The Python statements can be pure Python commands that have nothing to do with QGIS, or they can be Python statements ained at manipulating QGIS cser data i QGIS.</p></li>
 </ol>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>Accessing the QGIS Python Editor</strong></p>
 <ol class="arabic simple">
-<li><p>The editor is used to write scripts that are too lengthy to run from the Console Shell.   It can be accessed by right-clicking Show Editor in the upper part of the console.</p></li>
-<li><p>We will write a simple script to print the mean of a set of numbers.</p></li>
+<li><p>The editor is used to write scripts that are too lengthy to be edited and executed from the Console Shell.   It can be accessed by clicking “Show Editor” in the upper part of the console.</p></li>
+<li><p>To illustrate the use of the editor, we will execute a simple script to print the mean of a set of numbers. The script is provided below along with an illustration of how it appers in QGIS.</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">numpy</span>
 <span class="linenos">2</span><span class="n">arr_mean</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="mi">31</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">46</span><span class="p">,</span><span class="mi">59</span><span class="p">,</span><span class="mi">71</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">82</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">62</span><span class="p">,</span><span class="mi">48</span><span class="p">,</span><span class="mi">36</span><span class="p">])</span>
@@ -325,6 +306,8 @@
 <li><p>Getting started with Anaconda - <a class="reference external" href="https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-nav-mac">https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-nav-mac</a></p></li>
 <li><p>Python Virtual Environments - <a class="reference external" href="https://autogis-site.readthedocs.io/en/latest/course-info/create-python-gis-environment.html">https://autogis-site.readthedocs.io/en/latest/course-info/create-python-gis-environment.html</a></p></li>
 <li><p>Python GIS environment - <a class="reference external" href="https://gist.github.com/ThomasG77/223064813d8aefda5b3cdb05c2588fa1">https://gist.github.com/ThomasG77/223064813d8aefda5b3cdb05c2588fa1</a></p></li>
+<li><p>QGIS Developers Cookbook - <a class="reference external" href="https://docs.qgis.org/2.18/pdf/en/QGIS-2.18-PyQGISDeveloperCookbook-en.pdf">https://docs.qgis.org/2.18/pdf/en/QGIS-2.18-PyQGISDeveloperCookbook-en.pdf</a></p></li>
+<li><p>Getting Started With Python Programming - <a class="reference external" href="http://www.qgistutorials.com/en/docs/getting_started_with_pyqgis.html">http://www.qgistutorials.com/en/docs/getting_started_with_pyqgis.html</a></p></li>
 </ul>
 </section>
 </section>

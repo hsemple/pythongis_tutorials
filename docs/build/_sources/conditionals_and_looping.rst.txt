@@ -283,8 +283,8 @@ For loops are great for manipulating lists
    :linenos:
 
    a = [‘cat’, ‘dog’, ‘window’, ‘Main Street’]
-   for x in a:
-      print (x)
+       for x in a:
+          print (x)
  
 | cat
 | dog
@@ -304,10 +304,10 @@ For loops are great for manipulating lists
    suits = ['Spades', 'Clubs', 'Diamonds', 'Hearts']
    values = ['Ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King']
    for suit in suits:
-      for value in values:
-          print (str(value) + " of " + str(suit))
+       for value in values:
+           print (str(value) + " of " + str(suit))
 
-      print ( " " )
+       print ( " " )
 
 
 In the above code, the program enters the first loop visiting “Spades”, then immediately jumps to the nested loop printing out the value for each card.  When the program reaches the end of the list of “values’, it jumps out of the nested loop and return to the first loop to get to “Clubs. Next, it loops through all values in the second suit and print the card names. This process continues until all the suits and values have been looped through.
@@ -340,7 +340,6 @@ The code below uses a 'for loop' to step through a list of road types. For each 
 
 .. code-block:: python
    :linenos:
-
 
    listOfRoadTypes = [‘Highway’,’Street’,’Boulevard’]
    for RoadType in listOfRoadTypes:
@@ -561,7 +560,7 @@ Try the code below to see how 'continue' works.
  
  |
 
- .. code-block:: python
+.. code-block:: python
    :linenos:
 
    for i in range (100):
@@ -581,7 +580,7 @@ While Loops
 
 While loops are used when you cannot predict at runtime the number of times an operation will occur. The basic while loop structure is shown below:
 
- .. code-block:: python
+.. code-block:: python
    :linenos:
 
    while condition:
@@ -593,7 +592,7 @@ As long as the condition is true, the while statement will execute. When the exp
 
 Example 1
 
- .. code-block:: python
+.. code-block:: python
    :linenos:
 
    x = 1
@@ -614,7 +613,7 @@ Example 1
 
 When writing counters, you can write  x = x + 1
 
- .. code-block:: python
+.. code-block:: python
    :linenos:
 
    x = 1
@@ -628,7 +627,7 @@ When writing counters, you can write  x = x + 1
 You can also use the plus equal term "+=" to add another value to the variable's value and assign a  new value to the variable.
 
 
- .. code-block:: python
+.. code-block:: python
    :linenos:
 
    x = 1
@@ -644,7 +643,7 @@ Operators such as "-=", "*=", /= behave similarly similar for subtraction, multi
 
 Example 2
 
- .. code-block:: python
+.. code-block:: python
    :linenos:
 
    max = 5
@@ -804,18 +803,16 @@ List comprehensions provide a concise way of looping, populating lists, and perf
 
 
 
- Instead of populating a list using the method shown above, you can reduce your looping code by using a list comprehension.  The general syntax is:
+Instead of populating a list using the method shown above, you can reduce your looping code by using a list comprehension.  The general syntax is:
 
  
-
 new_list = [expression for member in iterable object, for loop to generate the numbers to feed into the expression]
-
 
 
 #Example.  Square the values in the list 
 
 
- .. code-block:: python
+.. code-block:: python
    :linenos:
 
    nums = [1, 2, 3, 4, 5]
@@ -824,7 +821,10 @@ new_list = [expression for member in iterable object, for loop to generate the n
 
 [0.5, 1.0, 1.5, 2.0]
 
+
+
 |
+
 
 To use the syntax, do the following:
 
@@ -839,7 +839,7 @@ To use the syntax, do the following:
 The syntax can be expanded to include more than 1 for clause.  It can also include if statements.
 
 
- .. code-block:: python
+.. code-block:: python
    :linenos:
 
    nums = [0, 1, 2, 3, 4]
@@ -850,6 +850,49 @@ The syntax can be expanded to include more than 1 for clause.  It can also inclu
 
 
 | 
+
+
+
+**Exercises**
+
+1. Complete the practice exercises below. Submit screenshots as proofs that you completed the exercises:
+
+    a. `Complete these if else exercises <https://www.w3schools.com/python/exercise.asp?filename=exercise_ifelse1>`_
+    b. `For Loop Exercises <https://www.w3schools.com/python/exercise.asp?filename=exercise_for_loops1>`_
+    c. `Complete this while loop exercises <https://www.w3schools.com/python/exercise.asp?filename=exercise_while_loops1>`_
+
+
+
+2. Given the list below, write a program that loops through the list the prints out each elements in the list.
+
+    my_list = [1,4,5,10, 34, 67, 89, 90, 124]
+
+
+3. Write a program that squares each value in the list above and prints out the squared values.
+
+
+4. Write a program that loops through values from zero to 50 and prints out every other value in the range.
+
+
+5. Write a program that adds the elements of th two list below.
+
+    list1 = [11,21, 34, 12, 31, 55]
+    list2 = [23, 24, 100, 56,90, 100] 
+
+
+6. Enhance the spatial interpolation porgram you worked on in the first lab by adding looping functionality to the program.  The program should work in this way: once the initial round of calculations are completed and the results printed to the screen, the code should prompt the user to enter data once again for a new set of z-values and associated distance values.  The program should make the next round of calculations and then prompt the user again for values for an additional round of calculation. The program keep looping until no more calculation is needed. At that stage, the user should be able to quit the program gracefully.
+
+
+7. Look up how to work with ArcPy's ListFeatureClass function, then write Python code that uses a ArcPy's ListFeature Classes function to print out a list of feature classes in one of your folders.
+
+8. Run the code towards the beginning of this document that deals with displaying layers in QGIS if the layer is an active layer. Run the code using your own data and show that you can display either a raster or vector in QGIS if it is an active layer.
+
+
+9. In what way is "Break" different from "Continue" in Python. Give coding examples to show the difference.
+
+10. when is a for loop used in Python as opposed to a while loop. Give coding examples to support your answer.
+
+
 
 
 

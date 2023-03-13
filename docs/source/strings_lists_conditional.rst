@@ -4,7 +4,7 @@ Strings and Lists
 
 |
 
-Srrings
+Strings
 ---------
 
 A string is a sequence of characters, e.g.,
@@ -137,7 +137,7 @@ With len(), you can check the length of Python strings.  The len(s) method retur
 
 
 
-**g.String formatting with the format method**
+**g. String formatting with the format method**
 
 Curly braces can serve as place-holders for the variables you would like to store inside a string. In order to pass variables to a string you must call upon the .format() method.
 
@@ -243,6 +243,8 @@ Omitting both indices returns the original string, in its entirety.
 >>> t = s[:]
 
 
+|
+
 
 **j. Slicing with Negative indices**
 
@@ -262,15 +264,16 @@ Here is the corresponding Python code:
 >>> s[-5:-2] == s[1:4]
 True
 
-Specifying a Stride in a String Slice
-Links to an external site.
+|
 
-Adding an additional  : and a third index designates a stride (also called a step), which indicates how many characters to jump after retrieving each character in the slice.
+
+**Specifying a Stride in a String Slice**
+
+Adding an additional colon (:) and a third index designates a stride (also called a step), which indicates how many characters to jump after retrieving each character in the slice.
 
 For example, for the string 'foobar', the slice 0:6:2  starts with the first character and ends with the last character (the whole string), and every second character is skipped. This is shown in the following diagram:
 String stride 1
 
- 
 
 Similarly, 1:6:2 specifies a slice starting with the second character (index 1) and ending with the last character, and again the stride value 2 causes every other character to be skipped:
 String stride 2
@@ -307,64 +310,74 @@ You can specify a negative stride value as well, in which case Python steps back
 
 
 **j. Formatting String Variables Using the % Operator**
+
 The program below illustrates the use of string formatting using the % operator.    With this method,  the percentage sign followed by a letter and some numbers indicate how a variable should be formatted. The variable itself is stored as a tuple to the right of the string.   Here are some basic argument specifiers you should know:
 
-%s - means format the variable as a string
-%d - means format the variable as an integer
-%f - means format the variable as as floating point number
-%.3f means format the variable as a floating point numbers with three digits to the right of the decimal value.
+ * %s - means format the variable as a string
+ * %d - means format the variable as an integer
+ * %f - means format the variable as as floating point number
+ * %.3f means format the variable as a floating point numbers with three digits to the right of the decimal value.
 
-See this link  (Links to an external site.)for more info on formatting strings.
+
+
+In the code below, %0.2f and %0.4f' are formatted place holders for two variables. The variables appear at the end of the string in the form of a tuple preceded by a % sign. 
+
+.. code-block:: python
+   :linenos:
+
+   num = float(input('Enter a number: '))
+   num_sqrt = num ** 0.5
+   print ('The square root of %0.2f is %0.4f' %(num, num_sqrt))
 
  
 
-In the code below, %0.2f and %0.4f' are formatted place holders for two variables. The variables appear at the end of the string in the form of a tuple preceded by a % sign. 
-
-num = float(input('Enter a number: '))
-num_sqrt = num ** 0.5
-print ('The square root of %0.2f is %0.4f' %(num, num_sqrt))
-
  
+When only one variable is being formatted, a tuple is not used. This is demonstrated in the code below.
 
+
+.. code-block:: python
+   :linenos:
+
+
+   # Get inputs from the user
+   base = float(input('Enter length of the base of the triangle: '))
+   height = float(input('Enter the height of the triangle '))
  
+   # calculate the area of the triangle
+   triangle_area = (base * height) / 2
 
-#This program also illustrates the use of format strings (%0.2f)  to format the output. 
+   # Display the results
+   print ('The area of the triangle is %0.2f' % triangle_area)
 
-# Get inputs from the user
-base = float(input('Enter length of the base of the triangle: '))
-height = float(input('Enter the height of the triangle '))
- 
-# calculate the area of the triangle
-triangle_area = (base * height) / 2
-
-# Display the results
-print ('The area of the triangle is %0.2f' % triangle_area)
-
- Note that when only one variable is being formatted, a tuple is not used.
-
+   
 |
 
 
 
 **k. String formatting with the format method**
 
-This is another method for formatting strings. When you use the curly braces or {} operators, they serve as place-holders for the variables you would like to store inside a string. In order to pass variables to a string you must call upon the .format() method.
+The .format() method is another way to format strings. With this method, we use empty curly braces {} as placeholders to store variables. In order to pass the variables the curly brackets, we use the .format() method. Within the format method, the variables are placed in the order in which they should appear in the program statement.
 
-fname = "John"
-lname = "Doe"
-age = "24"
+.. code-block:: python
+   :linenos:
 
-print ("{} {} is {} years old." .format(fname, lname, age))
+   fname = "John"
+   lname = "Doe"'
+   age = "24"
+
+   print ("{} {} is {} years old." .format(fname, lname, age))
 
 John Doe is 24 years old.
+
+
+
 
 
 Note: You can also use:
 
 
-print ("{0} {1} is {2} years old." .format(fname, lname, age))
-
-Where the number indicate the position of the placeholders
+| print ("{0} {1} is {2} years old." .format(fname, lname, age))
+| where the number indicate the position of the placeholders
 
 
 
@@ -481,10 +494,14 @@ list.sort()
 You can sum a list with the following code:
 
 
-list = [890, 786, 1234, 65, 345, 500]
-Sumlist = sum(list)
-print (Sumlist)
->>> 3820
+.. code-block:: python
+   :linenos:
+
+   list = [890, 786, 1234, 65, 345, 500]
+   Sumlist = sum(list)
+   print (Sumlist)
+
+   >>> 3820
 
 | 
 
@@ -493,29 +510,31 @@ print (Sumlist)
 
 Lists cannot be added with the simple use of an addition sign, i.e., list1 + list2. We have to iterate the list, grab the corresponding values and do the addition.
 
+.. code-block:: python
+   :linenos:
 
-# Set up the lists 
-list1 = [11, 21, 34, 12, 31, 26]
-list2 = [23, 25, 54, 24, 20, 35]
-
-
-#Create an empty list to store the sum of values at the same index position
-result_list = []
-
-#Get the length of one of the lists. If the list lengths are unequal, use the shorter list.
-list_to_iterate = len(list1)
-
-#Iterate the list adding the corresponding values at the running index from the
-# two lists, and insert the sum in a new list.
+   # Set up the lists 
+   list1 = [11, 21, 34, 12, 31, 26]
+   list2 = [23, 25, 54, 24, 20, 35]
 
 
-for i in range(0, list_to_iterate):
-    result_list.append(list1[i] + list2[i])
+   #Create an empty list to store the sum of values at the same index position
+   result_list = []
 
-# Print resultant list 
-print ("Test Result: ********** is: " + str(result_list))
+   #Get the length of one of the lists. If the list lengths are unequal, use the shorter list.
+   list_to_iterate = len(list1)
 
-We can use the same logic for subtracting, multiplying and dividing two lists.
+   #Iterate the list adding the corresponding values at the running index from the two lists, 
+   # and insert the sum in a new list.
+
+
+   for i in range(0, list_to_iterate):
+       result_list.append(list1[i] + list2[i])
+
+   # Print resultant list 
+   print ("Test Result: ********** is: " + str(result_list))
+
+   #We can use the same logic for subtracting, multiplying and dividing two lists.
 
 
 |
@@ -525,17 +544,19 @@ We can use the same logic for subtracting, multiplying and dividing two lists.
 
 You can graph a list with the following code:
 
+.. code-block:: python
+   :linenos:
 
-import matplotlib.pyplot as plt
+   import matplotlib.pyplot as plt
 
-cases = [890, 786, 1234, 65, 345, 500]
-year = (1950, 1960,1970,1980,1990,2000)
+   cases = [890, 786, 1234, 65, 345, 500]
+   year = (1950, 1960,1970,1980,1990,2000)
 
-plt.plot (year, cases)
+   plt.plot (year, cases)
 
-plt.xlabel ("Year")
-plt.ylabel ("Cases")
-plt.show()
+   plt.xlabel ("Year")
+   plt.ylabel ("Cases")
+   plt.show()
 
 
 |
@@ -545,26 +566,31 @@ plt.show()
 
 >>> my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-To retrieve a number from the list, just type the list name with the index number in square brackets, e.g.,
+To retrieve a number from the list, just type the list name with the index number in square brackets,
 
->>> print my_list[4]    # This prints out 5, which is the 4th number in the list counting from zero.
+
+# The code below prints out 5, which is the 4th number in the list counting from zero.
+>>> print my_list[4]    
   
 
 
-The syntax for slicing is
+The syntax for slicing is:
 
 listname (start, stop, step)
 
- 
 
->>> my_list[1:4] # Prints out the numbers between 1 and 4, but not including 4.
+*Examples*
+
+# Print out the numbers between 1 and 4, but not including 4.
+
+>>> my_list[1:4] 
  [1,2,3]
 
  
 
- 
+# Print out the numbers between 1 and 8, skipping every other number. 
 
-my_list[1:8:2] # Prints out the numbers between 1 and 8, skipping every other number. 
+my_list[1:8:2] 
  [1,3,5,7]
 
 
@@ -586,6 +612,8 @@ If there is no value before the first colon, it means to start at the beginning 
 first colon, it means to go all the way to the end of the list.
 
 
+|
+
 
 Tuples
 -------
@@ -596,9 +624,11 @@ A List is a collection which is ordered and changeable. Allows duplicate members
 A tuple is similar to a list, but the ordering of the values do not change once created.
 Coordinate values whose sequence must be maintained to draw a polygon can be stored as tuples.
 
-tup1 = ('physics', 'chemistry', 1997, 2000)
-tup2 = (1, 2, 3, 4, 5, 6, 7 )
+>>> tup1 = ('physics', 'chemistry', 1997, 2000)
+>>> tup2 = (1, 2, 3, 4, 5, 6, 7 )
 
+
+|
 
 
 Basic Tuples Operations
@@ -618,6 +648,8 @@ Tuple operations are similar to list operations
 >>> for x in (1, 2, 3): print x,  
  1 2 3  -  Iteration
 
+
+|
 
 
 

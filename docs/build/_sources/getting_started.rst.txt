@@ -23,51 +23,37 @@ Many people use the standard Python distribution as the central platform for dev
    :alt: Install Python
 
 
-3. If you are using a mac, first download `Homebrew <https://brew.sh/)>`_ . Homebrew is a package manager that helps users to quickly install software packages on Mac computers using the command line.  Prior to installing homebrew, you need to install Xcode’s Command Line Tools. Xcode is a macOS integrated development environment (IDE). You can use it to make apps for all mac OSs, iOS, iPad OS, watch OS, and tv OS. To download and install it, run the following command in the Terminal:
+3. If you are using a mac computer, first download and install `Homebrew <https://brew.sh/)>`_ . Homebrew is a package manager that helps users to quickly install software packages on Mac computers using the command line.  Prior to installing homebrew, you need to install Xcode’s Command Line Tools. Xcode is a macOS integrated development environment (IDE). You can use it to make apps for all mac OSs, iOS, iPad OS, watch OS, and tv OS. To download and install it, run the following command in the Terminal:
 
    >>> xcode-select --install
 
-Accept starting the installation and the license and it will be installed automatically.
+4. Accept starting the installation and the license and it will be installed automatically.
 
 
-4.  To install Homebrew automatically, run the below command:
-
+5.  To install Homebrew automatically, run the command below:
 
  >>> /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 
-
-5. After installing Python on Windows or MacOs check the following:
-
-  a. the version of Python that will be run from the command prompt. To do this type:
+6. After installing Python on Windows or macOS check the version of Python that will be run from the command prompt. To do this type:
 
      >>> which python3
 
-     You should get  /usr/local/bin/python3 or something similar.
+7. You should get  /usr/local/bin/python3 or something similar.
 
 
 
-  b. that the Python 3x Directory has been added to your System Path Environment Variable.  To check for this type, type:
-    >>>
+8. Check also that the Python 3x Directory has been added to your System Path Environment Variable.  To check for this type, type:
+    
+  >>> $PATH
 
 
-  c. that Pip has been installed to manage your Python packages.  To check for pip, type:
-
-    >>> 
-
-
-  
-
-6. To install new packages, you need to use Pip.  The basic structure of the command is:
-    >>> pip install <package_name>
-
-   To install a library name *matplotlib*, type:
+9. To install new packages, you need to use Pip.  The basic structure of the command is "pip install <package_name>". To install a library nameD *matplotlib*, type:
 
     >>> pip install matplotlib
 
    
-7. To begin entering code into Python, start either the Python Interpreter or IDLE then enter the code.  
-
+10. To begin entering code into Python, start either the Python Interpreter or IDLE then enter the code.  
 
  .. image:: img/interpreter_idle.png
    :alt: Python Interpreter and IDLE
@@ -149,7 +135,7 @@ Anaconda is a large Python distribution that has become very popular over the la
 
 
 
-4. If you need to install a new package, look for the Anaconda folder at the Windows Start button, then click on Anaconda prompt.  When the Anaconda prompt appears, enter the command below to install a new package. Conda installs many packages with ease, so you should use it often.
+4. If you need to install new package, including spatial packakes, look for the Anaconda folder at the Windows Start button, then click on Anaconda prompt.  When the Anaconda prompt appears, enter the command below to install a new package. Conda installs many packages with ease, so you should use it often.
 
            conda install package_name
 
@@ -158,6 +144,7 @@ Anaconda is a large Python distribution that has become very popular over the la
 
  .. image:: img/install_packages.png
    :alt: Anaconda Navigator Environment
+
 
 
  
@@ -238,7 +225,7 @@ The Python Console within QGIS
 2. The lower part of the Console display with the >>> prompt. This is is where you type commands.  
 
 
-3. The Python commands can be pure Python commands that have nothing to do with GIS or QGIS, or they can be Python commands ained at manipulating QGIS commands or user data.
+3. The Python statements can be pure Python commands that have nothing to do with QGIS, or they can be Python statements ained at manipulating QGIS cser data i QGIS.
 
 
 
@@ -248,11 +235,11 @@ The Python Console within QGIS
 
 **Accessing the QGIS Python Editor**
 
-1.  The editor is used to write scripts that are too lengthy to run from the Console Shell.   It can be accessed by right-clicking Show Editor in the upper part of the console.
+1.  The editor is used to write scripts that are too lengthy to be edited and executed from the Console Shell.   It can be accessed by clicking "Show Editor" in the upper part of the console.
 
 
 
-2.  We will write a simple script to print the mean of a set of numbers.
+2.  To illustrate the use of the editor, we will execute a simple script to print the mean of a set of numbers. The script is provided below along with an illustration of how it appers in QGIS.
 
 .. code-block:: python
    :linenos:
@@ -301,6 +288,10 @@ Resources
 * Python Virtual Environments - https://autogis-site.readthedocs.io/en/latest/course-info/create-python-gis-environment.html
 
 * Python GIS environment - https://gist.github.com/ThomasG77/223064813d8aefda5b3cdb05c2588fa1
+
+* QGIS Developers Cookbook - https://docs.qgis.org/2.18/pdf/en/QGIS-2.18-PyQGISDeveloperCookbook-en.pdf
+
+* Getting Started With Python Programming - http://www.qgistutorials.com/en/docs/getting_started_with_pyqgis.html
 
  
 

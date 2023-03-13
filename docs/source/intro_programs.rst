@@ -379,9 +379,6 @@ This code uses the mean() function within a module named numpy module to calcula
 |
 
 
-
-
-
 Maximum
 Minimum
 Standard Deviation
@@ -409,6 +406,7 @@ The script below illustrates how to import the calendar library and use a functi
 
    # display the calendar
    print(calendar.month(yy, mm))
+
 
 
 |

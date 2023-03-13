@@ -23,51 +23,37 @@ Many people use the standard Python distribution as the central platform for dev
    :alt: Install Python
 
 
-3. If you are using a mac, first download `Homebrew <https://brew.sh/)>`_ . Homebrew is a package manager that helps users to quickly install software packages on Mac computers using the command line.  Prior to installing homebrew, you need to install Xcode’s Command Line Tools. Xcode is a macOS integrated development environment (IDE). You can use it to make apps for all mac OSs, iOS, iPad OS, watch OS, and tv OS. To download and install it, run the following command in the Terminal:
+3. If you are using a mac computer, first download and install `Homebrew <https://brew.sh/)>`_ . Homebrew is a package manager that helps users to quickly install software packages on Mac computers using the command line.  Prior to installing homebrew, you need to install Xcode’s Command Line Tools. Xcode is a macOS integrated development environment (IDE). You can use it to make apps for all mac OSs, iOS, iPad OS, watch OS, and tv OS. To download and install it, run the following command in the Terminal:
 
    >>> xcode-select --install
 
-Accept starting the installation and the license and it will be installed automatically.
+4. Accept starting the installation and the license and it will be installed automatically.
 
 
-4.  To install Homebrew automatically, run the below command:
-
+5.  To install Homebrew automatically, run the command below:
 
  >>> /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 
-
-5. After installing Python on Windows or MacOs check the following:
-
-  a. the version of Python that will be run from the command prompt. To do this type:
+6. After installing Python on Windows or macOS check the version of Python that will be run from the command prompt. To do this type:
 
      >>> which python3
 
-     You should get  /usr/local/bin/python3 or something similar.
+7. You should get  /usr/local/bin/python3 or something similar.
 
 
 
-  b. that the Python 3x Directory has been added to your System Path Environment Variable.  To check for this type, type:
-    >>>
+8. Check also that the Python 3x Directory has been added to your System Path Environment Variable.  To check for this type, type:
+    
+  >>> $PATH
 
 
-  c. that Pip has been installed to manage your Python packages.  To check for pip, type:
-
-    >>> 
-
-
-  
-
-6. To install new packages, you need to use Pip.  The basic structure of the command is:
-    >>> pip install <package_name>
-
-   To install a library name *matplotlib*, type:
+9. To install new packages, you need to use Pip.  The basic structure of the command is "pip install <package_name>". To install a library nameD *matplotlib*, type:
 
     >>> pip install matplotlib
 
    
-7. To begin entering code into Python, start either the Python Interpreter or IDLE then enter the code.  
-
+10. To begin entering code into Python, start either the Python Interpreter or IDLE then enter the code.  
 
  .. image:: img/interpreter_idle.png
    :alt: Python Interpreter and IDLE
