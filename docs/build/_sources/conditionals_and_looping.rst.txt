@@ -859,7 +859,7 @@ Exercises
 
 
 
-1. Complete the practice exercises below. Submit screenshots as proofs that you completed the exercises:
+1. Complete the practice exercises below. Submit screenshots in a word document as proof that you completed the exercises:
 
     a. `Complete these if else exercises <https://www.w3schools.com/python/exercise.asp?filename=exercise_ifelse1>`_
     b. `For Loop Exercises <https://www.w3schools.com/python/exercise.asp?filename=exercise_for_loops1>`_
@@ -888,12 +888,12 @@ Exercises
 6. Extend the spatial interpolation program you worked on in the first lab by adding looping functionality to the program.  The program should work in this way: once the initial round of calculations are completed and the results printed to the screen, the code should prompt the user to enter a new set of z-values and associated distance values.  The program should carry out the next round of calculations and then prompt the user again for values for an additional round of calculation. The program should keep looping until no more rounds of calculation are needed. At that stage, the user should be able to quit the program gracefully.
 
 
-7. Look up how to work with ArcPy's ListFeatureClass function, then write Python code that uses a ArcPy's ListFeature Classes function to print out a list of feature classes in one of your folders.
+7. Look up how to work with ArcPy's `ListFeatureClasses function <https://pro.arcgis.com/en/pro-app/latest/arcpy/functions/listfeatureclasses.htm>`_, then write Python code that uses ArcPy's ListFeatureClasses function to print out a list of feature classes or shapefiles in one of your folders.
 
-8. Run the code in Section 5.1 of this document that deals with displaying layers in QGIS if the layer is an active layer. Run the code using your own data and show that you can display either a raster or vector in QGIS if it is an active layer.
+8. Run the codes in Section 5.1 of this document that deal with displaying layers in QGIS if the layer (either vector or raster) is an active layer. Run the code using your own data and show that you can display either a raster or vector in QGIS if it is an active layer.
 
 
-9. In what way is "Break" in Python different from "Continue". Give coding examples to show the difference.
+9. In what way is the "Break" statment in Python different from "Continue". Give coding examples to show the difference.
 
 10. When is a "for loop" used in Python as opposed to a while loop. Give coding examples to support your answer.
 
