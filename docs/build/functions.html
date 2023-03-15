@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6. Functions &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="5. Conditional Statements and Looping" href="conditionals_and_looping.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Python GIS Tutorials
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">2. Development Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_programs.html">3. Introduction to the Python Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings_lists_conditional.html">4. Strings and Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">5. Conditional Statements and Looping</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-are-functions">6.1. What are Functions?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-examples">6.2. Function Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pythons-in-built-functions">6.3. Python’s  In-built Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arcpy-functions">6.4. ArcPy Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resources">6.5. Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">6.6. Exercises</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python GIS Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6. </span>Functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/functions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="functions">
+<h1><span class="section-number">6. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h1>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="what-are-functions">
+<h2><span class="section-number">6.1. </span>What are Functions?<a class="headerlink" href="#what-are-functions" title="Permalink to this heading"></a></h2>
+<p>In programming, a function is a named sequence of statements that performs a computation.  The example below shows a function that calculates area based on length and width values that have been passed to it.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+<span class="linenos">2</span>   <span class="n">area</span> <span class="o">=</span> <span class="n">length</span> <span class="o">*</span> <span class="n">width</span>
+<span class="linenos">3</span>   <span class="k">return</span> <span class="n">area</span>
+</pre></div>
+</div>
+<p><strong>Points to Note about Functions in Python</strong></p>
+<ol class="arabic">
+<li><p>Functions are started with ‘def’ keyword which stands for ‘definition’.</p></li>
+<li><p>Each function has a name.  The tern “calculate_area()” is the name of the function. The name is usually followed by opening and closing parenthesis.</p></li>
+<li><p>The parenthesis is used to store arguments or values from the user that the function needs to perform calculations.</p></li>
+<li><p>Indentation matters in Python! It determine what is in the function, and when the function ends.</p></li>
+<li><p>The “return” keyword is used to send results back to the main routine.</p></li>
+<li><p>To call the above function and store the output in a variabe named ‘get_area’, write:</p>
+<blockquote>
+<div><p>get_area = calculate_area(300, 245)</p>
+</div></blockquote>
+</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="function-examples">
+<h2><span class="section-number">6.2. </span>Function Examples<a class="headerlink" href="#function-examples" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>The code below is an example of a function that takes the temperature in Celsius and then prints the results in Fahrenheit results.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">convertTemp</span><span class="p">(</span><span class="n">temp</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="n">freezing</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span>    <span class="n">fahrenheit</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span> <span class="o">*</span> <span class="n">celsius</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="n">freezing</span>
+<span class="linenos">5</span>    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The temperature in Fahrenheit is&quot;</span><span class="p">,</span> <span class="n">fahrenheit</span><span class="p">,</span> <span class="s2">&quot;degrees&quot;</span><span class="p">)</span>
+<span class="linenos">6</span>    <span class="k">return</span> <span class="n">fahrenheit</span>
+</pre></div>
+</div>
+<p>To call the function, type convertTemp and pass in a temperature value, e.g., convertTemp(20)</p>
+<ol class="arabic simple" start="2">
+<li><p>The function below takes a number and evaluates it in relation to the number 10.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="k">def</span> <span class="nf">number</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+<span class="linenos">3</span>       <span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;is less than 10&quot;</span><span class="p">)</span>
+<span class="linenos">4</span>    <span class="k">elif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+<span class="linenos">5</span>       <span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;is greater than 10&quot;</span><span class="p">)</span>
+<span class="linenos">6</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">7</span>        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;your number is 10&quot;</span><span class="p">)</span>
+<span class="linenos">8</span>     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Goodbye&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Call the function:  number (100)</p>
+<ol class="arabic simple" start="3">
+<li><p>The function below plot a graph. X1 and x2 define the range of the graph over the x axis.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span> <span class="k">def</span> <span class="nf">createline</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">):</span>
+<span class="linenos"> 5</span>     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">)</span>
+<span class="linenos"> 6</span>     <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span>
+<span class="linenos"> 7</span>     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;y=2x+1&#39;</span><span class="p">)</span>
+<span class="linenos"> 8</span>     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Graph of y=2x+1&#39;</span><span class="p">)</span>
+<span class="linenos"> 9</span>     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1C2833&#39;</span><span class="p">)</span>
+<span class="linenos">10</span>     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1C2833&#39;</span><span class="p">)</span>
+<span class="linenos">11</span>     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="linenos">12</span>     <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="linenos">13</span>     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Call the function:  createline(5,25)</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="pythons-in-built-functions">
+<h2><span class="section-number">6.3. </span>Python’s  In-built Functions<a class="headerlink" href="#pythons-in-built-functions" title="Permalink to this heading"></a></h2>
+<p>Python has many built in functions. For example, input() is a function which reads and returns the text you type. However, on many occasions, we have to write our own functions.</p>
+<p><strong>Type Conversion Functions</strong></p>
+<p>int(’ 32’)     = 32
+int(3.99999)   = 3</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Math Functions</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
+</pre></div>
+</div>
+<p>To use the math functions, you have to specify the name of the module and the name of the function, separated by a dot (also known as a period). This format is called dot notation, e.g</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+</pre></div>
+</div>
+<p>0.707106781187</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="c1">#raises 2 to the 20th power.</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="arcpy-functions">
+<h2><span class="section-number">6.4. </span>ArcPy Functions<a class="headerlink" href="#arcpy-functions" title="Permalink to this heading"></a></h2>
+<p>ArcPy has many functions which are used to support ArcGIS workflows from a Python perspective.  To call a function call,  we write arcpy followed by the name of the function and any arguments that the function requires, for example, arcpy.&lt;function_name&gt; (&lt;arguments&gt;)</p>
+<p>In the code sample, we are using ArcPy’s ListField() function to print out the name of the fields in a shapefile’s attribute table.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">#Listfields function</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="linenos">4</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;c:/data&quot;</span>
+<span class="linenos">5</span><span class="n">fieldlist</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFields</span><span class="p">(</span><span class="s2">&quot;roads.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;String&quot;</span><span class="p">)</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fieldlist</span><span class="p">:</span>
+<span class="linenos">8</span>   <span class="nb">print</span> <span class="n">field</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p># The following script uses ArcPy’s ListRaster function to creaate a list of raster files and iterates through each file in the list and prints out their names. Try to identify the functions in the script.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="c1"># Set the workspace that contains the rasters</span>
+<span class="linenos"> 4</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/Users/Hugh/Desktop/GuyNode_Images&quot;</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="c1"># Use the ListRaster function to return a list of rasters .</span>
+<span class="linenos"> 7</span><span class="n">rasters</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListRasters</span><span class="p">()</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="c1"># print name of feature class</span>
+<span class="linenos">10</span><span class="k">for</span> <span class="n">rst</span> <span class="ow">in</span> <span class="n">rasters</span><span class="p">:</span>
+<span class="linenos">11</span>   <span class="nb">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">rst</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>#Get a list of field names in the roads shapefile</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="linenos">2</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;c:/data&quot;</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span> <span class="n">fieldlist</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFields</span><span class="p">(</span><span class="s2">&quot;roads.shp&quot;</span><span class="p">)</span>
+<span class="linenos">5</span>     <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fieldlist</span><span class="p">:</span>
+<span class="linenos">6</span>          <span class="nb">print</span> <span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="c1">#Get a List of all the Feature Classes in a Directory</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span> <span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="linenos">4</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data&quot;</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span> <span class="n">fcList</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFeatureClasses</span> <span class="p">()</span>
+<span class="linenos">7</span> <span class="k">for</span> <span class="n">fc</span> <span class="ow">in</span> <span class="n">fcList</span><span class="p">:</span>
+<span class="linenos">8</span>    <span class="nb">print</span> <span class="p">(</span><span class="n">fc</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="resources">
+<h2><span class="section-number">6.5. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
+<p>Creating and Using Functions - <a class="reference external" href="https://vimeo.com/107270986">https://vimeo.com/107270986</a></p>
+</section>
+<section id="exercises">
+<h2><span class="section-number">6.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Write a Pyhton function that squares each value in a list that is passed to it. The results should be passed to the calling statement and printed out.</p>
+<blockquote>
+<div><p>my_list = [11,14,15,100, 34, 67, 89, 90, 98]</p>
+</div></blockquote>
+</li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="conditionals_and_looping.html" class="btn btn-neutral float-left" title="5. Conditional Statements and Looping" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Hugh Semple.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

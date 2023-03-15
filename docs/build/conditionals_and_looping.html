@@ -492,6 +492,33 @@ Although the maximum value in the range is 100 million, as soon as the loop gets
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<p><strong>Summing Values in a List</strong></p>
+<p>When summing values in a list, you can iterate over the list of items and add each element to a variable which stores the sum of the ith element. The “+=” term tells Python to add the current sum to the next i in the list.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="c1"># Initialize a variable to store the sum of the list</span>
+<span class="linenos"> 4</span><span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="c1"># Finding the sum</span>
+<span class="linenos"> 7</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">L</span><span class="p">:</span>
+<span class="linenos"> 8</span>    <span class="nb">sum</span> <span class="o">+=</span> <span class="n">i</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sum = &quot;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In many cases, instead of using the “+=” term, you will see people using “sum = sum + i” to add the current sum to the next i in the list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="c1"># Initialize a variable to store the sum of the list</span>
+<span class="linenos"> 4</span><span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="c1"># Finding the sum</span>
+<span class="linenos"> 7</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">L</span><span class="p">:</span>
+<span class="linenos"> 8</span>    <span class="nb">sum</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="n">i</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sum = &quot;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 <section id="while-loops">
 <h2><span class="section-number">5.6. </span>While Loops<a class="headerlink" href="#while-loops" title="Permalink to this heading"></a></h2>
@@ -517,29 +544,17 @@ Although the maximum value in the range is 100 million, as soon as the loop gets
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Use of Plus Equal</strong></p>
-<p>When writing counters, you can write  x = x + 1</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="linenos">2</span><span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span> <span class="c1"># condition</span>
-<span class="linenos">3</span>     <span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="linenos">4</span>     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># counter</span>
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>You can also use the plus equal term “+=” to add another value to the variable’s value and assign a  new value to the variable.</p>
+<p>Example 1</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="linenos">2</span><span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span> <span class="c1"># condition</span>
 <span class="linenos">3</span>    <span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="linenos">4</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># counter</span>
 </pre></div>
 </div>
-<p>Operators such as “-=”, “<a href="#id1"><span class="problematic" id="id2">*</span></a>=”, /= behave similarly similar for subtraction, multiplication and division.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Example 2</p>
+<p>Example 3</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">max</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="linenos">2</span><span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="linenos">3</span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span> <span class="c1"># Create empty list</span>
@@ -554,7 +569,7 @@ Although the maximum value in the range is 100 million, as soon as the loop gets
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Example 3</p>
+<p>Example 4</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">23</span>
 <span class="linenos"> 2</span> <span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
@@ -737,6 +752,9 @@ Although the maximum value in the range is 100 million, as soon as the loop gets
 <li><p>Run the codes in Section 5.1 of this document that deal with displaying layers in QGIS if the layer (either vector or raster) is an active layer. Run the code using your own data and show that you can display either a raster or vector in QGIS if it is an active layer.</p></li>
 <li><p>In what way is the “Break” statment in Python different from “Continue”. Give coding examples to show the difference.</p></li>
 <li><p>When is a “for loop” used in Python as opposed to a while loop. Give coding examples to support your answer.</p></li>
+<li><p>Write a program to calculate the average of the numbers in the list below:</p>
+<p>L = [41, 25, 21, 2, 96, 79, 108, 83,1,4,5,10, 34, 67, 89, 90, 124]</p>
+</li>
 </ol>
 </section>
 </section>

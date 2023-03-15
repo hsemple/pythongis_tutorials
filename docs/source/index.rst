@@ -22,3 +22,4 @@ Since Python users in GIS utilize different spatial libraries, the example scrip
    intro_programs.rst
    strings_lists_conditional.rst
    conditionals_and_looping.rst 
+   functions.rst

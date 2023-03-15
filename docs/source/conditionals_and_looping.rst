@@ -573,6 +573,45 @@ Try the code below to see how 'continue' works.
 |
 
 
+**Summing Values in a List**
+
+When summing values in a list, you can iterate over the list of items and add each element to a variable which stores the sum of the ith element. The "+=" term tells Python to add the current sum to the next i in the list.
+
+.. code-block:: python
+   :linenos:
+ 
+   L = [4, 5, 1, 2, 9, 7, 10, 8]
+
+   # Initialize a variable to store the sum of the list
+   sum = 0
+ 
+   # Finding the sum
+   for i in L:
+       sum += i
+
+   print("sum = ", sum)
+   
+
+
+In many cases, instead of using the "+=" term, you will see people using "sum = sum + i" to add the current sum to the next i in the list:
+
+.. code-block:: python
+   :linenos:
+ 
+   L = [4, 5, 1, 2, 9, 7, 10, 8]
+
+   # Initialize a variable to store the sum of the list
+   sum = 0
+ 
+   # Finding the sum
+   for i in L:
+       sum = X + i
+
+   print("Sum = ", sum)
+
+
+
+
 
 
 While Loops
@@ -609,23 +648,7 @@ Example 1
 |
 
 
-**Use of Plus Equal**
-
-When writing counters, you can write  x = x + 1
-
-.. code-block:: python
-   :linenos:
-
-   x = 1
-   while x < 5: # condition
-        print (x)
-        x = x + 1 # counter
-
-|
-
-
-You can also use the plus equal term "+=" to add another value to the variable's value and assign a  new value to the variable.
-
+Example 1
 
 .. code-block:: python
    :linenos:
@@ -635,13 +658,10 @@ You can also use the plus equal term "+=" to add another value to the variable's
        print (x)
    x += 1 # counter
 
-
-Operators such as "-=", "*=", /= behave similarly similar for subtraction, multiplication and division.
-
 |
 
 
-Example 2
+Example 3
 
 .. code-block:: python
    :linenos:
@@ -661,8 +681,7 @@ Example 2
 |
 
 
-Example 3
-
+Example 4
 
  .. code-block:: python
    :linenos:
@@ -733,7 +752,6 @@ While Loop Example With "Break"
 
 
 |
-
 
 
 
@@ -896,6 +914,10 @@ Exercises
 9. In what way is the "Break" statment in Python different from "Continue". Give coding examples to show the difference.
 
 10. When is a "for loop" used in Python as opposed to a while loop. Give coding examples to support your answer.
+
+11. Write a program to calculate the average of the numbers in the list below:
+
+    L = [41, 25, 21, 2, 96, 79, 108, 83,1,4,5,10, 34, 67, 89, 90, 124]
 
 
 
