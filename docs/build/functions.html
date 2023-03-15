@@ -52,7 +52,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#what-are-functions">6.1. What are Functions?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#function-examples">6.2. Function Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pythons-in-built-functions">6.3. Python’s  In-built Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#arcpy-functions">6.4. ArcPy Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arcpy-functions">6.4. Arcpy Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#resources">6.5. Resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#exercises">6.6. Exercises</a></li>
 </ul>
@@ -163,21 +163,49 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<ol class="arabic simple" start="4">
+<li><p>Python function to find the factorial of a number.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="linenos">2</span>   <span class="n">fact</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos">3</span>   <span class="k">while</span><span class="p">(</span><span class="n">n</span><span class="o">!=</span><span class="mi">0</span><span class="p">):</span>
+<span class="linenos">4</span>      <span class="n">fact</span> <span class="o">*=</span> <span class="n">n</span>
+<span class="linenos">5</span>      <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+<span class="linenos">6</span>   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The factorial is&quot;</span><span class="p">,</span><span class="n">fact</span><span class="p">)</span>
+<span class="linenos">7</span>
+<span class="linenos">8</span><span class="n">inputNumber</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the number: &quot;</span><span class="p">))</span>
+<span class="linenos">9</span><span class="n">factorial</span><span class="p">(</span><span class="n">inputNumber</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </section>
 <section id="pythons-in-built-functions">
 <h2><span class="section-number">6.3. </span>Python’s  In-built Functions<a class="headerlink" href="#pythons-in-built-functions" title="Permalink to this heading"></a></h2>
 <p>Python has many built in functions. For example, input() is a function which reads and returns the text you type. However, on many occasions, we have to write our own functions.</p>
 <p><strong>Type Conversion Functions</strong></p>
-<p>int(’ 32’)     = 32
-int(3.99999)   = 3</p>
+<div class="line-block">
+<div class="line">int(’ 32’)     = 32</div>
+<div class="line">int(3.99999)   = 3</div>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>Math Functions</strong></p>
+<p>Here are some examples:</p>
+<ul class="simple">
+<li><p>math.floor(x) - Returns the floor of x, the largest integer less than or equal to x.</p></li>
+<li><p>math.exp(x) - returns e raised to the power x, where e = 2.718281… is the base of natural logarithms.</p></li>
+<li><p>math.atan(x) - returns the arc tangent of x, in radians.</p></li>
+<li><p>math.cos(x) - returns the cosine of x radians</p></li>
+<li><p>math.pow(x, y) - returns x raised to the power y.</p></li>
+</ul>
+<p>To use the math functions, you have to first import the math library</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
 </pre></div>
 </div>
-<p>To use the math functions, you have to specify the name of the module and the name of the function, separated by a dot (also known as a period). This format is called dot notation, e.g</p>
+<p>Next,  you have to specify the name of the module and the name of the function, separated by a dot (also known as a period). This format is called dot notation, e.g</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
 </pre></div>
 </div>
@@ -190,8 +218,8 @@ int(3.99999)   = 3</p>
 </div>
 </section>
 <section id="arcpy-functions">
-<h2><span class="section-number">6.4. </span>ArcPy Functions<a class="headerlink" href="#arcpy-functions" title="Permalink to this heading"></a></h2>
-<p>ArcPy has many functions which are used to support ArcGIS workflows from a Python perspective.  To call a function call,  we write arcpy followed by the name of the function and any arguments that the function requires, for example, arcpy.&lt;function_name&gt; (&lt;arguments&gt;)</p>
+<h2><span class="section-number">6.4. </span>Arcpy Functions<a class="headerlink" href="#arcpy-functions" title="Permalink to this heading"></a></h2>
+<p>Arcpy has many functions which are used to support ArcGIS workflows from a Python perspective.  When working with arcpy’s functions,  we must first import the arcpy library into our development environment. To call the function, we write arcpy followed by the name of the function and any arguments that the function requires, for example, arcpy.&lt;function_name&gt; (&lt;arguments&gt;)</p>
 <p>In the code sample, we are using ArcPy’s ListField() function to print out the name of the fields in a shapefile’s attribute table.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">#Listfields function</span>
 <span class="linenos">2</span>
@@ -206,11 +234,11 @@ int(3.99999)   = 3</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p># The following script uses ArcPy’s ListRaster function to creaate a list of raster files and iterates through each file in the list and prints out their names. Try to identify the functions in the script.</p>
+<p># The following script uses Arcpy’s ListRaster function to create a list of raster files and iterates through each file in the list and prints out their names. Run the using your own data.  Study each line of the code to understand it in its entirety.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">arcpy</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="c1"># Set the workspace that contains the rasters</span>
-<span class="linenos"> 4</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/Users/Hugh/Desktop/GuyNode_Images&quot;</span>
+<span class="linenos"> 4</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data/rasters&quot;</span>
 <span class="linenos"> 5</span>
 <span class="linenos"> 6</span><span class="c1"># Use the ListRaster function to return a list of rasters .</span>
 <span class="linenos"> 7</span><span class="n">rasters</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListRasters</span><span class="p">()</span>
@@ -248,16 +276,23 @@ int(3.99999)   = 3</p>
 </section>
 <section id="resources">
 <h2><span class="section-number">6.5. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
-<p>Creating and Using Functions - <a class="reference external" href="https://vimeo.com/107270986">https://vimeo.com/107270986</a></p>
+<p><a class="reference external" href="https://vimeo.com/107270986">Creating and Using Functions</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </section>
 <section id="exercises">
 <h2><span class="section-number">6.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
 <ol class="arabic">
-<li><p>Write a Pyhton function that squares each value in a list that is passed to it. The results should be passed to the calling statement and printed out.</p>
+<li><p>Write a Python function that squares each value in a list that is passed to it. The results should be passed to the calling statement and printed out.</p>
 <blockquote>
 <div><p>my_list = [11,14,15,100, 34, 67, 89, 90, 98]</p>
 </div></blockquote>
 </li>
+<li><p>Define a function that accepts radius and returns the area of a circle.</p></li>
+<li><p>Define a function that accepts two numbers as arguments and returns the first number raised to the power of the second number.</p></li>
+<li><p>Rewrite the spatial interpolation program you wrote in the first lab as a function.</p></li>
+<li><p>Rewrite the gravity model that appears in geography textbooks as function.</p></li>
 </ol>
 </section>
 </section>

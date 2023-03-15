@@ -293,6 +293,8 @@ Resources
 
 * Getting Started With Python Programming - http://www.qgistutorials.com/en/docs/getting_started_with_pyqgis.html
 
+* GeoPython - AutoGIS  - https://automating-gis-processes.github.io/2016/index.html
+
  
 
 

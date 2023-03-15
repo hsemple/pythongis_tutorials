@@ -99,7 +99,27 @@ Call the function:  number (100)
 
 Call the function:  createline(5,25)
 
- 
+
+|
+
+
+4. Python function to find the factorial of a number.
+
+.. code-block:: python
+   :linenos:
+
+   def factorial(n):
+      fact = 1
+      while(n!=0):
+         fact *= n 
+         n = n-1
+      print("The factorial is",fact)
+    
+   inputNumber = int(input("Enter the number: "))
+   factorial(inputNumber)
+
+
+
 |
 
 
@@ -111,8 +131,8 @@ Python has many built in functions. For example, input() is a function which rea
 
 **Type Conversion Functions**
 
-int(' 32')     = 32
-int(3.99999)   = 3
+| int(' 32')     = 32
+| int(3.99999)   = 3
 
 
 |
@@ -120,9 +140,27 @@ int(3.99999)   = 3
 
 **Math Functions**
 
+Here are some examples:
+
+
+- math.floor(x) - Returns the floor of x, the largest integer less than or equal to x.  
+
+- math.exp(x) - returns e raised to the power x, where e = 2.718281… is the base of natural logarithms.
+
+- math.atan(x) - returns the arc tangent of x, in radians. 
+
+-  math.cos(x) - returns the cosine of x radians
+
+-  math.pow(x, y) - returns x raised to the power y. 
+
+
+
+
+To use the math functions, you have to first import the math library
+
 >>> import math
 
-To use the math functions, you have to specify the name of the module and the name of the function, separated by a dot (also known as a period). This format is called dot notation, e.g
+Next,  you have to specify the name of the module and the name of the function, separated by a dot (also known as a period). This format is called dot notation, e.g
 
 >>> math.sqrt(2) / 2.0
 
@@ -134,10 +172,10 @@ To use the math functions, you have to specify the name of the module and the na
 
 
 
-ArcPy Functions
+Arcpy Functions
 -----------------
 
-ArcPy has many functions which are used to support ArcGIS workflows from a Python perspective.  To call a function call,  we write arcpy followed by the name of the function and any arguments that the function requires, for example, arcpy.<function_name> (<arguments>)
+Arcpy has many functions which are used to support ArcGIS workflows from a Python perspective.  When working with arcpy's functions,  we must first import the arcpy library into our development environment. To call the function, we write arcpy followed by the name of the function and any arguments that the function requires, for example, arcpy.<function_name> (<arguments>)
 
 
 In the code sample, we are using ArcPy's ListField() function to print out the name of the fields in a shapefile's attribute table. 
@@ -158,7 +196,7 @@ In the code sample, we are using ArcPy's ListField() function to print out the n
 |
 
 
-# The following script uses ArcPy's ListRaster function to creaate a list of raster files and iterates through each file in the list and prints out their names. Try to identify the functions in the script.
+# The following script uses Arcpy's ListRaster function to create a list of raster files and iterates through each file in the list and prints out their names. Run the using your own data.  Study each line of the code to understand it in its entirety.
 
 
 .. code-block:: python
@@ -167,7 +205,7 @@ In the code sample, we are using ArcPy's ListField() function to print out the n
    import arcpy
 
    # Set the workspace that contains the rasters 
-   arcpy.env.workspace = "C:/Users/Hugh/Desktop/GuyNode_Images"
+   arcpy.env.workspace = "C:/data/rasters"
 
    # Use the ListRaster function to return a list of rasters .
    rasters = arcpy.ListRasters()
@@ -212,16 +250,28 @@ In the code sample, we are using ArcPy's ListField() function to print out the n
 Resources
 -----------
 
-Creating and Using Functions - https://vimeo.com/107270986 
+`Creating and Using Functions <https://vimeo.com/107270986>`_
+
+|
 
 
 
 Exercises
 -----------
 
-1. Write a Pyhton function that squares each value in a list that is passed to it. The results should be passed to the calling statement and printed out.
+1. Write a Python function that squares each value in a list that is passed to it. The results should be passed to the calling statement and printed out.
 
   
      my_list = [11,14,15,100, 34, 67, 89, 90, 98]
 
- 
+
+2. Define a function that accepts radius and returns the area of a circle.
+
+
+3. Define a function that accepts two numbers as arguments and returns the first number raised to the power of the second number.
+
+4. Rewrite the spatial interpolation program you wrote in the first lab as a function.
+
+5. Rewrite the gravity model that appears in geography textbooks as function.
+
+

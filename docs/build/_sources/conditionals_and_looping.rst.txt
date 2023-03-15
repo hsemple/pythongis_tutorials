@@ -875,8 +875,6 @@ Exercises
 -----------
 
 
-
-
 1. Complete the practice exercises below. Submit screenshots in a word document as proof that you completed the exercises:
 
     a. `Complete these if else exercises <https://www.w3schools.com/python/exercise.asp?filename=exercise_ifelse1>`_
@@ -918,9 +916,5 @@ Exercises
 11. Write a program to calculate the average of the numbers in the list below:
 
     L = [41, 25, 21, 2, 96, 79, 108, 83,1,4,5,10, 34, 67, 89, 90, 124]
-
-
-
-
 
 
