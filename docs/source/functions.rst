@@ -250,7 +250,8 @@ In the code sample, we are using ArcPy's ListField() function to print out the n
 Resources
 -----------
 
-`Creating and Using Functions <https://vimeo.com/107270986>`_
+* `Creating and Using Functions <https://vimeo.com/107270986>`_
+* `An overview of ArcPy functions <https://pro.arcgis.com/en/pro-app/latest/arcpy/functions/alphabetical-list-of-arcpy-functions.htm>`_
 
 |
 
