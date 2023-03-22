@@ -7,7 +7,7 @@ What are Functions?
 --------------------
 
 
-In programming, a function is a named sequence of statements that performs a computation.  Functions are used to avoid rewriting code everytime a particular task is required to be completed. For example, suppose you have to write a program in which you have to calculate the area of five different fields at different moments in the program flow. Instead of writing the code to calculate area each of the five times when area is required, we can write a single function to compute area so whenever an area calculation is needed in the program, we simply call the function to do the job. 
+In programming, a function is a named sequence of statements that performs a computation.  Functions are used to avoid rewriting code everytime a particular task is required to be completed. For example, suppose you have to write a program in which you have to calculate the area of five different fields at different times in the program. Instead of rewriting the code to calculate area each of the five times, we can write a single function to compute area so whenever an area calculation is needed in the program, we simply call the function to do the job. 
 
 Each time we call the area function, we would have to pass it the length and width parameters of the field and the computation would be performed. After performing the computation, the function would return the answer to the statement that called it.  
 
@@ -20,6 +20,8 @@ The example below shows a function that calculates area based on length and widt
    def calculate_area(length, width):
       area = length * width
       return area
+
+|
 
 
 **Points to Note about Functions in Python**
