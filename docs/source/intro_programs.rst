@@ -7,7 +7,7 @@ Python is an open-source programming language that can be used for a wide variet
 
 Python is an interpreted language. This means that the program code is compiled into machine readable code at the moment it is run by the  interpreter.  This is in contrast to a compiled language like C++, or Java where the program code is compiled into machine readable code by a language compiler before the code is run. The compiler creates an executable in the machine's native language that can then be run many times.   
 
-Python is also a dynamically typed language. This means that developers do not have to declare variables prior to using them. Python is also an object oriented language. The default installation is a set of core modules, but hundreds of libraries, e.g., SciPy, Numpy, Arcpy, etc., are available for specialized tasks. 
+Python is also a dynamically typed language. This means that developers do not have to declare variables prior to using them. Additionally, Python is an object oriented language. The default installation is a set of core modules, but hundreds of libraries, e.g., SciPy, Numpy, Arcpy, etc., are available for specialized tasks. 
 
 |
 

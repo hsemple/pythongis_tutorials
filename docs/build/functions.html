@@ -90,7 +90,9 @@
 </div>
 <section id="what-are-functions">
 <h2><span class="section-number">6.1. </span>What are Functions?<a class="headerlink" href="#what-are-functions" title="Permalink to this heading"></a></h2>
-<p>In programming, a function is a named sequence of statements that performs a computation.  The example below shows a function that calculates area based on length and width values that have been passed to it.</p>
+<p>In programming, a function is a named sequence of statements that performs a computation.  Functions are used to avoid rewriting code everytime a particular task is required to be completed. For example, suppose you have to write a program in which you have to calculate the area of five different fields at different moments in the program flow. Instead of writing the code to calculate area each of the five times when area is required, we can write a single function to compute area so whenever an area calculation is needed in the program, we simply call the function to do the job.</p>
+<p>Each time we call the area function, we would have to pass it the length and width parameters of the field and the computation would be performed. After performing the computation, the function would return the answer to the statement that called it.</p>
+<p>The example below shows a function that calculates area based on length and width values that have been passed to it.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">calculate_area</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
 <span class="linenos">2</span>   <span class="n">area</span> <span class="o">=</span> <span class="n">length</span> <span class="o">*</span> <span class="n">width</span>
 <span class="linenos">3</span>   <span class="k">return</span> <span class="n">area</span>
@@ -103,7 +105,12 @@
 <li><p>The parenthesis is used to store arguments or values from the user that the function needs to perform calculations.</p></li>
 <li><p>Indentation matters in Python! It determine what is in the function, and when the function ends.</p></li>
 <li><p>The “return” keyword is used to send results back to the main routine.</p></li>
-<li><p>To call the above function and store the output in a variabe named ‘get_area’, write:</p>
+<li><p>To call the above function, use the function name followed by parentheses containing the length and width values. , e.g.,</p>
+<blockquote>
+<div><p>calculate_area(300, 245)</p>
+</div></blockquote>
+</li>
+<li><p>To call the function and store the output in a variabe named ‘get_area’, write:</p>
 <blockquote>
 <div><p>get_area = calculate_area(300, 245)</p>
 </div></blockquote>
@@ -128,6 +135,20 @@
 </div>
 <p>To call the function, type convertTemp and pass in a temperature value, e.g., convertTemp(20)</p>
 <ol class="arabic simple" start="2">
+<li><p>Function to multiply all the numbers in a list.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+<span class="linenos">4</span>   <span class="n">total</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos">5</span>   <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+<span class="linenos">6</span>       <span class="n">total</span> <span class="o">*=</span> <span class="n">x</span>
+<span class="linenos">7</span>   <span class="k">return</span> <span class="n">total</span>
+</pre></div>
+</div>
+<p>#call the function and submit the list
+print(multiply(mylist))</p>
+<ol class="arabic simple" start="3">
 <li><p>The function below takes a number and evaluates it in relation to the number 10.</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="k">def</span> <span class="nf">number</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -141,8 +162,8 @@
 </pre></div>
 </div>
 <p>Call the function:  number (100)</p>
-<ol class="arabic simple" start="3">
-<li><p>The function below plot a graph. X1 and x2 define the range of the graph over the x axis.</p></li>
+<ol class="arabic simple" start="4">
+<li><p>The function below plots a graph. X1 and x2 define the range of the graph over the x axis.</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="linenos"> 2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -163,7 +184,7 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<ol class="arabic simple" start="4">
+<ol class="arabic simple" start="5">
 <li><p>Python function to find the factorial of a number.</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -228,7 +249,7 @@
 <span class="linenos">5</span><span class="n">fieldlist</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFields</span><span class="p">(</span><span class="s2">&quot;roads.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;String&quot;</span><span class="p">)</span>
 <span class="linenos">6</span>
 <span class="linenos">7</span><span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fieldlist</span><span class="p">:</span>
-<span class="linenos">8</span>   <span class="nb">print</span> <span class="n">field</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="linenos">8</span>   <span class="nb">print</span> <span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -296,7 +317,18 @@
 <li><p>Define a function that accepts two numbers as arguments and returns the first number raised to the power of the second number.</p></li>
 <li><p>Rewrite the spatial interpolation program you wrote in the first lab as a function.</p></li>
 <li><p>Rewrite the gravity model that appears in geography textbooks as function.</p></li>
+<li><p>The script below uses arcpy’s buffer function to buffer a set of files in a folder. Run the script using your own data. Comment it to show your understanding of the script.</p></li>
 </ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="linenos">2</span><span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="n">env</span>
+<span class="linenos">3</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;file_path&quot;</span>
+<span class="linenos">4</span><span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">5</span><span class="n">fcs</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFeatureClasses</span><span class="p">():</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="k">for</span> <span class="n">fc</span> <span class="ow">in</span> <span class="n">fcs</span><span class="p">:</span>
+<span class="linenos">8</span>   <span class="n">arcpy</span><span class="o">.</span><span class="n">Buffer_analysis</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">OutputName</span><span class="p">,</span> <span class="s2">&quot;100 Feet&quot;</span><span class="p">,</span> <span class="s2">&quot;FULL&quot;</span><span class="p">,</span> <span class="s2">&quot;ROUND&quot;</span><span class="p">,</span> <span class="s2">&quot;LIST&quot;</span><span class="p">,</span> <span class="s2">&quot;Distance&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 

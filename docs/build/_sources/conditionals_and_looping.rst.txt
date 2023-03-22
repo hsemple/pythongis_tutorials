@@ -11,7 +11,7 @@ Unless otherwise directed, lines of codes in a procedure run sequentially, from 
 
 Python uses the If statement for testing conditions. If the condition is true, then the code block following the if statement is executed. If it is not true, the program jumps to the end of the code block.
 
-In Python, a colon is placed at the end of the conditional statement, and the lines below the condition statement are indented. 
+In Python, a colon is placed at the end of the statement that contains the condition, and the lines below the condition statement are indented. 
 
 There are three types of conditional structures in Python:
 
@@ -31,7 +31,7 @@ The structure of the if .. conditional statement is shown below.
 .. code-block:: python
    :linenos:
 
-   if condition:  # if the variable is defined
+   if condition:  # i.e., if the variable is defined
        execute statement
 
 
@@ -165,7 +165,6 @@ The if.. elif.. else statement is designed to test multiple conditions and make 
 
 Here is a simple example of the use of an if.. elif.. else statement.
 
-
 .. code-block:: python
    :linenos:
  
@@ -285,7 +284,6 @@ For loops are great for manipulating lists
    a = [‘cat’, ‘dog’, ‘window’, ‘Main Street’]
        for x in a:
           print (x)
- 
 | cat
 | dog
 | window
@@ -611,7 +609,7 @@ In many cases, instead of using the "+=" term, you will see people using "sum = 
 
 
 
-
+|
 
 
 While Loops
@@ -626,7 +624,7 @@ While loops are used when you cannot predict at runtime the number of times an o
        statements
 
 
-As long as the condition is true, the while statement will execute. When the expression is evaluated as False, the loop halts.
+As long as the condition is true, the while statement will execute. Each time a loop occurs, the value of the counter is increased by 1. Prior to the first loop, the counter x is equal to 1. Aftr the print statement, the 1 will be added to x thereby increasing its value to 2. At the beginning of the second loop, Python will check the value of x. Since x is less that 5, the loop will execute and the same pattern will be repeated.  When x becomes 5, the expression will evaluaate to False and the loop halts.  
 
 
 Example 1

@@ -94,7 +94,7 @@
 <h2><span class="section-number">5.1. </span>Conditionals<a class="headerlink" href="#conditionals" title="Permalink to this heading"></a></h2>
 <p>Unless otherwise directed, lines of codes in a procedure run sequentially, from first to last. Conditional statements can change the sequential flow of a program based on whether a given condition is true or false.</p>
 <p>Python uses the If statement for testing conditions. If the condition is true, then the code block following the if statement is executed. If it is not true, the program jumps to the end of the code block.</p>
-<p>In Python, a colon is placed at the end of the conditional statement, and the lines below the condition statement are indented.</p>
+<p>In Python, a colon is placed at the end of the statement that contains the condition, and the lines below the condition statement are indented.</p>
 <p>There are three types of conditional structures in Python:</p>
 <blockquote>
 <div><div class="line-block">
@@ -108,7 +108,7 @@
 </div>
 <p><strong>The If.. Conditional Structure</strong></p>
 <p>The structure of the if .. conditional statement is shown below.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>  <span class="c1"># if the variable is defined</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>  <span class="c1"># i.e., if the variable is defined</span>
 <span class="linenos">2</span>    <span class="n">execute</span> <span class="n">statement</span>
 </pre></div>
 </div>
@@ -521,6 +521,9 @@ Although the maximum value in the range is 100 million, as soon as the loop gets
 <span class="linenos">10</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sum = &quot;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </section>
 <section id="while-loops">
 <h2><span class="section-number">5.6. </span>While Loops<a class="headerlink" href="#while-loops" title="Permalink to this heading"></a></h2>
@@ -529,7 +532,7 @@ Although the maximum value in the range is 100 million, as soon as the loop gets
 <span class="linenos">2</span>    <span class="n">statements</span>
 </pre></div>
 </div>
-<p>As long as the condition is true, the while statement will execute. When the expression is evaluated as False, the loop halts.</p>
+<p>As long as the condition is true, the while statement will execute. Each time a loop occurs, the value of the counter is increased by 1. Prior to the first loop, the counter x is equal to 1. Aftr the print statement, the 1 will be added to x thereby increasing its value to 2. At the beginning of the second loop, Python will check the value of x. Since x is less that 5, the loop will execute and the same pattern will be repeated.  When x becomes 5, the expression will evaluaate to False and the loop halts.</p>
 <p>Example 1</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="linenos">2</span><span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>  <span class="c1"># condition</span>

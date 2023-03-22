@@ -7,7 +7,11 @@ What are Functions?
 --------------------
 
 
-In programming, a function is a named sequence of statements that performs a computation.  The example below shows a function that calculates area based on length and width values that have been passed to it.
+In programming, a function is a named sequence of statements that performs a computation.  Functions are used to avoid rewriting code everytime a particular task is required to be completed. For example, suppose you have to write a program in which you have to calculate the area of five different fields at different moments in the program flow. Instead of writing the code to calculate area each of the five times when area is required, we can write a single function to compute area so whenever an area calculation is needed in the program, we simply call the function to do the job. 
+
+Each time we call the area function, we would have to pass it the length and width parameters of the field and the computation would be performed. After performing the computation, the function would return the answer to the statement that called it.  
+
+The example below shows a function that calculates area based on length and width values that have been passed to it.
 
 
 .. code-block:: python
@@ -30,7 +34,12 @@ In programming, a function is a named sequence of statements that performs a com
 
 5. The "return" keyword is used to send results back to the main routine.
 
-6. To call the above function and store the output in a variabe named 'get_area', write:
+6. To call the above function, use the function name followed by parentheses containing the length and width values. , e.g., 
+         
+             calculate_area(300, 245)
+
+
+7. To call the function and store the output in a variabe named 'get_area', write:
 
         get_area = calculate_area(300, 245)
 
@@ -57,7 +66,30 @@ To call the function, type convertTemp and pass in a temperature value, e.g., co
 
 
 
-2. The function below takes a number and evaluates it in relation to the number 10. 
+
+2. Function to multiply all the numbers in a list.
+
+
+.. code-block:: python
+   :linenos:
+
+   mylist = [8, 2, 3, -1, 7]
+
+   def multiply(numbers):  
+      total = 1
+      for x in numbers:
+          total *= x
+      return total  
+
+
+#call the function and submit the list
+print(multiply(mylist))
+
+
+
+
+
+3. The function below takes a number and evaluates it in relation to the number 10. 
 
 .. code-block:: python
    :linenos:
@@ -76,7 +108,7 @@ Call the function:  number (100)
 
 
 
-3. The function below plot a graph. X1 and x2 define the range of the graph over the x axis. 
+4. The function below plots a graph. X1 and x2 define the range of the graph over the x axis. 
 
 
 .. code-block:: python
@@ -103,7 +135,7 @@ Call the function:  createline(5,25)
 |
 
 
-4. Python function to find the factorial of a number.
+5. Python function to find the factorial of a number.
 
 .. code-block:: python
    :linenos:
@@ -191,7 +223,7 @@ In the code sample, we are using ArcPy's ListField() function to print out the n
    fieldlist = arcpy.ListFields("roads.shp", "", "String")
 
    for field in fieldlist:
-      print field.name)
+      print (field.name)
 
 |
 
@@ -274,5 +306,21 @@ Exercises
 4. Rewrite the spatial interpolation program you wrote in the first lab as a function.
 
 5. Rewrite the gravity model that appears in geography textbooks as function.
+
+6. The script below uses arcpy's buffer function to buffer a set of files in a folder. Run the script using your own data. Comment it to show your understanding of the script.
+
+
+.. code-block:: python
+   :linenos:
+
+   import arcpy
+   from arcpy import env 
+   env.workspace = "file_path"
+   env.overwriteOutput = True
+   fcs = arcpy.ListFeatureClasses():
+
+   for fc in fcs:
+      arcpy.Buffer_analysis(fc, OutputName, "100 Feet", "FULL", "ROUND", "LIST", "Distance")
+
 
 
