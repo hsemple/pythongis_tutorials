@@ -157,7 +157,7 @@ Call the function:  createline(5,25)
 |
 
 
-Python’s  In-built Functions
+Python’s In-built Functions
 --------------------------------
 
 Python has many built in functions. For example, input() is a function which reads and returns the text you type. However, on many occasions, we have to write our own functions.
@@ -205,14 +205,84 @@ Next,  you have to specify the name of the module and the name of the function, 
 |
 
 
+Variable-length arguments in Python Functions
+------------------------------------------------
+
+Functions do not always have a fixed number of arguments. Sometimes, it is not always possible to know beforehand how many arguments will be passed to the function.  For example, in a spatial interpolation exercise, it is possible to estimate the unknown value from three or four or any number of nearby values.  In such a case, the function must be designed to handle any number of arguments that will be passed to it.
+
+
+In Python, we define a variable argument using an asterisk ('*') followed by a variable name.  By convention, the variable name is called "aargs" but  name can be used.  A tuple is used to store the values passed to *args and you can send zero or more arguments to the function.  Also, a formal argument cab be placed before the *args variable but not after it. 
+
+
+
+The following example demonstrates the usage of a function that takes variable length arguments.
+
+
+
+.. code-block:: python
+   :linenos:
+
+   def add_num(*args):
+       sum = 0
+       for num in args:
+          sum += num
+       return sum
+    
+       result = add_num(1, 2, 3)
+       print('Sum is', result)
+
+       result = add_num(10, 20, 30, 40)
+       print('Sum is', result)
+ 
+       result = add_num(5, 6, 7, 8, 9)
+       print('Sum is', result)
+
+
+|
+
+Python Docstrings
+-----------------
+
+Python docstrings are strings used to document code.  They are placed right after the definition of a function, as in the example below.
+
+
+.. code-block:: python
+   :linenos:
+
+
+    def square(n):
+        '''Takes in a number n, returns the square of n'''
+        return n**2
+
+    print(square.__doc__)
+
+
+
+|
+
+Here is the docstrings for the built-in function int() function in Python. Run it and note the results.  Click on this `hyperlink <"https://www.programiz.com/python-programming/docstrings">`_ to learn more about Python docstrings.
+
+
+.. code-block:: python
+   :linenos:
+
+    print(int.__doc__)
+
+
+|
+
+
 
 Arcpy Functions
 -----------------
 
-Arcpy has many functions which are used to support ArcGIS workflows from a Python perspective.  When working with arcpy's functions,  we must first import the arcpy library into our development environment. To call the function, we write arcpy followed by the name of the function and any arguments that the function requires, for example, arcpy.<function_name> (<arguments>)
+Arcpy has many functions which are used to support ArcGIS workflows from a Python perspective.  Take a look at this `list of ArcPy functions <https://pro.arcgis.com/en/pro-app/latest/arcpy/functions/alphabetical-list-of-arcpy-functions.htm>`_
 
 
-In the code sample, we are using ArcPy's ListField() function to print out the name of the fields in a shapefile's attribute table. 
+When working with arcpy's functions, we must first import the arcpy library into our development environment then call the function. To call the function, we write arcpy followed by the name of the function and any arguments that the function requires, for example, arcpy.function_name(arguments).
+
+
+In the code sample below, we are using ArcPy's ListField() function to print out a list of the fieldnames in a shapefile's attribute table. 
 
 
 .. code-block:: python
@@ -230,7 +300,7 @@ In the code sample, we are using ArcPy's ListField() function to print out the n
 |
 
 
-# The following script uses Arcpy's ListRaster function to create a list of raster files and iterates through each file in the list and prints out their names. Run the using your own data.  Study each line of the code to understand it in its entirety.
+In the script below,  Arcpy's ListRaster function is being used to print out a list of raster files in a folder. Run the using your own data.  Study each line of the code to understand the script in its entirety.
 
 
 .. code-block:: python
@@ -305,7 +375,7 @@ Exercises
 
 3. Define a function that accepts two numbers as arguments and returns the first number raised to the power of the second number.
 
-4. Rewrite the spatial interpolation program you wrote in the first lab as a function.
+4. Rewrite the spatial interpolation program you wrote in the second lab as a function.
 
 5. Rewrite the gravity model that appears in geography textbooks as function.
 

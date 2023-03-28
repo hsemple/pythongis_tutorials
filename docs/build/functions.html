@@ -19,6 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7. Basic Concepts in Object Oriented Programming" href="object_oriented_programming.html" />
     <link rel="prev" title="5. Conditional Statements and Looping" href="conditionals_and_looping.html" /> 
 </head>
 
@@ -51,12 +52,16 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">6. Functions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#what-are-functions">6.1. What are Functions?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#function-examples">6.2. Function Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pythons-in-built-functions">6.3. Python’s  In-built Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#arcpy-functions">6.4. Arcpy Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#resources">6.5. Resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exercises">6.6. Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pythons-in-built-functions">6.3. Python’s In-built Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#variable-length-arguments-in-python-functions">6.4. Variable-length arguments in Python Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-docstrings">6.5. Python Docstrings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arcpy-functions">6.6. Arcpy Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resources">6.7. Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">6.8. Exercises</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">7. Basic Concepts in Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="displaying_files.html">8. Loading and Displaying Files</a></li>
 </ul>
 
         </div>
@@ -206,7 +211,7 @@ print(multiply(mylist))</p>
 </div>
 </section>
 <section id="pythons-in-built-functions">
-<h2><span class="section-number">6.3. </span>Python’s  In-built Functions<a class="headerlink" href="#pythons-in-built-functions" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">6.3. </span>Python’s In-built Functions<a class="headerlink" href="#pythons-in-built-functions" title="Permalink to this heading"></a></h2>
 <p>Python has many built in functions. For example, input() is a function which reads and returns the text you type. However, on many occasions, we have to write our own functions.</p>
 <p><strong>Type Conversion Functions</strong></p>
 <div class="line-block">
@@ -241,10 +246,57 @@ print(multiply(mylist))</p>
 <div class="line"><br /></div>
 </div>
 </section>
+<section id="variable-length-arguments-in-python-functions">
+<h2><span class="section-number">6.4. </span>Variable-length arguments in Python Functions<a class="headerlink" href="#variable-length-arguments-in-python-functions" title="Permalink to this heading"></a></h2>
+<p>Functions do not always have a fixed number of arguments. Sometimes, it is not always possible to know beforehand how many arguments will be passed to the function.  For example, in a spatial interpolation exercise, it is possible to estimate the unknown value from three or four or any number of nearby values.  In such a case, the function must be designed to handle any number of arguments that will be passed to it.</p>
+<p>In Python, we define a variable argument using an asterisk (‘*’) followed by a variable name.  By convention, the variable name is called “aargs” but  name can be used.  A tuple is used to store the values passed to <a href="#id1"><span class="problematic" id="id2">*</span></a>args and you can send zero or more arguments to the function.  Also, a formal argument cab be placed before the <a href="#id3"><span class="problematic" id="id4">*</span></a>args variable but not after it.</p>
+<p>The following example demonstrates the usage of a function that takes variable length arguments.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">add_num</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="linenos"> 2</span>    <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 3</span>    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+<span class="linenos"> 4</span>       <span class="nb">sum</span> <span class="o">+=</span> <span class="n">num</span>
+<span class="linenos"> 5</span>    <span class="k">return</span> <span class="nb">sum</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>    <span class="n">result</span> <span class="o">=</span> <span class="n">add_num</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="linenos"> 8</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sum is&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>    <span class="n">result</span> <span class="o">=</span> <span class="n">add_num</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<span class="linenos">11</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sum is&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span>    <span class="n">result</span> <span class="o">=</span> <span class="n">add_num</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="linenos">14</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sum is&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="python-docstrings">
+<h2><span class="section-number">6.5. </span>Python Docstrings<a class="headerlink" href="#python-docstrings" title="Permalink to this heading"></a></h2>
+<p>Python docstrings are strings used to document code.  They are placed right after the definition of a function, as in the example below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="linenos">2</span>     <span class="sd">&#39;&#39;&#39;Takes in a number n, returns the square of n&#39;&#39;&#39;</span>
+<span class="linenos">3</span>     <span class="k">return</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">square</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Here is the docstrings for the built-in function int() function in Python. Run it and note the results.  Click on this <a class="reference external" href="&quot;https://www.programiz.com/python-programming/docstrings&quot;">hyperlink</a> to learn more about Python docstrings.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
 <section id="arcpy-functions">
-<h2><span class="section-number">6.4. </span>Arcpy Functions<a class="headerlink" href="#arcpy-functions" title="Permalink to this heading"></a></h2>
-<p>Arcpy has many functions which are used to support ArcGIS workflows from a Python perspective.  When working with arcpy’s functions,  we must first import the arcpy library into our development environment. To call the function, we write arcpy followed by the name of the function and any arguments that the function requires, for example, arcpy.&lt;function_name&gt; (&lt;arguments&gt;)</p>
-<p>In the code sample, we are using ArcPy’s ListField() function to print out the name of the fields in a shapefile’s attribute table.</p>
+<h2><span class="section-number">6.6. </span>Arcpy Functions<a class="headerlink" href="#arcpy-functions" title="Permalink to this heading"></a></h2>
+<p>Arcpy has many functions which are used to support ArcGIS workflows from a Python perspective.  Take a look at this <a class="reference external" href="https://pro.arcgis.com/en/pro-app/latest/arcpy/functions/alphabetical-list-of-arcpy-functions.htm">list of ArcPy functions</a></p>
+<p>When working with arcpy’s functions, we must first import the arcpy library into our development environment then call the function. To call the function, we write arcpy followed by the name of the function and any arguments that the function requires, for example, arcpy.function_name(arguments).</p>
+<p>In the code sample below, we are using ArcPy’s ListField() function to print out a list of the fieldnames in a shapefile’s attribute table.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">#Listfields function</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="kn">import</span> <span class="nn">arcpy</span>
@@ -258,7 +310,7 @@ print(multiply(mylist))</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p># The following script uses Arcpy’s ListRaster function to create a list of raster files and iterates through each file in the list and prints out their names. Run the using your own data.  Study each line of the code to understand it in its entirety.</p>
+<p>In the script below,  Arcpy’s ListRaster function is being used to print out a list of raster files in a folder. Run the using your own data.  Study each line of the code to understand the script in its entirety.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">arcpy</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="c1"># Set the workspace that contains the rasters</span>
@@ -299,7 +351,7 @@ print(multiply(mylist))</p>
 </div>
 </section>
 <section id="resources">
-<h2><span class="section-number">6.5. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">6.7. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://vimeo.com/107270986">Creating and Using Functions</a></p></li>
 <li><p><a class="reference external" href="https://pro.arcgis.com/en/pro-app/latest/arcpy/functions/alphabetical-list-of-arcpy-functions.htm">An overview of ArcPy functions</a></p></li>
@@ -309,7 +361,7 @@ print(multiply(mylist))</p>
 </div>
 </section>
 <section id="exercises">
-<h2><span class="section-number">6.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">6.8. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Write a Python function that squares each value in a list that is passed to it. The results should be passed to the calling statement and printed out.</p>
 <blockquote>
@@ -318,7 +370,7 @@ print(multiply(mylist))</p>
 </li>
 <li><p>Define a function that accepts radius and returns the area of a circle.</p></li>
 <li><p>Define a function that accepts two numbers as arguments and returns the first number raised to the power of the second number.</p></li>
-<li><p>Rewrite the spatial interpolation program you wrote in the first lab as a function.</p></li>
+<li><p>Rewrite the spatial interpolation program you wrote in the second lab as a function.</p></li>
 <li><p>Rewrite the gravity model that appears in geography textbooks as function.</p></li>
 <li><p>The script below uses arcpy’s buffer function to buffer a set of files in a folder. Run the script using your own data. Comment it to show your understanding of the script.</p></li>
 </ol>
@@ -340,6 +392,7 @@ print(multiply(mylist))</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="conditionals_and_looping.html" class="btn btn-neutral float-left" title="5. Conditional Statements and Looping" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="object_oriented_programming.html" class="btn btn-neutral float-right" title="7. Basic Concepts in Object Oriented Programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

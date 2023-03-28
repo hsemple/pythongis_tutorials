@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7. Basic Concepts in Object Oriented Programming &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="8. Loading and Displaying Files" href="displaying_files.html" />
+    <link rel="prev" title="6. Functions" href="functions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Python GIS Tutorials
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">2. Development Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_programs.html">3. Introduction to the Python Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings_lists_conditional.html">4. Strings and Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">5. Conditional Statements and Looping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">6. Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Basic Concepts in Object Oriented Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-object-oriented-programming-oop">7.1. What is Object Oriented Programming (OOP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#classes">7.2. Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#objects">7.3. Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#attributes">7.4. Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#methods">7.5. Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#encapsulation">7.6. Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#abstraction">7.7. Abstraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inheritance">7.8. Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#polymorphism">7.9. Polymorphism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#readings">7.10. Readings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">7.11. Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="displaying_files.html">8. Loading and Displaying Files</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python GIS Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">7. </span>Basic Concepts in Object Oriented Programming</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/object_oriented_programming.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="basic-concepts-in-object-oriented-programming">
+<h1><span class="section-number">7. </span>Basic Concepts in Object Oriented Programming<a class="headerlink" href="#basic-concepts-in-object-oriented-programming" title="Permalink to this heading"></a></h1>
+<p>In this module, we continue to look at basic programming concepts using Python. In particular, we will look at the meaning of object oriented programming and critical concepts such as:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>object oriented programming</p></li>
+<li><p>objects</p></li>
+<li><p>classes</p></li>
+<li><p>attributes</p></li>
+<li><p>methods</p></li>
+<li><p>inheritance</p></li>
+<li><p>encapsulation</p></li>
+</ul>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="what-is-object-oriented-programming-oop">
+<h2><span class="section-number">7.1. </span>What is Object Oriented Programming (OOP)<a class="headerlink" href="#what-is-object-oriented-programming-oop" title="Permalink to this heading"></a></h2>
+<p>OOP is a programming methodology or paradigm in which programs are designed using objects. Objects are named features or elements of the program that carry out specfic tasks.  Objects may interact with each other in specified ways as they to carry out their tasks.</p>
+<p>The first step in object oriented programming is to identify all the objects a programmer would like to manipulate in his/her program and how they relate to each other, an exercise often known as data modeling.  Once objects are identified, they are generalized or categorized as classes.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="classes">
+<h2><span class="section-number">7.2. </span>Classes<a class="headerlink" href="#classes" title="Permalink to this heading"></a></h2>
+<p>Classes are generalizations that define the kinds of data a particular type of objects may contain and the logic sequences that can be used to manipulate them. In general,  we use classes as templates or blueprints for creating objects.</p>
+<p>To create a class, we must first define the actions and characteristics of the objects that will be created.  In the example below, we are building a program that simulates how <a class="reference external" href="&quot;https://www.wwf.org.uk/learn/fascinating-facts/elephants&quot;">elephants</a> behave in the wild. The goal is to highlight three of the many classes that could appear in the program. The three classes are the animal class, the mammal class and the elephant class.</p>
+<p>The animal class defines behavior (methods) and characteristics (properties) that all animals will have in the program, not just elephants.  For animals that are mammals, a class has been defined that specifies things that mammals can do (methods) within the program. Since mammals are also animals, they will also inherit all the features contained in the animal class.  Finally, an elephant class has been defined to specify all the things that only elephants can do within the program.</p>
+<img alt="Classes and Methods" src="_images/classes_and_methods.png" />
+<p>Typically, class diagrams are written in very formal ways.  An example is shown below where the diagram is written using UML notation.</p>
+<img alt="UML Class Diagram" src="_images/uml_class_diagram.png" />
+<p>In addition to creating a class diagram, programmers write code to implement the various classes in a program. The illustraton below shows the code for creating the various classes in the program. As you ca see, tne code is actually a set of functions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span> <span class="k">class</span> <span class="nc">Animals</span><span class="p">():</span>
+<span class="linenos"> 2</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">species</span><span class="p">,</span> <span class="n">gender</span><span class="p">):</span>
+<span class="linenos"> 3</span>         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="linenos"> 4</span>         <span class="bp">self</span><span class="o">.</span><span class="n">species</span> <span class="o">=</span> <span class="n">species</span>
+<span class="linenos"> 5</span>         <span class="bp">self</span><span class="o">.</span><span class="n">gender</span> <span class="o">=</span> <span class="n">gender</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>     <span class="k">def</span> <span class="nf">getName</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 8</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>     <span class="k">def</span> <span class="nf">getSpecies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">11</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">species</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span>      <span class="k">def</span> <span class="nf">getGender</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">14</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gender</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span>     <span class="k">def</span> <span class="nf">breathe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">17</span>         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am breathing&#39;</span><span class="p">)</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span>     <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">20</span>         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am moving&#39;</span><span class="p">)</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span>     <span class="k">def</span> <span class="nf">eat_food</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">23</span>         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am eating food&#39;</span><span class="p">)</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span> <span class="k">class</span> <span class="nc">Mammals</span><span class="p">(</span><span class="n">Animals</span><span class="p">):</span>
+<span class="linenos">27</span>     <span class="k">def</span> <span class="nf">feed_young_with_milk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">28</span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am feeding my young&#39;</span><span class="p">)</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span>
+<span class="linenos">31</span> <span class="k">class</span> <span class="nc">Elephant</span> <span class="p">(</span><span class="n">Mammals</span><span class="p">):</span>
+<span class="linenos">32</span>     <span class="k">def</span> <span class="nf">eat_from_tall_tree</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">33</span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Feeding from tall tree&#39;</span><span class="p">)</span>
+<span class="linenos">34</span>
+<span class="linenos">35</span>     <span class="k">def</span> <span class="nf">spraying_water</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">36</span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Spraying water on my body using my trunk&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the example above, the animal class has a function called __init__().  This function is executed when the class is being initialized, i.e., when a new object is being created from the class.</p>
+<p>The __init__() function is used to assign values to object properties, or other operations that are necessary when the object is being created.  In object oriented programming, the “__init__” method  is called called a constructor.</p>
+<p>Notice also that each function within the class has a self parameter that is passed to it. In the first function, the self parameter is passed along with other parameters that the user will supply. In the other functions, only the self parameter is passed.  The self parameter is a reference to the class itself, and is used to access variables that belongs to the class.  It does not have be named self. You can call it whatever you like, but it is typically called self.  Self has to be the first parameter of any function in the class.</p>
+<p>To tell Python that a class is a child of another class, we add the name of the parent class in parentheses after the name of our new class. See this link
+for more information.</p>
+<p>To run the above code, simply copy it and paste it into Python. Once the code runs successfully, nothing will be printed to the screen, however, the class is created and lives in the computer memory.  We are now ready to create giraffe objects from it.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="objects">
+<h2><span class="section-number">7.3. </span>Objects<a class="headerlink" href="#objects" title="Permalink to this heading"></a></h2>
+<p>In object-oriented programming, an object is used to simulate real world objects or concrete aspects of the program.  They hold both data, and methods to manipulate the data. The data is usually not visible outside the object, but it can only be changed by using well-specified mechanisms.  The code below shows how we create objects.</p>
+<p><strong>Creating Animal Objects</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">animal1</span> <span class="o">=</span> <span class="n">Animals</span><span class="p">(</span><span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="s1">&#39;Tiger&#39;</span><span class="p">)</span>
+<span class="linenos">2</span> <span class="n">animal2</span>  <span class="o">=</span> <span class="n">Animals</span><span class="p">(</span><span class="s1">&#39;Luna&#39;</span><span class="p">,</span> <span class="s1">&#39;Lion&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Creating Elephant Objects</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">elephant1</span> <span class="o">=</span> <span class="n">Elephant</span> <span class="p">(</span><span class="s1">&#39;Ben&#39;</span><span class="p">,</span> <span class="s1">&#39;Elephant&#39;</span><span class="p">)</span>
+<span class="linenos">2</span> <span class="n">elephant2</span>  <span class="o">=</span> <span class="n">Elephant</span> <span class="p">(</span><span class="s1">&#39;Mary&#39;</span><span class="p">,</span> <span class="s1">&#39;Elephant&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="attributes">
+<h2><span class="section-number">7.4. </span>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading"></a></h2>
+<p>Attributes are characteristics associated with the object.  Normal attributes are introduced in the  __init___ method, but some attributes of a class are shared by all instances and are introduced at the class level.  In the example above, self.name = name and self.species = species are attributes.</p>
+<p>When getting an attribute, we write the object name followed by a dot and and the name of the attribute, e.g.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">elephant1</span><span class="o">.</span><span class="n">name</span>
+<span class="linenos">2</span> <span class="s1">&#39;Ben&#39;</span>
+</pre></div>
+</div>
+<p>We can also set and attribute, by calling the object and supplying an attribute,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">elephant1</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Ben&quot;</span>
+<span class="linenos">2</span> <span class="n">elephant1</span><span class="o">.</span><span class="n">name</span>
+<span class="linenos">3</span> <span class="s1">&#39;Ben&#39;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="methods">
+<h2><span class="section-number">7.5. </span>Methods<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h2>
+<p>A method is a function that is defined within a class.  Methods represent actions that the object can perform.  Methods have access to all the data contained in the instance of the object.  When calling a method, we write the object name followed by a dot with a parenthesis, e.g.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">elephant1</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The parenthesis in the move method means that it is expecting arguments. Even if no argument is supplied, the self keyword is automatically passed.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="encapsulation">
+<h2><span class="section-number">7.6. </span>Encapsulation<a class="headerlink" href="#encapsulation" title="Permalink to this heading"></a></h2>
+<p>The principle of encapsulation entails that all the properties and methods of an object be kept private and safe from unauthorized interference by other objects.</p>
+<p>Encapsulation involves bundling of data with the methods that operate on the data.  In each object we can have both private and public variables and methods. Private variables and methods cannot be called or used by other objects, whereas public ones can.</p>
+<p>To explain this, let’s again use a car application example. In a car application, some car attributes such as name of manufacturer, year and model of the car can be made private variables, meaning that they cannot be changed by other objects.  However, variables such as color, registration number, and driver can be made public variables meaning that they can be changed by other objects</p>
+<p>Let’s look at the public and private methods associated with a list object in Python. Let’s create a list named mylist:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Now, type the code below to see the attributes and methods associated with the list object. You can use the “dir” command with any Python object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="nb">dir</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>[‘__add__’, ‘__class__’, ‘__contains__’, ‘__delattr__’, ‘__delitem__’, ‘__delslice__’, ‘__doc__’, ‘__eq__’, ‘__format__’, ‘__ge__’, ‘__getattribute__’, ‘__getitem__’, ‘__getslice__’, ‘__gt__’, ‘__hash__’, ‘__iadd__’, ‘__imul__’, ‘__init__’, ‘__iter__’, ‘__le__’, ‘__len__’, ‘__lt__’, ‘__mul__’, ‘__ne__’, ‘__new__’, ‘__reduce__’, ‘__reduce_ex__’, ‘__repr__’, ‘__reversed__’, ‘__rmul__’, ‘__setattr__’, ‘__setitem__’, ‘__setslice__’, ‘__sizeof__’, ‘__str__’, ‘__subclasshook__’, ‘append’, ‘count’, ‘extend’, ‘index’, ‘insert’, ‘pop’, ‘remove’, ‘reverse’, ‘sort’]</p>
+<p>The methods that have double underscores in their names are used internally by Python. That’s encapsualtion. The other ones can be used publicly.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="abstraction">
+<h2><span class="section-number">7.7. </span>Abstraction<a class="headerlink" href="#abstraction" title="Permalink to this heading"></a></h2>
+<p>Abstraction in Python is the process of hiding the real implementation of an application from the user and emphasizing only the usage of it. For example, to use a TV remote control, one doesn’t have to learn the details of how pressing a key in the remote control changes the channels internally on the TV.  All a person needs to know is what pressing the various key does to the TV. For example, if you want to control the TV’s sound, all you need to do is press either the - key or the + key.  Through the process of abstraction, a programmer can hide many of the technical process or data in an application in order to reduce complexity and increase efficiency.</p>
+<p>In programming, abstraction can also be achieved by using abstract classes and methods in our programs.  A class containing one or more abstract methods is called an abstract class.</p>
+<p>Abstract methods do not contain any implementation. Instead, all the implementations can be defined in the methods of sub-classes that inherit the abstract class. An abstract class cannot be instantiated, i.e., we cannot create objects for the abstract class</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="inheritance">
+<h2><span class="section-number">7.8. </span>Inheritance<a class="headerlink" href="#inheritance" title="Permalink to this heading"></a></h2>
+<p>Inheritance enables new classes to receive—or inherit—the properties and methods of existing classes.</p>
+<p>Class Inheritance</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span> <span class="k">class</span> <span class="nc">Mammals</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="linenos"> 2</span>     <span class="k">def</span> <span class="nf">feed_young_with_milk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 3</span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;feeding young&#39;</span><span class="p">)</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span>     <span class="k">def</span> <span class="nf">dance_a_jig</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 6</span>        <span class="bp">self</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>
+<span class="linenos"> 7</span>        <span class="bp">self</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>
+<span class="linenos"> 8</span>        <span class="bp">self</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>
+<span class="linenos"> 9</span>        <span class="bp">self</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span> <span class="k">class</span> <span class="nc">Animals</span><span class="p">(</span><span class="n">Mammals</span><span class="p">):</span>
+<span class="linenos">12</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">species</span><span class="p">,</span> <span class="n">gender</span><span class="p">):</span>
+<span class="linenos">13</span>         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="linenos">14</span>         <span class="bp">self</span><span class="o">.</span><span class="n">species</span> <span class="o">=</span> <span class="n">species</span>
+<span class="linenos">15</span>         <span class="n">elf</span><span class="o">.</span><span class="n">gender</span> <span class="o">=</span> <span class="n">gender</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span>     <span class="k">def</span> <span class="nf">getName</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">18</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span>     <span class="k">def</span> <span class="nf">getSpecies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">21</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">species</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span>      <span class="k">def</span> <span class="nf">getGender</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">24</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gender</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span>     <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">27</span>         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am moving&#39;</span><span class="p">)</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span>     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">30</span>         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am eating&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><em>Creating and calling Elephant Objects</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">animal4</span> <span class="o">=</span> <span class="n">Animals</span><span class="p">(</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Giraffe&#39;</span><span class="p">)</span>
+<span class="linenos">2</span> <span class="n">animal5</span>  <span class="o">=</span> <span class="n">Animals</span><span class="p">(</span><span class="s1">&#39;Olga&#39;</span><span class="p">,</span> <span class="s1">&#39;Lioness&#39;</span><span class="p">)</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span> <span class="c1">#Inheritance</span>
+<span class="linenos">5</span> <span class="n">animal1</span><span class="o">.</span><span class="n">feed_young_with_milk</span><span class="p">()</span>
+<span class="linenos">6</span> <span class="n">animal1</span><span class="o">.</span><span class="n">eat_leaves_from_trees</span><span class="p">()</span>
+<span class="linenos">7</span> <span class="n">animal2</span><span class="o">.</span><span class="n">dance_a_jig</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><em>Looking up the Methods associated with an Object</em></p>
+<p>To look up the methods and properties of an object in Python, type the word dir followed by the name of the object in parenthesis. In the example below, we first create a list named mylist, then we issue the “dir” command to get a list of all the methods associataed with this object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="linenos">2</span> <span class="nb">dir</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>[‘__add__’, ‘__class__’, ‘__contains__’, ‘__delattr__’, ‘__delitem__’, ‘__delslice__’, ‘__doc__’, ‘__eq__’, ‘__format__’, ‘__ge__’, ‘__getattribute__’, ‘__getitem__’, ‘__getslice__’, ‘__gt__’, ‘__hash__’, ‘__iadd__’, ‘__imul__’, ‘__init__’, ‘__iter__’, ‘__le__’, ‘__len__’, ‘__lt__’, ‘__mul__’, ‘__ne__’, ‘__new__’, ‘__reduce__’, ‘__reduce_ex__’, ‘__repr__’, ‘__reversed__’, ‘__rmul__’, ‘__setattr__’, ‘__setitem__’, ‘__setslice__’, ‘__sizeof__’, ‘__str__’, ‘__subclasshook__’, ‘append’, ‘count’, ‘extend’, ‘index’, ‘insert’, ‘pop’, ‘remove’, ‘reverse’, ‘sort’]</p>
+<p>Use the methods that do not have double underscores. The ones with double underscore are used internally by Python.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="polymorphism">
+<h2><span class="section-number">7.9. </span>Polymorphism<a class="headerlink" href="#polymorphism" title="Permalink to this heading"></a></h2>
+<p>Polymorphism means the ability to take various forms. In OOPs, polymorphism means that a child class inheriting a function from a parent class can override the function and give it a new set of rules to follow.</p>
+<p>In the code below,  we have a “Dog” super class and three child classes that inherit from the superclass.  The superclass has a bark function, but some of the child classes have their own bark functions which allows them to bark in ways that are different from the super class.  That’s an example of polymorphism at work.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span> <span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
+<span class="linenos"> 2</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">):</span>
+<span class="linenos"> 3</span>         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="linenos"> 4</span>         <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+<span class="linenos"> 5</span>         <span class="bp">self</span><span class="o">.</span><span class="n">friendliness</span> <span class="o">=</span> <span class="n">friendliness</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>     <span class="k">def</span> <span class="nf">likes_walks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 8</span>         <span class="k">return</span> <span class="kc">True</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>     <span class="k">def</span> <span class="nf">barks</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">11</span>         <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Wooof&quot;</span><span class="p">,</span> <span class="s2">&quot;Woof&quot;</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span> <span class="k">class</span> <span class="nc">Samoyed</span> <span class="p">(</span><span class="n">Dog</span><span class="p">):</span>
+<span class="linenos">15</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">):</span>
+<span class="linenos">16</span>         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">)</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span>     <span class="k">def</span> <span class="nf">barks</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">20</span>         <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;rrrrr&quot;</span><span class="p">,</span> <span class="s2">&quot;rrrrr&quot;</span><span class="p">)</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span> <span class="k">class</span> <span class="nc">Poodle</span> <span class="p">(</span><span class="n">Dog</span><span class="p">):</span>
+<span class="linenos">24</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">):</span>
+<span class="linenos">25</span>         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">)</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span>     <span class="k">def</span> <span class="nf">barks</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">28</span>         <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;row row&quot;</span><span class="p">,</span> <span class="s2">&quot;row row row&quot;</span><span class="p">)</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span>
+<span class="linenos">31</span> <span class="k">class</span> <span class="nc">GoldenRetriever</span> <span class="p">(</span><span class="n">Dog</span><span class="p">):</span>
+<span class="linenos">32</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">):</span>
+<span class="linenos">33</span>         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="readings">
+<h2><span class="section-number">7.10. </span>Readings<a class="headerlink" href="#readings" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="&quot;https://vimeo.com/110920298&quot;">Classes and Objects</a></p></li>
+<li><p><a class="reference external" href="&quot;https://www.w3resource.com/python-exercises/class-exercises/python-class-real-life-problem-1.php&quot;">Python Class Exercises</a></p></li>
+<li><p><a class="reference external" href="&quot;https://wgbis.ces.iisc.ernet.in/envis/Remote/section114.htm&quot;">Measuring Heights from Individual and Paired Images</a></p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Practice Programs</strong></p>
+<p>Please complete the exercises at the links below.</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="&quot;https://pynative.com/python-object-oriented-programming-oop-exercise/#h-oop-exercise-1-create-a-class-with-instance-attributes&quot;">Classes and Objects Exercises</a></p></li>
+<li><p><a class="reference external" href="&quot;https://www.w3resource.com/python-exercises/class-exercises/python-class-real-life-problem-1.php&quot;">Python Class Exercises</a></p></li>
+<li><p><a class="reference external" href="&quot;https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/&quot;">Python Classes and Object Oriented Programming</a></p></li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="exercises">
+<h2><span class="section-number">7.11. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Complete the exercises under Python Classes and Inheritance at <a class="reference external" href="https://www.w3schools.com/python/exercise.asp?filename=exercise_classes1&quot;">this site</a></p></li>
+<li><p>Using the code below, do the following:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Initialize a dog object and call its various methods</p></li>
+<li><p>Create multiple instances of dog objects</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span> <span class="k">class</span> <span class="nc">Dog</span><span class="p">():</span>
+<span class="linenos"> 2</span>     <span class="sd">&quot;&quot;&quot;A simple attempt to model a dog.&quot;&quot;&quot;</span>
+<span class="linenos"> 3</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+<span class="linenos"> 4</span>         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="linenos"> 5</span>         <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>     <span class="k">def</span> <span class="nf">sit</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 8</span>         <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; is now sitting.&quot;</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span>     <span class="k">def</span> <span class="nf">roll_over</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">12</span>         <span class="sd">&quot;&quot;&quot;Simulate rolling over in response to a command.&quot;&quot;&quot;</span>
+<span class="linenos">13</span>         <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; rolled over!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>The class below can be used to create rectangle objects. Extend the class to also compute
+| a. the perimeter of objects.
+| b. the diagonal of the rectangle object. Diagonal (d) = √(l² + w²), where ‘l’ is the length and ‘w’ is the width of the rectangle. The formula for the diagonal of a rectangle is derived from the Pythagoras theorem.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="k">class</span> <span class="nc">Rectangle</span><span class="p">():</span>
+<span class="linenos">2</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+<span class="linenos">3</span>         <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="n">l</span>
+<span class="linenos">4</span>         <span class="bp">self</span><span class="o">.</span><span class="n">width</span>  <span class="o">=</span> <span class="n">w</span>
+<span class="linenos">5</span>     <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">6</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span>  <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Write a Python class named Circle constructed by a radius and two methods which will compute the area and the circumference of a circle.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="functions.html" class="btn btn-neutral float-left" title="6. Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="displaying_files.html" class="btn btn-neutral float-right" title="8. Loading and Displaying Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Hugh Semple.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
