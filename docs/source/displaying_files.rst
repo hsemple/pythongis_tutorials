@@ -13,12 +13,13 @@ To read a file, we must first open the file. This is done using Python's built-i
 .. code-block:: python
    :linenos:
 
-	file = open("/Users/sue/Desktop/Equakes2.csv", "r")
+	file = open("/Users/student/Desktop/Equakes2.csv", "r")
 	text = file.readlines()
 	file.close()
 
 	for line in text:
 	    print (line)
+
 
 
 *Points to Note*
@@ -56,7 +57,7 @@ These special characters make it very hard to create a file path that uses singl
 
 
 
-1. Use Forward Slashes
+**1. Use Forward Slashes**
 
 .. code-block:: python
 
@@ -64,7 +65,7 @@ These special characters make it very hard to create a file path that uses singl
 
 
 
-2. Use Raw Strings
+**2. Use Raw Strings**
 
 These are regular strings, but includes an r before the script begins.  The r tells the Python Interpreter that the string does not contain any special characters or escape characters.
 
@@ -72,9 +73,10 @@ These are regular strings, but includes an r before the script begins.  The r te
 
    file = (r"C:\Projects\PacktDB.gdb\Chapter3Results\Intersect71Census")
 
- 
 
-3. Use Double Backslahes
+
+
+**3. Use Double Backslahes**
 
 In this case, the backslashes are escaped using a second backslash.
 
@@ -86,7 +88,7 @@ In this case, the backslashes are escaped using a second backslash.
 |
 
 
-4.  Use os.path.join
+**4.  Use os.path.join**
 
 The os module provides access to operating system functions regardless of the platform you are using, i.e, Windows, Mac OS, Linux, etc. 
 
@@ -112,6 +114,7 @@ or
 
 Note: os.sep will supply the separator
 
+
 |
 
 
@@ -123,7 +126,7 @@ A second way  second way to open a file is to use the "with" statement.  The wit
 .. code-block:: python
    :linenos:
 
-	with open("/Users/semple/Desktop/Equakes2.csv", 'r') as file:
+	with open("/Users/student/Desktop/Equakes2.csv", 'r') as file:
 	   text = file.readlines()
 	for line in text:
 	   print (line)
@@ -175,7 +178,7 @@ Now, let's open a data file then read its content into into Python. After that, 
 
 	import math
 	import matplotlib.pyplot as plt
-	infile = open("C:/Users/Hugh/Desktop/Equakes2.csv, 'r')
+	infile = open("C:/Users/student/Desktop/Equakes2.csv, 'r')
 	lines = infile.readlines()
 	infile.close()
 	del lines[0] # Remove the header line
@@ -211,29 +214,20 @@ Now, let's open a data file then read its content into into Python. After that, 
 	plt.title("Magnitude of Earthquakes")
 	plt.show()
 
-|
-
-
-Earthquake Depth
-
-|
-
-MatPlotLib Colors
 
 
 
 |
-
 
 
 
 Reading Data Files and Plotting Graphs Using Pandas
 -----------------------------------------------------
 
-Pandas is a very powerful, popular and easy to use Python library for data analysis.  It has many Excel-like functions. Its primary object is the DataFrame, which can be thought of as an abstract database table or spreadsheet.  Once you create a dataframe object, you can use to display tables, plot columns, create and run queries, etc. 
+The script above used many lines of code to open the file, compute average, and plot a graph.  We can achieve the same results with far fewer lines of code by using a specialized library named Pandas.  Pandas is a very powerful, popular and easy to use Python library for data analysis.  It has many Excel-like functions. Its primary object is the DataFrame, which can be thought of as an abstract database table or spreadsheet.  Once you create a dataframe object, you can use it to display tables, plot columns, create and run queries, with just a few lines of code. 
 
  
-Plotting the above dataset with Pandas takes far fewer lines of codes compared to the standard Python library.
+Let's plot the earthquake dataset using Pandas. 
 
 
 
@@ -245,12 +239,11 @@ Plotting the above dataset with Pandas takes far fewer lines of codes compared t
 	df
 
 
-
-Pandas Table
-
+|
 
 
-Displaying Specific Columns of your Dataframe
+
+**Displaying Specific Columns of your Dataframe**
 
 To display the 'Depth_mls' and 'Magnitude' columns only, use the following syntax
 
@@ -258,25 +251,21 @@ To display the 'Depth_mls' and 'Magnitude' columns only, use the following synta
 .. code-block:: python
    :linenos:
 
-	import matplotlib.pyplot as plt
 	import pandas as pd
 	df = pd.read_csv("C:/Users/student/Desktop/Equakes2.csv")
 	df[['Depth_mls', 'Magnitude']]
 
 
- 
-
-Pandas Table
-
  
+
+|
+
+
 
 Plotting Graphs
 -----------------
 
 Many types of graphs can be plotted by pandas. Below are seven types of graphs that are useful to know how to create.
-
-Visualization-in-Pandas.jpg  
-
 
 
 The kind parameter accepts eleven different string values and determines which kind of plot you’ll create:
@@ -296,6 +285,7 @@ The kind parameter accepts eleven different string values and determines which k
 
 |
 
+
 **Line Graphs**
 
 .. code-block:: python
@@ -304,12 +294,12 @@ The kind parameter accepts eleven different string values and determines which k
 	import matplotlib.pyplot as plt
 	import pandas as pd
 
-	df = pd.read_csv("/Users/semple/Desktop/Equakes2.csv")
+	df = pd.read_csv("/Users/student/Desktop/Equakes2.csv")
 	df.plot(kind='line',y='Depth_mls',color='red', figsize=(6, 8))
 	plt.show()
 
 
-lineGraphs.png  
+
 
 |
 
@@ -321,16 +311,15 @@ lineGraphs.png  
 
 	import matplotlib.pyplot as plt
 	import pandas as pd
-	df = pd.read_csv("/Users/semple/Desktop/Equakes2.csv")
+	df = pd.read_csv("/Users/student/Desktop/Equakes2.csv")
 
 	#df.plot.line(column = df.columns[3],  figsize=(6, 8))
 
 	df.plot(kind='hist',y='Depth_mls',color='red',bins = 10, figsize=(6, 8))
 	plt.show()
 
- 
 
-histogram1.png  
+
 
 |
 
@@ -356,9 +345,8 @@ histogram1.png  
 
 
 
-  barChart2.png 
-
 |
+
 
 
 **Scatter**
@@ -370,12 +358,11 @@ To plot the Depth and Magnitude Data, write:
 
 	import matplotlib.pyplot as plt
 	import pandas as pd
-	df = pd.read_csv("/Users/semple/Desktop/Equakes2.csv")
+	df = pd.read_csv("/Users/student/Desktop/Equakes2.csv")
 
 	df.plot(kind='scatter', x='Depth_mls',y='Magnitude', color='red',figsize=(6, 8))
 	plt.show()
 
- 
 
 or
 
@@ -386,13 +373,6 @@ or
 
 	plt.show()
 
-
-
-|
-
-Tutorials
-
-Data Exploration and Analysis with ArcGIS Notebooks 
 
  
 
@@ -410,7 +390,7 @@ Once we are done with data analysis, we can also write to a file, as shown below
 .. code-block:: python
    :linenos:
 
-	with open("C:/Users/Student/Desktop/john.txt", "w") as f:
+	with open("C:/Users/student/Desktop/john.txt", "w") as f:
 	    f.write('Hello \n')
 	    f.write('Hello \n')
 	    f.write('Hello \n')
@@ -420,8 +400,9 @@ Once we are done with data analysis, we can also write to a file, as shown below
 	    f.write('Hello \n')
 	f.close
 
- 
+
 |
+
 
 Reading a Data file into Python, splitting its contents by columns, and storing the columns in variables
 
@@ -429,9 +410,9 @@ Reading a Data file into Python, splitting its contents by columns, and storing 
    :linenos:
 
  
-	infile = open("C:/Users/Student/Desktop/Equakes2.csv, 'r') 
+	infile = open("C:/Users/student/Desktop/Equakes2.csv, 'r') 
 	lines = infile.readlines() 
-	newfile=open("C:/Users/Hugh/Desktop/newfile.txt",mode="a+",encoding="utf-8")
+	newfile=open("C:/Users/student/Desktop/newfile.txt",mode="a+",encoding="utf-8")
 
 	del lines[0] # Remove the first line
 	#Create empty lists 
@@ -459,11 +440,13 @@ Reading a Data file into Python, splitting its contents by columns, and storing 
 	print ("The average earthquake magnitude is",round(average, 2))
 	print ("")
 
+
 |
 
 
-Video and Readings
----------------------
+
+Readings
+-----------
 
 Plotting Graphs with Matplotlib 
 

@@ -56,7 +56,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#reading-data-files-and-plotting-graphs-using-pandas">8.3. Reading Data Files and Plotting Graphs Using Pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#plotting-graphs">8.4. Plotting Graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#writing-to-a-file">8.5. Writing to a File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#video-and-readings">8.6. Video and Readings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#readings">8.6. Readings</a></li>
 </ul>
 </li>
 </ul>
@@ -89,7 +89,7 @@
 <h1><span class="section-number">8. </span>Reading and Displaying Files<a class="headerlink" href="#reading-and-displaying-files" title="Permalink to this heading"></a></h1>
 <p>To read a file, we must first open the file. This is done using Python’s built-in open() function. The open() function returns a file object, which has a read() method for reading  files and storing their contents as variables .  Once a file is read and stored as a variable, the original file can be closed.  We can then loop through the file variable and do stuff with its contents.</p>
 <p><a class="reference external" href="https://corgis-edu.github.io/corgis/csv/earthquakes/&quot;">Download Earthquake Data</a></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/sue/Desktop/Equakes2.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
 <span class="linenos">2</span>     <span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 <span class="linenos">3</span>     <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="linenos">4</span>
@@ -123,22 +123,16 @@
 </div>
 <p>Writing paths with backslashes is advisable because a Python string can contain special characters that also incorporate backslashes for other reasons, e.g.,  t (tabs),  n (newlines), r ( carriage returns), etc.</p>
 <p>These special characters make it very hard to create a file path that uses single backslashes because file paths in Windows also use single backslashes. There are several workarounds:</p>
-<ol class="arabic simple">
-<li><p>Use Forward Slashes</p></li>
-</ol>
+<p><strong>1. Use Forward Slashes</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Projects/PacktDB.gdb/Chapter3Results/Intersect71Census&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
-<li><p>Use Raw Strings</p></li>
-</ol>
+<p><strong>2. Use Raw Strings</strong></p>
 <p>These are regular strings, but includes an r before the script begins.  The r tells the Python Interpreter that the string does not contain any special characters or escape characters.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Projects\PacktDB.gdb\Chapter3Results\Intersect71Census&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
-<li><p>Use Double Backslahes</p></li>
-</ol>
+<p><strong>3. Use Double Backslahes</strong></p>
 <p>In this case, the backslashes are escaped using a second backslash.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Projects</span><span class="se">\\</span><span class="s2">PacktDB.gdb</span><span class="se">\\</span><span class="s2">Chapter3Results</span><span class="se">\\</span><span class="s2">Intersect71Census&quot;</span>
 </pre></div>
@@ -146,9 +140,7 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<ol class="arabic simple" start="4">
-<li><p>Use os.path.join</p></li>
-</ol>
+<p><strong>4.  Use os.path.join</strong></p>
 <p>The os module provides access to operating system functions regardless of the platform you are using, i.e, Windows, Mac OS, Linux, etc.</p>
 <p>os.path.join() takes any number of path strings and returns a single path using the platform-specific path separator.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -172,7 +164,7 @@
 <section id="opening-a-file-using-the-with-statement">
 <h2><span class="section-number">8.2. </span>Opening a file using the “With” Statement<a class="headerlink" href="#opening-a-file-using-the-with-statement" title="Permalink to this heading"></a></h2>
 <p>A second way  second way to open a file is to use the “with” statement.  The with statement automatically takes care of closing the file once it leaves the with block, even in cases of error. I highly recommend that you use the with statement as much as possible, as it allows for cleaner code and makes handling any unexpected errors easier for you.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/semple/Desktop/Equakes2.csv&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
 <span class="linenos">2</span>        <span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 <span class="linenos">3</span>     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
 <span class="linenos">4</span>        <span class="nb">print</span> <span class="p">(</span><span class="n">line</span><span class="p">)</span>
@@ -216,7 +208,7 @@
 <p><strong>Reading a Data file into Python, Performing Calculations and Making a Graph</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>     <span class="kn">import</span> <span class="nn">math</span>
 <span class="linenos"> 2</span>     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="linenos"> 3</span>     <span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/Hugh/Desktop/Equakes2.csv, &#39;r&#39;)</span>
+<span class="linenos"> 3</span>     <span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/student/Desktop/Equakes2.csv, &#39;r&#39;)</span>
 <span class="linenos"> 4</span>     <span class="n">lines</span> <span class="o">=</span> <span class="n">infile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 <span class="linenos"> 5</span>     <span class="n">infile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="linenos"> 6</span>     <span class="k">del</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Remove the header line</span>
@@ -256,39 +248,33 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Earthquake Depth</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>MatPlotLib Colors</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="reading-data-files-and-plotting-graphs-using-pandas">
 <h2><span class="section-number">8.3. </span>Reading Data Files and Plotting Graphs Using Pandas<a class="headerlink" href="#reading-data-files-and-plotting-graphs-using-pandas" title="Permalink to this heading"></a></h2>
-<p>Pandas is a very powerful, popular and easy to use Python library for data analysis.  It has many Excel-like functions. Its primary object is the DataFrame, which can be thought of as an abstract database table or spreadsheet.  Once you create a dataframe object, you can use to display tables, plot columns, create and run queries, etc.</p>
-<p>Plotting the above dataset with Pandas takes far fewer lines of codes compared to the standard Python library.</p>
+<p>The script above used many lines of code to open the file, compute average, and plot a graph.  We can achieve the same results with far fewer lines of code by using a specialized library named Pandas.  Pandas is a very powerful, popular and easy to use Python library for data analysis.  It has many Excel-like functions. Its primary object is the DataFrame, which can be thought of as an abstract database table or spreadsheet.  Once you create a dataframe object, you can use it to display tables, plot columns, create and run queries, with just a few lines of code.</p>
+<p>Let’s plot the earthquake dataset using Pandas.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="linenos">2</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;C:/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">)</span>
 <span class="linenos">3</span>     <span class="n">df</span>
 </pre></div>
 </div>
-<p>Pandas Table</p>
-<p>Displaying Specific Columns of your Dataframe</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Displaying Specific Columns of your Dataframe</strong></p>
 <p>To display the ‘Depth_mls’ and ‘Magnitude’ columns only, use the following syntax</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="linenos">2</span>     <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="linenos">3</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;C:/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">)</span>
-<span class="linenos">4</span>     <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Depth_mls&#39;</span><span class="p">,</span> <span class="s1">&#39;Magnitude&#39;</span><span class="p">]]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="linenos">2</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;C:/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">)</span>
+<span class="linenos">3</span>     <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Depth_mls&#39;</span><span class="p">,</span> <span class="s1">&#39;Magnitude&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
-<p>Pandas Table</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </section>
 <section id="plotting-graphs">
 <h2><span class="section-number">8.4. </span>Plotting Graphs<a class="headerlink" href="#plotting-graphs" title="Permalink to this heading"></a></h2>
 <p>Many types of graphs can be plotted by pandas. Below are seven types of graphs that are useful to know how to create.</p>
-<p>Visualization-in-Pandas.jpg</p>
 <p>The kind parameter accepts eleven different string values and determines which kind of plot you’ll create:</p>
 <blockquote>
 <div><div class="line-block">
@@ -312,19 +298,18 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="linenos">2</span>     <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="linenos">3</span>
-<span class="linenos">4</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/semple/Desktop/Equakes2.csv&quot;</span><span class="p">)</span>
+<span class="linenos">4</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">)</span>
 <span class="linenos">5</span>     <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Depth_mls&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="linenos">6</span>     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>lineGraphs.png</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>Histograms</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="linenos">2</span>     <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="linenos">3</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/semple/Desktop/Equakes2.csv&quot;</span><span class="p">)</span>
+<span class="linenos">3</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">)</span>
 <span class="linenos">4</span>
 <span class="linenos">5</span>     <span class="c1">#df.plot.line(column = df.columns[3],  figsize=(6, 8))</span>
 <span class="linenos">6</span>
@@ -332,28 +317,22 @@
 <span class="linenos">8</span>     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>histogram1.png</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>Bar Plot</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
- <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
- <span class="n">speed</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">17.5</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">88</span><span class="p">]</span>
- <span class="n">lifespan</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">28</span><span class="p">]</span>
- <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;snail&#39;</span><span class="p">,</span> <span class="s1">&#39;pig&#39;</span><span class="p">,</span> <span class="s1">&#39;elephant&#39;</span><span class="p">,</span><span class="s1">&#39;rabbit&#39;</span><span class="p">,</span> <span class="s1">&#39;giraffe&#39;</span><span class="p">,</span> <span class="s1">&#39;coyote&#39;</span><span class="p">,</span> <span class="s1">&#39;horse&#39;</span><span class="p">]</span>
+<span class="n">speed</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">17.5</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">88</span><span class="p">]</span>
+<span class="n">lifespan</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">28</span><span class="p">]</span>
+<span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;snail&#39;</span><span class="p">,</span> <span class="s1">&#39;pig&#39;</span><span class="p">,</span> <span class="s1">&#39;elephant&#39;</span><span class="p">,</span><span class="s1">&#39;rabbit&#39;</span><span class="p">,</span> <span class="s1">&#39;giraffe&#39;</span><span class="p">,</span> <span class="s1">&#39;coyote&#39;</span><span class="p">,</span> <span class="s1">&#39;horse&#39;</span><span class="p">]</span>
 
- <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;speed&#39;</span><span class="p">:</span> <span class="n">speed</span><span class="p">,</span><span class="s1">&#39;lifespan&#39;</span><span class="p">:</span> <span class="n">lifespan</span><span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;speed&#39;</span><span class="p">:</span> <span class="n">speed</span><span class="p">,</span><span class="s1">&#39;lifespan&#39;</span><span class="p">:</span> <span class="n">lifespan</span><span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
 
- <span class="n">ax</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">rot</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
- <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Speed vs Lifespan, Selected Animals&quot;</span><span class="p">)</span>
- <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-
-
-
-<span class="n">barChart2</span><span class="o">.</span><span class="n">png</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">rot</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Speed vs Lifespan, Selected Animals&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -363,7 +342,7 @@
 <p>To plot the Depth and Magnitude Data, write:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="linenos">2</span>     <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="linenos">3</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/semple/Desktop/Equakes2.csv&quot;</span><span class="p">)</span>
+<span class="linenos">3</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">)</span>
 <span class="linenos">4</span>
 <span class="linenos">5</span>     <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Depth_mls&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="linenos">6</span>     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -378,16 +357,11 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Tutorials</p>
-<p>Data Exploration and Analysis with ArcGIS Notebooks</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="writing-to-a-file">
 <h2><span class="section-number">8.5. </span>Writing to a File<a class="headerlink" href="#writing-to-a-file" title="Permalink to this heading"></a></h2>
 <p>Once we are done with data analysis, we can also write to a file, as shown below.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/Student/Desktop/john.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/student/Desktop/john.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 <span class="linenos">2</span>         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="linenos">3</span>         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="linenos">4</span>         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -402,9 +376,9 @@
 <div class="line"><br /></div>
 </div>
 <p>Reading a Data file into Python, splitting its contents by columns, and storing the columns in variables</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>     <span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/Student/Desktop/Equakes2.csv, &#39;r&#39;)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>     <span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/student/Desktop/Equakes2.csv, &#39;r&#39;)</span>
 <span class="linenos"> 2</span>     <span class="n">lines</span> <span class="o">=</span> <span class="n">infile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
-<span class="linenos"> 3</span>     <span class="n">newfile</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/Hugh/Desktop/newfile.txt&quot;</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;a+&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<span class="linenos"> 3</span>     <span class="n">newfile</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/student/Desktop/newfile.txt&quot;</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;a+&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
 <span class="linenos"> 4</span>
 <span class="linenos"> 5</span>     <span class="k">del</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Remove the first line</span>
 <span class="linenos"> 6</span>     <span class="c1">#Create empty lists</span>
@@ -437,8 +411,8 @@
 <div class="line"><br /></div>
 </div>
 </section>
-<section id="video-and-readings">
-<h2><span class="section-number">8.6. </span>Video and Readings<a class="headerlink" href="#video-and-readings" title="Permalink to this heading"></a></h2>
+<section id="readings">
+<h2><span class="section-number">8.6. </span>Readings<a class="headerlink" href="#readings" title="Permalink to this heading"></a></h2>
 <p>Plotting Graphs with Matplotlib</p>
 <ul class="simple">
 <li><p>Download Plotting Graphs with Matplotlib</p></li>
