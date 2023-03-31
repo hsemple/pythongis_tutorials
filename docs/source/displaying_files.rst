@@ -26,10 +26,10 @@ To read a file, we must first open the file. This is done using Python's built-i
 
 1. The open method has the following modes:
 
-  | ‘r’ – Python read file. Read mode which is used when the file is only being read
-  | ‘w’ – Python write file. Write mode which is used to edit and write new information to the file (any existing files with the same name will be erased when this mode is activated)
-  | ‘a’ – Python append file. Append mode, which is used to add new data to the end of the file; that is new information is automatically amended to the end
-  | ‘r+’ – Special read and write mode, which is used to handle both actions when working with a file
+  | ‘r’ – Python read file. Read mode is used when the file is only being read
+  | ‘w’ – Python write file. Write mode is used to edit and write new information to the file (any existing files with the same name will be erased when this mode is activated)
+  | ‘a’ – Python append file. Append mode is used to add new data to the end of the file; that is new information is automatically amended to the end
+  | ‘r+’ – Special read and write mode is used to handle both actions when working with a file
 
 
 
@@ -51,7 +51,7 @@ In Python, it is better not to write your file paths with backslashes as shown b
 
 
 
-Writing paths with backslashes is advisable because a Python string can contain special characters that also incorporate backslashes for other reasons, e.g.,  \t (tabs),  \n (newlines), \r ( carriage returns), etc.
+Writing paths with backslashes is not advisable because a Python string can contain special characters that also incorporate backslashes for other reasons, e.g.,  "\t" (tabs),  "\n" (newlines), "\r" ( carriage returns), etc.
 
 These special characters make it very hard to create a file path that uses single backslashes because file paths in Windows also use single backslashes. There are several workarounds:
 
@@ -61,9 +61,10 @@ These special characters make it very hard to create a file path that uses singl
 
 .. code-block:: python
 
-   file = open("C:/Projects/PacktDB.gdb/Chapter3Results/Intersect71Census", "r")
+   file = open("C:/Users/Student/Desktop/earthquakes.csv", "r")
 
 
+|
 
 **2. Use Raw Strings**
 
@@ -71,9 +72,11 @@ These are regular strings, but includes an r before the script begins.  The r te
 
 .. code-block:: python
 
-   file = (r"C:\Projects\PacktDB.gdb\Chapter3Results\Intersect71Census")
+   file = (r"C:\Users\Student\Desktop\earthquakes.csv")
 
 
+
+|
 
 
 **3. Use Double Backslahes**
@@ -82,7 +85,7 @@ In this case, the backslashes are escaped using a second backslash.
 
 .. code-block:: python
 
-   "C:\\Projects\\PacktDB.gdb\\Chapter3Results\\Intersect71Census"
+   "C:\\Users\\Student\\Desktop\\earthquakes.csv"
 
 
 |
@@ -108,9 +111,9 @@ or
 .. code-block:: python
 
 	import os
-	os.path.join('c:', os.sep, 'sourcedir')
+	os.path.join('c:', os.sep, 'mydata')
 	
-	>>> 'c:\\sourcedir'
+	>>> 'c:\\mydata'
 
 Note: os.sep will supply the separator
 
@@ -135,14 +138,15 @@ A second way  second way to open a file is to use the "with" statement.  The wit
 |
 
 
-Now, let's open a data file then read its content into into Python. After that, we will split the file contents by columns, and store the columns in variables
+Now, let's open a data file then read its content into Python. After that, we will split the file contents into inidividual columns, and store the columns in variables
 
 .. code-block:: python
    :linenos:
 
-	infile = open("C:/Users/Student/Desktop/Equakes2.csv", 'r') 
+	infile = open("/Users/student/Desktop/earthquakes.csv", 'r') 
 	lines = infile.readlines() 
 	infile.close() 
+
 	del lines[0] # Remove the first line
 	#Create empty lists 
 	xvar = [] 
@@ -150,22 +154,27 @@ Now, let's open a data file then read its content into into Python. After that, 
 	count = 0
 
 	for line in lines:
-	     elements = line.split(",") # splits the line
-	     mag = float(elements[4]) # Get the data in the fifth column 
-	     count = count + 1
+	    elements = line.split(",") # splits the line
+	    mag = float(elements[2]) # Get the data in the third column
+	    dep = float(elements[3]) # Get the data in the fourth column
 
-	     # Add count and magnitude data to the empty x,y lists 
-	     xvar.append(count) 
-	     yvar.append(mag)
+	    # Add magnitude and depth data to the empty lists 
+	    xvar.append(dep) 
+	    yvar.append(mag)
 
-	#Check that the lists are populated
-	print (yvar)
+
+
+	#Print the two lists as columnss
+
+	magnitude = "Magnitude"
+	depth = "Depth"
+
+	print ("%-15s %s" %(magnitude, depth))
 	print ("")
-	print (xvar)
 
-	#or
-	#print (*yvar, sep = "\n")
-	#print (*xvar, sep = "\n")
+	for c1, c2 in zip(xvar, yvar):
+	    print ("%-15s %s" % (c1, c2))
+
 
 
 |

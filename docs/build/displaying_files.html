@@ -103,10 +103,10 @@
 </ol>
 <blockquote>
 <div><div class="line-block">
-<div class="line">‘r’ – Python read file. Read mode which is used when the file is only being read</div>
-<div class="line">‘w’ – Python write file. Write mode which is used to edit and write new information to the file (any existing files with the same name will be erased when this mode is activated)</div>
-<div class="line">‘a’ – Python append file. Append mode, which is used to add new data to the end of the file; that is new information is automatically amended to the end</div>
-<div class="line">‘r+’ – Special read and write mode, which is used to handle both actions when working with a file</div>
+<div class="line">‘r’ – Python read file. Read mode is used when the file is only being read</div>
+<div class="line">‘w’ – Python write file. Write mode is used to edit and write new information to the file (any existing files with the same name will be erased when this mode is activated)</div>
+<div class="line">‘a’ – Python append file. Append mode is used to add new data to the end of the file; that is new information is automatically amended to the end</div>
+<div class="line">‘r+’ – Special read and write mode is used to handle both actions when working with a file</div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
@@ -121,20 +121,26 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:\Projects\PacktDB.gdb\Chapter3Results\Intersect71Census&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Writing paths with backslashes is advisable because a Python string can contain special characters that also incorporate backslashes for other reasons, e.g.,  t (tabs),  n (newlines), r ( carriage returns), etc.</p>
+<p>Writing paths with backslashes is not advisable because a Python string can contain special characters that also incorporate backslashes for other reasons, e.g.,  “t” (tabs),  “n” (newlines), “r” ( carriage returns), etc.</p>
 <p>These special characters make it very hard to create a file path that uses single backslashes because file paths in Windows also use single backslashes. There are several workarounds:</p>
 <p><strong>1. Use Forward Slashes</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Projects/PacktDB.gdb/Chapter3Results/Intersect71Census&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/Student/Desktop/earthquakes.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
 </pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
 <p><strong>2. Use Raw Strings</strong></p>
 <p>These are regular strings, but includes an r before the script begins.  The r tells the Python Interpreter that the string does not contain any special characters or escape characters.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Projects\PacktDB.gdb\Chapter3Results\Intersect71Census&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\Student\Desktop\earthquakes.csv&quot;</span><span class="p">)</span>
 </pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
 <p><strong>3. Use Double Backslahes</strong></p>
 <p>In this case, the backslashes are escaped using a second backslash.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Projects</span><span class="se">\\</span><span class="s2">PacktDB.gdb</span><span class="se">\\</span><span class="s2">Chapter3Results</span><span class="se">\\</span><span class="s2">Intersect71Census&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Users</span><span class="se">\\</span><span class="s2">Student</span><span class="se">\\</span><span class="s2">Desktop</span><span class="se">\\</span><span class="s2">earthquakes.csv&quot;</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -151,9 +157,9 @@
 </div>
 <p>or</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;c:&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">,</span> <span class="s1">&#39;sourcedir&#39;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;c:&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">,</span> <span class="s1">&#39;mydata&#39;</span><span class="p">)</span>
 
-<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;c:</span><span class="se">\\</span><span class="s1">sourcedir&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;c:</span><span class="se">\\</span><span class="s1">mydata&#39;</span>
 </pre></div>
 </div>
 <p>Note: os.sep will supply the separator</p>
@@ -173,33 +179,38 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Now, let’s open a data file then read its content into into Python. After that, we will split the file contents by columns, and store the columns in variables</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>     <span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/Student/Desktop/Equakes2.csv&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<p>Now, let’s open a data file then read its content into Python. After that, we will split the file contents into inidividual columns, and store the columns in variables</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>     <span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/earthquakes.csv&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="linenos"> 2</span>     <span class="n">lines</span> <span class="o">=</span> <span class="n">infile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 <span class="linenos"> 3</span>     <span class="n">infile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="linenos"> 4</span>     <span class="k">del</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Remove the first line</span>
-<span class="linenos"> 5</span>     <span class="c1">#Create empty lists</span>
-<span class="linenos"> 6</span>     <span class="n">xvar</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos"> 7</span>     <span class="n">yvar</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos"> 8</span>     <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="linenos"> 9</span>
-<span class="linenos">10</span>     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-<span class="linenos">11</span>          <span class="n">elements</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span> <span class="c1"># splits the line</span>
-<span class="linenos">12</span>          <span class="n">mag</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># Get the data in the fifth column</span>
-<span class="linenos">13</span>          <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="linenos">14</span>
-<span class="linenos">15</span>          <span class="c1"># Add count and magnitude data to the empty x,y lists</span>
-<span class="linenos">16</span>          <span class="n">xvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
-<span class="linenos">17</span>          <span class="n">yvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mag</span><span class="p">)</span>
-<span class="linenos">18</span>
-<span class="linenos">19</span>     <span class="c1">#Check that the lists are populated</span>
-<span class="linenos">20</span>     <span class="nb">print</span> <span class="p">(</span><span class="n">yvar</span><span class="p">)</span>
-<span class="linenos">21</span>     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="linenos">22</span>     <span class="nb">print</span> <span class="p">(</span><span class="n">xvar</span><span class="p">)</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span>     <span class="k">del</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Remove the first line</span>
+<span class="linenos"> 6</span>     <span class="c1">#Create empty lists</span>
+<span class="linenos"> 7</span>     <span class="n">xvar</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos"> 8</span>     <span class="n">yvar</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos"> 9</span>     <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span>     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+<span class="linenos">12</span>         <span class="n">elements</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span> <span class="c1"># splits the line</span>
+<span class="linenos">13</span>         <span class="n">mag</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># Get the data in the third column</span>
+<span class="linenos">14</span>         <span class="n">dep</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># Get the data in the fourth column</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span>         <span class="c1"># Add magnitude and depth data to the empty lists</span>
+<span class="linenos">17</span>         <span class="n">xvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span>
+<span class="linenos">18</span>         <span class="n">yvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mag</span><span class="p">)</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span>     <span class="c1">#Print the two lists as columnss</span>
 <span class="linenos">23</span>
-<span class="linenos">24</span>     <span class="c1">#or</span>
-<span class="linenos">25</span>     <span class="c1">#print (*yvar, sep = &quot;\n&quot;)</span>
-<span class="linenos">26</span>     <span class="c1">#print (*xvar, sep = &quot;\n&quot;)</span>
+<span class="linenos">24</span>     <span class="n">magnitude</span> <span class="o">=</span> <span class="s2">&quot;Magnitude&quot;</span>
+<span class="linenos">25</span>     <span class="n">depth</span> <span class="o">=</span> <span class="s2">&quot;Depth&quot;</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span>     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%-15s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">magnitude</span><span class="p">,</span> <span class="n">depth</span><span class="p">))</span>
+<span class="linenos">28</span>     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span>     <span class="k">for</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">xvar</span><span class="p">,</span> <span class="n">yvar</span><span class="p">):</span>
+<span class="linenos">31</span>         <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%-15s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="line-block">

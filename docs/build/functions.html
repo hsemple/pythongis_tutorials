@@ -372,16 +372,41 @@ print(multiply(mylist))</p>
 <li><p>Define a function that accepts two numbers as arguments and returns the first number raised to the power of the second number.</p></li>
 <li><p>Rewrite the spatial interpolation program you wrote in the second lab as a function.</p></li>
 <li><p>Rewrite the gravity model that appears in geography textbooks as function.</p></li>
-<li><p>The script below uses arcpy’s buffer function to buffer a set of files in a folder. Run the script using your own data. Comment it to show your understanding of the script.</p></li>
+<li><p>The scriptsbelow uses arcpy’s buffer function to buffer a shapefile.  Run the script using your own data. Comment it to show your understanding of the function.</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">arcpy</span>
-<span class="linenos">2</span><span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="n">env</span>
-<span class="linenos">3</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;file_path&quot;</span>
-<span class="linenos">4</span><span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="linenos">5</span><span class="n">fcs</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFeatureClasses</span><span class="p">():</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">try</span><span class="p">:</span>
+<span class="linenos">4</span>  <span class="n">infc</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\mydata\California\California.shp&quot;</span>
+<span class="linenos">5</span>  <span class="n">outfc</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\mydata\California\CA_Buffered.shp&quot;</span>
 <span class="linenos">6</span>
-<span class="linenos">7</span><span class="k">for</span> <span class="n">fc</span> <span class="ow">in</span> <span class="n">fcs</span><span class="p">:</span>
-<span class="linenos">8</span>   <span class="n">arcpy</span><span class="o">.</span><span class="n">Buffer_analysis</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">OutputName</span><span class="p">,</span> <span class="s2">&quot;100 Feet&quot;</span><span class="p">,</span> <span class="s2">&quot;FULL&quot;</span><span class="p">,</span> <span class="s2">&quot;ROUND&quot;</span><span class="p">,</span> <span class="s2">&quot;LIST&quot;</span><span class="p">,</span> <span class="s2">&quot;Distance&quot;</span><span class="p">)</span>
+<span class="linenos">7</span>  <span class="n">bufferDistance</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="linenos">8</span>
+<span class="linenos">9</span>  <span class="n">arcpy</span><span class="o">.</span><span class="n">Buffer_analysis</span><span class="p">(</span><span class="n">infc</span><span class="p">,</span> <span class="n">outfc</span>  <span class="n">bufferDistance</span><span class="s2">&quot;, &quot;&quot;, &quot;&quot;, &quot;</span><span class="n">ALL</span><span class="s2">&quot;)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>The script below is another arcpy buffer script to buffer multiple feature classes. . Run the script using your own data. Comment it to show your understanding of the script.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="c1">#Set geoprocessing environments</span>
+<span class="linenos"> 4</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\mydata\California&quot;</span>
+<span class="linenos"> 5</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="c1">#Create list of feature classes</span>
+<span class="linenos"> 8</span><span class="n">fclist</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFeatureClasses</span><span class="p">()</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="c1">#Provide a list of distances to be used for buffering</span>
+<span class="linenos">12</span><span class="n">distances</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">8000</span><span class="p">]</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="c1"># Create a loop to buffer the list of feature classes</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="k">for</span> <span class="n">distance</span> <span class="ow">in</span> <span class="n">distances</span><span class="p">:</span>
+<span class="linenos">18</span>    <span class="k">for</span> <span class="n">fc</span> <span class="ow">in</span> <span class="n">fclist</span><span class="p">:</span>
+<span class="linenos">19</span>         <span class="n">arcpy</span><span class="o">.</span><span class="n">Buffer_analysis</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="s2">&quot;_Buffer&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">distance</span><span class="p">),</span>  <span class="s2">&quot;distance&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;ALL&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

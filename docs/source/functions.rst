@@ -379,20 +379,58 @@ Exercises
 
 5. Rewrite the gravity model that appears in geography textbooks as function.
 
-6. The script below uses arcpy's buffer function to buffer a set of files in a folder. Run the script using your own data. Comment it to show your understanding of the script.
+6. The scriptsbelow uses arcpy's buffer function to buffer a shapefile.  Run the script using your own data. Comment it to show your understanding of the function.
+
 
 
 .. code-block:: python
    :linenos:
 
    import arcpy
-   from arcpy import env 
-   env.workspace = "file_path"
-   env.overwriteOutput = True
-   fcs = arcpy.ListFeatureClasses():
 
-   for fc in fcs:
-      arcpy.Buffer_analysis(fc, OutputName, "100 Feet", "FULL", "ROUND", "LIST", "Distance")
+   try:
+     infc = r"C:\mydata\California\California.shp"
+     outfc = r"C:\mydata\California\CA_Buffered.shp"
+
+     bufferDistance = 2000
+
+     arcpy.Buffer_analysis(infc, outfc  bufferDistance", "", "", "ALL")
+
+
+
+
+
+7. The script below is another arcpy buffer script to buffer multiple feature classes. . Run the script using your own data. Comment it to show your understanding of the script.
+
+
+
+.. code-block:: python
+   :linenos:
+
+   import arcpy
+
+   #Set geoprocessing environments
+   arcpy.env.workspace = r"C:\mydata\California"
+   arcpy.env.overwriteOutput = True
+
+   #Create list of feature classes
+   fclist = arcpy.ListFeatureClasses()
+
+
+   #Provide a list of distances to be used for buffering
+   distances = [1000, 5000, 8000]
+
+
+   # Create a loop to buffer the list of feature classes
+
+   for distance in distances:
+       for fc in fclist:
+            arcpy.Buffer_analysis(fc, "_Buffer" + str(distance),  "distance", "", "", "ALL")
+
+
+
+
+
 
 
 
