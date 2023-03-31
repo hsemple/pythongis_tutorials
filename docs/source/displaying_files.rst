@@ -11,7 +11,6 @@ To read a file, we must first open the file. This is done using Python's built-i
 
 
 .. code-block:: python
-   :linenos:
 
 	file = open("/Users/student/Desktop/Equakes2.csv", "r")
 	text = file.readlines()
@@ -127,7 +126,6 @@ Opening a file using the "With" Statement
 A second way  second way to open a file is to use the "with" statement.  The with statement automatically takes care of closing the file once it leaves the with block, even in cases of error. I highly recommend that you use the with statement as much as possible, as it allows for cleaner code and makes handling any unexpected errors easier for you.
 
 .. code-block:: python
-   :linenos:
 
 	with open("/Users/student/Desktop/Equakes2.csv", 'r') as file:
 	   text = file.readlines()
@@ -141,7 +139,6 @@ A second way  second way to open a file is to use the "with" statement.  The wit
 Now, let's open a data file then read its content into Python. After that, we will split the file contents into inidividual columns, and store the columns in variables
 
 .. code-block:: python
-   :linenos:
 
 	infile = open("/Users/student/Desktop/earthquakes.csv", 'r') 
 	lines = infile.readlines() 
@@ -183,7 +180,6 @@ Now, let's open a data file then read its content into Python. After that, we wi
 
 
 .. code-block:: python
-   :linenos:
 
 	import math
 	import matplotlib.pyplot as plt
@@ -241,7 +237,6 @@ Let's plot the earthquake dataset using Pandas.
 
 
 .. code-block:: python
-   :linenos:
 
 	import pandas as pd
 	df = pd.read_csv("C:/Users/student/Desktop/Equakes2.csv")
@@ -254,22 +249,38 @@ Let's plot the earthquake dataset using Pandas.
 
 **Displaying Specific Columns of your Dataframe**
 
-To display the 'Depth_mls' and 'Magnitude' columns only, use the following syntax
+To select multiple columns, use a list of column names within the selection brackets [].  In the example below, we are selecting the earthquake depth and magnitude fields. 
 
 
 .. code-block:: python
-   :linenos:
-
+ 
 	import pandas as pd
 	df = pd.read_csv("C:/Users/student/Desktop/Equakes2.csv")
-	df[['Depth_mls', 'Magnitude']]
-
-
- 
+	df[['depth', 'magnitude']]
 
 |
 
 
+Get the size of the table.
+
+.. code-block:: python
+
+	import pandas as pd
+	df = pd.read_csv("/Users/hsemple/Desktop/earthquakes4.csv")
+	df[["depth", "mag"]].shape
+
+|
+
+Filtering the Data Frame for Certain Rows
+
+import pandas as pd
+df = pd.read_csv("/Users/hsemple/Desktop/earthquakes4.csv")
+above_3.5 = df[["mag"] > 3.5]
+above_35.head()
+
+
+
+|
 
 Plotting Graphs
 -----------------
@@ -298,7 +309,6 @@ The kind parameter accepts eleven different string values and determines which k
 **Line Graphs**
 
 .. code-block:: python
-   :linenos:
 
 	import matplotlib.pyplot as plt
 	import pandas as pd
@@ -316,7 +326,6 @@ The kind parameter accepts eleven different string values and determines which k
 **Histograms**
 
 .. code-block:: python
-   :linenos:
 
 	import matplotlib.pyplot as plt
 	import pandas as pd
@@ -363,7 +372,6 @@ The kind parameter accepts eleven different string values and determines which k
 To plot the Depth and Magnitude Data, write:
 
 .. code-block:: python
-   :linenos:
 
 	import matplotlib.pyplot as plt
 	import pandas as pd
@@ -376,7 +384,6 @@ To plot the Depth and Magnitude Data, write:
 or
 
 .. code-block:: python
-   :linenos:
 
 	df.plot(kind='scatter',x='Depth_mls',y='Magnitude',color='red')
 
@@ -397,7 +404,6 @@ Once we are done with data analysis, we can also write to a file, as shown below
 
 
 .. code-block:: python
-   :linenos:
 
 	with open("C:/Users/student/Desktop/john.txt", "w") as f:
 	    f.write('Hello \n')
@@ -416,8 +422,6 @@ Once we are done with data analysis, we can also write to a file, as shown below
 Reading a Data file into Python, splitting its contents by columns, and storing the columns in variables
 
 .. code-block:: python
-   :linenos:
-
  
 	infile = open("C:/Users/student/Desktop/Equakes2.csv, 'r') 
 	lines = infile.readlines() 

@@ -55,7 +55,6 @@ In addition to creating a class diagram, programmers write code to implement the
 
 
 .. code-block:: python
-   :linenos:
 
     class Animals():
         def __init__(self, name, species, gender): 
@@ -124,7 +123,6 @@ In object-oriented programming, an object is used to simulate real world objects
 **Creating Animal Objects**
 
 .. code-block:: python
-   :linenos:
 
     animal1 = Animals('John', 'Tiger') 
     animal2  = Animals('Luna', 'Lion') 
@@ -134,7 +132,6 @@ In object-oriented programming, an object is used to simulate real world objects
 **Creating Elephant Objects**
 
 .. code-block:: python
-   :linenos:
 
     elephant1 = Elephant ('Ben', 'Elephant') 
     elephant2  = Elephant ('Mary', 'Elephant') 
@@ -153,7 +150,6 @@ When getting an attribute, we write the object name followed by a dot and and th
 
 
 .. code-block:: python
-   :linenos:
 
     elephant1.name
     'Ben'
@@ -163,7 +159,6 @@ When getting an attribute, we write the object name followed by a dot and and th
 We can also set and attribute, by calling the object and supplying an attribute,
 
 .. code-block:: python
-   :linenos:
 
     elephant1.name = "Ben"
     elephant1.name
@@ -179,7 +174,6 @@ Methods
 A method is a function that is defined within a class.  Methods represent actions that the object can perform.  Methods have access to all the data contained in the instance of the object.  When calling a method, we write the object name followed by a dot with a parenthesis, e.g.
 
 .. code-block:: python
-   :linenos:
 
     elephant1.move()
 
@@ -202,7 +196,6 @@ To explain this, let’s again use a car application example. In a car applicati
 Let's look at the public and private methods associated with a list object in Python. Let's create a list named mylist:
 
 .. code-block:: python
-   :linenos:
 
    mylist = [1, 3,5]
 
@@ -210,7 +203,6 @@ Let's look at the public and private methods associated with a list object in Py
 Now, type the code below to see the attributes and methods associated with the list object. You can use the "dir" command with any Python object:
 
 .. code-block:: python
-   :linenos:
 
     dir(mylist)
 
@@ -250,8 +242,6 @@ Class Inheritance
 
 
 .. code-block:: python
-   :linenos:
-
 
     class Mammals(object): 
         def feed_young_with_milk(self):
@@ -290,7 +280,6 @@ Class Inheritance
 *Creating and calling Elephant Objects*
 
 .. code-block:: python
-   :linenos:
 
     animal4 = Animals('Tom', 'Giraffe') 
     animal5  = Animals('Olga', 'Lioness') 
@@ -310,7 +299,6 @@ To look up the methods and properties of an object in Python, type the word dir 
 
 
 .. code-block:: python
-   :linenos:
 
     mylist = [1, 3,5]
     dir(mylist)
@@ -335,7 +323,6 @@ In the code below,  we have a "Dog" super class and three child classes that inh
 
 
 .. code-block:: python
-   :linenos:
 
     class Dog:
         def __init__(self, name, age, friendliness):
@@ -370,7 +357,6 @@ In the code below,  we have a "Dog" super class and three child classes that inh
     class GoldenRetriever (Dog):
         def __init__(self, name, age, friendliness):
             super().__init__(name, age, friendliness)
-
 
 
 |
@@ -421,7 +407,6 @@ Exercises
 
 
 .. code-block:: python
-   :linenos:
 
     class Dog():
         """A simple attempt to model a dog."""  
@@ -445,7 +430,6 @@ Exercises
 
 
 .. code-block:: python
-   :linenos:
 
     class Rectangle():
         def __init__(self, l, w):

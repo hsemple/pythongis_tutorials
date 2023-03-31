@@ -133,25 +133,25 @@
 <ol class="arabic simple">
 <li><p>The code below is an example of a function that takes the temperature in Celsius and then prints the results in Fahrenheit results.</p></li>
 </ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">convertTemp</span><span class="p">(</span><span class="n">temp</span><span class="p">):</span>
-<span class="linenos">2</span>    <span class="n">freezing</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="linenos">3</span>
-<span class="linenos">4</span>    <span class="n">fahrenheit</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span> <span class="o">*</span> <span class="n">celsius</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="n">freezing</span>
-<span class="linenos">5</span>    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The temperature in Fahrenheit is&quot;</span><span class="p">,</span> <span class="n">fahrenheit</span><span class="p">,</span> <span class="s2">&quot;degrees&quot;</span><span class="p">)</span>
-<span class="linenos">6</span>    <span class="k">return</span> <span class="n">fahrenheit</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">convertTemp</span><span class="p">(</span><span class="n">temp</span><span class="p">):</span>
+    <span class="n">freezing</span> <span class="o">=</span> <span class="mi">32</span>
+
+    <span class="n">fahrenheit</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span> <span class="o">*</span> <span class="n">celsius</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="n">freezing</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The temperature in Fahrenheit is&quot;</span><span class="p">,</span> <span class="n">fahrenheit</span><span class="p">,</span> <span class="s2">&quot;degrees&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fahrenheit</span>
 </pre></div>
 </div>
 <p>To call the function, type convertTemp and pass in a temperature value, e.g., convertTemp(20)</p>
 <ol class="arabic simple" start="2">
 <li><p>Function to multiply all the numbers in a list.</p></li>
 </ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
-<span class="linenos">2</span>
-<span class="linenos">3</span><span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
-<span class="linenos">4</span>   <span class="n">total</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="linenos">5</span>   <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
-<span class="linenos">6</span>       <span class="n">total</span> <span class="o">*=</span> <span class="n">x</span>
-<span class="linenos">7</span>   <span class="k">return</span> <span class="n">total</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+   <span class="n">total</span> <span class="o">=</span> <span class="mi">1</span>
+   <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+       <span class="n">total</span> <span class="o">*=</span> <span class="n">x</span>
+   <span class="k">return</span> <span class="n">total</span>
 </pre></div>
 </div>
 <p>#call the function and submit the list
@@ -159,33 +159,33 @@ print(multiply(mylist))</p>
 <ol class="arabic simple" start="3">
 <li><p>The function below takes a number and evaluates it in relation to the number 10.</p></li>
 </ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="k">def</span> <span class="nf">number</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="linenos">2</span>    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
-<span class="linenos">3</span>       <span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;is less than 10&quot;</span><span class="p">)</span>
-<span class="linenos">4</span>    <span class="k">elif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
-<span class="linenos">5</span>       <span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;is greater than 10&quot;</span><span class="p">)</span>
-<span class="linenos">6</span>    <span class="k">else</span><span class="p">:</span>
-<span class="linenos">7</span>        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;your number is 10&quot;</span><span class="p">)</span>
-<span class="linenos">8</span>     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Goodbye&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">number</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+   <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+      <span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;is less than 10&quot;</span><span class="p">)</span>
+   <span class="k">elif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+      <span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;is greater than 10&quot;</span><span class="p">)</span>
+   <span class="k">else</span><span class="p">:</span>
+       <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;your number is 10&quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Goodbye&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Call the function:  number (100)</p>
 <ol class="arabic simple" start="4">
 <li><p>The function below plots a graph. X1 and x2 define the range of the graph over the x axis.</p></li>
 </ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="linenos"> 2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="linenos"> 3</span>
-<span class="linenos"> 4</span> <span class="k">def</span> <span class="nf">createline</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">):</span>
-<span class="linenos"> 5</span>     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">)</span>
-<span class="linenos"> 6</span>     <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span>
-<span class="linenos"> 7</span>     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;y=2x+1&#39;</span><span class="p">)</span>
-<span class="linenos"> 8</span>     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Graph of y=2x+1&#39;</span><span class="p">)</span>
-<span class="linenos"> 9</span>     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1C2833&#39;</span><span class="p">)</span>
-<span class="linenos">10</span>     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1C2833&#39;</span><span class="p">)</span>
-<span class="linenos">11</span>     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
-<span class="linenos">12</span>     <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="linenos">13</span>     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">createline</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;y=2x+1&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Graph of y=2x+1&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1C2833&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1C2833&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Call the function:  createline(5,25)</p>
@@ -195,15 +195,15 @@ print(multiply(mylist))</p>
 <ol class="arabic simple" start="5">
 <li><p>Python function to find the factorial of a number.</p></li>
 </ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-<span class="linenos">2</span>   <span class="n">fact</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="linenos">3</span>   <span class="k">while</span><span class="p">(</span><span class="n">n</span><span class="o">!=</span><span class="mi">0</span><span class="p">):</span>
-<span class="linenos">4</span>      <span class="n">fact</span> <span class="o">*=</span> <span class="n">n</span>
-<span class="linenos">5</span>      <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span>
-<span class="linenos">6</span>   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The factorial is&quot;</span><span class="p">,</span><span class="n">fact</span><span class="p">)</span>
-<span class="linenos">7</span>
-<span class="linenos">8</span><span class="n">inputNumber</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the number: &quot;</span><span class="p">))</span>
-<span class="linenos">9</span><span class="n">factorial</span><span class="p">(</span><span class="n">inputNumber</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+   <span class="n">fact</span> <span class="o">=</span> <span class="mi">1</span>
+   <span class="k">while</span><span class="p">(</span><span class="n">n</span><span class="o">!=</span><span class="mi">0</span><span class="p">):</span>
+      <span class="n">fact</span> <span class="o">*=</span> <span class="n">n</span>
+      <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The factorial is&quot;</span><span class="p">,</span><span class="n">fact</span><span class="p">)</span>
+
+<span class="n">inputNumber</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the number: &quot;</span><span class="p">))</span>
+<span class="n">factorial</span><span class="p">(</span><span class="n">inputNumber</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -251,20 +251,20 @@ print(multiply(mylist))</p>
 <p>Functions do not always have a fixed number of arguments. Sometimes, it is not always possible to know beforehand how many arguments will be passed to the function.  For example, in a spatial interpolation exercise, it is possible to estimate the unknown value from three or four or any number of nearby values.  In such a case, the function must be designed to handle any number of arguments that will be passed to it.</p>
 <p>In Python, we define a variable argument using an asterisk (‘*’) followed by a variable name.  By convention, the variable name is called “aargs” but  name can be used.  A tuple is used to store the values passed to <a href="#id1"><span class="problematic" id="id2">*</span></a>args and you can send zero or more arguments to the function.  Also, a formal argument cab be placed before the <a href="#id3"><span class="problematic" id="id4">*</span></a>args variable but not after it.</p>
 <p>The following example demonstrates the usage of a function that takes variable length arguments.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">add_num</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
-<span class="linenos"> 2</span>    <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="linenos"> 3</span>    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
-<span class="linenos"> 4</span>       <span class="nb">sum</span> <span class="o">+=</span> <span class="n">num</span>
-<span class="linenos"> 5</span>    <span class="k">return</span> <span class="nb">sum</span>
-<span class="linenos"> 6</span>
-<span class="linenos"> 7</span>    <span class="n">result</span> <span class="o">=</span> <span class="n">add_num</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="linenos"> 8</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sum is&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
-<span class="linenos"> 9</span>
-<span class="linenos">10</span>    <span class="n">result</span> <span class="o">=</span> <span class="n">add_num</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
-<span class="linenos">11</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sum is&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
-<span class="linenos">12</span>
-<span class="linenos">13</span>    <span class="n">result</span> <span class="o">=</span> <span class="n">add_num</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
-<span class="linenos">14</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sum is&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_num</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+       <span class="nb">sum</span> <span class="o">+=</span> <span class="n">num</span>
+    <span class="k">return</span> <span class="nb">sum</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">add_num</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sum is&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">add_num</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sum is&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">add_num</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sum is&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -274,18 +274,18 @@ print(multiply(mylist))</p>
 <section id="python-docstrings">
 <h2><span class="section-number">6.5. </span>Python Docstrings<a class="headerlink" href="#python-docstrings" title="Permalink to this heading"></a></h2>
 <p>Python docstrings are strings used to document code.  They are placed right after the definition of a function, as in the example below.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-<span class="linenos">2</span>     <span class="sd">&#39;&#39;&#39;Takes in a number n, returns the square of n&#39;&#39;&#39;</span>
-<span class="linenos">3</span>     <span class="k">return</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span>
-<span class="linenos">4</span>
-<span class="linenos">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">square</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Takes in a number n, returns the square of n&#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">square</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p>Here is the docstrings for the built-in function int() function in Python. Run it and note the results.  Click on this <a class="reference external" href="&quot;https://www.programiz.com/python-programming/docstrings&quot;">hyperlink</a> to learn more about Python docstrings.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -297,53 +297,53 @@ print(multiply(mylist))</p>
 <p>Arcpy has many functions which are used to support ArcGIS workflows from a Python perspective.  Take a look at this <a class="reference external" href="https://pro.arcgis.com/en/pro-app/latest/arcpy/functions/alphabetical-list-of-arcpy-functions.htm">list of ArcPy functions</a></p>
 <p>When working with arcpy’s functions, we must first import the arcpy library into our development environment then call the function. To call the function, we write arcpy followed by the name of the function and any arguments that the function requires, for example, arcpy.function_name(arguments).</p>
 <p>In the code sample below, we are using ArcPy’s ListField() function to print out a list of the fieldnames in a shapefile’s attribute table.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">#Listfields function</span>
-<span class="linenos">2</span>
-<span class="linenos">3</span><span class="kn">import</span> <span class="nn">arcpy</span>
-<span class="linenos">4</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;c:/data&quot;</span>
-<span class="linenos">5</span><span class="n">fieldlist</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFields</span><span class="p">(</span><span class="s2">&quot;roads.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;String&quot;</span><span class="p">)</span>
-<span class="linenos">6</span>
-<span class="linenos">7</span><span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fieldlist</span><span class="p">:</span>
-<span class="linenos">8</span>   <span class="nb">print</span> <span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Listfields function</span>
+
+<span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;c:/data&quot;</span>
+<span class="n">fieldlist</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFields</span><span class="p">(</span><span class="s2">&quot;roads.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;String&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fieldlist</span><span class="p">:</span>
+   <span class="nb">print</span> <span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p>In the script below,  Arcpy’s ListRaster function is being used to print out a list of raster files in a folder. Run the using your own data.  Study each line of the code to understand the script in its entirety.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">arcpy</span>
-<span class="linenos"> 2</span>
-<span class="linenos"> 3</span><span class="c1"># Set the workspace that contains the rasters</span>
-<span class="linenos"> 4</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data/rasters&quot;</span>
-<span class="linenos"> 5</span>
-<span class="linenos"> 6</span><span class="c1"># Use the ListRaster function to return a list of rasters .</span>
-<span class="linenos"> 7</span><span class="n">rasters</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListRasters</span><span class="p">()</span>
-<span class="linenos"> 8</span>
-<span class="linenos"> 9</span><span class="c1"># print name of feature class</span>
-<span class="linenos">10</span><span class="k">for</span> <span class="n">rst</span> <span class="ow">in</span> <span class="n">rasters</span><span class="p">:</span>
-<span class="linenos">11</span>   <span class="nb">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">rst</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+
+<span class="c1"># Set the workspace that contains the rasters</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data/rasters&quot;</span>
+
+<span class="c1"># Use the ListRaster function to return a list of rasters .</span>
+<span class="n">rasters</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListRasters</span><span class="p">()</span>
+
+<span class="c1"># print name of feature class</span>
+<span class="k">for</span> <span class="n">rst</span> <span class="ow">in</span> <span class="n">rasters</span><span class="p">:</span>
+   <span class="nb">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">rst</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p>#Get a list of field names in the roads shapefile</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="kn">import</span> <span class="nn">arcpy</span>
-<span class="linenos">2</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;c:/data&quot;</span>
-<span class="linenos">3</span>
-<span class="linenos">4</span> <span class="n">fieldlist</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFields</span><span class="p">(</span><span class="s2">&quot;roads.shp&quot;</span><span class="p">)</span>
-<span class="linenos">5</span>     <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fieldlist</span><span class="p">:</span>
-<span class="linenos">6</span>          <span class="nb">print</span> <span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;c:/data&quot;</span>
+
+<span class="n">fieldlist</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFields</span><span class="p">(</span><span class="s2">&quot;roads.shp&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fieldlist</span><span class="p">:</span>
+         <span class="nb">print</span> <span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="c1">#Get a List of all the Feature Classes in a Directory</span>
-<span class="linenos">2</span>
-<span class="linenos">3</span> <span class="kn">import</span> <span class="nn">arcpy</span>
-<span class="linenos">4</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data&quot;</span>
-<span class="linenos">5</span>
-<span class="linenos">6</span> <span class="n">fcList</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFeatureClasses</span> <span class="p">()</span>
-<span class="linenos">7</span> <span class="k">for</span> <span class="n">fc</span> <span class="ow">in</span> <span class="n">fcList</span><span class="p">:</span>
-<span class="linenos">8</span>    <span class="nb">print</span> <span class="p">(</span><span class="n">fc</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Get a List of all the Feature Classes in a Directory</span>
+
+<span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data&quot;</span>
+
+<span class="n">fcList</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFeatureClasses</span> <span class="p">()</span>
+<span class="k">for</span> <span class="n">fc</span> <span class="ow">in</span> <span class="n">fcList</span><span class="p">:</span>
+   <span class="nb">print</span> <span class="p">(</span><span class="n">fc</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -372,7 +372,7 @@ print(multiply(mylist))</p>
 <li><p>Define a function that accepts two numbers as arguments and returns the first number raised to the power of the second number.</p></li>
 <li><p>Rewrite the spatial interpolation program you wrote in the second lab as a function.</p></li>
 <li><p>Rewrite the gravity model that appears in geography textbooks as function.</p></li>
-<li><p>The scriptsbelow uses arcpy’s buffer function to buffer a shapefile.  Run the script using your own data. Comment it to show your understanding of the function.</p></li>
+<li><p>The script sbelow uses arcpy’s buffer function to buffer a shapefile.  Run the script using your own data. Comment it to show your understanding of the function.</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">arcpy</span>
 <span class="linenos">2</span>

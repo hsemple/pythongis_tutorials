@@ -15,7 +15,6 @@ The example below shows a function that calculates area based on length and widt
 
 
 .. code-block:: python
-   :linenos:
 
    def calculate_area(length, width):
       area = length * width
@@ -54,7 +53,6 @@ Function Examples
 1.  The code below is an example of a function that takes the temperature in Celsius and then prints the results in Fahrenheit results.
 
 .. code-block:: python
-   :linenos:
 
    def convertTemp(temp):
        freezing = 32
@@ -73,7 +71,6 @@ To call the function, type convertTemp and pass in a temperature value, e.g., co
 
 
 .. code-block:: python
-   :linenos:
 
    mylist = [8, 2, 3, -1, 7]
 
@@ -94,7 +91,6 @@ print(multiply(mylist))
 3. The function below takes a number and evaluates it in relation to the number 10. 
 
 .. code-block:: python
-   :linenos:
 
     def number(x):
        if x < 10:
@@ -114,7 +110,6 @@ Call the function:  number (100)
 
 
 .. code-block:: python
-   :linenos:
 
     import matplotlib.pyplot as plt
     import numpy as np
@@ -140,7 +135,6 @@ Call the function:  createline(5,25)
 5. Python function to find the factorial of a number.
 
 .. code-block:: python
-   :linenos:
 
    def factorial(n):
       fact = 1
@@ -220,7 +214,6 @@ The following example demonstrates the usage of a function that takes variable l
 
 
 .. code-block:: python
-   :linenos:
 
    def add_num(*args):
        sum = 0
@@ -247,8 +240,6 @@ Python docstrings are strings used to document code.  They are placed right afte
 
 
 .. code-block:: python
-   :linenos:
-
 
     def square(n):
         '''Takes in a number n, returns the square of n'''
@@ -264,7 +255,6 @@ Here is the docstrings for the built-in function int() function in Python. Run i
 
 
 .. code-block:: python
-   :linenos:
 
     print(int.__doc__)
 
@@ -286,7 +276,6 @@ In the code sample below, we are using ArcPy's ListField() function to print out
 
 
 .. code-block:: python
-   :linenos:
 
    #Listfields function
 
@@ -304,7 +293,6 @@ In the script below,  Arcpy's ListRaster function is being used to print out a l
 
 
 .. code-block:: python
-   :linenos:
 
    import arcpy
 
@@ -325,7 +313,6 @@ In the script below,  Arcpy's ListRaster function is being used to print out a l
 
 
 .. code-block:: python
-   :linenos:
 
     import arcpy
     arcpy.env.workspace = "c:/data"
@@ -337,7 +324,6 @@ In the script below,  Arcpy's ListRaster function is being used to print out a l
  
 
 .. code-block:: python
-   :linenos:
 
     #Get a List of all the Feature Classes in a Directory
 
@@ -379,7 +365,7 @@ Exercises
 
 5. Rewrite the gravity model that appears in geography textbooks as function.
 
-6. The scriptsbelow uses arcpy's buffer function to buffer a shapefile.  Run the script using your own data. Comment it to show your understanding of the function.
+6. The script sbelow uses arcpy's buffer function to buffer a shapefile.  Run the script using your own data. Comment it to show your understanding of the function.
 
 
 
