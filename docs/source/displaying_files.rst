@@ -183,7 +183,7 @@ Now, let's open a data file then read its content into Python. After that, we wi
 
 	import math
 	import matplotlib.pyplot as plt
-	infile = open("C:/Users/student/Desktop/Equakes2.csv, 'r')
+	infile = open("C:/Users/student/Desktop/earthquakes.csv, 'r')
 	lines = infile.readlines()
 	infile.close()
 	del lines[0] # Remove the header line
@@ -226,10 +226,10 @@ Now, let's open a data file then read its content into Python. After that, we wi
 
 
 
-Reading Data Files and Plotting Graphs Using Pandas
------------------------------------------------------
+Reading CSV Files Using Pandas
+-----------------------------------
 
-The script above used many lines of code to open the file, compute average, and plot a graph.  We can achieve the same results with far fewer lines of code by using a specialized library named Pandas.  Pandas is a very powerful, popular and easy to use Python library for data analysis.  It has many Excel-like functions. Its primary object is the DataFrame, which can be thought of as an abstract database table or spreadsheet.  Once you create a dataframe object, you can use it to display tables, plot columns, create and run queries, with just a few lines of code. 
+The script above used many lines of code to open the csv file, compute average, and plot a graph.  We can achieve the same results with far fewer lines of code by using a specialized library named Pandas.  Pandas is a very powerful, popular and easy to use Python library for data analysis.  It has many Excel-like functions. Its primary object is the DataFrame, which can be thought of as an abstract database table or spreadsheet.  Once you create a dataframe object, you can use it to display tables, plot columns, create and run queries, with just a few lines of code. 
 
  
 Let's plot the earthquake dataset using Pandas. 
@@ -239,7 +239,7 @@ Let's plot the earthquake dataset using Pandas.
 .. code-block:: python
 
 	import pandas as pd
-	df = pd.read_csv("C:/Users/student/Desktop/Equakes2.csv")
+	df = pd.read_csv("../earthquakes.csv")
 	df
 
 
@@ -255,7 +255,7 @@ To select multiple columns, use a list of column names within the selection brac
 .. code-block:: python
  
 	import pandas as pd
-	df = pd.read_csv("C:/Users/student/Desktop/Equakes2.csv")
+	df = pd.read_csv("../earthquakes.csv")
 	df[['depth', 'magnitude']]
 
 |
@@ -266,21 +266,27 @@ Get the size of the table.
 .. code-block:: python
 
 	import pandas as pd
-	df = pd.read_csv("/Users/hsemple/Desktop/earthquakes4.csv")
+	df = pd.read_csv("../earthquakes.csv")
 	df[["depth", "mag"]].shape
 
 |
 
-Filtering the Data Frame for Certain Rows
+**Filtering the Data Frame for Certain Rows**
 
-import pandas as pd
-df = pd.read_csv("/Users/hsemple/Desktop/earthquakes4.csv")
-above_3.5 = df[["mag"] > 3.5]
-above_35.head()
+.. code-block:: python
+
+   import pandas as pd
+   df = pd.read_csv("../earthquakes.csv")
+   above_3.5 = df[["mag"] > 3.5]
+   above_35.head()
 
 
 
 |
+
+
+
+
 
 Plotting Graphs
 -----------------
@@ -306,15 +312,15 @@ The kind parameter accepts eleven different string values and determines which k
 |
 
 
-**Line Graphs**
+**Line Graph**
 
 .. code-block:: python
 
 	import matplotlib.pyplot as plt
 	import pandas as pd
 
-	df = pd.read_csv("/Users/student/Desktop/Equakes2.csv")
-	df.plot(kind='line',y='Depth_mls',color='red', figsize=(6, 8))
+	df = pd.read_csv("../earthquakes.csv")
+	df.plot(kind='line',y='depth',color='red', figsize=(6, 8))
 	plt.show()
 
 
@@ -323,13 +329,13 @@ The kind parameter accepts eleven different string values and determines which k
 |
 
 
-**Histograms**
+**Histogram**
 
 .. code-block:: python
 
 	import matplotlib.pyplot as plt
 	import pandas as pd
-	df = pd.read_csv("/Users/student/Desktop/Equakes2.csv")
+	df = pd.read_csv("../earthquakes.csv")
 
 	#df.plot.line(column = df.columns[3],  figsize=(6, 8))
 
@@ -367,17 +373,17 @@ The kind parameter accepts eleven different string values and determines which k
 
 
 
-**Scatter**
+**Scatterplot**
 
-To plot the Depth and Magnitude Data, write:
+To plot the Depth and Magnitude Data as a scatterplot, write:
 
 .. code-block:: python
 
 	import matplotlib.pyplot as plt
 	import pandas as pd
-	df = pd.read_csv("/Users/student/Desktop/Equakes2.csv")
+	df = pd.read_csv("../earthquakes.csv")
 
-	df.plot(kind='scatter', x='Depth_mls',y='Magnitude', color='red',figsize=(6, 8))
+	df.plot(kind='scatter', x='depth',y='magnitude', color='red',figsize=(6, 8))
 	plt.show()
 
 
@@ -423,9 +429,9 @@ Reading a Data file into Python, splitting its contents by columns, and storing 
 
 .. code-block:: python
  
-	infile = open("C:/Users/student/Desktop/Equakes2.csv, 'r') 
+	infile = open("../earthquakes.csv, 'r') 
 	lines = infile.readlines() 
-	newfile=open("C:/Users/student/Desktop/newfile.txt",mode="a+",encoding="utf-8")
+	newfile=open("../newfile.txt",mode="a+",encoding="utf-8")
 
 	del lines[0] # Remove the first line
 	#Create empty lists 
@@ -454,8 +460,416 @@ Reading a Data file into Python, splitting its contents by columns, and storing 
 	print ("")
 
 
+
 |
 
+
+Plotting Shapefiles
+--------------------
+
+
+**Displaying Shapefiles using Geopandas**
+
+Geopandas is one of the most popular libraries for plotting shapefiles. This because it only requires a few lines of code to plot a shapefile. I strongly recommend using Geopandas to display your shapefiles.
+
+To use Geopandas, first, download and install the library to your Python installation.  Afterwards, import the library and use it in your code.  
+
+As an example, run the code below in your favorite development environment to load a shapefile into Python using Geopandas.  Note that the code draws the shapefile with a single color because no specific column is being plotted.
+
+
+.. code-block:: python
+
+
+   import geopandas as gpd
+   import matplotlib.pyplot as plt
+
+   geo_df = gpd.read_file ("../Michigan.shp")
+   geo_df.plot()
+
+
+
+.. image:: img/michigan_single_color.png
+   :alt: Michigan Map
+
+|
+
+**Viewing the Shapefile's Attribute Table using Geopandas**
+
+To view the attribute table of a shapefile, wit the Geopandas library,  use the head() method of the data frame object.
+
+
+.. code-block:: python
+
+   import geopandas
+   import matplotlib.pyplot as plt
+   gdf = geopandas("../Michigan.shp")
+
+   #Show data in the attribute table
+   print(gdf.head())
+
+   #Display the shapefile
+   f, ax = plt.subplots(1, figsize=(8, 11))
+
+   gdf.plot(ax = ax, edgecolor='black')
+
+   ax.set_title("Water Wells, Washtenaw County, Michigan", fontdict={'fontsize': '14', 'fontweight' : '3'})
+
+   plt.show()
+
+
+
+.. image:: img/michigan_attribute_table.png
+   :alt: Michigan Map
+
+
+|
+
+
+**Creating a Graduated Color Thematic Map using Geopandas**
+
+
+Often in GIS, we are interested in creating graduated color thematic maps based on specific columns. To do, simply enter parameters in the gpd.plot() method, as shown below.
+
+
+*gdf.plot(ax = ax, column= 'HISPANIC', cmap='OrRd' , scheme='fisher_jenks', legend=True, edgecolor='black')*
+
+
+
+.. code-block:: python
+
+   import geopandas
+   import matplotlib.pyplot as plt
+   gdf = geopandas.read_file("../Michigan.shp")
+
+   #Display the shapefile
+   f, ax = plt.subplots(1, figsize=(10, 13))
+
+   gdf.plot(ax = ax, column= 'HISPANIC', cmap='OrRd' , scheme='fisher_jenks', legend=True, edgecolor='black')
+
+   ax.set_title("Moble Homes, Michigan", fontdict={'fontsize': '20', 'fontweight' : '3'})
+
+   plt.show()
+
+   #Save the map
+   f.savefig("/Users/student/Downloads/Michigan_Counties/map_export.png", dpi=300)
+
+
+.. image:: img/michigan.png
+   :alt: Thematic Map
+
+
+
+|
+
+**Displaying a Shapefile Using PyShp**
+
+Pyshp is an open source library that can be used to display a shapefile using pure Python. The project is described at this `website <"https://pypi.org/project/pyshp/">`_.  PyShp code for displaying a shapefile is lengthier than the one used by geopandas, but it gives us an opportunity to learn about multipart polygons and polylines.   Please note that after installing the "Pyshp" library, it is imported into Python using the shapefile keyword, e.g., "import shapefile".   
+
+Prior to running the code,it is useful to know that shapefiles have a 'parts collection' and a 'points collection'.  A parts collection keep is used tp keep track of the number of polygons or line segments associated with each record.  This is required because in may situations, several polygons or polylines must be linked to one record in the attribute table.  As an example, since Hawaii is made up of several islands, multiple polygons are needed to represent the state, however in the attribute table, only a single record is used to represent the state. 
+
+Shapefiles handle multipolygons and multipolylines using the concept of a "part".  A record with one polygon has one part, but this will show in the parts collection as 0.  This is because the counting system begis with zero.
+
+A points collection refers to the list of points associated with a shape or feature. The code below plots a Michigan shapefile using only the points collection. 
+
+
+The illustration below shows how we visualize the relationships between parts collection and the points collection.  The image shows two polygons associated with a single record. It also shows the part and points collection associated with the polygons.  The total number of items in the part collection is two.  The values in the squares in the parts collection represent index numbers that keep track of the starting coordinates for each part. Thus, Part 1 has coordinates that go from from p1 to p6. Part 2 starts from index value 6 and has coordinates that go from p7 to p11.
+
+
+
+.. image:: img/point_parts_collection.png
+   :alt: Parts and Point Collection of a Shapefile
+
+
+
+Using Pyshp we can experiment with displaying a shapefile using only its points collection or with both its parts and points collection. The code below shows how to display a shapefile using only its points collection.   
+
+
+.. code-block:: python
+
+   import matplotlib.pyplot as plt 
+   import shapefile 
+   sf = shapefile.Reader("../Michigan.shp")
+
+   plt.figure(figsize=(7,8)) 
+   for each_rec in sf.shapeRecords(): 
+	   x = [i[0] for i in each_rec.shape.points] 
+	   y = [i[1] for i in each_rec.shape.points]
+	   plt.plot(x,y, color="gray")
+
+
+	plt.show()
+|
+
+
+The code below plots a Michigan shapefile using both the parts and points collection.  This is a much better way to plot the shapefile. To display the parts and points of a shapefile, the code must first get the number of parts associated with each polyline or polygon, then loop through each part to get the array of points for the part. 
+
+
+
+.. code-block:: python
+
+	import shapefile as shp
+	import matplotlib.pyplot as plt
+
+	sf = shp.Reader("../Michigan.shp")
+
+	plt.figure(figsize = (7,8))
+
+	# loop through each record in the shaperecords collection 
+	for each_rec in sf.shapeRecords():
+	    for i in range(len(each_rec.shape.parts)):   
+	        i_start = each_rec.shape.parts[i]   #Get the starting values for the part.
+	        if i==len(each_rec.shape.parts)-1: 
+	            i_end = len(each_rec.shape.points)  #Get the length of the points collection.
+	        else:
+	            i_end = each_rec.shape.parts[i+1]  
+
+	        #Get the X,Y coord of the points in each part and make a list
+	        x = [i[0] for i in each_rec.shape.points[i_start:i_end]]
+	        y = [i[1] for i in each_rec.shape.points[i_start:i_end]]
+	        plt.plot(x,y, color = "green")
+	        
+	plt.show()
+
+
+|
+
+
+
+**Displaying Polygon or multi-polygon Shapefiles using Descartes**
+
+This is another alternative for displaying shapefiles using Python. Experiment with it using your favoritie development environment. 
+
+
+.. code-block:: python
+   
+   import shapefile as shp
+   import matplotlib.pyplot as plt
+   from descartes import PolygonPatch
+
+   sf = shp.Reader("../School_Districts.shp")
+   fig = plt.figure()
+
+   ax = fig.gca()
+
+   for poly in sf.shapes():
+	   poly_geo=poly.__geo_interface__
+	   ax.add_patch(PolygonPatch(poly_geo, fc='#6699cc', ec='#000000', alpha=0.5, zorder=2 ))
+
+	ax.axis('scaled')
+	plt.show()
+
+
+
+.. image:: img/school_districts_descartes.png
+   :alt:  Shapefile Displayed with Descartes
+
+	
+
+|
+
+
+
+**Displaying a List of XY Coordinates as Points**
+
+
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/aVkdWSqKG_c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+
+|
+
+
+|
+
+Displaying Rasters
+--------------------
+
+
+**Arrays**
+
+In programming, rasters are considered as arrays, therefore we learn about arrays in order to manipulate rasters.  
+
+An array is a collection of items of the same data type that can be manipulated as a single entity.  In Python,  a list is a one dimensional array.  However, when we are thinking about rasters, we are typically thinking of two dimensional arrays that are matrices of numbers defined by rows and columns.  
+
+In Python, one difference between a list and a two-dimensional array is that whereas a list can store multiple data types, a two-dimensional array can store only one data type.  
+
+
+.. image:: img/arrays1.png
+   :alt: One and Two Dimensional Arrays
+
+
+Python has specialized libraries for manipulating arrays. Two popular ones are the "numpy" library and the “array" module. Numpy appear to be more popular.  To import Numpy, type:    
+
+>>> import numpy as np
+
+To learn more about arrays, please click on `this link <"https://jakevdp.github.io/PythonDataScienceHandbook/02.02-the-basics-of-numpy-arrays.html">`_.
+
+
+|
+
+
+
+**Displaing a DEM using GDAL and Matplotlib** 
+
+One way to display a raster is to open the raster file using the gdal library, then convert the raster into an using GDAL. Afterwards, we can use matplotlib to display the array.    
+
+
+.. code-block:: python
+
+   import numpy as np
+   import gdal
+   import matplotlib.pyplot as plt
+
+   #Open raster and read number of rows, columns and bands
+   ds = gdal.Open("/Users/hsemple/Downloads/Wayne_DEM/county/wayne/topography/dem")
+
+   band1 = ds.GetRasterBand(1)
+
+   raster_array = band1.ReadAsArray()
+   plt.imshow(raster_array)
+   plt.show()
+
+
+
+.. image:: img/wayne_dem.png
+   :alt: Wayne DEM
+
+
+|
+
+**Displaying a Raster using Rasterio and Matplotlib**
+
+Rasterio is a popular open source Python library used for viewing and manipulating rasters.  Rasterio utilizes the gdal library to display rasters. With rasterio, viewing a raster can be done with just a few lines of code, like the example below. 
+
+Rasterio has a show( ) method for displaying rasters. However, the library also uses pyplot’s imshow method to display the data.
+
+.. code-block:: python
+
+   import rasterio
+   from matplotlib import pyplot
+
+   src = rasterio.open("/Users/hsemple/Downloads/Wayne_DEM/county/wayne/topography/dem")
+   src_array = src.read(1)
+
+   fig, ax = pyplot.subplots(1, figsize=(8, 5))
+   img = ax.imshow(src_array) # Get the plot renderer object.
+
+   fig.colorbar(img, ax=ax) #Associate the figure object with plot renderer and axes objects.
+   ax.set_aspect('auto') #Let the axes object set the length of the colobar. 
+
+   pyplot.show()
+
+
+
+.. image:: img/rasterio_dem1.png
+   :alt: Wayne DEM
+
+
+
+|
+
+
+
+**Displaying a three-band Aerial Photo with GDAL**
+
+
+.. code-block:: python
+
+  import numpy as np
+  from osgeo import gdal
+  import matplotlib.pyplot as plt
+
+  aerial = gdal.Open("/Users/semple/Desktop/Detroit.png
+    
+
+  bnd1 = aerial.GetRasterBand(1)
+  bnd2 = aerial.GetRasterBand(2)
+  bnd3 = aerial.GetRasterBand(3)
+
+
+  #Now turn each band into a ndarray:
+  img1 = bnd1.ReadAsArray()
+  img2 = bnd2.ReadAsArray()
+  img3 = bnd3.ReadAsArray()    
+
+
+  #Then stack them to have a 3 band image
+  img = np.dstack((img1,img2,img3))
+
+  plt.imshow(img)    
+  plt.show()
+
+
+
+
+|
+
+
+
+
+**Displaying Satellite Imagery with GDAL**
+
+.. code-block:: python
+
+   import numpy as np
+   from osgeo import gdal
+   import matplotlib.pyplot as plt
+
+   
+   #Image-2019
+   band5 = "/Users/hsemple/Downloads/Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B5.TIF"
+   band4 = "/Users/hsemple/Downloads/Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B4.TIF"
+   band3 = "/Users/hsemple/Downloads/Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B3.TIF"
+ 
+
+   #Open the Landsat image bands with GDAL
+
+
+
+   B5_data = gdal.Open(band5)
+   B4_data= gdal.Open(band4)
+   B3_data = gdal.Open(band3)
+
+
+   B5_Array  = B5_data.GetRasterBand(1).ReadAsArray().astype(np.float32)
+   B4_Array = B4_data.GetRasterBand(1).ReadAsArray().astype(np.float32)
+   B3_Array = B5_data.GetRasterBand(1).ReadAsArray().astype(np.float32)
+
+
+
+   #Then stack them to have a 3 band image
+   img = np.dstack((B5_Array,B4_Array,B3_Array))
+
+   plt.imshow(img)    
+   plt.show()
+
+
+
+|
+
+
+**Displaying a Three-band Raster with Rasterio**
+
+Rasterio is a popular open source Python library used for viewing and manipulating rasters.  Rasterio utilizes the gdal library to display rasters. With rasterio, viewing a raster can be done with just a few lines of code, like the example below. 
+
+Rasterio has a show( ) method for displaying rasters. However, the library can also use pyplot’s imshow method to display the data. The example below uses the show method.
+
+
+.. code-block:: python
+
+  import rasterio
+  from rasterio.plot import show
+  src = rasterio.open("/Users/semple/Desktop/Detroit.png")
+
+  show(src)
+
+
+
+
+
+|
 
 
 Readings
@@ -468,4 +882,9 @@ Plotting Graphs with Matplotlib
 * File I/O. Reading and writing files 
 * Customizing the legend
 * https://automating-gis-processes.github.io/CSC18/index.html
+* Python Shapefile Library - https://pythonhosted.org/Python%20Shapefile%20Library/
+* Land Cover Change Analysis with Python and GDAL - Tutorial - https://hatarilabs.com/ih-en/land-cover-change-analysis-with-python-and-gdal-tutorial
+* Rasterio - https://geobgu.xyz/py/rasterio.html#
+
+
 

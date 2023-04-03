@@ -53,10 +53,12 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">8. Reading and Displaying Files</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#writing-file-paths">8.1. Writing File Paths</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#opening-a-file-using-the-with-statement">8.2. Opening a file using the “With” Statement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#reading-data-files-and-plotting-graphs-using-pandas">8.3. Reading Data Files and Plotting Graphs Using Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-csv-files-using-pandas">8.3. Reading CSV Files Using Pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#plotting-graphs">8.4. Plotting Graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#writing-to-a-file">8.5. Writing to a File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#readings">8.6. Readings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting-shapefiles">8.6. Plotting Shapefiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#displaying-rasters">8.7. Displaying Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#readings">8.8. Readings</a></li>
 </ul>
 </li>
 </ul>
@@ -89,12 +91,12 @@
 <h1><span class="section-number">8. </span>Reading and Displaying Files<a class="headerlink" href="#reading-and-displaying-files" title="Permalink to this heading"></a></h1>
 <p>To read a file, we must first open the file. This is done using Python’s built-in open() function. The open() function returns a file object, which has a read() method for reading  files and storing their contents as variables .  Once a file is read and stored as a variable, the original file can be closed.  We can then loop through the file variable and do stuff with its contents.</p>
 <p><a class="reference external" href="https://corgis-edu.github.io/corgis/csv/earthquakes/&quot;">Download Earthquake Data</a></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
-<span class="linenos">2</span>     <span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
-<span class="linenos">3</span>     <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="linenos">4</span>
-<span class="linenos">5</span>     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-<span class="linenos">6</span>         <span class="nb">print</span> <span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">line</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><em>Points to Note</em></p>
@@ -170,113 +172,132 @@
 <section id="opening-a-file-using-the-with-statement">
 <h2><span class="section-number">8.2. </span>Opening a file using the “With” Statement<a class="headerlink" href="#opening-a-file-using-the-with-statement" title="Permalink to this heading"></a></h2>
 <p>A second way  second way to open a file is to use the “with” statement.  The with statement automatically takes care of closing the file once it leaves the with block, even in cases of error. I highly recommend that you use the with statement as much as possible, as it allows for cleaner code and makes handling any unexpected errors easier for you.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-<span class="linenos">2</span>        <span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
-<span class="linenos">3</span>     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-<span class="linenos">4</span>        <span class="nb">print</span> <span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+   <span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+   <span class="nb">print</span> <span class="p">(</span><span class="n">line</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p>Now, let’s open a data file then read its content into Python. After that, we will split the file contents into inidividual columns, and store the columns in variables</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>     <span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/earthquakes.csv&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="linenos"> 2</span>     <span class="n">lines</span> <span class="o">=</span> <span class="n">infile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
-<span class="linenos"> 3</span>     <span class="n">infile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="linenos"> 4</span>
-<span class="linenos"> 5</span>     <span class="k">del</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Remove the first line</span>
-<span class="linenos"> 6</span>     <span class="c1">#Create empty lists</span>
-<span class="linenos"> 7</span>     <span class="n">xvar</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos"> 8</span>     <span class="n">yvar</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos"> 9</span>     <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="linenos">10</span>
-<span class="linenos">11</span>     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-<span class="linenos">12</span>         <span class="n">elements</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span> <span class="c1"># splits the line</span>
-<span class="linenos">13</span>         <span class="n">mag</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># Get the data in the third column</span>
-<span class="linenos">14</span>         <span class="n">dep</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># Get the data in the fourth column</span>
-<span class="linenos">15</span>
-<span class="linenos">16</span>         <span class="c1"># Add magnitude and depth data to the empty lists</span>
-<span class="linenos">17</span>         <span class="n">xvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span>
-<span class="linenos">18</span>         <span class="n">yvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mag</span><span class="p">)</span>
-<span class="linenos">19</span>
-<span class="linenos">20</span>
-<span class="linenos">21</span>
-<span class="linenos">22</span>     <span class="c1">#Print the two lists as columnss</span>
-<span class="linenos">23</span>
-<span class="linenos">24</span>     <span class="n">magnitude</span> <span class="o">=</span> <span class="s2">&quot;Magnitude&quot;</span>
-<span class="linenos">25</span>     <span class="n">depth</span> <span class="o">=</span> <span class="s2">&quot;Depth&quot;</span>
-<span class="linenos">26</span>
-<span class="linenos">27</span>     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%-15s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">magnitude</span><span class="p">,</span> <span class="n">depth</span><span class="p">))</span>
-<span class="linenos">28</span>     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="linenos">29</span>
-<span class="linenos">30</span>     <span class="k">for</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">xvar</span><span class="p">,</span> <span class="n">yvar</span><span class="p">):</span>
-<span class="linenos">31</span>         <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%-15s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/earthquakes.csv&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">infile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="n">infile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">del</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Remove the first line</span>
+<span class="c1">#Create empty lists</span>
+<span class="n">xvar</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">yvar</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+    <span class="n">elements</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span> <span class="c1"># splits the line</span>
+    <span class="n">mag</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># Get the data in the third column</span>
+    <span class="n">dep</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># Get the data in the fourth column</span>
+
+    <span class="c1"># Add magnitude and depth data to the empty lists</span>
+    <span class="n">xvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span>
+    <span class="n">yvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mag</span><span class="p">)</span>
+
+
+
+<span class="c1">#Print the two lists as columnss</span>
+
+<span class="n">magnitude</span> <span class="o">=</span> <span class="s2">&quot;Magnitude&quot;</span>
+<span class="n">depth</span> <span class="o">=</span> <span class="s2">&quot;Depth&quot;</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%-15s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">magnitude</span><span class="p">,</span> <span class="n">depth</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">xvar</span><span class="p">,</span> <span class="n">yvar</span><span class="p">):</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%-15s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>Reading a Data file into Python, Performing Calculations and Making a Graph</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>     <span class="kn">import</span> <span class="nn">math</span>
-<span class="linenos"> 2</span>     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="linenos"> 3</span>     <span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/student/Desktop/Equakes2.csv, &#39;r&#39;)</span>
-<span class="linenos"> 4</span>     <span class="n">lines</span> <span class="o">=</span> <span class="n">infile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
-<span class="linenos"> 5</span>     <span class="n">infile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="linenos"> 6</span>     <span class="k">del</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Remove the header line</span>
-<span class="linenos"> 7</span>
-<span class="linenos"> 8</span>     <span class="c1">#Create empty lists</span>
-<span class="linenos"> 9</span>     <span class="n">xvar</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos">10</span>     <span class="n">yvar</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos">11</span>     <span class="n">std_dev</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos">12</span>     <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="linenos">13</span>     <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="linenos">14</span>     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-<span class="linenos">15</span>         <span class="n">elements</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span> <span class="c1">#splits the lines</span>
-<span class="linenos">16</span>         <span class="n">mag</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># Get the data in the fifth column</span>
-<span class="linenos">17</span>         <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="linenos">18</span>
-<span class="linenos">19</span>         <span class="c1"># Add count and magnitude data to the empty x,y lists</span>
-<span class="linenos">20</span>         <span class="n">xvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
-<span class="linenos">21</span>         <span class="n">yvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mag</span><span class="p">)</span>
-<span class="linenos">22</span>         <span class="nb">sum</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">+</span> <span class="n">mag</span>
-<span class="linenos">23</span>
-<span class="linenos">24</span>         <span class="c1">#Calculate mean</span>
-<span class="linenos">25</span>         <span class="n">average</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">/</span> <span class="n">count</span>
-<span class="linenos">26</span>
-<span class="linenos">27</span>     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Average is&quot;</span><span class="p">,</span><span class="n">average</span><span class="p">)</span>
-<span class="linenos">28</span>     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="linenos">29</span>
-<span class="linenos">30</span>     <span class="n">width</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="linenos">31</span>
-<span class="linenos">32</span>     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="linenos">33</span>     <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">xvar</span><span class="p">,</span> <span class="n">yvar</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;orangered&#39;</span><span class="p">)</span>
-<span class="linenos">34</span>     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;No. of Earthquakes&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;17&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;orange&#39;</span><span class="p">)</span>
-<span class="linenos">35</span>     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;12&#39;</span><span class="p">)</span>
-<span class="linenos">36</span>     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Magnitude of Earthquakes&quot;</span><span class="p">)</span>
-<span class="linenos">37</span>     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/student/Desktop/earthquakes.csv, &#39;r&#39;)</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">infile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="n">infile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="k">del</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Remove the header line</span>
+
+<span class="c1">#Create empty lists</span>
+<span class="n">xvar</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">yvar</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">std_dev</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+    <span class="n">elements</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span> <span class="c1">#splits the lines</span>
+    <span class="n">mag</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># Get the data in the fifth column</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="c1"># Add count and magnitude data to the empty x,y lists</span>
+    <span class="n">xvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+    <span class="n">yvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mag</span><span class="p">)</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">+</span> <span class="n">mag</span>
+
+    <span class="c1">#Calculate mean</span>
+    <span class="n">average</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">/</span> <span class="n">count</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Average is&quot;</span><span class="p">,</span><span class="n">average</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">width</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">xvar</span><span class="p">,</span> <span class="n">yvar</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;orangered&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;No. of Earthquakes&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;17&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;12&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Magnitude of Earthquakes&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </section>
-<section id="reading-data-files-and-plotting-graphs-using-pandas">
-<h2><span class="section-number">8.3. </span>Reading Data Files and Plotting Graphs Using Pandas<a class="headerlink" href="#reading-data-files-and-plotting-graphs-using-pandas" title="Permalink to this heading"></a></h2>
-<p>The script above used many lines of code to open the file, compute average, and plot a graph.  We can achieve the same results with far fewer lines of code by using a specialized library named Pandas.  Pandas is a very powerful, popular and easy to use Python library for data analysis.  It has many Excel-like functions. Its primary object is the DataFrame, which can be thought of as an abstract database table or spreadsheet.  Once you create a dataframe object, you can use it to display tables, plot columns, create and run queries, with just a few lines of code.</p>
+<section id="reading-csv-files-using-pandas">
+<h2><span class="section-number">8.3. </span>Reading CSV Files Using Pandas<a class="headerlink" href="#reading-csv-files-using-pandas" title="Permalink to this heading"></a></h2>
+<p>The script above used many lines of code to open the csv file, compute average, and plot a graph.  We can achieve the same results with far fewer lines of code by using a specialized library named Pandas.  Pandas is a very powerful, popular and easy to use Python library for data analysis.  It has many Excel-like functions. Its primary object is the DataFrame, which can be thought of as an abstract database table or spreadsheet.  Once you create a dataframe object, you can use it to display tables, plot columns, create and run queries, with just a few lines of code.</p>
 <p>Let’s plot the earthquake dataset using Pandas.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="linenos">2</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;C:/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">)</span>
-<span class="linenos">3</span>     <span class="n">df</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../earthquakes.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>Displaying Specific Columns of your Dataframe</strong></p>
-<p>To display the ‘Depth_mls’ and ‘Magnitude’ columns only, use the following syntax</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="linenos">2</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;C:/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">)</span>
-<span class="linenos">3</span>     <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Depth_mls&#39;</span><span class="p">,</span> <span class="s1">&#39;Magnitude&#39;</span><span class="p">]]</span>
+<p>To select multiple columns, use a list of column names within the selection brackets [].  In the example below, we are selecting the earthquake depth and magnitude fields.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../earthquakes.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[[</span><span class="s1">&#39;depth&#39;</span><span class="p">,</span> <span class="s1">&#39;magnitude&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Get the size of the table.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../earthquakes.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[[</span><span class="s2">&quot;depth&quot;</span><span class="p">,</span> <span class="s2">&quot;mag&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Filtering the Data Frame for Certain Rows</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../earthquakes.csv&quot;</span><span class="p">)</span>
+<span class="n">above_3</span><span class="mf">.5</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;mag&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">3.5</span><span class="p">]</span>
+<span class="n">above_35</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -305,27 +326,27 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Line Graphs</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="linenos">2</span>     <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="linenos">3</span>
-<span class="linenos">4</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">)</span>
-<span class="linenos">5</span>     <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Depth_mls&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="linenos">6</span>     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<p><strong>Line Graph</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../earthquakes.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;depth&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Histograms</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="linenos">2</span>     <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="linenos">3</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">)</span>
-<span class="linenos">4</span>
-<span class="linenos">5</span>     <span class="c1">#df.plot.line(column = df.columns[3],  figsize=(6, 8))</span>
-<span class="linenos">6</span>
-<span class="linenos">7</span>     <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Depth_mls&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">bins</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="linenos">8</span>     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<p><strong>Histogram</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../earthquakes.csv&quot;</span><span class="p">)</span>
+
+<span class="c1">#df.plot.line(column = df.columns[3],  figsize=(6, 8))</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Depth_mls&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">bins</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -349,20 +370,20 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Scatter</strong></p>
-<p>To plot the Depth and Magnitude Data, write:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="linenos">2</span>     <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="linenos">3</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">)</span>
-<span class="linenos">4</span>
-<span class="linenos">5</span>     <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Depth_mls&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="linenos">6</span>     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<p><strong>Scatterplot</strong></p>
+<p>To plot the Depth and Magnitude Data as a scatterplot, write:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../earthquakes.csv&quot;</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;depth&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;magnitude&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Depth_mls&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-<span class="linenos">2</span>
-<span class="linenos">3</span>     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Depth_mls&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -372,50 +393,335 @@
 <section id="writing-to-a-file">
 <h2><span class="section-number">8.5. </span>Writing to a File<a class="headerlink" href="#writing-to-a-file" title="Permalink to this heading"></a></h2>
 <p>Once we are done with data analysis, we can also write to a file, as shown below.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/student/Desktop/john.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="linenos">2</span>         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="linenos">3</span>         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="linenos">4</span>         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="linenos">5</span>         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="linenos">6</span>         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="linenos">7</span>         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="linenos">8</span>         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="linenos">9</span>     <span class="n">f</span><span class="o">.</span><span class="n">close</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/student/Desktop/john.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p>Reading a Data file into Python, splitting its contents by columns, and storing the columns in variables</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>     <span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/student/Desktop/Equakes2.csv, &#39;r&#39;)</span>
-<span class="linenos"> 2</span>     <span class="n">lines</span> <span class="o">=</span> <span class="n">infile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
-<span class="linenos"> 3</span>     <span class="n">newfile</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/student/Desktop/newfile.txt&quot;</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;a+&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
-<span class="linenos"> 4</span>
-<span class="linenos"> 5</span>     <span class="k">del</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Remove the first line</span>
-<span class="linenos"> 6</span>     <span class="c1">#Create empty lists</span>
-<span class="linenos"> 7</span>     <span class="n">xvar</span>  <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos"> 8</span>     <span class="n">yvar</span>  <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos"> 9</span>     <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="linenos">10</span>     <span class="nb">sum</span>   <span class="o">=</span> <span class="mi">0</span>
-<span class="linenos">11</span>
-<span class="linenos">12</span>     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-<span class="linenos">13</span>          <span class="n">elements</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span> <span class="c1"># splits the line</span>
-<span class="linenos">14</span>          <span class="n">mag</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># Get the data in the fifth column</span>
-<span class="linenos">15</span>          <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="linenos">16</span>
-<span class="linenos">17</span>          <span class="c1"># Add count and magnitude data to the empty x,y lists</span>
-<span class="linenos">18</span>          <span class="n">xvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
-<span class="linenos">19</span>          <span class="n">yvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mag</span><span class="p">)</span>
-<span class="linenos">20</span>          <span class="nb">sum</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">+</span> <span class="n">mag</span>
-<span class="linenos">21</span>          <span class="n">newfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="linenos">22</span>          <span class="n">newfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">mag</span><span class="p">))</span>
-<span class="linenos">23</span>
-<span class="linenos">24</span>     <span class="c1">#Calculate mean</span>
-<span class="linenos">25</span>     <span class="n">average</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">/</span> <span class="n">count</span>
-<span class="linenos">26</span>     <span class="n">newfile2</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">average</span><span class="p">))</span>
-<span class="linenos">27</span>     <span class="n">infile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="linenos">28</span>     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The average earthquake magnitude is&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">average</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="linenos">29</span>     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../earthquakes.csv, &#39;r&#39;)</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">infile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="n">newfile</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../newfile.txt&quot;</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;a+&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+<span class="k">del</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Remove the first line</span>
+<span class="c1">#Create empty lists</span>
+<span class="n">xvar</span>  <span class="o">=</span> <span class="p">[]</span>
+<span class="n">yvar</span>  <span class="o">=</span> <span class="p">[]</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">sum</span>   <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+     <span class="n">elements</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span> <span class="c1"># splits the line</span>
+     <span class="n">mag</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># Get the data in the fifth column</span>
+     <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+
+     <span class="c1"># Add count and magnitude data to the empty x,y lists</span>
+     <span class="n">xvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+     <span class="n">yvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mag</span><span class="p">)</span>
+     <span class="nb">sum</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">+</span> <span class="n">mag</span>
+     <span class="n">newfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+     <span class="n">newfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">mag</span><span class="p">))</span>
+
+<span class="c1">#Calculate mean</span>
+<span class="n">average</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">/</span> <span class="n">count</span>
+<span class="n">newfile2</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">average</span><span class="p">))</span>
+<span class="n">infile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The average earthquake magnitude is&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">average</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="plotting-shapefiles">
+<h2><span class="section-number">8.6. </span>Plotting Shapefiles<a class="headerlink" href="#plotting-shapefiles" title="Permalink to this heading"></a></h2>
+<p><strong>Displaying Shapefiles using Geopandas</strong></p>
+<p>Geopandas is one of the most popular libraries for plotting shapefiles. This because it only requires a few lines of code to plot a shapefile. I strongly recommend using Geopandas to display your shapefiles.</p>
+<p>To use Geopandas, first, download and install the library to your Python installation.  Afterwards, import the library and use it in your code.</p>
+<p>As an example, run the code below in your favorite development environment to load a shapefile into Python using Geopandas.  Note that the code draws the shapefile with a single color because no specific column is being plotted.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">geo_df</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span> <span class="p">(</span><span class="s2">&quot;../Michigan.shp&quot;</span><span class="p">)</span>
+<span class="n">geo_df</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="Michigan Map" src="_images/michigan_single_color.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Viewing the Shapefile’s Attribute Table using Geopandas</strong></p>
+<p>To view the attribute table of a shapefile, wit the Geopandas library,  use the head() method of the data frame object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">geopandas</span><span class="p">(</span><span class="s2">&quot;../Michigan.shp&quot;</span><span class="p">)</span>
+
+<span class="c1">#Show data in the attribute table</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1">#Display the shapefile</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
+
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Water Wells, Washtenaw County, Michigan&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="s1">&#39;14&#39;</span><span class="p">,</span> <span class="s1">&#39;fontweight&#39;</span> <span class="p">:</span> <span class="s1">&#39;3&#39;</span><span class="p">})</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="Michigan Map" src="_images/michigan_attribute_table.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Creating a Graduated Color Thematic Map using Geopandas</strong></p>
+<p>Often in GIS, we are interested in creating graduated color thematic maps based on specific columns. To do, simply enter parameters in the gpd.plot() method, as shown below.</p>
+<p><em>gdf.plot(ax = ax, column= ‘HISPANIC’, cmap=’OrRd’ , scheme=’fisher_jenks’, legend=True, edgecolor=’black’)</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;../Michigan.shp&quot;</span><span class="p">)</span>
+
+<span class="c1">#Display the shapefile</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
+
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span> <span class="s1">&#39;HISPANIC&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;OrRd&#39;</span> <span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;fisher_jenks&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Moble Homes, Michigan&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="s1">&#39;20&#39;</span><span class="p">,</span> <span class="s1">&#39;fontweight&#39;</span> <span class="p">:</span> <span class="s1">&#39;3&#39;</span><span class="p">})</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1">#Save the map</span>
+<span class="n">f</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/student/Downloads/Michigan_Counties/map_export.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Thematic Map" src="_images/michigan.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Displaying a Shapefile Using PyShp</strong></p>
+<p>Pyshp is an open source library that can be used to display a shapefile using pure Python. The project is described at this <a class="reference external" href="&quot;https://pypi.org/project/pyshp/&quot;">website</a>.  PyShp code for displaying a shapefile is lengthier than the one used by geopandas, but it gives us an opportunity to learn about multipart polygons and polylines.   Please note that after installing the “Pyshp” library, it is imported into Python using the shapefile keyword, e.g., “import shapefile”.</p>
+<p>Prior to running the code,it is useful to know that shapefiles have a ‘parts collection’ and a ‘points collection’.  A parts collection keep is used tp keep track of the number of polygons or line segments associated with each record.  This is required because in may situations, several polygons or polylines must be linked to one record in the attribute table.  As an example, since Hawaii is made up of several islands, multiple polygons are needed to represent the state, however in the attribute table, only a single record is used to represent the state.</p>
+<p>Shapefiles handle multipolygons and multipolylines using the concept of a “part”.  A record with one polygon has one part, but this will show in the parts collection as 0.  This is because the counting system begis with zero.</p>
+<p>A points collection refers to the list of points associated with a shape or feature. The code below plots a Michigan shapefile using only the points collection.</p>
+<p>The illustration below shows how we visualize the relationships between parts collection and the points collection.  The image shows two polygons associated with a single record. It also shows the part and points collection associated with the polygons.  The total number of items in the part collection is two.  The values in the squares in the parts collection represent index numbers that keep track of the starting coordinates for each part. Thus, Part 1 has coordinates that go from from p1 to p6. Part 2 starts from index value 6 and has coordinates that go from p7 to p11.</p>
+<img alt="Parts and Point Collection of a Shapefile" src="_images/point_parts_collection.png" />
+<p>Using Pyshp we can experiment with displaying a shapefile using only its points collection or with both its parts and points collection. The code below shows how to display a shapefile using only its points collection.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">shapefile</span>
+<span class="n">sf</span> <span class="o">=</span> <span class="n">shapefile</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="s2">&quot;../Michigan.shp&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">each_rec</span> <span class="ow">in</span> <span class="n">sf</span><span class="o">.</span><span class="n">shapeRecords</span><span class="p">():</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">each_rec</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">points</span><span class="p">]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">each_rec</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">points</span><span class="p">]</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+
+
+     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The code below plots a Michigan shapefile using both the parts and points collection.  This is a much better way to plot the shapefile. To display the parts and points of a shapefile, the code must first get the number of parts associated with each polyline or polygon, then loop through each part to get the array of points for the part.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shapefile</span> <span class="k">as</span> <span class="nn">shp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">sf</span> <span class="o">=</span> <span class="n">shp</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="s2">&quot;../Michigan.shp&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># loop through each record in the shaperecords collection</span>
+<span class="k">for</span> <span class="n">each_rec</span> <span class="ow">in</span> <span class="n">sf</span><span class="o">.</span><span class="n">shapeRecords</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">each_rec</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">parts</span><span class="p">)):</span>
+        <span class="n">i_start</span> <span class="o">=</span> <span class="n">each_rec</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>   <span class="c1">#Get the starting values for the part.</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">each_rec</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">parts</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">i_end</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">each_rec</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">points</span><span class="p">)</span>  <span class="c1">#Get the length of the points collection.</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">i_end</span> <span class="o">=</span> <span class="n">each_rec</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1">#Get the X,Y coord of the points in each part and make a list</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">each_rec</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">points</span><span class="p">[</span><span class="n">i_start</span><span class="p">:</span><span class="n">i_end</span><span class="p">]]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">each_rec</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">points</span><span class="p">[</span><span class="n">i_start</span><span class="p">:</span><span class="n">i_end</span><span class="p">]]</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;green&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Displaying Polygon or multi-polygon Shapefiles using Descartes</strong></p>
+<p>This is another alternative for displaying shapefiles using Python. Experiment with it using your favoritie development environment.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shapefile</span> <span class="k">as</span> <span class="nn">shp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">descartes</span> <span class="kn">import</span> <span class="n">PolygonPatch</span>
+
+<span class="n">sf</span> <span class="o">=</span> <span class="n">shp</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="s2">&quot;../School_Districts.shp&quot;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">poly</span> <span class="ow">in</span> <span class="n">sf</span><span class="o">.</span><span class="n">shapes</span><span class="p">():</span>
+        <span class="n">poly_geo</span><span class="o">=</span><span class="n">poly</span><span class="o">.</span><span class="n">__geo_interface__</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">PolygonPatch</span><span class="p">(</span><span class="n">poly_geo</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;#6699cc&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;#000000&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span> <span class="p">))</span>
+
+     <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;scaled&#39;</span><span class="p">)</span>
+     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="Shapefile Displayed with Descartes" src="_images/school_districts_descartes.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Displaying a List of XY Coordinates as Points</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aVkdWSqKG_c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="displaying-rasters">
+<h2><span class="section-number">8.7. </span>Displaying Rasters<a class="headerlink" href="#displaying-rasters" title="Permalink to this heading"></a></h2>
+<p><strong>Arrays</strong></p>
+<p>In programming, rasters are considered as arrays, therefore we learn about arrays in order to manipulate rasters.</p>
+<p>An array is a collection of items of the same data type that can be manipulated as a single entity.  In Python,  a list is a one dimensional array.  However, when we are thinking about rasters, we are typically thinking of two dimensional arrays that are matrices of numbers defined by rows and columns.</p>
+<p>In Python, one difference between a list and a two-dimensional array is that whereas a list can store multiple data types, a two-dimensional array can store only one data type.</p>
+<img alt="One and Two Dimensional Arrays" src="_images/arrays1.png" />
+<p>Python has specialized libraries for manipulating arrays. Two popular ones are the “numpy” library and the “array” module. Numpy appear to be more popular.  To import Numpy, type:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<p>To learn more about arrays, please click on <a class="reference external" href="&quot;https://jakevdp.github.io/PythonDataScienceHandbook/02.02-the-basics-of-numpy-arrays.html&quot;">this link</a>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Displaing a DEM using GDAL and Matplotlib</strong></p>
+<p>One way to display a raster is to open the raster file using the gdal library, then convert the raster into an using GDAL. Afterwards, we can use matplotlib to display the array.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">gdal</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1">#Open raster and read number of rows, columns and bands</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;/Users/hsemple/Downloads/Wayne_DEM/county/wayne/topography/dem&quot;</span><span class="p">)</span>
+
+<span class="n">band1</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">raster_array</span> <span class="o">=</span> <span class="n">band1</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">raster_array</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="Wayne DEM" src="_images/wayne_dem.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Displaying a Raster using Rasterio and Matplotlib</strong></p>
+<p>Rasterio is a popular open source Python library used for viewing and manipulating rasters.  Rasterio utilizes the gdal library to display rasters. With rasterio, viewing a raster can be done with just a few lines of code, like the example below.</p>
+<p>Rasterio has a show( ) method for displaying rasters. However, the library also uses pyplot’s imshow method to display the data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rasterio</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+
+<span class="n">src</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/Users/hsemple/Downloads/Wayne_DEM/county/wayne/topography/dem&quot;</span><span class="p">)</span>
+<span class="n">src_array</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">src_array</span><span class="p">)</span> <span class="c1"># Get the plot renderer object.</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span> <span class="c1">#Associate the figure object with plot renderer and axes objects.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span> <span class="c1">#Let the axes object set the length of the colobar.</span>
+
+<span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="Wayne DEM" src="_images/rasterio_dem1.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Displaying a three-band Aerial Photo with GDAL</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">aerial</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;/Users/semple/Desktop/Detroit.png</span>
+
+
+<span class="n">bnd1</span> <span class="o">=</span> <span class="n">aerial</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">bnd2</span> <span class="o">=</span> <span class="n">aerial</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">bnd3</span> <span class="o">=</span> <span class="n">aerial</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+
+<span class="c1">#Now turn each band into a ndarray:</span>
+<span class="n">img1</span> <span class="o">=</span> <span class="n">bnd1</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span>
+<span class="n">img2</span> <span class="o">=</span> <span class="n">bnd2</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span>
+<span class="n">img3</span> <span class="o">=</span> <span class="n">bnd3</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span>
+
+
+<span class="c1">#Then stack them to have a 3 band image</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">img1</span><span class="p">,</span><span class="n">img2</span><span class="p">,</span><span class="n">img3</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Displaying Satellite Imagery with GDAL</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="c1">#Image-2019</span>
+<span class="n">band5</span> <span class="o">=</span> <span class="s2">&quot;/Users/hsemple/Downloads/Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B5.TIF&quot;</span>
+<span class="n">band4</span> <span class="o">=</span> <span class="s2">&quot;/Users/hsemple/Downloads/Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B4.TIF&quot;</span>
+<span class="n">band3</span> <span class="o">=</span> <span class="s2">&quot;/Users/hsemple/Downloads/Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B3.TIF&quot;</span>
+
+
+<span class="c1">#Open the Landsat image bands with GDAL</span>
+
+
+
+<span class="n">B5_data</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">band5</span><span class="p">)</span>
+<span class="n">B4_data</span><span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">band4</span><span class="p">)</span>
+<span class="n">B3_data</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">band3</span><span class="p">)</span>
+
+
+<span class="n">B5_Array</span>  <span class="o">=</span> <span class="n">B5_data</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">B4_Array</span> <span class="o">=</span> <span class="n">B4_data</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">B3_Array</span> <span class="o">=</span> <span class="n">B5_data</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+
+
+<span class="c1">#Then stack them to have a 3 band image</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">B5_Array</span><span class="p">,</span><span class="n">B4_Array</span><span class="p">,</span><span class="n">B3_Array</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Displaying a Three-band Raster with Rasterio</strong></p>
+<p>Rasterio is a popular open source Python library used for viewing and manipulating rasters.  Rasterio utilizes the gdal library to display rasters. With rasterio, viewing a raster can be done with just a few lines of code, like the example below.</p>
+<p>Rasterio has a show( ) method for displaying rasters. However, the library can also use pyplot’s imshow method to display the data. The example below uses the show method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rasterio</span>
+<span class="kn">from</span> <span class="nn">rasterio.plot</span> <span class="kn">import</span> <span class="n">show</span>
+<span class="n">src</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/Users/semple/Desktop/Detroit.png&quot;</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -423,7 +729,7 @@
 </div>
 </section>
 <section id="readings">
-<h2><span class="section-number">8.6. </span>Readings<a class="headerlink" href="#readings" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">8.8. </span>Readings<a class="headerlink" href="#readings" title="Permalink to this heading"></a></h2>
 <p>Plotting Graphs with Matplotlib</p>
 <ul class="simple">
 <li><p>Download Plotting Graphs with Matplotlib</p></li>
@@ -431,6 +737,9 @@
 <li><p>File I/O. Reading and writing files</p></li>
 <li><p>Customizing the legend</p></li>
 <li><p><a class="reference external" href="https://automating-gis-processes.github.io/CSC18/index.html">https://automating-gis-processes.github.io/CSC18/index.html</a></p></li>
+<li><p>Python Shapefile Library - <a class="reference external" href="https://pythonhosted.org/Python%20Shapefile%20Library/">https://pythonhosted.org/Python%20Shapefile%20Library/</a></p></li>
+<li><p>Land Cover Change Analysis with Python and GDAL - Tutorial - <a class="reference external" href="https://hatarilabs.com/ih-en/land-cover-change-analysis-with-python-and-gdal-tutorial">https://hatarilabs.com/ih-en/land-cover-change-analysis-with-python-and-gdal-tutorial</a></p></li>
+<li><p>Rasterio - <a class="reference external" href="https://geobgu.xyz/py/rasterio">https://geobgu.xyz/py/rasterio</a>.html#</p></li>
 </ul>
 </section>
 </section>

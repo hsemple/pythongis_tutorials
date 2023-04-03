@@ -122,45 +122,57 @@
 <p>To create a class, we must first define the actions and characteristics of the objects that will be created.  In the example below, we are building a program that simulates how <a class="reference external" href="&quot;https://www.wwf.org.uk/learn/fascinating-facts/elephants&quot;">elephants</a> behave in the wild. The goal is to highlight three of the many classes that could appear in the program. The three classes are the animal class, the mammal class and the elephant class.</p>
 <p>The animal class defines behavior (methods) and characteristics (properties) that all animals will have in the program, not just elephants.  For animals that are mammals, a class has been defined that specifies things that mammals can do (methods) within the program. Since mammals are also animals, they will also inherit all the features contained in the animal class.  Finally, an elephant class has been defined to specify all the things that only elephants can do within the program.</p>
 <img alt="Classes and Methods" src="_images/classes_and_methods.png" />
-<p>Typically, class diagrams are written in very formal ways.  An example is shown below where the diagram is written using UML notation.</p>
+<p>Typically, class diagrams are written in very formal ways.  An example is shown below where the diagram is written using UML notation.  <a class="reference external" href="&quot;https://www.microsoft.com/en-us/microsoft-365/visio/flowchart-software&quot;">Microsoft Visio</a> is a popular tool to use to create class diagrams. A good free tool to use is <a class="reference external" href="&quot;http://dia-installer.de/&quot;">Dia</a> .</p>
 <img alt="UML Class Diagram" src="_images/uml_class_diagram.png" />
 <p>In addition to creating a class diagram, programmers write code to implement the various classes in a program. The illustraton below shows the code for creating the various classes in the program. As you ca see, tne code is actually a set of functions.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span> <span class="k">class</span> <span class="nc">Animals</span><span class="p">():</span>
-<span class="linenos"> 2</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">species</span><span class="p">,</span> <span class="n">gender</span><span class="p">):</span>
-<span class="linenos"> 3</span>         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-<span class="linenos"> 4</span>         <span class="bp">self</span><span class="o">.</span><span class="n">species</span> <span class="o">=</span> <span class="n">species</span>
-<span class="linenos"> 5</span>         <span class="bp">self</span><span class="o">.</span><span class="n">gender</span> <span class="o">=</span> <span class="n">gender</span>
-<span class="linenos"> 6</span>
-<span class="linenos"> 7</span>     <span class="k">def</span> <span class="nf">getName</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos"> 8</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
-<span class="linenos"> 9</span>
-<span class="linenos">10</span>     <span class="k">def</span> <span class="nf">getSpecies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">11</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">species</span>
-<span class="linenos">12</span>
-<span class="linenos">13</span>      <span class="k">def</span> <span class="nf">getGender</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">14</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gender</span>
-<span class="linenos">15</span>
-<span class="linenos">16</span>     <span class="k">def</span> <span class="nf">breathe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">17</span>         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am breathing&#39;</span><span class="p">)</span>
-<span class="linenos">18</span>
-<span class="linenos">19</span>     <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">20</span>         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am moving&#39;</span><span class="p">)</span>
-<span class="linenos">21</span>
-<span class="linenos">22</span>     <span class="k">def</span> <span class="nf">eat_food</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">23</span>         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am eating food&#39;</span><span class="p">)</span>
-<span class="linenos">24</span>
-<span class="linenos">25</span>
-<span class="linenos">26</span> <span class="k">class</span> <span class="nc">Mammals</span><span class="p">(</span><span class="n">Animals</span><span class="p">):</span>
-<span class="linenos">27</span>     <span class="k">def</span> <span class="nf">feed_young_with_milk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">28</span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am feeding my young&#39;</span><span class="p">)</span>
-<span class="linenos">29</span>
-<span class="linenos">30</span>
-<span class="linenos">31</span> <span class="k">class</span> <span class="nc">Elephant</span> <span class="p">(</span><span class="n">Mammals</span><span class="p">):</span>
-<span class="linenos">32</span>     <span class="k">def</span> <span class="nf">eat_from_tall_tree</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">33</span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Feeding from tall tree&#39;</span><span class="p">)</span>
-<span class="linenos">34</span>
-<span class="linenos">35</span>     <span class="k">def</span> <span class="nf">spraying_water</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">36</span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Spraying water on my body using my trunk&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Animals</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">species</span><span class="p">,</span> <span class="n">gender</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">species</span> <span class="o">=</span> <span class="n">species</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gender</span> <span class="o">=</span> <span class="n">gender</span>
+
+    <span class="k">def</span> <span class="nf">getName</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">getSpecies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">species</span>
+
+     <span class="k">def</span> <span class="nf">getGender</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gender</span>
+
+    <span class="k">def</span> <span class="nf">breathe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am breathing&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">moving</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am moving&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am eating&#39;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Mammals</span><span class="p">(</span><span class="n">Animals</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">feed_young_with_milk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am feeding my young&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am playing&#39;</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">dancing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="bp">self</span><span class="o">.</span><span class="n">moving</span><span class="p">()</span>
+       <span class="bp">self</span><span class="o">.</span><span class="n">moving</span><span class="p">(()</span>
+       <span class="bp">self</span><span class="o">.</span><span class="n">moving</span><span class="p">(()</span>
+       <span class="bp">self</span><span class="o">.</span><span class="n">moving</span><span class="p">(()</span>
+
+
+
+<span class="k">class</span> <span class="nc">Elephant</span> <span class="p">(</span><span class="n">Mammals</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">spraying_water</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am spraying water on my body using my trunk&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">trumpet</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am trumpeting&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>In the example above, the animal class has a function called __init__().  This function is executed when the class is being initialized, i.e., when a new object is being created from the class.</p>
@@ -177,13 +189,13 @@ for more information.</p>
 <h2><span class="section-number">7.3. </span>Objects<a class="headerlink" href="#objects" title="Permalink to this heading"></a></h2>
 <p>In object-oriented programming, an object is used to simulate real world objects or concrete aspects of the program.  They hold both data, and methods to manipulate the data. The data is usually not visible outside the object, but it can only be changed by using well-specified mechanisms.  The code below shows how we create objects.</p>
 <p><strong>Creating Animal Objects</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">animal1</span> <span class="o">=</span> <span class="n">Animals</span><span class="p">(</span><span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="s1">&#39;Tiger&#39;</span><span class="p">)</span>
-<span class="linenos">2</span> <span class="n">animal2</span>  <span class="o">=</span> <span class="n">Animals</span><span class="p">(</span><span class="s1">&#39;Luna&#39;</span><span class="p">,</span> <span class="s1">&#39;Lion&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">animal1</span> <span class="o">=</span> <span class="n">Animals</span><span class="p">(</span><span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="s1">&#39;Tiger&#39;</span><span class="p">,</span> <span class="s2">&quot;Male&quot;</span><span class="p">)</span>
+<span class="n">animal2</span>  <span class="o">=</span> <span class="n">Animals</span><span class="p">(</span><span class="s1">&#39;Luna&#39;</span><span class="p">,</span> <span class="s1">&#39;Lioness&#39;</span><span class="p">,</span> <span class="s2">&quot;Female&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Creating Elephant Objects</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">elephant1</span> <span class="o">=</span> <span class="n">Elephant</span> <span class="p">(</span><span class="s1">&#39;Ben&#39;</span><span class="p">,</span> <span class="s1">&#39;Elephant&#39;</span><span class="p">)</span>
-<span class="linenos">2</span> <span class="n">elephant2</span>  <span class="o">=</span> <span class="n">Elephant</span> <span class="p">(</span><span class="s1">&#39;Mary&#39;</span><span class="p">,</span> <span class="s1">&#39;Elephant&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">elephant1</span> <span class="o">=</span> <span class="n">Elephant</span> <span class="p">(</span><span class="s1">&#39;Ben&#39;</span><span class="p">,</span> <span class="s1">&#39;Elephant&#39;</span><span class="p">,</span> <span class="s2">&quot;Male&quot;</span><span class="p">)</span>
+<span class="n">elephant2</span>  <span class="o">=</span> <span class="n">Elephant</span> <span class="p">(</span><span class="s1">&#39;Mary&#39;</span><span class="p">,</span> <span class="s1">&#39;Elephant&#39;</span><span class="p">,</span> <span class="s2">&quot;Female&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -194,14 +206,15 @@ for more information.</p>
 <h2><span class="section-number">7.4. </span>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading"></a></h2>
 <p>Attributes are characteristics associated with the object.  Normal attributes are introduced in the  __init___ method, but some attributes of a class are shared by all instances and are introduced at the class level.  In the example above, self.name = name and self.species = species are attributes.</p>
 <p>When getting an attribute, we write the object name followed by a dot and and the name of the attribute, e.g.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">elephant1</span><span class="o">.</span><span class="n">name</span>
-<span class="linenos">2</span> <span class="s1">&#39;Ben&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">elephant1</span><span class="o">.</span><span class="n">name</span>
+<span class="s1">&#39;Ben&#39;</span>
 </pre></div>
 </div>
-<p>We can also set and attribute, by calling the object and supplying an attribute,</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">elephant1</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Ben&quot;</span>
-<span class="linenos">2</span> <span class="n">elephant1</span><span class="o">.</span><span class="n">name</span>
-<span class="linenos">3</span> <span class="s1">&#39;Ben&#39;</span>
+<p>We can also set an attribute by calling the object and supplying an attribute value, for example,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">elephant1</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Ben&quot;</span>
+<span class="n">elephant1</span><span class="o">.</span><span class="n">name</span>
+
+<span class="s1">&#39;Ben&#39;</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -210,8 +223,8 @@ for more information.</p>
 </section>
 <section id="methods">
 <h2><span class="section-number">7.5. </span>Methods<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h2>
-<p>A method is a function that is defined within a class.  Methods represent actions that the object can perform.  Methods have access to all the data contained in the instance of the object.  When calling a method, we write the object name followed by a dot with a parenthesis, e.g.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">elephant1</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>
+<p>A method is a function that is defined within a class that represent actions that the object can perform.  Methods have access to all the data contained in the instance of the object.  When calling a method, we write the object name followed by a dot then the name of the method and parentheses. The parentheses differntiates between a method and an attribute e.g.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">elephant1</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>The parenthesis in the move method means that it is expecting arguments. Even if no argument is supplied, the self keyword is automatically passed.</p>
@@ -225,11 +238,11 @@ for more information.</p>
 <p>Encapsulation involves bundling of data with the methods that operate on the data.  In each object we can have both private and public variables and methods. Private variables and methods cannot be called or used by other objects, whereas public ones can.</p>
 <p>To explain this, let’s again use a car application example. In a car application, some car attributes such as name of manufacturer, year and model of the car can be made private variables, meaning that they cannot be changed by other objects.  However, variables such as color, registration number, and driver can be made public variables meaning that they can be changed by other objects</p>
 <p>Let’s look at the public and private methods associated with a list object in Python. Let’s create a list named mylist:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Now, type the code below to see the attributes and methods associated with the list object. You can use the “dir” command with any Python object:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="nb">dir</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>[‘__add__’, ‘__class__’, ‘__contains__’, ‘__delattr__’, ‘__delitem__’, ‘__delslice__’, ‘__doc__’, ‘__eq__’, ‘__format__’, ‘__ge__’, ‘__getattribute__’, ‘__getitem__’, ‘__getslice__’, ‘__gt__’, ‘__hash__’, ‘__iadd__’, ‘__imul__’, ‘__init__’, ‘__iter__’, ‘__le__’, ‘__len__’, ‘__lt__’, ‘__mul__’, ‘__ne__’, ‘__new__’, ‘__reduce__’, ‘__reduce_ex__’, ‘__repr__’, ‘__reversed__’, ‘__rmul__’, ‘__setattr__’, ‘__setitem__’, ‘__setslice__’, ‘__sizeof__’, ‘__str__’, ‘__subclasshook__’, ‘append’, ‘count’, ‘extend’, ‘index’, ‘insert’, ‘pop’, ‘remove’, ‘reverse’, ‘sort’]</p>
@@ -249,51 +262,53 @@ for more information.</p>
 </section>
 <section id="inheritance">
 <h2><span class="section-number">7.8. </span>Inheritance<a class="headerlink" href="#inheritance" title="Permalink to this heading"></a></h2>
-<p>Inheritance enables new classes to receive—or inherit—the properties and methods of existing classes.</p>
+<p>Inheritance enables new classes to receive or inherit the properties and methods of existing classes.</p>
 <p>Class Inheritance</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span> <span class="k">class</span> <span class="nc">Mammals</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="linenos"> 2</span>     <span class="k">def</span> <span class="nf">feed_young_with_milk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos"> 3</span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;feeding young&#39;</span><span class="p">)</span>
-<span class="linenos"> 4</span>
-<span class="linenos"> 5</span>     <span class="k">def</span> <span class="nf">dance_a_jig</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos"> 6</span>        <span class="bp">self</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>
-<span class="linenos"> 7</span>        <span class="bp">self</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>
-<span class="linenos"> 8</span>        <span class="bp">self</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>
-<span class="linenos"> 9</span>        <span class="bp">self</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>
-<span class="linenos">10</span>
-<span class="linenos">11</span> <span class="k">class</span> <span class="nc">Animals</span><span class="p">(</span><span class="n">Mammals</span><span class="p">):</span>
-<span class="linenos">12</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">species</span><span class="p">,</span> <span class="n">gender</span><span class="p">):</span>
-<span class="linenos">13</span>         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-<span class="linenos">14</span>         <span class="bp">self</span><span class="o">.</span><span class="n">species</span> <span class="o">=</span> <span class="n">species</span>
-<span class="linenos">15</span>         <span class="n">elf</span><span class="o">.</span><span class="n">gender</span> <span class="o">=</span> <span class="n">gender</span>
-<span class="linenos">16</span>
-<span class="linenos">17</span>     <span class="k">def</span> <span class="nf">getName</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">18</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
-<span class="linenos">19</span>
-<span class="linenos">20</span>     <span class="k">def</span> <span class="nf">getSpecies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">21</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">species</span>
-<span class="linenos">22</span>
-<span class="linenos">23</span>      <span class="k">def</span> <span class="nf">getGender</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">24</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gender</span>
-<span class="linenos">25</span>
-<span class="linenos">26</span>     <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">27</span>         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am moving&#39;</span><span class="p">)</span>
-<span class="linenos">28</span>
-<span class="linenos">29</span>     <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">30</span>         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am eating&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Mammals</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">feed_young_with_milk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;feeding young&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">dancing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="bp">self</span><span class="o">.</span><span class="n">moving</span><span class="p">()</span>
+       <span class="bp">self</span><span class="o">.</span><span class="n">moving</span><span class="p">()</span>
+       <span class="bp">self</span><span class="o">.</span><span class="n">moving</span><span class="p">()</span>
+       <span class="bp">self</span><span class="o">.</span><span class="n">moving</span><span class="p">()</span>
+
+
+
+<span class="k">class</span> <span class="nc">Animals</span><span class="p">(</span><span class="n">Mammals</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">species</span><span class="p">,</span> <span class="n">gender</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">species</span> <span class="o">=</span> <span class="n">species</span>
+        <span class="n">elf</span><span class="o">.</span><span class="n">gender</span> <span class="o">=</span> <span class="n">gender</span>
+
+    <span class="k">def</span> <span class="nf">getName</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">getSpecies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">species</span>
+
+     <span class="k">def</span> <span class="nf">getGender</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gender</span>
+
+    <span class="k">def</span> <span class="nf">moving</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am moving&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am eating&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><em>Creating and calling Elephant Objects</em></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">animal4</span> <span class="o">=</span> <span class="n">Animals</span><span class="p">(</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Giraffe&#39;</span><span class="p">)</span>
-<span class="linenos">2</span> <span class="n">animal5</span>  <span class="o">=</span> <span class="n">Animals</span><span class="p">(</span><span class="s1">&#39;Olga&#39;</span><span class="p">,</span> <span class="s1">&#39;Lioness&#39;</span><span class="p">)</span>
-<span class="linenos">3</span>
-<span class="linenos">4</span> <span class="c1">#Inheritance</span>
-<span class="linenos">5</span> <span class="n">animal1</span><span class="o">.</span><span class="n">feed_young_with_milk</span><span class="p">()</span>
-<span class="linenos">6</span> <span class="n">animal1</span><span class="o">.</span><span class="n">eat_leaves_from_trees</span><span class="p">()</span>
-<span class="linenos">7</span> <span class="n">animal2</span><span class="o">.</span><span class="n">dance_a_jig</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">animal4</span> <span class="o">=</span> <span class="n">Animals</span><span class="p">(</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;Giraffe&#39;</span><span class="p">,</span> <span class="s2">&quot;Male&quot;</span><span class="p">)</span>
+<span class="n">animal5</span>  <span class="o">=</span> <span class="n">Animals</span><span class="p">(</span><span class="s1">&#39;Olga&#39;</span><span class="p">,</span> <span class="s1">&#39;Lioness&#39;</span><span class="p">,</span> <span class="s2">&quot;Female&quot;</span><span class="p">)</span>
+
+<span class="c1">#Inheritance</span>
+<span class="n">animal1</span><span class="o">.</span><span class="n">feed_young_with_milk</span><span class="p">()</span>
+<span class="n">animal1</span><span class="o">.</span><span class="n">eat_leaves_from_trees</span><span class="p">()</span>
+<span class="n">animal2</span><span class="o">.</span><span class="n">dancing</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -301,8 +316,8 @@ for more information.</p>
 </div>
 <p><em>Looking up the Methods associated with an Object</em></p>
 <p>To look up the methods and properties of an object in Python, type the word dir followed by the name of the object in parenthesis. In the example below, we first create a list named mylist, then we issue the “dir” command to get a list of all the methods associataed with this object.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
-<span class="linenos">2</span> <span class="nb">dir</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="nb">dir</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>[‘__add__’, ‘__class__’, ‘__contains__’, ‘__delattr__’, ‘__delitem__’, ‘__delslice__’, ‘__doc__’, ‘__eq__’, ‘__format__’, ‘__ge__’, ‘__getattribute__’, ‘__getitem__’, ‘__getslice__’, ‘__gt__’, ‘__hash__’, ‘__iadd__’, ‘__imul__’, ‘__init__’, ‘__iter__’, ‘__le__’, ‘__len__’, ‘__lt__’, ‘__mul__’, ‘__ne__’, ‘__new__’, ‘__reduce__’, ‘__reduce_ex__’, ‘__repr__’, ‘__reversed__’, ‘__rmul__’, ‘__setattr__’, ‘__setitem__’, ‘__setslice__’, ‘__sizeof__’, ‘__str__’, ‘__subclasshook__’, ‘append’, ‘count’, ‘extend’, ‘index’, ‘insert’, ‘pop’, ‘remove’, ‘reverse’, ‘sort’]</p>
@@ -315,39 +330,39 @@ for more information.</p>
 <h2><span class="section-number">7.9. </span>Polymorphism<a class="headerlink" href="#polymorphism" title="Permalink to this heading"></a></h2>
 <p>Polymorphism means the ability to take various forms. In OOPs, polymorphism means that a child class inheriting a function from a parent class can override the function and give it a new set of rules to follow.</p>
 <p>In the code below,  we have a “Dog” super class and three child classes that inherit from the superclass.  The superclass has a bark function, but some of the child classes have their own bark functions which allows them to bark in ways that are different from the super class.  That’s an example of polymorphism at work.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span> <span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
-<span class="linenos"> 2</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">):</span>
-<span class="linenos"> 3</span>         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-<span class="linenos"> 4</span>         <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
-<span class="linenos"> 5</span>         <span class="bp">self</span><span class="o">.</span><span class="n">friendliness</span> <span class="o">=</span> <span class="n">friendliness</span>
-<span class="linenos"> 6</span>
-<span class="linenos"> 7</span>     <span class="k">def</span> <span class="nf">likes_walks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos"> 8</span>         <span class="k">return</span> <span class="kc">True</span>
-<span class="linenos"> 9</span>
-<span class="linenos">10</span>     <span class="k">def</span> <span class="nf">barks</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">11</span>         <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Wooof&quot;</span><span class="p">,</span> <span class="s2">&quot;Woof&quot;</span><span class="p">)</span>
-<span class="linenos">12</span>
-<span class="linenos">13</span>
-<span class="linenos">14</span> <span class="k">class</span> <span class="nc">Samoyed</span> <span class="p">(</span><span class="n">Dog</span><span class="p">):</span>
-<span class="linenos">15</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">):</span>
-<span class="linenos">16</span>         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">)</span>
-<span class="linenos">17</span>
-<span class="linenos">18</span>
-<span class="linenos">19</span>     <span class="k">def</span> <span class="nf">barks</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">20</span>         <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;rrrrr&quot;</span><span class="p">,</span> <span class="s2">&quot;rrrrr&quot;</span><span class="p">)</span>
-<span class="linenos">21</span>
-<span class="linenos">22</span>
-<span class="linenos">23</span> <span class="k">class</span> <span class="nc">Poodle</span> <span class="p">(</span><span class="n">Dog</span><span class="p">):</span>
-<span class="linenos">24</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">):</span>
-<span class="linenos">25</span>         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">)</span>
-<span class="linenos">26</span>
-<span class="linenos">27</span>     <span class="k">def</span> <span class="nf">barks</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">28</span>         <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;row row&quot;</span><span class="p">,</span> <span class="s2">&quot;row row row&quot;</span><span class="p">)</span>
-<span class="linenos">29</span>
-<span class="linenos">30</span>
-<span class="linenos">31</span> <span class="k">class</span> <span class="nc">GoldenRetriever</span> <span class="p">(</span><span class="n">Dog</span><span class="p">):</span>
-<span class="linenos">32</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">):</span>
-<span class="linenos">33</span>         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">friendliness</span> <span class="o">=</span> <span class="n">friendliness</span>
+
+    <span class="k">def</span> <span class="nf">likes_walks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">barks</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Wooof&quot;</span><span class="p">,</span> <span class="s2">&quot;Woof&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Samoyed</span> <span class="p">(</span><span class="n">Dog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">barks</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;rrrrr&quot;</span><span class="p">,</span> <span class="s2">&quot;rrrrr&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Poodle</span> <span class="p">(</span><span class="n">Dog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">barks</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;row row&quot;</span><span class="p">,</span> <span class="s2">&quot;row row row&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">GoldenRetriever</span> <span class="p">(</span><span class="n">Dog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">friendliness</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -370,6 +385,7 @@ for more information.</p>
 <li><p><a class="reference external" href="&quot;https://pynative.com/python-object-oriented-programming-oop-exercise/#h-oop-exercise-1-create-a-class-with-instance-attributes&quot;">Classes and Objects Exercises</a></p></li>
 <li><p><a class="reference external" href="&quot;https://www.w3resource.com/python-exercises/class-exercises/python-class-real-life-problem-1.php&quot;">Python Class Exercises</a></p></li>
 <li><p><a class="reference external" href="&quot;https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/&quot;">Python Classes and Object Oriented Programming</a></p></li>
+<li><p><a class="reference external" href="&quot;https://www.apollotechnical.com/why-object-oriented-programming-matters/?external_link=true&quot;">Why Object-Oriented Programming Matters</a></p></li>
 </ol>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -385,19 +401,19 @@ for more information.</p>
 <li><p>Initialize a dog object and call its various methods</p></li>
 <li><p>Create multiple instances of dog objects</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span> <span class="k">class</span> <span class="nc">Dog</span><span class="p">():</span>
-<span class="linenos"> 2</span>     <span class="sd">&quot;&quot;&quot;A simple attempt to model a dog.&quot;&quot;&quot;</span>
-<span class="linenos"> 3</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
-<span class="linenos"> 4</span>         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-<span class="linenos"> 5</span>         <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
-<span class="linenos"> 6</span>
-<span class="linenos"> 7</span>     <span class="k">def</span> <span class="nf">sit</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos"> 8</span>         <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; is now sitting.&quot;</span><span class="p">)</span>
-<span class="linenos"> 9</span>
-<span class="linenos">10</span>
-<span class="linenos">11</span>     <span class="k">def</span> <span class="nf">roll_over</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">12</span>         <span class="sd">&quot;&quot;&quot;Simulate rolling over in response to a command.&quot;&quot;&quot;</span>
-<span class="linenos">13</span>         <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; rolled over!&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Dog</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;A simple attempt to model a dog.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+    <span class="k">def</span> <span class="nf">sit</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; is now sitting.&quot;</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">roll_over</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Simulate rolling over in response to a command.&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; rolled over!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
@@ -405,12 +421,12 @@ for more information.</p>
 | a. the perimeter of objects.
 | b. the diagonal of the rectangle object. Diagonal (d) = √(l² + w²), where ‘l’ is the length and ‘w’ is the width of the rectangle. The formula for the diagonal of a rectangle is derived from the Pythagoras theorem.</p></li>
 </ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="k">class</span> <span class="nc">Rectangle</span><span class="p">():</span>
-<span class="linenos">2</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
-<span class="linenos">3</span>         <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="n">l</span>
-<span class="linenos">4</span>         <span class="bp">self</span><span class="o">.</span><span class="n">width</span>  <span class="o">=</span> <span class="n">w</span>
-<span class="linenos">5</span>     <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="linenos">6</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span>  <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Rectangle</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="n">l</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span>  <span class="o">=</span> <span class="n">w</span>
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span>  <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">

@@ -15,7 +15,6 @@ The example below shows a function that calculates area based on length and widt
 
 
 .. code-block:: python
-   :linenos:
 
    def calculate_area(length, width):
       area = length * width

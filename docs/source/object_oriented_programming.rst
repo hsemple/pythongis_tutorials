@@ -44,7 +44,8 @@ The animal class defines behavior (methods) and characteristics (properties) tha
 
 
 
-Typically, class diagrams are written in very formal ways.  An example is shown below where the diagram is written using UML notation.
+Typically, class diagrams are written in very formal ways.  An example is shown below where the diagram is written using UML notation.  `Microsoft Visio <"https://www.microsoft.com/en-us/microsoft-365/visio/flowchart-software">`_ is a popular tool to use to create class diagrams. A good free tool to use is `Dia <"http://dia-installer.de/">`_ . 
+
 
 .. image:: img/uml_class_diagram.png
    :alt: UML Class Diagram
@@ -52,7 +53,6 @@ Typically, class diagrams are written in very formal ways.  An example is shown 
 
 
 In addition to creating a class diagram, programmers write code to implement the various classes in a program. The illustraton below shows the code for creating the various classes in the program. As you ca see, tne code is actually a set of functions.
-
 
 .. code-block:: python
 
@@ -74,24 +74,36 @@ In addition to creating a class diagram, programmers write code to implement the
         def breathe(self): 
             print('I am breathing') 
           
-        def move(self):
+        def moving(self):
             print('I am moving') 
 
-        def eat_food(self): 
-            print('I am eating food') 
+        def eat(self): 
+            print('I am eating') 
             
 
     class Mammals(Animals): 
         def feed_young_with_milk(self):
            print('I am feeding my young') 
 
+        def play(self):
+           print('I am playing') 
+
+
+        def dancing(self):
+           self.moving() 
+           self.moving(()   
+           self.moving(()  
+           self.moving(() 
+
+
 
     class Elephant (Mammals): 
-        def eat_from_tall_tree (self):
-           print('Feeding from tall tree') 
 
         def spraying_water (self):
-           print('Spraying water on my body using my trunk') 
+           print('I am spraying water on my body using my trunk') 
+
+        def trumpet (self):
+           print('I am trumpeting')
 
 
 
@@ -113,6 +125,7 @@ To run the above code, simply copy it and paste it into Python. Once the code ru
 
 |
 
+
 Objects
 ---------
 
@@ -124,8 +137,8 @@ In object-oriented programming, an object is used to simulate real world objects
 
 .. code-block:: python
 
-    animal1 = Animals('John', 'Tiger') 
-    animal2  = Animals('Luna', 'Lion') 
+    animal1 = Animals('John', 'Tiger', "Male") 
+    animal2  = Animals('Luna', 'Lioness', "Female") 
 
 
 
@@ -133,8 +146,8 @@ In object-oriented programming, an object is used to simulate real world objects
 
 .. code-block:: python
 
-    elephant1 = Elephant ('Ben', 'Elephant') 
-    elephant2  = Elephant ('Mary', 'Elephant') 
+    elephant1 = Elephant ('Ben', 'Elephant', "Male") 
+    elephant2  = Elephant ('Mary', 'Elephant', "Female") 
 
 
 |
@@ -144,7 +157,7 @@ Attributes
 
 Attributes are characteristics associated with the object.  Normal attributes are introduced in the  __init___ method, but some attributes of a class are shared by all instances and are introduced at the class level.  In the example above, self.name = name and self.species = species are attributes.
 
- 
+ 
 
 When getting an attribute, we write the object name followed by a dot and and the name of the attribute, e.g.
 
@@ -156,12 +169,13 @@ When getting an attribute, we write the object name followed by a dot and and th
 
 
 
-We can also set and attribute, by calling the object and supplying an attribute,
+We can also set an attribute by calling the object and supplying an attribute value, for example, 
 
 .. code-block:: python
 
     elephant1.name = "Ben"
     elephant1.name
+
     'Ben'
 
 
@@ -171,7 +185,7 @@ We can also set and attribute, by calling the object and supplying an attribute,
 Methods
 ---------
 
-A method is a function that is defined within a class.  Methods represent actions that the object can perform.  Methods have access to all the data contained in the instance of the object.  When calling a method, we write the object name followed by a dot with a parenthesis, e.g.
+A method is a function that is defined within a class that represent actions that the object can perform.  Methods have access to all the data contained in the instance of the object.  When calling a method, we write the object name followed by a dot then the name of the method and parentheses. The parentheses differntiates between a method and an attribute e.g.
 
 .. code-block:: python
 
@@ -234,7 +248,7 @@ Abstract methods do not contain any implementation. Instead, all the implementat
 Inheritance
 ------------
 
-Inheritance enables new classes to receive—or inherit—the properties and methods of existing classes.
+Inheritance enables new classes to receive or inherit the properties and methods of existing classes.
 
 
 
@@ -247,11 +261,13 @@ Class Inheritance
         def feed_young_with_milk(self):
            print('feeding young') 
 
-        def dance_a_jig(self):
-           self.move() 
-           self.move() 
-           self.move() 
-           self.move()
+        def dancing(self):
+           self.moving() 
+           self.moving() 
+           self.moving() 
+           self.moving()
+
+
 
     class Animals(Mammals):
         def __init__(self, name, species, gender): 
@@ -268,7 +284,7 @@ Class Inheritance
          def getGender(self): 
             return self.gender
                
-        def move(self):
+        def moving(self):
             print('I am moving') 
 
         def eat(self): 
@@ -281,13 +297,13 @@ Class Inheritance
 
 .. code-block:: python
 
-    animal4 = Animals('Tom', 'Giraffe') 
-    animal5  = Animals('Olga', 'Lioness') 
+    animal4 = Animals('Tom', 'Giraffe', "Male") 
+    animal5  = Animals('Olga', 'Lioness', "Female") 
 
     #Inheritance
     animal1.feed_young_with_milk()
     animal1.eat_leaves_from_trees()
-    animal2.dance_a_jig()
+    animal2.dancing()
 
 
 |
@@ -386,6 +402,7 @@ Please complete the exercises at the links below.
 
 3. `Python Classes and Object Oriented Programming <"https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/">`_
 
+4. `Why Object-Oriented Programming Matters <"https://www.apollotechnical.com/why-object-oriented-programming-matters/?external_link=true">`_
 
 
 |
