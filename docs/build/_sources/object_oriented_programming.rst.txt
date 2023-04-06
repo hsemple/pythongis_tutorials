@@ -2,16 +2,8 @@ Basic Concepts in Object Oriented Programming
 ===========================================================
 
 
-In this module, we continue to look at basic programming concepts using Python. In particular, we will look at the meaning of object oriented programming and critical concepts such as:
-
-    * object oriented programming
-    * objects
-    * classes
-    * attributes
-    * methods
-    * inheritance
-    * encapsulation
-
+In this module, we will look at the meaning of the term object oriented programming as well as critical concepts associated with paradign.
+Much of programming these days is object oriented programming, therefore understanding this approach to programming is critical for deciphering the spatial and other Python libraries you will come across. It is also the style you will adopt when coding.
 
 |
 
@@ -44,7 +36,7 @@ The animal class defines behavior (methods) and characteristics (properties) tha
 
 
 
-Typically, class diagrams are written in very formal ways.  An example is shown below where the diagram is written using UML notation.  `Microsoft Visio <"https://www.microsoft.com/en-us/microsoft-365/visio/flowchart-software">`_ is a popular tool to use to create class diagrams. A good free tool to use is `Dia <"http://dia-installer.de/">`_ . 
+Typically, class diagrams are not drawn in the informal way shown above. Rather, specific conventions are used to ceate these diagrams.  An example is shown below where the diagram is drawn using UML notation.  `Microsoft Visio <"https://www.microsoft.com/en-us/microsoft-365/visio/flowchart-software">`_ is a popular tool to use to create class diagrams. A good free tool to use is `Dia <"http://dia-installer.de/">`_ . 
 
 
 .. image:: img/uml_class_diagram.png

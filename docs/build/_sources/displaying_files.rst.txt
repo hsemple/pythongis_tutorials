@@ -637,7 +637,7 @@ The code below plots a Michigan shapefile using both the parts and points collec
 
 **Displaying Polygon or multi-polygon Shapefiles using Descartes**
 
-This is another alternative for displaying shapefiles using Python. Experiment with it using your favoritie development environment. 
+The Descartes library is another alternative for displaying shapefiles using Python.  Descartes uses geometric objects as input for displaying `matplotlib paths and patches polygons <"https://matplotlib.org/stable/api/pyplot_summary.html">`_.   Experiment with the code below to learn about _geo_interfaces_ from the shapefile library,  add_patch() from matplotlib, and PolyPatch () from Descartes.
 
 
 .. code-block:: python
@@ -667,6 +667,54 @@ This is another alternative for displaying shapefiles using Python. Experiment w
 
 |
 
+In this example, the code above has been modified to display the polygons in the shapefile with multiple colors.
+
+.. code-block:: python
+
+   import shapefile as shp
+   import matplotlib.pyplot as plt
+   from descartes import PolygonPatch
+   import random
+
+
+   sf = shp.Reader("/Users/hsemple/Desktop/Lab6_Shapefiles/school_districts.shp")
+   fig = plt.figure()
+
+   ax = fig.gca()
+
+   for poly in sf.shapes():
+	   poly_geo=poly.__geo_interface__
+
+	   # Generate a random number between 0 and 2^24
+	   color = random.randrange(0, 2**24)
+
+	   # Convert the number from base-10 (decimal) to base-16 (hexadecimal)
+	   hex_color = hex(color)
+
+	   std_color = "#" + hex_color[2:]
+
+	   ax.add_patch(PolygonPatch(poly_geo, fc= str(std_color), ec='#000000', alpha=0.5, zorder=2 ))
+
+  ax.axis('scaled')
+  plt.show()
+
+
+.. image:: img/school_districts_multi_color.png
+   :alt:  Shapefile Displayed with Descartes
+
+
+
+|
+
+
+**References**
+
+* Create Random Hex Color Code Using Python - https://www.geeksforgeeks.org/create-random-hex-color-code-using-python/#
+* Plotting large shapefiles with matplotlib - https://gis.stackexchange.com/questions/202839/plotting-large-shapefiles-with-matplotlib/266675#266675
+
+
+
+|
 
 
 **Displaying a List of XY Coordinates as Points**

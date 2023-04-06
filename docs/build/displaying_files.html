@@ -561,7 +561,7 @@
 <div class="line"><br /></div>
 </div>
 <p><strong>Displaying Polygon or multi-polygon Shapefiles using Descartes</strong></p>
-<p>This is another alternative for displaying shapefiles using Python. Experiment with it using your favoritie development environment.</p>
+<p>The Descartes library is another alternative for displaying shapefiles using Python.  Descartes uses geometric objects as input for displaying <a class="reference external" href="&quot;https://matplotlib.org/stable/api/pyplot_summary.html&quot;">matplotlib paths and patches polygons</a>.   Experiment with the code below to learn about _geo_interfaces_ from the shapefile library,  add_patch() from matplotlib, and PolyPatch () from Descartes.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shapefile</span> <span class="k">as</span> <span class="nn">shp</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">descartes</span> <span class="kn">import</span> <span class="n">PolygonPatch</span>
@@ -580,6 +580,47 @@
 </pre></div>
 </div>
 <img alt="Shapefile Displayed with Descartes" src="_images/school_districts_descartes.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>In this example, the code above has been modified to display the polygons in the shapefile with multiple colors.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="kn">import</span> <span class="nn">shapefile</span> <span class="k">as</span> <span class="nn">shp</span>
+ <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+ <span class="kn">from</span> <span class="nn">descartes</span> <span class="kn">import</span> <span class="n">PolygonPatch</span>
+ <span class="kn">import</span> <span class="nn">random</span>
+
+
+ <span class="n">sf</span> <span class="o">=</span> <span class="n">shp</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="s2">&quot;/Users/hsemple/Desktop/Lab6_Shapefiles/school_districts.shp&quot;</span><span class="p">)</span>
+ <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+ <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+ <span class="k">for</span> <span class="n">poly</span> <span class="ow">in</span> <span class="n">sf</span><span class="o">.</span><span class="n">shapes</span><span class="p">():</span>
+         <span class="n">poly_geo</span><span class="o">=</span><span class="n">poly</span><span class="o">.</span><span class="n">__geo_interface__</span>
+
+         <span class="c1"># Generate a random number between 0 and 2^24</span>
+         <span class="n">color</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">24</span><span class="p">)</span>
+
+         <span class="c1"># Convert the number from base-10 (decimal) to base-16 (hexadecimal)</span>
+         <span class="n">hex_color</span> <span class="o">=</span> <span class="nb">hex</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+
+         <span class="n">std_color</span> <span class="o">=</span> <span class="s2">&quot;#&quot;</span> <span class="o">+</span> <span class="n">hex_color</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+
+         <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">PolygonPatch</span><span class="p">(</span><span class="n">poly_geo</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">std_color</span><span class="p">),</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;#000000&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span> <span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;scaled&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="Shapefile Displayed with Descartes" src="_images/school_districts_multi_color.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>References</strong></p>
+<ul class="simple">
+<li><p>Create Random Hex Color Code Using Python - <a class="reference external" href="https://www.geeksforgeeks.org/create-random-hex-color-code-using-python">https://www.geeksforgeeks.org/create-random-hex-color-code-using-python</a>/#</p></li>
+<li><p>Plotting large shapefiles with matplotlib - <a class="reference external" href="https://gis.stackexchange.com/questions/202839/plotting-large-shapefiles-with-matplotlib/266675#266675">https://gis.stackexchange.com/questions/202839/plotting-large-shapefiles-with-matplotlib/266675#266675</a></p></li>
+</ul>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>

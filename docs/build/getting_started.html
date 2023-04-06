@@ -61,6 +61,8 @@
 <li class="toctree-l1"><a class="reference internal" href="strings_lists_conditional.html">4. Strings and Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">5. Conditional Statements and Looping</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">6. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">7. Basic Concepts in Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="displaying_files.html">8. Reading and Displaying Files</a></li>
 </ul>
 
         </div>
@@ -95,10 +97,10 @@
 </div>
 <section id="the-standard-python-distribution">
 <h2><span class="section-number">2.1. </span>The Standard Python Distribution<a class="headerlink" href="#the-standard-python-distribution" title="Permalink to this heading"></a></h2>
-<p>Many people use the standard Python distribution as the central platform for development. Scripts are in executed in IDLE, which is Python’s default integrated development environment.  By default, the standard Python distribution lacks many packages that are needed for GIS and related work so you will have to install these manually. Sometimes, installing these packages and their dependencies can be challenging, but these challenges are great opportunities for learning the inner details of Python.</p>
+<p>Many people use the standard Python distribution as the central platform for development. Scripts are executed in IDLE, which is Python’s default integrated development environment.  Following installation, you will notice that the standard Python distribution lacks many packages that are needed for GIS work so you will have to install these manually. Sometimes, installing these packages and their dependencies can be challenging, but these challenges are great opportunities for learning the inner details of Python.</p>
 <ol class="arabic simple">
 <li><p>To download the Standard Python Distribution, visit Python’s <a class="reference external" href="https://www.python.org/downloads/">homepage</a>. Download the latest version.</p></li>
-<li><p>If you are using a Windows computer, after downloading, install the program on your computer.</p></li>
+<li><p>If you are using a Windows computer, after downloading. install the program on your computer using the Windows installer.</p></li>
 </ol>
 <blockquote>
 <div><img alt="Install Python" src="_images/install_python.png" />
@@ -138,13 +140,14 @@
 <blockquote>
 <div><img alt="Python Interpreter and IDLE" src="_images/interpreter_idle.png" />
 </div></blockquote>
+<p>After installing Pyhton, you may realize that you have more than one Python installations on your computer. This is not an issue except that sometimes when you try to start Python from the command prompt, you may find that the Python installation you wish to start is not the recent one that you installed.  There are many ways to resolve this problem.  This <a class="reference external" href="&quot;https://betterprogramming.pub/the-best-way-we-create-and-manage-multiple-versions-of-python-22363e065a43&quot;">document</a> contains some tips on how to resolve this issue. You can google similar documents on the topic.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </section>
 <section id="python-virtual-environments">
 <h2><span class="section-number">2.2. </span>Python Virtual Environments<a class="headerlink" href="#python-virtual-environments" title="Permalink to this heading"></a></h2>
-<p>When working with Python, it is a good idea to work with virtual environments. Virtual environments are isolated environments that Python developers can use to install and run packages for a specific project.  Thus, instead of installing the packages for the entire system, users can install the packages needed for a particukar project. This allows each project to have its own dependencies, regardless of what dependencies other projects may be using.</p>
+<p>When working with Python, it is a good idea to work with virtual environments. Virtual environments are isolated environments that Python developers can use to install and run packages for a specific project.  Thus, instead of installing the packages for the entire system, users can install the packages needed for a particular project. This allows each project to have its own dependencies regardless of what dependencies other projects may be using.</p>
 <p><strong>How to Install and Create Virtual Environment</strong></p>
 <ol class="arabic simple">
 <li><p>At the Python prompt, type</p></li>
@@ -180,10 +183,19 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<p>References
+* Python Virtual Environments Explained with Examples - <a class="reference external" href="https://www.freecodecamp.org/news/python-virtual-environments-explained-with-examples/">https://www.freecodecamp.org/news/python-virtual-environments-explained-with-examples/</a></p>
+<ul class="simple">
+<li><p>Python Virtual Environments - <a class="reference external" href="https://autogis-site.readthedocs.io/en/latest/course-info/create-python-gis-environment.html">https://autogis-site.readthedocs.io/en/latest/course-info/create-python-gis-environment.html</a></p></li>
+<li><p>Python GIS environment - <a class="reference external" href="https://gist.github.com/ThomasG77/223064813d8aefda5b3cdb05c2588fa1">https://gist.github.com/ThomasG77/223064813d8aefda5b3cdb05c2588fa1</a></p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </section>
 <section id="jupyter-notebook-in-anaconda">
 <h2><span class="section-number">2.3. </span>Jupyter Notebook in Anaconda<a class="headerlink" href="#jupyter-notebook-in-anaconda" title="Permalink to this heading"></a></h2>
-<p>Anaconda is a large Python distribution that has become very popular over the last several years.  One reason for its popularity is that it comes  pre-installed with many packages. Also, users can run their code using Jupyter Notebook, which is a nice, browser-based environment for running code. I strongly recommend that you use Jupyter Notebook as much as you can for your Python GIS programming.</p>
+<p>Anaconda is a large Python distribution that has become very popular over the last several years.  One reason for its popularity is that it comes  with many pre-installed packages. Also, users can run their code using Jupyter Notebook, which is a nice, browser-based environment for running code. I strongly recommend that you use Jupyter Notebook as much as you can for your Python GIS programming.</p>
 <ol class="arabic simple">
 <li><p>Download the Anaconda Distribution at <a class="reference external" href="https://www.anaconda.com/products/distribution">this site</a> (<a class="reference external" href="https://www.anaconda.com/products/distribution">https://www.anaconda.com/products/distribution</a>).</p></li>
 <li><p>After intallation, start Anaconda, then launch the Jupyter Notebook.</p></li>
@@ -198,7 +210,7 @@
 <div><img alt="Jupyter Notebook Development Environment" src="_images/jupyter_dev_environment.png" />
 </div></blockquote>
 <ol class="arabic" start="4">
-<li><p>If you need to install new package, including spatial packakes, look for the Anaconda folder at the Windows Start button, then click on Anaconda prompt.  When the Anaconda prompt appears, enter the command below to install a new package. Conda installs many packages with ease, so you should use it often.</p>
+<li><p>If you need to install new packages, including spatial packakes, look for the Anaconda folder at the Windows Start button, then click on Anaconda prompt.  When the Anaconda prompt appears, enter the command below to install a new package. Conda installs many packages with ease, so you should use it often.</p>
 <blockquote>
 <div><p>conda install package_name</p>
 </div></blockquote>
@@ -215,14 +227,14 @@
 <section id="jupyter-notebook-within-arcgis-pro">
 <h2><span class="section-number">2.4. </span>Jupyter Notebook within ArcGIS Pro<a class="headerlink" href="#jupyter-notebook-within-arcgis-pro" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
-<li><p>If you have ArcGIS Pro installed on your computer, you can run Python using Jupyter Notebook that is installed with ArcGIS Pro.  This is a good development environment to use  as the connection between Python and Jupyter Notebook is already configured.</p></li>
+<li><p>If you have ArcGIS Pro installed on your computer, you can run Python using the Jupyter Notebook that is installed with ArcGIS Pro.  This is a good development environment to use as the connection between ArcGIS Pro and Jupyter Notebook is already configured.</p></li>
 <li><p>To run Python using Jupyter Notebook that is installed with ArcGIS Pro, open ArcGIS Pro, then click on Project | Python | Python Notebook, This shown in the illustration below.</p></li>
 </ol>
 <blockquote>
 <div><img alt="Python's Notebook in ArcGIS Pro" src="_images/jupyter_notebook_arcgis_pro.png" />
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li><p>If you wish to add new libraries to ArcGIS, you will first have to clone Python’s default environment in ArcGIS Pro then install the new libraries to the cloned environment.  This <a class="reference external" href="https://support.esri.com/en/technical-article/000020560">ESRI tutorial</a> shows how to clone Python’s default environment within ArcGIS Pro.</p></li>
+<li><p>If you wish to add new libraries to ArcGIS, you will first have to clone the Python’s default environment in ArcGIS Pro then install the new libraries to the cloned environment.  This <a class="reference external" href="https://support.esri.com/en/technical-article/000020560">ESRI tutorial</a> shows how to clone Python’s default environment within ArcGIS Pro.</p></li>
 </ol>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -305,11 +317,10 @@
 <li><p>PyQGIS Developer Cookbook - <a class="reference external" href="https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/index.html">https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/index.html</a></p></li>
 <li><p>Streamlining GIS with Automation - <a class="reference external" href="https://www.geospatialworld.net/prime/technology-and-innovation/streamlining-gis-with-automation/">https://www.geospatialworld.net/prime/technology-and-innovation/streamlining-gis-with-automation/</a></p></li>
 <li><p>Getting started with Anaconda - <a class="reference external" href="https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-nav-mac">https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-nav-mac</a></p></li>
-<li><p>Python Virtual Environments - <a class="reference external" href="https://autogis-site.readthedocs.io/en/latest/course-info/create-python-gis-environment.html">https://autogis-site.readthedocs.io/en/latest/course-info/create-python-gis-environment.html</a></p></li>
-<li><p>Python GIS environment - <a class="reference external" href="https://gist.github.com/ThomasG77/223064813d8aefda5b3cdb05c2588fa1">https://gist.github.com/ThomasG77/223064813d8aefda5b3cdb05c2588fa1</a></p></li>
 <li><p>QGIS Developers Cookbook - <a class="reference external" href="https://docs.qgis.org/2.18/pdf/en/QGIS-2.18-PyQGISDeveloperCookbook-en.pdf">https://docs.qgis.org/2.18/pdf/en/QGIS-2.18-PyQGISDeveloperCookbook-en.pdf</a></p></li>
 <li><p>Getting Started With Python Programming - <a class="reference external" href="http://www.qgistutorials.com/en/docs/getting_started_with_pyqgis.html">http://www.qgistutorials.com/en/docs/getting_started_with_pyqgis.html</a></p></li>
 <li><p>GeoPython - AutoGIS  - <a class="reference external" href="https://automating-gis-processes.github.io/2016/index.html">https://automating-gis-processes.github.io/2016/index.html</a></p></li>
+<li><p>Python Virtual Environments Explained with Examples - <a class="reference external" href="https://www.freecodecamp.org/news/python-virtual-environments-explained-with-examples/">https://www.freecodecamp.org/news/python-virtual-environments-explained-with-examples/</a></p></li>
 </ul>
 </section>
 </section>
