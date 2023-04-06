@@ -470,7 +470,8 @@ Plotting Shapefiles
 
 **Displaying Shapefiles using Geopandas**
 
-Geopandas is one of the most popular libraries for plotting shapefiles. This because it only requires a few lines of code to plot a shapefile. I strongly recommend using Geopandas to display your shapefiles.
+
+A large part of geospatial visualization is made possible using libraries such as Geopandas, Shapely, matplotlib, GDAL, OGR, and descartes.  Geopandas is perhaps one of the most popular libraries for plotting shapefiles. This because it only requires a few lines of code to plot a shapefile. I strongly recommend using Geopandas to display your shapefiles.
 
 To use Geopandas, first, download and install the library to your Python installation.  Afterwards, import the library and use it in your code.  
 
@@ -637,7 +638,7 @@ The code below plots a Michigan shapefile using both the parts and points collec
 
 **Displaying Polygon or multi-polygon Shapefiles using Descartes**
 
-The Descartes library is another alternative for displaying shapefiles using Python.  Descartes uses geometric objects as input for displaying `matplotlib paths and patches polygons <"https://matplotlib.org/stable/api/pyplot_summary.html">`_.   Experiment with the code below to learn about _geo_interfaces_ from the shapefile library,  add_patch() from matplotlib, and PolyPatch () from Descartes.
+The Descartes library is another alternative for displaying shapefiles using Python.  Descartes uses geometric objects as input for displaying `matplotlib paths and patches as lines and polygons <"https://matplotlib.org/stable/api/pyplot_summary.html">`_.   Experiment with the code below to learn about _geo_interfaces_ from the shapefile library,  add_patch() from matplotlib, and PolyPatch () from Descartes.
 
 
 .. code-block:: python

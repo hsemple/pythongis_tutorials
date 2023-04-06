@@ -2,8 +2,10 @@ Basic Concepts in Object Oriented Programming
 ===========================================================
 
 
-In this module, we will look at the meaning of the term object oriented programming as well as critical concepts associated with paradign.
-Much of programming these days is object oriented programming, therefore understanding this approach to programming is critical for deciphering the spatial and other Python libraries you will come across. It is also the style you will adopt when coding.
+In this module, we will look at the meaning of the term object oriented programming. We will also define some of the basic concepts associated with object oriented programming.  
+
+
+Much of programming these days is dominated by the object oriented programming paradignm.  Therefore, understanding this approach to programming is critical for deciphering the many Python libraries you will come across. When working with different Python libraries, you will soon notice that they all follow the same stype.  FOr example, they all have classes which serve as templates for producing objects that represent different aspects of the program. Objects are pre-programmed to perform specific actions, so much of object oriented programming is understanding how different objects in a library are related to each other, instantiating the objects,  and manipulating them via code to achieve the goals of the program.
 
 |
 
@@ -12,9 +14,10 @@ What is Object Oriented Programming (OOP)
 
 OOP is a programming methodology or paradigm in which programs are designed using objects. Objects are named features or elements of the program that carry out specfic tasks.  Objects may interact with each other in specified ways as they to carry out their tasks. 
 
+The first step in understanding an object oriented program is to identify the main objects in the program and how they relate to each other. This information is typically contained in a class diagram, or it may appear as simple descriptions in the program documentation.  Once objects are identified, they can be manipulated based on the published methods provided in the program documentation.
 
 
-The first step in object oriented programming is to identify all the objects a programmer would like to manipulate in his/her program and how they relate to each other, an exercise often known as data modeling.  Once objects are identified, they are generalized or categorized as classes.   
+If a person is writing an object-oriented program, the approach is basically the same. They must define all the objects that will appear in the program and then group them into classes. They must also identify relationships and responsibilities of the different objects, and also identify attributes (Data) and operations (methods) for each object. This process is called object modeling. Once this process is completed, then code can be written to implement the ideas in the program.  Below, we go into further details about basic concepts in object oriented programming.
 
  
 
