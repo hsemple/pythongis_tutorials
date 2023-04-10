@@ -959,13 +959,13 @@ Exercises
 1. Visit `this NFL website <"https://nextgenstats.nfl.com/stats/passing#max-completed-air-distance">`_ and copy the quarter back data.   Paste the data into Excel and save it in CSV format.  Use the standard library in Python or pandas to plot a simple histogram and boxplot of the data in the passing attempts field (ATT).   Also, calculate the mean and standard deviation of passing attempts.   Explain what your  data is portraying in short paragraph.
 
 
-2. Using Geopandas, create a thematic map for the USA showing the distribution of Covid19 cases across the country for the date for which you have data.   Write comments to explain what your code is doing.   Repeat the process using another Python library of your choice.
+2. Using Geopandas, create a thematic map for the USA or `Michign <"https://www.michigan.gov/coronavirus/stats">`_ showing the distribution of Covid19 cases across the country or state for the date for which you have data.  Write comments to explain what your code is doing.   Repeat the process using another Python library of your choice.
 
 
 3. Module 5.2 has code for displaying orthophotos and digital elevation models using GDAL and the rasterio libraries.  Download a DEM and display it using either the GDAL or Rasterio library.  Tweak the code to control so that you can easily change the color of the displayed. Also, displays the legend with the correct elevation values (not negative values).
 
 
-4. Extend the code that uses Descartes to display polygons with different colors so that the polygons are also labelled.
+4. Extend the code that uses Descartes to display polygons with different colors so that the polygons are also labeled.
 
 
 5. Complete the tutorial on this website inclduing the challenge task at the end - https://blog.matthewgove.com/2021/06/18/the-ultimate-in-python-data-processing-how-to-create-maps-and-graphs-from-a-single-shapefile/
