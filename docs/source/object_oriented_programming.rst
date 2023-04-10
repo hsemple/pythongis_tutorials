@@ -1,13 +1,14 @@
 Basic Concepts in Object Oriented Programming
 ===========================================================
 
+|
 
-In this module, we will look at the meaning of the term object oriented programming. We will also define some of the basic concepts associated with object oriented programming.  
+Much of programming these days is dominated by the object oriented programming paradigm.  Therefore, understanding this approach to programming is important for deciphering the many programming libraries you will come across regardless of the object oriented language. 
 
-
-Much of programming these days is dominated by the object oriented programming paradignm.  Therefore, understanding this approach to programming is critical for deciphering the many Python libraries you will come across. When working with different Python libraries, you will soon notice that they all follow the same stype.  FOr example, they all have classes which serve as templates for producing objects that represent different aspects of the program. Objects are pre-programmed to perform specific actions, so much of object oriented programming is understanding how different objects in a library are related to each other, instantiating the objects,  and manipulating them via code to achieve the goals of the program.
+When working with different object oriented languages, including Python, you will soon notice that they all follow the same style.  For example, they all have classes which serve as templates for producing the objects that represent different aspects of the program. Objects are software elements that are pre-programmed to perform specific actions in predictable ways.  So, much of object oriented programming is knowing the different objects in the library, understanding how these objects are related to each other, instantiating the objects, and manipulating them via code to achieve the goals of the program.
 
 |
+
 
 What is Object Oriented Programming (OOP)
 ---------------------------------------------
@@ -374,18 +375,6 @@ In the code below,  we have a "Dog" super class and three child classes that inh
 
 
 
-Readings
------------
-
-* `Classes and Objects <"https://vimeo.com/110920298">`_
-* `Python Class Exercises  <"https://www.w3resource.com/python-exercises/class-exercises/python-class-real-life-problem-1.php">`_
-* `Measuring Heights from Individual and Paired Images <"https://wgbis.ces.iisc.ernet.in/envis/Remote/section114.htm">`_
-
-
-
-|
-
-
 **Practice Programs**
 
 Please complete the exercises at the links below.
@@ -453,5 +442,19 @@ Exercises
 
 
 4. Write a Python class named Circle constructed by a radius and two methods which will compute the area and the circumference of a circle.
+
+
+
+|
+
+
+
+Readings
+-----------
+
+* `Classes and Objects <"https://vimeo.com/110920298">`_
+* `Python Class Exercises  <"https://www.w3resource.com/python-exercises/class-exercises/python-class-real-life-problem-1.php">`_
+* `Measuring Heights from Individual and Paired Images <"https://wgbis.ces.iisc.ernet.in/envis/Remote/section114.htm">`_
+
 
 

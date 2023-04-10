@@ -17,7 +17,6 @@ Since Python users in GIS utilze different spatial libraries, the example script
    :hidden:
    :numbered:
 
-   welcome.rst
    getting_started.rst
    intro_programs.rst
    strings_lists_conditional.rst
@@ -25,3 +24,6 @@ Since Python users in GIS utilze different spatial libraries, the example script
    functions.rst
    object_oriented_programming.rst
    displaying_files.rst
+   map_projections.rst
+   attribute_and_spatial_queries.rst
+   terrain_analysis.rst

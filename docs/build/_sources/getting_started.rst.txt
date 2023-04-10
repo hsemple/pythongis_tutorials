@@ -1,6 +1,6 @@
 
-Development Environments
-==========================
+Setting up Development Environments
+======================================
 
 For these tutorials, we will run our Python scripts in the following development environments depending on what needs to be accomplished: the Standard Python Distribution, Anaconda Distribution, ArcGIS Pro, ArcGIS API for Python, and QGIS. This will give users an opportunity to familiarize themselves with these various platforms.
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>5. Conditional Statements and Looping &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+  <title>4. Conditional Statements and Looping &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="6. Functions" href="functions.html" />
-    <link rel="prev" title="4. Strings and Lists" href="strings_lists_conditional.html" /> 
+    <link rel="next" title="5. Functions" href="functions.html" />
+    <link rel="prev" title="3. Strings and Lists" href="strings_lists_conditional.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,21 +44,22 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="getting_started.html">2. Development Environments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="intro_programs.html">3. Introduction to the Python Language</a></li>
-<li class="toctree-l1"><a class="reference internal" href="strings_lists_conditional.html">4. Strings and Lists</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Conditional Statements and Looping</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#conditionals">5.1. Conditionals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#comparison-operators">5.2. Comparison Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#looping">5.3. Looping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#for-loops">5.4. For Loops</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#for-loops-with-break-and-continue">5.5. For Loops with Break and Continue</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#while-loops">5.6. While Loops</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exercises">5.7. Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">1. Development Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_programs.html">2. Introduction to the Python Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings_lists_conditional.html">3. Strings and Lists</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Conditional Statements and Looping</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#conditionals">4.1. Conditionals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comparison-operators">4.2. Comparison Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#looping">4.3. Looping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#for-loops">4.4. For Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#for-loops-with-break-and-continue">4.5. For Loops with Break and Continue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#while-loops">4.6. While Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">4.7. Exercises</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="functions.html">6. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">5. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">6. Basic Concepts in Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="displaying_files.html">7. Reading and Displaying Files</a></li>
 </ul>
 
         </div>
@@ -75,7 +76,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">5. </span>Conditional Statements and Looping</li>
+      <li class="breadcrumb-item active"><span class="section-number">4. </span>Conditional Statements and Looping</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/conditionals_and_looping.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -86,12 +87,12 @@
            <div itemprop="articleBody">
              
   <section id="conditional-statements-and-looping">
-<h1><span class="section-number">5. </span>Conditional Statements and Looping<a class="headerlink" href="#conditional-statements-and-looping" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">4. </span>Conditional Statements and Looping<a class="headerlink" href="#conditional-statements-and-looping" title="Permalink to this heading"></a></h1>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <section id="conditionals">
-<h2><span class="section-number">5.1. </span>Conditionals<a class="headerlink" href="#conditionals" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.1. </span>Conditionals<a class="headerlink" href="#conditionals" title="Permalink to this heading"></a></h2>
 <p>Unless otherwise directed, lines of codes in a procedure run sequentially, from first to last. Conditional statements can change the sequential flow of a program based on whether a given condition is true or false.</p>
 <p>Python uses the If statement for testing conditions. If the condition is true, then the code block following the if statement is executed. If it is not true, the program jumps to the end of the code block.</p>
 <p>In Python, a colon is placed at the end of the statement that contains the condition, and the lines below the condition statement are indented.</p>
@@ -219,7 +220,7 @@
 </div>
 </section>
 <section id="comparison-operators">
-<h2><span class="section-number">5.2. </span>Comparison Operators<a class="headerlink" href="#comparison-operators" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.2. </span>Comparison Operators<a class="headerlink" href="#comparison-operators" title="Permalink to this heading"></a></h2>
 <dl>
 <dt>Python has many different operators for testing conditions including:</dt><dd><div class="line-block">
 <div class="line">== (Double equal sign) : tests equality, is equal to</div>
@@ -244,7 +245,7 @@
 </div>
 </section>
 <section id="looping">
-<h2><span class="section-number">5.3. </span>Looping<a class="headerlink" href="#looping" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.3. </span>Looping<a class="headerlink" href="#looping" title="Permalink to this heading"></a></h2>
 <p>In programming, looping is used to execute a block of code repeatedly until a certain condition is met.  It is a simple concept that has widespread usage in programming.</p>
 <p>Python uses the for loop and the while loop for iteration or repetitions.  For loops are used when you know, beforehand, the amount of times you want to loop.  While Loops enable you to test for a particular condition and are used when you don’t know beforehand how many times the loop will occur.</p>
 <div class="line-block">
@@ -252,7 +253,7 @@
 </div>
 </section>
 <section id="for-loops">
-<h2><span class="section-number">5.4. </span>For Loops<a class="headerlink" href="#for-loops" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.4. </span>For Loops<a class="headerlink" href="#for-loops" title="Permalink to this heading"></a></h2>
 <p>The general pattern of the for loop is illustrated below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>  <span class="c1"># for each item of a variable that is in a particular sequence</span>
 <span class="linenos">2</span>     <span class="n">statements</span>       <span class="c1"># do something.</span>
@@ -412,7 +413,7 @@ The variable name “num” is a made-up one.  You can use any name.  In Pyhton,
 </div>
 </section>
 <section id="for-loops-with-break-and-continue">
-<h2><span class="section-number">5.5. </span>For Loops with Break and Continue<a class="headerlink" href="#for-loops-with-break-and-continue" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.5. </span>For Loops with Break and Continue<a class="headerlink" href="#for-loops-with-break-and-continue" title="Permalink to this heading"></a></h2>
 <p><strong>Break</strong></p>
 <p>Break is typically part of a conditional looping situation in the program.  If the “if condition” evaluates to false, break will not be activated and the program will keep looping normally.   If the condition evaluates to true, ‘break’ is activated and the code jumps out of the loop entirely and moves to the next block in the program.</p>
 <p>Run the code below to study “break”</p>
@@ -526,7 +527,7 @@ Although the maximum value in the range is 100 million, as soon as the loop gets
 </div>
 </section>
 <section id="while-loops">
-<h2><span class="section-number">5.6. </span>While Loops<a class="headerlink" href="#while-loops" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.6. </span>While Loops<a class="headerlink" href="#while-loops" title="Permalink to this heading"></a></h2>
 <p>While loops are used when you cannot predict at runtime the number of times an operation will occur. The basic while loop structure is shown below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">while</span> <span class="n">condition</span><span class="p">:</span>
 <span class="linenos">2</span>    <span class="n">statements</span>
@@ -725,7 +726,7 @@ Although the maximum value in the range is 100 million, as soon as the loop gets
 </div>
 </section>
 <section id="exercises">
-<h2><span class="section-number">5.7. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.7. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Complete the practice exercises below. Submit screenshots in a word document as proof that you completed the exercises:</p>
 <blockquote>
@@ -768,8 +769,8 @@ Although the maximum value in the range is 100 million, as soon as the loop gets
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="strings_lists_conditional.html" class="btn btn-neutral float-left" title="4. Strings and Lists" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="functions.html" class="btn btn-neutral float-right" title="6. Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="strings_lists_conditional.html" class="btn btn-neutral float-left" title="3. Strings and Lists" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="functions.html" class="btn btn-neutral float-right" title="5. Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

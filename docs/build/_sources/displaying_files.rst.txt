@@ -220,8 +220,6 @@ Now, let's open a data file then read its content into Python. After that, we wi
 	plt.show()
 
 
-
-
 |
 
 
@@ -470,7 +468,8 @@ Plotting Shapefiles
 
 **Displaying Shapefiles using Geopandas**
 
-Geopandas is one of the most popular libraries for plotting shapefiles. This because it only requires a few lines of code to plot a shapefile. I strongly recommend using Geopandas to display your shapefiles.
+
+A large part of geospatial visualization is made possible using libraries such as Geopandas, Shapely, matplotlib, GDAL, OGR, and descartes.  Geopandas is perhaps one of the most popular libraries for plotting shapefiles. This because it only requires a few lines of code to plot a shapefile. I strongly recommend using Geopandas to display your shapefiles.
 
 To use Geopandas, first, download and install the library to your Python installation.  Afterwards, import the library and use it in your code.  
 
@@ -534,7 +533,6 @@ Often in GIS, we are interested in creating graduated color thematic maps based 
 *gdf.plot(ax = ax, column= 'HISPANIC', cmap='OrRd' , scheme='fisher_jenks', legend=True, edgecolor='black')*
 
 
-
 .. code-block:: python
 
    import geopandas
@@ -558,6 +556,8 @@ Often in GIS, we are interested in creating graduated color thematic maps based 
    :alt: Thematic Map
 
 
+See the `Geopandas User Guide <"https://geopandas.org/en/stable/docs/user_guide/mapping.html">`_ for more information.
+
 
 |
 
@@ -565,14 +565,16 @@ Often in GIS, we are interested in creating graduated color thematic maps based 
 
 Pyshp is an open source library that can be used to display a shapefile using pure Python. The project is described at this `website <"https://pypi.org/project/pyshp/">`_.  PyShp code for displaying a shapefile is lengthier than the one used by geopandas, but it gives us an opportunity to learn about multipart polygons and polylines.   Please note that after installing the "Pyshp" library, it is imported into Python using the shapefile keyword, e.g., "import shapefile".   
 
-Prior to running the code,it is useful to know that shapefiles have a 'parts collection' and a 'points collection'.  A parts collection keep is used tp keep track of the number of polygons or line segments associated with each record.  This is required because in may situations, several polygons or polylines must be linked to one record in the attribute table.  As an example, since Hawaii is made up of several islands, multiple polygons are needed to represent the state, however in the attribute table, only a single record is used to represent the state. 
+Prior to running the code,it is useful to know that shapefiles have a 'parts collection' and a 'points collection'.  A parts collection keep is used tp keep track of the number of polygons or line segments associated with each record.  This is required because in many situations, several polygons or polylines must be linked to one record in the attribute table.  As an example, since Hawaii is made up of several islands, multiple polygons are needed to represent the state, however in the attribute table, only a single record is used to represent the state. 
 
-Shapefiles handle multipolygons and multipolylines using the concept of a "part".  A record with one polygon has one part, but this will show in the parts collection as 0.  This is because the counting system begis with zero.
+In a shapefile, a record with one polygon will have one part, but this will show in the parts collection as 0.  This is because the counting system begins with zero. 
 
-A points collection refers to the list of points associated with a shape or feature. The code below plots a Michigan shapefile using only the points collection. 
+A points collection refers to the list of points associated with a shape or feature. When working with points collection, be aware that the x-coordinates have an index of [0] while the y-coordinates will have an index value of [1].  This allows us to retrieve the x and y coordinates as separate lists.
 
 
-The illustration below shows how we visualize the relationships between parts collection and the points collection.  The image shows two polygons associated with a single record. It also shows the part and points collection associated with the polygons.  The total number of items in the part collection is two.  The values in the squares in the parts collection represent index numbers that keep track of the starting coordinates for each part. Thus, Part 1 has coordinates that go from from p1 to p6. Part 2 starts from index value 6 and has coordinates that go from p7 to p11.
+The illustration below shows how we visualize the relationships between a parts collection and a points collection.  The upper section of the illustration shows the polygons associated with a single record while the lower section shows the part and points collection associated with the polygons.  Since there are two polygons associated with the record, the parts collection for that record is 1 because the count starts from zero.
+
+The values in the squares in the parts collection represent index numbers that keep track of the starting coordinates for each part. Thus, the first part has coordinates that go from from p1 to p6. The second part starts from index value 6, and has coordinates that go from p7 to p11.
 
 
 
@@ -581,7 +583,7 @@ The illustration below shows how we visualize the relationships between parts co
 
 
 
-Using Pyshp we can experiment with displaying a shapefile using only its points collection or with both its parts and points collection. The code below shows how to display a shapefile using only its points collection.   
+Using Pyshp we can experiment with displaying a shapefile using only its points collection and with both its parts and points collection. The code below shows how to display a shapefile using only its points collection.   
 
 
 .. code-block:: python
@@ -637,7 +639,7 @@ The code below plots a Michigan shapefile using both the parts and points collec
 
 **Displaying Polygon or multi-polygon Shapefiles using Descartes**
 
-The Descartes library is another alternative for displaying shapefiles using Python.  Descartes uses geometric objects as input for displaying `matplotlib paths and patches polygons <"https://matplotlib.org/stable/api/pyplot_summary.html">`_.   Experiment with the code below to learn about _geo_interfaces_ from the shapefile library,  add_patch() from matplotlib, and PolyPatch () from Descartes.
+The Descartes library is another alternative for displaying shapefiles using Python.  Descartes uses geometric objects as input for displaying `matplotlib paths and patches as lines and polygons <"https://matplotlib.org/stable/api/pyplot_summary.html">`_.   Experiment with the code below to learn about _geo_interfaces_ from the shapefile library,  add_patch() from matplotlib, and PolyPatch () from Descartes.
 
 
 .. code-block:: python
@@ -666,6 +668,7 @@ The Descartes library is another alternative for displaying shapefiles using Pyt
 	
 
 |
+
 
 In this example, the code above has been modified to display the polygons in the shapefile with multiple colors.
 
@@ -707,17 +710,46 @@ In this example, the code above has been modified to display the polygons in the
 |
 
 
-**References**
 
-* Create Random Hex Color Code Using Python - https://www.geeksforgeeks.org/create-random-hex-color-code-using-python/#
-* Plotting large shapefiles with matplotlib - https://gis.stackexchange.com/questions/202839/plotting-large-shapefiles-with-matplotlib/266675#266675
-
-
-
-|
 
 
 **Displaying a List of XY Coordinates as Points**
+
+
+.. code-block:: python
+
+   # importing libraries
+   import pandas as pd # Reading csv file 
+   from shapely.geometry import Point # Shapely for converting latitude/longtitude to geometry
+   import geopandas as gpd # To create GeodataFrame
+
+   import matplotlib.pyplot as plt
+
+
+   earthquakes = pd.read_csv('/Users/hsemple/Desktop/earthquakes.csv')
+   print (earthquakes.head())
+
+
+   # creating a geometry column 
+   geometry = [Point(xy) for xy in zip(earthquakes['longitude'], earthquakes['latitude'])]
+
+   # Coordinate reference system : WGS84
+   #crs = {'init': 'epsg:4326'}
+
+   # Creating a Geographic data frame 
+   gdf = gpd.GeoDataFrame(earthquakes, geometry=geometry)
+
+
+   #print (gdf.head())
+
+
+   # Plot all points
+   gdf.plot(marker='o', color='b', markersize=0.5)
+
+   plt.show()
+
+
+   |
 
 
 .. raw:: html
@@ -725,8 +757,6 @@ In this example, the code above has been modified to display the polygons in the
     <iframe width="560" height="315" src="https://www.youtube.com/embed/aVkdWSqKG_c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
-
-|
 
 
 |
@@ -808,6 +838,9 @@ Rasterio has a show( ) method for displaying rasters. However, the library also 
    ax.set_aspect('auto') #Let the axes object set the length of the colobar. 
 
    pyplot.show()
+
+
+`Source <"https://shakasom.medium.com/how-to-convert-latitude-longtitude-columns-in-csv-to-geometry-column-using-python-4219d2106dea">`_
 
 
 
@@ -915,9 +948,35 @@ Rasterio has a show( ) method for displaying rasters. However, the library can a
 
 
 
+|
+
+
+
+Exercises
+-----------
+
+
+1. Visit `this NFL website <"https://nextgenstats.nfl.com/stats/passing#max-completed-air-distance">`_ and copy the quarter back data.   Paste the data into Excel and save it in CSV format.  Use the standard library in Python or pandas to plot a simple histogram and boxplot of the data in the passing attempts field (ATT).   Also, calculate the mean and standard deviation of passing attempts.   Explain what your  data is portraying in short paragraph.
+
+
+2. Using Geopandas, create a thematic map for the USA showing the distribution of Covid19 cases across the country for the date for which you have data.   Write comments to explain what your code is doing.   Repeat the process using another Python library of your choice.
+
+
+3. Module 5.2 has code for displaying orthophotos and digital elevation models using GDAL and the rasterio libraries.  Download a DEM and display it using either the GDAL or Rasterio library.  Tweak the code to control so that you can easily change the color of the displayed. Also, displays the legend with the correct elevation values (not negative values).
+
+
+4. Extend the code that uses Descartes to display polygons with different colors so that the polygons are also labelled.
+
+
+5. Complete the tutorial on this website inclduing the challenge task at the end - https://blog.matthewgove.com/2021/06/18/the-ultimate-in-python-data-processing-how-to-create-maps-and-graphs-from-a-single-shapefile/
+
+
 
 
 |
+
+
+
 
 
 Readings
@@ -933,6 +992,13 @@ Plotting Graphs with Matplotlib
 * Python Shapefile Library - https://pythonhosted.org/Python%20Shapefile%20Library/
 * Land Cover Change Analysis with Python and GDAL - Tutorial - https://hatarilabs.com/ih-en/land-cover-change-analysis-with-python-and-gdal-tutorial
 * Rasterio - https://geobgu.xyz/py/rasterio.html#
+* Create Random Hex Color Code Using Python - https://www.geeksforgeeks.org/create-random-hex-color-code-using-python/#
+* Plotting large shapefiles with matplotlib - https://gis.stackexchange.com/questions/202839/plotting-large-shapefiles-with-matplotlib/266675#266675
+
+
+
+|
+
 
 
 

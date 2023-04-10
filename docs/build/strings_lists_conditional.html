@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>4. Strings and Lists &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+  <title>3. Strings and Lists &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="5. Conditional Statements and Looping" href="conditionals_and_looping.html" />
-    <link rel="prev" title="3. Introduction to the Python Language" href="intro_programs.html" /> 
+    <link rel="next" title="4. Conditional Statements and Looping" href="conditionals_and_looping.html" />
+    <link rel="prev" title="2. Introduction to the Python Language" href="intro_programs.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,19 +44,21 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="welcome.html">1. Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="getting_started.html">2. Development Environments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="intro_programs.html">3. Introduction to the Python Language</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Strings and Lists</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#strings">4.1. Strings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#string-operations">4.2. String Operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#lists">4.3. Lists</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#list-operations">4.4. List Operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#tuples">4.5. Tuples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#basic-tuples-operations">4.6. Basic Tuples Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">1. Development Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_programs.html">2. Introduction to the Python Language</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Strings and Lists</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#strings">3.1. Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#string-operations">3.2. String Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lists">3.3. Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-operations">3.4. List Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tuples">3.5. Tuples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-tuples-operations">3.6. Basic Tuples Operations</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">5. Conditional Statements and Looping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">4. Conditional Statements and Looping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">5. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">6. Basic Concepts in Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="displaying_files.html">7. Reading and Displaying Files</a></li>
 </ul>
 
         </div>
@@ -73,7 +75,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">4. </span>Strings and Lists</li>
+      <li class="breadcrumb-item active"><span class="section-number">3. </span>Strings and Lists</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/strings_lists_conditional.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -84,12 +86,12 @@
            <div itemprop="articleBody">
              
   <section id="strings-and-lists">
-<h1><span class="section-number">4. </span>Strings and Lists<a class="headerlink" href="#strings-and-lists" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">3. </span>Strings and Lists<a class="headerlink" href="#strings-and-lists" title="Permalink to this heading"></a></h1>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <section id="strings">
-<h2><span class="section-number">4.1. </span>Strings<a class="headerlink" href="#strings" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.1. </span>Strings<a class="headerlink" href="#strings" title="Permalink to this heading"></a></h2>
 <p>A string is a sequence of characters, e.g.,</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;Hello. My name is Tom Jones&quot;</span>
 </pre></div>
@@ -107,7 +109,7 @@
 </div>
 </section>
 <section id="string-operations">
-<h2><span class="section-number">4.2. </span>String Operations<a class="headerlink" href="#string-operations" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.2. </span>String Operations<a class="headerlink" href="#string-operations" title="Permalink to this heading"></a></h2>
 <p>Various operations can be performed on string variables. Some of these are presented below:</p>
 <p><strong>a.  Concatenation</strong></p>
 <p>Concatenating strings means joining strings by linking them end-to-end.</p>
@@ -391,7 +393,7 @@ String stride 2</p>
 </div>
 </section>
 <section id="lists">
-<h2><span class="section-number">4.3. </span>Lists<a class="headerlink" href="#lists" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.3. </span>Lists<a class="headerlink" href="#lists" title="Permalink to this heading"></a></h2>
 <p>Lists are collections of items (strings, integers, or even other lists), e.g.,</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; y = [1,2,3, “Jim”]
 </pre></div>
@@ -415,7 +417,7 @@ String stride 2</p>
 </div>
 </section>
 <section id="list-operations">
-<h2><span class="section-number">4.4. </span>List Operations<a class="headerlink" href="#list-operations" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.4. </span>List Operations<a class="headerlink" href="#list-operations" title="Permalink to this heading"></a></h2>
 <p><strong>a. Get the length of a List</strong></p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list1</span> <span class="o">=</span>  <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;world&quot;</span><span class="p">]</span>
 </pre></div>
@@ -563,7 +565,7 @@ first colon, it means to go all the way to the end of the list.</p>
 </div>
 </section>
 <section id="tuples">
-<h2><span class="section-number">4.5. </span>Tuples<a class="headerlink" href="#tuples" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.5. </span>Tuples<a class="headerlink" href="#tuples" title="Permalink to this heading"></a></h2>
 <p>A List is a collection which is ordered and changeable. Allows duplicate members. On the other hand, a tuple is a collection which is ordered and unchangeable. Allows duplicate members.</p>
 <p>A tuple is similar to a list, but the ordering of the values do not change once created.
 Coordinate values whose sequence must be maintained to draw a polygon can be stored as tuples.</p>
@@ -576,7 +578,7 @@ Coordinate values whose sequence must be maintained to draw a polygon can be sto
 </div>
 </section>
 <section id="basic-tuples-operations">
-<h2><span class="section-number">4.6. </span>Basic Tuples Operations<a class="headerlink" href="#basic-tuples-operations" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.6. </span>Basic Tuples Operations<a class="headerlink" href="#basic-tuples-operations" title="Permalink to this heading"></a></h2>
 <p>Tuple operations are similar to list operations</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="go"> 3    - Length</span>
@@ -606,8 +608,8 @@ Coordinate values whose sequence must be maintained to draw a polygon can be sto
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="intro_programs.html" class="btn btn-neutral float-left" title="3. Introduction to the Python Language" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="conditionals_and_looping.html" class="btn btn-neutral float-right" title="5. Conditional Statements and Looping" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="intro_programs.html" class="btn btn-neutral float-left" title="2. Introduction to the Python Language" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="conditionals_and_looping.html" class="btn btn-neutral float-right" title="4. Conditional Statements and Looping" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
