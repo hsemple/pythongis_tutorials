@@ -53,13 +53,14 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">7. Reading and Displaying Files</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#writing-file-paths">7.1. Writing File Paths</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#opening-a-file-using-the-with-statement">7.2. Opening a file using the “With” Statement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#reading-csv-files-using-pandas">7.3. Reading CSV Files Using Pandas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#plotting-graphs">7.4. Plotting Graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#writing-to-a-file">7.5. Writing to a File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#plotting-shapefiles">7.6. Plotting Shapefiles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#displaying-rasters">7.7. Displaying Rasters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exercises">7.8. Exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#readings">7.9. Readings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#opening-a-csv-file-using-basic-python-statements">7.3. Opening a csv file using Basic Python Statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-csv-files-using-pandas">7.4. Reading CSV Files Using Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting-graphs">7.5. Plotting Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-to-a-file">7.6. Writing to a File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting-shapefiles">7.7. Plotting Shapefiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#displaying-rasters">7.8. Displaying Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">7.9. Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resources">7.10. Resources</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="map_projections.html">8. Map Projections</a></li>
@@ -94,7 +95,6 @@
   <section id="reading-and-displaying-files">
 <h1><span class="section-number">7. </span>Reading and Displaying Files<a class="headerlink" href="#reading-and-displaying-files" title="Permalink to this heading"></a></h1>
 <p>To read a file, we must first open the file. This is done using Python’s built-in open() function. The open() function returns a file object, which has a read() method for reading  files and storing their contents as variables .  Once a file is read and stored as a variable, the original file can be closed.  We can then loop through the file variable and do stuff with its contents.</p>
-<p><a class="reference external" href="https://corgis-edu.github.io/corgis/csv/earthquakes/&quot;">Download Earthquake Data</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
 <span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -103,7 +103,12 @@
     <span class="nb">print</span> <span class="p">(</span><span class="n">line</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><em>Points to Note</em></p>
+<p><strong>Data</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://corgis-edu.github.io/corgis/csv/earthquakes/">Download Earthquake Data</a></p></li>
+<li><p>You can also download earthquake data from the <a class="reference external" href="&quot;https://earthquake.usgs.gov/earthquakes/search/&quot;">USGS website</a>.</p></li>
+</ul>
+<p><em>Points to Note anout the Above Code</em></p>
 <ol class="arabic simple">
 <li><p>The open method has the following modes:</p></li>
 </ol>
@@ -124,7 +129,7 @@
 <section id="writing-file-paths">
 <h2><span class="section-number">7.1. </span>Writing File Paths<a class="headerlink" href="#writing-file-paths" title="Permalink to this heading"></a></h2>
 <p>In Python, it is better not to write your file paths with backslashes as shown below:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:\Projects\PacktDB.gdb\Chapter3Results\Intersect71Census&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:\Users\Student\Desktop\earthquakes.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Writing paths with backslashes is not advisable because a Python string can contain special characters that also incorporate backslashes for other reasons, e.g.,  “t” (tabs),  “n” (newlines), “r” ( carriage returns), etc.</p>
@@ -185,7 +190,11 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Now, let’s open a data file then read its content into Python. After that, we will split the file contents into inidividual columns, and store the columns in variables</p>
+</section>
+<section id="opening-a-csv-file-using-basic-python-statements">
+<h2><span class="section-number">7.3. </span>Opening a csv file using Basic Python Statements<a class="headerlink" href="#opening-a-csv-file-using-basic-python-statements" title="Permalink to this heading"></a></h2>
+<p>Let’s open a csv data file using some basic Python statements. First, we will let Python read the file and create a file object. Next, we will split the file contents into inidividual columns, and then store the column data in variables. This is a long-winded way of displaying csv files, but
+the objective with this code sample is to illustrate some details that is involved in opening these files.  For regular work, we use libraries such as Pandas which it much easier to display the csv files. Pandas will be discussed shortly.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/earthquakes.csv&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="n">lines</span> <span class="o">=</span> <span class="n">infile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 <span class="n">infile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -219,10 +228,18 @@
     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%-15s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">))</span>
 </pre></div>
 </div>
+<p><em>Things to Look up in the above Code</em></p>
+<ol class="loweralpha simple">
+<li><p><a class="reference external" href="&quot;https://python-course.eu/python-tutorial/formatted-output.php&quot;">Formatting Output</a></p></li>
+<li><p><a class="reference external" href="&quot;https://www.programiz.com/python-programming/methods/built-in/zip&quot;">Python Zip Function</a></p></li>
+</ol>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Reading a Data file into Python, Performing Calculations and Making a Graph</strong></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>** Performing Calculations and Making a Graph**</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/student/Desktop/earthquakes.csv, &#39;r&#39;)</span>
@@ -265,9 +282,18 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<p><em>Things to Look up in the above Code</em></p>
+<p><a class="reference external" href="&quot;https://matplotlib.org/2.0.2/faq/usage_faq.html&quot;">Anatomy of a Matplotli Figure</a></p>
+<p><a class="reference external" href="&quot;https://matplotlib.org/stable/tutorials/introductory/pyplot.html&quot;">Pyplot Tutorial</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </section>
 <section id="reading-csv-files-using-pandas">
-<h2><span class="section-number">7.3. </span>Reading CSV Files Using Pandas<a class="headerlink" href="#reading-csv-files-using-pandas" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">7.4. </span>Reading CSV Files Using Pandas<a class="headerlink" href="#reading-csv-files-using-pandas" title="Permalink to this heading"></a></h2>
 <p>The script above used many lines of code to open the csv file, compute average, and plot a graph.  We can achieve the same results with far fewer lines of code by using a specialized library named Pandas.  Pandas is a very powerful, popular and easy to use Python library for data analysis.  It has many Excel-like functions. Its primary object is the DataFrame, which can be thought of as an abstract database table or spreadsheet.  Once you create a dataframe object, you can use it to display tables, plot columns, create and run queries, with just a few lines of code.</p>
 <p>Let’s plot the earthquake dataset using Pandas.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -309,7 +335,7 @@
 </div>
 </section>
 <section id="plotting-graphs">
-<h2><span class="section-number">7.4. </span>Plotting Graphs<a class="headerlink" href="#plotting-graphs" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">7.5. </span>Plotting Graphs<a class="headerlink" href="#plotting-graphs" title="Permalink to this heading"></a></h2>
 <p>Many types of graphs can be plotted by pandas. Below are seven types of graphs that are useful to know how to create.</p>
 <p>The kind parameter accepts eleven different string values and determines which kind of plot you’ll create:</p>
 <blockquote>
@@ -395,7 +421,7 @@
 </div>
 </section>
 <section id="writing-to-a-file">
-<h2><span class="section-number">7.5. </span>Writing to a File<a class="headerlink" href="#writing-to-a-file" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">7.6. </span>Writing to a File<a class="headerlink" href="#writing-to-a-file" title="Permalink to this heading"></a></h2>
 <p>Once we are done with data analysis, we can also write to a file, as shown below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/student/Desktop/john.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -448,7 +474,7 @@
 </div>
 </section>
 <section id="plotting-shapefiles">
-<h2><span class="section-number">7.6. </span>Plotting Shapefiles<a class="headerlink" href="#plotting-shapefiles" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">7.7. </span>Plotting Shapefiles<a class="headerlink" href="#plotting-shapefiles" title="Permalink to this heading"></a></h2>
 <p><strong>Displaying Shapefiles using Geopandas</strong></p>
 <p>A large part of geospatial visualization is made possible using libraries such as Geopandas, Shapely, matplotlib, GDAL, OGR, and descartes.  Geopandas is perhaps one of the most popular libraries for plotting shapefiles. This because it only requires a few lines of code to plot a shapefile. I strongly recommend using Geopandas to display your shapefiles.</p>
 <p>To use Geopandas, first, download and install the library to your Python installation.  Afterwards, import the library and use it in your code.</p>
@@ -660,9 +686,12 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/aVkdWSqKG_c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="line-block">
 <div class="line"><br /></div>
 </div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </section>
 <section id="displaying-rasters">
-<h2><span class="section-number">7.7. </span>Displaying Rasters<a class="headerlink" href="#displaying-rasters" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">7.8. </span>Displaying Rasters<a class="headerlink" href="#displaying-rasters" title="Permalink to this heading"></a></h2>
 <p><strong>Arrays</strong></p>
 <p>In programming, rasters are considered as arrays, therefore we learn about arrays in order to manipulate rasters.</p>
 <p>An array is a collection of items of the same data type that can be manipulated as a single entity.  In Python,  a list is a one dimensional array.  However, when we are thinking about rasters, we are typically thinking of two dimensional arrays that are matrices of numbers defined by rows and columns.</p>
@@ -677,7 +706,7 @@
 <div class="line"><br /></div>
 </div>
 <p><strong>Displaing a DEM using GDAL and Matplotlib</strong></p>
-<p>One way to display a raster is to open the raster file using the gdal library, then convert the raster into an using GDAL. Afterwards, we can use matplotlib to display the array.</p>
+<p>One way to display a raster is to open the raster file using the gdal library, then convert the raster into an using GDAL. Afterwards, we can use pyplot.imshow() to display the array.    If you not familiar with imshow, please look it up.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">gdal</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -800,26 +829,22 @@
 </div>
 </section>
 <section id="exercises">
-<h2><span class="section-number">7.8. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">7.9. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
-<li><p>Visit <a class="reference external" href="&quot;https://nextgenstats.nfl.com/stats/passing#max-completed-air-distance&quot;">this NFL website</a> and copy the quarter back data.   Paste the data into Excel and save it in CSV format.  Use the standard library in Python or pandas to plot a simple histogram and boxplot of the data in the passing attempts field (ATT).   Also, calculate the mean and standard deviation of passing attempts.   Explain what your  data is portraying in short paragraph.</p></li>
-<li><p>Using Geopandas, create a thematic map for the USA or <a class="reference external" href="&quot;https://www.michigan.gov/coronavirus/stats&quot;">Michign</a> showing the distribution of Covid19 cases across the country or state for the date for which you have data.  Write comments to explain what your code is doing.   Repeat the process using another Python library of your choice.</p></li>
-<li><p>Module 5.2 has code for displaying orthophotos and digital elevation models using GDAL and the rasterio libraries.  Download a DEM and display it using either the GDAL or Rasterio library.  Tweak the code to control so that you can easily change the color of the displayed. Also, displays the legend with the correct elevation values (not negative values).</p></li>
-<li><p>Extend the code that uses Descartes to display polygons with different colors so that the polygons are also labeled.</p></li>
+<li><p>Visit <a class="reference external" href="&quot;https://nextgenstats.nfl.com/stats/passing#max-completed-air-distance&quot;">this NFL website</a> and copy the quarter back data. Paste the data into Excel and save it in CSV format.  Use the standard library in Python or pandas to plot a simple histogram and boxplot of the data in the passing attempts field (ATT).   Also, calculate the mean and standard deviation of passing attempts.   Explain what your data is portraying in short paragraph.</p></li>
+<li><p>Using Geopandas, create a thematic map for the USA or <a class="reference external" href="&quot;https://www.michigan.gov/coronavirus/stats&quot;">Michigan</a> showing the distribution of Covid19 cases across the country or state for the date for which you have data.  Write comments to explain what your code is doing.   Repeat the process using another Python library of your choice.</p></li>
+<li><p>This Module has sample code for displaying digital elevation models using GDAL and the rasterio libraries.  Download a DEM and display it using either the GDAL or Rasterio library.  Afterward, tweak the code so that you can easily change the color of the displayed raster. Also, display the legend with the correct elevation values (not negative values).</p></li>
+<li><p>Extend the sample code in this Module that uses Descartes to display shapefiles in which the polygons are labeled.</p></li>
 <li><p>Complete the tutorial on this website inclduing the challenge task at the end - <a class="reference external" href="https://blog.matthewgove.com/2021/06/18/the-ultimate-in-python-data-processing-how-to-create-maps-and-graphs-from-a-single-shapefile/">https://blog.matthewgove.com/2021/06/18/the-ultimate-in-python-data-processing-how-to-create-maps-and-graphs-from-a-single-shapefile/</a></p></li>
+<li><p>Review <a href="#id1"><span class="problematic" id="id2">`</span></a>the tutorial on this page &lt;”<a class="reference external" href="https://pynative.com/python-matplotlib-exercise/">https://pynative.com/python-matplotlib-exercise/</a>”&gt;`_and be prepared to discuss the code, particularly how Matplotlib is how used.</p></li>
 </ol>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </section>
-<section id="readings">
-<h2><span class="section-number">7.9. </span>Readings<a class="headerlink" href="#readings" title="Permalink to this heading"></a></h2>
-<p>Plotting Graphs with Matplotlib</p>
+<section id="resources">
+<h2><span class="section-number">7.10. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
 <ul class="simple">
-<li><p>Download Plotting Graphs with Matplotlib</p></li>
-<li><p>Reading and Writing Text Files</p></li>
-<li><p>File I/O. Reading and writing files</p></li>
-<li><p>Customizing the legend</p></li>
 <li><p><a class="reference external" href="https://automating-gis-processes.github.io/CSC18/index.html">https://automating-gis-processes.github.io/CSC18/index.html</a></p></li>
 <li><p>Python Shapefile Library - <a class="reference external" href="https://pythonhosted.org/Python%20Shapefile%20Library/">https://pythonhosted.org/Python%20Shapefile%20Library/</a></p></li>
 <li><p>Land Cover Change Analysis with Python and GDAL - Tutorial - <a class="reference external" href="https://hatarilabs.com/ih-en/land-cover-change-analysis-with-python-and-gdal-tutorial">https://hatarilabs.com/ih-en/land-cover-change-analysis-with-python-and-gdal-tutorial</a></p></li>

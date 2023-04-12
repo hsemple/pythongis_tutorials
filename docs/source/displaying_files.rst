@@ -6,9 +6,6 @@ Reading and Displaying Files
 To read a file, we must first open the file. This is done using Python's built-in open() function. The open() function returns a file object, which has a read() method for reading  files and storing their contents as variables .  Once a file is read and stored as a variable, the original file can be closed.  We can then loop through the file variable and do stuff with its contents.
 
 
-`Download Earthquake Data <https://corgis-edu.github.io/corgis/csv/earthquakes/">`_
-
-
 
 .. code-block:: python
 
@@ -20,8 +17,16 @@ To read a file, we must first open the file. This is done using Python's built-i
 	    print (line)
 
 
+**Data**
 
-*Points to Note*
+* `Download Earthquake Data <https://corgis-edu.github.io/corgis/csv/earthquakes/>`_
+
+* You can also download earthquake data from the `USGS website <"https://earthquake.usgs.gov/earthquakes/search/">`_.
+
+
+
+
+*Points to Note anout the Above Code*
 
 1. The open method has the following modes:
 
@@ -46,7 +51,7 @@ In Python, it is better not to write your file paths with backslashes as shown b
 
 .. code-block:: python
 
-	file = open("C:\Projects\PacktDB.gdb\Chapter3Results\Intersect71Census", "r")
+	file = open("C:\Users\Student\Desktop\earthquakes.csv", "r")
 
 
 
@@ -135,8 +140,13 @@ A second way  second way to open a file is to use the "with" statement.  The wit
 
 |
 
+Opening a csv file using Basic Python Statements
+-------------------------------------------------
 
-Now, let's open a data file then read its content into Python. After that, we will split the file contents into inidividual columns, and store the columns in variables
+Let's open a csv data file using some basic Python statements. First, we will let Python read the file and create a file object. Next, we will split the file contents into inidividual columns, and then store the column data in variables. This is a long-winded way of displaying csv files, but 
+the objective with this code sample is to illustrate some details that is involved in opening these files.  For regular work, we use libraries such as Pandas which it much easier to display the csv files. Pandas will be discussed shortly.
+
+
 
 .. code-block:: python
 
@@ -174,9 +184,18 @@ Now, let's open a data file then read its content into Python. After that, we wi
 
 
 
+
+*Things to Look up in the above Code*
+
+a. `Formatting Output <"https://python-course.eu/python-tutorial/formatted-output.php">`_
+b. `Python Zip Function <"https://www.programiz.com/python-programming/methods/built-in/zip">`_
+
+
 |
 
-**Reading a Data file into Python, Performing Calculations and Making a Graph**
+|
+
+** Performing Calculations and Making a Graph**
 
 
 .. code-block:: python
@@ -219,6 +238,17 @@ Now, let's open a data file then read its content into Python. After that, we wi
 	plt.title("Magnitude of Earthquakes")
 	plt.show()
 
+|
+
+
+*Things to Look up in the above Code*
+
+`Anatomy of a Matplotli Figure <"https://matplotlib.org/2.0.2/faq/usage_faq.html">`_
+
+`Pyplot Tutorial <"https://matplotlib.org/stable/tutorials/introductory/pyplot.html">`_
+
+
+|
 
 |
 
@@ -758,6 +788,7 @@ In this example, the code above has been modified to display the polygons in the
 
 
 
+|
 
 |
 
@@ -791,7 +822,7 @@ To learn more about arrays, please click on `this link <"https://jakevdp.github.
 
 **Displaing a DEM using GDAL and Matplotlib** 
 
-One way to display a raster is to open the raster file using the gdal library, then convert the raster into an using GDAL. Afterwards, we can use matplotlib to display the array.    
+One way to display a raster is to open the raster file using the gdal library, then convert the raster into an using GDAL. Afterwards, we can use pyplot.imshow() to display the array.    If you not familiar with imshow, please look it up.
 
 
 .. code-block:: python
@@ -956,20 +987,22 @@ Exercises
 -----------
 
 
-1. Visit `this NFL website <"https://nextgenstats.nfl.com/stats/passing#max-completed-air-distance">`_ and copy the quarter back data.   Paste the data into Excel and save it in CSV format.  Use the standard library in Python or pandas to plot a simple histogram and boxplot of the data in the passing attempts field (ATT).   Also, calculate the mean and standard deviation of passing attempts.   Explain what your  data is portraying in short paragraph.
+1. Visit `this NFL website <"https://nextgenstats.nfl.com/stats/passing#max-completed-air-distance">`_ and copy the quarter back data. Paste the data into Excel and save it in CSV format.  Use the standard library in Python or pandas to plot a simple histogram and boxplot of the data in the passing attempts field (ATT).   Also, calculate the mean and standard deviation of passing attempts.   Explain what your data is portraying in short paragraph.
 
 
-2. Using Geopandas, create a thematic map for the USA or `Michign <"https://www.michigan.gov/coronavirus/stats">`_ showing the distribution of Covid19 cases across the country or state for the date for which you have data.  Write comments to explain what your code is doing.   Repeat the process using another Python library of your choice.
+2. Using Geopandas, create a thematic map for the USA or `Michigan <"https://www.michigan.gov/coronavirus/stats">`_ showing the distribution of Covid19 cases across the country or state for the date for which you have data.  Write comments to explain what your code is doing.   Repeat the process using another Python library of your choice.
 
 
-3. Module 5.2 has code for displaying orthophotos and digital elevation models using GDAL and the rasterio libraries.  Download a DEM and display it using either the GDAL or Rasterio library.  Tweak the code to control so that you can easily change the color of the displayed. Also, displays the legend with the correct elevation values (not negative values).
+3. This Module has sample code for displaying digital elevation models using GDAL and the rasterio libraries.  Download a DEM and display it using either the GDAL or Rasterio library.  Afterward, tweak the code so that you can easily change the color of the displayed raster. Also, display the legend with the correct elevation values (not negative values).
 
 
-4. Extend the code that uses Descartes to display polygons with different colors so that the polygons are also labeled.
+4. Extend the sample code in this Module that uses Descartes to display shapefiles in which the polygons are labeled.
 
 
 5. Complete the tutorial on this website inclduing the challenge task at the end - https://blog.matthewgove.com/2021/06/18/the-ultimate-in-python-data-processing-how-to-create-maps-and-graphs-from-a-single-shapefile/
 
+
+6. Review `the tutorial on this page <"https://pynative.com/python-matplotlib-exercise/">`_and be prepared to discuss the code, particularly how Matplotlib is how used.
 
 
 
@@ -979,15 +1012,9 @@ Exercises
 
 
 
-Readings
+Resources
 -----------
 
-Plotting Graphs with Matplotlib 
-
-* Download Plotting Graphs with Matplotlib
-* Reading and Writing Text Files
-* File I/O. Reading and writing files 
-* Customizing the legend
 * https://automating-gis-processes.github.io/CSC18/index.html
 * Python Shapefile Library - https://pythonhosted.org/Python%20Shapefile%20Library/
 * Land Cover Change Analysis with Python and GDAL - Tutorial - https://hatarilabs.com/ih-en/land-cover-change-analysis-with-python-and-gdal-tutorial
