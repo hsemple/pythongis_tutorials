@@ -1060,7 +1060,7 @@ Exercises
 6. Review `the tutorial on this page <"https://pynative.com/python-matplotlib-exercise/">`_and be prepared to discuss the code, particularly how Matplotlib is how used.
 
 
-7. Modify the code above so that you log into your own ArcGIS Online account and display a web map.
+7. Modify the ArcGIS API for Python code above to enable you to log into your own ArcGIS Online account and display a web map.
 
 
 
