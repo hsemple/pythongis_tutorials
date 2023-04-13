@@ -831,6 +831,28 @@ the objective with this code sample is to illustrate some details that is involv
 <iframe width="560" height="315" src="https://www.youtube.com/embed/W5_3H2UWYms" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="line-block">
 <div class="line"><br /></div>
 </div>
+<p><strong>Displaying a Web Map that is Stored in ArcGIS Online Using ArcGIS API for Python</strong></p>
+<p>The code sample below makes an anonymous connection to ArcGIS Online then searches for Search for a publicly available web map titled LA Parks and Trails Map owned by esri_devlabs. The web map contains datasets about Los Angeles, CA parks and trails.  After the web map is retrieved from the list of items,  the WebMap class is imported and used to visualize the web map.  The code sample comes from <a class="reference external" href="&quot;https://developers.arcgis.com/python/guide/display-a-webmap&quot;">this ESRI webpage</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arcgis.gis</span> <span class="kn">import</span> <span class="n">GIS</span>
+
+<span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">()</span>
+
+<span class="n">webmap_search</span> <span class="o">=</span> <span class="n">gis</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+   <span class="n">query</span><span class="o">=</span><span class="s2">&quot;LA Parks and Trails Map (styled) tags:tutorial owner:esri_devlabs&quot;</span><span class="p">,</span>
+       <span class="n">item_type</span><span class="o">=</span><span class="s2">&quot;Web Map&quot;</span>
+     <span class="p">)</span>
+
+     <span class="n">webmap_search</span>
+
+     <span class="n">webmap_item</span> <span class="o">=</span> <span class="n">webmap_search</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+     <span class="nb">print</span> <span class="p">(</span><span class="n">webmap_item</span><span class="p">)</span>
+
+     <span class="kn">from</span> <span class="nn">arcgis.mapping</span> <span class="kn">import</span> <span class="n">WebMap</span>
+     <span class="n">la_park_trails</span> <span class="o">=</span> <span class="n">WebMap</span><span class="p">(</span><span class="n">webmap_item</span><span class="p">)</span>
+     <span class="n">la_park_trails</span>
+</pre></div>
+</div>
+<img alt="ArcGIS Online Web Map" src="_images/arcgis_online_webmap.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -844,6 +866,7 @@ the objective with this code sample is to illustrate some details that is involv
 <li><p>Extend the sample code in this Module that uses Descartes to display shapefiles in which the polygons are labeled.</p></li>
 <li><p>Complete the tutorial on this website inclduing the challenge task at the end - <a class="reference external" href="https://blog.matthewgove.com/2021/06/18/the-ultimate-in-python-data-processing-how-to-create-maps-and-graphs-from-a-single-shapefile/">https://blog.matthewgove.com/2021/06/18/the-ultimate-in-python-data-processing-how-to-create-maps-and-graphs-from-a-single-shapefile/</a></p></li>
 <li><p>Review <a href="#id1"><span class="problematic" id="id2">`</span></a>the tutorial on this page &lt;”<a class="reference external" href="https://pynative.com/python-matplotlib-exercise/">https://pynative.com/python-matplotlib-exercise/</a>”&gt;`_and be prepared to discuss the code, particularly how Matplotlib is how used.</p></li>
+<li><p>Modify the code above so that you log into your own ArcGIS Online account and display a web map.</p></li>
 </ol>
 <div class="line-block">
 <div class="line"><br /></div>

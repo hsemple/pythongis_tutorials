@@ -995,7 +995,47 @@ Rasterio has a show( ) method for displaying rasters. However, the library can a
 
 |
 
+
+
+**Displaying a Web Map that is Stored in ArcGIS Online Using ArcGIS API for Python**
+
+
+The code sample below makes an anonymous connection to ArcGIS Online then searches for Search for a publicly available web map titled LA Parks and Trails Map owned by esri_devlabs. The web map contains datasets about Los Angeles, CA parks and trails.  After the web map is retrieved from the list of items,  the WebMap class is imported and used to visualize the web map.  The code sample comes from `this ESRI webpage <"https://developers.arcgis.com/python/guide/display-a-webmap">`_ 
+
+
+
+.. code-block:: python
+
+   from arcgis.gis import GIS
+
+   gis = GIS()
+
+   webmap_search = gis.content.search(
+      query="LA Parks and Trails Map (styled) tags:tutorial owner:esri_devlabs",
+	  item_type="Web Map"
+	)
+	
+	webmap_search
+
+	webmap_item = webmap_search[0]
+	print (webmap_item)
+
+	from arcgis.mapping import WebMap
+	la_park_trails = WebMap(webmap_item)
+	la_park_trails
+
+
+
+
+.. image:: img/arcgis_online_webmap.png
+   :alt: ArcGIS Online Web Map
+
+
 |
+
+
+
+
 
 
 Exercises
@@ -1018,6 +1058,9 @@ Exercises
 
 
 6. Review `the tutorial on this page <"https://pynative.com/python-matplotlib-exercise/">`_and be prepared to discuss the code, particularly how Matplotlib is how used.
+
+
+7. Modify the code above so that you log into your own ArcGIS Online account and display a web map.
 
 
 
