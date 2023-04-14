@@ -59,7 +59,7 @@ Many people use the standard Python distribution as the central platform for dev
    :alt: Python Interpreter and IDLE
 
 
-After installing Pyhton, you may realize that you have more than one Python installations on your computer. This is not an issue except that sometimes when you try to start Python from the command prompt, you may find that the Python installation you wish to start is not the recent one that you installed.  There are many ways to resolve this problem.  This `document <"https://betterprogramming.pub/the-best-way-we-create-and-manage-multiple-versions-of-python-22363e065a43">`_ contains some tips on how to resolve this issue. You can google similar documents on the topic.
+After installing Pyhton, you may realize that you have more than one Python installations on your computer. This is not an issue except that sometimes when you try to start Python from the command prompt, you may find that the Python installation you wish to start is not the recent one that you installed.  There are many ways to resolve this problem.  This `document <https://betterprogramming.pub/the-best-way-we-create-and-manage-multiple-versions-of-python-22363e065a43>`_ contains some tips on how to resolve this issue. You can google similar documents on the topic.
 
 
 

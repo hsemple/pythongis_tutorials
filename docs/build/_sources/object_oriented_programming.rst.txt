@@ -30,7 +30,7 @@ Classes
 
 Classes are generalizations that define the kinds of data a particular type of objects may contain and the logic sequences that can be used to manipulate them. In general,  we use classes as templates or blueprints for creating objects.
 
-To create a class, we must first define the actions and characteristics of the objects that will be created.  In the example below, we are building a program that simulates how `elephants <"https://www.wwf.org.uk/learn/fascinating-facts/elephants">`_ behave in the wild. The goal is to highlight three of the many classes that could appear in the program. The three classes are the animal class, the mammal class and the elephant class.  
+To create a class, we must first define the actions and characteristics of the objects that will be created.  In the example below, we are building a program that simulates how `elephants <https://www.wwf.org.uk/learn/fascinating-facts/elephants>`_ behave in the wild. The goal is to highlight three of the many classes that could appear in the program. The three classes are the animal class, the mammal class and the elephant class.  
 
 The animal class defines behavior (methods) and characteristics (properties) that all animals will have in the program, not just elephants.  For animals that are mammals, a class has been defined that specifies things that mammals can do (methods) within the program. Since mammals are also animals, they will also inherit all the features contained in the animal class.  Finally, an elephant class has been defined to specify all the things that only elephants can do within the program.
 
@@ -40,7 +40,7 @@ The animal class defines behavior (methods) and characteristics (properties) tha
 
 
 
-Typically, class diagrams are not drawn in the informal way shown above. Rather, specific conventions are used to ceate these diagrams.  An example is shown below where the diagram is drawn using UML notation.  `Microsoft Visio <"https://www.microsoft.com/en-us/microsoft-365/visio/flowchart-software">`_ is a popular tool to use to create class diagrams. A good free tool to use is `Dia <"http://dia-installer.de/">`_ . 
+Typically, class diagrams are not drawn in the informal way shown above. Rather, specific conventions are used to ceate these diagrams.  An example is shown below where the diagram is drawn using UML notation.  `Microsoft Visio <https://www.microsoft.com/en-us/microsoft-365/visio/flowchart-software>`_ is a popular tool to use to create class diagrams. A good free tool to use is `Dia <http://dia-installer.de/>`_ . 
 
 
 .. image:: img/uml_class_diagram.png
@@ -380,13 +380,13 @@ In the code below,  we have a "Dog" super class and three child classes that inh
 Please complete the exercises at the links below.
 
 
-1. `Classes and Objects Exercises <"https://pynative.com/python-object-oriented-programming-oop-exercise/#h-oop-exercise-1-create-a-class-with-instance-attributes">`_
+1. `Classes and Objects Exercises <https://pynative.com/python-object-oriented-programming-oop-exercise/#h-oop-exercise-1-create-a-class-with-instance-attributes>`_
 
-2. `Python Class Exercises  <"https://www.w3resource.com/python-exercises/class-exercises/python-class-real-life-problem-1.php">`_
+2. `Python Class Exercises  <https://www.w3resource.com/python-exercises/class-exercises/python-class-real-life-problem-1.php>`_
 
-3. `Python Classes and Object Oriented Programming <"https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/">`_
+3. `Python Classes and Object Oriented Programming <https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/>`_
 
-4. `Why Object-Oriented Programming Matters <"https://www.apollotechnical.com/why-object-oriented-programming-matters/?external_link=true">`_
+4. `Why Object Oriented Programming Matters <https://www.apollotechnical.com/why-object-oriented-programming-matters/?external_link=true>`_
 
 
 |
@@ -397,7 +397,7 @@ Please complete the exercises at the links below.
 Exercises
 -----------
 
-1. Complete the exercises under Python Classes and Inheritance at `this site <https://www.w3schools.com/python/exercise.asp?filename=exercise_classes1">`_ 
+1. Complete the exercises under Python Classes and Inheritance at `this site <https://www.w3schools.com/python/exercise.asp?filename=exercise_classes1>`_ 
 
 2. Using the code below, do the following:
 
@@ -452,9 +452,9 @@ Exercises
 Readings
 -----------
 
-* `Classes and Objects <"https://vimeo.com/110920298">`_
-* `Python Class Exercises  <"https://www.w3resource.com/python-exercises/class-exercises/python-class-real-life-problem-1.php">`_
-* `Measuring Heights from Individual and Paired Images <"https://wgbis.ces.iisc.ernet.in/envis/Remote/section114.htm">`_
+* `Classes and Objects <https://vimeo.com/110920298>`_
+* `Python Class Exercises  <https://www.w3resource.com/python-exercises/class-exercises/python-class-real-life-problem-1.php>`_
+* `Measuring Heights from Individual and Paired Images <https://wgbis.ces.iisc.ernet.in/envis/Remote/section114.htm>`_
 
 
 

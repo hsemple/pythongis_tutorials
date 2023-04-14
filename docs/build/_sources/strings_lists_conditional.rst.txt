@@ -652,6 +652,14 @@ Tuple operations are similar to list operations
 |
 
 
+**Exercises**
+
+1.  Write a program to reverse the content of the list shown below.
+
+    list1 = [100, 200, 300, 400, 500]
+
+2.
+
 
 **References**
 

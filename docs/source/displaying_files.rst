@@ -21,7 +21,7 @@ To read a file, we must first open the file. This is done using Python's built-i
 
 * `Download Earthquake Data <https://corgis-edu.github.io/corgis/csv/earthquakes/>`_
 
-* You can also download earthquake data from the `USGS website <"https://earthquake.usgs.gov/earthquakes/search/">`_.
+* You can also download earthquake data from the `USGS website <https://earthquake.usgs.gov/earthquakes/search/>`_.
 
 
 
@@ -51,7 +51,7 @@ In Python, it is better not to write your file paths with backslashes as shown b
 
 .. code-block:: python
 
-	file = open("C:\Users\Student\Desktop\earthquakes.csv", "r")
+	file = open("C:\Users\student\Desktop\earthquakes.csv", "r")
 
 
 
@@ -65,7 +65,7 @@ These special characters make it very hard to create a file path that uses singl
 
 .. code-block:: python
 
-   file = open("C:/Users/Student/Desktop/earthquakes.csv", "r")
+   file = open("C:/Users/student/Desktop/earthquakes.csv", "r")
 
 
 |
@@ -76,7 +76,7 @@ These are regular strings, but includes an r before the script begins.  The r te
 
 .. code-block:: python
 
-   file = (r"C:\Users\Student\Desktop\earthquakes.csv")
+   file = (r"C:\Users\student\Desktop\earthquakes.csv")
 
 
 
@@ -89,7 +89,7 @@ In this case, the backslashes are escaped using a second backslash.
 
 .. code-block:: python
 
-   "C:\\Users\\Student\\Desktop\\earthquakes.csv"
+   "C:\\Users\\student\\Desktop\\earthquakes.csv"
 
 
 |
@@ -99,8 +99,10 @@ In this case, the backslashes are escaped using a second backslash.
 
 The os module provides access to operating system functions regardless of the platform you are using, i.e, Windows, Mac OS, Linux, etc. 
 
-os.path.join() takes any number of path strings and returns a single path using the platform-specific path separator. 
+os.path.join() takes any number of path strings and returns a single path using the platform-specific path separator.  
 
+
+To create a string specifically for the Windows environnment, we can write the os.path.join() string as shown below.
 
 
 .. code-block:: python
@@ -110,7 +112,9 @@ os.path.join() takes any number of path strings and returns a single path using 
 
 	>>> 'c:/Windows'
 
-or
+
+To create a string for a platform regardless of whether it is Windows, Mac OS, Linux, etc., we can write the os.path.join() string as shown below. In this situation, the operating system will take care of the separator.
+
 
 .. code-block:: python
 
@@ -128,7 +132,7 @@ Note: os.sep will supply the separator
 Opening a file using the "With" Statement
 ------------------------------------------
 
-A second way  second way to open a file is to use the "with" statement.  The with statement automatically takes care of closing the file once it leaves the with block, even in cases of error. I highly recommend that you use the with statement as much as possible, as it allows for cleaner code and makes handling any unexpected errors easier for you.
+A second way second way to open a file is to use the "with" statement.  The with statement automatically takes care of closing the file once it leaves the with block, even in cases of error. I highly recommend that you use the with statement as much as possible, as it allows for cleaner code and makes handling any unexpected errors easier for you.
 
 .. code-block:: python
 
@@ -145,7 +149,6 @@ Opening a csv file using Basic Python Statements
 
 Let's open a csv data file using some basic Python statements. First, we will let Python read the file and create a file object. Next, we will split the file contents into inidividual columns, and then store the column data in variables. This is a long-winded way of displaying csv files, but 
 the objective with this code sample is to illustrate some details that is involved in opening these files.  For regular work, we use libraries such as Pandas which it much easier to display the csv files. Pandas will be discussed shortly.
-
 
 
 .. code-block:: python
@@ -187,15 +190,14 @@ the objective with this code sample is to illustrate some details that is involv
 
 *Things to Look up in the above Code*
 
-a. `Formatting Output <"https://python-course.eu/python-tutorial/formatted-output.php">`_
-b. `Python Zip Function <"https://www.programiz.com/python-programming/methods/built-in/zip">`_
+a. `Formatting Output <https://python-course.eu/python-tutorial/formatted-output.php>`_
+b. `Python Zip Function <https://www.programiz.com/python-programming/methods/built-in/zip>`_
 
 
 |
 
-|
 
-** Performing Calculations and Making a Graph**
+**Performing Calculations and Making a Graph**
 
 
 .. code-block:: python
@@ -243,9 +245,8 @@ b. `Python Zip Function <"https://www.programiz.com/python-programming/methods/b
 
 *Things to Look up in the above Code*
 
-`Anatomy of a Matplotli Figure <"https://matplotlib.org/2.0.2/faq/usage_faq.html">`_
-
-`Pyplot Tutorial <"https://matplotlib.org/stable/tutorials/introductory/pyplot.html">`_
+`Anatomy of a Matplotlib Figure <https://matplotlib.org/2.0.2/faq/usage_faq.html>`_ 
+`Pyplot Tutorial <https://matplotlib.org/stable/tutorials/introductory/pyplot.html>`_
 
 
 |
@@ -311,7 +312,6 @@ Get the size of the table.
 
 
 |
-
 
 
 
@@ -396,9 +396,7 @@ The kind parameter accepts eleven different string values and determines which k
 
 
 
-
 |
-
 
 
 **Scatterplot**
@@ -423,8 +421,6 @@ or
 
 	plt.show()
 
-
- 
 
 |
 
@@ -586,7 +582,7 @@ Often in GIS, we are interested in creating graduated color thematic maps based 
    :alt: Thematic Map
 
 
-See the `Geopandas User Guide <"https://geopandas.org/en/stable/docs/user_guide/mapping.html">`_ for more information.
+See the `Geopandas User Guide <https://geopandas.org/en/stable/docs/user_guide/mapping.html>`_ for more information.
 
 
 |
@@ -669,7 +665,7 @@ The code below plots a Michigan shapefile using both the parts and points collec
 
 **Displaying Polygon or multi-polygon Shapefiles using Descartes**
 
-The Descartes library is another alternative for displaying shapefiles using Python.  Descartes uses geometric objects as input for displaying `matplotlib paths and patches as lines and polygons <"https://matplotlib.org/stable/api/pyplot_summary.html">`_.   Experiment with the code below to learn about _geo_interfaces_ from the shapefile library,  add_patch() from matplotlib, and PolyPatch () from Descartes.
+The Descartes library is another alternative for displaying shapefiles using Python.  Descartes uses geometric objects as input for displaying `matplotlib paths and patches as lines and polygons <https://matplotlib.org/stable/api/pyplot_summary.html>`_.   Experiment with the code below to learn about _geo_interfaces_ from the shapefile library,  add_patch() from matplotlib, and PolyPatch () from Descartes.
 
 
 .. code-block:: python
@@ -813,7 +809,7 @@ Python has specialized libraries for manipulating arrays. Two popular ones are t
 
 >>> import numpy as np
 
-To learn more about arrays, please click on `this link <"https://jakevdp.github.io/PythonDataScienceHandbook/02.02-the-basics-of-numpy-arrays.html">`_.
+To learn more about arrays, please click on `this link <https://jakevdp.github.io/PythonDataScienceHandbook/02.02-the-basics-of-numpy-arrays.html>`_.
 
 
 |
@@ -859,7 +855,7 @@ Rasterio has a show( ) method for displaying rasters. However, the library also 
    import rasterio
    from matplotlib import pyplot
 
-   src = rasterio.open("/Users/hsemple/Downloads/Wayne_DEM/county/wayne/topography/dem")
+   src = rasterio.open("/Users/student/Downloads/Wayne_DEM/county/wayne/topography/dem")
    src_array = src.read(1)
 
    fig, ax = pyplot.subplots(1, figsize=(8, 5))
@@ -871,7 +867,7 @@ Rasterio has a show( ) method for displaying rasters. However, the library also 
    pyplot.show()
 
 
-`Source <"https://shakasom.medium.com/how-to-convert-latitude-longtitude-columns-in-csv-to-geometry-column-using-python-4219d2106dea">`_
+`Source <https://shakasom.medium.com/how-to-convert-latitude-longtitude-columns-in-csv-to-geometry-column-using-python-4219d2106dea>`_
 
 
 
@@ -1000,7 +996,7 @@ Rasterio has a show( ) method for displaying rasters. However, the library can a
 **Displaying a Web Map that is Stored in ArcGIS Online Using ArcGIS API for Python**
 
 
-The code sample below makes an anonymous connection to ArcGIS Online then searches for Search for a publicly available web map titled LA Parks and Trails Map owned by esri_devlabs. The web map contains datasets about Los Angeles, CA parks and trails.  After the web map is retrieved from the list of items,  the WebMap class is imported and used to visualize the web map.  The code sample comes from `this ESRI webpage <"https://developers.arcgis.com/python/guide/display-a-webmap">`_ 
+The code sample below makes an anonymous connection to ArcGIS Online then searches for Search for a publicly available web map titled LA Parks and Trails Map owned by esri_devlabs. The web map contains datasets about Los Angeles, CA parks and trails.  After the web map is retrieved from the list of items,  the WebMap class is imported and used to visualize the web map.  The code sample comes from `this ESRI webpage <https://developers.arcgis.com/python/guide/display-a-webmap>`_ 
 
 
 
@@ -1042,10 +1038,10 @@ Exercises
 -----------
 
 
-1. Visit `this NFL website <"https://nextgenstats.nfl.com/stats/passing#max-completed-air-distance">`_ and copy the quarter back data. Paste the data into Excel and save it in CSV format.  Use the standard library in Python or pandas to plot a simple histogram and boxplot of the data in the passing attempts field (ATT).   Also, calculate the mean and standard deviation of passing attempts.   Explain what your data is portraying in short paragraph.
+1. Visit `this NFL website <https://nextgenstats.nfl.com/stats/passing#max-completed-air-distance>`_ and copy the quarter back data. Paste the data into Excel and save it in CSV format.  Use the standard library in Python or pandas to plot a simple histogram and boxplot of the data in the passing attempts field (ATT).   Also, calculate the mean and standard deviation of passing attempts.   Explain what your data is portraying in short paragraph.
 
 
-2. Using Geopandas, create a thematic map for the USA or `Michigan <"https://www.michigan.gov/coronavirus/stats">`_ showing the distribution of Covid19 cases across the country or state for the date for which you have data.  Write comments to explain what your code is doing.   Repeat the process using another Python library of your choice.
+2. Using Geopandas, create a thematic map for the USA or `Michigan <https://www.michigan.gov/coronavirus/stats>`_ showing the distribution of Covid19 cases across the country or state for the date for which you have data.  Write comments to explain what your code is doing.   Repeat the process using another Python library of your choice.
 
 
 3. This Module has sample code for displaying digital elevation models using GDAL and the rasterio libraries.  Download a DEM and display it using either the GDAL or Rasterio library.  Afterward, tweak the code so that you can easily change the color of the displayed raster. Also, display the legend with the correct elevation values (not negative values).
@@ -1057,7 +1053,7 @@ Exercises
 5. Complete the tutorial on this website inclduing the challenge task at the end - https://blog.matthewgove.com/2021/06/18/the-ultimate-in-python-data-processing-how-to-create-maps-and-graphs-from-a-single-shapefile/
 
 
-6. Review `the tutorial on this page <"https://pynative.com/python-matplotlib-exercise/">`_and be prepared to discuss the code, particularly how Matplotlib is how used.
+6. Review `the tutorial on this page <https://pynative.com/python-matplotlib-exercise/>`_and be prepared to discuss the code, particularly how Matplotlib is how used.
 
 
 7. Modify the ArcGIS API for Python code above to enable you to log into your own ArcGIS Online account and display a web map.

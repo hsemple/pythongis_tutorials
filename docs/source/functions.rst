@@ -47,6 +47,7 @@ The example below shows a function that calculates area based on length and widt
 |
 
 
+
 Function Examples
 --------------------
 
@@ -143,8 +144,9 @@ Call the function:  createline(5,25)
          n = n-1
       print("The factorial is",fact)
     
-   inputNumber = int(input("Enter the number: "))
-   factorial(inputNumber)
+   
+
+   Call the function:  factorial(5)
 
 
 
@@ -251,7 +253,7 @@ Python docstrings are strings used to document code.  They are placed right afte
 
 |
 
-Here is the docstrings for the built-in function int() function in Python. Run it and note the results.  Click on this `hyperlink <"https://www.programiz.com/python-programming/docstrings">`_ to learn more about Python docstrings.
+Here is the docstrings for the built-in function int() function in Python. Run it and note the results.  Click on this `hyperlink <https://www.programiz.com/python-programming/docstrings>`_ to learn more about Python docstrings.
 
 
 .. code-block:: python
@@ -323,9 +325,10 @@ In the script below,  Arcpy's ListRaster function is being used to print out a l
 
  
 
-.. code-block:: python
+  #Get a List of all the Feature Classes in a Directory
 
-    #Get a List of all the Feature Classes in a Directory
+
+.. code-block:: python
 
     import arcpy
     arcpy.env.workspace = "C:/data"
@@ -335,7 +338,27 @@ In the script below,  Arcpy's ListRaster function is being used to print out a l
        print (fc)  
 
 
+
+
+ #Get a List of Tables in a geodatabase
+
+.. code-block:: python
+
+    import arcpy
+
+    # Set the current workspace
+    arcpy.env.workspace = "c:/data/mydata.gdb"
+
+    # Get and print a list of tables
+    tables = arcpy.ListTables()
+    for table in tables:
+        print(table)
+
+
 |
+
+
+
 
 Resources
 -----------
