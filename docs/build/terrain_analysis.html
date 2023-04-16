@@ -52,7 +52,16 @@
 <li class="toctree-l1"><a class="reference internal" href="displaying_files.html">7. Reading and Displaying Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="map_projections.html">8. Map Projections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="attribute_and_spatial_queries.html">9. Attribute and Spatial Queries</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Terrain Analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Terrain Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#displaying-dem">10.1. Displaying DEM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generating-hillshades">10.2. Generating Hillshades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#slope-mapping">10.3. Slope Mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aspect-mapping">10.4. Aspect Mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#curvature-maps">10.5. Curvature Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#watershed-delineation">10.6. Watershed Delineation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resources">10.7. Resources</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -81,6 +90,497 @@
              
   <section id="terrain-analysis">
 <h1><span class="section-number">10. </span>Terrain Analysis<a class="headerlink" href="#terrain-analysis" title="Permalink to this heading"></a></h1>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>There are many python libraries that are available for terrain analysis.  Below, I use Arcpy, RichDEM, Rasterio, GDAL and pysheds for basic terrain analysis.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="displaying-dem">
+<h2><span class="section-number">10.1. </span>Displaying DEM<a class="headerlink" href="#displaying-dem" title="Permalink to this heading"></a></h2>
+<p>Terrain analysis starts with displaying digital elevation models.  We have touched on this topic before.  Below, a DEM is displayed with the RichDEM library.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">richdem</span> <span class="k">as</span> <span class="nn">rd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">src</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">LoadGDAL</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/Users/.../elevation/w001001.adf&#39;</span><span class="p">)</span>
+
+<span class="n">rd</span><span class="o">.</span><span class="n">rdShow</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">ignore_colours</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mf">5.5</span><span class="p">))</span>
+</pre></div>
+</div>
+<img alt="DEM Loaded with RichDEM" src="_images/stowe_dem_richdem.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="generating-hillshades">
+<h2><span class="section-number">10.2. </span>Generating Hillshades<a class="headerlink" href="#generating-hillshades" title="Permalink to this heading"></a></h2>
+<p>Hillshades are used in terrain analysis to make elevation data appear more 3-Dimensional and thus visually appealing. Hillshades are also often used as an underlay to make other kinds of data more visually interesting.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Generate Hillshade with ArcPy</strong></p>
+<p>The two scripts below show how to generate hillshade maps using ArcPy within ArcMap or ArcGIS Pro.</p>
+<ol class="arabic simple">
+<li><p>Run this script from the ArcPy Window.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arcpy.ia</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">out_hillshade_raster</span> <span class="o">=</span> <span class="n">Hillshade</span><span class="p">(</span><span class="s2">&quot;elevation.tif&quot;</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mf">0.3048</span><span class="p">)</span>
+<span class="n">out_hillshade_raster</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/arcpyExamples/outputs/hillshade.tif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>This example calculates the hillshade using IDLE or any other IDE</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the system modules</span>
+<span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">from</span> <span class="nn">arcpy.ia</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Set the analysis environments</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/arcpyExamples/data&quot;</span>
+
+<span class="c1"># Set the local variables</span>
+<span class="n">in_dem</span> <span class="o">=</span> <span class="s2">&quot;elevation.tif&quot;</span>
+
+<span class="c1"># Execute the Hillshade function</span>
+<span class="n">out_hillshade_raster</span> <span class="o">=</span> <span class="n">Hillshade</span><span class="p">(</span><span class="n">in_dem</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mf">0.3048</span><span class="p">)</span>
+
+<span class="c1"># Save the output</span>
+<span class="n">out_hillshade_raster</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/arcpyExamples/outputs/hillshade.tif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>Source</em>
+<a class="reference external" href="https://pro.arcgis.com/en/pro-app/latest/arcpy/image-analyst/hillshade.htm">https://pro.arcgis.com/en/pro-app/latest/arcpy/image-analyst/hillshade.htm</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Generate Hillshade  using GDAL</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">gradient</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">arctan</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">arctan2</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sin</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">cos</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">zeros</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">uint8</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+
+<span class="k">def</span> <span class="nf">hillshade</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">azimuth</span><span class="p">,</span> <span class="n">angle_altitude</span><span class="p">):</span>
+
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">gradient</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+    <span class="n">slope</span> <span class="o">=</span> <span class="n">pi</span><span class="o">/</span><span class="mf">2.</span> <span class="o">-</span> <span class="n">arctan</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="p">))</span>
+    <span class="n">aspect</span> <span class="o">=</span> <span class="n">arctan2</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">azimuthrad</span> <span class="o">=</span> <span class="n">azimuth</span><span class="o">*</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">180.</span>
+    <span class="n">altituderad</span> <span class="o">=</span> <span class="n">angle_altitude</span><span class="o">*</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">180.</span>
+
+
+    <span class="n">shaded</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">altituderad</span><span class="p">)</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>\
+    <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">altituderad</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>\
+    <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">azimuthrad</span> <span class="o">-</span> <span class="n">aspect</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">255</span><span class="o">*</span><span class="p">(</span><span class="n">shaded</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s1">&#39;/Users/semple/Desktop/topography/dem&#39;</span><span class="p">)</span>
+<span class="n">band</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span>
+
+<span class="n">hs_array</span> <span class="o">=</span> <span class="n">hillshade</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="mi">315</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">hs_array</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gist_earth&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="Hillshade Calculated with GDAL" src="_images/stowe_gray_scale.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Generate Hillshade with Earthpy</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">earthpy</span> <span class="k">as</span> <span class="nn">et</span>
+<span class="kn">import</span> <span class="nn">earthpy.spatial</span> <span class="k">as</span> <span class="nn">es</span>
+<span class="kn">import</span> <span class="nn">earthpy.plot</span> <span class="k">as</span> <span class="nn">ep</span>
+
+
+<span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/Users/hsemple/Downloads/Wayne_DEM/county/wayne/topography/dem&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="n">elev</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="n">hillshade</span> <span class="o">=</span> <span class="n">es</span><span class="o">.</span><span class="n">hillshade</span><span class="p">(</span><span class="n">elev</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="mi">240</span><span class="p">,</span> <span class="n">altitude</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">ep</span><span class="o">.</span><span class="n">plot_bands</span><span class="p">(</span>
+    <span class="n">hillshade</span><span class="p">,</span>
+    <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Hillshade of Wayne County&quot;</span><span class="p">,</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>For information in earthpy, see <a class="reference external" href="https://earthpy.readthedocs.io/en/latest/gallery_vignettes/plot_dem_hillshade.html#sphx-glr-gallery-vignettes-plot-dem-hillshade-py">https://earthpy.readthedocs.io/en/latest/gallery_vignettes/plot_dem_hillshade.html#sphx-glr-gallery-vignettes-plot-dem-hillshade-py</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">earthpy</span> <span class="k">as</span> <span class="nn">et</span>
+<span class="kn">import</span> <span class="nn">earthpy.spatial</span> <span class="k">as</span> <span class="nn">es</span>
+<span class="kn">import</span> <span class="nn">earthpy.plot</span> <span class="k">as</span> <span class="nn">ep</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">colors</span>
+
+
+<span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/Users/.../elevation/w001001.adf&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="n">elevation</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="c1">#extent=[src.bounds[0], src.bounds[2], src.bounds[1], src.bounds[3]]</span>
+
+<span class="n">hillshade</span> <span class="o">=</span> <span class="n">es</span><span class="o">.</span><span class="n">hillshade</span><span class="p">(</span><span class="n">elevation</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="mi">240</span><span class="p">,</span> <span class="n">altitude</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ep</span><span class="o">.</span><span class="n">plot_bands</span><span class="p">(</span>
+    <span class="n">elevation</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="n">src_array</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Digital Elevation Model (DEM)</span><span class="se">\n</span><span class="s2"> overlayed on top of a hillshade&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ep</span><span class="o">.</span><span class="n">plot_bands</span><span class="p">(</span><span class="n">hillshade</span><span class="p">,</span>
+              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span>
+              <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+              <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+              <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="slope-mapping">
+<h2><span class="section-number">10.3. </span>Slope Mapping<a class="headerlink" href="#slope-mapping" title="Permalink to this heading"></a></h2>
+<p><strong>Generate Slope Map with Arcpy</strong></p>
+<p>The two scripts below show how to calculate slope using ArcPy.</p>
+<ol class="arabic simple">
+<li><p>Run this script from the ArcPy Window.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="n">env</span>
+<span class="kn">from</span> <span class="nn">arcpy.sa</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/Washtenaw/county/washtenaw/topography&quot;</span> <span class="c1"># Set your own path</span>
+<span class="n">outSlope</span> <span class="o">=</span> <span class="n">Slope</span><span class="p">(</span><span class="s2">&quot;dem&quot;</span><span class="p">,</span> <span class="s2">&quot;DEGREE&quot;</span><span class="p">,</span> <span class="mf">0.3043</span><span class="p">)</span>  <span class="c1"># Slope Tool</span>
+<span class="n">outSlope</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/Washtenaw/county/outslope01&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Run this script using Idle in Python 2.7 on a machine that has ArcMap, or from Jupyter Notebook in ArcGIS Pro.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>  <span class="c1"># Import system modules</span>
+  <span class="kn">import</span> <span class="nn">arcpy</span>
+  <span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="n">env</span>
+  <span class="kn">from</span> <span class="nn">arcpy.sa</span> <span class="kn">import</span> <span class="o">*</span>
+
+  <span class="c1"># Set environment settings</span>
+  <span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/Washtenaw&quot;</span>
+
+  <span class="c1"># Set local variables</span>
+  <span class="n">inRaster</span> <span class="o">=</span> <span class="s2">&quot;C:/Washtenaw/county/washtenaw/topography/dem&quot;</span>
+  <span class="n">outMeasurement</span> <span class="o">=</span> <span class="s2">&quot;DEGREE&quot;</span>
+  <span class="n">zFactor</span> <span class="o">=</span> <span class="mf">0.3043</span>
+
+  <span class="c1"># Check out the ArcGIS Spatial Analyst extension license</span>
+  <span class="n">arcpy</span><span class="o">.</span><span class="n">CheckOutExtension</span><span class="p">(</span><span class="s2">&quot;Spatial&quot;</span><span class="p">)</span>
+
+  <span class="c1"># Execute Slope</span>
+  <span class="n">outSlope</span> <span class="o">=</span> <span class="n">Slope</span><span class="p">(</span><span class="n">inRaster</span><span class="p">,</span> <span class="n">outMeasurement</span><span class="p">,</span> <span class="n">zFactor</span><span class="p">)</span> <span class="c1"># Slope Tool</span>
+
+  <span class="c1"># Save the output</span>
+  <span class="n">outSlope</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/Washtenaw/county/outslope02&quot;</span><span class="p">)</span>
+
+
+<span class="o">|</span>
+</pre></div>
+</div>
+<p><strong>Generate Slope using the RichDem Library</strong></p>
+<p>First, install the RichDEM library. run the sample script below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">elevation</span>
+<span class="kn">import</span> <span class="nn">richdem</span> <span class="k">as</span> <span class="nn">rd</span>
+
+
+<span class="c1">#Open raster and read number of rows, columns, bands</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;C:/Users/Hugh/Desktop/N47E010.hgt&quot;</span><span class="p">)</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">RasterXSize</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">RasterYSize</span>
+<span class="n">allBands</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">RasterCount</span>
+<span class="n">band</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">elev</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">cols</span><span class="p">,</span><span class="n">rows</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+
+<span class="n">slope</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">TerrainAttribute</span><span class="p">(</span><span class="n">elev</span><span class="p">,</span> <span class="n">attrib</span><span class="o">=</span><span class="s1">&#39;slope_riserun&#39;</span><span class="p">)</span>
+<span class="n">rd</span><span class="o">.</span><span class="n">rdShow</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;magma&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">elev</span><span class="p">)</span>
+
+<span class="c1"># Make a legend</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Generate Slope using the Rasterio Library</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">rasterio</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">calculate_slope</span><span class="p">(</span><span class="n">DEM</span><span class="p">):</span>
+      <span class="n">gdal</span><span class="o">.</span><span class="n">DEMProcessing</span><span class="p">(</span><span class="s1">&#39;slope.tif&#39;</span><span class="p">,</span> <span class="n">DEM</span><span class="p">,</span> <span class="s1">&#39;slope&#39;</span><span class="p">)</span>
+     <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;slope.tif&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">dataset</span><span class="p">:</span>
+          <span class="n">slope</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+          <span class="k">return</span> <span class="n">slope</span>
+
+
+<span class="n">slope</span><span class="o">=</span><span class="n">calculate_slope</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/TestDEM.tif&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;copper&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="aspect-mapping">
+<h2><span class="section-number">10.4. </span>Aspect Mapping<a class="headerlink" href="#aspect-mapping" title="Permalink to this heading"></a></h2>
+<p><strong>Calculate Aspect with Arcpy</strong></p>
+<p>The script below show how to generate an aspect map using ArcPy.</p>
+<ol class="arabic simple">
+<li><p>Calculate Aspect</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import system modules</span>
+<span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="n">env</span>
+<span class="kn">from</span> <span class="nn">arcpy.sa</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Set environment settings</span>
+<span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/sapyexamples/data&quot;</span>
+
+<span class="c1"># Set local variables</span>
+<span class="n">inRaster</span> <span class="o">=</span> <span class="s2">&quot;elevation&quot;</span>
+
+<span class="c1"># Execute Aspect</span>
+<span class="n">outAspect</span> <span class="o">=</span> <span class="n">Aspect</span><span class="p">(</span><span class="n">inRaster</span><span class="p">)</span>  <span class="c1"># Aspect tool</span>
+
+<span class="c1"># Save the output</span>
+<span class="n">outAspect</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/sapyexamples/output/outaspect02&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Generate Aspect Maps susing the RichDem Library</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">rasterio</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="k">def</span> <span class="nf">calculate_aspect</span><span class="p">(</span><span class="n">DEM</span><span class="p">):</span>
+       <span class="n">gdal</span><span class="o">.</span><span class="n">DEMProcessing</span><span class="p">(</span><span class="s1">&#39;aspect.tif&#39;</span><span class="p">,</span> <span class="n">DEM</span><span class="p">,</span> <span class="s1">&#39;aspect&#39;</span><span class="p">)</span>
+              <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;aspect.tif&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">dataset</span><span class="p">:</span>
+              <span class="n">aspect</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+              <span class="k">return</span> <span class="n">aspect</span>
+
+<span class="n">aspect</span><span class="o">=</span><span class="n">calculate_aspect</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/TestDEM.tif&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;copper&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>For more information, please see this website - <a class="reference external" href="https://richdem.readthedocs.io/en/latest/terrain_attributes.html">https://richdem.readthedocs.io/en/latest/terrain_attributes.html</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="curvature-maps">
+<h2><span class="section-number">10.5. </span>Curvature Maps<a class="headerlink" href="#curvature-maps" title="Permalink to this heading"></a></h2>
+<p><strong>Generate Curvature Maps using Arcpy</strong></p>
+<p>The two scripts below show how to calculate curvature using ArcPy.</p>
+<ol class="arabic simple">
+<li><p>Curvature Example 1. Use in ArcGIS Python Window</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arcpy.ia</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">out_curvature_raster</span> <span class="o">=</span> <span class="n">Curvature</span><span class="p">(</span><span class="s2">&quot;curvature_input.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;profile&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">out_curvature_raster</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/arcpyExamples/outputs/curv_profile.tif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><ol class="arabic simple" start="2">
+<li><p>Curvature Example 2</p></li>
+</ol>
+</div></blockquote>
+<p>This example calculates the curvature of a given slope. Use in Idle or Python Notebook</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import system modules</span>
+<span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">from</span> <span class="nn">arcpy.ia</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Set the analysis environments</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/arcpyExamples/data&quot;</span>
+
+<span class="c1"># Set the local variables</span>
+<span class="n">in_raster</span> <span class="o">=</span> <span class="s2">&quot;curvature_input.tif&quot;</span>
+
+<span class="c1"># Execute Curvature function</span>
+<span class="n">out_curvature_raster</span> <span class="o">=</span> <span class="n">Curvature</span><span class="p">(</span><span class="n">in_raster</span><span class="p">,</span> <span class="s2">&quot;planform&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Save the output</span>
+<span class="n">out_curvature_raster</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/arcpyExamples/outputs/cur_planform.tif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Click on this link for more code samples - <a class="reference external" href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst">https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Integrating Multiple Tools into a Single Script to Automate Workflows</strong></p>
+<ol class="loweralpha simple">
+<li><p>Calculate Slope and Aspect Using a Single Script</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import system modules</span>
+<span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="n">env</span>
+<span class="kn">from</span> <span class="nn">arcpy.sa</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Set environment settings</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/workspace&quot;</span>
+        <span class="c1"># Set local variables</span>
+        <span class="n">inRaster</span> <span class="o">=</span> <span class="s2">&quot;dem&quot;</span>
+        <span class="n">outMeasurement</span> <span class="o">=</span> <span class="s2">&quot;DEGREE&quot;</span>
+        <span class="n">zFactor</span> <span class="o">=</span> <span class="mf">0.3043</span>
+
+        <span class="c1"># Check out the ArcGIS Spatial Analyst extension license</span>
+        <span class="n">arcpy</span><span class="o">.</span><span class="n">CheckOutExtension</span><span class="p">(</span><span class="s2">&quot;Spatial&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Execute Slope</span>
+        <span class="n">outSlope</span> <span class="o">=</span> <span class="n">Slope</span><span class="p">(</span><span class="n">inRaster</span><span class="p">,</span> <span class="n">outMeasurement</span><span class="p">,</span> <span class="n">zFactor</span><span class="p">)</span>
+
+        <span class="c1"># Save the output</span>
+        <span class="n">outSlope</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/workspace/outslope02&quot;</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;Slope successfully calculated&quot;</span>
+
+        <span class="c1"># Execute Aspect</span>
+        <span class="n">outAspect</span> <span class="o">=</span> <span class="n">Aspect</span><span class="p">(</span><span class="n">inRaster</span><span class="p">)</span>
+        <span class="n">outAspect</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/workspace/outaspect02&quot;</span><span class="p">)</span>
+
+     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+         <span class="nb">print</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="watershed-delineation">
+<h2><span class="section-number">10.6. </span>Watershed Delineation<a class="headerlink" href="#watershed-delineation" title="Permalink to this heading"></a></h2>
+<p><em>Watershed Delineation with pysheds*</em></p>
+<p>I came across a library called pysheds that can be used for watershed delineation. You can learn more about the library at this site. Simple and fast watershed delineation in python.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pysheds.grid</span> <span class="kn">import</span> <span class="n">Grid</span>
+
+<span class="n">grid</span> <span class="o">=</span> <span class="n">Grid</span><span class="o">.</span><span class="n">from_raster</span><span class="p">(</span><span class="s1">&#39;/Users/hsemple/Desktop/elevation.tiff&#39;</span><span class="p">)</span>
+<span class="n">dem</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">read_raster</span><span class="p">(</span><span class="s1">&#39;/Users/hsemple/Desktop/elevation.tiff&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Fill Sinks</span>
+<span class="c1"># ----------------------</span>
+<span class="c1"># Fill pits in DEM</span>
+<span class="n">pit_filled_dem</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">fill_pits</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
+
+<span class="c1"># Fill depressions in DEM</span>
+<span class="n">flooded_dem</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">fill_depressions</span><span class="p">(</span><span class="n">pit_filled_dem</span><span class="p">)</span>
+
+<span class="c1"># Resolve flats in DEM</span>
+<span class="n">inflated_dem</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">resolve_flats</span><span class="p">(</span><span class="n">flooded_dem</span><span class="p">)</span>
+
+
+<span class="c1"># Determine D8 flow directions from DEM</span>
+<span class="c1"># ----------------------</span>
+<span class="c1"># Specify directional mapping</span>
+<span class="n">dirmap</span> <span class="o">=</span> <span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+
+<span class="c1"># Compute flow directions</span>
+<span class="c1"># -------------------------------------</span>
+<span class="n">fdir</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">flowdir</span><span class="p">(</span><span class="n">inflated_dem</span><span class="p">,</span> <span class="n">dirmap</span><span class="o">=</span><span class="n">dirmap</span><span class="p">)</span>
+
+
+<span class="c1"># Calculate flow accumulation</span>
+<span class="c1"># --------------------------</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">accumulation</span><span class="p">(</span><span class="n">fdir</span><span class="p">,</span> <span class="n">dirmap</span><span class="o">=</span><span class="n">dirmap</span><span class="p">)</span>
+
+
+<span class="c1"># Delineate a catchment</span>
+<span class="c1"># ---------------------</span>
+<span class="c1"># Specify pour point</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mf">97.294</span><span class="p">,</span> <span class="mf">32.737</span>
+
+<span class="c1"># Snap pour point to high accumulation cell</span>
+<span class="n">x_snap</span><span class="p">,</span> <span class="n">y_snap</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">snap_to_mask</span><span class="p">(</span><span class="n">acc</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+<span class="c1"># Delineate the catchment</span>
+<span class="n">catch</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">catchment</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_snap</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_snap</span><span class="p">,</span> <span class="n">fdir</span><span class="o">=</span><span class="n">fdir</span><span class="p">,</span> <span class="n">dirmap</span><span class="o">=</span><span class="n">dirmap</span><span class="p">,</span>
+                       <span class="n">xytype</span><span class="o">=</span><span class="s1">&#39;coordinate&#39;</span><span class="p">)</span>
+
+<span class="c1"># Crop and plot the catchment</span>
+<span class="c1"># ---------------------------</span>
+<span class="c1"># Clip the bounding box to the catchment</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">clip_to</span><span class="p">(</span><span class="n">catch</span><span class="p">)</span>
+<span class="n">clipped_catch</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">catch</span><span class="p">)</span>
+
+
+<span class="c1"># Extract river network</span>
+<span class="c1"># ---------------------</span>
+<span class="n">branches</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">extract_river_network</span><span class="p">(</span><span class="n">fdir</span><span class="p">,</span> <span class="n">acc</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">,</span> <span class="n">dirmap</span><span class="o">=</span><span class="n">dirmap</span><span class="p">)</span>
+
+
+<span class="c1"># Calculate distance to outlet from each cell</span>
+<span class="c1"># -------------------------------------------</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">distance_to_outlet</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_snap</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_snap</span><span class="p">,</span> <span class="n">fdir</span><span class="o">=</span><span class="n">fdir</span><span class="p">,</span> <span class="n">dirmap</span><span class="o">=</span><span class="n">dirmap</span><span class="p">,</span>
+                               <span class="n">xytype</span><span class="o">=</span><span class="s1">&#39;coordinate&#39;</span><span class="p">)</span>
+
+
+
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">mattbartos</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pysheds</span><span class="o">/</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://mattbartos.com/pysheds/">http://mattbartos.com/pysheds/</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="resources">
+<h2><span class="section-number">10.7. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
+<p>Building your own color map</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LinearSegmentedColormap</span>
+<span class="n">italy_colormap</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;italy&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;#008C45&#39;</span><span class="p">,</span> <span class="s1">&#39;#0b914c&#39;</span><span class="p">,</span> <span class="s1">&#39;#F4F5F0&#39;</span><span class="p">,</span> <span class="s1">&#39;#cf2a32&#39;</span><span class="p">,</span> <span class="s1">&#39;#CD212A&#39;</span><span class="p">],</span> <span class="n">N</span><span class="o">=</span><span class="n">value_range</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 

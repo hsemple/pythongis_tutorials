@@ -175,6 +175,16 @@
 </pre></div>
 </div>
 <p>Note: os.sep will supply the separator</p>
+<p>It is also possible to pass in the current working directory to os.path.join(), as shown in the script below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">dem_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s1">&#39;Shasta-30m-DEM.tif&#39;</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dem_path</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">dem_path</span> <span class="o">=</span> <span class="s1">&#39;/Users/hsemple/Documents/python_gis_tutorials/docs/Shasta-30m-DEM.tif</span>
+</pre></div>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -217,7 +227,7 @@ the objective with this code sample is to illustrate some details that is involv
 
 
 
-<span class="c1">#Print the two lists as columnss</span>
+<span class="c1">#Format the two lists as columns separated with a space</span>
 
 <span class="n">magnitude</span> <span class="o">=</span> <span class="s2">&quot;Magnitude&quot;</span>
 <span class="n">depth</span> <span class="o">=</span> <span class="s2">&quot;Depth&quot;</span>
@@ -229,7 +239,8 @@ the objective with this code sample is to illustrate some details that is involv
     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%-15s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">))</span>
 </pre></div>
 </div>
-<p><em>Things to Look up in the above Code</em></p>
+<img alt="Formatted Table" src="_images/magnitude_depth.png" />
+<p><em>Things to Look up in the above code</em></p>
 <ol class="loweralpha simple">
 <li><p><a class="reference external" href="https://python-course.eu/python-tutorial/formatted-output.php">Formatting Output</a></p></li>
 <li><p><a class="reference external" href="https://www.programiz.com/python-programming/methods/built-in/zip">Python Zip Function</a></p></li>
@@ -277,12 +288,16 @@ the objective with this code sample is to illustrate some details that is involv
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<img alt="Formatted Table" src="_images/earth_magnitude_graph.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><em>Things to Look up in the above Code</em></p>
-<p><a class="reference external" href="https://matplotlib.org/2.0.2/faq/usage_faq.html">Anatomy of a Matplotlib Figure</a>
-<a class="reference external" href="https://matplotlib.org/stable/tutorials/introductory/pyplot.html">Pyplot Tutorial</a></p>
+<p>When working with Python, it is important to know how manipulate matplotlib’s figure object.  Almost, all of your graphical output will require the use of this figure object, so I urge you to become acquainted with working with this object. The links below provide some information on ths topic.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://matplotlib.org/2.0.2/faq/usage_faq.html">Anatomy of a Matplotlib Figure</a></p></li>
+<li><p><a class="reference external" href="https://matplotlib.org/stable/tutorials/introductory/pyplot.html">Pyplot Tutorial</a></p></li>
+</ul>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -690,9 +705,7 @@ the objective with this code sample is to illustrate some details that is involv
 </section>
 <section id="displaying-rasters">
 <h2><span class="section-number">7.8. </span>Displaying Rasters<a class="headerlink" href="#displaying-rasters" title="Permalink to this heading"></a></h2>
-<p><strong>Arrays</strong></p>
-<p>In programming, rasters are considered as arrays, therefore we learn about arrays in order to manipulate rasters.</p>
-<p>An array is a collection of items of the same data type that can be manipulated as a single entity.  In Python,  a list is a one dimensional array.  However, when we are thinking about rasters, we are typically thinking of two dimensional arrays that are matrices of numbers defined by rows and columns.</p>
+<p>In programming, rasters are considered as <em>arrays</em>.  An array is a collection of items of the same data type that can be manipulated as a single entity.  In Python,  a list is a one dimensional array.  However, when we are thinking about rasters, we are typically thinking of two dimensional arrays that are matrices of numbers defined by rows and columns.</p>
 <p>In Python, one difference between a list and a two-dimensional array is that whereas a list can store multiple data types, a two-dimensional array can store only one data type.</p>
 <img alt="One and Two Dimensional Arrays" src="_images/arrays1.png" />
 <p>Python has specialized libraries for manipulating arrays. Two popular ones are the “numpy” library and the “array” module. Numpy appear to be more popular.  To import Numpy, type:</p>
@@ -704,9 +717,8 @@ the objective with this code sample is to illustrate some details that is involv
 <div class="line"><br /></div>
 </div>
 <p><strong>Displaing a DEM using GDAL and Matplotlib</strong></p>
-<p>One way to display a raster is to open the raster file using the gdal library, then convert the raster into an using GDAL. Afterwards, we can use pyplot.imshow() to display the array.    If you not familiar with imshow, please look it up.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">gdal</span>
+<p>One way to display a raster is to open the raster file using the gdal library, then convert the raster into an array using GDAL. Afterwards, we can use matplotlib’s pyplot.imshow() to display the array.    If you not familiar with imshow, please look it up.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gdal</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1">#Open raster and read number of rows, columns and bands</span>
@@ -723,6 +735,36 @@ the objective with this code sample is to illustrate some details that is involv
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<p>In this example, we introduce the geotransform function. We also introduce a way to display the map’s legend.</p>
+<p>import gdal
+import matplotlib.pyplot as plt
+import matplotlib.colors as colors</p>
+<p>#Set directory
+ds = gdal.Open(‘/Users/hsemple/Downloads/Wayne_DEM/county/wayne/topography/dem’)
+if ds is None:</p>
+<blockquote>
+<div><p>print (‘Could not open file’)
+sys.exit(1)</p>
+</div></blockquote>
+<p>band1 = ds.GetRasterBand(1)
+no_data = band1.GetNoDataValue()
+raster_array = band1.ReadAsArray()</p>
+<p>ulx,xres,xskew,uly,yskew,yres = ds.GetGeoTransform()
+lrx = ulx + (ds.RasterXSize * xres)
+lry = uly + (ds.RasterYSize * yres)
+print (ulx,lrx,lry,uly)</p>
+<p>fig, ax = plt.subplots(figsize=(8, 5))</p>
+<p>#Array contains many no data values, therefore normalize legend from 0 to 1.</p>
+<p>norm = colors.Normalize(vmin = 0, vmax = raster_array.max())</p>
+<p>cmap = plt.get_cmap(“gist_earth”)</p>
+<p>img = plt.imshow(raster_array, cmap, norm, extent=(ulx, lrx,lry,uly)) # Get the plot renderer object.</p>
+<p>cbar = plt.colorbar(img,shrink=0.75) #Associate the color bar with the plot renderer and axes objects.</p>
+<p>cbar.set_label(‘Meters’)</p>
+<p>plt.savefig(‘dem_plot.png’, dpi=300, bbox_inches=’tight’)
+plt.show()</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p><strong>Displaying a Raster using Rasterio and Matplotlib</strong></p>
 <p>Rasterio is a popular open source Python library used for viewing and manipulating rasters.  Rasterio utilizes the gdal library to display rasters. With rasterio, viewing a raster can be done with just a few lines of code, like the example below.</p>
 <p>Rasterio has a show( ) method for displaying rasters. However, the library also uses pyplot’s imshow method to display the data.</p>
@@ -730,13 +772,27 @@ the objective with this code sample is to illustrate some details that is involv
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
 
 <span class="n">src</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Downloads/Wayne_DEM/county/wayne/topography/dem&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get the bounding box coordinates of the raster</span>
+<span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">src</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">src</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">src</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">src</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
+
+
+<span class="c1">#Convert the raster into an array</span>
 <span class="n">src_array</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">src_array</span><span class="p">)</span> <span class="c1"># Get the plot renderer object.</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span> <span class="c1">#Associate the figure object with plot renderer and axes objects.</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span> <span class="c1">#Let the axes object set the length of the colobar.</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Get the plot renderer object.</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">src_array</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;jet&#39;</span><span class="p">),</span> <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span> <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="n">src_array</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Digital Elevation Model&quot;</span><span class="p">)</span>
+
+<span class="c1">#Associate the figure object with plot renderer and axes objects.</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="c1">#Let the axes object set the length of the colobar.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
 
 <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -812,6 +868,9 @@ the objective with this code sample is to illustrate some details that is involv
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p><strong>Displaying a Three-band Raster with Rasterio</strong></p>
 <p>Rasterio is a popular open source Python library used for viewing and manipulating rasters.  Rasterio utilizes the gdal library to display rasters. With rasterio, viewing a raster can be done with just a few lines of code, like the example below.</p>
 <p>Rasterio has a show( ) method for displaying rasters. However, the library can also use pyplot’s imshow method to display the data. The example below uses the show method.</p>
@@ -860,10 +919,9 @@ the objective with this code sample is to illustrate some details that is involv
 <ol class="arabic simple">
 <li><p>Visit <a class="reference external" href="https://nextgenstats.nfl.com/stats/passing#max-completed-air-distance">this NFL website</a> and copy the quarter back data. Paste the data into Excel and save it in CSV format.  Use the standard library in Python or pandas to plot a simple histogram and boxplot of the data in the passing attempts field (ATT).   Also, calculate the mean and standard deviation of passing attempts.   Explain what your data is portraying in short paragraph.</p></li>
 <li><p>Using Geopandas, create a thematic map for the USA or <a class="reference external" href="https://www.michigan.gov/coronavirus/stats">Michigan</a> showing the distribution of Covid19 cases across the country or state for the date for which you have data.  Write comments to explain what your code is doing.   Repeat the process using another Python library of your choice.</p></li>
-<li><p>This Module has sample code for displaying digital elevation models using GDAL and the rasterio libraries.  Download a DEM and display it using either the GDAL or Rasterio library.  Afterward, tweak the code so that you can easily change the color of the displayed raster. Also, display the legend with the correct elevation values (not negative values).</p></li>
 <li><p>Extend the sample code in this Module that uses Descartes to display shapefiles in which the polygons are labeled.</p></li>
-<li><p>Complete the tutorial on this website inclduing the challenge task at the end - <a class="reference external" href="https://blog.matthewgove.com/2021/06/18/the-ultimate-in-python-data-processing-how-to-create-maps-and-graphs-from-a-single-shapefile/">https://blog.matthewgove.com/2021/06/18/the-ultimate-in-python-data-processing-how-to-create-maps-and-graphs-from-a-single-shapefile/</a></p></li>
-<li><p>Review <a href="#id1"><span class="problematic" id="id2">`</span></a>the tutorial on this page &lt;<a class="reference external" href="https://pynative.com/python-matplotlib-exercise/">https://pynative.com/python-matplotlib-exercise/</a>&gt;`_and be prepared to discuss the code, particularly how Matplotlib is how used.</p></li>
+<li><p>Complete the <a class="reference external" href="&quot;https://blog.matthewgove.com/2021/06/18/the-ultimate-in-python-data-processing-how-to-create-maps-and-graphs-from-a-single-shapefile/&quot;">tutorial on this website</a> including the challenge task at the end.</p></li>
+<li><p>Review <a class="reference external" href="https://pynative.com/python-matplotlib-exercise/">the tutorial on this page</a> and be prepared to discuss the code, particularly how Matplotlib is how used.</p></li>
 <li><p>Modify the ArcGIS API for Python code above to enable you to log into your own ArcGIS Online account and display a web map.</p></li>
 </ol>
 <div class="line-block">

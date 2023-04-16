@@ -126,6 +126,20 @@ To create a string for a platform regardless of whether it is Windows, Mac OS, L
 Note: os.sep will supply the separator
 
 
+
+It is also possible to pass in the current working directory to os.path.join(), as shown in the script below.  
+
+.. code-block:: python
+
+	import os
+
+	dem_path = os.path.join(os.getcwd(), 'Shasta-30m-DEM.tif')
+	
+	>>> dem_path
+
+	>>> dem_path = '/Users/hsemple/Documents/python_gis_tutorials/docs/Shasta-30m-DEM.tif
+
+
 |
 
 
@@ -174,7 +188,7 @@ the objective with this code sample is to illustrate some details that is involv
 
 
 
-	#Print the two lists as columnss
+	#Format the two lists as columns separated with a space
 
 	magnitude = "Magnitude"
 	depth = "Depth"
@@ -187,8 +201,13 @@ the objective with this code sample is to illustrate some details that is involv
 
 
 
+.. image:: img/magnitude_depth.png
+   :alt: Formatted Table
 
-*Things to Look up in the above Code*
+
+
+
+*Things to Look up in the above code*
 
 a. `Formatting Output <https://python-course.eu/python-tutorial/formatted-output.php>`_
 b. `Python Zip Function <https://www.programiz.com/python-programming/methods/built-in/zip>`_
@@ -240,13 +259,23 @@ b. `Python Zip Function <https://www.programiz.com/python-programming/methods/bu
 	plt.title("Magnitude of Earthquakes")
 	plt.show()
 
+
+
+.. image:: img/earth_magnitude_graph.png
+   :alt: Formatted Table
+
+
 |
 
 
 *Things to Look up in the above Code*
 
-`Anatomy of a Matplotlib Figure <https://matplotlib.org/2.0.2/faq/usage_faq.html>`_ 
-`Pyplot Tutorial <https://matplotlib.org/stable/tutorials/introductory/pyplot.html>`_
+
+When working with Python, it is important to know how manipulate matplotlib's figure object.  Almost, all of your graphical output will require the use of this figure object, so I urge you to become acquainted with working with this object. The links below provide some information on ths topic.
+
+* `Anatomy of a Matplotlib Figure <https://matplotlib.org/2.0.2/faq/usage_faq.html>`_ 
+
+* `Pyplot Tutorial <https://matplotlib.org/stable/tutorials/introductory/pyplot.html>`_
 
 
 |
@@ -792,11 +821,7 @@ Displaying Rasters
 --------------------
 
 
-**Arrays**
-
-In programming, rasters are considered as arrays, therefore we learn about arrays in order to manipulate rasters.  
-
-An array is a collection of items of the same data type that can be manipulated as a single entity.  In Python,  a list is a one dimensional array.  However, when we are thinking about rasters, we are typically thinking of two dimensional arrays that are matrices of numbers defined by rows and columns.  
+In programming, rasters are considered as *arrays*.  An array is a collection of items of the same data type that can be manipulated as a single entity.  In Python,  a list is a one dimensional array.  However, when we are thinking about rasters, we are typically thinking of two dimensional arrays that are matrices of numbers defined by rows and columns.  
 
 In Python, one difference between a list and a two-dimensional array is that whereas a list can store multiple data types, a two-dimensional array can store only one data type.  
 
@@ -816,14 +841,15 @@ To learn more about arrays, please click on `this link <https://jakevdp.github.i
 
 
 
-**Displaing a DEM using GDAL and Matplotlib** 
+**Displaing a DEM using GDAL and Matplotlib** 
 
-One way to display a raster is to open the raster file using the gdal library, then convert the raster into an using GDAL. Afterwards, we can use pyplot.imshow() to display the array.    If you not familiar with imshow, please look it up.
+
+
+One way to display a raster is to open the raster file using the gdal library, then convert the raster into an array using GDAL. Afterwards, we can use matplotlib's pyplot.imshow() to display the array.    If you not familiar with imshow, please look it up.
 
 
 .. code-block:: python
 
-   import numpy as np
    import gdal
    import matplotlib.pyplot as plt
 
@@ -844,6 +870,52 @@ One way to display a raster is to open the raster file using the gdal library, t
 
 |
 
+
+In this example, we introduce the geotransform function. We also introduce a way to display the map's legend.
+
+import gdal
+import matplotlib.pyplot as plt
+import matplotlib.colors as colors
+
+#Set directory
+ds = gdal.Open('/Users/hsemple/Downloads/Wayne_DEM/county/wayne/topography/dem')
+if ds is None:
+    print ('Could not open file')
+    sys.exit(1)
+
+band1 = ds.GetRasterBand(1)
+no_data = band1.GetNoDataValue()
+raster_array = band1.ReadAsArray()
+
+
+ulx,xres,xskew,uly,yskew,yres = ds.GetGeoTransform()
+lrx = ulx + (ds.RasterXSize * xres)
+lry = uly + (ds.RasterYSize * yres)
+print (ulx,lrx,lry,uly)
+
+
+fig, ax = plt.subplots(figsize=(8, 5))
+
+#Array contains many no data values, therefore normalize legend from 0 to 1.
+
+norm = colors.Normalize(vmin = 0, vmax = raster_array.max())
+
+cmap = plt.get_cmap("gist_earth")
+
+img = plt.imshow(raster_array, cmap, norm, extent=(ulx, lrx,lry,uly)) # Get the plot renderer object.
+
+cbar = plt.colorbar(img,shrink=0.75) #Associate the color bar with the plot renderer and axes objects.
+
+cbar.set_label('Meters')
+
+plt.savefig('dem_plot.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+
+|
+
+
+
 **Displaying a Raster using Rasterio and Matplotlib**
 
 Rasterio is a popular open source Python library used for viewing and manipulating rasters.  Rasterio utilizes the gdal library to display rasters. With rasterio, viewing a raster can be done with just a few lines of code, like the example below. 
@@ -856,13 +928,27 @@ Rasterio has a show( ) method for displaying rasters. However, the library also 
    from matplotlib import pyplot
 
    src = rasterio.open("/Users/student/Downloads/Wayne_DEM/county/wayne/topography/dem")
+
+   # Get the bounding box coordinates of the raster
+   extent=[src.bounds[0], src.bounds[2], src.bounds[1], src.bounds[3]] 
+
+   
+   #Convert the raster into an array
    src_array = src.read(1)
 
+   
    fig, ax = pyplot.subplots(1, figsize=(8, 5))
-   img = ax.imshow(src_array) # Get the plot renderer object.
 
-   fig.colorbar(img, ax=ax) #Associate the figure object with plot renderer and axes objects.
-   ax.set_aspect('auto') #Let the axes object set the length of the colobar. 
+   # Get the plot renderer object.
+   img = ax.imshow(src_array, cmap=plt.get_cmap('jet'), extent=extent, norm = colors.Normalize(vmin = 0, vmax = src_array.max()))  
+
+   ax.set_title("Digital Elevation Model")
+
+   #Associate the figure object with plot renderer and axes objects.
+   fig.colorbar(img, ax=ax) 
+
+   #Let the axes object set the length of the colobar. 
+   ax.set_aspect('auto') 
 
    pyplot.show()
 
@@ -958,6 +1044,9 @@ Rasterio has a show( ) method for displaying rasters. However, the library also 
 |
 
 
+|
+
+
 **Displaying a Three-band Raster with Rasterio**
 
 Rasterio is a popular open source Python library used for viewing and manipulating rasters.  Rasterio utilizes the gdal library to display rasters. With rasterio, viewing a raster can be done with just a few lines of code, like the example below. 
@@ -1044,19 +1133,16 @@ Exercises
 2. Using Geopandas, create a thematic map for the USA or `Michigan <https://www.michigan.gov/coronavirus/stats>`_ showing the distribution of Covid19 cases across the country or state for the date for which you have data.  Write comments to explain what your code is doing.   Repeat the process using another Python library of your choice.
 
 
-3. This Module has sample code for displaying digital elevation models using GDAL and the rasterio libraries.  Download a DEM and display it using either the GDAL or Rasterio library.  Afterward, tweak the code so that you can easily change the color of the displayed raster. Also, display the legend with the correct elevation values (not negative values).
+3. Extend the sample code in this Module that uses Descartes to display shapefiles in which the polygons are labeled.
 
 
-4. Extend the sample code in this Module that uses Descartes to display shapefiles in which the polygons are labeled.
+4. Complete the `tutorial on this website <"https://blog.matthewgove.com/2021/06/18/the-ultimate-in-python-data-processing-how-to-create-maps-and-graphs-from-a-single-shapefile/">`_ including the challenge task at the end. 
 
 
-5. Complete the tutorial on this website inclduing the challenge task at the end - https://blog.matthewgove.com/2021/06/18/the-ultimate-in-python-data-processing-how-to-create-maps-and-graphs-from-a-single-shapefile/
+5. Review `the tutorial on this page <https://pynative.com/python-matplotlib-exercise/>`_ and be prepared to discuss the code, particularly how Matplotlib is how used.
 
 
-6. Review `the tutorial on this page <https://pynative.com/python-matplotlib-exercise/>`_and be prepared to discuss the code, particularly how Matplotlib is how used.
-
-
-7. Modify the ArcGIS API for Python code above to enable you to log into your own ArcGIS Online account and display a web map.
+6. Modify the ArcGIS API for Python code above to enable you to log into your own ArcGIS Online account and display a web map.
 
 
 
