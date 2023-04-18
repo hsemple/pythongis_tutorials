@@ -53,7 +53,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">7. Reading and Displaying Files</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#writing-file-paths">7.1. Writing File Paths</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#opening-a-file-using-the-with-statement">7.2. Opening a file using the “With” Statement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#opening-a-csv-file-using-basic-python-statements">7.3. Opening a csv file using Basic Python Statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#opening-a-csv-file-using-python-s-standard-library">7.3. Opening a csv File using Python’s Standard Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reading-csv-files-using-pandas">7.4. Reading CSV Files Using Pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#plotting-graphs">7.5. Plotting Graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#writing-to-a-file">7.6. Writing to a File</a></li>
@@ -202,8 +202,8 @@
 <div class="line"><br /></div>
 </div>
 </section>
-<section id="opening-a-csv-file-using-basic-python-statements">
-<h2><span class="section-number">7.3. </span>Opening a csv file using Basic Python Statements<a class="headerlink" href="#opening-a-csv-file-using-basic-python-statements" title="Permalink to this heading"></a></h2>
+<section id="opening-a-csv-file-using-python-s-standard-library">
+<h2><span class="section-number">7.3. </span>Opening a csv File using Python’s Standard Library<a class="headerlink" href="#opening-a-csv-file-using-python-s-standard-library" title="Permalink to this heading"></a></h2>
 <p>Let’s open a csv data file using some basic Python statements. First, we will let Python read the file and create a file object. Next, we will split the file contents into inidividual columns, and then store the column data in variables. This is a long-winded way of displaying csv files, but
 the objective with this code sample is to illustrate some details that is involved in opening these files.  For regular work, we use libraries such as Pandas which it much easier to display the csv files. Pandas will be discussed shortly.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/earthquakes.csv&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -248,7 +248,7 @@ the objective with this code sample is to illustrate some details that is involv
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Performing Calculations and Making a Graph</strong></p>
+<p><strong>Performing Calculations and Making a Graph using Python’s Standard Library</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/student/Desktop/earthquakes.csv, &#39;r&#39;)</span>
@@ -417,7 +417,7 @@ the objective with this code sample is to illustrate some details that is involv
 <p>To plot the Depth and Magnitude Data as a scatterplot, write:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../earthquakes.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/.../earthquakes.csv&quot;</span><span class="p">)</span>
 
 <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;depth&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;magnitude&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -436,7 +436,7 @@ the objective with this code sample is to illustrate some details that is involv
 <section id="writing-to-a-file">
 <h2><span class="section-number">7.6. </span>Writing to a File<a class="headerlink" href="#writing-to-a-file" title="Permalink to this heading"></a></h2>
 <p>Once we are done with data analysis, we can also write to a file, as shown below.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/student/Desktop/john.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/.../john.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -451,7 +451,7 @@ the objective with this code sample is to illustrate some details that is involv
 <div class="line"><br /></div>
 </div>
 <p>Reading a Data file into Python, splitting its contents by columns, and storing the columns in variables</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../earthquakes.csv, &#39;r&#39;)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/.../earthquakes.csv, &#39;r&#39;)</span>
 <span class="n">lines</span> <span class="o">=</span> <span class="n">infile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 <span class="n">newfile</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../newfile.txt&quot;</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;a+&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
 
@@ -488,14 +488,19 @@ the objective with this code sample is to illustrate some details that is involv
 </section>
 <section id="plotting-shapefiles">
 <h2><span class="section-number">7.7. </span>Plotting Shapefiles<a class="headerlink" href="#plotting-shapefiles" title="Permalink to this heading"></a></h2>
+<p>There are many libraries available for plotting shapefiles. Such libraries include Geopandas, Shapely, Fiona, OGR, and descartes. Altogether, one of the main contributions of these libraries is that we no longer have to rely on GIS software to view shapefiles and their attribute data. This can be done easily with Python.</p>
+<p>Among the various libraries, Geopandas is perhaps the most widely used for plotting shapefiles as it only requires a few lines of code to display the shapefile. Also, attribute tables can be easily manipulated as a panda/geopanda dataframes.</p>
+<p>The other libraries are also important depending on the task that you would like to perform.  Since geopandas hides almost all its implementation, you will find that studying the code of other libaries gives you a clearer picture of how to handle shapefiles from a Python perspective.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p><strong>Displaying Shapefiles using Geopandas</strong></p>
-<p>A large part of geospatial visualization is made possible using libraries such as Geopandas, Shapely, matplotlib, GDAL, OGR, and descartes.  Geopandas is perhaps one of the most popular libraries for plotting shapefiles. This because it only requires a few lines of code to plot a shapefile. I strongly recommend using Geopandas to display your shapefiles.</p>
-<p>To use Geopandas, first, download and install the library to your Python installation.  Afterwards, import the library and use it in your code.</p>
-<p>As an example, run the code below in your favorite development environment to load a shapefile into Python using Geopandas.  Note that the code draws the shapefile with a single color because no specific column is being plotted.</p>
+<p>To use Geopandas, first, download and install the <a class="reference external" href="'https://geopandas.org/en/stable/getting_started/install.html'">library</a>.  Afterwards, import the library and use it in your code.</p>
+<p>As an example, run the code below in your favorite development environment.  Note that the code draws the shapefile with a single color because no specific column is being plotted.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="n">geo_df</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span> <span class="p">(</span><span class="s2">&quot;../Michigan.shp&quot;</span><span class="p">)</span>
+<span class="n">geo_df</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span> <span class="p">(</span><span class="s2">&quot;/Users/../Michigan.shp&quot;</span><span class="p">)</span>
 <span class="n">geo_df</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -507,7 +512,7 @@ the objective with this code sample is to illustrate some details that is involv
 <p>To view the attribute table of a shapefile, wit the Geopandas library,  use the head() method of the data frame object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">gdf</span> <span class="o">=</span> <span class="n">geopandas</span><span class="p">(</span><span class="s2">&quot;../Michigan.shp&quot;</span><span class="p">)</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">geopandas</span><span class="p">(</span><span class="s2">&quot;/Users/../Michigan.shp&quot;</span><span class="p">)</span>
 
 <span class="c1">#Show data in the attribute table</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
@@ -543,7 +548,7 @@ the objective with this code sample is to illustrate some details that is involv
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1">#Save the map</span>
-<span class="n">f</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/student/Downloads/Michigan_Counties/map_export.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/.../map_export.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="Thematic Map" src="_images/michigan.png" />
@@ -562,7 +567,7 @@ the objective with this code sample is to illustrate some details that is involv
 <p>Using Pyshp we can experiment with displaying a shapefile using only its points collection and with both its parts and points collection. The code below shows how to display a shapefile using only its points collection.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">shapefile</span>
-<span class="n">sf</span> <span class="o">=</span> <span class="n">shapefile</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="s2">&quot;../Michigan.shp&quot;</span><span class="p">)</span>
+<span class="n">sf</span> <span class="o">=</span> <span class="n">shapefile</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="s2">&quot;Users/../Michigan.shp&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">each_rec</span> <span class="ow">in</span> <span class="n">sf</span><span class="o">.</span><span class="n">shapeRecords</span><span class="p">():</span>
@@ -581,7 +586,7 @@ the objective with this code sample is to illustrate some details that is involv
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shapefile</span> <span class="k">as</span> <span class="nn">shp</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="n">sf</span> <span class="o">=</span> <span class="n">shp</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="s2">&quot;../Michigan.shp&quot;</span><span class="p">)</span>
+<span class="n">sf</span> <span class="o">=</span> <span class="n">shp</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="s2">&quot;Users/../Michigan.shp&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 
@@ -635,7 +640,7 @@ the objective with this code sample is to illustrate some details that is involv
  <span class="kn">import</span> <span class="nn">random</span>
 
 
- <span class="n">sf</span> <span class="o">=</span> <span class="n">shp</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="s2">&quot;/Users/hsemple/Desktop/Lab6_Shapefiles/school_districts.shp&quot;</span><span class="p">)</span>
+ <span class="n">sf</span> <span class="o">=</span> <span class="n">shp</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="s2">&quot;/Users/.../school_districts.shp&quot;</span><span class="p">)</span>
  <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 
  <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
@@ -670,7 +675,7 @@ the objective with this code sample is to illustrate some details that is involv
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 
-<span class="n">earthquakes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/hsemple/Desktop/earthquakes.csv&#39;</span><span class="p">)</span>
+<span class="n">earthquakes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/.../earthquakes.csv&#39;</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="n">earthquakes</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 
 
@@ -722,7 +727,7 @@ the objective with this code sample is to illustrate some details that is involv
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1">#Open raster and read number of rows, columns and bands</span>
-<span class="n">ds</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;/Users/hsemple/Downloads/Wayne_DEM/county/wayne/topography/dem&quot;</span><span class="p">)</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;/Users/.../topography/dem&quot;</span><span class="p">)</span>
 
 <span class="n">band1</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
@@ -736,32 +741,41 @@ the objective with this code sample is to illustrate some details that is involv
 <div class="line"><br /></div>
 </div>
 <p>In this example, we introduce the geotransform function. We also introduce a way to display the map’s legend.</p>
-<p>import gdal
-import matplotlib.pyplot as plt
-import matplotlib.colors as colors</p>
-<p>#Set directory
-ds = gdal.Open(‘/Users/hsemple/Downloads/Wayne_DEM/county/wayne/topography/dem’)
-if ds is None:</p>
-<blockquote>
-<div><p>print (‘Could not open file’)
-sys.exit(1)</p>
-</div></blockquote>
-<p>band1 = ds.GetRasterBand(1)
-no_data = band1.GetNoDataValue()
-raster_array = band1.ReadAsArray()</p>
-<p>ulx,xres,xskew,uly,yskew,yres = ds.GetGeoTransform()
-lrx = ulx + (ds.RasterXSize * xres)
-lry = uly + (ds.RasterYSize * yres)
-print (ulx,lrx,lry,uly)</p>
-<p>fig, ax = plt.subplots(figsize=(8, 5))</p>
-<p>#Array contains many no data values, therefore normalize legend from 0 to 1.</p>
-<p>norm = colors.Normalize(vmin = 0, vmax = raster_array.max())</p>
-<p>cmap = plt.get_cmap(“gist_earth”)</p>
-<p>img = plt.imshow(raster_array, cmap, norm, extent=(ulx, lrx,lry,uly)) # Get the plot renderer object.</p>
-<p>cbar = plt.colorbar(img,shrink=0.75) #Associate the color bar with the plot renderer and axes objects.</p>
-<p>cbar.set_label(‘Meters’)</p>
-<p>plt.savefig(‘dem_plot.png’, dpi=300, bbox_inches=’tight’)
-plt.show()</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gdal</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">colors</span>
+
+<span class="c1">#Set directory</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s1">&#39;/Users/.../topography/dem&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">ds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Could not open file&#39;</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">band1</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">no_data</span> <span class="o">=</span> <span class="n">band1</span><span class="o">.</span><span class="n">GetNoDataValue</span><span class="p">()</span>
+<span class="n">raster_array</span> <span class="o">=</span> <span class="n">band1</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span>
+
+
+<span class="n">ulx</span><span class="p">,</span><span class="n">xres</span><span class="p">,</span><span class="n">xskew</span><span class="p">,</span><span class="n">uly</span><span class="p">,</span><span class="n">yskew</span><span class="p">,</span><span class="n">yres</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">GetGeoTransform</span><span class="p">()</span>
+<span class="n">lrx</span> <span class="o">=</span> <span class="n">ulx</span> <span class="o">+</span> <span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">RasterXSize</span> <span class="o">*</span> <span class="n">xres</span><span class="p">)</span>
+<span class="n">lry</span> <span class="o">=</span> <span class="n">uly</span> <span class="o">+</span> <span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">RasterYSize</span> <span class="o">*</span> <span class="n">yres</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">ulx</span><span class="p">,</span><span class="n">lrx</span><span class="p">,</span><span class="n">lry</span><span class="p">,</span><span class="n">uly</span><span class="p">)</span>
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1">#Array contains many no data values, therefore normalize legend from 0 to 1.</span>
+<span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="n">raster_array</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;gist_earth&quot;</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">raster_array</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="n">ulx</span><span class="p">,</span> <span class="n">lrx</span><span class="p">,</span><span class="n">lry</span><span class="p">,</span><span class="n">uly</span><span class="p">))</span> <span class="c1"># Get the plot renderer object.</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">shrink</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span> <span class="c1">#Associate the color bar with the plot renderer and axes objects.</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Meters&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;dem_plot.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -771,15 +785,13 @@ plt.show()</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rasterio</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
 
-<span class="n">src</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Downloads/Wayne_DEM/county/wayne/topography/dem&quot;</span><span class="p">)</span>
+<span class="n">src</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/Users/.../topography/dem&quot;</span><span class="p">)</span>
 
 <span class="c1"># Get the bounding box coordinates of the raster</span>
 <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">src</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">src</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">src</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">src</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
 
-
 <span class="c1">#Convert the raster into an array</span>
 <span class="n">src_array</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">pyplot</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
@@ -838,9 +850,9 @@ plt.show()</p>
 
 
 <span class="c1">#Image-2019</span>
-<span class="n">band5</span> <span class="o">=</span> <span class="s2">&quot;/Users/hsemple/Downloads/Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B5.TIF&quot;</span>
-<span class="n">band4</span> <span class="o">=</span> <span class="s2">&quot;/Users/hsemple/Downloads/Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B4.TIF&quot;</span>
-<span class="n">band3</span> <span class="o">=</span> <span class="s2">&quot;/Users/hsemple/Downloads/Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B3.TIF&quot;</span>
+<span class="n">band5</span> <span class="o">=</span> <span class="s2">&quot;/Users/.../Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B5.TIF&quot;</span>
+<span class="n">band4</span> <span class="o">=</span> <span class="s2">&quot;/Users/.../Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B4.TIF&quot;</span>
+<span class="n">band3</span> <span class="o">=</span> <span class="s2">&quot;/Users/.../Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B3.TIF&quot;</span>
 
 
 <span class="c1">#Open the Landsat image bands with GDAL</span>
@@ -876,7 +888,7 @@ plt.show()</p>
 <p>Rasterio has a show( ) method for displaying rasters. However, the library can also use pyplot’s imshow method to display the data. The example below uses the show method.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rasterio</span>
 <span class="kn">from</span> <span class="nn">rasterio.plot</span> <span class="kn">import</span> <span class="n">show</span>
-<span class="n">src</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/Users/semple/Desktop/Detroit.png&quot;</span><span class="p">)</span>
+<span class="n">src</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/Users/.../Detroit.png&quot;</span><span class="p">)</span>
 
 <span class="n">show</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
 </pre></div>

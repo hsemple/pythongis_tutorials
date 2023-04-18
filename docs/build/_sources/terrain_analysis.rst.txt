@@ -15,7 +15,7 @@ There are many python libraries that are available for terrain analysis.  Below,
 Displaying DEM
 ----------------
 
-Terrain analysis starts with displaying digital elevation models.  We have touched on this topic before.  Below, a DEM is displayed with the RichDEM library.  
+Terrain analysis starts with displaying digital elevation models.  We have touched on this topic before.  Below, a DEM of Stowe, VT is displayed with the RichDEM library.  
 
 .. code-block:: python
 
@@ -39,7 +39,7 @@ Terrain analysis starts with displaying digital elevation models.  We have touch
 Generating Hillshades
 ----------------------
 
-Hillshades are used in terrain analysis to make elevation data appear more 3-Dimensional and thus visually appealing. Hillshades are also often used as an underlay to make other kinds of data more visually interesting.
+Hillshades are used in terrain analysis to give elevation data a 3-dimensional appearance and thus make topography easier to visualize. Hillshades are also used as underlays to make other kinds of data more visually interesting.
 
 
 |
@@ -139,7 +139,8 @@ https://pro.arcgis.com/en/pro-app/latest/arcpy/image-analyst/hillshade.htm
 
 |
 
-Generate Hillshade with Earthpy
+
+**Generating Hillshade with Earthpy**
 
 .. code-block:: python
 
@@ -171,6 +172,10 @@ For information in earthpy, see https://earthpy.readthedocs.io/en/latest/gallery
 
 |
 
+
+**Elevation Layer Draped on Hillshade using Earthpy and Matplotlib**
+
+In this example, both the elevation layer and the hillshade layer are displayed in a single figure and ax object.
 
 .. code-block:: python
 
@@ -207,6 +212,14 @@ For information in earthpy, see https://earthpy.readthedocs.io/en/latest/gallery
 
 
 	plt.show()
+
+
+
+.. image:: img/stowe_elevation_hillshade.png
+   :alt: Elevation Layer Draped on Hillshade
+
+
+
 
 
 |
@@ -264,8 +277,13 @@ The two scripts below show how to calculate slope using ArcPy.
    # Save the output
    outSlope.save("C:/Washtenaw/county/outslope02")
 
- 
- |
+
+
+
+
+
+|
+
 
 
 **Generate Slope using the RichDem Library**
@@ -275,38 +293,31 @@ First, install the RichDEM library. run the sample script below.
 
 .. code-block:: python
 
-   from osgeo import gdal
-   import matplotlib.pyplot as plt
-   import numpy as np
-   import os
-   import matplotlib
-   import elevation
-   import richdem as rd
+	import matplotlib.pyplot as plt
+	import richdem as rd
 
 
-   #Open raster and read number of rows, columns, bands
-   dataset = gdal.Open("C:/Users/Hugh/Desktop/N47E010.hgt")
-   cols = dataset.RasterXSize
-   rows = dataset.RasterYSize
-   allBands = dataset.RasterCount
-   band = dataset.GetRasterBand(1)
+	#Load Raster
+	stowe_dem = rd.LoadGDAL(r'/Users/hsemple/Downloads/DEM_Stowe/Stowe_DEM.tif')
 
-   elev = band.ReadAsArray(0,0,cols,rows).astype(np.int)
-
-   slope = rd.TerrainAttribute(elev, attrib='slope_riserun')
-   rd.rdShow(slope, axes=False, cmap='magma', figsize=(8, 5.5))
-   plt.show()
+	#Perform Slope Calculation
+	slope = rd.TerrainAttribute(stowe_dem, attrib='slope_riserun')
 
 
-   plt.figure(figsize = (10,10))
-   ax = plt.imshow(elev)
+	#Display slope map
+	rd.rdShow(slope, axes=False, cmap='jet', figsize=(10, 6))
 
-   # Make a legend
-   cbar = plt.colorbar(ax, fraction=0.046, pad=0.04)
-   plt.show()
+
+
+.. image:: img/stowe_rich_dem_slope.png
+   :alt: Slope Map
 
 
 |
+
+
+
+
 
 
 **Generate Slope using the Rasterio Library**
@@ -425,9 +436,11 @@ The two scripts below show how to calculate curvature using ArcPy.
 
 
 
+
 |
 
- 2. Curvature Example 2
+
+2. Curvature Example 2
 
 This example calculates the curvature of a given slope. Use in Idle or Python Notebook
 

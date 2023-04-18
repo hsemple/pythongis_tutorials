@@ -158,8 +158,8 @@ A second way second way to open a file is to use the "with" statement.  The with
 
 |
 
-Opening a csv file using Basic Python Statements
--------------------------------------------------
+Opening a csv File using Python's Standard Library
+----------------------------------------------------
 
 Let's open a csv data file using some basic Python statements. First, we will let Python read the file and create a file object. Next, we will split the file contents into inidividual columns, and then store the column data in variables. This is a long-winded way of displaying csv files, but 
 the objective with this code sample is to illustrate some details that is involved in opening these files.  For regular work, we use libraries such as Pandas which it much easier to display the csv files. Pandas will be discussed shortly.
@@ -216,7 +216,7 @@ b. `Python Zip Function <https://www.programiz.com/python-programming/methods/bu
 |
 
 
-**Performing Calculations and Making a Graph**
+**Performing Calculations and Making a Graph using Python's Standard Library**
 
 
 .. code-block:: python
@@ -436,7 +436,7 @@ To plot the Depth and Magnitude Data as a scatterplot, write:
 
 	import matplotlib.pyplot as plt
 	import pandas as pd
-	df = pd.read_csv("../earthquakes.csv")
+	df = pd.read_csv("/Users/.../earthquakes.csv")
 
 	df.plot(kind='scatter', x='depth',y='magnitude', color='red',figsize=(6, 8))
 	plt.show()
@@ -464,7 +464,7 @@ Once we are done with data analysis, we can also write to a file, as shown below
 
 .. code-block:: python
 
-	with open("C:/Users/student/Desktop/john.txt", "w") as f:
+	with open("C:/Users/.../john.txt", "w") as f:
 	    f.write('Hello \n')
 	    f.write('Hello \n')
 	    f.write('Hello \n')
@@ -482,7 +482,7 @@ Reading a Data file into Python, splitting its contents by columns, and storing 
 
 .. code-block:: python
  
-	infile = open("../earthquakes.csv, 'r') 
+	infile = open("C:/Users/.../earthquakes.csv, 'r') 
 	lines = infile.readlines() 
 	newfile=open("../newfile.txt",mode="a+",encoding="utf-8")
 
@@ -520,15 +520,21 @@ Reading a Data file into Python, splitting its contents by columns, and storing 
 Plotting Shapefiles
 --------------------
 
+There are many libraries available for plotting shapefiles. Such libraries include Geopandas, Shapely, Fiona, OGR, and descartes. Altogether, one of the main contributions of these libraries is that we no longer have to rely on GIS software to view shapefiles and their attribute data. This can be done easily with Python. 
+
+Among the various libraries, Geopandas is perhaps the most widely used for plotting shapefiles as it only requires a few lines of code to display the shapefile. Also, attribute tables can be easily manipulated as a panda/geopanda dataframes.  
+
+The other libraries are also important depending on the task that you would like to perform.  Since geopandas hides almost all its implementation, you will find that studying the code of other libaries gives you a clearer picture of how to handle shapefiles from a Python perspective. 
+
+
+|
 
 **Displaying Shapefiles using Geopandas**
 
 
-A large part of geospatial visualization is made possible using libraries such as Geopandas, Shapely, matplotlib, GDAL, OGR, and descartes.  Geopandas is perhaps one of the most popular libraries for plotting shapefiles. This because it only requires a few lines of code to plot a shapefile. I strongly recommend using Geopandas to display your shapefiles.
+To use Geopandas, first, download and install the `library <'https://geopandas.org/en/stable/getting_started/install.html'>`_.  Afterwards, import the library and use it in your code.  
 
-To use Geopandas, first, download and install the library to your Python installation.  Afterwards, import the library and use it in your code.  
-
-As an example, run the code below in your favorite development environment to load a shapefile into Python using Geopandas.  Note that the code draws the shapefile with a single color because no specific column is being plotted.
+As an example, run the code below in your favorite development environment.  Note that the code draws the shapefile with a single color because no specific column is being plotted.
 
 
 .. code-block:: python
@@ -537,7 +543,7 @@ As an example, run the code below in your favorite development environment to lo
    import geopandas as gpd
    import matplotlib.pyplot as plt
 
-   geo_df = gpd.read_file ("../Michigan.shp")
+   geo_df = gpd.read_file ("/Users/../Michigan.shp")
    geo_df.plot()
 
 
@@ -556,7 +562,7 @@ To view the attribute table of a shapefile, wit the Geopandas library,  use the 
 
    import geopandas
    import matplotlib.pyplot as plt
-   gdf = geopandas("../Michigan.shp")
+   gdf = geopandas("/Users/../Michigan.shp")
 
    #Show data in the attribute table
    print(gdf.head())
@@ -604,7 +610,7 @@ Often in GIS, we are interested in creating graduated color thematic maps based 
    plt.show()
 
    #Save the map
-   f.savefig("/Users/student/Downloads/Michigan_Counties/map_export.png", dpi=300)
+   f.savefig("/Users/.../map_export.png", dpi=300)
 
 
 .. image:: img/michigan.png
@@ -614,7 +620,9 @@ Often in GIS, we are interested in creating graduated color thematic maps based 
 See the `Geopandas User Guide <https://geopandas.org/en/stable/docs/user_guide/mapping.html>`_ for more information.
 
 
+
 |
+
 
 **Displaying a Shapefile Using PyShp**
 
@@ -626,11 +634,9 @@ In a shapefile, a record with one polygon will have one part, but this will show
 
 A points collection refers to the list of points associated with a shape or feature. When working with points collection, be aware that the x-coordinates have an index of [0] while the y-coordinates will have an index value of [1].  This allows us to retrieve the x and y coordinates as separate lists.
 
-
 The illustration below shows how we visualize the relationships between a parts collection and a points collection.  The upper section of the illustration shows the polygons associated with a single record while the lower section shows the part and points collection associated with the polygons.  Since there are two polygons associated with the record, the parts collection for that record is 1 because the count starts from zero.
 
 The values in the squares in the parts collection represent index numbers that keep track of the starting coordinates for each part. Thus, the first part has coordinates that go from from p1 to p6. The second part starts from index value 6, and has coordinates that go from p7 to p11.
-
 
 
 .. image:: img/point_parts_collection.png
@@ -645,7 +651,7 @@ Using Pyshp we can experiment with displaying a shapefile using only its points 
 
    import matplotlib.pyplot as plt 
    import shapefile 
-   sf = shapefile.Reader("../Michigan.shp")
+   sf = shapefile.Reader("Users/../Michigan.shp")
 
    plt.figure(figsize=(7,8)) 
    for each_rec in sf.shapeRecords(): 
@@ -667,7 +673,7 @@ The code below plots a Michigan shapefile using both the parts and points collec
 	import shapefile as shp
 	import matplotlib.pyplot as plt
 
-	sf = shp.Reader("../Michigan.shp")
+	sf = shp.Reader("Users/../Michigan.shp")
 
 	plt.figure(figsize = (7,8))
 
@@ -735,7 +741,7 @@ In this example, the code above has been modified to display the polygons in the
    import random
 
 
-   sf = shp.Reader("/Users/hsemple/Desktop/Lab6_Shapefiles/school_districts.shp")
+   sf = shp.Reader("/Users/.../school_districts.shp")
    fig = plt.figure()
 
    ax = fig.gca()
@@ -781,7 +787,7 @@ In this example, the code above has been modified to display the polygons in the
    import matplotlib.pyplot as plt
 
 
-   earthquakes = pd.read_csv('/Users/hsemple/Desktop/earthquakes.csv')
+   earthquakes = pd.read_csv('/Users/.../earthquakes.csv')
    print (earthquakes.head())
 
 
@@ -854,7 +860,7 @@ One way to display a raster is to open the raster file using the gdal library, t
    import matplotlib.pyplot as plt
 
    #Open raster and read number of rows, columns and bands
-   ds = gdal.Open("/Users/hsemple/Downloads/Wayne_DEM/county/wayne/topography/dem")
+   ds = gdal.Open("/Users/.../topography/dem")
 
    band1 = ds.GetRasterBand(1)
 
@@ -873,43 +879,42 @@ One way to display a raster is to open the raster file using the gdal library, t
 
 In this example, we introduce the geotransform function. We also introduce a way to display the map's legend.
 
-import gdal
-import matplotlib.pyplot as plt
-import matplotlib.colors as colors
 
-#Set directory
-ds = gdal.Open('/Users/hsemple/Downloads/Wayne_DEM/county/wayne/topography/dem')
-if ds is None:
-    print ('Could not open file')
-    sys.exit(1)
+.. code-block:: python
 
-band1 = ds.GetRasterBand(1)
-no_data = band1.GetNoDataValue()
-raster_array = band1.ReadAsArray()
+	import gdal
+	import matplotlib.pyplot as plt
+	import matplotlib.colors as colors
 
+	#Set directory
+	ds = gdal.Open('/Users/.../topography/dem')
+	if ds is None:
+	    print ('Could not open file')
+	    sys.exit(1)
 
-ulx,xres,xskew,uly,yskew,yres = ds.GetGeoTransform()
-lrx = ulx + (ds.RasterXSize * xres)
-lry = uly + (ds.RasterYSize * yres)
-print (ulx,lrx,lry,uly)
+	band1 = ds.GetRasterBand(1)
+	no_data = band1.GetNoDataValue()
+	raster_array = band1.ReadAsArray()
 
 
-fig, ax = plt.subplots(figsize=(8, 5))
+	ulx,xres,xskew,uly,yskew,yres = ds.GetGeoTransform()
+	lrx = ulx + (ds.RasterXSize * xres)
+	lry = uly + (ds.RasterYSize * yres)
+	print (ulx,lrx,lry,uly)
 
-#Array contains many no data values, therefore normalize legend from 0 to 1.
 
-norm = colors.Normalize(vmin = 0, vmax = raster_array.max())
+	fig, ax = plt.subplots(figsize=(8, 5))
 
-cmap = plt.get_cmap("gist_earth")
+	#Array contains many no data values, therefore normalize legend from 0 to 1.
+	norm = colors.Normalize(vmin = 0, vmax = raster_array.max())
 
-img = plt.imshow(raster_array, cmap, norm, extent=(ulx, lrx,lry,uly)) # Get the plot renderer object.
+	cmap = plt.get_cmap("gist_earth")
+	img = plt.imshow(raster_array, cmap, norm, extent=(ulx, lrx,lry,uly)) # Get the plot renderer object.
+	cbar = plt.colorbar(img,shrink=0.75) #Associate the color bar with the plot renderer and axes objects.
+	cbar.set_label('Meters')
 
-cbar = plt.colorbar(img,shrink=0.75) #Associate the color bar with the plot renderer and axes objects.
-
-cbar.set_label('Meters')
-
-plt.savefig('dem_plot.png', dpi=300, bbox_inches='tight')
-plt.show()
+	plt.savefig('dem_plot.png', dpi=300, bbox_inches='tight')
+	plt.show()
 
 
 |
@@ -927,16 +932,14 @@ Rasterio has a show( ) method for displaying rasters. However, the library also 
    import rasterio
    from matplotlib import pyplot
 
-   src = rasterio.open("/Users/student/Downloads/Wayne_DEM/county/wayne/topography/dem")
+   src = rasterio.open("/Users/.../topography/dem")
 
    # Get the bounding box coordinates of the raster
    extent=[src.bounds[0], src.bounds[2], src.bounds[1], src.bounds[3]] 
-
    
    #Convert the raster into an array
    src_array = src.read(1)
 
-   
    fig, ax = pyplot.subplots(1, figsize=(8, 5))
 
    # Get the plot renderer object.
@@ -1013,9 +1016,9 @@ Rasterio has a show( ) method for displaying rasters. However, the library also 
 
    
    #Image-2019
-   band5 = "/Users/hsemple/Downloads/Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B5.TIF"
-   band4 = "/Users/hsemple/Downloads/Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B4.TIF"
-   band3 = "/Users/hsemple/Downloads/Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B3.TIF"
+   band5 = "/Users/.../Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B5.TIF"
+   band4 = "/Users/.../Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B4.TIF"
+   band3 = "/Users/.../Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B3.TIF"
  
 
    #Open the Landsat image bands with GDAL
@@ -1058,7 +1061,7 @@ Rasterio has a show( ) method for displaying rasters. However, the library can a
 
   import rasterio
   from rasterio.plot import show
-  src = rasterio.open("/Users/semple/Desktop/Detroit.png")
+  src = rasterio.open("/Users/.../Detroit.png")
 
   show(src)
 
