@@ -603,9 +603,9 @@ Often in GIS, we are interested in creating graduated color thematic maps based 
    #Display the shapefile
    f, ax = plt.subplots(1, figsize=(10, 13))
 
-   gdf.plot(ax = ax, column= 'HISPANIC', cmap='OrRd' , scheme='fisher_jenks', legend=True, edgecolor='black')
+   gdf.plot(ax = ax, column= 'HISPANIC', cmap='OrRd' , scheme='fisher_jenks', legend=True, edgecolor='black', legend_kwds={'loc': 'lower left'})
 
-   ax.set_title("Moble Homes, Michigan", fontdict={'fontsize': '20', 'fontweight' : '3'})
+   ax.set_title("Mobile Homes, Michigan", fontdict={'fontsize': '14', 'fontweight' : '1'})
 
    plt.show()
 
@@ -613,7 +613,7 @@ Often in GIS, we are interested in creating graduated color thematic maps based 
    f.savefig("/Users/.../map_export.png", dpi=300)
 
 
-.. image:: img/michigan.png
+.. image:: img/michigan_mobile_homes.png
    :alt: Thematic Map
 
 
@@ -624,15 +624,54 @@ See the `Geopandas User Guide <https://geopandas.org/en/stable/docs/user_guide/m
 |
 
 
+**Plotting World Population Using Data Provided by Geopandas**
+
+.. code-block:: python
+
+
+	import geopandas as gpd
+
+	df_world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
+
+	print (df_world.head())
+
+	fig, ax = plt.subplots(1, 1, figsize=(16, 12))
+
+	df_world.plot(column='pop_est', cmap='OrRd', ax = ax, ec="black",
+	                     legend=True, legend_kwds={"label": "Population", "orientation":"horizontal"})
+	ax.set_title("Countries of the World by Population")
+
+
+
+.. image:: img/world_population.png
+   :alt: Thematic Map
+
+
+
+
+*Notes:*
+
+* ax is the axes on which to draw the map
+* cmap is the name of the `colormap <https://matplotlib.org/stable/tutorials/colors/colormaps.html>`_
+* legend & legend_kwds control the display of the legend.
+
+
+
+
+|
+
+
+
+
 **Displaying a Shapefile Using PyShp**
 
 Pyshp is an open source library that can be used to display a shapefile using pure Python. The project is described at this `website <"https://pypi.org/project/pyshp/">`_.  PyShp code for displaying a shapefile is lengthier than the one used by geopandas, but it gives us an opportunity to learn about multipart polygons and polylines.   Please note that after installing the "Pyshp" library, it is imported into Python using the shapefile keyword, e.g., "import shapefile".   
 
-Prior to running the code,it is useful to know that shapefiles have a 'parts collection' and a 'points collection'.  A parts collection keep is used tp keep track of the number of polygons or line segments associated with each record.  This is required because in many situations, several polygons or polylines must be linked to one record in the attribute table.  As an example, since Hawaii is made up of several islands, multiple polygons are needed to represent the state, however in the attribute table, only a single record is used to represent the state. 
+Prior to running the code,it is useful to know that shapefiles have a 'parts collection' and a 'points collection'.  A parts collection is used to keep track of the number of polygons or line segments associated with each record.  This is required because in many situations, more than one polygons or polylines must be linked to a record in the attribute table.  As an example, since Hawaii is made up of several islands, multiple polygons are needed to represent each island in the state. However in the attribute table, only a single record is used to represent the state. 
 
-In a shapefile, a record with one polygon will have one part, but this will show in the parts collection as 0.  This is because the counting system begins with zero. 
+In a shapefile, a record with one polygon will have one part, but this will show in the parts collection as 0 because the counting system begins with zero. 
 
-A points collection refers to the list of points associated with a shape or feature. When working with points collection, be aware that the x-coordinates have an index of [0] while the y-coordinates will have an index value of [1].  This allows us to retrieve the x and y coordinates as separate lists.
+A points collection refers to the list of points associated with a shape or feature. When working with points collection, be aware that the x-coordinates have an index of [0] while the y-coordinates will have an index value of [1].  The index values allow us to retrieve the x and y coordinates as separate lists.
 
 The illustration below shows how we visualize the relationships between a parts collection and a points collection.  The upper section of the illustration shows the polygons associated with a single record while the lower section shows the part and points collection associated with the polygons.  Since there are two polygons associated with the record, the parts collection for that record is 1 because the count starts from zero.
 
@@ -700,7 +739,7 @@ The code below plots a Michigan shapefile using both the parts and points collec
 
 **Displaying Polygon or multi-polygon Shapefiles using Descartes**
 
-The Descartes library is another alternative for displaying shapefiles using Python.  Descartes uses geometric objects as input for displaying `matplotlib paths and patches as lines and polygons <https://matplotlib.org/stable/api/pyplot_summary.html>`_.   Experiment with the code below to learn about _geo_interfaces_ from the shapefile library,  add_patch() from matplotlib, and PolyPatch () from Descartes.
+The Descartes library is another alternative for displaying shapefiles using Python.  Descartes uses geometric objects as input for displaying `matplotlib paths and patches as lines and polygons <https://matplotlib.org/stable/api/pyplot_summary.html>`_.   Experiment with the code below to learn about `geo_interfaces <https://gist.github.com/sgillies/2217756>`_ from the shapefile library,  add_patch() from matplotlib, and PolyPatch () from Descartes.
 
 
 .. code-block:: python

@@ -91,6 +91,8 @@ https://pro.arcgis.com/en/pro-app/latest/arcpy/image-analyst/hillshade.htm
 
 **Generate Hillshade  using GDAL**
 
+The code sample below shows the details of computing hillshade. 
+
 .. code-block:: python
 
 	from osgeo import gdal
@@ -142,6 +144,8 @@ https://pro.arcgis.com/en/pro-app/latest/arcpy/image-analyst/hillshade.htm
 
 **Generating Hillshade with Earthpy**
 
+
+
 .. code-block:: python
 
 	import matplotlib.pyplot as plt
@@ -150,7 +154,7 @@ https://pro.arcgis.com/en/pro-app/latest/arcpy/image-analyst/hillshade.htm
 	import earthpy.plot as ep
 
 
-	with rasterio.open('/Users/hsemple/Downloads/Wayne_DEM/county/wayne/topography/dem') as src:
+	with rasterio.open('/Users/.../topography/dem') as src:
 	    elev = src.read(1)
 	    
 	    
@@ -221,9 +225,7 @@ In this example, both the elevation layer and the hillshade layer are displayed 
 
 
 
-
 |
-
 
 
 
@@ -245,7 +247,7 @@ The two scripts below show how to calculate slope using ArcPy.
    import arcpy
    from arcpy import env
    from arcpy.sa import *
-   env.workspace = "C:/Washtenaw/county/washtenaw/topography" # Set your own path
+   env.workspace = "C:/.../topography" 
    outSlope = Slope("dem", "DEGREE", 0.3043)  # Slope Tool
    outSlope.save("C:/Washtenaw/county/outslope01")
 
@@ -298,7 +300,7 @@ First, install the RichDEM library. run the sample script below.
 
 
 	#Load Raster
-	stowe_dem = rd.LoadGDAL(r'/Users/hsemple/Downloads/DEM_Stowe/Stowe_DEM.tif')
+	stowe_dem = rd.LoadGDAL(r'/Users/.../Stowe_DEM.tif')
 
 	#Perform Slope Calculation
 	slope = rd.TerrainAttribute(stowe_dem, attrib='slope_riserun')
@@ -318,9 +320,7 @@ First, install the RichDEM library. run the sample script below.
 
 
 
-
-
-**Generate Slope using the Rasterio Library**
+**Generate Slope using GDAL**
 
 
 .. code-block:: python
@@ -383,7 +383,7 @@ The script below show how to generate an aspect map using ArcPy.
 
 
 
-**Generate Aspect Maps susing the RichDem Library**
+**Generate Aspect Maps Using the GDAL Library**
 
 
 
@@ -401,15 +401,41 @@ The script below show how to generate an aspect map using ArcPy.
 	              aspect = dataset.read(1)
 	              return aspect
 
-	aspect=calculate_aspect("/Users/student/Desktop/TestDEM.tif")
+	aspect=calculate_aspect("/Users/.../TestDEM.tif")
 
-	plt.imshow(slope, cmap='copper')
+	plt.imshow(aspect, cmap='copper')
 	plt.show()
 
 
 
 
 For more information, please see this website - https://richdem.readthedocs.io/en/latest/terrain_attributes.html
+
+
+|
+
+
+
+**Generate Aspect Maps Using the RichDEM Library**
+
+
+
+.. code-block:: python
+
+	import matplotlib.pyplot as plt
+	import richdem as rd
+
+	dem = rd.LoadGDAL('/Users/.../elevation')
+
+	aspect = rd.TerrainAttribute(dem, attrib='aspect')
+	rd.rdShow(aspect, axes=False, cmap='jet', figsize=(7, 5))
+	plt.show()
+
+
+
+
+.. image:: img/rich_dem_aspect.png
+   :alt: Aspect Map
 
 
 |
@@ -432,7 +458,7 @@ The two scripts below show how to calculate curvature using ArcPy.
 
 	from arcpy.ia import *
 	out_curvature_raster = Curvature("curvature_input.tif", "profile", 2)
-	out_curvature_raster.save("C:/arcpyExamples/outputs/curv_profile.tif")
+	out_curvature_raster.save("C:/.../curvature.tif")
 
 
 
@@ -524,7 +550,7 @@ Watershed Delineation
 
 *Watershed Delineation with pysheds**
 
-I came across a library called pysheds that can be used for watershed delineation. You can learn more about the library at this site. Simple and fast watershed delineation in python.
+I came across a library called pysheds that can be used for watershed delineation. Tested sample code is presented below.
 
 
 .. code-block:: python
@@ -532,8 +558,8 @@ I came across a library called pysheds that can be used for watershed delineatio
 
 	from pysheds.grid import Grid
 
-	grid = Grid.from_raster('/Users/hsemple/Desktop/elevation.tiff')
-	dem = grid.read_raster('/Users/hsemple/Desktop/elevation.tiff')
+	grid = Grid.from_raster('/Users/.../elevation.tiff')
+	dem = grid.read_raster('/Users/.../elevation.tiff')
 
 
 	# Fill Sinks
@@ -594,13 +620,10 @@ I came across a library called pysheds that can be used for watershed delineatio
 
 	
 
-	http://mattbartos.com/pysheds/
+	
 
+Source: http://mattbartos.com/pysheds/
 
-
-
-
-http://mattbartos.com/pysheds/
 
 
 
@@ -608,8 +631,249 @@ http://mattbartos.com/pysheds/
 |
 
 
+
+
+Working with GDAL Command Line Utilities
+-------------------------------------------
+
+
+**Getting Information about a Raster**
+
+
+Let's try the gdalifo command which can be executed from the command prompt. Gdalifo returns a lengthy list of details about the raster.
+
+
+.. code-block:: python
+
+	>>> $ gdalinfo /Users/.../WhiteadderDEM.tif
+
+
+	Driver: GTiff/GeoTIFF
+	Files: /Users/student/Downloads/WhiteadderDEM.tif
+	Size is 486, 645
+	Coordinate System is:
+	PROJCRS["Transverse Mercator",
+	    BASEGEOGCRS["OSGB 1936",
+	        DATUM["OSGB 1936",
+	            ELLIPSOID["Airy 1830",6377563.396,299.324964600004,
+	                LENGTHUNIT["metre",1]]],
+	        PRIMEM["Greenwich",0,
+	            ANGLEUNIT["degree",0.0174532925199433]],
+	        ID["EPSG",4277]],
+	    CONVERSION["unnamed",
+	        METHOD["Transverse Mercator",
+	            ID["EPSG",9807]],
+	        PARAMETER["Latitude of natural origin",49,
+	            ANGLEUNIT["degree",0.0174532925199433],
+	            ID["EPSG",8801]],
+	        PARAMETER["Longitude of natural origin",-2,
+	            ANGLEUNIT["degree",0.0174532925199433],
+	            ID["EPSG",8802]],
+	        PARAMETER["Scale factor at natural origin",0.999601272,
+	            SCALEUNIT["unity",1],
+	            ID["EPSG",8805]],
+	        PARAMETER["False easting",400000,
+	            LENGTHUNIT["meters",1],
+	            ID["EPSG",8806]],
+	        PARAMETER["False northing",-100000,
+	            LENGTHUNIT["meters",1],
+	            ID["EPSG",8807]]],
+	    CS[Cartesian,2],
+	        AXIS["easting",east,
+	            ORDER[1],
+	            LENGTHUNIT["meters",1]],
+	        AXIS["northing",north,
+	            ORDER[2],
+	            LENGTHUNIT["meters",1]]]
+	Data axis to CRS axis mapping: 1,2
+	Origin = (364705.000000000000000,663485.000000000000000)
+	Pixel Size = (5.000000000000000,-5.000000000000000)
+	Metadata:
+	  AREA_OR_POINT=Area
+	  TIFFTAG_RESOLUTIONUNIT=1 (unitless)
+	  TIFFTAG_SOFTWARE=IMAGINE TIFF Support
+	Copyright 1991 - 1999 by ERDAS, Inc. All Rights Reserved
+	@(#)$RCSfile: etif.c $ $Revision: 1.10.1.9.1.9.2.11 $ $Date: 2004/09/15 18:42:01EDT $
+	  TIFFTAG_XRESOLUTION=1
+	  TIFFTAG_YRESOLUTION=1
+	Image Structure Metadata:
+	  INTERLEAVE=BAND
+	Corner Coordinates:
+	Upper Left  (  364705.000,  663485.000) (  2d33'50.35"W, 55d51'47.82"N)
+	Lower Left  (  364705.000,  660260.000) (  2d33'48.84"W, 55d50' 3.50"N)
+	Upper Right (  367135.000,  663485.000) (  2d31'30.57"W, 55d51'48.44"N)
+	Lower Right (  367135.000,  660260.000) (  2d31'29.16"W, 55d50' 4.12"N)
+	Center      (  365920.000,  661872.500) (  2d32'39.73"W, 55d50'55.97"N)
+
+
+
+
+
+|
+
+
+**Converting Between Raster Formats**
+
+
+We can convert between raster file formats using the gdal_translate tool. Gdal_translate recognises many file formats. To set the file format, use the '-of' flag. An example of the syntax is shown below:
+
+
+.. code-block:: python
+
+   >>> $ gdal_translate -of ENVI  /Users/hsemple/Downloads/WhiteadderDEM.tif  /Users/hsemple/Downloads/WhiteadderDEM.bil
+
+|
+
+
+
+**Clipping Rasters using GDAL**
+
+Clipping rasters can be done quite easily using gdal. You can enter the bounding coordinates of the clipping extent or you can supply a raster or vector file as the extent.
+
+
+.. code-block:: python
+
+	>>> $ gdalwarp -te <x_min> <y_min> <x_max> <y_max> input.bil clipped_output.bil
+
+
+
+
+|
+
+
+**Merging Rasters using GDAL**
+
+If you have large DEMs you can merge them very quickly using GDAL 
+
+
+.. code-block:: python
+
+
+    >>> $ gdal_merge.py -o out.tif in1.tif in2.tif
+
+   
+    #The -o flag indicates the outfile. 
+
+
+
+|
+
+**Changing Raster Projections with Gdalwarp**
+
+We can change the underlying projections of rasters using the gdalwarp command.  The gdalwarp command will detect the projection of the source raster, so we do not have enter this value.   The '-t_srs' flag is used to assign the target coordinate system, which must be placed in quotes.  An example of the entire command is shown below:
+
+
+.. code-block:: python
+
+   >>> $ gdalwarp -t_srs '+proj=utm +zone=44 +datum=WGS84' projected.tif reprojected.tif
+
+
+
+See this link for more info: https://www.geos.ed.ac.uk/~smudd/TopoTutorials/html/tutorial_raster_conversion.html#converting-between-formats-using-gdal
+
+
+|
+
+
+
+**Compute Slope**
+
+
+.. code-block:: python
+
+   >>> $ gdaldem slope inputDem.tif  output_slope.tif
+
+
+|
+
+**Make a Colored Relief Map**
+
+First, run gdalinfo and get the minimum and maximum elevation of the DEM.  Next, use these values to make some elevation breaks and some corresponding RGB colors for each break. In the example below, the first number in each row represents the upper breakpoint for the color range while the next three values are RGB values.  In the example, echo takes everything between the quotations and places it into a file called color-relief.txt usng the > operator:
+
+
+
+| echo '0 0 0 0
+| 26 110 220 110
+| 51 240 250 160
+| 76 230 220 170
+| 101 220 220 220
+| 127 250 250 250' > color-relief.txt
+
+
+
+Once the color map file is completed, we can use it generate a colored relief, as shown in the example below:
+
+.. code-block:: python
+
+    >>> gdaldem color-relief -of PNG sf-dem.tif color-relief.txt sf-dem-coloredRelief.tif
+
+
+|
+
+
+For more information on how to work with GDAL cmmand line utilities, see this website - https://gdal.org/programs/gdaldem.html
+
+
+|
+
+
+
+Calling GDAL Commands from Python
+----------------------------------
+
+It is possible to call GDAL commands from Python and other scripting languages. This allows for easy iteration through geoprocessing tasks, or integration of geoprocessing steps into complex scripted workflows. 
+
+
+
+
+**Open a Raster with GDAL**
+
+We have already seen this structure in previous Python scripts that used the gdal library.
+
+
+.. code-block:: python
+
+	from osgeo import gdal
+	fn = r" /Users/student/Desktop/Stowe_Dataset/elevation"
+	ds = gdal.Open(fn) # 0 (default) read-only, 1 update
+	print(type(ds))
+
+
+
+|
+
+
+
+**Get Raster Properties**
+
+.. code-block:: python
+
+	fn_dem = r"..\data\input\USGS_one_meter_x64y486_ID_FEMAHQ_2018.tif"
+	fn_img = r"..\data\input\m_4311515_ne_11_1_20150908_20160104.jp2"
+	ds = gdal.Open(fn_dem) # 2 arguments: (file name, access type: 0 (default) read-only, 1 update)
+	
+	nrows = ds.RasterYSize
+	ncols = ds.RasterXSize
+	proj = ds.GetProjection()  # returns WKT definition
+	nbands = ds.RasterCount
+	geot = ds.GetGeoTransform()
+
+
+
+|
+
+
+
+
+
 Resources
 -----------
+
+
+https://joeyklee.github.io/broc-cli-geo/guide/XX_digital_elevation_models.html
+
+
+
 
 Building your own color map
 
@@ -617,5 +881,8 @@ Building your own color map
 
      from matplotlib.colors import LinearSegmentedColormap
      italy_colormap = LinearSegmentedColormap.from_list('italy', ['#008C45', '#0b914c', '#F4F5F0', '#cf2a32', '#CD212A'], N=value_range)
+
+
+
 
      

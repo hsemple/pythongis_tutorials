@@ -59,7 +59,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#aspect-mapping">10.4. Aspect Mapping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#curvature-maps">10.5. Curvature Maps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#watershed-delineation">10.6. Watershed Delineation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#resources">10.7. Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-gdal-command-line-utilities">10.7. Working with GDAL Command Line Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#calling-gdal-commands-from-python">10.8. Calling GDAL Commands from Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resources">10.9. Resources</a></li>
 </ul>
 </li>
 </ul>
@@ -155,6 +157,7 @@
 <div class="line"><br /></div>
 </div>
 <p><strong>Generate Hillshade  using GDAL</strong></p>
+<p>The code sample below shows the details of computing hillshade.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">gradient</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">pi</span>
@@ -204,7 +207,7 @@
 <span class="kn">import</span> <span class="nn">earthpy.plot</span> <span class="k">as</span> <span class="nn">ep</span>
 
 
-<span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/Users/hsemple/Downloads/Wayne_DEM/county/wayne/topography/dem&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+<span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/Users/.../topography/dem&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
     <span class="n">elev</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 
@@ -274,7 +277,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
 <span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="n">env</span>
 <span class="kn">from</span> <span class="nn">arcpy.sa</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/Washtenaw/county/washtenaw/topography&quot;</span> <span class="c1"># Set your own path</span>
+<span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/.../topography&quot;</span>
 <span class="n">outSlope</span> <span class="o">=</span> <span class="n">Slope</span><span class="p">(</span><span class="s2">&quot;dem&quot;</span><span class="p">,</span> <span class="s2">&quot;DEGREE&quot;</span><span class="p">,</span> <span class="mf">0.3043</span><span class="p">)</span>  <span class="c1"># Slope Tool</span>
 <span class="n">outSlope</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/Washtenaw/county/outslope01&quot;</span><span class="p">)</span>
 </pre></div>
@@ -315,7 +318,7 @@
 
 
 <span class="c1">#Load Raster</span>
-<span class="n">stowe_dem</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">LoadGDAL</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/Users/hsemple/Downloads/DEM_Stowe/Stowe_DEM.tif&#39;</span><span class="p">)</span>
+<span class="n">stowe_dem</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">LoadGDAL</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/Users/.../Stowe_DEM.tif&#39;</span><span class="p">)</span>
 
 <span class="c1">#Perform Slope Calculation</span>
 <span class="n">slope</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">TerrainAttribute</span><span class="p">(</span><span class="n">stowe_dem</span><span class="p">,</span> <span class="n">attrib</span><span class="o">=</span><span class="s1">&#39;slope_riserun&#39;</span><span class="p">)</span>
@@ -329,7 +332,7 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Generate Slope using the Rasterio Library</strong></p>
+<p><strong>Generate Slope using GDAL</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">rasterio</span>
@@ -380,7 +383,7 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Generate Aspect Maps susing the RichDem Library</strong></p>
+<p><strong>Generate Aspect Maps Using the GDAL Library</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">rasterio</span>
@@ -393,13 +396,28 @@
               <span class="n">aspect</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
               <span class="k">return</span> <span class="n">aspect</span>
 
-<span class="n">aspect</span><span class="o">=</span><span class="n">calculate_aspect</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/TestDEM.tif&quot;</span><span class="p">)</span>
+<span class="n">aspect</span><span class="o">=</span><span class="n">calculate_aspect</span><span class="p">(</span><span class="s2">&quot;/Users/.../TestDEM.tif&quot;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;copper&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">aspect</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;copper&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>For more information, please see this website - <a class="reference external" href="https://richdem.readthedocs.io/en/latest/terrain_attributes.html">https://richdem.readthedocs.io/en/latest/terrain_attributes.html</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Generate Aspect Maps Using the RichDEM Library</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">richdem</span> <span class="k">as</span> <span class="nn">rd</span>
+
+<span class="n">dem</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">LoadGDAL</span><span class="p">(</span><span class="s1">&#39;/Users/.../elevation&#39;</span><span class="p">)</span>
+
+<span class="n">aspect</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">TerrainAttribute</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">attrib</span><span class="o">=</span><span class="s1">&#39;aspect&#39;</span><span class="p">)</span>
+<span class="n">rd</span><span class="o">.</span><span class="n">rdShow</span><span class="p">(</span><span class="n">aspect</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="Aspect Map" src="_images/rich_dem_aspect.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -413,7 +431,7 @@
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arcpy.ia</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">out_curvature_raster</span> <span class="o">=</span> <span class="n">Curvature</span><span class="p">(</span><span class="s2">&quot;curvature_input.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;profile&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">out_curvature_raster</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/arcpyExamples/outputs/curv_profile.tif&quot;</span><span class="p">)</span>
+<span class="n">out_curvature_raster</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/.../curvature.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -486,11 +504,11 @@
 <section id="watershed-delineation">
 <h2><span class="section-number">10.6. </span>Watershed Delineation<a class="headerlink" href="#watershed-delineation" title="Permalink to this heading"></a></h2>
 <p><em>Watershed Delineation with pysheds*</em></p>
-<p>I came across a library called pysheds that can be used for watershed delineation. You can learn more about the library at this site. Simple and fast watershed delineation in python.</p>
+<p>I came across a library called pysheds that can be used for watershed delineation. Tested sample code is presented below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pysheds.grid</span> <span class="kn">import</span> <span class="n">Grid</span>
 
-<span class="n">grid</span> <span class="o">=</span> <span class="n">Grid</span><span class="o">.</span><span class="n">from_raster</span><span class="p">(</span><span class="s1">&#39;/Users/hsemple/Desktop/elevation.tiff&#39;</span><span class="p">)</span>
-<span class="n">dem</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">read_raster</span><span class="p">(</span><span class="s1">&#39;/Users/hsemple/Desktop/elevation.tiff&#39;</span><span class="p">)</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">Grid</span><span class="o">.</span><span class="n">from_raster</span><span class="p">(</span><span class="s1">&#39;/Users/.../elevation.tiff&#39;</span><span class="p">)</span>
+<span class="n">dem</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">read_raster</span><span class="p">(</span><span class="s1">&#39;/Users/.../elevation.tiff&#39;</span><span class="p">)</span>
 
 
 <span class="c1"># Fill Sinks</span>
@@ -548,19 +566,179 @@
 <span class="c1"># -------------------------------------------</span>
 <span class="n">dist</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">distance_to_outlet</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_snap</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_snap</span><span class="p">,</span> <span class="n">fdir</span><span class="o">=</span><span class="n">fdir</span><span class="p">,</span> <span class="n">dirmap</span><span class="o">=</span><span class="n">dirmap</span><span class="p">,</span>
                                <span class="n">xytype</span><span class="o">=</span><span class="s1">&#39;coordinate&#39;</span><span class="p">)</span>
-
-
-
-<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">mattbartos</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pysheds</span><span class="o">/</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="http://mattbartos.com/pysheds/">http://mattbartos.com/pysheds/</a></p>
+<p>Source: <a class="reference external" href="http://mattbartos.com/pysheds/">http://mattbartos.com/pysheds/</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="working-with-gdal-command-line-utilities">
+<h2><span class="section-number">10.7. </span>Working with GDAL Command Line Utilities<a class="headerlink" href="#working-with-gdal-command-line-utilities" title="Permalink to this heading"></a></h2>
+<p><strong>Getting Information about a Raster</strong></p>
+<p>Let’s try the gdalifo command which can be executed from the command prompt. Gdalifo returns a lengthy list of details about the raster.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdalinfo /Users/.../WhiteadderDEM.tif
+
+
+Driver: GTiff/GeoTIFF
+Files: /Users/student/Downloads/WhiteadderDEM.tif
+Size is 486, 645
+Coordinate System is:
+PROJCRS[&quot;Transverse Mercator&quot;,
+    BASEGEOGCRS[&quot;OSGB 1936&quot;,
+        DATUM[&quot;OSGB 1936&quot;,
+            ELLIPSOID[&quot;Airy 1830&quot;,6377563.396,299.324964600004,
+                LENGTHUNIT[&quot;metre&quot;,1]]],
+        PRIMEM[&quot;Greenwich&quot;,0,
+            ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+        ID[&quot;EPSG&quot;,4277]],
+    CONVERSION[&quot;unnamed&quot;,
+        METHOD[&quot;Transverse Mercator&quot;,
+            ID[&quot;EPSG&quot;,9807]],
+        PARAMETER[&quot;Latitude of natural origin&quot;,49,
+            ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+            ID[&quot;EPSG&quot;,8801]],
+        PARAMETER[&quot;Longitude of natural origin&quot;,-2,
+            ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+            ID[&quot;EPSG&quot;,8802]],
+        PARAMETER[&quot;Scale factor at natural origin&quot;,0.999601272,
+            SCALEUNIT[&quot;unity&quot;,1],
+            ID[&quot;EPSG&quot;,8805]],
+        PARAMETER[&quot;False easting&quot;,400000,
+            LENGTHUNIT[&quot;meters&quot;,1],
+            ID[&quot;EPSG&quot;,8806]],
+        PARAMETER[&quot;False northing&quot;,-100000,
+            LENGTHUNIT[&quot;meters&quot;,1],
+            ID[&quot;EPSG&quot;,8807]]],
+    CS[Cartesian,2],
+        AXIS[&quot;easting&quot;,east,
+            ORDER[1],
+            LENGTHUNIT[&quot;meters&quot;,1]],
+        AXIS[&quot;northing&quot;,north,
+            ORDER[2],
+            LENGTHUNIT[&quot;meters&quot;,1]]]
+Data axis to CRS axis mapping: 1,2
+Origin = (364705.000000000000000,663485.000000000000000)
+Pixel Size = (5.000000000000000,-5.000000000000000)
+Metadata:
+  AREA_OR_POINT=Area
+  TIFFTAG_RESOLUTIONUNIT=1 (unitless)
+  TIFFTAG_SOFTWARE=IMAGINE TIFF Support
+Copyright 1991 - 1999 by ERDAS, Inc. All Rights Reserved
+@(#)$RCSfile: etif.c $ $Revision: 1.10.1.9.1.9.2.11 $ $Date: 2004/09/15 18:42:01EDT $
+  TIFFTAG_XRESOLUTION=1
+  TIFFTAG_YRESOLUTION=1
+Image Structure Metadata:
+  INTERLEAVE=BAND
+Corner Coordinates:
+Upper Left  (  364705.000,  663485.000) (  2d33&#39;50.35&quot;W, 55d51&#39;47.82&quot;N)
+Lower Left  (  364705.000,  660260.000) (  2d33&#39;48.84&quot;W, 55d50&#39; 3.50&quot;N)
+Upper Right (  367135.000,  663485.000) (  2d31&#39;30.57&quot;W, 55d51&#39;48.44&quot;N)
+Lower Right (  367135.000,  660260.000) (  2d31&#39;29.16&quot;W, 55d50&#39; 4.12&quot;N)
+Center      (  365920.000,  661872.500) (  2d32&#39;39.73&quot;W, 55d50&#39;55.97&quot;N)
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Converting Between Raster Formats</strong></p>
+<p>We can convert between raster file formats using the gdal_translate tool. Gdal_translate recognises many file formats. To set the file format, use the ‘-of’ flag. An example of the syntax is shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdal_translate -of ENVI  /Users/hsemple/Downloads/WhiteadderDEM.tif  /Users/hsemple/Downloads/WhiteadderDEM.bil
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Clipping Rasters using GDAL</strong></p>
+<p>Clipping rasters can be done quite easily using gdal. You can enter the bounding coordinates of the clipping extent or you can supply a raster or vector file as the extent.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdalwarp -te &lt;x_min&gt; &lt;y_min&gt; &lt;x_max&gt; &lt;y_max&gt; input.bil clipped_output.bil
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Merging Rasters using GDAL</strong></p>
+<p>If you have large DEMs you can merge them very quickly using GDAL</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdal_merge.py -o out.tif in1.tif in2.tif
+
+
+#The -o flag indicates the outfile.
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Changing Raster Projections with Gdalwarp</strong></p>
+<p>We can change the underlying projections of rasters using the gdalwarp command.  The gdalwarp command will detect the projection of the source raster, so we do not have enter this value.   The ‘-t_srs’ flag is used to assign the target coordinate system, which must be placed in quotes.  An example of the entire command is shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdalwarp -t_srs &#39;+proj=utm +zone=44 +datum=WGS84&#39; projected.tif reprojected.tif
+</pre></div>
+</div>
+<p>See this link for more info: <a class="reference external" href="https://www.geos.ed.ac.uk/~smudd/TopoTutorials/html/tutorial_raster_conversion.html#converting-between-formats-using-gdal">https://www.geos.ed.ac.uk/~smudd/TopoTutorials/html/tutorial_raster_conversion.html#converting-between-formats-using-gdal</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Compute Slope</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdaldem slope inputDem.tif  output_slope.tif
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Make a Colored Relief Map</strong></p>
+<p>First, run gdalinfo and get the minimum and maximum elevation of the DEM.  Next, use these values to make some elevation breaks and some corresponding RGB colors for each break. In the example below, the first number in each row represents the upper breakpoint for the color range while the next three values are RGB values.  In the example, echo takes everything between the quotations and places it into a file called color-relief.txt usng the &gt; operator:</p>
+<div class="line-block">
+<div class="line">echo ‘0 0 0 0</div>
+<div class="line">26 110 220 110</div>
+<div class="line">51 240 250 160</div>
+<div class="line">76 230 220 170</div>
+<div class="line">101 220 220 220</div>
+<div class="line">127 250 250 250’ &gt; color-relief.txt</div>
+</div>
+<p>Once the color map file is completed, we can use it generate a colored relief, as shown in the example below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gdaldem</span> <span class="n">color</span><span class="o">-</span><span class="n">relief</span> <span class="o">-</span><span class="n">of</span> <span class="n">PNG</span> <span class="n">sf</span><span class="o">-</span><span class="n">dem</span><span class="o">.</span><span class="n">tif</span> <span class="n">color</span><span class="o">-</span><span class="n">relief</span><span class="o">.</span><span class="n">txt</span> <span class="n">sf</span><span class="o">-</span><span class="n">dem</span><span class="o">-</span><span class="n">coloredRelief</span><span class="o">.</span><span class="n">tif</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>For more information on how to work with GDAL cmmand line utilities, see this website - <a class="reference external" href="https://gdal.org/programs/gdaldem.html">https://gdal.org/programs/gdaldem.html</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="calling-gdal-commands-from-python">
+<h2><span class="section-number">10.8. </span>Calling GDAL Commands from Python<a class="headerlink" href="#calling-gdal-commands-from-python" title="Permalink to this heading"></a></h2>
+<p>It is possible to call GDAL commands from Python and other scripting languages. This allows for easy iteration through geoprocessing tasks, or integration of geoprocessing steps into complex scripted workflows.</p>
+<p><strong>Open a Raster with GDAL</strong></p>
+<p>We have already seen this structure in previous Python scripts that used the gdal library.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+<span class="n">fn</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot; /Users/student/Desktop/Stowe_Dataset/elevation&quot;</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="c1"># 0 (default) read-only, 1 update</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">ds</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Get Raster Properties</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fn_dem</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;..\data\input\USGS_one_meter_x64y486_ID_FEMAHQ_2018.tif&quot;</span>
+<span class="n">fn_img</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;..\data\input\m_4311515_ne_11_1_20150908_20160104.jp2&quot;</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">fn_dem</span><span class="p">)</span> <span class="c1"># 2 arguments: (file name, access type: 0 (default) read-only, 1 update)</span>
+
+<span class="n">nrows</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">RasterYSize</span>
+<span class="n">ncols</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">RasterXSize</span>
+<span class="n">proj</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">GetProjection</span><span class="p">()</span>  <span class="c1"># returns WKT definition</span>
+<span class="n">nbands</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">RasterCount</span>
+<span class="n">geot</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">GetGeoTransform</span><span class="p">()</span>
+</pre></div>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </section>
 <section id="resources">
-<h2><span class="section-number">10.7. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">10.9. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://joeyklee.github.io/broc-cli-geo/guide/XX_digital_elevation_models.html">https://joeyklee.github.io/broc-cli-geo/guide/XX_digital_elevation_models.html</a></p>
 <p>Building your own color map</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LinearSegmentedColormap</span>
 <span class="n">italy_colormap</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;italy&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;#008C45&#39;</span><span class="p">,</span> <span class="s1">&#39;#0b914c&#39;</span><span class="p">,</span> <span class="s1">&#39;#F4F5F0&#39;</span><span class="p">,</span> <span class="s1">&#39;#cf2a32&#39;</span><span class="p">,</span> <span class="s1">&#39;#CD212A&#39;</span><span class="p">],</span> <span class="n">N</span><span class="o">=</span><span class="n">value_range</span><span class="p">)</span>

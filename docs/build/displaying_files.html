@@ -541,9 +541,9 @@ the objective with this code sample is to illustrate some details that is involv
 <span class="c1">#Display the shapefile</span>
 <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
 
-<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span> <span class="s1">&#39;HISPANIC&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;OrRd&#39;</span> <span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;fisher_jenks&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span> <span class="s1">&#39;HISPANIC&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;OrRd&#39;</span> <span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;fisher_jenks&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;loc&#39;</span><span class="p">:</span> <span class="s1">&#39;lower left&#39;</span><span class="p">})</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Moble Homes, Michigan&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="s1">&#39;20&#39;</span><span class="p">,</span> <span class="s1">&#39;fontweight&#39;</span> <span class="p">:</span> <span class="s1">&#39;3&#39;</span><span class="p">})</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Mobile Homes, Michigan&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="s1">&#39;14&#39;</span><span class="p">,</span> <span class="s1">&#39;fontweight&#39;</span> <span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">})</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
@@ -551,16 +551,40 @@ the objective with this code sample is to illustrate some details that is involv
 <span class="n">f</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/Users/.../map_export.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="Thematic Map" src="_images/michigan.png" />
+<img alt="Thematic Map" src="_images/michigan_mobile_homes.png" />
 <p>See the <a class="reference external" href="https://geopandas.org/en/stable/docs/user_guide/mapping.html">Geopandas User Guide</a> for more information.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Plotting World Population Using Data Provided by Geopandas</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+
+<span class="n">df_world</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;naturalearth_lowres&#39;</span><span class="p">))</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="n">df_world</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+<span class="n">df_world</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;pop_est&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;OrRd&#39;</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+                     <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Population&quot;</span><span class="p">,</span> <span class="s2">&quot;orientation&quot;</span><span class="p">:</span><span class="s2">&quot;horizontal&quot;</span><span class="p">})</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Countries of the World by Population&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Thematic Map" src="_images/world_population.png" />
+<p><em>Notes:</em></p>
+<ul class="simple">
+<li><p>ax is the axes on which to draw the map</p></li>
+<li><p>cmap is the name of the <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">colormap</a></p></li>
+<li><p>legend &amp; legend_kwds control the display of the legend.</p></li>
+</ul>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>Displaying a Shapefile Using PyShp</strong></p>
 <p>Pyshp is an open source library that can be used to display a shapefile using pure Python. The project is described at this <a class="reference external" href="&quot;https://pypi.org/project/pyshp/&quot;">website</a>.  PyShp code for displaying a shapefile is lengthier than the one used by geopandas, but it gives us an opportunity to learn about multipart polygons and polylines.   Please note that after installing the “Pyshp” library, it is imported into Python using the shapefile keyword, e.g., “import shapefile”.</p>
-<p>Prior to running the code,it is useful to know that shapefiles have a ‘parts collection’ and a ‘points collection’.  A parts collection keep is used tp keep track of the number of polygons or line segments associated with each record.  This is required because in many situations, several polygons or polylines must be linked to one record in the attribute table.  As an example, since Hawaii is made up of several islands, multiple polygons are needed to represent the state, however in the attribute table, only a single record is used to represent the state.</p>
-<p>In a shapefile, a record with one polygon will have one part, but this will show in the parts collection as 0.  This is because the counting system begins with zero.</p>
-<p>A points collection refers to the list of points associated with a shape or feature. When working with points collection, be aware that the x-coordinates have an index of [0] while the y-coordinates will have an index value of [1].  This allows us to retrieve the x and y coordinates as separate lists.</p>
+<p>Prior to running the code,it is useful to know that shapefiles have a ‘parts collection’ and a ‘points collection’.  A parts collection is used to keep track of the number of polygons or line segments associated with each record.  This is required because in many situations, more than one polygons or polylines must be linked to a record in the attribute table.  As an example, since Hawaii is made up of several islands, multiple polygons are needed to represent each island in the state. However in the attribute table, only a single record is used to represent the state.</p>
+<p>In a shapefile, a record with one polygon will have one part, but this will show in the parts collection as 0 because the counting system begins with zero.</p>
+<p>A points collection refers to the list of points associated with a shape or feature. When working with points collection, be aware that the x-coordinates have an index of [0] while the y-coordinates will have an index value of [1].  The index values allow us to retrieve the x and y coordinates as separate lists.</p>
 <p>The illustration below shows how we visualize the relationships between a parts collection and a points collection.  The upper section of the illustration shows the polygons associated with a single record while the lower section shows the part and points collection associated with the polygons.  Since there are two polygons associated with the record, the parts collection for that record is 1 because the count starts from zero.</p>
 <p>The values in the squares in the parts collection represent index numbers that keep track of the starting coordinates for each part. Thus, the first part has coordinates that go from from p1 to p6. The second part starts from index value 6, and has coordinates that go from p7 to p11.</p>
 <img alt="Parts and Point Collection of a Shapefile" src="_images/point_parts_collection.png" />
@@ -611,7 +635,7 @@ the objective with this code sample is to illustrate some details that is involv
 <div class="line"><br /></div>
 </div>
 <p><strong>Displaying Polygon or multi-polygon Shapefiles using Descartes</strong></p>
-<p>The Descartes library is another alternative for displaying shapefiles using Python.  Descartes uses geometric objects as input for displaying <a class="reference external" href="https://matplotlib.org/stable/api/pyplot_summary.html">matplotlib paths and patches as lines and polygons</a>.   Experiment with the code below to learn about _geo_interfaces_ from the shapefile library,  add_patch() from matplotlib, and PolyPatch () from Descartes.</p>
+<p>The Descartes library is another alternative for displaying shapefiles using Python.  Descartes uses geometric objects as input for displaying <a class="reference external" href="https://matplotlib.org/stable/api/pyplot_summary.html">matplotlib paths and patches as lines and polygons</a>.   Experiment with the code below to learn about <a class="reference external" href="https://gist.github.com/sgillies/2217756">geo_interfaces</a> from the shapefile library,  add_patch() from matplotlib, and PolyPatch () from Descartes.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shapefile</span> <span class="k">as</span> <span class="nn">shp</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">descartes</span> <span class="kn">import</span> <span class="n">PolygonPatch</span>
