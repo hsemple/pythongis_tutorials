@@ -39,7 +39,7 @@ Terrain analysis starts with displaying digital elevation models.  We have touch
 Generating Hillshades
 ----------------------
 
-Hillshades are used in terrain analysis to give elevation data a 3-dimensional appearance and thus make topography easier to visualize. Hillshades are also used as underlays to make other kinds of data more visually interesting.
+Hillshades are used in terrain analysis to give elevation data a 3-dimensional appearance thereby making it easier to visualize variations in topography. Hillshades are also frequently used in GIS and Cartography as underlays to make other kinds of data more visually interesting. Google Maps use hillshades extensivelly to portray terrain features of the earth.
 
 
 |
@@ -281,10 +281,20 @@ The two scripts below show how to calculate slope using ArcPy.
 
 
 
-
-
-
 |
+
+
+ **Calculate Slope from a DEM using PyQGIS**
+
+
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/2g526ZoMu24" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+
+ |
+
 
 
 
@@ -501,7 +511,12 @@ Click on this link for more code samples - https://pro.arcgis.com/en/pro-app/lat
 
 
 
-**Integrating Multiple Tools into a Single Script to Automate Workflows**
+Automating Terrain Analysis Workflows 
+---------------------------------------
+
+Python scripts are useful for automating workflows that involves the use of multiple tools either parallel to each other or sequentially.  For example, if your terrain analysis involves producing both a slope map and an aspect map from the same digital elevation model, then these two computations can be integrated into a single script as shown in the example below, where both slope and aspect are computed within the script.
+
+In other occasions, the output of one processing operation becomes the input for another processing operation. This is evident in the watershed delineation 
 
 
 
@@ -547,8 +562,11 @@ a. Calculate Slope and Aspect Using a Single Script
 Watershed Delineation
 ----------------------
 
+In this script, the output of one processing becomes the output of the next process.
 
-*Watershed Delineation with pysheds**
+
+
+**Watershed Delineation with pysheds**
 
 I came across a library called pysheds that can be used for watershed delineation. Tested sample code is presented below.
 
@@ -647,65 +665,68 @@ Let's try the gdalifo command which can be executed from the command prompt. Gda
 
 	>>> $ gdalinfo /Users/.../WhiteadderDEM.tif
 
-
-	Driver: GTiff/GeoTIFF
-	Files: /Users/student/Downloads/WhiteadderDEM.tif
-	Size is 486, 645
+	Driver: AIG/Arc/Info Binary Grid
+	Files: /Users/.../Desktop/Stowe_Dataset/elevation
+	Size is 775, 756
 	Coordinate System is:
-	PROJCRS["Transverse Mercator",
-	    BASEGEOGCRS["OSGB 1936",
-	        DATUM["OSGB 1936",
-	            ELLIPSOID["Airy 1830",6377563.396,299.324964600004,
+	PROJCRS["unnamed",
+	    BASEGEOGCRS["NAD83",
+	        DATUM["North American Datum 1983",
+	            ELLIPSOID["GRS 1980",6378137,298.257222101,
 	                LENGTHUNIT["metre",1]]],
 	        PRIMEM["Greenwich",0,
 	            ANGLEUNIT["degree",0.0174532925199433]],
-	        ID["EPSG",4277]],
+	        ID["EPSG",4269]],
 	    CONVERSION["unnamed",
 	        METHOD["Transverse Mercator",
 	            ID["EPSG",9807]],
-	        PARAMETER["Latitude of natural origin",49,
+	        PARAMETER["Latitude of natural origin",42.5,
 	            ANGLEUNIT["degree",0.0174532925199433],
 	            ID["EPSG",8801]],
-	        PARAMETER["Longitude of natural origin",-2,
+	        PARAMETER["Longitude of natural origin",-72.5,
 	            ANGLEUNIT["degree",0.0174532925199433],
 	            ID["EPSG",8802]],
-	        PARAMETER["Scale factor at natural origin",0.999601272,
+	        PARAMETER["Scale factor at natural origin",0.999964286,
 	            SCALEUNIT["unity",1],
 	            ID["EPSG",8805]],
-	        PARAMETER["False easting",400000,
-	            LENGTHUNIT["meters",1],
+	        PARAMETER["False easting",500000,
+	            LENGTHUNIT["METERS",1],
 	            ID["EPSG",8806]],
-	        PARAMETER["False northing",-100000,
-	            LENGTHUNIT["meters",1],
+	        PARAMETER["False northing",0,
+	            LENGTHUNIT["METERS",1],
 	            ID["EPSG",8807]]],
 	    CS[Cartesian,2],
 	        AXIS["easting",east,
 	            ORDER[1],
-	            LENGTHUNIT["meters",1]],
+	            LENGTHUNIT["METERS",1]],
 	        AXIS["northing",north,
 	            ORDER[2],
-	            LENGTHUNIT["meters",1]]]
+	            LENGTHUNIT["METERS",1]]]
 	Data axis to CRS axis mapping: 1,2
-	Origin = (364705.000000000000000,663485.000000000000000)
-	Pixel Size = (5.000000000000000,-5.000000000000000)
+	Origin = (470957.412858718482312,231421.559170683787670)
+	Pixel Size = (30.680581002795002,-30.680581002795002)
 	Metadata:
-	  AREA_OR_POINT=Area
-	  TIFFTAG_RESOLUTIONUNIT=1 (unitless)
-	  TIFFTAG_SOFTWARE=IMAGINE TIFF Support
-	Copyright 1991 - 1999 by ERDAS, Inc. All Rights Reserved
-	@(#)$RCSfile: etif.c $ $Revision: 1.10.1.9.1.9.2.11 $ $Date: 2004/09/15 18:42:01EDT $
-	  TIFFTAG_XRESOLUTION=1
-	  TIFFTAG_YRESOLUTION=1
-	Image Structure Metadata:
-	  INTERLEAVE=BAND
+	  DataType=Generic
 	Corner Coordinates:
-	Upper Left  (  364705.000,  663485.000) (  2d33'50.35"W, 55d51'47.82"N)
-	Lower Left  (  364705.000,  660260.000) (  2d33'48.84"W, 55d50' 3.50"N)
-	Upper Right (  367135.000,  663485.000) (  2d31'30.57"W, 55d51'48.44"N)
-	Lower Right (  367135.000,  660260.000) (  2d31'29.16"W, 55d50' 4.12"N)
-	Center      (  365920.000,  661872.500) (  2d32'39.73"W, 55d50'55.97"N)
-
-
+	Upper Left  (  470957.413,  231421.559) ( 72d51'56.55"W, 44d34'56.75"N)
+	Lower Left  (  470957.413,  208227.040) ( 72d51'51.86"W, 44d22'25.30"N)
+	Upper Right (  494734.863,  231421.559) ( 72d33'58.68"W, 44d34'58.78"N)
+	Lower Right (  494734.863,  208227.040) ( 72d33'57.83"W, 44d22'27.33"N)
+	Center      (  482846.138,  219824.300) ( 72d42'56.23"W, 44d28'42.39"N)
+	Band 1 Block=256x16 Type=Float32, ColorInterp=Undefined
+	  Description = elevation
+	  Min=133.493 Max=1335.372 
+	  Minimum=134.525, Maximum=1333.913, Mean=476.449, StdDev=214.550
+	  NoData Value=-3.4028234663852886e+38
+	  Overviews: 388x378, 194x189
+	  Metadata:
+	    RepresentationType=ATHEMATIC
+	    STATISTICS_APPROXIMATE=YES
+	    STATISTICS_MAXIMUM=1333.9129638672
+	    STATISTICS_MEAN=476.44892214671
+	    STATISTICS_MINIMUM=134.52473449707
+	    STATISTICS_STDDEV=214.55017815777
+	    STATISTICS_VALID_PERCENT=98.84
 
 
 
@@ -720,7 +741,7 @@ We can convert between raster file formats using the gdal_translate tool. Gdal_t
 
 .. code-block:: python
 
-   >>> $ gdal_translate -of ENVI  /Users/hsemple/Downloads/WhiteadderDEM.tif  /Users/hsemple/Downloads/WhiteadderDEM.bil
+   >>> $ gdal_translate -of ENVI  /Users/student/Downloads/WhiteadderDEM.tif  /Users/hsemple/Downloads/WhiteadderDEM.bil
 
 |
 
@@ -760,7 +781,7 @@ If you have large DEMs you can merge them very quickly using GDAL
 
 **Changing Raster Projections with Gdalwarp**
 
-We can change the underlying projections of rasters using the gdalwarp command.  The gdalwarp command will detect the projection of the source raster, so we do not have enter this value.   The '-t_srs' flag is used to assign the target coordinate system, which must be placed in quotes.  An example of the entire command is shown below:
+We can change the underlying projections of rasters using the gdalwarp command.  The gdalwarp command detects the projection of the raster that is to be projected so we do not have enter this value.   The '-t_srs' flag is used to assign the target coordinate system, which must be placed in quotes.  An example of the basic command is shown below:
 
 
 .. code-block:: python
@@ -863,6 +884,20 @@ We have already seen this structure in previous Python scripts that used the gda
 |
 
 
+
+
+Exercises
+-----------
+
+1. Write a script that prompts the user for the path to input DEM and an input satellite imagery.  Afterwards, the script should generate a hillshade of the area. Finally, the script should drape the satellite imagery over the hillshade.
+
+
+2. Instead of generating a hillshade, write a second script to generate a 3D model of the area. Afterward, let the script drape a satellite imagery over the 3D model of the area.
+
+
+
+
+|
 
 
 

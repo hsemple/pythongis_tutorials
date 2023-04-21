@@ -58,10 +58,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#slope-mapping">10.3. Slope Mapping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#aspect-mapping">10.4. Aspect Mapping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#curvature-maps">10.5. Curvature Maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#watershed-delineation">10.6. Watershed Delineation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#working-with-gdal-command-line-utilities">10.7. Working with GDAL Command Line Utilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#calling-gdal-commands-from-python">10.8. Calling GDAL Commands from Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#resources">10.9. Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automating-terrain-analysis-workflows">10.6. Automating Terrain Analysis Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#watershed-delineation">10.7. Watershed Delineation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-gdal-command-line-utilities">10.8. Working with GDAL Command Line Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#calling-gdal-commands-from-python">10.9. Calling GDAL Commands from Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">10.10. Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resources">10.11. Resources</a></li>
 </ul>
 </li>
 </ul>
@@ -117,7 +119,7 @@
 </section>
 <section id="generating-hillshades">
 <h2><span class="section-number">10.2. </span>Generating Hillshades<a class="headerlink" href="#generating-hillshades" title="Permalink to this heading"></a></h2>
-<p>Hillshades are used in terrain analysis to give elevation data a 3-dimensional appearance and thus make topography easier to visualize. Hillshades are also used as underlays to make other kinds of data more visually interesting.</p>
+<p>Hillshades are used in terrain analysis to give elevation data a 3-dimensional appearance thereby making it easier to visualize variations in topography. Hillshades are also frequently used in GIS and Cartography as underlays to make other kinds of data more visually interesting. Google Maps use hillshades extensivelly to portray terrain features of the earth.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -311,7 +313,14 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Generate Slope using the RichDem Library</strong></p>
+<blockquote>
+<div><p><strong>Calculate Slope from a DEM using PyQGIS</strong></p>
+</div></blockquote>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/2g526ZoMu24" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+
+|<p><strong>Generate Slope using the RichDem Library</strong></p>
 <p>First, install the RichDEM library. run the sample script below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">richdem</span> <span class="k">as</span> <span class="nn">rd</span>
@@ -462,7 +471,11 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Integrating Multiple Tools into a Single Script to Automate Workflows</strong></p>
+</section>
+<section id="automating-terrain-analysis-workflows">
+<h2><span class="section-number">10.6. </span>Automating Terrain Analysis Workflows<a class="headerlink" href="#automating-terrain-analysis-workflows" title="Permalink to this heading"></a></h2>
+<p>Python scripts are useful for automating workflows that involves the use of multiple tools either parallel to each other or sequentially.  For example, if your terrain analysis involves producing both a slope map and an aspect map from the same digital elevation model, then these two computations can be integrated into a single script as shown in the example below, where both slope and aspect are computed within the script.</p>
+<p>In other occasions, the output of one processing operation becomes the input for another processing operation. This is evident in the watershed delineation</p>
 <ol class="loweralpha simple">
 <li><p>Calculate Slope and Aspect Using a Single Script</p></li>
 </ol>
@@ -502,8 +515,9 @@
 </div>
 </section>
 <section id="watershed-delineation">
-<h2><span class="section-number">10.6. </span>Watershed Delineation<a class="headerlink" href="#watershed-delineation" title="Permalink to this heading"></a></h2>
-<p><em>Watershed Delineation with pysheds*</em></p>
+<h2><span class="section-number">10.7. </span>Watershed Delineation<a class="headerlink" href="#watershed-delineation" title="Permalink to this heading"></a></h2>
+<p>In this script, the output of one processing becomes the output of the next process.</p>
+<p><strong>Watershed Delineation with pysheds</strong></p>
 <p>I came across a library called pysheds that can be used for watershed delineation. Tested sample code is presented below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pysheds.grid</span> <span class="kn">import</span> <span class="n">Grid</span>
 
@@ -574,68 +588,73 @@
 </div>
 </section>
 <section id="working-with-gdal-command-line-utilities">
-<h2><span class="section-number">10.7. </span>Working with GDAL Command Line Utilities<a class="headerlink" href="#working-with-gdal-command-line-utilities" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">10.8. </span>Working with GDAL Command Line Utilities<a class="headerlink" href="#working-with-gdal-command-line-utilities" title="Permalink to this heading"></a></h2>
 <p><strong>Getting Information about a Raster</strong></p>
 <p>Let’s try the gdalifo command which can be executed from the command prompt. Gdalifo returns a lengthy list of details about the raster.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdalinfo /Users/.../WhiteadderDEM.tif
 
-
-Driver: GTiff/GeoTIFF
-Files: /Users/student/Downloads/WhiteadderDEM.tif
-Size is 486, 645
+Driver: AIG/Arc/Info Binary Grid
+Files: /Users/.../Desktop/Stowe_Dataset/elevation
+Size is 775, 756
 Coordinate System is:
-PROJCRS[&quot;Transverse Mercator&quot;,
-    BASEGEOGCRS[&quot;OSGB 1936&quot;,
-        DATUM[&quot;OSGB 1936&quot;,
-            ELLIPSOID[&quot;Airy 1830&quot;,6377563.396,299.324964600004,
+PROJCRS[&quot;unnamed&quot;,
+    BASEGEOGCRS[&quot;NAD83&quot;,
+        DATUM[&quot;North American Datum 1983&quot;,
+            ELLIPSOID[&quot;GRS 1980&quot;,6378137,298.257222101,
                 LENGTHUNIT[&quot;metre&quot;,1]]],
         PRIMEM[&quot;Greenwich&quot;,0,
             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
-        ID[&quot;EPSG&quot;,4277]],
+        ID[&quot;EPSG&quot;,4269]],
     CONVERSION[&quot;unnamed&quot;,
         METHOD[&quot;Transverse Mercator&quot;,
             ID[&quot;EPSG&quot;,9807]],
-        PARAMETER[&quot;Latitude of natural origin&quot;,49,
+        PARAMETER[&quot;Latitude of natural origin&quot;,42.5,
             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
             ID[&quot;EPSG&quot;,8801]],
-        PARAMETER[&quot;Longitude of natural origin&quot;,-2,
+        PARAMETER[&quot;Longitude of natural origin&quot;,-72.5,
             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
             ID[&quot;EPSG&quot;,8802]],
-        PARAMETER[&quot;Scale factor at natural origin&quot;,0.999601272,
+        PARAMETER[&quot;Scale factor at natural origin&quot;,0.999964286,
             SCALEUNIT[&quot;unity&quot;,1],
             ID[&quot;EPSG&quot;,8805]],
-        PARAMETER[&quot;False easting&quot;,400000,
-            LENGTHUNIT[&quot;meters&quot;,1],
+        PARAMETER[&quot;False easting&quot;,500000,
+            LENGTHUNIT[&quot;METERS&quot;,1],
             ID[&quot;EPSG&quot;,8806]],
-        PARAMETER[&quot;False northing&quot;,-100000,
-            LENGTHUNIT[&quot;meters&quot;,1],
+        PARAMETER[&quot;False northing&quot;,0,
+            LENGTHUNIT[&quot;METERS&quot;,1],
             ID[&quot;EPSG&quot;,8807]]],
     CS[Cartesian,2],
         AXIS[&quot;easting&quot;,east,
             ORDER[1],
-            LENGTHUNIT[&quot;meters&quot;,1]],
+            LENGTHUNIT[&quot;METERS&quot;,1]],
         AXIS[&quot;northing&quot;,north,
             ORDER[2],
-            LENGTHUNIT[&quot;meters&quot;,1]]]
+            LENGTHUNIT[&quot;METERS&quot;,1]]]
 Data axis to CRS axis mapping: 1,2
-Origin = (364705.000000000000000,663485.000000000000000)
-Pixel Size = (5.000000000000000,-5.000000000000000)
+Origin = (470957.412858718482312,231421.559170683787670)
+Pixel Size = (30.680581002795002,-30.680581002795002)
 Metadata:
-  AREA_OR_POINT=Area
-  TIFFTAG_RESOLUTIONUNIT=1 (unitless)
-  TIFFTAG_SOFTWARE=IMAGINE TIFF Support
-Copyright 1991 - 1999 by ERDAS, Inc. All Rights Reserved
-@(#)$RCSfile: etif.c $ $Revision: 1.10.1.9.1.9.2.11 $ $Date: 2004/09/15 18:42:01EDT $
-  TIFFTAG_XRESOLUTION=1
-  TIFFTAG_YRESOLUTION=1
-Image Structure Metadata:
-  INTERLEAVE=BAND
+  DataType=Generic
 Corner Coordinates:
-Upper Left  (  364705.000,  663485.000) (  2d33&#39;50.35&quot;W, 55d51&#39;47.82&quot;N)
-Lower Left  (  364705.000,  660260.000) (  2d33&#39;48.84&quot;W, 55d50&#39; 3.50&quot;N)
-Upper Right (  367135.000,  663485.000) (  2d31&#39;30.57&quot;W, 55d51&#39;48.44&quot;N)
-Lower Right (  367135.000,  660260.000) (  2d31&#39;29.16&quot;W, 55d50&#39; 4.12&quot;N)
-Center      (  365920.000,  661872.500) (  2d32&#39;39.73&quot;W, 55d50&#39;55.97&quot;N)
+Upper Left  (  470957.413,  231421.559) ( 72d51&#39;56.55&quot;W, 44d34&#39;56.75&quot;N)
+Lower Left  (  470957.413,  208227.040) ( 72d51&#39;51.86&quot;W, 44d22&#39;25.30&quot;N)
+Upper Right (  494734.863,  231421.559) ( 72d33&#39;58.68&quot;W, 44d34&#39;58.78&quot;N)
+Lower Right (  494734.863,  208227.040) ( 72d33&#39;57.83&quot;W, 44d22&#39;27.33&quot;N)
+Center      (  482846.138,  219824.300) ( 72d42&#39;56.23&quot;W, 44d28&#39;42.39&quot;N)
+Band 1 Block=256x16 Type=Float32, ColorInterp=Undefined
+  Description = elevation
+  Min=133.493 Max=1335.372
+  Minimum=134.525, Maximum=1333.913, Mean=476.449, StdDev=214.550
+  NoData Value=-3.4028234663852886e+38
+  Overviews: 388x378, 194x189
+  Metadata:
+    RepresentationType=ATHEMATIC
+    STATISTICS_APPROXIMATE=YES
+    STATISTICS_MAXIMUM=1333.9129638672
+    STATISTICS_MEAN=476.44892214671
+    STATISTICS_MINIMUM=134.52473449707
+    STATISTICS_STDDEV=214.55017815777
+    STATISTICS_VALID_PERCENT=98.84
 </pre></div>
 </div>
 <div class="line-block">
@@ -643,7 +662,7 @@ Center      (  365920.000,  661872.500) (  2d32&#39;39.73&quot;W, 55d50&#39;55.9
 </div>
 <p><strong>Converting Between Raster Formats</strong></p>
 <p>We can convert between raster file formats using the gdal_translate tool. Gdal_translate recognises many file formats. To set the file format, use the ‘-of’ flag. An example of the syntax is shown below:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdal_translate -of ENVI  /Users/hsemple/Downloads/WhiteadderDEM.tif  /Users/hsemple/Downloads/WhiteadderDEM.bil
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdal_translate -of ENVI  /Users/student/Downloads/WhiteadderDEM.tif  /Users/hsemple/Downloads/WhiteadderDEM.bil
 </pre></div>
 </div>
 <div class="line-block">
@@ -669,7 +688,7 @@ Center      (  365920.000,  661872.500) (  2d32&#39;39.73&quot;W, 55d50&#39;55.9
 <div class="line"><br /></div>
 </div>
 <p><strong>Changing Raster Projections with Gdalwarp</strong></p>
-<p>We can change the underlying projections of rasters using the gdalwarp command.  The gdalwarp command will detect the projection of the source raster, so we do not have enter this value.   The ‘-t_srs’ flag is used to assign the target coordinate system, which must be placed in quotes.  An example of the entire command is shown below:</p>
+<p>We can change the underlying projections of rasters using the gdalwarp command.  The gdalwarp command detects the projection of the raster that is to be projected so we do not have enter this value.   The ‘-t_srs’ flag is used to assign the target coordinate system, which must be placed in quotes.  An example of the basic command is shown below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdalwarp -t_srs &#39;+proj=utm +zone=44 +datum=WGS84&#39; projected.tif reprojected.tif
 </pre></div>
 </div>
@@ -707,7 +726,7 @@ Center      (  365920.000,  661872.500) (  2d32&#39;39.73&quot;W, 55d50&#39;55.9
 </div>
 </section>
 <section id="calling-gdal-commands-from-python">
-<h2><span class="section-number">10.8. </span>Calling GDAL Commands from Python<a class="headerlink" href="#calling-gdal-commands-from-python" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">10.9. </span>Calling GDAL Commands from Python<a class="headerlink" href="#calling-gdal-commands-from-python" title="Permalink to this heading"></a></h2>
 <p>It is possible to call GDAL commands from Python and other scripting languages. This allows for easy iteration through geoprocessing tasks, or integration of geoprocessing steps into complex scripted workflows.</p>
 <p><strong>Open a Raster with GDAL</strong></p>
 <p>We have already seen this structure in previous Python scripts that used the gdal library.</p>
@@ -736,8 +755,18 @@ Center      (  365920.000,  661872.500) (  2d32&#39;39.73&quot;W, 55d50&#39;55.9
 <div class="line"><br /></div>
 </div>
 </section>
+<section id="exercises">
+<h2><span class="section-number">10.10. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Write a script that prompts the user for the path to input DEM and an input satellite imagery.  Afterwards, the script should generate a hillshade of the area. Finally, the script should drape the satellite imagery over the hillshade.</p></li>
+<li><p>Instead of generating a hillshade, write a second script to generate a 3D model of the area. Afterward, let the script drape a satellite imagery over the 3D model of the area.</p></li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
 <section id="resources">
-<h2><span class="section-number">10.9. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">10.11. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://joeyklee.github.io/broc-cli-geo/guide/XX_digital_elevation_models.html">https://joeyklee.github.io/broc-cli-geo/guide/XX_digital_elevation_models.html</a></p>
 <p>Building your own color map</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LinearSegmentedColormap</span>
