@@ -231,7 +231,7 @@ In this example, both the elevation layer and the hillshade layer are displayed 
 
 
 Slope Mapping
---------------------
+----------------
 
 
 **Generate Slope Map with Arcpy**
@@ -896,28 +896,11 @@ Exercises
 
 
 
+**Resources**
 
-|
+Please visit the link below for a sample script. Note: This is just one way of approaching this task.
 
-
-
-Resources
------------
-
-
-https://joeyklee.github.io/broc-cli-geo/guide/XX_digital_elevation_models.html
+https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem
 
 
 
-
-Building your own color map
-
-.. code-block:: python
-
-     from matplotlib.colors import LinearSegmentedColormap
-     italy_colormap = LinearSegmentedColormap.from_list('italy', ['#008C45', '#0b914c', '#F4F5F0', '#cf2a32', '#CD212A'], N=value_range)
-
-
-
-
-     

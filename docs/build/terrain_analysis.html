@@ -63,7 +63,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#working-with-gdal-command-line-utilities">10.8. Working with GDAL Command Line Utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#calling-gdal-commands-from-python">10.9. Calling GDAL Commands from Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#exercises">10.10. Exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#resources">10.11. Resources</a></li>
 </ul>
 </li>
 </ul>
@@ -761,18 +760,9 @@ Band 1 Block=256x16 Type=Float32, ColorInterp=Undefined
 <li><p>Write a script that prompts the user for the path to input DEM and an input satellite imagery.  Afterwards, the script should generate a hillshade of the area. Finally, the script should drape the satellite imagery over the hillshade.</p></li>
 <li><p>Instead of generating a hillshade, write a second script to generate a 3D model of the area. Afterward, let the script drape a satellite imagery over the 3D model of the area.</p></li>
 </ol>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</section>
-<section id="resources">
-<h2><span class="section-number">10.11. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
-<p><a class="reference external" href="https://joeyklee.github.io/broc-cli-geo/guide/XX_digital_elevation_models.html">https://joeyklee.github.io/broc-cli-geo/guide/XX_digital_elevation_models.html</a></p>
-<p>Building your own color map</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LinearSegmentedColormap</span>
-<span class="n">italy_colormap</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;italy&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;#008C45&#39;</span><span class="p">,</span> <span class="s1">&#39;#0b914c&#39;</span><span class="p">,</span> <span class="s1">&#39;#F4F5F0&#39;</span><span class="p">,</span> <span class="s1">&#39;#cf2a32&#39;</span><span class="p">,</span> <span class="s1">&#39;#CD212A&#39;</span><span class="p">],</span> <span class="n">N</span><span class="o">=</span><span class="n">value_range</span><span class="p">)</span>
-</pre></div>
-</div>
+<p><strong>Resources</strong></p>
+<p>Please visit the link below for a sample script. Note: This is just one way of approaching this task.</p>
+<p><a class="reference external" href="https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem">https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem</a></p>
 </section>
 </section>
 

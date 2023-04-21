@@ -268,10 +268,34 @@ b. `Python Zip Function <https://www.programiz.com/python-programming/methods/bu
 |
 
 
-*Things to Look up in the above Code*
+The Matplotlit Figure Object
+-----------------------------
+
+When working with Python, it is important to know how manipulate matplotlib's figure object.  Almost, all of your graphical output will require the use of this figure object either directly or indirectly, so I urge you to become acquainted with working with this object. The links below provide some information on ths topic.
 
 
-When working with Python, it is important to know how manipulate matplotlib's figure object.  Almost, all of your graphical output will require the use of this figure object, so I urge you to become acquainted with working with this object. The links below provide some information on ths topic.
+In terms of a general overview, the figure object is the top level object. It serves as the container for all other plot-related objects. 
+
+The figure object can contain one or more axes or plotting objects. Axes are actual X,Y plots or diagrams that appear in the document.  Axes contain the X-axis and the Y-axis, which are the XY lines in the plots. Axes also have plot objects, titles, legends, etc.
+
+
+The easiest way to create a new figure is with pyplot:
+
+>>> fig = plt.figure()  
+
+The above statement will create an empty figure with no axes, as shown below.
+
+
+
+Many times, people create both the figure object and the axes object with the same declaration statement.
+
+>>> fig, ax = plt.subplots(1, 1)
+
+
+This statement will create a figure object and a single plot that consists of 1 column and one row.  When the figure and axes objects are created separately, we can manipulate them as separate objects, as we often need to do.  
+
+
+
 
 * `Anatomy of a Matplotlib Figure <https://matplotlib.org/2.0.2/faq/usage_faq.html>`_ 
 
