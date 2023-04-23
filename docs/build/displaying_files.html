@@ -54,7 +54,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#writing-file-paths">7.1. Writing File Paths</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#opening-a-file-using-the-with-statement">7.2. Opening a file using the “With” Statement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#opening-a-csv-file-using-python-s-standard-library">7.3. Opening a csv File using Python’s Standard Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-matplotlit-figure-object">7.4. The Matplotlit Figure Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-matplotlib-figure-object">7.4. The Matplotlib Figure Object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reading-csv-files-using-pandas">7.5. Reading CSV Files Using Pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#plotting-graphs">7.6. Plotting Graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#writing-to-a-file">7.7. Writing to a File</a></li>
@@ -294,21 +294,139 @@ the objective with this code sample is to illustrate some details that is involv
 <div class="line"><br /></div>
 </div>
 </section>
-<section id="the-matplotlit-figure-object">
-<h2><span class="section-number">7.4. </span>The Matplotlit Figure Object<a class="headerlink" href="#the-matplotlit-figure-object" title="Permalink to this heading"></a></h2>
-<p>When working with Python, it is important to know how manipulate matplotlib’s figure object.  Almost, all of your graphical output will require the use of this figure object either directly or indirectly, so I urge you to become acquainted with working with this object. The links below provide some information on ths topic.</p>
+<section id="the-matplotlib-figure-object">
+<h2><span class="section-number">7.4. </span>The Matplotlib Figure Object<a class="headerlink" href="#the-matplotlib-figure-object" title="Permalink to this heading"></a></h2>
+<p>When working with Python, it is important to know how to manipulate matplotlib’s figure object.  Almost all of your graphical output will require the use of this figure object either directly or indirectly, so I urge you to become acquainted with this object. The links below provide some information on ths topic.</p>
 <p>In terms of a general overview, the figure object is the top level object. It serves as the container for all other plot-related objects.</p>
 <p>The figure object can contain one or more axes or plotting objects. Axes are actual X,Y plots or diagrams that appear in the document.  Axes contain the X-axis and the Y-axis, which are the XY lines in the plots. Axes also have plot objects, titles, legends, etc.</p>
 <p>The easiest way to create a new figure is with pyplot:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The above statement will create an empty figure with no axes, as shown below.</p>
-<p>Many times, people create both the figure object and the axes object with the same declaration statement.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<p>or</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># where figure size, width &amp; height, are inches,</span>
 </pre></div>
 </div>
-<p>This statement will create a figure object and a single plot that consists of 1 column and one row.  When the figure and axes objects are created separately, we can manipulate them as separate objects, as we often need to do.</p>
+<p>The above statements will create an empty figure object with no axes.</p>
+<p>Often, we encounter code samples that do not specify any figure object, as shown below.  If no figure is specified in the code, then pyplot uses a default figure object to draw the figure.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">26</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkgreen&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The main benefit of explicity specifying the figure is that you can control its size, background, color, etc.  In the code sample below, the size of the figure object is specified.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">26</span><span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkgreen&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Subplots</strong></p>
+<p>Within a figure, there can be one or more “subplots”.   Subplots are objects within a figure that divide up the figure. The subplots are positioned in a grid so that 221, means 2 rows, 2 columns, and the first cell.</p>
+<img alt="Subplots" src="_images/subplot1.png" />
+<p>The code below includes a figure and a subplots.  Note that when a subplot is created, it is referred to as an axes. That’s because it is also the plotting area for the figure. Also, unused axes are not shown.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">26</span><span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkgreen&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="Subplots" src="_images/subplots_2x2.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Axes</strong></p>
+<p>An axes is the area on which the data is plotted using functions such as plot() and scatter().  Axes can have ticks, labels, etc, associated with it.</p>
+<dl class="simple">
+<dt>As shown in the previous section, axes can be created from a figure object</dt><dd><p>ax = fig.add_subplot(111)</p>
+</dd>
+<dt>Axes can also be created directly from pyplot:</dt><dd><p>ax = plt.subplot(221)</p>
+</dd>
+</dl>
+<img alt="Subplots" src="_images/matplotlib_figure_object.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Once the axes is created, it can be used to plot various types of charts or to plot images and maps. For example, to plot various types of charts, we write:</p>
+<div class="line-block">
+<div class="line">ax.bar  - bar charts</div>
+<div class="line">ax.hist  - histograms</div>
+<div class="line">ax.scatter - scatter plot</div>
+<div class="line">ax.imshow. - images</div>
+<div class="line">etc</div>
+</div>
+<p>When plotting graphs, charts, and images, if no axes is specified in the code, you can still use the pyplot module to plot the objects.</p>
+<div class="line-block">
+<div class="line">plt.bar  - bar charts</div>
+<div class="line">ply.hist  - histograms</div>
+<div class="line">plt.scatter - scatter plot</div>
+<div class="line">plt.imshow. - images</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Plotting Multiple Axes on a Single Figure</strong></p>
+<p>A single figure can contain multiple axes, each of which can contain separate plots.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="s2">&quot;/Users/.../school_districts.shp&quot;</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="Subplots" src="_images/subplots221.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Setting Legend</strong></p>
+<p>To set the legend for an axes, simply type:  ax.legend()</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">600</span><span class="p">,</span><span class="mi">700</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">900</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.00</span><span class="p">,</span> <span class="mf">1.20</span><span class="p">,</span> <span class="mf">1.40</span><span class="p">,</span> <span class="mf">1.60</span><span class="p">,</span> <span class="mf">1.80</span><span class="p">,</span> <span class="mf">2.00</span><span class="p">,</span> <span class="mf">2.20</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Supply&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">300</span><span class="p">,</span> <span class="mi">430</span><span class="p">,</span><span class="mi">560</span><span class="p">,</span><span class="mi">680</span><span class="p">,</span><span class="mi">710</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">925</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">2.20</span><span class="p">,</span> <span class="mf">2.00</span><span class="p">,</span><span class="mf">1.80</span><span class="p">,</span> <span class="mf">1.60</span><span class="p">,</span><span class="mf">1.40</span><span class="p">,</span><span class="mf">1.20</span><span class="p">,</span><span class="mf">1.00</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Demand&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span> <span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Price&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span> <span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Quantity Demanded and Supplied&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Demand and Supply Data&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span>
+</pre></div>
+</div>
+<img alt="Subplots" src="_images/matplot_legend.png" />
+<p>For more information on how to use the matplotlib figure object, please click on the links below:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://matplotlib.org/2.0.2/faq/usage_faq.html">Anatomy of a Matplotlib Figure</a></p></li>
 <li><p><a class="reference external" href="https://matplotlib.org/stable/tutorials/introductory/pyplot.html">Pyplot Tutorial</a></p></li>
@@ -615,7 +733,7 @@ the objective with this code sample is to illustrate some details that is involv
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
 
 
-     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="line-block">

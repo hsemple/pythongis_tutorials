@@ -268,33 +268,202 @@ b. `Python Zip Function <https://www.programiz.com/python-programming/methods/bu
 |
 
 
-The Matplotlit Figure Object
------------------------------
+The Matplotlib Figure Object
+--------------------------------
 
-When working with Python, it is important to know how manipulate matplotlib's figure object.  Almost, all of your graphical output will require the use of this figure object either directly or indirectly, so I urge you to become acquainted with working with this object. The links below provide some information on ths topic.
+When working with Python, it is important to know how to manipulate matplotlib's figure object.  Almost all of your graphical output will require the use of this figure object either directly or indirectly, so I urge you to become acquainted with this object. The links below provide some information on ths topic.
 
 
-In terms of a general overview, the figure object is the top level object. It serves as the container for all other plot-related objects. 
+In terms of a general overview, the figure object is the top level object. It serves as the container for all other plot-related objects.   
+
 
 The figure object can contain one or more axes or plotting objects. Axes are actual X,Y plots or diagrams that appear in the document.  Axes contain the X-axis and the Y-axis, which are the XY lines in the plots. Axes also have plot objects, titles, legends, etc.
 
 
 The easiest way to create a new figure is with pyplot:
 
->>> fig = plt.figure()  
+>>> f = plt.figure()  
 
-The above statement will create an empty figure with no axes, as shown below.
+or
 
+ >>> f = plt.figure.figsize=(12,10) # where figure size, width & height, are inches, 
+    
 
-
-Many times, people create both the figure object and the axes object with the same declaration statement.
-
->>> fig, ax = plt.subplots(1, 1)
-
-
-This statement will create a figure object and a single plot that consists of 1 column and one row.  When the figure and axes objects are created separately, we can manipulate them as separate objects, as we often need to do.  
+The above statements will create an empty figure object with no axes.  
 
 
+Often, we encounter code samples that do not specify any figure object, as shown below.  If no figure is specified in the code, then pyplot uses a default figure object to draw the figure. 
+
+.. code-block:: python
+
+	import matplotlib.pyplot as plt
+	x = [0.3, 3.8, 1.2, 2.5]
+	y = [11, 25, 9, 26]
+	plt.scatter (x,y, color='darkgreen', marker='^')
+	plt.xlim(0.5, 4.5)
+	plt.show()
+
+
+
+The main benefit of explicity specifying the figure is that you can control its size, background, color, etc.  In the code sample below, the size of the figure object is specified.
+
+
+.. code-block:: python
+
+	import matplotlib.pyplot as plt
+	x = [0.3, 3.8, 1.2, 2.5]
+	y = [11, 25, 9, 26]
+
+	fig = plt.figure(figsize=(4,6))
+	plt.scatter (x,y, color='darkgreen', marker='^')
+	plt.xlim(0.5, 4.5)
+	plt.show()
+
+
+|
+
+
+**Subplots**
+
+
+Within a figure, there can be one or more "subplots".   Subplots are objects within a figure that divide up the figure. The subplots are positioned in a grid so that 221, means 2 rows, 2 columns, and the first cell. 
+
+
+.. image:: img/subplot1.png
+   :alt: Subplots
+
+
+The code below includes a figure and a subplots.  Note that when a subplot is created, it is referred to as an axes. That's because it is also the plotting area for the figure. Also, unused axes are not shown.
+
+
+.. code-block:: python
+
+	import matplotlib.pyplot as plt
+	x = [0.3, 3.8, 1.2, 2.5]
+	y = [11, 25, 9, 26]
+
+	fig = plt.figure(figsize=(4,6))
+	ax = fig.add_subplot(221)
+	plt.scatter (x,y, color='darkgreen', marker='^')
+	plt.xlim(0.5, 4.5)
+	plt.show() 
+	
+
+.. image:: img/subplots_2x2.png
+   :alt: Subplots
+
+
+
+|
+
+**Axes**
+
+
+An axes is the area on which the data is plotted using functions such as plot() and scatter().  Axes can have ticks, labels, etc, associated with it. 
+
+As shown in the previous section, axes can be created from a figure object  
+             ax = fig.add_subplot(111)
+
+Axes can also be created directly from pyplot:
+             ax = plt.subplot(221)
+
+
+.. image:: img/matplotlib_figure_object.png
+   :alt: Subplots
+
+|
+
+
+Once the axes is created, it can be used to plot various types of charts or to plot images and maps. For example, to plot various types of charts, we write:
+
+| ax.bar  - bar charts
+| ax.hist  - histograms
+| ax.scatter - scatter plot
+| ax.imshow. - images
+| etc
+
+
+When plotting graphs, charts, and images, if no axes is specified in the code, you can still use the pyplot module to plot the objects.  
+
+| plt.bar  - bar charts
+| ply.hist  - histograms
+| plt.scatter - scatter plot
+| plt.imshow. - images
+
+
+
+|
+
+**Plotting Multiple Axes on a Single Figure**
+
+A single figure can contain multiple axes, each of which can contain separate plots.
+
+
+.. code-block:: python
+
+	import matplotlib.pyplot as plt
+	import geopandas as gpd
+
+	file = "/Users/.../school_districts.shp" 
+
+	df = gpd.read_file(file)
+
+	ax1 = plt.subplot(221)
+	df.plot(ax=ax1, edgecolor="black")
+
+	ax2 = plt.subplot(222)
+	df.plot(ax=ax2, edgecolor="black")
+
+	ax3 = plt.subplot(223)
+	df.plot(ax=ax3)
+
+	plt.show()
+
+
+
+
+.. image:: img/subplots221.png
+   :alt: Subplots
+
+
+
+|
+
+**Setting Legend**
+
+To set the legend for an axes, simply type:  ax.legend()
+
+
+
+.. code-block:: python
+	
+	import matplotlib.pyplot as plt
+
+	fig = plt.figure(figsize=(6,4))
+	ax = fig.add_subplot(111)
+
+	ax.plot([300, 400,500,600,700,800,900], 
+	        [1.00, 1.20, 1.40, 1.60, 1.80, 2.00, 2.20], label = 'Supply')
+
+	ax.plot([300, 430,560,680,710,800,925],
+	        [2.20, 2.00,1.80, 1.60,1.40,1.20,1.00], label = 'Demand')
+
+	ax. set_ylabel('Price')
+	ax. set_xlabel('Quantity Demanded and Supplied')
+	ax.set_title("Demand and Supply Data")
+	ax.legend()
+	plt.show
+
+
+
+.. image:: img/matplot_legend.png
+   :alt: Subplots
+
+
+
+
+
+For more information on how to use the matplotlib figure object, please click on the links below:
 
 
 * `Anatomy of a Matplotlib Figure <https://matplotlib.org/2.0.2/faq/usage_faq.html>`_ 
@@ -723,7 +892,9 @@ Using Pyshp we can experiment with displaying a shapefile using only its points 
 	   plt.plot(x,y, color="gray")
 
 
-	plt.show()
+   plt.show()
+
+
 |
 
 

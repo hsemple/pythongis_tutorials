@@ -284,7 +284,7 @@ The two scripts below show how to calculate slope using ArcPy.
 |
 
 
- **Calculate Slope from a DEM using PyQGIS**
+**Calculate Slope from a DEM using PyQGIS**
 
 
 .. raw:: html
@@ -293,10 +293,11 @@ The two scripts below show how to calculate slope using ArcPy.
 
 
 
- |
 
 
+|
 
+|
 
 **Generate Slope using the RichDem Library**
 
@@ -362,7 +363,7 @@ Aspect Mapping
 -----------------
 
 
-**Calculate Aspect with Arcpy**
+**Calculate Aspect Using Arcpy**
 
 The script below show how to generate an aspect map using ArcPy.   
 
@@ -377,7 +378,7 @@ The script below show how to generate an aspect map using ArcPy.
    from arcpy.sa import *
 
    # Set environment settings
-   env.workspace = "C:/sapyexamples/data"
+   env.workspace = "C:/Users/.../data"
 
    # Set local variables
    inRaster = "elevation"
@@ -393,7 +394,7 @@ The script below show how to generate an aspect map using ArcPy.
 
 
 
-**Generate Aspect Maps Using the GDAL Library**
+**Generate Aspect Using the GDAL Library**
 
 
 
@@ -426,7 +427,7 @@ For more information, please see this website - https://richdem.readthedocs.io/e
 
 
 
-**Generate Aspect Maps Using the RichDEM Library**
+**Generate Aspect Using the RichDEM Library**
 
 
 
@@ -457,7 +458,7 @@ Curvature Maps
 ------------------
 
 
-**Generate Curvature Maps using Arcpy**
+**Generate Curvature Maps Using Arcpy**
 
 The two scripts below show how to calculate curvature using ArcPy.  
 
@@ -520,7 +521,7 @@ In other occasions, the output of one processing operation becomes the input for
 
 
 
-a. Calculate Slope and Aspect Using a Single Script
+**a. Calculate Slope and Aspect Using a Single Script**
 
 .. code-block:: python
 
@@ -559,8 +560,8 @@ a. Calculate Slope and Aspect Using a Single Script
 |
 
 
-Watershed Delineation
-----------------------
+**Automating Watershed Delineation Using PySheds**
+
 
 In this script, the output of one processing becomes the output of the next process.
 
@@ -644,6 +645,60 @@ Source: http://mattbartos.com/pysheds/
 
 
 
+|
+
+**Automating Watershed Delineation Using ArcPy**
+
+
+
+.. code-block:: python
+
+	# Import system modules
+	import arcpy
+	from arcpy import env 
+	from arcpy.sa import * 
+	try:
+	    # Set environment settings
+	    env.workspace = "C:/Users/Hugh/Desktop/watershed"
+	    env.overwriteOutput = True
+
+	    # Check out ArcGIS Spatial Analyst extension 
+	    arcpy.CheckOutExtension("Spatial")
+
+	    # Fill sink
+	    outFill = Fill("elevation")
+	    outFill.save("fill01")
+
+	    #Flow Direction
+	    outFlowDirection = FlowDirection("fill01", "NORMAL")
+	    outFlowDirection.save("flowdir")
+
+	    # Flow Accumulation
+	    outFlowAccumulation = FlowAccumulation("flowdir")
+	    outFlowAccumulation.save("flowAccum")
+
+	    # Define stream length
+	    streams = Con(Raster("flowAccum") > 1500, 1)
+	    streams.save("streams")
+
+	    # Stream Link
+	    outStreamLink = StreamLink("streams", "flowdir")
+	    outStreamLink.save("outStreamLink")
+
+	    # Stream to Feature
+	    outStreamFeat = StreamToFeature("streams", "flowdir", "outstrm01.shp", "NO_SIMPLIFY")
+
+	    #Delineate Watershed
+	    PourPoint = "PourPoint.shp"
+	    outWatershed = Watershed("flowdir", PourPoint, "Id")
+	    outWatershed.save("watershed")#Delineate Watershed
+
+	    print ("Watershed successfully delineated")
+	except Exception as e:
+	    print (e)
+
+
+
 
 
 |
@@ -653,6 +708,11 @@ Source: http://mattbartos.com/pysheds/
 
 Working with GDAL Command Line Utilities
 -------------------------------------------
+
+GDAL (Geospatial Data Abstraction Library) is perhaps the most established library for reading and processing raster and vector geographical data. It is used by many GIS including ArcGIS and QGIS.  GDAL is written in the C++ programming language, but bindings are available that allow it to called from other languages.  
+
+GDAL also has some special programs called `Utilities <https://gdal.org/programs/index.html>`_, which are useful for performing many popular GIS tasks.  These utilities can be called from the command line assuming that proper path is set. They can also be from within Python.  In this section, we will look at how to call GDAL Utilities from the command line.  In the next section, we will look at calling GDAL from within Python.
+
 
 
 **Getting Information about a Raster**
@@ -842,7 +902,8 @@ For more information on how to work with GDAL cmmand line utilities, see this we
 Calling GDAL Commands from Python
 ----------------------------------
 
-It is possible to call GDAL commands from Python and other scripting languages. This allows for easy iteration through geoprocessing tasks, or integration of geoprocessing steps into complex scripted workflows. 
+It is possible to call GDAL commands from Python and other scripting languages. This allows for easy iteration through geoprocessing tasks, or integration of geoprocessing steps into complex scripted workflows.  For more information, please visit this page: https://gdal.org/tutorials/raster_api_tut.html. Below are some code samples for using GDAL from within Python.
+
 
 
 
@@ -889,7 +950,7 @@ We have already seen this structure in previous Python scripts that used the gda
 Exercises
 -----------
 
-1. Write a script that prompts the user for the path to input DEM and an input satellite imagery.  Afterwards, the script should generate a hillshade of the area. Finally, the script should drape the satellite imagery over the hillshade.
+1. Write a script that prompts the user for the path to an input DEM and an input satellite imagery.  Afterwards, the script should generate a hillshade of the area. Finally, the script should drape the satellite imagery over the hillshade. You can download `sample data here <https://www.dropbox.com/s/r61wulyhlctvdcf/Washington_Data.zip?dl=0>`_
 
 
 2. Instead of generating a hillshade, write a second script to generate a 3D model of the area. Afterward, let the script drape a satellite imagery over the 3D model of the area.
