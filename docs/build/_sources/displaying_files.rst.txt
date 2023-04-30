@@ -271,28 +271,28 @@ b. `Python Zip Function <https://www.programiz.com/python-programming/methods/bu
 The Matplotlib Figure Object
 --------------------------------
 
-When working with Python, it is important to know how to manipulate matplotlib's figure object.  Almost all of your graphical output will require the use of this figure object either directly or indirectly, so I urge you to become acquainted with this object. The links below provide some information on ths topic.
+When working with Python, it is important to know how to manipulate matplotlib's figure object.  Almost all of your graphical output will require the use of this figure object either directly or indirectly. The links below provide some information on ths topic.
 
 
-In terms of a general overview, the figure object is the top level object. It serves as the container for all other plot-related objects.   
+In terms of a general overview, in matplotlib's languge, the figure object is the top level object. It serves as the container for all other plot-related objects.   
 
 
 The figure object can contain one or more axes or plotting objects. Axes are actual X,Y plots or diagrams that appear in the document.  Axes contain the X-axis and the Y-axis, which are the XY lines in the plots. Axes also have plot objects, titles, legends, etc.
 
 
-The easiest way to create a new figure is with pyplot:
+The easiest way to create a new figure is to use the figure method of the matplotlib pyplot interface:
 
 >>> f = plt.figure()  
 
-or
+If you want to control the figure size, you can use the figsize argument of the figure method. Figure size is given in width first then height (in inches)
 
- >>> f = plt.figure.figsize=(12,10) # where figure size, width & height, are inches, 
+ >>> f = plt.figure.figsize=(12,10) 
     
 
 The above statements will create an empty figure object with no axes.  
 
 
-Often, we encounter code samples that do not specify any figure object, as shown below.  If no figure is specified in the code, then pyplot uses a default figure object to draw the figure. 
+Often, we encounter code samples, such as the one below, that do not specify any figure object.  If no figure object is specified in the code, then pyplot uses a default figure object to draw the figure. 
 
 .. code-block:: python
 
@@ -305,7 +305,7 @@ Often, we encounter code samples that do not specify any figure object, as shown
 
 
 
-The main benefit of explicity specifying the figure is that you can control its size, background, color, etc.  In the code sample below, the size of the figure object is specified.
+The main benefit of explicity specifying a figure is that you can control its size, background, color, etc.  In the code sample below, the size of the figure object is specified.
 
 
 .. code-block:: python
@@ -932,7 +932,7 @@ The code below plots a Michigan shapefile using both the parts and points collec
 
 
 
-**Displaying Polygon or multi-polygon Shapefiles using Descartes**
+**Displaying Single or Multi-Polygon Shapefiles using Descartes**
 
 The Descartes library is another alternative for displaying shapefiles using Python.  Descartes uses geometric objects as input for displaying `matplotlib paths and patches as lines and polygons <https://matplotlib.org/stable/api/pyplot_summary.html>`_.   Experiment with the code below to learn about `geo_interfaces <https://gist.github.com/sgillies/2217756>`_ from the shapefile library,  add_patch() from matplotlib, and PolyPatch () from Descartes.
 
@@ -1111,7 +1111,24 @@ One way to display a raster is to open the raster file using the gdal library, t
 |
 
 
-In this example, we introduce the geotransform function. We also introduce a way to display the map's legend.
+In the illustration above, the raster is displayed without any reference to real world coordinates.  The coordinates displayed are just counts of the raster cells.   In GIS, it is typical for map layers to be displayed with their coordinates. In the example below, we introduce the geotransform function which is used to recalibrate the cell values in terms of real world coordinates. We also introduce a way to display the map's legend.
+
+
+The GeoTransform contains a tuple of values that are used to establish the coordinates of the upper left (UL) corner of a raster.  GeoTransform basically takes these values and use them to renumber the entire image in terms of the real world coordinate values. There are six values in the geotransform tuple. They are show below.
+
+| GeoTransform[0]  - center of the upper-left pixel x 
+| GeoTransform[1]  - west-east pixel resolution
+| GeoTransform[2]  - rotation, 0 if image is north up.
+| GeoTransform[3]  - center of the upper left y coordinate
+| GeoTransform[4]  - rotation, 0 if image is north up.
+| GeoTransform[5]  - north -south pixel resolution
+
+
+|
+
+
+
+In the script below, ulx and uly are the coordinates in the the upper left corner in the GeoTranformed raster while lrx and lry are the coordinates in the lower right corner.
 
 
 .. code-block:: python
@@ -1149,6 +1166,13 @@ In this example, we introduce the geotransform function. We also introduce a way
 
 	plt.savefig('dem_plot.png', dpi=300, bbox_inches='tight')
 	plt.show()
+
+
+
+.. image:: img/wayne_dem_gdal.png
+   :alt: Wayne DEM
+
+
 
 
 |

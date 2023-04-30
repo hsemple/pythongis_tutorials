@@ -58,10 +58,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#slope-mapping">10.3. Slope Mapping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#aspect-mapping">10.4. Aspect Mapping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#curvature-maps">10.5. Curvature Maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#automating-terrain-analysis-workflows">10.6. Automating Terrain Analysis Workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#working-with-gdal-command-line-utilities">10.7. Working with GDAL Command Line Utilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#calling-gdal-commands-from-python">10.8. Calling GDAL Commands from Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exercises">10.9. Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#computing-viewshed">10.6. Computing Viewshed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automating-terrain-analysis-workflows">10.7. Automating Terrain Analysis Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-gdal-command-line-utilities">10.8. Working with GDAL Command Line Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-gdal-commands-from-python">10.9. Running GDAL Commands from Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#batch-processing-using-gdal">10.10. Batch Processing Using GDAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">10.11. Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -470,10 +472,36 @@
 <div class="line"><br /></div>
 </div>
 </section>
+<section id="computing-viewshed">
+<h2><span class="section-number">10.6. </span>Computing Viewshed<a class="headerlink" href="#computing-viewshed" title="Permalink to this heading"></a></h2>
+<p><strong>Viewshed Using Arcpy</strong></p>
+<p>This sample script comes from <a class="reference external" href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/3d-analyst/viewshed.htm">ESRI</a>. It calculates surface locations that are visible to a set of observers defined in a shapefile. The script requires the 3D Analyst Extension</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="n">env</span>
+
+<span class="c1"># Set environment settings</span>
+<span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data&quot;</span>
+
+<span class="c1"># Set local variables</span>
+<span class="n">inRaster</span> <span class="o">=</span> <span class="s2">&quot;elevation&quot;</span>
+<span class="n">inObserverFeatures</span> <span class="o">=</span> <span class="s2">&quot;observers.shp&quot;</span>
+<span class="n">outViewshed</span> <span class="o">=</span> <span class="s2">&quot;C:/output/outvwshd02&quot;</span>
+<span class="n">zFactor</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">useEarthCurvature</span> <span class="o">=</span> <span class="s2">&quot;CURVED_EARTH&quot;</span>
+<span class="n">refractivityCoefficient</span> <span class="o">=</span> <span class="mf">0.15</span>
+
+<span class="c1"># Execute Viewshed</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">ddd</span><span class="o">.</span><span class="n">Viewshed</span><span class="p">(</span><span class="n">inRaster</span><span class="p">,</span> <span class="n">inObserverFeatures</span><span class="p">,</span> <span class="n">outViewshed</span><span class="p">,</span> <span class="n">zFactor</span><span class="p">,</span>
+   <span class="n">useEarthCurvature</span><span class="p">,</span> <span class="n">refractivityCoefficient</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
 <section id="automating-terrain-analysis-workflows">
-<h2><span class="section-number">10.6. </span>Automating Terrain Analysis Workflows<a class="headerlink" href="#automating-terrain-analysis-workflows" title="Permalink to this heading"></a></h2>
-<p>Python scripts are useful for automating workflows that involves the use of multiple tools either parallel to each other or sequentially.  For example, if your terrain analysis involves producing both a slope map and an aspect map from the same digital elevation model, then these two computations can be integrated into a single script as shown in the example below, where both slope and aspect are computed within the script.</p>
-<p>In other occasions, the output of one processing operation becomes the input for another processing operation. This is evident in the watershed delineation</p>
+<h2><span class="section-number">10.7. </span>Automating Terrain Analysis Workflows<a class="headerlink" href="#automating-terrain-analysis-workflows" title="Permalink to this heading"></a></h2>
+<p>Python scripts are useful for automating workflows that involve the use of multiple tools either parallel to each other or sequentially.  For example, if your terrain analysis involves producing both a slope map and an aspect map from the same digital elevation model, then these two computations can be integrated into a single script as shown in the example below.  On other occasions, the output of one processing operation becomes the input for another processing operation. These sequential operations are evident in the watershed delineation scripts that are presented below.</p>
 <p><strong>a. Calculate Slope and Aspect Using a Single Script</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import system modules</span>
 <span class="kn">import</span> <span class="nn">arcpy</span>
@@ -631,7 +659,7 @@
 </div>
 </section>
 <section id="working-with-gdal-command-line-utilities">
-<h2><span class="section-number">10.7. </span>Working with GDAL Command Line Utilities<a class="headerlink" href="#working-with-gdal-command-line-utilities" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">10.8. </span>Working with GDAL Command Line Utilities<a class="headerlink" href="#working-with-gdal-command-line-utilities" title="Permalink to this heading"></a></h2>
 <p>GDAL (Geospatial Data Abstraction Library) is perhaps the most established library for reading and processing raster and vector geographical data. It is used by many GIS including ArcGIS and QGIS.  GDAL is written in the C++ programming language, but bindings are available that allow it to called from other languages.</p>
 <p>GDAL also has some special programs called <a class="reference external" href="https://gdal.org/programs/index.html">Utilities</a>, which are useful for performing many popular GIS tasks.  These utilities can be called from the command line assuming that proper path is set. They can also be from within Python.  In this section, we will look at how to call GDAL Utilities from the command line.  In the next section, we will look at calling GDAL from within Python.</p>
 <p><strong>Getting Information about a Raster</strong></p>
@@ -769,9 +797,31 @@ Band 1 Block=256x16 Type=Float32, ColorInterp=Undefined
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<p>Computing Viewsheds</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_viewshed</span> <span class="o">-</span><span class="n">md</span> <span class="mi">500</span> <span class="o">-</span><span class="n">ox</span> <span class="o">-</span><span class="mi">10147017</span> <span class="o">-</span><span class="n">oy</span> <span class="mi">5108065</span> <span class="n">source</span><span class="o">.</span><span class="n">tif</span> <span class="n">destination</span><span class="o">.</span><span class="n">tif</span>
+</pre></div>
+</div>
+<p>where</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>md</dt><dd><p>Maximum distance from observer to compute visibiliy. It is also used to clamp the extent of the output raster.\</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="simple">
+<dt>-ox &lt;value&gt;</dt><dd><p>The X position of the observer (in SRS units).</p>
+</dd>
+<dt>-oy &lt;value&gt;</dt><dd><p>The Y position of the observer (in SRS units).</p>
+</dd>
+</dl>
+<p>For more information, see <a class="reference external" href="https://man.archlinux.org/man/community/gdal/gdal_viewshed.1.en">https://man.archlinux.org/man/community/gdal/gdal_viewshed.1.en</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </section>
-<section id="calling-gdal-commands-from-python">
-<h2><span class="section-number">10.8. </span>Calling GDAL Commands from Python<a class="headerlink" href="#calling-gdal-commands-from-python" title="Permalink to this heading"></a></h2>
+<section id="running-gdal-commands-from-python">
+<h2><span class="section-number">10.9. </span>Running GDAL Commands from Python<a class="headerlink" href="#running-gdal-commands-from-python" title="Permalink to this heading"></a></h2>
 <p>It is possible to call GDAL commands from Python and other scripting languages. This allows for easy iteration through geoprocessing tasks, or integration of geoprocessing steps into complex scripted workflows.  For more information, please visit this page: <a class="reference external" href="https://gdal.org/tutorials/raster_api_tut.html">https://gdal.org/tutorials/raster_api_tut.html</a>. Below are some code samples for using GDAL from within Python.</p>
 <p><strong>Open a Raster with GDAL</strong></p>
 <p>We have already seen this structure in previous Python scripts that used the gdal library.</p>
@@ -800,8 +850,33 @@ Band 1 Block=256x16 Type=Float32, ColorInterp=Undefined
 <div class="line"><br /></div>
 </div>
 </section>
+<section id="batch-processing-using-gdal">
+<h2><span class="section-number">10.10. </span>Batch Processing Using GDAL<a class="headerlink" href="#batch-processing-using-gdal" title="Permalink to this heading"></a></h2>
+<p>There are many code samples for processing a single file using GDAL.  However, code samples for batch processing are not frequently encountered.  Below is an example for converting multiple .rst files into .tif files</p>
+<p>Recall that for one raster file conversion we would use this:
+gdal_translate -of GTiff 01_State19900101.rst 01_State19900101.tif</p>
+<p>Now we’re going to make a batch file which includes a loop to convert all files in the folder.</p>
+<p>Open a text editor, e.g. Notepad, and add the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="o">%%</span><span class="n">f</span> <span class="ow">in</span> <span class="p">(</span><span class="o">*.</span><span class="n">rst</span><span class="p">)</span> <span class="n">do</span> <span class="p">(</span>
+   <span class="n">echo</span> <span class="o">%%~</span><span class="n">nf</span>
+   <span class="n">gdal_translate</span> <span class="o">-</span><span class="n">of</span> <span class="n">GTiff</span> <span class="o">%%</span><span class="n">f</span> <span class="o">%%~</span><span class="n">nf</span><span class="o">.</span><span class="n">tif</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Save the batchfile as rst2tif.bat in the folder with the land-use rasters.</p>
+<p>In the code above,  %%f is the variable that contains the filename of each file. With echo we can print something to the screen. Here we print %%~nf , which is the part of the filename before the dot that separates it from the extension. Then we use the gdal_translate command with output format GeoTiff. At the end of the line we add the .tif extension to the filename.</p>
+<p>5. Execute the batchfile. Type
+rst2tif &lt;ENTER&gt;</p>
+<ol class="arabic simple" start="6">
+<li><p>Check the results</p></li>
+</ol>
+<p><a class="reference external" href="https://courses.gisopencourseware.org/mod/book/view.php?id=78&amp;chapterid=193">https://courses.gisopencourseware.org/mod/book/view.php?id=78&amp;chapterid=193</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
 <section id="exercises">
-<h2><span class="section-number">10.9. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">10.11. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Write a script that prompts the user for the path to an input DEM and an input satellite imagery.  Afterwards, the script should generate a hillshade of the area. Finally, the script should drape the satellite imagery over the hillshade. You can download <a class="reference external" href="https://www.dropbox.com/s/r61wulyhlctvdcf/Washington_Data.zip?dl=0">sample data here</a></p></li>
 <li><p>Instead of generating a hillshade, write a second script to generate a 3D model of the area. Afterward, let the script drape a satellite imagery over the 3D model of the area.</p></li>
@@ -809,6 +884,10 @@ Band 1 Block=256x16 Type=Float32, ColorInterp=Undefined
 <p><strong>Resources</strong></p>
 <p>Please visit the link below for a sample script. Note: This is just one way of approaching this task.</p>
 <p><a class="reference external" href="https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem">https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem</a></p>
+<p>Batch processing – automatizing the use of GDAL and SAGA GIS tools using Bash Shell scripts
+<a class="reference external" href="https://www.luisalucchese.com/post/batch-processing-gdal-saga-gis-bash/">https://www.luisalucchese.com/post/batch-processing-gdal-saga-gis-bash/</a></p>
+<p>Working with Rasterio
+<a class="reference external" href="https://geobgu.xyz/py/rasterio.html">https://geobgu.xyz/py/rasterio.html</a></p>
 </section>
 </section>
 

@@ -473,7 +473,6 @@ The two scripts below show how to calculate curvature using ArcPy.
 
 
 
-
 |
 
 
@@ -505,19 +504,48 @@ This example calculates the curvature of a given slope. Use in Idle or Python No
 Click on this link for more code samples - https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst
 
 
+|
+
+
+Computing Viewshed 
+---------------------
+
+
+**Viewshed Using Arcpy**
+
+This sample script comes from `ESRI <https://pro.arcgis.com/en/pro-app/latest/tool-reference/3d-analyst/viewshed.htm>`_. It calculates surface locations that are visible to a set of observers defined in a shapefile. The script requires the 3D Analyst Extension
+
+
+.. code-block:: python
+
+	import arcpy
+	from arcpy import env
+
+	# Set environment settings
+	env.workspace = "C:/data"
+
+	# Set local variables
+	inRaster = "elevation"
+	inObserverFeatures = "observers.shp"
+	outViewshed = "C:/output/outvwshd02"
+	zFactor = 2
+	useEarthCurvature = "CURVED_EARTH"
+	refractivityCoefficient = 0.15
+
+	# Execute Viewshed
+	arcpy.ddd.Viewshed(inRaster, inObserverFeatures, outViewshed, zFactor,
+	   useEarthCurvature, refractivityCoefficient)
+
 
 
 |
 
 
 
-
 Automating Terrain Analysis Workflows 
 ---------------------------------------
 
-Python scripts are useful for automating workflows that involves the use of multiple tools either parallel to each other or sequentially.  For example, if your terrain analysis involves producing both a slope map and an aspect map from the same digital elevation model, then these two computations can be integrated into a single script as shown in the example below, where both slope and aspect are computed within the script.
-
-In other occasions, the output of one processing operation becomes the input for another processing operation. This is evident in the watershed delineation 
+Python scripts are useful for automating workflows that involve the use of multiple tools either parallel to each other or sequentially.  For example, if your terrain analysis involves producing both a slope map and an aspect map from the same digital elevation model, then these two computations can be integrated into a single script as shown in the example below.  On other occasions, the output of one processing operation becomes the input for another processing operation. These sequential operations are evident in the watershed delineation scripts that are presented below.
 
 
 
@@ -898,8 +926,34 @@ For more information on how to work with GDAL cmmand line utilities, see this we
 |
 
 
+Computing Viewsheds
 
-Calling GDAL Commands from Python
+.. code-block:: python
+
+	gdal_viewshed -md 500 -ox -10147017 -oy 5108065 source.tif destination.tif
+
+
+where 
+
+- md 
+   Maximum distance from observer to compute visibiliy. It is also used to clamp the extent of the output raster.\\
+
+-ox <value>
+    The X position of the observer (in SRS units).
+
+-oy <value>
+    The Y position of the observer (in SRS units).
+
+
+For more information, see https://man.archlinux.org/man/community/gdal/gdal_viewshed.1.en
+
+
+
+
+|
+
+
+Running GDAL Commands from Python
 ----------------------------------
 
 It is possible to call GDAL commands from Python and other scripting languages. This allows for easy iteration through geoprocessing tasks, or integration of geoprocessing steps into complex scripted workflows.  For more information, please visit this page: https://gdal.org/tutorials/raster_api_tut.html. Below are some code samples for using GDAL from within Python.
@@ -945,6 +999,48 @@ We have already seen this structure in previous Python scripts that used the gda
 |
 
 
+Batch Processing Using GDAL  
+-------------------------------
+
+
+There are many code samples for processing a single file using GDAL.  However, code samples for batch processing are not frequently encountered.  Below is an example for converting multiple .rst files into .tif files
+ 
+
+Recall that for one raster file conversion we would use this:
+gdal_translate -of GTiff 01_State19900101.rst 01_State19900101.tif
+
+
+Now we're going to make a batch file which includes a loop to convert all files in the folder.
+
+Open a text editor, e.g. Notepad, and add the following code:
+
+
+.. code-block:: python
+
+	for %%f in (*.rst) do (
+	   echo %%~nf
+	   gdal_translate -of GTiff %%f %%~nf.tif
+	)
+
+
+Save the batchfile as rst2tif.bat in the folder with the land-use rasters.
+
+In the code above,  %%f is the variable that contains the filename of each file. With echo we can print something to the screen. Here we print %%~nf , which is the part of the filename before the dot that separates it from the extension. Then we use the gdal_translate command with output format GeoTiff. At the end of the line we add the .tif extension to the filename.
+
+5. Execute the batchfile. Type
+rst2tif <ENTER>
+
+6. Check the results
+
+
+https://courses.gisopencourseware.org/mod/book/view.php?id=78&chapterid=193
+
+
+
+
+|
+
+
 
 
 Exercises
@@ -962,6 +1058,16 @@ Exercises
 Please visit the link below for a sample script. Note: This is just one way of approaching this task.
 
 https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem
+
+
+
+Batch processing – automatizing the use of GDAL and SAGA GIS tools using Bash Shell scripts
+https://www.luisalucchese.com/post/batch-processing-gdal-saga-gis-bash/
+
+
+Working with Rasterio
+https://geobgu.xyz/py/rasterio.html
+
 
 
 

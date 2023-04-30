@@ -296,19 +296,19 @@ the objective with this code sample is to illustrate some details that is involv
 </section>
 <section id="the-matplotlib-figure-object">
 <h2><span class="section-number">7.4. </span>The Matplotlib Figure Object<a class="headerlink" href="#the-matplotlib-figure-object" title="Permalink to this heading"></a></h2>
-<p>When working with Python, it is important to know how to manipulate matplotlib’s figure object.  Almost all of your graphical output will require the use of this figure object either directly or indirectly, so I urge you to become acquainted with this object. The links below provide some information on ths topic.</p>
-<p>In terms of a general overview, the figure object is the top level object. It serves as the container for all other plot-related objects.</p>
+<p>When working with Python, it is important to know how to manipulate matplotlib’s figure object.  Almost all of your graphical output will require the use of this figure object either directly or indirectly. The links below provide some information on ths topic.</p>
+<p>In terms of a general overview, in matplotlib’s languge, the figure object is the top level object. It serves as the container for all other plot-related objects.</p>
 <p>The figure object can contain one or more axes or plotting objects. Axes are actual X,Y plots or diagrams that appear in the document.  Axes contain the X-axis and the Y-axis, which are the XY lines in the plots. Axes also have plot objects, titles, legends, etc.</p>
-<p>The easiest way to create a new figure is with pyplot:</p>
+<p>The easiest way to create a new figure is to use the figure method of the matplotlib pyplot interface:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>or</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># where figure size, width &amp; height, are inches,</span>
+<p>If you want to control the figure size, you can use the figsize argument of the figure method. Figure size is given in width first then height (in inches)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The above statements will create an empty figure object with no axes.</p>
-<p>Often, we encounter code samples that do not specify any figure object, as shown below.  If no figure is specified in the code, then pyplot uses a default figure object to draw the figure.</p>
+<p>Often, we encounter code samples, such as the one below, that do not specify any figure object.  If no figure object is specified in the code, then pyplot uses a default figure object to draw the figure.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">26</span><span class="p">]</span>
@@ -317,7 +317,7 @@ the objective with this code sample is to illustrate some details that is involv
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The main benefit of explicity specifying the figure is that you can control its size, background, color, etc.  In the code sample below, the size of the figure object is specified.</p>
+<p>The main benefit of explicity specifying a figure is that you can control its size, background, color, etc.  In the code sample below, the size of the figure object is specified.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">26</span><span class="p">]</span>
@@ -767,7 +767,7 @@ the objective with this code sample is to illustrate some details that is involv
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Displaying Polygon or multi-polygon Shapefiles using Descartes</strong></p>
+<p><strong>Displaying Single or Multi-Polygon Shapefiles using Descartes</strong></p>
 <p>The Descartes library is another alternative for displaying shapefiles using Python.  Descartes uses geometric objects as input for displaying <a class="reference external" href="https://matplotlib.org/stable/api/pyplot_summary.html">matplotlib paths and patches as lines and polygons</a>.   Experiment with the code below to learn about <a class="reference external" href="https://gist.github.com/sgillies/2217756">geo_interfaces</a> from the shapefile library,  add_patch() from matplotlib, and PolyPatch () from Descartes.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shapefile</span> <span class="k">as</span> <span class="nn">shp</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -897,7 +897,20 @@ the objective with this code sample is to illustrate some details that is involv
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>In this example, we introduce the geotransform function. We also introduce a way to display the map’s legend.</p>
+<p>In the illustration above, the raster is displayed without any reference to real world coordinates.  The coordinates displayed are just counts of the raster cells.   In GIS, it is typical for map layers to be displayed with their coordinates. In the example below, we introduce the geotransform function which is used to recalibrate the cell values in terms of real world coordinates. We also introduce a way to display the map’s legend.</p>
+<p>The GeoTransform contains a tuple of values that are used to establish the coordinates of the upper left (UL) corner of a raster.  GeoTransform basically takes these values and use them to renumber the entire image in terms of the real world coordinate values. There are six values in the geotransform tuple. They are show below.</p>
+<div class="line-block">
+<div class="line">GeoTransform[0]  - center of the upper-left pixel x</div>
+<div class="line">GeoTransform[1]  - west-east pixel resolution</div>
+<div class="line">GeoTransform[2]  - rotation, 0 if image is north up.</div>
+<div class="line">GeoTransform[3]  - center of the upper left y coordinate</div>
+<div class="line">GeoTransform[4]  - rotation, 0 if image is north up.</div>
+<div class="line">GeoTransform[5]  - north -south pixel resolution</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>In the script below, ulx and uly are the coordinates in the the upper left corner in the GeoTranformed raster while lrx and lry are the coordinates in the lower right corner.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gdal</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">colors</span>
@@ -933,6 +946,7 @@ the objective with this code sample is to illustrate some details that is involv
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<img alt="Wayne DEM" src="_images/wayne_dem_gdal.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
