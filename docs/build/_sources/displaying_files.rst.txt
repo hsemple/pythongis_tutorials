@@ -1081,11 +1081,11 @@ To learn more about arrays, please click on `this link <https://jakevdp.github.i
 
 
 
-**Displaing a DEM using GDAL and Matplotlib** 
+**Displaying a DEM using GDAL and Matplotlib** 
 
 
 
-One way to display a raster is to open the raster file using the gdal library, then convert the raster into an array using GDAL. Afterwards, we can use matplotlib's pyplot.imshow() to display the array.    If you not familiar with imshow, please look it up.
+One way to display a raster is to open the raster file using the gdal library, then convert the raster into an array using GDAL. Afterwards, we can use matplotlib's pyplot.imshow() to display the array.    If you not familiar with imshow, please look it up. Imshow takes a 'vmin' argument which sets the minimum display values. In this case elevation values of zero and higher will be displayed.  Thus, if the raster has a negative nodata value, it will bot be displayed.  Cmap is a color map. Here we are using the matplotlib's `color map  <https://matplotlib.org/stable/tutorials/colors/colormaps.html>`_ named "gist_earth".
 
 
 .. code-block:: python
@@ -1099,29 +1099,30 @@ One way to display a raster is to open the raster file using the gdal library, t
    band1 = ds.GetRasterBand(1)
 
    raster_array = band1.ReadAsArray()
-   plt.imshow(raster_array)
+   plt.imshow(raster_array,vmin=0, cmap="gist_earth")
    plt.show()
 
 
 
-.. image:: img/wayne_dem.png
+.. image:: img/wayne_dem2.png
    :alt: Wayne DEM
 
 
 |
 
 
-In the illustration above, the raster is displayed without any reference to real world coordinates.  The coordinates displayed are just counts of the raster cells.   In GIS, it is typical for map layers to be displayed with their coordinates. In the example below, we introduce the geotransform function which is used to recalibrate the cell values in terms of real world coordinates. We also introduce a way to display the map's legend.
+In the illustration above, the raster is displayed without any reference to real world coordinates.  The coordinates displayed are just counts of the raster cells.  
 
+In GIS, it is typical for map layers to be displayed with their real world coordinates. In the sample script below, the geotransform function is introduced.  This function is used to recalibrate the cell values in terms of real world coordinates. The script also introduces raster legends.
 
-The GeoTransform contains a tuple of values that are used to establish the coordinates of the upper left (UL) corner of a raster.  GeoTransform basically takes these values and use them to renumber the entire image in terms of the real world coordinate values. There are six values in the geotransform tuple. They are show below.
+The GeoTransform contains a tuple of values that are used to establish the coordinates of the upper left (UL) corner of a raster.  GeoTransform basically takes these values and use them to renumber the entire image in terms of the real world coordinate values. There are six values in the geotransform tuple. They are shown below.
 
-| GeoTransform[0]  - center of the upper-left pixel x 
+| GeoTransform[0]  - he upper left xcoordinate
 | GeoTransform[1]  - west-east pixel resolution
 | GeoTransform[2]  - rotation, 0 if image is north up.
-| GeoTransform[3]  - center of the upper left y coordinate
+| GeoTransform[3]  - the upper left y coordinate
 | GeoTransform[4]  - rotation, 0 if image is north up.
-| GeoTransform[5]  - north -south pixel resolution
+| GeoTransform[5]  - north-south pixel resolution
 
 
 |
