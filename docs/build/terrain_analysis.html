@@ -63,7 +63,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#working-with-gdal-command-line-utilities">10.8. Working with GDAL Command Line Utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#running-gdal-commands-from-python">10.9. Running GDAL Commands from Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#batch-processing-using-gdal">10.10. Batch Processing Using GDAL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exercises">10.11. Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automating-workflows">10.11. Automating Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">10.12. Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -875,8 +876,31 @@ rst2tif &lt;ENTER&gt;</p>
 <div class="line"><br /></div>
 </div>
 </section>
+<section id="automating-workflows">
+<h2><span class="section-number">10.11. </span>Automating Workflows<a class="headerlink" href="#automating-workflows" title="Permalink to this heading"></a></h2>
+<p>You have been manually drawing a polygon around an XY event layer of the locations each time they are updated, but the process takes a lot of time and is not entirely accurate.   In the script below,  we take a table of customer locations and create an outer polygon boundary of those locations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span><span class="o">,</span> <span class="nn">csv</span>
+<span class="n">xyData</span> <span class="o">=</span> <span class="s1">&#39;r:C:\mydata.csv&#39;</span>
+<span class="n">outConvexHull</span> <span class="o">=</span> <span class="s1">&#39;C:\Boundary.shp&#39;</span>
+
+<span class="n">xyLocations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">csvFile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">xyData</span><span class="p">)</span>
+<span class="n">csvReader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvFile</span><span class="p">)</span>
+<span class="nb">next</span><span class="p">(</span><span class="n">csvReader</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="p">(</span><span class="n">csvReader</span><span class="p">):</span>
+    <span class="n">xyLocations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+
+<span class="n">customerPoints</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Multipoint</span><span class="p">(</span><span class="n">arcpy</span><span class="o">.</span><span class="n">Array</span><span class="p">([</span><span class="n">arcpy</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="o">*</span><span class="n">coords</span><span class="p">)</span> <span class="k">for</span> <span class="n">coords</span> <span class="ow">in</span> <span class="n">xyLocations</span><span class="p">])))</span>
+
+<span class="n">convexHull</span> <span class="o">=</span> <span class="n">customerPoints</span><span class="o">.</span><span class="n">convexHull</span><span class="p">()</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">CopyFeatures_management</span><span class="p">(</span><span class="n">convexHull</span><span class="p">,</span> <span class="n">outConvedHull</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 <section id="exercises">
-<h2><span class="section-number">10.11. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">10.12. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Write a script that prompts the user for the path to an input DEM and an input satellite imagery.  Afterwards, the script should generate a hillshade of the area. Finally, the script should drape the satellite imagery over the hillshade. You can download <a class="reference external" href="https://www.dropbox.com/s/r61wulyhlctvdcf/Washington_Data.zip?dl=0">sample data here</a></p></li>
 <li><p>Instead of generating a hillshade, write a second script to generate a 3D model of the area. Afterward, let the script drape a satellite imagery over the 3D model of the area.</p></li>

@@ -1042,6 +1042,40 @@ https://courses.gisopencourseware.org/mod/book/view.php?id=78&chapterid=193
 
 
 
+Automating Workflows
+---------------------
+
+
+You have been manually drawing a polygon around an XY event layer of the locations each time they are updated, but the process takes a lot of time and is not entirely accurate.   In the script below,  we take a table of customer locations and create an outer polygon boundary of those locations. 
+
+
+.. code-block:: python
+
+	import arcpy, csv
+	xyData = 'r:C:\mydata.csv'
+	outConvexHull = 'C:\Boundary.shp'
+
+	xyLocations = []
+	csvFile = open(xyData)
+	csvReader = csv.reader(csvFile)
+	next(csvReader)
+
+	for row in (csvReader):
+	    xyLocations.append(row)
+
+
+	customerPoints = arcpy.Multipoint(arcpy.Array([arcpy.Point(*coords) for coords in xyLocations])))
+
+	convexHull = customerPoints.convexHull()
+	arcpy.CopyFeatures_management(convexHull, outConvedHull)
+
+
+
+
+
+
+
+
 
 Exercises
 -----------
