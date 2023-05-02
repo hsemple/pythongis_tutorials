@@ -824,40 +824,53 @@ the objective with this code sample is to illustrate some details that is involv
 <div class="line"><br /></div>
 </div>
 <p><strong>Displaying a List of XY Coordinates as Points</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># importing libraries</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># Reading csv file</span>
-<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span> <span class="c1"># Shapely for converting latitude/longtitude to geometry</span>
-<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span> <span class="c1"># To create GeodataFrame</span>
-
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import libraries</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># Pandas  Read csv file</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span> <span class="c1">#  Shapely for converting latitude/longtitude to geometry</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span> <span class="c1"># Geopandas for visualing shapefile</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 
-<span class="n">earthquakes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/.../earthquakes.csv&#39;</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">earthquakes</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="n">homicides</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/.../Toronto_Homicides.csv&#39;</span><span class="p">)</span>
+<span class="c1">#print (homicides.head())</span>
+<span class="c1">#Download data at - https://data.torontopolice.on.ca/datasets/TorontoPS::homicides-open-data-asr-rc-tbl-002/explore</span>
 
 
 <span class="c1"># creating a geometry column</span>
-<span class="n">geometry</span> <span class="o">=</span> <span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span> <span class="k">for</span> <span class="n">xy</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">earthquakes</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">],</span> <span class="n">earthquakes</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">])]</span>
+<span class="n">geometry</span> <span class="o">=</span> <span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span> <span class="k">for</span> <span class="n">xy</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">homicides</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span> <span class="n">homicides</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">])]</span>
 
 <span class="c1"># Coordinate reference system : WGS84</span>
-<span class="c1">#crs = {&#39;init&#39;: &#39;epsg:4326&#39;}</span>
+<span class="n">crs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;init&#39;</span><span class="p">:</span> <span class="s1">&#39;epsg:4326&#39;</span><span class="p">}</span>
 
 <span class="c1"># Creating a Geographic data frame</span>
-<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">earthquakes</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">geometry</span><span class="p">)</span>
-
-
-<span class="c1">#print (gdf.head())</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">homicides</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">geometry</span><span class="p">)</span>
 
 
 <span class="c1"># Plot all points</span>
-<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-
-<span class="o">|</span>
 </pre></div>
 </div>
+<img alt="Toronto Homicides" src="_images/toronto_homicides.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The above task can be done entirely in geopandas using a script such as the one below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+
+
+<span class="n">homicide_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/.../Toronto_Homicides2.csv&#39;</span><span class="p">)</span>
+
+<span class="n">homicide_gpd</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">homicide_data</span><span class="p">,</span> <span class="n">geometry</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">homicides_data</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">homicides_data</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">]</span> <span class="p">))</span>
+
+<span class="c1">#homicide_gpd</span>
+
+<span class="n">homicide_gpd</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">markersize</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Please view the video below for an explanation of the code.</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/aVkdWSqKG_c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -870,7 +883,7 @@ the objective with this code sample is to illustrate some details that is involv
 <p>In programming, rasters are considered as <em>arrays</em>.  An array is a collection of items of the same data type that can be manipulated as a single entity.  In Python,  a list is a one dimensional array.  However, when we are thinking about rasters, we are typically thinking of two dimensional arrays that are matrices of numbers defined by rows and columns.</p>
 <p>In Python, one difference between a list and a two-dimensional array is that whereas a list can store multiple data types, a two-dimensional array can store only one data type.</p>
 <img alt="One and Two Dimensional Arrays" src="_images/arrays1.png" />
-<p>Python has specialized libraries for manipulating arrays. Two popular ones are the “numpy” library and the “array” module. Numpy appear to be more popular.  To import Numpy, type:</p>
+<p>Python has specialized libraries for manipulating arrays. Two popular ones are the “numpy” library and the “array” module. Numpy appears to be more popular.  To import Numpy, type:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
@@ -970,7 +983,7 @@ the objective with this code sample is to illustrate some details that is involv
 <span class="c1"># Get the plot renderer object.</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">src_array</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;jet&#39;</span><span class="p">),</span> <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span> <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="n">src_array</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Digital Elevation Model&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Digital Elevation Model, Wayne County&quot;</span><span class="p">)</span>
 
 <span class="c1">#Associate the figure object with plot renderer and axes objects.</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
@@ -1068,12 +1081,19 @@ the objective with this code sample is to illustrate some details that is involv
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p><strong>Displaying a Raster in QGIS Using Python</strong></p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/W5_3H2UWYms" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Displaying a Web Map that is Stored in ArcGIS Online Using ArcGIS API for Python</strong></p>
-<p>The code sample below makes an anonymous connection to ArcGIS Online then searches for Search for a publicly available web map titled LA Parks and Trails Map owned by esri_devlabs. The web map contains datasets about Los Angeles, CA parks and trails.  After the web map is retrieved from the list of items,  the WebMap class is imported and used to visualize the web map.  The code sample comes from <a class="reference external" href="https://developers.arcgis.com/python/guide/display-a-webmap">this ESRI webpage</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Displaying Web Maps and Feature Layers Stored in ArcGIS Online Using ArcGIS API for Python</strong></p>
+<p><em>Making an Anonymous Connection</em></p>
+<p>The code sample below makes an anonymous connection to ArcGIS Online then searches for a publicly available web map entitled LA Parks and Trails Map owned by esri_devlabs. The web map contains datasets about Los Angeles, CA parks and trails.  After the web map is retrieved from the list of items,  the WebMap class is imported and used to visualize the web map.  The code sample comes from <a class="reference external" href="https://developers.arcgis.com/python/guide/display-a-webmap">this ESRI webpage</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arcgis.gis</span> <span class="kn">import</span> <span class="n">GIS</span>
 
 <span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">()</span>
@@ -1095,6 +1115,61 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 <img alt="ArcGIS Online Web Map" src="_images/arcgis_online_webmap.png" />
 <div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><em>Connect to your ArcGIS Online Account8</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arcgis.gis</span> <span class="kn">import</span> <span class="n">GIS</span>
+
+<span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">(</span><span class="s2">&quot;https://www.arcgis.com/&quot;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;password&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Successfully logged in as: &quot;</span> <span class="o">+</span> <span class="n">gis</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+
+<span class="n">webmap_search</span><span class="o">=</span> <span class="n">gis</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;COVID-19 Deaths by State&quot;</span><span class="p">,</span> <span class="n">item_type</span><span class="o">=</span><span class="s2">&quot;Web Map&quot;</span><span class="p">)</span>
+<span class="n">webmap_search</span>
+
+<span class="n">webmap_item</span> <span class="o">=</span> <span class="n">webmap_search</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">webmap_item</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">arcgis.mapping</span> <span class="kn">import</span> <span class="n">WebMap</span>
+<span class="n">covid19_webmap</span> <span class="o">=</span> <span class="n">WebMap</span><span class="p">(</span><span class="n">webmap_item</span><span class="p">)</span>
+<span class="n">covid19_webmap</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><em>Connect to a Feature Layer</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Establish a connection to your GIS.</span>
+<span class="kn">from</span> <span class="nn">arcgis.gis</span> <span class="kn">import</span> <span class="n">GIS</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">()</span> <span class="c1"># anonymous connection to www.arcgis.com</span>
+
+<span class="c1"># Search for &#39;USA major cities&#39; feature layer collection</span>
+<span class="n">search_results</span> <span class="o">=</span> <span class="n">gis</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;title: USA Major Cities&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;Feature Layer&#39;</span><span class="p">)</span>
+
+<span class="c1"># Access the first Item that&#39;s returned</span>
+<span class="n">major_cities_item</span> <span class="o">=</span> <span class="n">search_results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">major_cities_item</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><em>Connect to a Feature Layer using ItemID</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Establish a connection to your GIS.</span>
+<span class="kn">from</span> <span class="nn">arcgis.gis</span> <span class="kn">import</span> <span class="n">GIS</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">()</span> <span class="c1"># anonymous connection to www.arcgis.com</span>
+
+<span class="n">freeways</span> <span class="o">=</span> <span class="n">gis</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;91c6a5f6410b4991ab0db1d7c26daacb&#39;</span><span class="p">)</span>
+<span class="n">freeways</span>
+</pre></div>
+</div>
+<p>For more information, please visit the link below:</p>
+<p><a class="reference external" href="https://developers.arcgis.com/python/guide/working-with-feature-layers-and-features/">https://developers.arcgis.com/python/guide/working-with-feature-layers-and-features/</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
 </section>
@@ -1121,6 +1196,7 @@ the objective with this code sample is to illustrate some details that is involv
 <li><p>Rasterio - <a class="reference external" href="https://geobgu.xyz/py/rasterio">https://geobgu.xyz/py/rasterio</a>.html#</p></li>
 <li><p>Create Random Hex Color Code Using Python - <a class="reference external" href="https://www.geeksforgeeks.org/create-random-hex-color-code-using-python">https://www.geeksforgeeks.org/create-random-hex-color-code-using-python</a>/#</p></li>
 <li><p>Plotting large shapefiles with matplotlib - <a class="reference external" href="https://gis.stackexchange.com/questions/202839/plotting-large-shapefiles-with-matplotlib/266675#266675">https://gis.stackexchange.com/questions/202839/plotting-large-shapefiles-with-matplotlib/266675#266675</a></p></li>
+<li><p>ArcGIS API for Python. Working with web maps and web scenes - <a class="reference external" href="https://developers.arcgis.com/python/guide/working-with-web-maps-and-web-scenes/">https://developers.arcgis.com/python/guide/working-with-web-maps-and-web-scenes/</a></p></li>
 </ul>
 <div class="line-block">
 <div class="line"><br /></div>

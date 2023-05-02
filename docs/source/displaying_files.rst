@@ -1013,38 +1013,64 @@ In this example, the code above has been modified to display the polygons in the
 
 .. code-block:: python
 
-   # importing libraries
-   import pandas as pd # Reading csv file 
-   from shapely.geometry import Point # Shapely for converting latitude/longtitude to geometry
-   import geopandas as gpd # To create GeodataFrame
-
-   import matplotlib.pyplot as plt
-
-
-   earthquakes = pd.read_csv('/Users/.../earthquakes.csv')
-   print (earthquakes.head())
+	# import libraries
+	import pandas as pd # Pandas  Read csv file 
+	from shapely.geometry import Point #  Shapely for converting latitude/longtitude to geometry
+	import geopandas as gpd # Geopandas for visualing shapefile 
+	import matplotlib.pyplot as plt
 
 
-   # creating a geometry column 
-   geometry = [Point(xy) for xy in zip(earthquakes['longitude'], earthquakes['latitude'])]
-
-   # Coordinate reference system : WGS84
-   #crs = {'init': 'epsg:4326'}
-
-   # Creating a Geographic data frame 
-   gdf = gpd.GeoDataFrame(earthquakes, geometry=geometry)
+	homicides = pd.read_csv('/Users/.../Toronto_Homicides.csv') 
+	#print (homicides.head())
+	#Download data at - https://data.torontopolice.on.ca/datasets/TorontoPS::homicides-open-data-asr-rc-tbl-002/explore
 
 
-   #print (gdf.head())
+	# creating a geometry column
+	geometry = [Point(xy) for xy in zip(homicides['X'], homicides['Y'])]
+
+	# Coordinate reference system : WGS84
+	crs = {'init': 'epsg:4326'}
+
+	# Creating a Geographic data frame
+	gdf = gpd.GeoDataFrame(homicides, geometry=geometry)
 
 
-   # Plot all points
-   gdf.plot(marker='o', color='b', markersize=0.5)
+	# Plot all points
+	gdf.plot(marker='o', color='r', markersize=1.5)
 
-   plt.show()
+	plt.show()
+
+   
+
+.. image:: img/toronto_homicides.png
+   :alt:  Toronto Homicides
 
 
-   |
+|
+
+
+
+The above task can be done entirely in geopandas using a script such as the one below:
+
+
+.. code-block:: python
+
+	import pandas as pd
+	import geopandas as gpd
+
+
+	homicide_data = pd.read_csv('/Users/.../Toronto_Homicides2.csv')
+
+	homicide_gpd = gpd.GeoDataFrame(homicide_data, geometry = gpd.points_from_xy(homicides_data["X"],homicides_data["Y"] ))
+
+	#homicide_gpd
+
+	homicide_gpd.plot(markersize = 1.5, color = "red", figsize =(10,10))
+
+
+
+Please view the video below for an explanation of the code.
+
 
 
 .. raw:: html
@@ -1070,7 +1096,7 @@ In Python, one difference between a list and a two-dimensional array is that whe
    :alt: One and Two Dimensional Arrays
 
 
-Python has specialized libraries for manipulating arrays. Two popular ones are the "numpy" library and the “array" module. Numpy appear to be more popular.  To import Numpy, type:    
+Python has specialized libraries for manipulating arrays. Two popular ones are the "numpy" library and the “array" module. Numpy appears to be more popular.  To import Numpy, type:    
 
 >>> import numpy as np
 
@@ -1204,7 +1230,7 @@ Rasterio has a show( ) method for displaying rasters. However, the library also 
    # Get the plot renderer object.
    img = ax.imshow(src_array, cmap=plt.get_cmap('jet'), extent=extent, norm = colors.Normalize(vmin = 0, vmax = src_array.max()))  
 
-   ax.set_title("Digital Elevation Model")
+   ax.set_title("Digital Elevation Model, Wayne County")
 
    #Associate the figure object with plot renderer and axes objects.
    fig.colorbar(img, ax=ax) 
@@ -1328,7 +1354,7 @@ Rasterio has a show( ) method for displaying rasters. However, the library can a
 
 |
 
-
+|
 
 **Displaying a Raster in QGIS Using Python**
 
@@ -1342,12 +1368,15 @@ Rasterio has a show( ) method for displaying rasters. However, the library can a
 
 |
 
+|
 
 
-**Displaying a Web Map that is Stored in ArcGIS Online Using ArcGIS API for Python**
+**Displaying Web Maps and Feature Layers Stored in ArcGIS Online Using ArcGIS API for Python**
 
 
-The code sample below makes an anonymous connection to ArcGIS Online then searches for Search for a publicly available web map titled LA Parks and Trails Map owned by esri_devlabs. The web map contains datasets about Los Angeles, CA parks and trails.  After the web map is retrieved from the list of items,  the WebMap class is imported and used to visualize the web map.  The code sample comes from `this ESRI webpage <https://developers.arcgis.com/python/guide/display-a-webmap>`_ 
+*Making an Anonymous Connection*
+
+The code sample below makes an anonymous connection to ArcGIS Online then searches for a publicly available web map entitled LA Parks and Trails Map owned by esri_devlabs. The web map contains datasets about Los Angeles, CA parks and trails.  After the web map is retrieved from the list of items,  the WebMap class is imported and used to visualize the web map.  The code sample comes from `this ESRI webpage <https://developers.arcgis.com/python/guide/display-a-webmap>`_ 
 
 
 
@@ -1381,8 +1410,71 @@ The code sample below makes an anonymous connection to ArcGIS Online then search
 |
 
 
+*Connect to your ArcGIS Online Account8*
 
 
+.. code-block:: python
+
+	from arcgis.gis import GIS
+
+	gis = GIS("https://www.arcgis.com/", username="username", password="password")
+	print("Successfully logged in as: " + gis.properties.user.username)
+
+	webmap_search= gis.content.search("COVID-19 Deaths by State", item_type="Web Map")
+	webmap_search
+
+	webmap_item = webmap_search[0]
+	print (webmap_item)
+
+	from arcgis.mapping import WebMap
+	covid19_webmap = WebMap(webmap_item)
+	covid19_webmap
+
+
+|
+
+
+*Connect to a Feature Layer*
+
+.. code-block:: python
+
+	# Establish a connection to your GIS.
+	from arcgis.gis import GIS
+	from IPython.display import display
+	gis = GIS() # anonymous connection to www.arcgis.com
+
+	# Search for 'USA major cities' feature layer collection
+	search_results = gis.content.search('title: USA Major Cities',
+	                                    'Feature Layer')
+
+	# Access the first Item that's returned
+	major_cities_item = search_results[0]
+
+	major_cities_item
+
+
+|
+
+
+*Connect to a Feature Layer using ItemID*
+
+.. code-block:: python
+
+	# Establish a connection to your GIS.
+	from arcgis.gis import GIS
+	from IPython.display import display
+	gis = GIS() # anonymous connection to www.arcgis.com
+
+	freeways = gis.content.get('91c6a5f6410b4991ab0db1d7c26daacb')
+	freeways
+
+
+For more information, please visit the link below:
+
+https://developers.arcgis.com/python/guide/working-with-feature-layers-and-features/
+
+|
+|
 
 
 Exercises
@@ -1423,6 +1515,7 @@ Resources
 * Rasterio - https://geobgu.xyz/py/rasterio.html#
 * Create Random Hex Color Code Using Python - https://www.geeksforgeeks.org/create-random-hex-color-code-using-python/#
 * Plotting large shapefiles with matplotlib - https://gis.stackexchange.com/questions/202839/plotting-large-shapefiles-with-matplotlib/266675#266675
+* ArcGIS API for Python. Working with web maps and web scenes - https://developers.arcgis.com/python/guide/working-with-web-maps-and-web-scenes/
 
 
 
