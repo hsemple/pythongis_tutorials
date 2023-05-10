@@ -396,7 +396,7 @@ Whereas batch processing involves repeating tasks many times, automating workflo
 
 .. code-block:: python
 
-import arcpy
+    import arcpy
 
 	# Set the project and map
 	aprx = arcpy.mp.ArcGISProject("CURRENT")
@@ -487,37 +487,39 @@ import arcpy
 .. code-block:: python
 
 	import geopandas as gpd
-	from shapely.geometry import Point
+	import pandas as pd
 	import matplotlib.pyplot as plt
+	import pysal as ps
 
-	# Load the necessary spatial data layers
-	railways = gpd.read_file('path/to/railways.shp')
-	highways = gpd.read_file('path/to/highways.shp')
-	seaports = gpd.read_file('path/to/seaports.shp')
-	industrial_areas = gpd.read_file('path/to/industrial_areas.shp')
+	# Read in the county shapefile
+	county_shapefile = gpd.read_file('path/to/county/shapefile.shp')
 
-	# Buffer the railway lines and highways by 100 meters
-	railways_buffer = railways.buffer(100)
-	highways_buffer = highways.buffer(100)
+	# Read in the CSV file containing the COVID-19 case counts
+	covid_data = pd.read_csv('path/to/covid/data.csv')
 
-	# Select only the light industrial areas that are within the buffers
-	industrial_areas_buffered = gpd.overlay(industrial_areas, railways_buffer, how='intersection')
-	industrial_areas_buffered = gpd.overlay(industrial_areas_buffered, highways_buffer, how='intersection')
+	# Merge the county shapefile and the COVID-19 case data
+	merged_data = county_shapefile.merge(covid_data, left_on='FIPS', right_on='FIPS')
 
-	# Calculate the distance between the industrial areas and the seaports
-	industrial_areas_buffered['centroid'] = industrial_areas_buffered.centroid
-	seaports['centroid'] = seaports.centroid
-	industrial_areas_buffered['distance_to_seaport'] = industrial_areas_buffered['centroid'].apply(lambda x: seaports.distance(x).min())
+	# Calculate the natural breaks for the case counts
+	classifier = ps.Natural_Breaks.make(k=5)
+	breaks = classifier(merged_data['cases'], initial=0)
 
-	# Select only the industrial areas that are within 1000 meters of a seaport
-	industrial_areas_final = industrial_areas_buffered[industrial_areas_buffered['distance_to_seaport'] <= 1000]
+	# Create a colormap with five classes
+	cmap = plt.cm.get_cmap('YlOrRd', 5)
 
-	# Generate a map of the results
-	fig, ax = plt.subplots(figsize=(10, 10))
-	seaports.plot(ax=ax, color='blue', markersize=100)
-	industrial_areas_final.plot(ax=ax, color='green')
-	ax.set_title('Best site for warehouse')
-	plt.show()
+	# Plot the data on a map with graduated colors
+	fig, ax = plt.subplots(figsize=(12, 8))
+	merged_data.plot(column='cases', ax=ax, cmap=cmap, edgecolor='grey', linewidth=0.5, legend=True)
+
+	# Add a title to the map
+	ax.set_title('COVID-19 Cases by County')
+
+	# Add a legend to the map
+	legend = ax.get_legend()
+	legend.set_bbox_to_anchor((0.18, 0.95))
+
+	# Save the map to a file
+	plt.savefig('path/to/output/map.png', dpi=300)
 
 
 |

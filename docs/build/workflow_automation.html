@@ -382,36 +382,42 @@ rst2tif &lt;ENTER&gt;</p>
 <div class="line"><br /></div>
 </div>
 <p><strong>Geocoding Events and and Finding Standard Distance Circle</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+
+    <span class="c1"># Set the project and map</span>
+    <span class="n">aprx</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">ArcGISProject</span><span class="p">(</span><span class="s2">&quot;CURRENT&quot;</span><span class="p">)</span>
+    <span class="n">mapx</span> <span class="o">=</span> <span class="n">aprx</span><span class="o">.</span><span class="n">listMaps</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># Set the input table and output feature class names</span>
+    <span class="n">input_table</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\data\project.gdb\event_table&quot;</span>
+    <span class="n">output_fc</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\data\project.gdb\geocoded_points&quot;</span>
+
+    <span class="c1"># Geocode the input table using the ArcGIS World Geocoding Service</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">geocoding</span><span class="o">.</span><span class="n">GeocodeAddresses</span><span class="p">(</span><span class="n">input_table</span><span class="p">,</span> <span class="s2">&quot;World&quot;</span><span class="p">,</span> <span class="n">output_fc</span><span class="p">)</span>
+
+    <span class="c1"># Add the feature layer to the map</span>
+    <span class="n">lyr</span> <span class="o">=</span> <span class="n">mapx</span><span class="o">.</span><span class="n">addDataFromPath</span><span class="p">(</span><span class="n">output_fc</span><span class="p">)</span>
+
+    <span class="c1"># Set the symbology for the layer</span>
+    <span class="n">sym</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">LayerFile</span><span class="p">(</span><span class="s2">&quot;path/to/symbology.lyrx&quot;</span><span class="p">)</span>
+    <span class="n">lyr</span><span class="o">.</span><span class="n">symbology</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">symbology</span>
+
+    <span class="c1"># Calculate the mean center and standard distance circle of the geocoded points</span>
+    <span class="n">mean_center</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">MeanCenter</span><span class="p">(</span><span class="n">output_fc</span><span class="p">,</span> <span class="s2">&quot;mean_center&quot;</span><span class="p">)</span>
+    <span class="n">std_distance</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">StandardDistance</span><span class="p">(</span><span class="n">output_fc</span><span class="p">,</span> <span class="s2">&quot;std_distance&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Print the mean center and standard distance circle locations</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean Center location: (</span><span class="si">{0}</span><span class="s2">, </span><span class="si">{1}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mean_center</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">mean_center</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">Y</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard Distance Circle location: (</span><span class="si">{0}</span><span class="s2">, </span><span class="si">{1}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">std_distance</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">std_distance</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">Y</span><span class="p">))</span>
+
+    <span class="c1"># Add the mean center and standard distance circle to the map</span>
+    <span class="n">mean_center_lyr</span> <span class="o">=</span> <span class="n">mapx</span><span class="o">.</span><span class="n">addDataFromPath</span><span class="p">(</span><span class="n">mean_center</span><span class="p">)</span>
+    <span class="n">std_distance_lyr</span> <span class="o">=</span> <span class="n">mapx</span><span class="o">.</span><span class="n">addDataFromPath</span><span class="p">(</span><span class="n">std_distance</span><span class="p">)</span>
+
+    <span class="c1"># Save the project</span>
+    <span class="n">aprx</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>import arcpy</p>
-<blockquote>
-<div><p># Set the project and map
-aprx = arcpy.mp.ArcGISProject(“CURRENT”)
-mapx = aprx.listMaps()[0]</p>
-<p># Set the input table and output feature class names
-input_table = r”C:dataproject.gdbevent_table”
-output_fc = r”C:dataproject.gdbgeocoded_points”</p>
-<p># Geocode the input table using the ArcGIS World Geocoding Service
-arcpy.geocoding.GeocodeAddresses(input_table, “World”, output_fc)</p>
-<p># Add the feature layer to the map
-lyr = mapx.addDataFromPath(output_fc)</p>
-<p># Set the symbology for the layer
-sym = arcpy.mp.LayerFile(“path/to/symbology.lyrx”)
-lyr.symbology = sym.symbology</p>
-<p># Calculate the mean center and standard distance circle of the geocoded points
-mean_center = arcpy.stats.MeanCenter(output_fc, “mean_center”)
-std_distance = arcpy.stats.StandardDistance(output_fc, “std_distance”)</p>
-<p># Print the mean center and standard distance circle locations
-print(“Mean Center location: ({0}, {1})”.format(mean_center.centroid.X, mean_center.centroid.Y))
-print(“Standard Distance Circle location: ({0}, {1})”.format(std_distance.centroid.X, std_distance.centroid.Y))</p>
-<p># Add the mean center and standard distance circle to the map
-mean_center_lyr = mapx.addDataFromPath(mean_center)
-std_distance_lyr = mapx.addDataFromPath(std_distance)</p>
-<p># Save the project
-aprx.save()</p>
-</div></blockquote>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -455,37 +461,39 @@ aprx.save()</p>
 <div><p>Here’s a Python workflow that takes a CSV file containing total counts of COVID-19 cases for each county, plots these on a shapefile of counties using Geopandas and create a graduated color map with five classes and natural breaks classification:</p>
 </div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
-<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pysal</span> <span class="k">as</span> <span class="nn">ps</span>
 
-<span class="c1"># Load the necessary spatial data layers</span>
-<span class="n">railways</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;path/to/railways.shp&#39;</span><span class="p">)</span>
-<span class="n">highways</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;path/to/highways.shp&#39;</span><span class="p">)</span>
-<span class="n">seaports</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;path/to/seaports.shp&#39;</span><span class="p">)</span>
-<span class="n">industrial_areas</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;path/to/industrial_areas.shp&#39;</span><span class="p">)</span>
+<span class="c1"># Read in the county shapefile</span>
+<span class="n">county_shapefile</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;path/to/county/shapefile.shp&#39;</span><span class="p">)</span>
 
-<span class="c1"># Buffer the railway lines and highways by 100 meters</span>
-<span class="n">railways_buffer</span> <span class="o">=</span> <span class="n">railways</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">highways_buffer</span> <span class="o">=</span> <span class="n">highways</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1"># Read in the CSV file containing the COVID-19 case counts</span>
+<span class="n">covid_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;path/to/covid/data.csv&#39;</span><span class="p">)</span>
 
-<span class="c1"># Select only the light industrial areas that are within the buffers</span>
-<span class="n">industrial_areas_buffered</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">overlay</span><span class="p">(</span><span class="n">industrial_areas</span><span class="p">,</span> <span class="n">railways_buffer</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;intersection&#39;</span><span class="p">)</span>
-<span class="n">industrial_areas_buffered</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">overlay</span><span class="p">(</span><span class="n">industrial_areas_buffered</span><span class="p">,</span> <span class="n">highways_buffer</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;intersection&#39;</span><span class="p">)</span>
+<span class="c1"># Merge the county shapefile and the COVID-19 case data</span>
+<span class="n">merged_data</span> <span class="o">=</span> <span class="n">county_shapefile</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">covid_data</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;FIPS&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;FIPS&#39;</span><span class="p">)</span>
 
-<span class="c1"># Calculate the distance between the industrial areas and the seaports</span>
-<span class="n">industrial_areas_buffered</span><span class="p">[</span><span class="s1">&#39;centroid&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">industrial_areas_buffered</span><span class="o">.</span><span class="n">centroid</span>
-<span class="n">seaports</span><span class="p">[</span><span class="s1">&#39;centroid&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">seaports</span><span class="o">.</span><span class="n">centroid</span>
-<span class="n">industrial_areas_buffered</span><span class="p">[</span><span class="s1">&#39;distance_to_seaport&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">industrial_areas_buffered</span><span class="p">[</span><span class="s1">&#39;centroid&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">seaports</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+<span class="c1"># Calculate the natural breaks for the case counts</span>
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">Natural_Breaks</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">breaks</span> <span class="o">=</span> <span class="n">classifier</span><span class="p">(</span><span class="n">merged_data</span><span class="p">[</span><span class="s1">&#39;cases&#39;</span><span class="p">],</span> <span class="n">initial</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="c1"># Select only the industrial areas that are within 1000 meters of a seaport</span>
-<span class="n">industrial_areas_final</span> <span class="o">=</span> <span class="n">industrial_areas_buffered</span><span class="p">[</span><span class="n">industrial_areas_buffered</span><span class="p">[</span><span class="s1">&#39;distance_to_seaport&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">1000</span><span class="p">]</span>
+<span class="c1"># Create a colormap with five classes</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;YlOrRd&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 
-<span class="c1"># Generate a map of the results</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">seaports</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">industrial_areas_final</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Best site for warehouse&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># Plot the data on a map with graduated colors</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">merged_data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;cases&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Add a title to the map</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;COVID-19 Cases by County&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add a legend to the map</span>
+<span class="n">legend</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend</span><span class="p">()</span>
+<span class="n">legend</span><span class="o">.</span><span class="n">set_bbox_to_anchor</span><span class="p">((</span><span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">))</span>
+
+<span class="c1"># Save the map to a file</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;path/to/output/map.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">

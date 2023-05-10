@@ -113,6 +113,7 @@
 </div>
 <img alt="Aspect Map" src="_images/colorado_dataset1.png" />
 <p>The output from the above script is a json object. Although this is a human readable format, we can use the pandas library to format the json and display it in a more user-friendly way.  The code sample below shows how this can be done.</p>
+<p><em>Viewing Json with Pandas</em></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -128,59 +129,8 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Downloading Json and Mapping the Data Points</strong></p>
-<p>As GIS researchers, we are also interested in mapping latlong coordinates that may be contained in API endpoints.  the script takes a json string, parses it and extracts the latitude/longitde data.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">folium</span>
-
-<span class="c1"># Make a GET request to the API endpoint</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://example.com/api&quot;</span><span class="p">)</span>
-
-<span class="c1"># Parse the response content as JSON</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
-
-<span class="c1"># Extract the latitude and longitude from the JSON data</span>
-<span class="n">latitude</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span>
-<span class="n">longitude</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span>
-
-<span class="c1"># Create a map using the extracted latitude and longitude</span>
-<span class="nb">map</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-
-<span class="c1"># Add a marker to the map at the extracted latitude and longitude</span>
-<span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">([</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">])</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="nb">map</span><span class="p">)</span>
-
-<span class="c1"># Display the map</span>
-<span class="nb">map</span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
-
-<span class="c1"># JSON data containing latitude and longitude</span>
-<span class="n">json_data</span> <span class="o">=</span> <span class="s1">&#39;{&quot;location&quot;: {&quot;latitude&quot;: 40.7128, &quot;longitude&quot;: -74.006}}&#39;</span>
-
-<span class="c1"># Parse the JSON data as a Python object</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span>
-
-<span class="c1"># Extract latitude and longitude from the Python object</span>
-<span class="n">latitude</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span>
-<span class="n">longitude</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span>
-
-<span class="c1"># Print the latitude and longitude values</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Latitude: &quot;</span><span class="p">,</span> <span class="n">latitude</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Longitude: &quot;</span><span class="p">,</span> <span class="n">longitude</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p><strong>Mapping with Python &amp; Folium - Creating Maps from Raw CSV/JSON Data</strong></p>
-<p>This video is a tutorial on how to create Folium maps from raw CSV data in Python. The video covers loading the data into Python, transforming the data, extracting latitude/longitude, and creating interactive maps based on the data.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/H8Ypb8Ei9YA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p><strong>Geocoding Using the OpenStreetMap Nominatim API</strong></p>
-<p>Python script that uses the OpenStreetMap Nominatim API to geocode an address, retrieve a JSON response, parse the JSON response, and print out the latitude and longitude coordinates.</p>
+<p>The Python script below uses the OpenStreetMap Nominatim API to geocode an address, retrieve a JSON response, parse the JSON response, and print out the latitude and longitude coordinates.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
@@ -210,14 +160,88 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<p><strong>Downloading Json and Mapping the Data Points</strong></p>
+<p>As GIS researchers, we are also interested in mapping latlong coordinates that may be contained in API endpoints.  The script below takes a json file, parses it and extracts the latitude/longitde data.  Afterwards, the folium library is used to map the data.  The data comes from <a class="reference external" href="https://worldpopulationreview.com/us-cities">this world population website</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">folium</span>
+
+<span class="c1"># Load the JSON file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/.../cities.json&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="c1"># Parse the JSON data to extract city names</span>
+<span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+
+<span class="c1"># Use OpenStreetMap&#39;s Nominatim to obtain latitude and longitude for each city</span>
+<span class="n">locations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">city</span> <span class="ow">in</span> <span class="n">cities</span><span class="p">:</span>
+    <span class="c1"># Construct the API request URL</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://nominatim.openstreetmap.org/search?format=json&amp;q=</span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="c1"># Make a GET request to the API endpoint</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="c1"># Parse the response content as JSON</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+    <span class="c1"># Extract the latitude and longitude from the JSON data</span>
+    <span class="n">latitude</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+    <span class="n">longitude</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Append the latitude and longitude to the locations list</span>
+    <span class="n">locations</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">])</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="n">locations</span><span class="p">)</span>
+
+<span class="c1"># Create a map with a marker for each city&#39;s latitude and longitude</span>
+<span class="nb">map</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">locations</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">locations</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">location</span> <span class="ow">in</span> <span class="n">locations</span><span class="p">:</span>
+    <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="n">location</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="nb">map</span><span class="p">)</span>
+
+<span class="c1"># Display the map</span>
+<span class="nb">map</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">folium</span>
+
+<span class="c1"># Make a GET request to the API endpoint</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://example.com/api&quot;</span><span class="p">)</span>
+
+<span class="c1"># Parse the response content as JSON</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+<span class="c1"># Extract the latitude and longitude from the JSON data</span>
+<span class="n">latitude</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span>
+<span class="n">longitude</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span>
+
+<span class="c1"># Create a map using the extracted latitude and longitude</span>
+<span class="nb">map</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Add a marker to the map at the extracted latitude and longitude</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">([</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">])</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="nb">map</span><span class="p">)</span>
+
+<span class="c1"># Display the map</span>
+<span class="nb">map</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Mapping with Python &amp; Folium - Creating Maps from Raw CSV Data</strong></p>
+<p>This video is a tutorial on how to create Folium maps from raw CSV data in Python. The video covers loading the data into Python, transforming the data, extracting latitude/longitude, and creating interactive maps based on the data.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/H8Ypb8Ei9YA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
 <p><strong>Readings</strong></p>
+<p>Getting longitude-latitude coordinates for a (long) list of cities using Python and a free API.
+<a class="reference external" href="https://amaral.northwestern.edu/blog/getting-long-lat-list-cities">https://amaral.northwestern.edu/blog/getting-long-lat-list-cities</a></p>
 <p>API’s and Natural Language Processing in Open Source Python
 <a class="reference external" href="https://www.earthdatascience.org/courses/use-data-open-source-python/intro-to-apis/">https://www.earthdatascience.org/courses/use-data-open-source-python/intro-to-apis/</a></p>
 <p><a class="reference external" href="https://www.artlembo.com/post/parallel-processing-with-gis-on-desktop-pcs?utm_campaign=2023-05-05&amp;utm_term=16905998&amp;utm_content=educational&amp;utm_source=email-sendgrid&amp;utm_medium=649690">https://www.artlembo.com/post/parallel-processing-with-gis-on-desktop-pcs?utm_campaign=2023-05-05&amp;utm_term=16905998&amp;utm_content=educational&amp;utm_source=email-sendgrid&amp;utm_medium=649690</a></p>
-<p><strong>URL Parameters</strong></p>
-<p>Using URL parameters, you can define a more specific request to limit what data you get back in response to your API request. For example, you can query the data to only return data for Boulder County, Colorado using the REST API call.</p>
-<p>Pay close attention to the ?&amp;county=Boulder part of the url below. That’s the part of the API request that tells the API to only return a subset of the data - where county = Boulder. <a class="reference external" href="https://data.colorado.gov/resource/tv8u-hswn.json?&amp;county=Boulder">https://data.colorado.gov/resource/tv8u-hswn.json?&amp;county=Boulder</a>.</p>
-<p><a class="reference external" href="https://amaral.northwestern.edu/blog/getting-long-lat-list-cities">https://amaral.northwestern.edu/blog/getting-long-lat-list-cities</a></p>
 </section>
 
 
