@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>14. Batch Processing &amp; Workflow Automation &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="15. Retrieving Data from APIs" href="api.html" />
+    <link rel="prev" title="13. Terrain Analysis" href="terrain_analysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Python GIS Tutorials
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">1. Setting up Development Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_programs.html">2. Introduction to the Python Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings_lists_conditional.html">3. Strings and Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">4. Conditional Statements and Looping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">5. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error_handling.html">6. Error Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">7. Basic Concepts in Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="displaying_files.html">8. Reading and Displaying Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_projections.html">9. Map Projections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="attribute_and_spatial_queries.html">10. Attribute and Spatial Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="querying_rasters.html">11. Querying Rasters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geocoding.html">12. Geocoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">13. Terrain Analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">14. Batch Processing &amp; Workflow Automation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#batch-processing-using-gdal">14.1. Batch Processing Using GDAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#batch-processing-using-arcpy">14.2. <strong>Batch Processing Using Arcpy</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automating-gis-workflows">14.3. Automating GIS Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading">14.4. Reading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">15. Retrieving Data from APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python GIS Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">14. </span>Batch Processing &amp; Workflow Automation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/workflow_automation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="batch-processing-workflow-automation">
+<h1><span class="section-number">14. </span>Batch Processing &amp; Workflow Automation<a class="headerlink" href="#batch-processing-workflow-automation" title="Permalink to this heading"></a></h1>
+<p>Batch processing is the process of automating repetitive tasks as a block of work rather than attempting to process each operation manually. In GIS, it may be that you have to clip 1000 shapefiles to the extent of some regions. Instead of clipping the shapefiles individually, one can perform batch clipping in which we use a script to complete the task. Batch proessing is far faster than human processing.  It is often done in off-peak hours when computing resources are more commonly available, such as at the end of the day or overnight.</p>
+<p>In GIS, many large volume geoprocessing operations are carried out by batch scripting the operation.  The scripts below provide an introduction to batch operations using various Python libraries.</p>
+<p>With the appearance of ChatGPT, it now very easy to develop workflow scripts.  Simply describe the workflow in an much detail as you can and enter it into ChatGPT. ChatGPT will return a sample script that most often will work, but often also after a small amount of modification and testing.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="batch-processing-using-gdal">
+<h2><span class="section-number">14.1. </span>Batch Processing Using GDAL<a class="headerlink" href="#batch-processing-using-gdal" title="Permalink to this heading"></a></h2>
+<p>There are many code samples for processing a single file.  However, code samples for batch processing are not frequently encountered.  Below is an example for converting multiple .hdr files into .tif files using GDAL.</p>
+<p>In GDAL, if you wanted to change the file format of a single raster, you can write a script similar to the one below:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gdal_translate</span> <span class="o">-</span><span class="n">of</span> <span class="n">GTiff</span> <span class="n">elevation</span><span class="o">.</span><span class="n">hdr</span> <span class="n">elevation</span><span class="o">.</span><span class="n">tif</span>
+</pre></div>
+</div>
+<p>Now, if we have 500 rasters in a folder that we would like to change the file format from .rst to tif, we could write a script to loop over all the files in folder and convert them to the desired format.</p>
+<p>To write the script, open a text editor, e.g. Notepad, and add the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="o">%%</span><span class="n">f</span> <span class="ow">in</span> <span class="p">(</span><span class="o">*.</span><span class="n">hdr</span><span class="p">)</span> <span class="n">do</span> <span class="p">(</span>
+   <span class="n">echo</span> <span class="o">%%~</span><span class="n">nf</span>
+   <span class="n">gdal_translate</span> <span class="o">-</span><span class="n">of</span> <span class="n">GTiff</span> <span class="o">%%</span><span class="n">f</span> <span class="o">%%~</span><span class="n">nf</span><span class="o">.</span><span class="n">tif</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Save the batchfile as rst2tif.bat in the folder with the land-use rasters.</p>
+<p>In the above code,  %%f is the variable that contains the filename of each file. The echo statement is used print something to the screen. Here we print %%~nf, which is the part of the filename before the dot that separates it from the extension. Next, we use the gdal_translate command with output format GeoTiff. At the end of the line we add the .tif extension to the filename.</p>
+<p>To execute the batchfile, type
+rst2tif &lt;ENTER&gt;</p>
+<p>Check the results.</p>
+<p>Note: Bat files are designed to for Windows machines. On MacOs, the files are called shell scripts and have a .sh ending.</p>
+<p>Source:  <a class="reference external" href="https://courses.gisopencourseware.org/mod/book/view.php?id=78&amp;chapterid=193">https://courses.gisopencourseware.org/mod/book/view.php?id=78&amp;chapterid=193</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Convert a JPG to a PNG</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="c1"># Make sure original image (&#39;test.png&#39;) is in root directory</span>
+<span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;test.png&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">infile</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+  <span class="n">f</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
+  <span class="n">outfile</span> <span class="o">=</span> <span class="n">f</span> <span class="o">+</span> <span class="s1">&#39;.jpg&#39;</span>
+  <span class="k">if</span> <span class="n">infile</span> <span class="o">!=</span> <span class="n">outfile</span><span class="p">:</span>
+
+      <span class="k">try</span><span class="p">:</span>
+
+          <span class="k">with</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+              <span class="n">in_rgb</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span>
+              <span class="n">in_rgb</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="s1">&#39;JPEG&#39;</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+              <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Conversion failed for&#39;</span><span class="p">,</span> <span class="n">infile</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="batch-processing-using-arcpy">
+<h2><span class="section-number">14.2. </span><strong>Batch Processing Using Arcpy</strong><a class="headerlink" href="#batch-processing-using-arcpy" title="Permalink to this heading"></a></h2>
+<p><strong>Buffering Multiple Shapefiles using Arcpy</strong></p>
+<p>The script below can buffer any number of rasters.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+
+<span class="c1"># Set geoprocessing environments</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:/ata/buffers&quot;</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Create list of feature classes</span>
+<span class="n">fcList</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFeatureClasses</span><span class="p">()</span>
+
+<span class="c1"># Create a loop to buffer feature classes</span>
+<span class="n">bufferList</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">fc</span> <span class="ow">in</span> <span class="n">fcList</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">fc</span> <span class="o">==</span> <span class="s2">&quot;Lakes&quot;</span> <span class="ow">or</span> <span class="n">fc</span> <span class="o">==</span> <span class="s2">&quot;Streams&quot;</span><span class="p">:</span>
+          <span class="n">arcpy</span><span class="o">.</span><span class="n">Buffer_analysis</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">fc</span> <span class="o">+</span> <span class="s2">&quot;Buffers&quot;</span><span class="p">,</span> <span class="s2">&quot;1000 meters&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;ALL&quot;</span><span class="p">)</span>
+<span class="n">bufferList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fc</span> <span class="o">+</span> <span class="s2">&quot;Buffer&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Batch Clipping Shapefiles</strong></p>
+<p>Clipping shapefiles is a popular GIS geoprocessing operation. With Python, you can clip a single file or hundreds of files using a single script.</p>
+<p>You can also clip a single base map into multiple shapefile. The script below is used to clip a Michigan-wide geology basemap layer into 83 county-wide layers.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;c:/data/geology&#39;</span>
+
+<span class="c1">#Create a search cursor on the clipping extent shapefile</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">SearchCursor</span><span class="p">(</span><span class="s1">&#39;county_miv17a.shp&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="p">:</span>
+    <span class="n">feat</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">Shape</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">Clip_analysis</span><span class="p">(</span><span class="s1">&#39;bedrock_geology.shp&#39;</span><span class="p">,</span> <span class="n">feat</span><span class="p">,</span>  <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="s1">&#39;NAME&#39;</span><span class="p">)),</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Batch Defining Projections</strong></p>
+<p>In GIS work, we often encouter shapefiles for which the projection has not been defined. If you have multiple shapefiles that needs to have their projections defined to a common projection, then you can use a script to perform the task. The example arcpy script below can be used to batch define the projection of multiple map layers.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import system modules</span>
+<span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="n">env</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># Set workspace environment where the shapefiles are located</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data/projection&quot;</span>
+
+
+<span class="c1"># Create a list of feature classes or shapefiles in the current workspace</span>
+<span class="n">fcs</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFeatureClasses</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
+
+<span class="c1">#Get the spatial reference information</span>
+<span class="n">dsc</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Describe</span><span class="p">(</span><span class="s2">&quot;2022_streets.shp&quot;</span><span class="p">)</span>
+<span class="n">coord_sys</span> <span class="o">=</span> <span class="n">dsc</span><span class="o">.</span><span class="n">spatialReference</span>
+
+
+<span class="c1"># set local variables</span>
+<span class="k">try</span><span class="p">:</span>
+      <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">fcs</span><span class="p">:</span>
+          <span class="n">inData</span> <span class="o">=</span> <span class="n">file</span>
+          <span class="n">coord_sys</span> <span class="o">=</span> <span class="n">dsc</span><span class="o">.</span><span class="n">spatialReference</span>
+          <span class="n">arcpy</span><span class="o">.</span><span class="n">DefineProjection_management</span><span class="p">(</span><span class="n">inData</span><span class="p">,</span> <span class="n">coord_sys</span><span class="p">)</span>
+          <span class="nb">print</span> <span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">coord_sys</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+
+<span class="k">except</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ExecuteError</span><span class="p">:</span>
+      <span class="nb">print</span> <span class="p">(</span><span class="n">arcpy</span><span class="o">.</span><span class="n">GetMessages</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="nb">print</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+      <span class="n">arcpy</span><span class="o">.</span><span class="n">AddError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Batch Reprojecting Shapefiles</strong></p>
+<p>This example script can be used in ArcMap or ArcGIS Pro to reproject multiple map layers:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Name: BatchProject.py</span>
+<span class="c1"># Description: Changes coordinate systems of several datasets in a batch.</span>
+
+<span class="kn">import</span> <span class="nn">arcpy</span>
+
+<span class="c1"># Set workspace environment</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/.data/BedRock_Michigan&quot;</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Input feature classes</span>
+<span class="n">input_features</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFeatureClasses</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
+
+<span class="c1"># Output workspace</span>
+
+<span class="n">out_workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data/BedRock_Michigan/Reproj_Output&quot;</span>
+
+<span class="c1"># Output coordinate system - leave empty</span>
+<span class="n">out_cs</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+<span class="c1"># Template dataset -  GCS_WGS_1984 coordinate system</span>
+<span class="n">template</span> <span class="o">=</span> <span class="s2">&quot;C:/.../Michigan_Projected.shp&quot;</span>
+
+<span class="c1"># Geographic transformation -</span>
+<span class="n">transformation</span> <span class="o">=</span> <span class="s2">&quot;WGS_1984_(ITRF00)_To_NAD_1983&quot;</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">BatchProject_management</span><span class="p">(</span><span class="n">input_features</span><span class="p">,</span> <span class="n">out_workspace</span><span class="p">,</span> <span class="n">out_cs</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">transformation</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="s2">&quot;Batch Reprojection successfully completed&quot;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Batch Clipping Rasters</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">from</span> <span class="nn">arcpy.sa</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">CheckOutExtension</span><span class="p">(</span><span class="s2">&quot;spatial&quot;</span><span class="p">)</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data/Bedrock_Geology&quot;</span>
+<span class="n">clipshapefile</span> <span class="o">=</span> <span class="s2">&quot;counties_v17a.shp&quot;</span>
+
+<span class="n">rasterfile</span> <span class="o">=</span> <span class="s2">&quot;Michigan_DEM.tif&quot;</span>
+
+<span class="c1">#Create a cursorcursor = arcpy.SearchCursor(&#39;Counties_v17a.shp&#39;)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">SearchCursor</span><span class="p">(</span><span class="s1">&#39;Counties_v17a.shp&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="p">:</span>
+<span class="n">county</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">gp</span><span class="o">.</span><span class="n">ExtractByMask_sa</span><span class="p">(</span><span class="n">rasterfile</span><span class="p">,</span> <span class="n">clipshapefile</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="s1">&#39;NAME&#39;</span><span class="p">)))</span>
+<span class="nb">print</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="s1">&#39;NAME&#39;</span><span class="p">)),</span> <span class="s2">&quot;completed&quot;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Batch Mosaicing Rasters</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="p">(</span><span class="n">CheckOutExtension</span><span class="p">,</span> <span class="n">da</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">arcpy.management</span> <span class="kn">import</span> <span class="n">MosaicToNewRaster</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="n">workspace</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:/Users/Hugh/Desktop/merged/topo&quot;</span>
+
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="n">workspace</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="c1">#sr = arcpy.SpatialReference(3174) # assuming this is your spatial reference</span>
+
+<span class="n">rasters</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">dirpath</span><span class="p">,</span> <span class="n">dirnames</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">Walk</span><span class="p">(</span><span class="n">workspace</span><span class="p">,</span> <span class="n">topdown</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="s2">&quot;RasterDataset&quot;</span><span class="p">):</span>
+   <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+      <span class="n">rasters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+<span class="n">MosaicToNewRaster</span><span class="p">(</span><span class="n">rasters</span><span class="p">,</span> <span class="s2">&quot;C:/Users/Hugh/Desktop/merged/topo&quot;</span><span class="p">,</span> <span class="n">newraster</span><span class="o">.</span><span class="n">tif</span><span class="s2">&quot;, &quot;</span><span class="c1">#&quot;, &quot;16_BIT_UNSIGNED&quot;, &quot;30&quot;, &quot;1&quot;)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Batch Generation of Slope Rasters</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+
+<span class="kn">from</span> <span class="nn">arcpy.sa</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s1">&#39;C:/data/DEMs&#39;</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">rasterlist</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListRasters</span><span class="p">()</span> <span class="c1"># Get a list of input rasters</span>
+
+<span class="k">for</span> <span class="n">raster</span> <span class="ow">in</span> <span class="n">rasterlist</span><span class="p">:</span>
+     <span class="n">arcpy</span><span class="o">.</span><span class="n">Slope_3d</span><span class="p">(</span><span class="n">raster</span><span class="p">,</span> <span class="s2">&quot;outslope&quot;</span><span class="p">,</span> <span class="s2">&quot;DEGREE&quot;</span><span class="p">,</span> <span class="mf">0.3043</span><span class="p">)</span>
+     <span class="nb">print</span> <span class="p">(</span><span class="n">raster</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="automating-gis-workflows">
+<h2><span class="section-number">14.3. </span>Automating GIS Workflows<a class="headerlink" href="#automating-gis-workflows" title="Permalink to this heading"></a></h2>
+<p>Whereas batch processing involves repeating tasks many times, automating workflows involves writng codes to carry out tasks that involves multiple tools and multiple steps. Typically, the output of one step becomes the input for the next step.  The code samples below illustrates workflow automation for basic GIS tasks such as watershed delineation, site stelection analysis, geocoding, and thematic mapping. Workflow automation is required in a wide range of scenarios by organizations and GIS developers are deeply involved in these tasks.</p>
+<p><strong>Watershed Delineation (Arcpy)</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import system modules</span>
+<span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="n">env</span>
+<span class="kn">from</span> <span class="nn">arcpy.sa</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Set environment settings</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/Users/Hugh/Desktop/watershed&quot;</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Check out ArcGIS Spatial Analyst extension</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">CheckOutExtension</span><span class="p">(</span><span class="s2">&quot;Spatial&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Fill sink</span>
+    <span class="n">outFill</span> <span class="o">=</span> <span class="n">Fill</span><span class="p">(</span><span class="s2">&quot;elevation&quot;</span><span class="p">)</span>
+    <span class="n">outFill</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;fill01&quot;</span><span class="p">)</span>
+
+
+    <span class="c1">#Flow Direction</span>
+    <span class="n">outFlowDirection</span> <span class="o">=</span> <span class="n">FlowDirection</span><span class="p">(</span><span class="s2">&quot;fill01&quot;</span><span class="p">,</span> <span class="s2">&quot;NORMAL&quot;</span><span class="p">)</span>
+    <span class="n">outFlowDirection</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;flowdir&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Flow Accumulation</span>
+    <span class="n">outFlowAccumulation</span> <span class="o">=</span> <span class="n">FlowAccumulation</span><span class="p">(</span><span class="s2">&quot;flowdir&quot;</span><span class="p">)</span>
+    <span class="n">outFlowAccumulation</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;flowAccum&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Define stream length</span>
+    <span class="n">streams</span> <span class="o">=</span> <span class="n">Con</span><span class="p">(</span><span class="n">Raster</span><span class="p">(</span><span class="s2">&quot;flowAccum&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">streams</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;streams&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Stream Link</span>
+    <span class="n">outStreamLink</span> <span class="o">=</span> <span class="n">StreamLink</span><span class="p">(</span><span class="s2">&quot;streams&quot;</span><span class="p">,</span> <span class="s2">&quot;flowdir&quot;</span><span class="p">)</span>
+    <span class="n">outStreamLink</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;outStreamLink&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Stream to Feature</span>
+    <span class="n">outStreamFeat</span> <span class="o">=</span> <span class="n">StreamToFeature</span><span class="p">(</span><span class="s2">&quot;streams&quot;</span><span class="p">,</span> <span class="s2">&quot;flowdir&quot;</span><span class="p">,</span> <span class="s2">&quot;outstrm01.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;NO_SIMPLIFY&quot;</span><span class="p">)</span>
+
+
+    <span class="c1">#Delineate Watershed</span>
+    <span class="n">PourPoint</span> <span class="o">=</span> <span class="s2">&quot;PourPoint.shp&quot;</span>
+    <span class="n">outWatershed</span> <span class="o">=</span> <span class="n">Watershed</span><span class="p">(</span><span class="s2">&quot;flowdir&quot;</span><span class="p">,</span> <span class="n">PourPoint</span><span class="p">,</span> <span class="s2">&quot;Id&quot;</span><span class="p">)</span>
+    <span class="n">outWatershed</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;watershed&quot;</span><span class="p">)</span><span class="c1">#Delineate Watershed</span>
+
+
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Watershed successfully delineated&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Geocoding Events and and Finding Standard Distance Circle</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>import arcpy</p>
+<blockquote>
+<div><p># Set the project and map
+aprx = arcpy.mp.ArcGISProject(“CURRENT”)
+mapx = aprx.listMaps()[0]</p>
+<p># Set the input table and output feature class names
+input_table = r”C:dataproject.gdbevent_table”
+output_fc = r”C:dataproject.gdbgeocoded_points”</p>
+<p># Geocode the input table using the ArcGIS World Geocoding Service
+arcpy.geocoding.GeocodeAddresses(input_table, “World”, output_fc)</p>
+<p># Add the feature layer to the map
+lyr = mapx.addDataFromPath(output_fc)</p>
+<p># Set the symbology for the layer
+sym = arcpy.mp.LayerFile(“path/to/symbology.lyrx”)
+lyr.symbology = sym.symbology</p>
+<p># Calculate the mean center and standard distance circle of the geocoded points
+mean_center = arcpy.stats.MeanCenter(output_fc, “mean_center”)
+std_distance = arcpy.stats.StandardDistance(output_fc, “std_distance”)</p>
+<p># Print the mean center and standard distance circle locations
+print(“Mean Center location: ({0}, {1})”.format(mean_center.centroid.X, mean_center.centroid.Y))
+print(“Standard Distance Circle location: ({0}, {1})”.format(std_distance.centroid.X, std_distance.centroid.Y))</p>
+<p># Add the mean center and standard distance circle to the map
+mean_center_lyr = mapx.addDataFromPath(mean_center)
+std_distance_lyr = mapx.addDataFromPath(std_distance)</p>
+<p># Save the project
+aprx.save()</p>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Calculate Slope and Aspect Using a Single Script</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import system modules</span>
+<span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="n">env</span>
+<span class="kn">from</span> <span class="nn">arcpy.sa</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Set environment settings</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/workspace&quot;</span>
+        <span class="c1"># Set local variables</span>
+        <span class="n">inRaster</span> <span class="o">=</span> <span class="s2">&quot;dem&quot;</span>
+        <span class="n">outMeasurement</span> <span class="o">=</span> <span class="s2">&quot;DEGREE&quot;</span>
+        <span class="n">zFactor</span> <span class="o">=</span> <span class="mf">0.3043</span>
+
+        <span class="c1"># Check out the ArcGIS Spatial Analyst extension license</span>
+        <span class="n">arcpy</span><span class="o">.</span><span class="n">CheckOutExtension</span><span class="p">(</span><span class="s2">&quot;Spatial&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Execute Slope</span>
+        <span class="n">outSlope</span> <span class="o">=</span> <span class="n">Slope</span><span class="p">(</span><span class="n">inRaster</span><span class="p">,</span> <span class="n">outMeasurement</span><span class="p">,</span> <span class="n">zFactor</span><span class="p">)</span>
+
+        <span class="c1"># Save the output</span>
+        <span class="n">outSlope</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/workspace/outslope02&quot;</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;Slope successfully calculated&quot;</span>
+
+        <span class="c1"># Execute Aspect</span>
+        <span class="n">outAspect</span> <span class="o">=</span> <span class="n">Aspect</span><span class="p">(</span><span class="n">inRaster</span><span class="p">)</span>
+        <span class="n">outAspect</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/workspace/outaspect02&quot;</span><span class="p">)</span>
+
+     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+         <span class="nb">print</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Automating Thematic Mapping</strong></p>
+<blockquote>
+<div><p>Here’s a Python workflow that takes a CSV file containing total counts of COVID-19 cases for each county, plots these on a shapefile of counties using Geopandas and create a graduated color map with five classes and natural breaks classification:</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Load the necessary spatial data layers</span>
+<span class="n">railways</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;path/to/railways.shp&#39;</span><span class="p">)</span>
+<span class="n">highways</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;path/to/highways.shp&#39;</span><span class="p">)</span>
+<span class="n">seaports</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;path/to/seaports.shp&#39;</span><span class="p">)</span>
+<span class="n">industrial_areas</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;path/to/industrial_areas.shp&#39;</span><span class="p">)</span>
+
+<span class="c1"># Buffer the railway lines and highways by 100 meters</span>
+<span class="n">railways_buffer</span> <span class="o">=</span> <span class="n">railways</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">highways_buffer</span> <span class="o">=</span> <span class="n">highways</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Select only the light industrial areas that are within the buffers</span>
+<span class="n">industrial_areas_buffered</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">overlay</span><span class="p">(</span><span class="n">industrial_areas</span><span class="p">,</span> <span class="n">railways_buffer</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;intersection&#39;</span><span class="p">)</span>
+<span class="n">industrial_areas_buffered</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">overlay</span><span class="p">(</span><span class="n">industrial_areas_buffered</span><span class="p">,</span> <span class="n">highways_buffer</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;intersection&#39;</span><span class="p">)</span>
+
+<span class="c1"># Calculate the distance between the industrial areas and the seaports</span>
+<span class="n">industrial_areas_buffered</span><span class="p">[</span><span class="s1">&#39;centroid&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">industrial_areas_buffered</span><span class="o">.</span><span class="n">centroid</span>
+<span class="n">seaports</span><span class="p">[</span><span class="s1">&#39;centroid&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">seaports</span><span class="o">.</span><span class="n">centroid</span>
+<span class="n">industrial_areas_buffered</span><span class="p">[</span><span class="s1">&#39;distance_to_seaport&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">industrial_areas_buffered</span><span class="p">[</span><span class="s1">&#39;centroid&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">seaports</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+
+<span class="c1"># Select only the industrial areas that are within 1000 meters of a seaport</span>
+<span class="n">industrial_areas_final</span> <span class="o">=</span> <span class="n">industrial_areas_buffered</span><span class="p">[</span><span class="n">industrial_areas_buffered</span><span class="p">[</span><span class="s1">&#39;distance_to_seaport&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">1000</span><span class="p">]</span>
+
+<span class="c1"># Generate a map of the results</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">seaports</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">industrial_areas_final</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Best site for warehouse&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Automating Selection Analysis</strong></p>
+<p>To find the best site to locate a warehouse in a city, we can define the basic locational requirements, then submit a query to ChatGPT. In the example below, the locational requirements are:</p>
+<p>“Using Python, find the best site to locate a ware house given the following criteria: warehouse must be 100 meters from railway lines, 100 meters from highways, not more than 1000 meters from a seaport, and located in light industrial areas. Generate a map of the results using matplotlib.”</p>
+<p>I generated sample code from ChatGPT using geopandas and arcpy.</p>
+<p><em>Geopandas</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Load the data layers</span>
+<span class="n">railways</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;path/to/railways.shp&#39;</span><span class="p">)</span>
+<span class="n">highways</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;path/to/highways.shp&#39;</span><span class="p">)</span>
+<span class="n">industrial_areas</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;path/to/industrial_areas.shp&#39;</span><span class="p">)</span>
+
+<span class="c1"># Define a buffer of 100 meters around the railways and highways</span>
+<span class="n">railway_buffer</span> <span class="o">=</span> <span class="n">railways</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">highway_buffer</span> <span class="o">=</span> <span class="n">highways</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Intersect the buffers around the railways and highways to get the final buffer area</span>
+<span class="n">buffer_area</span> <span class="o">=</span> <span class="n">railway_buffer</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">highway_buffer</span><span class="p">)</span>
+
+<span class="c1"># Subtract the buffer area from the industrial areas layer to get the final area that meets all criteria</span>
+<span class="n">final_area</span> <span class="o">=</span> <span class="n">industrial_areas</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">buffer_area</span><span class="p">)</span>
+
+<span class="c1"># Generate a map of the final area using matplotlib</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># Plot the final area in green</span>
+<span class="n">final_area</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the railways and highways buffers in gray</span>
+<span class="n">railway_buffer</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">highway_buffer</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add a legend and scale bar</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Best Site for Warehouse in Boston, MA&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Final Area&#39;</span><span class="p">,</span> <span class="s1">&#39;Railway/Highway Buffer&#39;</span><span class="p">])</span>
+<span class="n">scalebar</span> <span class="o">=</span> <span class="n">ScaleBar</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">scalebar</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><em>Arcpy</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Set workspace and input data paths</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\GIS\data\Boston.gdb&quot;</span>
+<span class="n">railway_lines</span> <span class="o">=</span> <span class="s2">&quot;Railway_Lines&quot;</span>
+<span class="n">highways</span> <span class="o">=</span> <span class="s2">&quot;Highways&quot;</span>
+<span class="n">seaports</span> <span class="o">=</span> <span class="s2">&quot;Seaports&quot;</span>
+<span class="n">light_industrial_areas</span> <span class="o">=</span> <span class="s2">&quot;Light_Industrial_Areas&quot;</span>
+
+<span class="c1"># Buffer railway lines and highways by 100 meters</span>
+<span class="n">railway_buffer</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Buffer_analysis</span><span class="p">(</span><span class="n">railway_lines</span><span class="p">,</span> <span class="s2">&quot;Railway_Buffer&quot;</span><span class="p">,</span> <span class="s2">&quot;100 Meters&quot;</span><span class="p">)</span>
+<span class="n">highway_buffer</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Buffer_analysis</span><span class="p">(</span><span class="n">highways</span><span class="p">,</span> <span class="s2">&quot;Highway_Buffer&quot;</span><span class="p">,</span> <span class="s2">&quot;100 Meters&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create a 1000-meter buffer around seaports</span>
+<span class="n">seaport_buffer</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Buffer_analysis</span><span class="p">(</span><span class="n">seaports</span><span class="p">,</span> <span class="s2">&quot;Seaport_Buffer&quot;</span><span class="p">,</span> <span class="s2">&quot;1000 Meters&quot;</span><span class="p">)</span>
+
+<span class="c1"># Overlay buffers to obtain areas that are at least 100 meters from all three features</span>
+<span class="n">exclude_areas</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Intersect_analysis</span><span class="p">([</span><span class="n">railway_buffer</span><span class="p">,</span> <span class="n">highway_buffer</span><span class="p">,</span> <span class="n">seaport_buffer</span><span class="p">],</span> <span class="s2">&quot;Exclude_Areas&quot;</span><span class="p">)</span>
+
+<span class="c1"># Overlay exclude areas with light industrial areas to obtain candidate locations</span>
+<span class="n">candidate_areas</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Intersect_analysis</span><span class="p">([</span><span class="n">exclude_areas</span><span class="p">,</span> <span class="n">light_industrial_areas</span><span class="p">],</span> <span class="s2">&quot;Candidate_Areas&quot;</span><span class="p">)</span>
+
+<span class="c1"># Generate map of candidate locations using matplotlib</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">management</span><span class="o">.</span><span class="n">ExportToPNG</span><span class="p">(</span><span class="n">candidate_areas</span><span class="p">,</span> <span class="s2">&quot;candidate_areas.png&quot;</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;candidate_areas.png&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">191500</span><span class="p">,</span> <span class="mi">199000</span><span class="p">,</span> <span class="mi">88200</span><span class="p">,</span> <span class="mi">121700</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Eastings&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Northings&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Candidate Locations for Warehouse&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Geocoding Workflow</strong></p>
+<p>Here’s a Python workflow that prompts the user for an address, geocodes the address using OpenStreetMap, maps the resulting latitude and longitude using Folium, and sends the address to a PostgreSQL database.</p>
+<p>In this workflow, we first prompt the user for an address and then geocode the address using OpenStreetMap. If the geocoding is successful, we extract the latitude and longitude from the geocoded data and create a map using Folium. We then add a marker to the map at the geocoded location and save it to an HTML file. Next, we connect to a PostgreSQL database, insert the address along with its latitude and longitude into the database, and commit the changes. Finally, we close the database connection. If the geocoding is unsuccessful, we notify the user to enter a valid address.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">folium</span>
+
+<span class="c1"># Prompt the user for an address</span>
+<span class="n">address</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter an address: &quot;</span><span class="p">)</span>
+
+<span class="c1"># Geocode the address using OpenStreetMap</span>
+<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://nominatim.openstreetmap.org/search?format=json&amp;q=</span><span class="si">{</span><span class="n">address</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+<span class="c1"># Check if the geocoding was successful</span>
+<span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+    <span class="c1"># Extract the latitude and longitude from the geocoded data</span>
+    <span class="n">latitude</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+    <span class="n">longitude</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Create a map using Folium</span>
+    <span class="nb">map</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+    <span class="c1"># Add a marker to the map at the geocoded location</span>
+    <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">([</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">])</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="nb">map</span><span class="p">)</span>
+
+    <span class="c1"># Display the map</span>
+    <span class="nb">map</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;map.html&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Map saved to map.html&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Connect to the PostgreSQL database</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="o">=</span><span class="s2">&quot;mydatabase&quot;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s2">&quot;myusername&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;mypassword&quot;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="s2">&quot;5432&quot;</span><span class="p">)</span>
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+    <span class="c1"># Insert the address into the database</span>
+    <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO addresses (address, latitude, longitude) VALUES (</span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">))</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Address inserted into database&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Close the database connection</span>
+    <span class="n">cur</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Geocoding failed. Please enter a valid address.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arcgis.gis</span> <span class="kn">import</span> <span class="n">GIS</span>
+<span class="kn">from</span> <span class="nn">arcgis.features</span> <span class="kn">import</span> <span class="n">FeatureLayer</span><span class="p">,</span> <span class="n">FeatureSet</span>
+<span class="kn">from</span> <span class="nn">arcgis.geometry</span> <span class="kn">import</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">distance</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Connect to the GIS</span>
+<span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">(</span><span class="s2">&quot;https://www.arcgis.com&quot;</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span>
+
+<span class="c1"># Define the search criteria</span>
+<span class="n">railway_distance</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">highway_distance</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">seaport_distance</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">industrial_areas</span> <span class="o">=</span> <span class="s2">&quot;Light Industrial&quot;</span>
+
+<span class="c1"># Load the relevant layers from the Boston dataset</span>
+<span class="n">boston_map</span> <span class="o">=</span> <span class="n">gis</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s2">&quot;Boston, MA&quot;</span><span class="p">,</span> <span class="n">zoomlevel</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">boston_railways</span> <span class="o">=</span> <span class="n">FeatureLayer</span><span class="p">(</span><span class="s2">&quot;https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/MBTA_Rail_Lines/FeatureServer/0&quot;</span><span class="p">)</span>
+<span class="n">boston_highways</span> <span class="o">=</span> <span class="n">FeatureLayer</span><span class="p">(</span><span class="s2">&quot;https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/MassDOT_Highways/FeatureServer/0&quot;</span><span class="p">)</span>
+<span class="n">boston_seaports</span> <span class="o">=</span> <span class="n">FeatureLayer</span><span class="p">(</span><span class="s2">&quot;https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Port_Authority_Facilities/FeatureServer/0&quot;</span><span class="p">)</span>
+<span class="n">boston_industrial_areas</span> <span class="o">=</span> <span class="n">FeatureLayer</span><span class="p">(</span><span class="s2">&quot;https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Boston_Zoning/FeatureServer/0&quot;</span><span class="p">)</span>
+
+<span class="c1"># Buffer the railways and highways</span>
+<span class="n">boston_railways_buffer</span> <span class="o">=</span> <span class="n">buffer</span><span class="p">(</span><span class="n">boston_railways</span><span class="o">.</span><span class="n">query</span><span class="p">(),</span> <span class="n">railway_distance</span><span class="p">)</span>
+<span class="n">boston_highways_buffer</span> <span class="o">=</span> <span class="n">buffer</span><span class="p">(</span><span class="n">boston_highways</span><span class="o">.</span><span class="n">query</span><span class="p">(),</span> <span class="n">highway_distance</span><span class="p">)</span>
+
+<span class="c1"># Find the seaports within the specified distance</span>
+<span class="n">boston_seaports_within_distance</span> <span class="o">=</span> <span class="n">boston_seaports</span><span class="o">.</span><span class="n">query</span><span class="p">()</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">seaport_distance</span><span class="p">,</span> <span class="s2">&quot;meters&quot;</span><span class="p">)</span>
+
+<span class="c1"># Query the industrial areas</span>
+<span class="n">boston_industrial_areas_query</span> <span class="o">=</span> <span class="n">boston_industrial_areas</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Use = &#39;</span><span class="si">{</span><span class="n">industrial_areas</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+
+<span class="c1"># Use the geometry engine to find the suitable location for the warehouse</span>
+<span class="n">suitable_locations</span> <span class="o">=</span> <span class="n">boston_industrial_areas_query</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">boston_railways_buffer</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">boston_highways_buffer</span><span class="p">))</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="n">boston_seaports_within_distance</span><span class="o">.</span><span class="n">geometry</span><span class="p">)</span>
+
+<span class="c1"># Convert the suitable locations to a FeatureSet and add it to the map</span>
+<span class="n">suitable_locations_feature_set</span> <span class="o">=</span> <span class="n">FeatureSet</span><span class="o">.</span><span class="n">from_features</span><span class="p">(</span><span class="n">suitable_locations</span><span class="p">)</span>
+<span class="n">suitable_locations_layer</span> <span class="o">=</span> <span class="n">boston_map</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">suitable_locations_feature_set</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;renderer&quot;</span><span class="p">:</span> <span class="s2">&quot;SimpleRenderer&quot;</span><span class="p">})</span>
+
+<span class="c1"># Save the map to an image file</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;warehouse_location.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="reading">
+<h2><span class="section-number">14.4. </span>Reading<a class="headerlink" href="#reading" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.e-education.psu.edu/geog485/node/202">The need for GIS automation</a></p></li>
+<li><p><a class="reference external" href="https://www.geospatialworld.net/prime/technology-and-innovation/streamlining-gis-with-automation/">Streamlining GIS with Automation</a></p></li>
+<li><p><a class="reference external" href="https://blog.somideolaoye.com/automating-arcgis-enterprise-workflows-using-arcgis-api-for-python">Automating ArcGIS Enterprise Workflows using ArcGIS API for Python</a></p></li>
+<li><p><a class="reference external" href="https://gis.wsu.edu/portal/portalhelp/en/portal/latest/administer/windows/sample-python-scripts.htm">Sample Python scripts</a></p></li>
+<li><p><a class="reference external" href="https://learn.arcgis.com/en/projects/automate-a-geoprocessing-workflow-with-python/">Automate a geoprocessing workflow with Python</a></p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/automating-gis-and-remote-sensing-workflows-with-open-python-libraries-e71dd6b049ee">Automating GIS and remote sensing workflows with open python libraries</a></p></li>
+<li><p><a class="reference external" href="https://github.com/pmacMaps/ArcPy/blob/master/LogResults_CaptureErrors_Template.py">Geoprocessing Workflow</a></p></li>
+<li><p><a class="reference external" href="https://pnmcartodesign.wordpress.com/2017/05/12/automating-gis-workflows-with-python-scripts/">https://pnmcartodesign.wordpress.com/2017/05/12/automating-gis-workflows-with-python-scripts/</a></p></li>
+<li><p>GeoPython - AutoGIS - <a class="reference external" href="https://automating-gis-processes.github.io/2016/index.html">https://automating-gis-processes.github.io/2016/index.html</a></p></li>
+<li><p>Customizing QGIS with Python (Full Course Material) - <a class="reference external" href="https://courses.spatialthoughts.com/pyqgis-in-a-day.html">https://courses.spatialthoughts.com/pyqgis-in-a-day.html</a></p></li>
+<li><p>GIS Python API documentation - <a class="reference external" href="https://qgis.org/pyqgis/master/">https://qgis.org/pyqgis/master/</a></p></li>
+<li><p>PyQGIS Developer Cookbook - <a class="reference external" href="https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/index.html">https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/index.html</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="terrain_analysis.html" class="btn btn-neutral float-left" title="13. Terrain Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral float-right" title="15. Retrieving Data from APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Hugh Semple.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

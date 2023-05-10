@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11. Querying Rasters &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="12. Geocoding" href="geocoding.html" />
+    <link rel="prev" title="10. Attribute and Spatial Queries" href="attribute_and_spatial_queries.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Python GIS Tutorials
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">1. Setting up Development Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_programs.html">2. Introduction to the Python Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings_lists_conditional.html">3. Strings and Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">4. Conditional Statements and Looping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">5. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error_handling.html">6. Error Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">7. Basic Concepts in Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="displaying_files.html">8. Reading and Displaying Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_projections.html">9. Map Projections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="attribute_and_spatial_queries.html">10. Attribute and Spatial Queries</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">11. Querying Rasters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#map-algebra">11.1. Map Algebra</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="geocoding.html">12. Geocoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">13. Terrain Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">14. Batch Processing &amp; Workflow Automation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python GIS Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">11. </span>Querying Rasters</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/querying_rasters.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="querying-rasters">
+<h1><span class="section-number">11. </span>Querying Rasters<a class="headerlink" href="#querying-rasters" title="Permalink to this heading"></a></h1>
+<p>Below are sample scripts that can be used to query rasters</p>
+<p></p>
+<ol class="arabic simple">
+<li><p>Querying Rasters Using an ArcPy Map Algebra Expression</p></li>
+</ol>
+<p># Find all values in an elevation raster that greater than 800 (meters).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">from</span> <span class="nn">arcpy.sa</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Specify the input raster</span>
+<span class="n">inRaster</span> <span class="o">=</span> <span class="s2">&quot;C:/workspace/dem&quot;</span>
+
+<span class="c1"># Check out the Spatial Analyst extension</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">CheckOutExtension</span><span class="p">(</span><span class="s2">&quot;Spatial&quot;</span><span class="p">)</span>
+
+<span class="c1"># Make a map algebra expression and save the resulting raster</span>
+<span class="n">outRaster</span> <span class="o">=</span> <span class="n">Raster</span><span class="p">(</span><span class="n">inRaster</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">800</span>
+<span class="n">outRaster</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/workspace/query800c&quot;</span><span class="p">)</span>
+
+<span class="c1"># Check in the Spatial Analyst extension now that you&#39;re done</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">CheckInExtension</span><span class="p">(</span><span class="s2">&quot;Spatial&quot;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;Query successfully executed.</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Querying a Raster using Arcpy with the “Con” Keyword</p></li>
+</ol>
+<p>‘Con’ is abbreviation for condition and allows for the execution of conditional statements.  The basic syntax when using “Con” is:</p>
+<p>Con(in_conditonal_raster, in_true_raster_or_constant, {in_false_raster_or_constant}, {where_clause}).</p>
+<p>Example (a)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="n">env</span>
+<span class="kn">from</span> <span class="nn">arcpy.sa</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Check out ArcGIS Spatial Analyst extension</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">CheckOutExtension</span><span class="p">(</span><span class="s2">&quot;Spatial&quot;</span><span class="p">)</span>
+
+<span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/workspace&quot;</span>
+
+<span class="n">outElev1</span> <span class="o">=</span> <span class="n">Con</span><span class="p">(</span><span class="n">dem</span> <span class="o">&gt;</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">outElev1</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/workspace/outElev1&quot;</span><span class="p">)</span>
+
+<span class="c1">#or</span>
+
+<span class="c1"># Execute Con using a map algebra expression instead of a where clause</span>
+<span class="n">outCon2</span> <span class="o">=</span> <span class="n">Con</span><span class="p">(</span><span class="n">Raster</span><span class="p">(</span><span class="s2">&quot;dem&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">700</span><span class="p">,</span> <span class="s2">&quot;dem&quot;</span><span class="p">)</span>
+
+<span class="n">outCon2</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/workspace/outCon2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Example (b)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="n">env</span>
+<span class="kn">from</span> <span class="nn">arcpy.sa</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Check out ArcGIS Spatial Analyst extension</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">CheckOutExtension</span><span class="p">(</span><span class="s2">&quot;Spatial&quot;</span><span class="p">)</span>
+
+<span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/workspace&quot;</span>
+
+<span class="n">outCon</span> <span class="o">=</span> <span class="n">Con</span><span class="p">(</span><span class="s2">&quot;dem&quot;</span><span class="p">,</span> <span class="s2">&quot;dem&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;VALUE &gt; 700&quot;</span><span class="p">)</span>
+<span class="n">outCon</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/workspace/outcon.img&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Using the Con tool with 2 different Rasters</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="n">env</span>
+<span class="kn">from</span> <span class="nn">arcpy.sa</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;c:/workspace&quot;</span>
+
+<span class="c1"># Check out ArcGIS Spatial Analyst extension</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">CheckOutExtension</span><span class="p">(</span><span class="s2">&quot;Spatial&quot;</span><span class="p">)</span>
+
+<span class="n">inSlope</span> <span class="o">=</span> <span class="n">Slope</span><span class="p">(</span><span class="s2">&quot;dem&quot;</span><span class="p">,</span> <span class="s2">&quot;DEGREE&quot;</span><span class="p">,</span> <span class="mf">0.3043</span><span class="p">)</span>
+<span class="n">inSlope</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/workspace/inslope01&quot;</span><span class="p">)</span>
+
+<span class="c1"># Execute Aspect</span>
+<span class="n">inAspect</span> <span class="o">=</span> <span class="n">Aspect</span><span class="p">(</span><span class="s2">&quot;dem&quot;</span><span class="p">)</span>
+
+<span class="c1"># Save the output</span>
+<span class="n">inAspect</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/workspace/inaspect02&quot;</span><span class="p">)</span>
+
+
+<span class="n">outCon</span> <span class="o">=</span> <span class="n">Con</span><span class="p">(((</span><span class="n">inSlope</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">inSlope</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">((</span><span class="n">inAspect</span> <span class="o">&gt;=</span> <span class="mi">110</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">inAspect</span> <span class="o">&lt;=</span> <span class="mi">160</span><span class="p">)),</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">outCon</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/workspace/con56&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Query Executed Successfully&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Querying a Raster Using ExtractByAttributes</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="n">env</span>
+<span class="kn">from</span> <span class="nn">arcpy.sa</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;c:/workspace&quot;</span>
+
+<span class="c1"># Check out ArcGIS Spatial Analyst extension</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">CheckOutExtension</span><span class="p">(</span><span class="s2">&quot;Spatial&quot;</span><span class="p">)</span>
+
+
+<span class="n">attExtract</span> <span class="o">=</span> <span class="n">ExtractByAttributes</span><span class="p">(</span><span class="s2">&quot;inslope01&quot;</span><span class="p">,</span> <span class="s2">&quot;VALUE &gt; 2 &amp; VALUE &lt; 10&quot;</span><span class="p">)</span>
+<span class="n">attExtract</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/workspace/extract01&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="s2">&quot;Query Executed Successfully&quot;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Querying Rasters with Non- ESRI Libraries</p></li>
+</ol>
+<p>#a. Find all places with elevation greater than 2500 ft  (Method 1)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gdal</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1">#Open raster and read number of rows, columns, bands</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;C:/Users/Hugh/Desktop/N47E010.hgt&quot;</span><span class="p">)</span>
+<span class="n">band</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">elevation</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">cols</span><span class="p">,</span><span class="n">rows</span><span class="p">)</span>
+
+<span class="n">a2500</span> <span class="o">=</span> <span class="n">elevation</span> <span class="o">&gt;</span> <span class="mi">2500</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">a2500</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>#b. Find all places with elevation greater than 2500 ft  (Method 2)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gdal</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1">#Open raster and read number of rows, columns, bands</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;C:/Users/Hugh/Desktop/N47E010.hgt&quot;</span><span class="p">)</span>
+<span class="n">band</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">cols</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">RasterXSize</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">RasterYSize</span>
+
+<span class="n">elevation</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">cols</span><span class="p">,</span><span class="n">rows</span><span class="p">)</span>
+
+<span class="n">outData</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cols</span><span class="p">):</span>
+          <span class="k">if</span> <span class="n">elevation</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2500</span><span class="p">:</span>
+              <span class="n">outData</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+          <span class="k">else</span><span class="p">:</span>
+              <span class="n">outData</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">outData</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="map-algebra">
+<h2><span class="section-number">11.1. </span>Map Algebra<a class="headerlink" href="#map-algebra" title="Permalink to this heading"></a></h2>
+<p>Map algebra involves performing mathematical operations on rasters, as shown in the example below.  In ArcGIS, such operations can be performed manually using the Raster Calculator.  Map algebra allows us to plug rasters into equations to perform modeling in a GIS environment.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>1. Simple Map Algebra Operations</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="n">env</span>
+<span class="kn">from</span> <span class="nn">arcpy.sa</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="k">try</span><span class="p">:</span>
+<span class="c1"># Set environment settings</span>
+<span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/workspace&quot;</span>
+<span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Check out ArcGIS Spatial Analyst extension</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">CheckOutExtension</span><span class="p">(</span><span class="s2">&quot;Spatial&quot;</span><span class="p">)</span>
+
+<span class="n">outRas2</span> <span class="o">=</span> <span class="n">Raster</span><span class="p">(</span><span class="s2">&quot;dem&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span>
+<span class="n">outRas3</span> <span class="o">=</span> <span class="n">outRas2</span> <span class="o">+</span> <span class="n">Raster</span><span class="p">(</span><span class="s2">&quot;dem&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="nb">print</span> <span class="s2">&quot;Calculation successfully completed&quot;</span>
+
+
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+     <span class="nb">print</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>2. Implementing Algebraic Equations</strong></p>
+<p>The equation below calculates topographic wetness index for an area.  You can read about it here - You can read about the index here - <a class="reference external" href="http://soilandwater.bee.cornell.edu/tools/TI.pdf">http://soilandwater.bee.cornell.edu/tools/TI.pdf</a>.</p>
+<p>Links to an external site. The script below shows how to deal with equations.  In ArcPy,  slope maps in degrees must be converted to radians.</p>
+<p>Topographic Wetness Index</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="n">env</span>
+<span class="kn">from</span> <span class="nn">arcpy.sa</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+
+<span class="c1"># Set environment settings</span>
+<span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:\workspace&quot;</span>
+<span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Set local variables</span>
+<span class="n">inRaster</span> <span class="o">=</span> <span class="s2">&quot;slope1&quot;</span>
+<span class="n">flowaccum1</span> <span class="o">=</span> <span class="s2">&quot;flowaccum&quot;</span>
+
+<span class="c1"># Check out the ArcGIS Spatial Analyst extension license</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">CheckOutExtension</span><span class="p">(</span><span class="s2">&quot;Spatial&quot;</span><span class="p">)</span>
+
+<span class="c1"># Execute Ln converting. All degrees are converted to degrees to radians</span>
+<span class="n">outLn</span> <span class="o">=</span> <span class="n">Ln</span><span class="p">(((</span><span class="n">Raster</span><span class="p">(</span><span class="n">flowaccum1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="n">Tan</span><span class="p">((</span><span class="n">Raster</span><span class="p">(</span><span class="n">inRaster</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">180.0</span><span class="p">))))</span>
+
+<span class="c1"># Save the output</span>
+<span class="n">outLn</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:\workspace\outln6&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="s2">&quot;Computation executed successfully&quot;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>3. Calculating NDVI with GDAL</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">colors</span>
+
+
+<span class="n">band4</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;/Users/semple/Desktop/LT05/LT05_L1TP_047027_20101006_20200823_02_T1_B4.TIF&quot;</span><span class="p">)</span>
+<span class="n">band3</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;/Users/semple/Desktop/LT05/LT05_L1TP_047027_20101006_20200823_02_T1_B3.TIF&quot;</span><span class="p">)</span>
+
+
+<span class="n">b3</span> <span class="o">=</span> <span class="n">band3</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">b4</span> <span class="o">=</span> <span class="n">band4</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="n">b3_arr</span> <span class="o">=</span> <span class="n">b3</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">b4_arr</span> <span class="o">=</span> <span class="n">b4</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1">#Allow division by zero</span>
+<span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="n">ndvi</span> <span class="o">=</span> <span class="p">(</span><span class="n">b4_arr</span> <span class="o">-</span> <span class="n">b3_arr</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">b4_arr</span> <span class="o">+</span> <span class="n">b3_arr</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ndvi</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">shrink</span><span class="o">=</span><span class="mf">0.50</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">ndvi</span><span class="o">.</span><span class="n">png</span>
+<span class="n">numply</span><span class="o">.</span><span class="n">seterror</span><span class="p">()</span><span class="o">.</span> <span class="o">-</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">numpy</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">stable</span><span class="o">/</span><span class="n">reference</span><span class="o">/</span><span class="n">generated</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">seterr</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>4. Calculating NDVI with Rasterio</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">rasterio</span>
+<span class="kn">from</span> <span class="nn">rasterio.plot</span> <span class="kn">import</span> <span class="n">show</span>
+
+<span class="n">blueband</span>  <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/Hugh/Desktop/Landsat/Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B4.TIF&quot;</span><span class="p">)</span>
+<span class="n">greenband</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/Hugh/Desktop/Landsat/Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B3.TIF&quot;</span><span class="p">)</span>
+<span class="n">mirband</span>    <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/Hugh/Desktop/Landsat/Landsat/LT05_L1TP_019031_20111106_20160830_01_T1_B2.TIF&quot;</span><span class="p">)</span>
+
+<span class="n">green</span> <span class="o">=</span> <span class="n">greenband</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">mir</span> <span class="o">=</span> <span class="n">mirband</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>  <span class="c1"># Allow division by zero</span>
+
+<span class="n">mndwi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">greenband</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">rasterio</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>  <span class="c1"># Create empty matrix</span>
+
+<span class="n">check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">mir</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">green</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">)</span>  <span class="c1"># Create check raster with True/False values</span>
+
+<span class="n">mndwi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">check</span><span class="p">,</span> <span class="p">(</span><span class="n">green</span> <span class="o">-</span> <span class="n">mir</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">green</span> <span class="o">+</span> <span class="n">mir</span><span class="p">),</span> <span class="o">-</span><span class="mi">999</span><span class="p">)</span>  <span class="c1"># Calculate MNDWI</span>
+
+<span class="n">water</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mndwi</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># Set values above 0 as water and otherwise leave it at 0</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">water</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Readings</strong></p>
+<p><a class="reference external" href="https://colekrehbiel.wordpress.com/2017/10/18/calculate-ndvi-from-sentinel-2a-data/">https://colekrehbiel.wordpress.com/2017/10/18/calculate-ndvi-from-sentinel-2a-data/</a></p>
+<p><a class="reference external" href="https://github.com/ckrehbiel/website/blob/master/Sentinel_NDVI.py">https://github.com/ckrehbiel/website/blob/master/Sentinel_NDVI.py</a></p>
+<p><a class="reference external" href="https://stackoverflow.com/questions/16411468/calculate-ndvi-using-python">https://stackoverflow.com/questions/16411468/calculate-ndvi-using-python</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="attribute_and_spatial_queries.html" class="btn btn-neutral float-left" title="10. Attribute and Spatial Queries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="geocoding.html" class="btn btn-neutral float-right" title="12. Geocoding" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Hugh Semple.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

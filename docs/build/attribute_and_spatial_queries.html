@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>9. Attribute and Spatial Queries &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+  <title>10. Attribute and Spatial Queries &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="10. Terrain Analysis" href="terrain_analysis.html" />
-    <link rel="prev" title="8. Map Projections" href="map_projections.html" /> 
+    <link rel="next" title="11. Terrain Analysis" href="terrain_analysis.html" />
+    <link rel="prev" title="9. Map Projections" href="map_projections.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,17 +49,19 @@
 <li class="toctree-l1"><a class="reference internal" href="strings_lists_conditional.html">3. Strings and Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">4. Conditional Statements and Looping</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">5. Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">6. Basic Concepts in Object Oriented Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="displaying_files.html">7. Reading and Displaying Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="map_projections.html">8. Map Projections</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Attribute and Spatial Queries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#retrieving-records-using-arcpy">9.1. Retrieving records using ArcPy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#retrieving-records-using-geopandas">9.2. Retrieving records using Geopandas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pyshp">9.3. Pyshp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#references">9.4. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error_handling.html">6. Error Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">7. Basic Concepts in Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="displaying_files.html">8. Reading and Displaying Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_projections.html">9. Map Projections</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Attribute and Spatial Queries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#retrieving-records-using-arcpy">10.1. Retrieving records using ArcPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#retrieving-records-using-geopandas">10.2. Retrieving records using Geopandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyshp">10.3. Pyshp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">10.4. References</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">10. Terrain Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">11. Terrain Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">12. Batch Processing &amp; Workflow Automation</a></li>
 </ul>
 
         </div>
@@ -76,7 +78,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">9. </span>Attribute and Spatial Queries</li>
+      <li class="breadcrumb-item active"><span class="section-number">10. </span>Attribute and Spatial Queries</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/attribute_and_spatial_queries.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -87,18 +89,18 @@
            <div itemprop="articleBody">
              
   <section id="attribute-and-spatial-queries">
-<h1><span class="section-number">9. </span>Attribute and Spatial Queries<a class="headerlink" href="#attribute-and-spatial-queries" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">10. </span>Attribute and Spatial Queries<a class="headerlink" href="#attribute-and-spatial-queries" title="Permalink to this heading"></a></h1>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <section id="retrieving-records-using-arcpy">
-<h2><span class="section-number">9.1. </span>Retrieving records using ArcPy<a class="headerlink" href="#retrieving-records-using-arcpy" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">10.1. </span>Retrieving records using ArcPy<a class="headerlink" href="#retrieving-records-using-arcpy" title="Permalink to this heading"></a></h2>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </section>
 <section id="retrieving-records-using-geopandas">
-<h2><span class="section-number">9.2. </span>Retrieving records using Geopandas<a class="headerlink" href="#retrieving-records-using-geopandas" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">10.2. </span>Retrieving records using Geopandas<a class="headerlink" href="#retrieving-records-using-geopandas" title="Permalink to this heading"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import geopandas
 import maplotlib
 district_gdf = geopandas.read_file(&quot;/Users/.../school_district.shp&quot;, encoding=&#39;utf-8&#39;)
@@ -122,7 +124,7 @@ district_gdf.to_file(‘filename)
 </div>
 </section>
 <section id="pyshp">
-<h2><span class="section-number">9.3. </span>Pyshp<a class="headerlink" href="#pyshp" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">10.3. </span>Pyshp<a class="headerlink" href="#pyshp" title="Permalink to this heading"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shapefile</span>
 <span class="n">edit_file</span> <span class="o">=</span> <span class="n">shapefile</span><span class="o">.</span><span class="n">Editor</span><span class="p">(</span><span class="s1">&#39;/Users/.../school_districts.shp&#39;</span><span class="p">)</span>
 <span class="n">i</span><span class="o">=</span><span class="mi">0</span>
@@ -141,7 +143,7 @@ district_gdf.to_file(‘filename)
 </div>
 </section>
 <section id="references">
-<h2><span class="section-number">9.4. </span>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">10.4. </span>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://www.geosnips.com/tutorials/python-vector-buffer/">https://www.geosnips.com/tutorials/python-vector-buffer/</a></p>
 </section>
 </section>
@@ -150,8 +152,8 @@ district_gdf.to_file(‘filename)
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="map_projections.html" class="btn btn-neutral float-left" title="8. Map Projections" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="terrain_analysis.html" class="btn btn-neutral float-right" title="10. Terrain Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="map_projections.html" class="btn btn-neutral float-left" title="9. Map Projections" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="terrain_analysis.html" class="btn btn-neutral float-right" title="11. Terrain Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

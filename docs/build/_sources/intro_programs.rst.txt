@@ -3,13 +3,15 @@
 Introduction to the Python Language
 =====================================
 
-Python is an open-source programming language that can be used for a wide variety of programming tasks, from basic scripts to complex and intricate applications.
+Python is an open-source programming language that can be used for a wide variety of programming tasks, from basic scripting to complex and intricate applications.
 
-Python is an interpreted language. This means that the program code is compiled into machine readable code at the moment it is run by the  interpreter.  This is in contrast to a compiled language like C++, or Java where the program code is compiled into machine readable code by a language compiler before the code is run. The compiler creates an executable in the machine's native language that can then be run many times.   
+Python is also an interpreted language. This means that the program code is compiled into machine readable code at the moment it is run by the  interpreter.  This is in contrast to a compiled language like C++, or Java where the program code is compiled into machine readable code by a language compiler before the code is run. The compiler creates an executable in the machine's native language that can then be run many times.   
 
 Python is also a dynamically typed language. This means that developers do not have to declare variables prior to using them. Additionally, Python is an object oriented language. The default installation is a set of core modules, but hundreds of libraries, e.g., SciPy, Numpy, Arcpy, etc., are available for specialized tasks. 
 
 |
+
+
 
 Basic Aspects of Python
 --------------------------
@@ -31,7 +33,7 @@ In this module, we will look at the following aspects of the Python language:
 
 **Hello World Program**
 
-Enter the program below in Jupyter Notebook or any other Python development that you are working in and then run the code.  You will have to look up how to run the code in the development environment in which you are working.  Do not enter ">>>". That symbol is to indicate the Python's command prompt if there is one. 
+Enter the line below in the Python development environment that you are working in and then run the code.  You will have to look up how to run the code in the development environment in which you are working.  Do not enter ">>>". That symbol is to indicate the Python's command prompt if there is one. 
 
 >>> print('Hello, world!')
  
@@ -41,12 +43,12 @@ Enter the program below in Jupyter Notebook or any other Python development that
 
 **Variables**
 
-In programming, a variable is a piece of information stored in the computer’s memory. One can think of it as a container for storing values used in a program.  Values are assigned to variables using the assignment operator “=“, as shown below. Please note that variable names are case sensitive. A variable with the name "my_age" is not the same variable as "My_Age".
+In programming, a variable is a container for storing values used in a program.  Values are assigned to variables using the assignment operator “=“, as shown below. Please note that variable names are case sensitive. A variable with the name "my_age" is not the same variable as "My_Age".
   
 >>> my_age = 29           
 
 
-To initialize a variable in Python, we create a name for the variable and then assign it a value in one statement. The values stored in variables may change during the course of program execution. 
+In Python, we can create a name for the variable and then assign it a value in one statement. The values stored in variables may change during the course of program execution. 
 
 Although a variable need not be assigned to any particular data type, if you want to specify the data type of a variable, this can be done with casting. For example: 
 
@@ -64,18 +66,25 @@ Although a variable need not be assigned to any particular data type, if you wan
 
 **Data Types**
 
-Python has several data types. The list below comes from W3Schools.  
 
-* Numeric Types: 	     int, float, complex
+Data type refers to how values in variables are classified.  The classification typically refers to what values are stored in the variable and what type of mathematical, relational or logical operations can be applied to the values without causing error.
+
+
+Python has several data types. The list below comes from `W3Schools <https://www.w3schools.com/python/python_datatypes.asp>`_.  
+
+* Numeric Types: 	     integers, float, complex
 * Sequence Types: 	  list, tuple, range
-* Mapping Type: 	     dict
-* Boolean Type: 	     bool
+* Mapping Type: 	     dictionary
+* Boolean Type: 	     boolean
 * Set Types: 	        set, frozenset
 * Binary Types: 	     bytes, bytearray, memoryview
 * None Type: 	        NoneType
 
 
 |
+
+
+Below are some basic details on popular data types you will encounter:
 
 
 *Integers*
@@ -110,7 +119,9 @@ Python has several data types. The list below comes from W3Schools.
    >>> float(3)
       3.0
 
+
 |
+
 
 *Dictionaries*
 
@@ -131,6 +142,21 @@ In the example above, the names of the students is called the key while the test
 
 
 
+
+*Lists*
+Lists are collections of objects that may or may not be related to each other.  In Python, lists items are enclosed in square brackets and each item is separated by a comma, as shown below:
+
+>>> a = ['foo', 'Tom', '12', '45']
+
+
+
+*Tuples*
+
+A tuple is a collection of items, similar to a list, but with the important distinction that the order of the items are fixed. This is important for storing certain values, for example, a list of coordinates for polygon or a line.  Whereas list items are enclosed in square brackets, tuple items are enclosed in parenthesis.
+
+>>> coords = (51.901071, 7.543488, 52.002215, 7.692406)
+
+
 |
 
 
@@ -145,7 +171,6 @@ Comments are plain descriptions of what your code is doing. Comments make it eas
 In the example below, the program uses two single line comments to remind the programmer what the line that follows is all about.
 
  .. code-block:: python
-    :linenos:
     
     #Get the user's input
     P1 = input("Please input the size of the first city: ")
@@ -162,7 +187,6 @@ In the example below, the program uses two single line comments to remind the pr
 The example below shows how multiple line comments are written.  Either single quotes or double quotes can be used, but they can't be mixed.
 
 .. code-block:: python
-    :linenos:
 
 
     ''' I'm very long-winded and I really need to take up more than one line. 
@@ -183,7 +207,6 @@ In programming, a statement is a line of code that expresses some action to be c
 
 
 .. code-block:: python
-    :linenos:
 
     kilometer = float (input ("Please enter the kilometer to covert _ "))
     conversion_ratio = 0.621371
@@ -202,7 +225,7 @@ In programming, a statement is a line of code that expresses some action to be c
 Practice Programs 
 ------------------
 
-The scripts below are intended to show how to use Python statements to create programs.  The programs are all sequential meaning that each line in the program is run after the preceding line.  There is no testing of conditions or repeating of operations.
+The scripts below are intended to show how to use Python statements to create programs.  The programs are all sequential meaning that each line in the program is run after the preceding line.  There is no branching or repeating of operations.
 
 
 The first six examples do not require any specialized Python packages. They can all be run using Python's standard library. If you do not have a Python' interpreter already installed, you can can use the interpreter at this `website <https://www.programiz.com/python-programming/online-compiler/>`_
@@ -237,7 +260,6 @@ For Examples 7 through 10, the arcpy package must be loaded into memory using th
 Please note the formatting of the results in the print statement. The function, str(round(Celsius,2)), converts formats the results to two decimal places then converts the value to a string.   The plus sign concatenates or joins the first string with the second second string.
 
 .. code-block:: python
-   :linenos:
 
    Fahrenheit = float(input("Enter the temperature in Fahrenheit: "))
    Celsius = (Fahrenheit - 32) * 5.0/9.0
@@ -254,7 +276,6 @@ In the code below, %0.2f and %0.4f' are formatted place holders for two variable
 
 
 .. code-block:: python
-   :linenos:
 
    num = float(input('Enter a number: '))
    num_sqrt = num ** 0.5
@@ -269,7 +290,6 @@ In the code below, %0.2f and %0.4f' are formatted place holders for two variable
 
 
 .. code-block:: python
-   :linenos:
 
    # Get inputs from the user
    base = float(input('Enter length of the base of the triangle: '))
@@ -290,7 +310,6 @@ In the code below, %0.2f and %0.4f' are formatted place holders for two variable
 The script below illustrates how to import a library (math) and use a function from the math library. Note that the dot notation is used to show that the pi function is related to the math library. 
 
 .. code-block:: python
-   :linenos:
 
    
    #import the math library that contains math functions
@@ -321,7 +340,6 @@ This code uses the mean() function within a module named numpy module to calcula
 
 
 .. code-block:: python
-   :linenos:
 
     import numpy
 
@@ -338,7 +356,6 @@ This code uses the mean() function within a module named numpy module to calcula
 **7.** Write a program that reads a simple text file with one entry per line.  Once the list is read and parsed, use it to calculate the mean. 
 
 .. code-block:: python
-   :linenos:
 
     import numpy as np
     data = np.loadtxt("/Users/hsemple/Desktop/equqke_depth.csv", skiprows=1, dtype='float')
@@ -381,15 +398,7 @@ This code uses the mean() function within a module named numpy module to calcula
 |
 
 
-Maximum
-Minimum
-Standard Deviation
-Variance
-
-
-
-
-**7.**  Write a Python program to display the calendar for any given month of a specified year.
+**6.**  Write a Python program to display the calendar for any given month of a specified year.
 
 
 The script below illustrates how to import the calendar library and use a function from the calendar library. Enter month and year as integers. 
@@ -413,7 +422,7 @@ The script below illustrates how to import the calendar library and use a functi
 
 |
 
-**8.** Write a program to create a time stamp**
+**7.** Write a program to create a time stamp**
 
 .. code-block:: python
    :linenos:

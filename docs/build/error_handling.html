@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6. Error Handling &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7. Basic Concepts in Object Oriented Programming" href="object_oriented_programming.html" />
+    <link rel="prev" title="5. Functions" href="functions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Python GIS Tutorials
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">1. Setting up Development Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_programs.html">2. Introduction to the Python Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings_lists_conditional.html">3. Strings and Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">4. Conditional Statements and Looping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">5. Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Error Handling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">6.1. Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#handling-arcpy-s-error-messages">6.2. Handling ArcPy’s Error Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-arcpy-getmessages-function">6.3. Use ArcPy GetMessages() function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">7. Basic Concepts in Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="displaying_files.html">8. Reading and Displaying Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_projections.html">9. Map Projections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="attribute_and_spatial_queries.html">10. Attribute and Spatial Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">11. Terrain Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">12. Batch Processing &amp; Workflow Automation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python GIS Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6. </span>Error Handling</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/error_handling.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="error-handling">
+<h1><span class="section-number">6. </span>Error Handling<a class="headerlink" href="#error-handling" title="Permalink to this heading"></a></h1>
+<p>In computing, exceptions are unusual or error conditions that occur in your code. Exception statements in Python enable you to trap and handle errors in your code, allowing you to gracefully recover from error conditions.</p>
+<p>Exception handling makes your code more robust as it helps anticipate potential failures that would cause the program to stop in an uncontrolled manner.  Errors can be defined as the following types:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Syntax Error</p></li>
+<li><p>Exceptions</p></li>
+<li><p>Out of Memory Error</p></li>
+<li><p>Recursion Error</p></li>
+</ul>
+</div></blockquote>
+<p>An exception object is created when a Python script raises an exception.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="id1">
+<h2><span class="section-number">6.1. </span>Error Handling<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>If error handling is not explicitly dealt with, Python handles it.  In the code below, the correct path to myfile.txt is not given, so the Python interpreter throws an exception.</p></li>
+</ol>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;myfile.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>Traceback (most recent call last):
+File “&lt;pyshell#31&gt;”, line 1, in &lt;module&gt;`
+f = open(‘myfile.txt’)
+FileNotFoundError: [Errno 2] No such file or directory: ‘myfile.txt’</em></p>
+<p>Note</p>
+<p>Tracebacks are very important in figuring out what is wrong in your code.  When reading a traceback, start with the last line in the traceback. There, you will see the type of  error and a brief explanation. Above that you will the text that is causing the error, then above that you will be given the file and line number of the error.</p>
+<ol class="arabic simple" start="2">
+<li><p>To capture error, at a minimum, you can create a try … except blocks, as shown below and enclose your code in the try block. Next, write an error message and place it in the except block.  When the code runs, if an exception occurs, it will be handled by the except block.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;myfile.txt&#39;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Sorry. This file does not not exist.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sorry. This file does not not exist.</p>
+<ol class="arabic simple" start="3">
+<li><p>The “Exception” keyword  catches all types of error.   However, you can catch specific errors by using specific keywords. Note that you can have more than 1 exception blocks in your code.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+      <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;myfile.txt&#39;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+      <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Sorry. File not found.&quot;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+       <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Sorry. Something went wrong.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Here are some Python specific Exceptions - <a class="reference external" href="https://docs.python.org/3/library/exceptions.html">https://docs.python.org/3/library/exceptions.html</a></p></li>
+<li><p>Instead of writing your own error message, use Python’s message.   Use (e) to capture the error message</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;myfile.txt&#39;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+     <span class="nb">print</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>[Errno 2] No such file or directory: ‘myfile.txt’</p>
+<ol class="arabic simple" start="6">
+<li><p>In addition to the try… except block, you can also include an “else” block in your code. If there are no errors in the try block, the else block is executed.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+      <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/Users/semple/Desktop/test_file.txt&#39;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+     <span class="nb">print</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+     <span class="nb">print</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+     <span class="nb">print</span> <span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span> <span class="p">())</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>You can also include a finally block in your code.   Finally runs regardless of exceptions.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/Users/semple1/Desktop/test_file.txt&#39;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span> <span class="p">())</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">finally</span><span class="p">:</span>
+     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Close down the database&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>If you want to throw an error when a certain condition occurs use “raise”. You could go about it like this:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a value less than 5 &quot;</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+     <span class="k">raise</span> <span class="ne">Exception</span> <span class="p">(</span><span class="s1">&#39;x should not exceed 5. The value of x was: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>When you run this code, the output will be the following:</p>
+<dl class="simple">
+<dt>Traceback (most recent call last):</dt><dd><p>File “&lt;input&gt;”, line 4, in &lt;module&gt;</p>
+</dd>
+</dl>
+<p>Exception: x should not exceed 5. The value of x was: 10</p>
+<p>The program comes to a halt and displays your exception to the screen, offering clues about what went wrong.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="handling-arcpy-s-error-messages">
+<h2><span class="section-number">6.2. </span>Handling ArcPy’s Error Messages<a class="headerlink" href="#handling-arcpy-s-error-messages" title="Permalink to this heading"></a></h2>
+<p><strong>Use Python’s sys_info() function</strong></p>
+<p>At a very basic level, you can use the sys_info() to capture the error message.   Note:  The sys.exc _info() function returns a tuple of three values that give information about the exception that is currently being handled.  The values returned are type of error,, the value of the error, and traceback, i.e., where the error is located.</p>
+<p>In the code  below, Buffer, fails because the required buffer_distance_or_field argument has not been provided. Instead of failing without explanation, the except statement is used to trap the error, then fetch and print the error message generated by Buffer. Note that the except block is only executed if Buffer returns an error.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Execute the Buffer tool</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">Buffer_analysis</span><span class="p">(</span><span class="s2">&quot;c:/transport/roads.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;c:/transport/roads_buffer.shp&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Failed to execute. Parameters are not valid.
+ERROR 000725: Output Feature Class: Dataset C:UsersHughDesktopCaliforniaCaliforniaCali_buffer.shp already exists.
+ERROR 000735: Distance [value or field]: Value is required
+Failed to execute (Buffer).</p>
+<p>Note:  sys.exc_info returns a tuple with three values: type, value, and traceback.   Type or (0) indicates the type of exception that is raised , i.e., arcgisscripting error.  Value or (1) relates to exception parameter errors, while traceback object (3) provides information on the exact memory location of the error.</p>
+<p>Note: Instead of writing out sys.exc_info(1), you can omit it and write as except Exception as e:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Execute the Buffer tool</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">Buffer_analysis</span><span class="p">(</span><span class="s2">&quot;c:/transport/roads.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;c:/transport/roads_buffer.shp&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="use-arcpy-getmessages-function">
+<h2><span class="section-number">6.3. </span>Use ArcPy GetMessages() function<a class="headerlink" href="#use-arcpy-getmessages-function" title="Permalink to this heading"></a></h2>
+<p>It is possible for arcpy to directly capture the messages returned by the geoprocessing tool using the GetMessages() function.  GetMessages() returns a list containing all messages from the last tool run.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="k">try</span><span class="p">:</span>
+   <span class="c1"># Execute the Buffer tool</span>
+   <span class="n">arcpy</span><span class="o">.</span><span class="n">Buffer_analysis</span><span class="p">(</span><span class="s2">&quot;c:/transport/roads.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;c:/transport/roads_buffer.shp&quot;</span><span class="p">)</span>
+ <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">GetMessages</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic" start="3">
+<li><p>You can also get individual severity messages from the string returned by GetMessages().  Severity levels of messages are:</p>
+<blockquote>
+<div><p>0 —no errors
+1 —warning raised.
+2 —error raised.</p>
+</div></blockquote>
+</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="c1"># Set current workspace</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;c:/data/mydata.gdb&quot;</span>
+<span class="k">try</span><span class="p">:</span>
+ <span class="n">arcpy</span><span class="o">.</span><span class="n">Clip_analysis</span><span class="p">(</span><span class="s2">&quot;Roads&quot;</span><span class="p">,</span> <span class="s2">&quot;County&quot;</span><span class="p">,</span> <span class="s2">&quot;Roads_Clip&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ExecuteError</span><span class="p">:</span>
+ <span class="n">severity</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">GetMaxSeverity</span><span class="p">()</span>
+ <span class="k">if</span> <span class="n">severity</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error occurred </span><span class="se">\n</span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arcpy</span><span class="o">.</span><span class="n">GetMessages</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+ <span class="k">elif</span> <span class="n">severity</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning raised </span><span class="se">\n</span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arcpy</span><span class="o">.</span><span class="n">GetMessages</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+ <span class="k">else</span><span class="p">:</span>
+ <span class="c1"># If the tool did not return an error or a warning</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">arcpy</span><span class="o">.</span><span class="n">GetMessages</span><span class="p">())</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>More commonly, people simply use Getmessages()  with the severity level placed in the GetMessages function, i.e., GetMessages(2)</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">inputfile</span> <span class="o">=</span> <span class="s2">&quot;C:/Users/Hugh/Desktop/California/California/California.shp&quot;</span>
+    <span class="n">outputfile</span> <span class="o">=</span> <span class="s2">&quot;C:/Users/Hugh/Desktop/California/California/Cali_buffer.shp&quot;</span>
+    <span class="n">bufferdistance</span> <span class="o">=</span> <span class="mi">1000</span>
+
+    <span class="c1"># Execute the Buffer tool</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">Buffer_analysis</span><span class="p">(</span><span class="n">inputfile</span><span class="p">,</span> <span class="n">outputfile</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ExecuteError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">arcpy</span><span class="o">.</span><span class="n">GetMessages</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Failed to execute. Parameters are not valid.
+ERROR 000725: Output Feature Class: Dataset C:UsersHughDesktopCaliforniaCaliforniaCali_buffer.shp already exists.
+ERROR 000735: Distance [value or field]: Value is required
+Failed to execute (Buffer).</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Readings</p>
+<p>Python Try … Except
+Custom Exceptions
+Links to an external site.
+Error Handling with ArcPy</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="functions.html" class="btn btn-neutral float-left" title="5. Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="object_oriented_programming.html" class="btn btn-neutral float-right" title="7. Basic Concepts in Object Oriented Programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Hugh Semple.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

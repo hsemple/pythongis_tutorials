@@ -2,7 +2,7 @@
 Setting up Development Environments
 ======================================
 
-For these tutorials, we will run our Python scripts in the following development environments depending on what needs to be accomplished: the Standard Python Distribution, Anaconda Distribution, ArcGIS Pro, ArcGIS API for Python, and QGIS. This will give users an opportunity to familiarize themselves with these various platforms.
+For these tutorials, we will run our Python scripts in different development environments depending on what needs to be accomplished.bWe will use the following development environments: the Standard Python Distribution, Anaconda Distribution, ArcGIS Pro, ArcGIS API for Python, and QGIS. This will give users an opportunity to familiarize themselves with these various platforms.
 
 
 |
@@ -42,8 +42,7 @@ Many people use the standard Python distribution as the central platform for dev
 7. You should get  /usr/local/bin/python3 or something similar.
 
 
-
-8. Check also that the Python 3x Directory has been added to your System Path Environment Variable.  To check for this type, type:
+8. Check also that the Python 3x Directory has been added to your System's Path Environment Variable.  To check for this type, type:
     
   >>> $PATH
 

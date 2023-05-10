@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>7. Reading and Displaying Files &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+  <title>8. Reading and Displaying Files &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="8. Map Projections" href="map_projections.html" />
-    <link rel="prev" title="6. Basic Concepts in Object Oriented Programming" href="object_oriented_programming.html" /> 
+    <link rel="next" title="9. Map Projections" href="map_projections.html" />
+    <link rel="prev" title="7. Basic Concepts in Object Oriented Programming" href="object_oriented_programming.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,24 +49,28 @@
 <li class="toctree-l1"><a class="reference internal" href="strings_lists_conditional.html">3. Strings and Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">4. Conditional Statements and Looping</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">5. Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">6. Basic Concepts in Object Oriented Programming</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Reading and Displaying Files</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#writing-file-paths">7.1. Writing File Paths</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#opening-a-file-using-the-with-statement">7.2. Opening a file using the “With” Statement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#opening-a-csv-file-using-python-s-standard-library">7.3. Opening a csv File using Python’s Standard Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-matplotlib-figure-object">7.4. The Matplotlib Figure Object</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#reading-csv-files-using-pandas">7.5. Reading CSV Files Using Pandas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#plotting-graphs">7.6. Plotting Graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#writing-to-a-file">7.7. Writing to a File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#plotting-shapefiles">7.8. Plotting Shapefiles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#displaying-rasters">7.9. Displaying Rasters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exercises">7.10. Exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#resources">7.11. Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error_handling.html">6. Error Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">7. Basic Concepts in Object Oriented Programming</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Reading and Displaying Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#writing-file-paths">8.1. Writing File Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#opening-a-file-using-the-with-statement">8.2. Opening a file using the “With” Statement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#opening-a-csv-file-using-python-s-standard-library">8.3. Opening a csv File using Python’s Standard Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-matplotlib-figure-object">8.4. The Matplotlib Figure Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-csv-files-using-pandas">8.5. Reading CSV Files Using Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting-graphs">8.6. Plotting Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-to-a-file">8.7. Writing to a File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting-shapefiles">8.8. Plotting Shapefiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#displaying-rasters">8.9. Displaying Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">8.10. Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resources">8.11. Resources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="map_projections.html">8. Map Projections</a></li>
-<li class="toctree-l1"><a class="reference internal" href="attribute_and_spatial_queries.html">9. Attribute and Spatial Queries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">10. Terrain Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_projections.html">9. Map Projections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="attribute_and_spatial_queries.html">10. Attribute and Spatial Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="querying_rasters.html">11. Querying Rasters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geocoding.html">12. Geocoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">13. Terrain Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">14. Batch Processing &amp; Workflow Automation</a></li>
 </ul>
 
         </div>
@@ -83,7 +87,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">7. </span>Reading and Displaying Files</li>
+      <li class="breadcrumb-item active"><span class="section-number">8. </span>Reading and Displaying Files</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/displaying_files.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -94,7 +98,7 @@
            <div itemprop="articleBody">
              
   <section id="reading-and-displaying-files">
-<h1><span class="section-number">7. </span>Reading and Displaying Files<a class="headerlink" href="#reading-and-displaying-files" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">8. </span>Reading and Displaying Files<a class="headerlink" href="#reading-and-displaying-files" title="Permalink to this heading"></a></h1>
 <p>To read a file, we must first open the file. This is done using Python’s built-in open() function. The open() function returns a file object, which has a read() method for reading  files and storing their contents as variables .  Once a file is read and stored as a variable, the original file can be closed.  We can then loop through the file variable and do stuff with its contents.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
 <span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
@@ -128,7 +132,7 @@
 <div class="line"><br /></div>
 </div>
 <section id="writing-file-paths">
-<h2><span class="section-number">7.1. </span>Writing File Paths<a class="headerlink" href="#writing-file-paths" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">8.1. </span>Writing File Paths<a class="headerlink" href="#writing-file-paths" title="Permalink to this heading"></a></h2>
 <p>In Python, it is better not to write your file paths with backslashes as shown below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:\Users\student\Desktop\earthquakes.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
 </pre></div>
@@ -191,7 +195,7 @@
 </div>
 </section>
 <section id="opening-a-file-using-the-with-statement">
-<h2><span class="section-number">7.2. </span>Opening a file using the “With” Statement<a class="headerlink" href="#opening-a-file-using-the-with-statement" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">8.2. </span>Opening a file using the “With” Statement<a class="headerlink" href="#opening-a-file-using-the-with-statement" title="Permalink to this heading"></a></h2>
 <p>A second way second way to open a file is to use the “with” statement.  The with statement automatically takes care of closing the file once it leaves the with block, even in cases of error. I highly recommend that you use the with statement as much as possible, as it allows for cleaner code and makes handling any unexpected errors easier for you.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
    <span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
@@ -204,7 +208,7 @@
 </div>
 </section>
 <section id="opening-a-csv-file-using-python-s-standard-library">
-<h2><span class="section-number">7.3. </span>Opening a csv File using Python’s Standard Library<a class="headerlink" href="#opening-a-csv-file-using-python-s-standard-library" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">8.3. </span>Opening a csv File using Python’s Standard Library<a class="headerlink" href="#opening-a-csv-file-using-python-s-standard-library" title="Permalink to this heading"></a></h2>
 <p>Let’s open a csv data file using some basic Python statements. First, we will let Python read the file and create a file object. Next, we will split the file contents into inidividual columns, and then store the column data in variables. This is a long-winded way of displaying csv files, but
 the objective with this code sample is to illustrate some details that is involved in opening these files.  For regular work, we use libraries such as Pandas which it much easier to display the csv files. Pandas will be discussed shortly.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/earthquakes.csv&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -295,7 +299,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="the-matplotlib-figure-object">
-<h2><span class="section-number">7.4. </span>The Matplotlib Figure Object<a class="headerlink" href="#the-matplotlib-figure-object" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">8.4. </span>The Matplotlib Figure Object<a class="headerlink" href="#the-matplotlib-figure-object" title="Permalink to this heading"></a></h2>
 <p>When working with Python, it is important to know how to manipulate matplotlib’s figure object.  Almost all of your graphical output will require the use of this figure object either directly or indirectly. The links below provide some information on ths topic.</p>
 <p>In terms of a general overview, in matplotlib’s languge, the figure object is the top level object. It serves as the container for all other plot-related objects.</p>
 <p>The figure object can contain one or more axes or plotting objects. Axes are actual X,Y plots or diagrams that appear in the document.  Axes contain the X-axis and the Y-axis, which are the XY lines in the plots. Axes also have plot objects, titles, legends, etc.</p>
@@ -439,7 +443,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="reading-csv-files-using-pandas">
-<h2><span class="section-number">7.5. </span>Reading CSV Files Using Pandas<a class="headerlink" href="#reading-csv-files-using-pandas" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">8.5. </span>Reading CSV Files Using Pandas<a class="headerlink" href="#reading-csv-files-using-pandas" title="Permalink to this heading"></a></h2>
 <p>The script above used many lines of code to open the csv file, compute average, and plot a graph.  We can achieve the same results with far fewer lines of code by using a specialized library named Pandas.  Pandas is a very powerful, popular and easy to use Python library for data analysis.  It has many Excel-like functions. Its primary object is the DataFrame, which can be thought of as an abstract database table or spreadsheet.  Once you create a dataframe object, you can use it to display tables, plot columns, create and run queries, with just a few lines of code.</p>
 <p>Let’s plot the earthquake dataset using Pandas.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -481,7 +485,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="plotting-graphs">
-<h2><span class="section-number">7.6. </span>Plotting Graphs<a class="headerlink" href="#plotting-graphs" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">8.6. </span>Plotting Graphs<a class="headerlink" href="#plotting-graphs" title="Permalink to this heading"></a></h2>
 <p>Many types of graphs can be plotted by pandas. Below are seven types of graphs that are useful to know how to create.</p>
 <p>The kind parameter accepts eleven different string values and determines which kind of plot you’ll create:</p>
 <blockquote>
@@ -567,7 +571,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="writing-to-a-file">
-<h2><span class="section-number">7.7. </span>Writing to a File<a class="headerlink" href="#writing-to-a-file" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">8.7. </span>Writing to a File<a class="headerlink" href="#writing-to-a-file" title="Permalink to this heading"></a></h2>
 <p>Once we are done with data analysis, we can also write to a file, as shown below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/.../john.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -620,7 +624,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="plotting-shapefiles">
-<h2><span class="section-number">7.8. </span>Plotting Shapefiles<a class="headerlink" href="#plotting-shapefiles" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">8.8. </span>Plotting Shapefiles<a class="headerlink" href="#plotting-shapefiles" title="Permalink to this heading"></a></h2>
 <p>There are many libraries available for plotting shapefiles. Such libraries include Geopandas, Shapely, Fiona, OGR, and descartes. Altogether, one of the main contributions of these libraries is that we no longer have to rely on GIS software to view shapefiles and their attribute data. This can be done easily with Python.</p>
 <p>Among the various libraries, Geopandas is perhaps the most widely used for plotting shapefiles as it only requires a few lines of code to display the shapefile. Also, attribute tables can be easily manipulated as a panda/geopanda dataframes.</p>
 <p>The other libraries are also important depending on the task that you would like to perform.  Since geopandas hides almost all its implementation, you will find that studying the code of other libaries gives you a clearer picture of how to handle shapefiles from a Python perspective.</p>
@@ -879,7 +883,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="displaying-rasters">
-<h2><span class="section-number">7.9. </span>Displaying Rasters<a class="headerlink" href="#displaying-rasters" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">8.9. </span>Displaying Rasters<a class="headerlink" href="#displaying-rasters" title="Permalink to this heading"></a></h2>
 <p>In programming, rasters are considered as <em>arrays</em>.  An array is a collection of items of the same data type that can be manipulated as a single entity.  In Python,  a list is a one dimensional array.  However, when we are thinking about rasters, we are typically thinking of two dimensional arrays that are matrices of numbers defined by rows and columns.</p>
 <p>In Python, one difference between a list and a two-dimensional array is that whereas a list can store multiple data types, a two-dimensional array can store only one data type.</p>
 <img alt="One and Two Dimensional Arrays" src="_images/arrays1.png" />
@@ -1081,9 +1085,6 @@ the objective with this code sample is to illustrate some details that is involv
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p><strong>Displaying a Raster in QGIS Using Python</strong></p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/W5_3H2UWYms" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="line-block">
 <div class="line"><br /></div>
@@ -1092,46 +1093,50 @@ the objective with this code sample is to illustrate some details that is involv
 <div class="line"><br /></div>
 </div>
 <p><strong>Displaying Web Maps and Feature Layers Stored in ArcGIS Online Using ArcGIS API for Python</strong></p>
-<p><em>Making an Anonymous Connection</em></p>
-<p>The code sample below makes an anonymous connection to ArcGIS Online then searches for a publicly available web map entitled LA Parks and Trails Map owned by esri_devlabs. The web map contains datasets about Los Angeles, CA parks and trails.  After the web map is retrieved from the list of items,  the WebMap class is imported and used to visualize the web map.  The code sample comes from <a class="reference external" href="https://developers.arcgis.com/python/guide/display-a-webmap">this ESRI webpage</a></p>
+<p><em>Making an Anonymous Connection to ArcGIS Online</em></p>
+<p>The code sample code below lets you connect anonymously to Arcgis Online and search for content that are related to ‘Michigan’ and that are publicly available.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arcgis.gis</span> <span class="kn">import</span> <span class="n">GIS</span>
-
-<span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">()</span>
-
-<span class="n">webmap_search</span> <span class="o">=</span> <span class="n">gis</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
-   <span class="n">query</span><span class="o">=</span><span class="s2">&quot;LA Parks and Trails Map (styled) tags:tutorial owner:esri_devlabs&quot;</span><span class="p">,</span>
-       <span class="n">item_type</span><span class="o">=</span><span class="s2">&quot;Web Map&quot;</span>
-     <span class="p">)</span>
-
-     <span class="n">webmap_search</span>
-
-     <span class="n">webmap_item</span> <span class="o">=</span> <span class="n">webmap_search</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-     <span class="nb">print</span> <span class="p">(</span><span class="n">webmap_item</span><span class="p">)</span>
-
-     <span class="kn">from</span> <span class="nn">arcgis.mapping</span> <span class="kn">import</span> <span class="n">WebMap</span>
-     <span class="n">la_park_trails</span> <span class="o">=</span> <span class="n">WebMap</span><span class="p">(</span><span class="n">webmap_item</span><span class="p">)</span>
-     <span class="n">la_park_trails</span>
+     <span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">()</span>  <span class="c1"># Connect to ArcGIS Online as an anonymous user</span>
+     <span class="n">search_subset</span> <span class="o">=</span> <span class="n">gis</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;Michigan&quot;</span><span class="p">,</span> <span class="n">max_items</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+     <span class="n">search_subset</span>
 </pre></div>
 </div>
-<img alt="ArcGIS Online Web Map" src="_images/arcgis_online_webmap.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p><em>Connect to your ArcGIS Online Account8</em></p>
+<p>The results should be similar to the illustration below.</p>
+<img alt="Search Arcgisonline" src="_images/search_arcgisonline.png" />
+<p>Now, let’s search for a particular layer named “BA Web App Suitability Analysis Data”</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arcgis.gis</span> <span class="kn">import</span> <span class="n">GIS</span>
+<span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">()</span>  <span class="c1"># Connect to ArcGIS Online as an anonymous user</span>
+<span class="n">search_subset</span> <span class="o">=</span> <span class="n">gis</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;BA Web App Suitability Analysis Data&quot;</span><span class="p">)</span>
+<span class="n">search_subset</span>
+</pre></div>
+</div>
+<p>The result is:</p>
+<dl class="simple">
+<dt>[&lt;Item title:”Justice40 Tracts Map April 2022” type:Web Map owner:esri_demographics&gt;,</dt><dd><p>&lt;Item title:”Justice40 Tracts Map May 2022” type:Web Map owner:esri_demographics&gt;,
+&lt;Item title:”Live Fire Web App (Hosted by Paul Doherty) ” type:Web Mapping Application owner:pjdohertygis&gt;,
+&lt;Item title:”10 Minute Drive Access to Grocery Stores” type:Map Image Layer owner:UOdocent&gt;,
+&lt;Item title:”10 Minute Walk Access to Grocery Stores” type:Map Image Layer owner:UOdocent&gt;,
+&lt;Item title:”BA Web App Suitability Analysis Data” type:Web Mapping Application owner:bpeverall22&#64;COAGIS&gt;,</p>
+</dd>
+</dl>
+<p>Let’s get the first item from the list.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arcgis.gis</span> <span class="kn">import</span> <span class="n">GIS</span>
+<span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">()</span>  <span class="c1"># Connect to ArcGIS Online as an anonymous user</span>
+<span class="n">search_subset</span> <span class="o">=</span> <span class="n">gis</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;BA Web App Suitability Analysis Data&quot;</span><span class="p">)</span>
+<span class="n">subset_item</span> <span class="o">=</span> <span class="n">search_subset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">subset_item</span>
+</pre></div>
+</div>
+<img alt="Search Arcgisonline" src="_images/Justice40Tracts.png" />
+<p><em>Connect to your ArcGIS Online Account</em></p>
+<p>Let’s log into our own ArcGIS Online Account and display some of the content. The general syntax is shown below.  Notice that we are passing in the URL of the ArcGIS Online server (or portal), our username, and password to “GIS”.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcgis</span>
+<span class="kn">from</span> <span class="nn">arcgis.gis</span> <span class="kn">import</span> <span class="n">GIS</span>
 
-<span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">(</span><span class="s2">&quot;https://www.arcgis.com/&quot;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;password&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Successfully logged in as: &quot;</span> <span class="o">+</span> <span class="n">gis</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
-
-<span class="n">webmap_search</span><span class="o">=</span> <span class="n">gis</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;COVID-19 Deaths by State&quot;</span><span class="p">,</span> <span class="n">item_type</span><span class="o">=</span><span class="s2">&quot;Web Map&quot;</span><span class="p">)</span>
-<span class="n">webmap_search</span>
-
-<span class="n">webmap_item</span> <span class="o">=</span> <span class="n">webmap_search</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">webmap_item</span><span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">arcgis.mapping</span> <span class="kn">import</span> <span class="n">WebMap</span>
-<span class="n">covid19_webmap</span> <span class="o">=</span> <span class="n">WebMap</span><span class="p">(</span><span class="n">webmap_item</span><span class="p">)</span>
-<span class="n">covid19_webmap</span>
+<span class="c1">#connect to your GIS</span>
+<span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">(</span><span class="s2">&quot;https://www.arcgis.com&quot;</span><span class="p">,</span><span class="s2">&quot;username&quot;</span><span class="p">,</span><span class="s2">&quot;password&quot;</span><span class="p">)</span>
+<span class="n">my_content</span> <span class="o">=</span> <span class="n">gis</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">&quot;owner:&quot;</span> <span class="o">+</span> <span class="n">gis</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">me</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">max_items</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">my_content</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -1141,7 +1146,7 @@ the objective with this code sample is to illustrate some details that is involv
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Establish a connection to your GIS.</span>
 <span class="kn">from</span> <span class="nn">arcgis.gis</span> <span class="kn">import</span> <span class="n">GIS</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
-<span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">()</span> <span class="c1"># anonymous connection to www.arcgis.com</span>
+<span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">(</span><span class="s2">&quot;https://www.arcgis.com&quot;</span><span class="p">,</span><span class="s2">&quot;username&quot;</span><span class="p">,</span><span class="s2">&quot;password&quot;</span><span class="p">)</span>
 
 <span class="c1"># Search for &#39;USA major cities&#39; feature layer collection</span>
 <span class="n">search_results</span> <span class="o">=</span> <span class="n">gis</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;title: USA Major Cities&#39;</span><span class="p">,</span>
@@ -1156,9 +1161,8 @@ the objective with this code sample is to illustrate some details that is involv
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><em>Connect to a Feature Layer using ItemID</em></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Establish a connection to your GIS.</span>
-<span class="kn">from</span> <span class="nn">arcgis.gis</span> <span class="kn">import</span> <span class="n">GIS</span>
+<p><em>Connect to a Feature Layer using the Feature’s ItemID</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arcgis.gis</span> <span class="kn">import</span> <span class="n">GIS</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
 <span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">()</span> <span class="c1"># anonymous connection to www.arcgis.com</span>
 
@@ -1166,6 +1170,7 @@ the objective with this code sample is to illustrate some details that is involv
 <span class="n">freeways</span>
 </pre></div>
 </div>
+<img alt="Search Arcgisonline" src="_images/USAFreewaySystem.png" />
 <p>For more information, please visit the link below:</p>
 <p><a class="reference external" href="https://developers.arcgis.com/python/guide/working-with-feature-layers-and-features/">https://developers.arcgis.com/python/guide/working-with-feature-layers-and-features/</a></p>
 <div class="line-block">
@@ -1174,7 +1179,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="exercises">
-<h2><span class="section-number">7.10. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">8.10. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Visit <a class="reference external" href="https://nextgenstats.nfl.com/stats/passing#max-completed-air-distance">this NFL website</a> and copy the quarter back data. Paste the data into Excel and save it in CSV format.  Use the standard library in Python or pandas to plot a simple histogram and boxplot of the data in the passing attempts field (ATT).   Also, calculate the mean and standard deviation of passing attempts.   Explain what your data is portraying in short paragraph.</p></li>
 <li><p>Using Geopandas, create a thematic map for the USA or <a class="reference external" href="https://www.michigan.gov/coronavirus/stats">Michigan</a> showing the distribution of Covid19 cases across the country or state for the date for which you have data.  Write comments to explain what your code is doing.   Repeat the process using another Python library of your choice.</p></li>
@@ -1188,7 +1193,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="resources">
-<h2><span class="section-number">7.11. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">8.11. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://automating-gis-processes.github.io/CSC18/index.html">https://automating-gis-processes.github.io/CSC18/index.html</a></p></li>
 <li><p>Python Shapefile Library - <a class="reference external" href="https://pythonhosted.org/Python%20Shapefile%20Library/">https://pythonhosted.org/Python%20Shapefile%20Library/</a></p></li>
@@ -1208,8 +1213,8 @@ the objective with this code sample is to illustrate some details that is involv
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="object_oriented_programming.html" class="btn btn-neutral float-left" title="6. Basic Concepts in Object Oriented Programming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="map_projections.html" class="btn btn-neutral float-right" title="8. Map Projections" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="object_oriented_programming.html" class="btn btn-neutral float-left" title="7. Basic Concepts in Object Oriented Programming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="map_projections.html" class="btn btn-neutral float-right" title="9. Map Projections" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

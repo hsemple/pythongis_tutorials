@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>15. Retrieving Data from APIs &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="14. Batch Processing &amp; Workflow Automation" href="workflow_automation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Python GIS Tutorials
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">1. Setting up Development Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_programs.html">2. Introduction to the Python Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings_lists_conditional.html">3. Strings and Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">4. Conditional Statements and Looping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">5. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error_handling.html">6. Error Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">7. Basic Concepts in Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="displaying_files.html">8. Reading and Displaying Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_projections.html">9. Map Projections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="attribute_and_spatial_queries.html">10. Attribute and Spatial Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="querying_rasters.html">11. Querying Rasters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geocoding.html">12. Geocoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">13. Terrain Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">14. Batch Processing &amp; Workflow Automation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">15. Retrieving Data from APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python GIS Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">15. </span>Retrieving Data from APIs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="retrieving-data-from-apis">
+<h1><span class="section-number">15. </span>Retrieving Data from APIs<a class="headerlink" href="#retrieving-data-from-apis" title="Permalink to this heading"></a></h1>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>What is an API?</strong></p>
+<p>APIs are mechanisms that enable two software components to communicate with each other using a set of definitions and protocols.  Many organizations now make their data available via API. Web-based can access this data and use them visualization or analysis.</p>
+<p>There are many different types of web APIs. One of the most common types is a REST API.  This type of API uses URL arguments to specify what information should be returned via the API.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>API Endpoints</strong></p>
+<p>When working with APIs, you will frequently hear the term “endpoint”.  The API endpoint refers to the dataset that is being retrieved by the API’s URL.  These data may be in the form of census data, geospatial base maps, elevation data or any type of data that has been made available through the API. As an example, let’s look at the Colorado Information Marketplace which is a data warehouse that provides access to a wide range of Colorado-specific open datasets available via a REST API called the Socrata Open Data API (SODA) - <a class="reference external" href="https://data.colorado.gov/browse">https://data.colorado.gov/browse</a></p>
+<p>There are lots of API endpoints or data sets available through this API.  Click on this link to see the response that you get from using a browswer to make a basic request with no URL parameters specified: <a class="reference external" href="https://data.colorado.gov/resource/tv8u-hswn.json">https://data.colorado.gov/resource/tv8u-hswn.json</a>. Notice that the response in this case is returned in JSON format.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Retrieving Data Using Python</strong></p>
+<p>Instead of using the browser to view the json file at the API endpoint, we can use Python to make a call to the API, retreive the data, and view the data.  The script below illustrates how this works:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">colorado_data</span>  <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://data.colorado.gov/resource/tv8u-hswn.json&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="n">colorado_data</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</pre></div>
+</div>
+<img alt="Aspect Map" src="_images/colorado_dataset1.png" />
+<p>The output from the above script is a json object. Although this is a human readable format, we can use the pandas library to format the json and display it in a more user-friendly way.  The code sample below shows how this can be done.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://data.colorado.gov/resource/tv8u-hswn.json&quot;</span>
+
+<span class="n">colorado_data</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="n">colorado_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="Aspect Map" src="_images/colorado_dataset.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Downloading Json and Mapping the Data Points</strong></p>
+<p>As GIS researchers, we are also interested in mapping latlong coordinates that may be contained in API endpoints.  the script takes a json string, parses it and extracts the latitude/longitde data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">folium</span>
+
+<span class="c1"># Make a GET request to the API endpoint</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://example.com/api&quot;</span><span class="p">)</span>
+
+<span class="c1"># Parse the response content as JSON</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+<span class="c1"># Extract the latitude and longitude from the JSON data</span>
+<span class="n">latitude</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span>
+<span class="n">longitude</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span>
+
+<span class="c1"># Create a map using the extracted latitude and longitude</span>
+<span class="nb">map</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Add a marker to the map at the extracted latitude and longitude</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">([</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">])</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="nb">map</span><span class="p">)</span>
+
+<span class="c1"># Display the map</span>
+<span class="nb">map</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># JSON data containing latitude and longitude</span>
+<span class="n">json_data</span> <span class="o">=</span> <span class="s1">&#39;{&quot;location&quot;: {&quot;latitude&quot;: 40.7128, &quot;longitude&quot;: -74.006}}&#39;</span>
+
+<span class="c1"># Parse the JSON data as a Python object</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span>
+
+<span class="c1"># Extract latitude and longitude from the Python object</span>
+<span class="n">latitude</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span>
+<span class="n">longitude</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span>
+
+<span class="c1"># Print the latitude and longitude values</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Latitude: &quot;</span><span class="p">,</span> <span class="n">latitude</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Longitude: &quot;</span><span class="p">,</span> <span class="n">longitude</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Mapping with Python &amp; Folium - Creating Maps from Raw CSV/JSON Data</strong></p>
+<p>This video is a tutorial on how to create Folium maps from raw CSV data in Python. The video covers loading the data into Python, transforming the data, extracting latitude/longitude, and creating interactive maps based on the data.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/H8Ypb8Ei9YA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Geocoding Using the OpenStreetMap Nominatim API</strong></p>
+<p>Python script that uses the OpenStreetMap Nominatim API to geocode an address, retrieve a JSON response, parse the JSON response, and print out the latitude and longitude coordinates.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># Define the address to geocode</span>
+<span class="n">address</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the address of interest &quot;</span><span class="p">)</span>
+
+<span class="c1">#address = &quot;1600 Pennsylvania Avenue NW, Washington, DC 20500, USA&quot;</span>
+
+<span class="c1"># Build the URL for the Nominatim API request</span>
+<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://nominatim.openstreetmap.org/search?q=</span><span class="si">{</span><span class="n">address</span><span class="si">}</span><span class="s2">&amp;format=json&quot;</span>
+
+<span class="c1"># Make a GET request to the Nominatim API</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="c1"># Parse the JSON response</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+<span class="c1"># Extract the latitude and longitude coordinates from the response</span>
+<span class="n">latitude</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+<span class="n">longitude</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span>
+
+<span class="c1"># Print the latitude and longitude coordinates</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Latitude: </span><span class="si">{</span><span class="n">latitude</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Longitude: </span><span class="si">{</span><span class="n">longitude</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Readings</strong></p>
+<p>API’s and Natural Language Processing in Open Source Python
+<a class="reference external" href="https://www.earthdatascience.org/courses/use-data-open-source-python/intro-to-apis/">https://www.earthdatascience.org/courses/use-data-open-source-python/intro-to-apis/</a></p>
+<p><a class="reference external" href="https://www.artlembo.com/post/parallel-processing-with-gis-on-desktop-pcs?utm_campaign=2023-05-05&amp;utm_term=16905998&amp;utm_content=educational&amp;utm_source=email-sendgrid&amp;utm_medium=649690">https://www.artlembo.com/post/parallel-processing-with-gis-on-desktop-pcs?utm_campaign=2023-05-05&amp;utm_term=16905998&amp;utm_content=educational&amp;utm_source=email-sendgrid&amp;utm_medium=649690</a></p>
+<p><strong>URL Parameters</strong></p>
+<p>Using URL parameters, you can define a more specific request to limit what data you get back in response to your API request. For example, you can query the data to only return data for Boulder County, Colorado using the REST API call.</p>
+<p>Pay close attention to the ?&amp;county=Boulder part of the url below. That’s the part of the API request that tells the API to only return a subset of the data - where county = Boulder. <a class="reference external" href="https://data.colorado.gov/resource/tv8u-hswn.json?&amp;county=Boulder">https://data.colorado.gov/resource/tv8u-hswn.json?&amp;county=Boulder</a>.</p>
+<p><a class="reference external" href="https://amaral.northwestern.edu/blog/getting-long-lat-list-cities">https://amaral.northwestern.edu/blog/getting-long-lat-list-cities</a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="workflow_automation.html" class="btn btn-neutral float-left" title="14. Batch Processing &amp; Workflow Automation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Hugh Semple.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

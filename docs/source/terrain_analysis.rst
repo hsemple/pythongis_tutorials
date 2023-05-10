@@ -42,7 +42,15 @@ Generating Hillshades
 Hillshades are used in terrain analysis to give elevation data a 3-dimensional appearance thereby making it easier to visualize variations in topography. Hillshades are also frequently used in GIS and Cartography as underlays to make other kinds of data more visually interesting. Google Maps use hillshades extensivelly to portray terrain features of the earth.
 
 
+.. image:: img/google_hillshade_map.png
+   :alt: DEM Loaded with RichDEM
+
+
+
 |
+
+
+
 
 **Generate Hillshade with ArcPy**
 
@@ -177,7 +185,7 @@ For information in earthpy, see https://earthpy.readthedocs.io/en/latest/gallery
 |
 
 
-**Elevation Layer Draped on Hillshade using Earthpy and Matplotlib**
+**Draping Elevation Data on Hillshade using Earthpy and Matplotlib**
 
 In this example, both the elevation layer and the hillshade layer are displayed in a single figure and ax object.
 
@@ -213,7 +221,6 @@ In this example, both the elevation layer and the hillshade layer are displayed 
 	              alpha=0.5, 
 	              ax=ax, 
 	              cbar=False)
-
 
 	plt.show()
 
@@ -460,7 +467,7 @@ Curvature Maps
 
 **Generate Curvature Maps Using Arcpy**
 
-The two scripts below show how to calculate curvature using ArcPy.  
+The first two scripts below show how to calculate curvature using ArcPy.  The third script shows how to compute profile with the richdem library. 
 
 
 1. Curvature Example 1. Use in ArcGIS Python Window
@@ -476,7 +483,7 @@ The two scripts below show how to calculate curvature using ArcPy.
 |
 
 
-2. Curvature Example 2
+2. Curvature Example for Arcpy
 
 This example calculates the curvature of a given slope. Use in Idle or Python Notebook
 
@@ -503,6 +510,33 @@ This example calculates the curvature of a given slope. Use in Idle or Python No
 
 Click on this link for more code samples - https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst
 
+
+|
+
+
+3. Curvature Script for RichDem
+
+
+port richdem as rd
+import matplotlib.pyplot as plt
+
+dem = rd.LoadGDAL('/Users/hsemple/Desktop/Stowe_Dataset/elevation')
+#dem = rasterio.open('/Users/hsemple/Desktop/Stowe_Dataset/elevation')
+
+profile_curvature = rd.TerrainAttribute(dem, attrib='profile_curvature')
+rd.rdShow(profile_curvature, axes=False, cmap='jet', figsize=(6,4))
+
+plt.show()
+
+
+.. image:: img/profile_curvature.png
+   :alt: Aspect Map
+
+
+
+
+Note: When working with the RichDEM library, valid attributes are: slope_riserun, slope_percentage, slope_degrees, slope_radians, aspect, curvature, planform_curvature, profile_curvature
+|
 
 |
 
@@ -541,72 +575,20 @@ This sample script comes from `ESRI <https://pro.arcgis.com/en/pro-app/latest/to
 |
 
 
+Watershed Delineation Using PySheds 
+-------------------------------------
 
-Automating Terrain Analysis Workflows 
----------------------------------------
-
-Python scripts are useful for automating workflows that involve the use of multiple tools either parallel to each other or sequentially.  For example, if your terrain analysis involves producing both a slope map and an aspect map from the same digital elevation model, then these two computations can be integrated into a single script as shown in the example below.  On other occasions, the output of one processing operation becomes the input for another processing operation. These sequential operations are evident in the watershed delineation scripts that are presented below.
-
-
-
-**a. Calculate Slope and Aspect Using a Single Script**
-
-.. code-block:: python
-
-   #Import system modules
-   import arcpy
-   from arcpy import env
-   from arcpy.sa import *
-
-   try:
-	   # Set environment settings
-	   env.workspace = "C:/workspace"
-	   # Set local variables
-	   inRaster = "dem"
-	   outMeasurement = "DEGREE" 
-	   zFactor = 0.3043
-
-	   # Check out the ArcGIS Spatial Analyst extension license
-	   arcpy.CheckOutExtension("Spatial")
-
-	   # Execute Slope
-	   outSlope = Slope(inRaster, outMeasurement, zFactor)
-	    
-	   # Save the output
-	   outSlope.save("C:/workspace/outslope02")
-	   print "Slope successfully calculated"      
-	     
-	   # Execute Aspect
-	   outAspect = Aspect(inRaster)
-	   outAspect.save("C:/workspace/outaspect02")
-	
-	except Exception as e:
-	    print (e.message)
-
-
-
-|
-
-
-**Automating Watershed Delineation Using PySheds**
-
-
-In this script, the output of one processing becomes the output of the next process.
-
-
-
-**Watershed Delineation with pysheds**
 
 I came across a library called pysheds that can be used for watershed delineation. Tested sample code is presented below.
 
 
 .. code-block:: python
 
-
 	from pysheds.grid import Grid
+	import numpy as np
 
-	grid = Grid.from_raster('/Users/.../elevation.tiff')
-	dem = grid.read_raster('/Users/.../elevation.tiff')
+	grid = Grid.from_raster('/Users/hsemple/Desktop/Stowe_Dataset/elevation')
+	dem = grid.read_raster('/Users/hsemple/Desktop/Stowe_Dataset/elevation')
 
 
 	# Fill Sinks
@@ -616,7 +598,7 @@ I came across a library called pysheds that can be used for watershed delineatio
 
 	# Fill depressions in DEM
 	flooded_dem = grid.fill_depressions(pit_filled_dem)
-	    
+
 	# Resolve flats in DEM
 	inflated_dem = grid.resolve_flats(flooded_dem)
 
@@ -625,7 +607,7 @@ I came across a library called pysheds that can be used for watershed delineatio
 	# ----------------------
 	# Specify directional mapping
 	dirmap = (64, 128, 1, 2, 4, 8, 16, 32)
-	    
+
 	# Compute flow directions
 	# -------------------------------------
 	fdir = grid.flowdir(inflated_dem, dirmap=dirmap)
@@ -645,10 +627,12 @@ I came across a library called pysheds that can be used for watershed delineatio
 	x_snap, y_snap = grid.snap_to_mask(acc > 1000, (x, y))
 
 	# Delineate the catchment
-	catch = grid.catchment(x=x_snap, y=y_snap, fdir=fdir, dirmap=dirmap, 
+	catch = grid.catchment(x=x_snap, y=y_snap, fdir=fdir, dirmap=dirmap,
 	                       xytype='coordinate')
 
-	# Crop and plot the catchment
+
+
+	# Crop the catchment
 	# ---------------------------
 	# Clip the bounding box to the catchment
 	grid.clip_to(catch)
@@ -665,7 +649,20 @@ I came across a library called pysheds that can be used for watershed delineatio
 	dist = grid.distance_to_outlet(x=x_snap, y=y_snap, fdir=fdir, dirmap=dirmap,
 	                               xytype='coordinate')
 
-	
+
+
+	# Plot the catchment
+	fig, ax = plt.subplots(figsize=(8,6))
+	fig.patch.set_alpha(0)
+
+	plt.grid('on', zorder=0)
+	im = ax.imshow(np.where(clipped_catch, clipped_catch, np.nan), extent=grid.extent,
+	               zorder=1, cmap='Greys_r')
+	plt.xlabel('Longitude')
+	plt.ylabel('Latitude')
+	plt.title('Delineated Catchment', size=14)
+
+
 
 	
 
@@ -674,63 +671,6 @@ Source: http://mattbartos.com/pysheds/
 
 
 |
-
-**Automating Watershed Delineation Using ArcPy**
-
-
-
-.. code-block:: python
-
-	# Import system modules
-	import arcpy
-	from arcpy import env 
-	from arcpy.sa import * 
-	try:
-	    # Set environment settings
-	    env.workspace = "C:/Users/Hugh/Desktop/watershed"
-	    env.overwriteOutput = True
-
-	    # Check out ArcGIS Spatial Analyst extension 
-	    arcpy.CheckOutExtension("Spatial")
-
-	    # Fill sink
-	    outFill = Fill("elevation")
-	    outFill.save("fill01")
-
-	    #Flow Direction
-	    outFlowDirection = FlowDirection("fill01", "NORMAL")
-	    outFlowDirection.save("flowdir")
-
-	    # Flow Accumulation
-	    outFlowAccumulation = FlowAccumulation("flowdir")
-	    outFlowAccumulation.save("flowAccum")
-
-	    # Define stream length
-	    streams = Con(Raster("flowAccum") > 1500, 1)
-	    streams.save("streams")
-
-	    # Stream Link
-	    outStreamLink = StreamLink("streams", "flowdir")
-	    outStreamLink.save("outStreamLink")
-
-	    # Stream to Feature
-	    outStreamFeat = StreamToFeature("streams", "flowdir", "outstrm01.shp", "NO_SIMPLIFY")
-
-	    #Delineate Watershed
-	    PourPoint = "PourPoint.shp"
-	    outWatershed = Watershed("flowdir", PourPoint, "Id")
-	    outWatershed.save("watershed")#Delineate Watershed
-
-	    print ("Watershed successfully delineated")
-	except Exception as e:
-	    print (e)
-
-
-
-
-
-|
-
 
 
 
@@ -827,9 +767,7 @@ Let's try the gdalifo command which can be executed from the command prompt. Gda
 We can convert between raster file formats using the gdal_translate tool. Gdal_translate recognises many file formats. To set the file format, use the '-of' flag. An example of the syntax is shown below:
 
 
-.. code-block:: python
-
-   >>> $ gdal_translate -of ENVI  /Users/student/Downloads/WhiteadderDEM.tif  /Users/hsemple/Downloads/WhiteadderDEM.bil
+>>> $ gdal_translate -of ENVI  /Users/student/Downloads/WhiteadderDEM.tif  /Users/hsemple/Downloads/WhiteadderDEM.bil
 
 |
 
@@ -840,9 +778,7 @@ We can convert between raster file formats using the gdal_translate tool. Gdal_t
 Clipping rasters can be done quite easily using gdal. You can enter the bounding coordinates of the clipping extent or you can supply a raster or vector file as the extent.
 
 
-.. code-block:: python
-
-	>>> $ gdalwarp -te <x_min> <y_min> <x_max> <y_max> input.bil clipped_output.bil
+>>> $ gdalwarp -te <x_min> <y_min> <x_max> <y_max> input.bil clipped_output.bil
 
 
 
@@ -855,13 +791,10 @@ Clipping rasters can be done quite easily using gdal. You can enter the bounding
 If you have large DEMs you can merge them very quickly using GDAL 
 
 
-.. code-block:: python
-
-
-    >>> $ gdal_merge.py -o out.tif in1.tif in2.tif
+>>> $ gdal_merge.py -o out.tif in1.tif in2.tif
 
    
-    #The -o flag indicates the outfile. 
+#The -o flag indicates the outfile. 
 
 
 
@@ -872,9 +805,7 @@ If you have large DEMs you can merge them very quickly using GDAL
 We can change the underlying projections of rasters using the gdalwarp command.  The gdalwarp command detects the projection of the raster that is to be projected so we do not have enter this value.   The '-t_srs' flag is used to assign the target coordinate system, which must be placed in quotes.  An example of the basic command is shown below:
 
 
-.. code-block:: python
-
-   >>> $ gdalwarp -t_srs '+proj=utm +zone=44 +datum=WGS84' projected.tif reprojected.tif
+>>> $ gdalwarp -t_srs '+proj=utm +zone=44 +datum=WGS84' projected.tif reprojected.tif
 
 
 
@@ -888,9 +819,7 @@ See this link for more info: https://www.geos.ed.ac.uk/~smudd/TopoTutorials/html
 **Compute Slope**
 
 
-.. code-block:: python
-
-   >>> $ gdaldem slope inputDem.tif  output_slope.tif
+>>> $ gdaldem slope inputDem.tif  output_slope.tif
 
 
 |
@@ -912,31 +841,30 @@ First, run gdalinfo and get the minimum and maximum elevation of the DEM.  Next,
 
 Once the color map file is completed, we can use it generate a colored relief, as shown in the example below:
 
-.. code-block:: python
-
-    >>> gdaldem color-relief -of PNG sf-dem.tif color-relief.txt sf-dem-coloredRelief.tif
+ >>> gdaldem color-relief -of PNG sf-dem.tif color-relief.txt sf-dem-coloredRelief.tif
 
 
 |
 
 
-For more information on how to work with GDAL cmmand line utilities, see this website - https://gdal.org/programs/gdaldem.html
+For more information on how to work with GDAL command line utilities, see this website - https://gdal.org/programs/gdaldem.html
 
 
 |
 
 
-Computing Viewsheds
+**Computing Viewsheds**
 
 .. code-block:: python
 
 	gdal_viewshed -md 500 -ox -10147017 -oy 5108065 source.tif destination.tif
 
 
-where 
 
-- md 
-   Maximum distance from observer to compute visibiliy. It is also used to clamp the extent of the output raster.\\
+The flags have the following meaning:
+
+-md 
+    Maximum distance from observer to compute visibiliy. It is also used to clamp the extent of the output raster.\\
 
 -ox <value>
     The X position of the observer (in SRS units).
@@ -999,79 +927,6 @@ We have already seen this structure in previous Python scripts that used the gda
 |
 
 
-Batch Processing Using GDAL  
--------------------------------
-
-
-There are many code samples for processing a single file using GDAL.  However, code samples for batch processing are not frequently encountered.  Below is an example for converting multiple .rst files into .tif files
- 
-
-Recall that for one raster file conversion we would use this:
-gdal_translate -of GTiff 01_State19900101.rst 01_State19900101.tif
-
-
-Now we're going to make a batch file which includes a loop to convert all files in the folder.
-
-Open a text editor, e.g. Notepad, and add the following code:
-
-
-.. code-block:: python
-
-	for %%f in (*.rst) do (
-	   echo %%~nf
-	   gdal_translate -of GTiff %%f %%~nf.tif
-	)
-
-
-Save the batchfile as rst2tif.bat in the folder with the land-use rasters.
-
-In the code above,  %%f is the variable that contains the filename of each file. With echo we can print something to the screen. Here we print %%~nf , which is the part of the filename before the dot that separates it from the extension. Then we use the gdal_translate command with output format GeoTiff. At the end of the line we add the .tif extension to the filename.
-
-5. Execute the batchfile. Type
-rst2tif <ENTER>
-
-6. Check the results
-
-
-https://courses.gisopencourseware.org/mod/book/view.php?id=78&chapterid=193
-
-
-
-
-|
-
-
-
-Automating Workflows
----------------------
-
-
-You have been manually drawing a polygon around an XY event layer of the locations each time they are updated, but the process takes a lot of time and is not entirely accurate.   In the script below,  we take a table of customer locations and create an outer polygon boundary of those locations. 
-
-
-.. code-block:: python
-
-	import arcpy, csv
-	xyData = 'r:C:\mydata.csv'
-	outConvexHull = 'C:\Boundary.shp'
-
-	xyLocations = []
-	csvFile = open(xyData)
-	csvReader = csv.reader(csvFile)
-	next(csvReader)
-
-	for row in (csvReader):
-	    xyLocations.append(row)
-
-
-	customerPoints = arcpy.Multipoint(arcpy.Array([arcpy.Point(*coords) for coords in xyLocations])))
-
-	convexHull = customerPoints.convexHull()
-	arcpy.CopyFeatures_management(convexHull, outConvedHull)
-
-
-
-
 
 
 
@@ -1086,22 +941,26 @@ Exercises
 2. Instead of generating a hillshade, write a second script to generate a 3D model of the area. Afterward, let the script drape a satellite imagery over the 3D model of the area.
 
 
+|
 
-**Resources**
 
-Please visit the link below for a sample script. Note: This is just one way of approaching this task.
 
+Resources
+------------
+
+
+PDraping an orthophoto over a DEM
 https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem
-
-
 
 Batch processing – automatizing the use of GDAL and SAGA GIS tools using Bash Shell scripts
 https://www.luisalucchese.com/post/batch-processing-gdal-saga-gis-bash/
 
-
 Working with Rasterio
 https://geobgu.xyz/py/rasterio.html
 
+Popular GDAL commands. https://github.com/dwtkns/gdal-cheat-sheet
+
+Classify a Raster Using Threshold Values in Python - 2017 - https://www.neonscience.org/resources/learning-hub/tutorials/classify-raster-thresholds-py
 
 
 

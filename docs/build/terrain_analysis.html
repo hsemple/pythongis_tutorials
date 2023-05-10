@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>10. Terrain Analysis &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+  <title>13. Terrain Analysis &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,7 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="9. Attribute and Spatial Queries" href="attribute_and_spatial_queries.html" /> 
+    <link rel="next" title="14. Batch Processing &amp; Workflow Automation" href="workflow_automation.html" />
+    <link rel="prev" title="12. Geocoding" href="geocoding.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -48,25 +49,29 @@
 <li class="toctree-l1"><a class="reference internal" href="strings_lists_conditional.html">3. Strings and Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">4. Conditional Statements and Looping</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">5. Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">6. Basic Concepts in Object Oriented Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="displaying_files.html">7. Reading and Displaying Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="map_projections.html">8. Map Projections</a></li>
-<li class="toctree-l1"><a class="reference internal" href="attribute_and_spatial_queries.html">9. Attribute and Spatial Queries</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Terrain Analysis</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#displaying-dem">10.1. Displaying DEM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#generating-hillshades">10.2. Generating Hillshades</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#slope-mapping">10.3. Slope Mapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#aspect-mapping">10.4. Aspect Mapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#curvature-maps">10.5. Curvature Maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#computing-viewshed">10.6. Computing Viewshed</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#automating-terrain-analysis-workflows">10.7. Automating Terrain Analysis Workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#working-with-gdal-command-line-utilities">10.8. Working with GDAL Command Line Utilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#running-gdal-commands-from-python">10.9. Running GDAL Commands from Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#batch-processing-using-gdal">10.10. Batch Processing Using GDAL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#automating-workflows">10.11. Automating Workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exercises">10.12. Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error_handling.html">6. Error Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">7. Basic Concepts in Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="displaying_files.html">8. Reading and Displaying Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_projections.html">9. Map Projections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="attribute_and_spatial_queries.html">10. Attribute and Spatial Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="querying_rasters.html">11. Querying Rasters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geocoding.html">12. Geocoding</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">13. Terrain Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#displaying-dem">13.1. Displaying DEM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generating-hillshades">13.2. Generating Hillshades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#slope-mapping">13.3. Slope Mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aspect-mapping">13.4. Aspect Mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#curvature-maps">13.5. Curvature Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#computing-viewshed">13.6. Computing Viewshed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#watershed-delineation-using-pysheds">13.7. Watershed Delineation Using PySheds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-gdal-command-line-utilities">13.8. Working with GDAL Command Line Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-gdal-commands-from-python">13.9. Running GDAL Commands from Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">13.10. Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resources">13.11. Resources</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">14. Batch Processing &amp; Workflow Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">15. Retrieving Data from APIs</a></li>
 </ul>
 
         </div>
@@ -83,7 +88,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">10. </span>Terrain Analysis</li>
+      <li class="breadcrumb-item active"><span class="section-number">13. </span>Terrain Analysis</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/terrain_analysis.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -94,7 +99,7 @@
            <div itemprop="articleBody">
              
   <section id="terrain-analysis">
-<h1><span class="section-number">10. </span>Terrain Analysis<a class="headerlink" href="#terrain-analysis" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">13. </span>Terrain Analysis<a class="headerlink" href="#terrain-analysis" title="Permalink to this heading"></a></h1>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -103,7 +108,7 @@
 <div class="line"><br /></div>
 </div>
 <section id="displaying-dem">
-<h2><span class="section-number">10.1. </span>Displaying DEM<a class="headerlink" href="#displaying-dem" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">13.1. </span>Displaying DEM<a class="headerlink" href="#displaying-dem" title="Permalink to this heading"></a></h2>
 <p>Terrain analysis starts with displaying digital elevation models.  We have touched on this topic before.  Below, a DEM of Stowe, VT is displayed with the RichDEM library.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">richdem</span> <span class="k">as</span> <span class="nn">rd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -119,8 +124,9 @@
 </div>
 </section>
 <section id="generating-hillshades">
-<h2><span class="section-number">10.2. </span>Generating Hillshades<a class="headerlink" href="#generating-hillshades" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">13.2. </span>Generating Hillshades<a class="headerlink" href="#generating-hillshades" title="Permalink to this heading"></a></h2>
 <p>Hillshades are used in terrain analysis to give elevation data a 3-dimensional appearance thereby making it easier to visualize variations in topography. Hillshades are also frequently used in GIS and Cartography as underlays to make other kinds of data more visually interesting. Google Maps use hillshades extensivelly to portray terrain features of the earth.</p>
+<img alt="DEM Loaded with RichDEM" src="_images/google_hillshade_map.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -229,7 +235,7 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Elevation Layer Draped on Hillshade using Earthpy and Matplotlib</strong></p>
+<p><strong>Draping Elevation Data on Hillshade using Earthpy and Matplotlib</strong></p>
 <p>In this example, both the elevation layer and the hillshade layer are displayed in a single figure and ax object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">earthpy</span> <span class="k">as</span> <span class="nn">et</span>
@@ -261,7 +267,6 @@
               <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
               <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -271,7 +276,7 @@
 </div>
 </section>
 <section id="slope-mapping">
-<h2><span class="section-number">10.3. </span>Slope Mapping<a class="headerlink" href="#slope-mapping" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">13.3. </span>Slope Mapping<a class="headerlink" href="#slope-mapping" title="Permalink to this heading"></a></h2>
 <p><strong>Generate Slope Map with Arcpy</strong></p>
 <p>The two scripts below show how to calculate slope using ArcPy.</p>
 <ol class="arabic simple">
@@ -366,7 +371,7 @@
 </div>
 </section>
 <section id="aspect-mapping">
-<h2><span class="section-number">10.4. </span>Aspect Mapping<a class="headerlink" href="#aspect-mapping" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">13.4. </span>Aspect Mapping<a class="headerlink" href="#aspect-mapping" title="Permalink to this heading"></a></h2>
 <p><strong>Calculate Aspect Using Arcpy</strong></p>
 <p>The script below show how to generate an aspect map using ArcPy.</p>
 <ol class="arabic simple">
@@ -433,9 +438,9 @@
 </div>
 </section>
 <section id="curvature-maps">
-<h2><span class="section-number">10.5. </span>Curvature Maps<a class="headerlink" href="#curvature-maps" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">13.5. </span>Curvature Maps<a class="headerlink" href="#curvature-maps" title="Permalink to this heading"></a></h2>
 <p><strong>Generate Curvature Maps Using Arcpy</strong></p>
-<p>The two scripts below show how to calculate curvature using ArcPy.</p>
+<p>The first two scripts below show how to calculate curvature using ArcPy.  The third script shows how to compute profile with the richdem library.</p>
 <ol class="arabic simple">
 <li><p>Curvature Example 1. Use in ArcGIS Python Window</p></li>
 </ol>
@@ -448,7 +453,7 @@
 <div class="line"><br /></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>Curvature Example 2</p></li>
+<li><p>Curvature Example for Arcpy</p></li>
 </ol>
 <p>This example calculates the curvature of a given slope. Use in Idle or Python Notebook</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import system modules</span>
@@ -472,9 +477,25 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<ol class="arabic simple" start="3">
+<li><p>Curvature Script for RichDem</p></li>
+</ol>
+<p>port richdem as rd
+import matplotlib.pyplot as plt</p>
+<p>dem = rd.LoadGDAL(‘/Users/hsemple/Desktop/Stowe_Dataset/elevation’)
+#dem = rasterio.open(‘/Users/hsemple/Desktop/Stowe_Dataset/elevation’)</p>
+<p>profile_curvature = rd.TerrainAttribute(dem, attrib=’profile_curvature’)
+rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
+<p>plt.show()</p>
+<img alt="Aspect Map" src="_images/profile_curvature.png" />
+<p>Note: When working with the RichDEM library, valid attributes are: slope_riserun, slope_percentage, slope_degrees, slope_radians, aspect, curvature, planform_curvature, profile_curvature
+|</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </section>
 <section id="computing-viewshed">
-<h2><span class="section-number">10.6. </span>Computing Viewshed<a class="headerlink" href="#computing-viewshed" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">13.6. </span>Computing Viewshed<a class="headerlink" href="#computing-viewshed" title="Permalink to this heading"></a></h2>
 <p><strong>Viewshed Using Arcpy</strong></p>
 <p>This sample script comes from <a class="reference external" href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/3d-analyst/viewshed.htm">ESRI</a>. It calculates surface locations that are visible to a set of observers defined in a shapefile. The script requires the 3D Analyst Extension</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
@@ -500,52 +521,14 @@
 <div class="line"><br /></div>
 </div>
 </section>
-<section id="automating-terrain-analysis-workflows">
-<h2><span class="section-number">10.7. </span>Automating Terrain Analysis Workflows<a class="headerlink" href="#automating-terrain-analysis-workflows" title="Permalink to this heading"></a></h2>
-<p>Python scripts are useful for automating workflows that involve the use of multiple tools either parallel to each other or sequentially.  For example, if your terrain analysis involves producing both a slope map and an aspect map from the same digital elevation model, then these two computations can be integrated into a single script as shown in the example below.  On other occasions, the output of one processing operation becomes the input for another processing operation. These sequential operations are evident in the watershed delineation scripts that are presented below.</p>
-<p><strong>a. Calculate Slope and Aspect Using a Single Script</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import system modules</span>
-<span class="kn">import</span> <span class="nn">arcpy</span>
-<span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="n">env</span>
-<span class="kn">from</span> <span class="nn">arcpy.sa</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="k">try</span><span class="p">:</span>
-        <span class="c1"># Set environment settings</span>
-        <span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/workspace&quot;</span>
-        <span class="c1"># Set local variables</span>
-        <span class="n">inRaster</span> <span class="o">=</span> <span class="s2">&quot;dem&quot;</span>
-        <span class="n">outMeasurement</span> <span class="o">=</span> <span class="s2">&quot;DEGREE&quot;</span>
-        <span class="n">zFactor</span> <span class="o">=</span> <span class="mf">0.3043</span>
-
-        <span class="c1"># Check out the ArcGIS Spatial Analyst extension license</span>
-        <span class="n">arcpy</span><span class="o">.</span><span class="n">CheckOutExtension</span><span class="p">(</span><span class="s2">&quot;Spatial&quot;</span><span class="p">)</span>
-
-        <span class="c1"># Execute Slope</span>
-        <span class="n">outSlope</span> <span class="o">=</span> <span class="n">Slope</span><span class="p">(</span><span class="n">inRaster</span><span class="p">,</span> <span class="n">outMeasurement</span><span class="p">,</span> <span class="n">zFactor</span><span class="p">)</span>
-
-        <span class="c1"># Save the output</span>
-        <span class="n">outSlope</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/workspace/outslope02&quot;</span><span class="p">)</span>
-        <span class="nb">print</span> <span class="s2">&quot;Slope successfully calculated&quot;</span>
-
-        <span class="c1"># Execute Aspect</span>
-        <span class="n">outAspect</span> <span class="o">=</span> <span class="n">Aspect</span><span class="p">(</span><span class="n">inRaster</span><span class="p">)</span>
-        <span class="n">outAspect</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/workspace/outaspect02&quot;</span><span class="p">)</span>
-
-     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-         <span class="nb">print</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p><strong>Automating Watershed Delineation Using PySheds</strong></p>
-<p>In this script, the output of one processing becomes the output of the next process.</p>
-<p><strong>Watershed Delineation with pysheds</strong></p>
+<section id="watershed-delineation-using-pysheds">
+<h2><span class="section-number">13.7. </span>Watershed Delineation Using PySheds<a class="headerlink" href="#watershed-delineation-using-pysheds" title="Permalink to this heading"></a></h2>
 <p>I came across a library called pysheds that can be used for watershed delineation. Tested sample code is presented below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pysheds.grid</span> <span class="kn">import</span> <span class="n">Grid</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">grid</span> <span class="o">=</span> <span class="n">Grid</span><span class="o">.</span><span class="n">from_raster</span><span class="p">(</span><span class="s1">&#39;/Users/.../elevation.tiff&#39;</span><span class="p">)</span>
-<span class="n">dem</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">read_raster</span><span class="p">(</span><span class="s1">&#39;/Users/.../elevation.tiff&#39;</span><span class="p">)</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">Grid</span><span class="o">.</span><span class="n">from_raster</span><span class="p">(</span><span class="s1">&#39;/Users/hsemple/Desktop/Stowe_Dataset/elevation&#39;</span><span class="p">)</span>
+<span class="n">dem</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">read_raster</span><span class="p">(</span><span class="s1">&#39;/Users/hsemple/Desktop/Stowe_Dataset/elevation&#39;</span><span class="p">)</span>
 
 
 <span class="c1"># Fill Sinks</span>
@@ -587,7 +570,9 @@
 <span class="n">catch</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">catchment</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_snap</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_snap</span><span class="p">,</span> <span class="n">fdir</span><span class="o">=</span><span class="n">fdir</span><span class="p">,</span> <span class="n">dirmap</span><span class="o">=</span><span class="n">dirmap</span><span class="p">,</span>
                        <span class="n">xytype</span><span class="o">=</span><span class="s1">&#39;coordinate&#39;</span><span class="p">)</span>
 
-<span class="c1"># Crop and plot the catchment</span>
+
+
+<span class="c1"># Crop the catchment</span>
 <span class="c1"># ---------------------------</span>
 <span class="c1"># Clip the bounding box to the catchment</span>
 <span class="n">grid</span><span class="o">.</span><span class="n">clip_to</span><span class="p">(</span><span class="n">catch</span><span class="p">)</span>
@@ -603,64 +588,28 @@
 <span class="c1"># -------------------------------------------</span>
 <span class="n">dist</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">distance_to_outlet</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_snap</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_snap</span><span class="p">,</span> <span class="n">fdir</span><span class="o">=</span><span class="n">fdir</span><span class="p">,</span> <span class="n">dirmap</span><span class="o">=</span><span class="n">dirmap</span><span class="p">,</span>
                                <span class="n">xytype</span><span class="o">=</span><span class="s1">&#39;coordinate&#39;</span><span class="p">)</span>
+
+
+
+<span class="c1"># Plot the catchment</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">clipped_catch</span><span class="p">,</span> <span class="n">clipped_catch</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">),</span> <span class="n">extent</span><span class="o">=</span><span class="n">grid</span><span class="o">.</span><span class="n">extent</span><span class="p">,</span>
+               <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys_r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Longitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Delineated Catchment&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Source: <a class="reference external" href="http://mattbartos.com/pysheds/">http://mattbartos.com/pysheds/</a></p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Automating Watershed Delineation Using ArcPy</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import system modules</span>
-<span class="kn">import</span> <span class="nn">arcpy</span>
-<span class="kn">from</span> <span class="nn">arcpy</span> <span class="kn">import</span> <span class="n">env</span>
-<span class="kn">from</span> <span class="nn">arcpy.sa</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="c1"># Set environment settings</span>
-    <span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/Users/Hugh/Desktop/watershed&quot;</span>
-    <span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
-
-    <span class="c1"># Check out ArcGIS Spatial Analyst extension</span>
-    <span class="n">arcpy</span><span class="o">.</span><span class="n">CheckOutExtension</span><span class="p">(</span><span class="s2">&quot;Spatial&quot;</span><span class="p">)</span>
-
-    <span class="c1"># Fill sink</span>
-    <span class="n">outFill</span> <span class="o">=</span> <span class="n">Fill</span><span class="p">(</span><span class="s2">&quot;elevation&quot;</span><span class="p">)</span>
-    <span class="n">outFill</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;fill01&quot;</span><span class="p">)</span>
-
-    <span class="c1">#Flow Direction</span>
-    <span class="n">outFlowDirection</span> <span class="o">=</span> <span class="n">FlowDirection</span><span class="p">(</span><span class="s2">&quot;fill01&quot;</span><span class="p">,</span> <span class="s2">&quot;NORMAL&quot;</span><span class="p">)</span>
-    <span class="n">outFlowDirection</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;flowdir&quot;</span><span class="p">)</span>
-
-    <span class="c1"># Flow Accumulation</span>
-    <span class="n">outFlowAccumulation</span> <span class="o">=</span> <span class="n">FlowAccumulation</span><span class="p">(</span><span class="s2">&quot;flowdir&quot;</span><span class="p">)</span>
-    <span class="n">outFlowAccumulation</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;flowAccum&quot;</span><span class="p">)</span>
-
-    <span class="c1"># Define stream length</span>
-    <span class="n">streams</span> <span class="o">=</span> <span class="n">Con</span><span class="p">(</span><span class="n">Raster</span><span class="p">(</span><span class="s2">&quot;flowAccum&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">streams</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;streams&quot;</span><span class="p">)</span>
-
-    <span class="c1"># Stream Link</span>
-    <span class="n">outStreamLink</span> <span class="o">=</span> <span class="n">StreamLink</span><span class="p">(</span><span class="s2">&quot;streams&quot;</span><span class="p">,</span> <span class="s2">&quot;flowdir&quot;</span><span class="p">)</span>
-    <span class="n">outStreamLink</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;outStreamLink&quot;</span><span class="p">)</span>
-
-    <span class="c1"># Stream to Feature</span>
-    <span class="n">outStreamFeat</span> <span class="o">=</span> <span class="n">StreamToFeature</span><span class="p">(</span><span class="s2">&quot;streams&quot;</span><span class="p">,</span> <span class="s2">&quot;flowdir&quot;</span><span class="p">,</span> <span class="s2">&quot;outstrm01.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;NO_SIMPLIFY&quot;</span><span class="p">)</span>
-
-    <span class="c1">#Delineate Watershed</span>
-    <span class="n">PourPoint</span> <span class="o">=</span> <span class="s2">&quot;PourPoint.shp&quot;</span>
-    <span class="n">outWatershed</span> <span class="o">=</span> <span class="n">Watershed</span><span class="p">(</span><span class="s2">&quot;flowdir&quot;</span><span class="p">,</span> <span class="n">PourPoint</span><span class="p">,</span> <span class="s2">&quot;Id&quot;</span><span class="p">)</span>
-    <span class="n">outWatershed</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;watershed&quot;</span><span class="p">)</span><span class="c1">#Delineate Watershed</span>
-
-    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Watershed successfully delineated&quot;</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="working-with-gdal-command-line-utilities">
-<h2><span class="section-number">10.8. </span>Working with GDAL Command Line Utilities<a class="headerlink" href="#working-with-gdal-command-line-utilities" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">13.8. </span>Working with GDAL Command Line Utilities<a class="headerlink" href="#working-with-gdal-command-line-utilities" title="Permalink to this heading"></a></h2>
 <p>GDAL (Geospatial Data Abstraction Library) is perhaps the most established library for reading and processing raster and vector geographical data. It is used by many GIS including ArcGIS and QGIS.  GDAL is written in the C++ programming language, but bindings are available that allow it to called from other languages.</p>
 <p>GDAL also has some special programs called <a class="reference external" href="https://gdal.org/programs/index.html">Utilities</a>, which are useful for performing many popular GIS tasks.  These utilities can be called from the command line assuming that proper path is set. They can also be from within Python.  In this section, we will look at how to call GDAL Utilities from the command line.  In the next section, we will look at calling GDAL from within Python.</p>
 <p><strong>Getting Information about a Raster</strong></p>
@@ -736,7 +685,7 @@ Band 1 Block=256x16 Type=Float32, ColorInterp=Undefined
 </div>
 <p><strong>Converting Between Raster Formats</strong></p>
 <p>We can convert between raster file formats using the gdal_translate tool. Gdal_translate recognises many file formats. To set the file format, use the ‘-of’ flag. An example of the syntax is shown below:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdal_translate -of ENVI  /Users/student/Downloads/WhiteadderDEM.tif  /Users/hsemple/Downloads/WhiteadderDEM.bil
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdal_translate -of ENVI  /Users/student/Downloads/WhiteadderDEM.tif  /Users/hsemple/Downloads/WhiteadderDEM.bil
 </pre></div>
 </div>
 <div class="line-block">
@@ -744,7 +693,7 @@ Band 1 Block=256x16 Type=Float32, ColorInterp=Undefined
 </div>
 <p><strong>Clipping Rasters using GDAL</strong></p>
 <p>Clipping rasters can be done quite easily using gdal. You can enter the bounding coordinates of the clipping extent or you can supply a raster or vector file as the extent.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdalwarp -te &lt;x_min&gt; &lt;y_min&gt; &lt;x_max&gt; &lt;y_max&gt; input.bil clipped_output.bil
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdalwarp -te &lt;x_min&gt; &lt;y_min&gt; &lt;x_max&gt; &lt;y_max&gt; input.bil clipped_output.bil
 </pre></div>
 </div>
 <div class="line-block">
@@ -752,18 +701,16 @@ Band 1 Block=256x16 Type=Float32, ColorInterp=Undefined
 </div>
 <p><strong>Merging Rasters using GDAL</strong></p>
 <p>If you have large DEMs you can merge them very quickly using GDAL</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdal_merge.py -o out.tif in1.tif in2.tif
-
-
-#The -o flag indicates the outfile.
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdal_merge.py -o out.tif in1.tif in2.tif
 </pre></div>
 </div>
+<p>#The -o flag indicates the outfile.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>Changing Raster Projections with Gdalwarp</strong></p>
 <p>We can change the underlying projections of rasters using the gdalwarp command.  The gdalwarp command detects the projection of the raster that is to be projected so we do not have enter this value.   The ‘-t_srs’ flag is used to assign the target coordinate system, which must be placed in quotes.  An example of the basic command is shown below:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdalwarp -t_srs &#39;+proj=utm +zone=44 +datum=WGS84&#39; projected.tif reprojected.tif
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdalwarp -t_srs &#39;+proj=utm +zone=44 +datum=WGS84&#39; projected.tif reprojected.tif
 </pre></div>
 </div>
 <p>See this link for more info: <a class="reference external" href="https://www.geos.ed.ac.uk/~smudd/TopoTutorials/html/tutorial_raster_conversion.html#converting-between-formats-using-gdal">https://www.geos.ed.ac.uk/~smudd/TopoTutorials/html/tutorial_raster_conversion.html#converting-between-formats-using-gdal</a></p>
@@ -771,7 +718,7 @@ Band 1 Block=256x16 Type=Float32, ColorInterp=Undefined
 <div class="line"><br /></div>
 </div>
 <p><strong>Compute Slope</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdaldem slope inputDem.tif  output_slope.tif
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdaldem slope inputDem.tif  output_slope.tif
 </pre></div>
 </div>
 <div class="line-block">
@@ -788,28 +735,26 @@ Band 1 Block=256x16 Type=Float32, ColorInterp=Undefined
 <div class="line">127 250 250 250’ &gt; color-relief.txt</div>
 </div>
 <p>Once the color map file is completed, we can use it generate a colored relief, as shown in the example below:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gdaldem</span> <span class="n">color</span><span class="o">-</span><span class="n">relief</span> <span class="o">-</span><span class="n">of</span> <span class="n">PNG</span> <span class="n">sf</span><span class="o">-</span><span class="n">dem</span><span class="o">.</span><span class="n">tif</span> <span class="n">color</span><span class="o">-</span><span class="n">relief</span><span class="o">.</span><span class="n">txt</span> <span class="n">sf</span><span class="o">-</span><span class="n">dem</span><span class="o">-</span><span class="n">coloredRelief</span><span class="o">.</span><span class="n">tif</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gdaldem</span> <span class="n">color</span><span class="o">-</span><span class="n">relief</span> <span class="o">-</span><span class="n">of</span> <span class="n">PNG</span> <span class="n">sf</span><span class="o">-</span><span class="n">dem</span><span class="o">.</span><span class="n">tif</span> <span class="n">color</span><span class="o">-</span><span class="n">relief</span><span class="o">.</span><span class="n">txt</span> <span class="n">sf</span><span class="o">-</span><span class="n">dem</span><span class="o">-</span><span class="n">coloredRelief</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>For more information on how to work with GDAL cmmand line utilities, see this website - <a class="reference external" href="https://gdal.org/programs/gdaldem.html">https://gdal.org/programs/gdaldem.html</a></p>
+<p>For more information on how to work with GDAL command line utilities, see this website - <a class="reference external" href="https://gdal.org/programs/gdaldem.html">https://gdal.org/programs/gdaldem.html</a></p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Computing Viewsheds</p>
+<p><strong>Computing Viewsheds</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gdal_viewshed</span> <span class="o">-</span><span class="n">md</span> <span class="mi">500</span> <span class="o">-</span><span class="n">ox</span> <span class="o">-</span><span class="mi">10147017</span> <span class="o">-</span><span class="n">oy</span> <span class="mi">5108065</span> <span class="n">source</span><span class="o">.</span><span class="n">tif</span> <span class="n">destination</span><span class="o">.</span><span class="n">tif</span>
 </pre></div>
 </div>
-<p>where</p>
-<ul class="simple">
-<li><dl class="simple">
-<dt>md</dt><dd><p>Maximum distance from observer to compute visibiliy. It is also used to clamp the extent of the output raster.\</p>
+<p>The flags have the following meaning:</p>
+<dl class="option-list">
+<dt><kbd><span class="option">-m<var>d</var></span></kbd></dt>
+<dd><p>Maximum distance from observer to compute visibiliy. It is also used to clamp the extent of the output raster.\</p>
 </dd>
 </dl>
-</li>
-</ul>
 <dl class="simple">
 <dt>-ox &lt;value&gt;</dt><dd><p>The X position of the observer (in SRS units).</p>
 </dd>
@@ -822,7 +767,7 @@ Band 1 Block=256x16 Type=Float32, ColorInterp=Undefined
 </div>
 </section>
 <section id="running-gdal-commands-from-python">
-<h2><span class="section-number">10.9. </span>Running GDAL Commands from Python<a class="headerlink" href="#running-gdal-commands-from-python" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">13.9. </span>Running GDAL Commands from Python<a class="headerlink" href="#running-gdal-commands-from-python" title="Permalink to this heading"></a></h2>
 <p>It is possible to call GDAL commands from Python and other scripting languages. This allows for easy iteration through geoprocessing tasks, or integration of geoprocessing steps into complex scripted workflows.  For more information, please visit this page: <a class="reference external" href="https://gdal.org/tutorials/raster_api_tut.html">https://gdal.org/tutorials/raster_api_tut.html</a>. Below are some code samples for using GDAL from within Python.</p>
 <p><strong>Open a Raster with GDAL</strong></p>
 <p>We have already seen this structure in previous Python scripts that used the gdal library.</p>
@@ -851,67 +796,26 @@ Band 1 Block=256x16 Type=Float32, ColorInterp=Undefined
 <div class="line"><br /></div>
 </div>
 </section>
-<section id="batch-processing-using-gdal">
-<h2><span class="section-number">10.10. </span>Batch Processing Using GDAL<a class="headerlink" href="#batch-processing-using-gdal" title="Permalink to this heading"></a></h2>
-<p>There are many code samples for processing a single file using GDAL.  However, code samples for batch processing are not frequently encountered.  Below is an example for converting multiple .rst files into .tif files</p>
-<p>Recall that for one raster file conversion we would use this:
-gdal_translate -of GTiff 01_State19900101.rst 01_State19900101.tif</p>
-<p>Now we’re going to make a batch file which includes a loop to convert all files in the folder.</p>
-<p>Open a text editor, e.g. Notepad, and add the following code:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="o">%%</span><span class="n">f</span> <span class="ow">in</span> <span class="p">(</span><span class="o">*.</span><span class="n">rst</span><span class="p">)</span> <span class="n">do</span> <span class="p">(</span>
-   <span class="n">echo</span> <span class="o">%%~</span><span class="n">nf</span>
-   <span class="n">gdal_translate</span> <span class="o">-</span><span class="n">of</span> <span class="n">GTiff</span> <span class="o">%%</span><span class="n">f</span> <span class="o">%%~</span><span class="n">nf</span><span class="o">.</span><span class="n">tif</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-<p>Save the batchfile as rst2tif.bat in the folder with the land-use rasters.</p>
-<p>In the code above,  %%f is the variable that contains the filename of each file. With echo we can print something to the screen. Here we print %%~nf , which is the part of the filename before the dot that separates it from the extension. Then we use the gdal_translate command with output format GeoTiff. At the end of the line we add the .tif extension to the filename.</p>
-<p>5. Execute the batchfile. Type
-rst2tif &lt;ENTER&gt;</p>
-<ol class="arabic simple" start="6">
-<li><p>Check the results</p></li>
-</ol>
-<p><a class="reference external" href="https://courses.gisopencourseware.org/mod/book/view.php?id=78&amp;chapterid=193">https://courses.gisopencourseware.org/mod/book/view.php?id=78&amp;chapterid=193</a></p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</section>
-<section id="automating-workflows">
-<h2><span class="section-number">10.11. </span>Automating Workflows<a class="headerlink" href="#automating-workflows" title="Permalink to this heading"></a></h2>
-<p>You have been manually drawing a polygon around an XY event layer of the locations each time they are updated, but the process takes a lot of time and is not entirely accurate.   In the script below,  we take a table of customer locations and create an outer polygon boundary of those locations.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span><span class="o">,</span> <span class="nn">csv</span>
-<span class="n">xyData</span> <span class="o">=</span> <span class="s1">&#39;r:C:\mydata.csv&#39;</span>
-<span class="n">outConvexHull</span> <span class="o">=</span> <span class="s1">&#39;C:\Boundary.shp&#39;</span>
-
-<span class="n">xyLocations</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">csvFile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">xyData</span><span class="p">)</span>
-<span class="n">csvReader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvFile</span><span class="p">)</span>
-<span class="nb">next</span><span class="p">(</span><span class="n">csvReader</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="p">(</span><span class="n">csvReader</span><span class="p">):</span>
-    <span class="n">xyLocations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
-
-
-<span class="n">customerPoints</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Multipoint</span><span class="p">(</span><span class="n">arcpy</span><span class="o">.</span><span class="n">Array</span><span class="p">([</span><span class="n">arcpy</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="o">*</span><span class="n">coords</span><span class="p">)</span> <span class="k">for</span> <span class="n">coords</span> <span class="ow">in</span> <span class="n">xyLocations</span><span class="p">])))</span>
-
-<span class="n">convexHull</span> <span class="o">=</span> <span class="n">customerPoints</span><span class="o">.</span><span class="n">convexHull</span><span class="p">()</span>
-<span class="n">arcpy</span><span class="o">.</span><span class="n">CopyFeatures_management</span><span class="p">(</span><span class="n">convexHull</span><span class="p">,</span> <span class="n">outConvedHull</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
 <section id="exercises">
-<h2><span class="section-number">10.12. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">13.10. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Write a script that prompts the user for the path to an input DEM and an input satellite imagery.  Afterwards, the script should generate a hillshade of the area. Finally, the script should drape the satellite imagery over the hillshade. You can download <a class="reference external" href="https://www.dropbox.com/s/r61wulyhlctvdcf/Washington_Data.zip?dl=0">sample data here</a></p></li>
 <li><p>Instead of generating a hillshade, write a second script to generate a 3D model of the area. Afterward, let the script drape a satellite imagery over the 3D model of the area.</p></li>
 </ol>
-<p><strong>Resources</strong></p>
-<p>Please visit the link below for a sample script. Note: This is just one way of approaching this task.</p>
-<p><a class="reference external" href="https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem">https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="resources">
+<h2><span class="section-number">13.11. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
+<p>PDraping an orthophoto over a DEM
+<a class="reference external" href="https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem">https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem</a></p>
 <p>Batch processing – automatizing the use of GDAL and SAGA GIS tools using Bash Shell scripts
 <a class="reference external" href="https://www.luisalucchese.com/post/batch-processing-gdal-saga-gis-bash/">https://www.luisalucchese.com/post/batch-processing-gdal-saga-gis-bash/</a></p>
 <p>Working with Rasterio
 <a class="reference external" href="https://geobgu.xyz/py/rasterio.html">https://geobgu.xyz/py/rasterio.html</a></p>
+<p>Popular GDAL commands. <a class="reference external" href="https://github.com/dwtkns/gdal-cheat-sheet">https://github.com/dwtkns/gdal-cheat-sheet</a></p>
+<p>Classify a Raster Using Threshold Values in Python - 2017 - <a class="reference external" href="https://www.neonscience.org/resources/learning-hub/tutorials/classify-raster-thresholds-py">https://www.neonscience.org/resources/learning-hub/tutorials/classify-raster-thresholds-py</a></p>
 </section>
 </section>
 
@@ -919,7 +823,8 @@ rst2tif &lt;ENTER&gt;</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="attribute_and_spatial_queries.html" class="btn btn-neutral float-left" title="9. Attribute and Spatial Queries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="geocoding.html" class="btn btn-neutral float-left" title="12. Geocoding" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="workflow_automation.html" class="btn btn-neutral float-right" title="14. Batch Processing &amp; Workflow Automation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

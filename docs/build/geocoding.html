@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>12. Geocoding &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="13. Terrain Analysis" href="terrain_analysis.html" />
+    <link rel="prev" title="11. Querying Rasters" href="querying_rasters.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Python GIS Tutorials
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">1. Setting up Development Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_programs.html">2. Introduction to the Python Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings_lists_conditional.html">3. Strings and Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">4. Conditional Statements and Looping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">5. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error_handling.html">6. Error Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">7. Basic Concepts in Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="displaying_files.html">8. Reading and Displaying Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_projections.html">9. Map Projections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="attribute_and_spatial_queries.html">10. Attribute and Spatial Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="querying_rasters.html">11. Querying Rasters</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">12. Geocoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">13. Terrain Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">14. Batch Processing &amp; Workflow Automation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python GIS Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">12. </span>Geocoding</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/geocoding.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="geocoding">
+<h1><span class="section-number">12. </span>Geocoding<a class="headerlink" href="#geocoding" title="Permalink to this heading"></a></h1>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Geocoding a Single Address Using World Geocoding Services</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+
+<span class="c1"># Sign in to ArcGIS Online</span>
+<span class="n">username</span> <span class="o">=</span> <span class="s2">&quot;your_username&quot;</span>
+<span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;your_pwd&quot;</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">SignInToPortal</span><span class="p">(</span><span class="s2">&quot;https://www.arcgis.com/&quot;</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+
+<span class="c1"># Create a new Locator object from the ArcGIS World Geocoding Service</span>
+<span class="n">locator_path</span> <span class="o">=</span> <span class="s2">&quot;https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/ArcGIS World Geocoding Service&quot;</span>
+<span class="n">locator</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">geocoding</span><span class="o">.</span><span class="n">Locator</span><span class="p">(</span><span class="n">locator_path</span><span class="p">)</span>
+
+<span class="c1"># Geocode to find the location of an address</span>
+<span class="n">geocoding_candidates</span> <span class="o">=</span> <span class="n">locator</span><span class="o">.</span><span class="n">geocode</span><span class="p">(</span><span class="s2">&quot;1670 W Peachtree St NE, Atlanta, GA 30309&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">geocoding_candidates</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Batch Geocoding Using the World Geocoding Services</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">SignInToPortal</span><span class="p">(</span><span class="s2">&quot;https://www.arcgis.com/&quot;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s1">&#39;your_username&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;your_pwd&#39;</span><span class="p">)</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/Users/Hugh/Desktop/geocoding&quot;</span>
+
+<span class="c1"># Set local variables</span>
+<span class="n">address_table</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:/Users/Hugh/Desktop/geocoding/Anchorage_addresses.csv&quot;</span>
+
+<span class="c1"># Using the World Geocoding Service for geocoding</span>
+<span class="n">address_locator</span> <span class="o">=</span> <span class="s2">&quot;https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/ArcGIS World Geocoding Service&quot;</span>
+
+<span class="n">field_map</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\&#39;</span><span class="s2">Address or Place</span><span class="se">\&#39;</span><span class="s2"> Address VISIBLE NONE;Address2 &lt;None&gt; VISIBLE NONE;Address3 &lt;None&gt; VISIBLE NONE;&quot;</span> <span class="o">+</span>
+             <span class="s2">&quot;Neighborhood &lt;None&gt; VISIBLE NONE;City City VISIBLE NONE;Subregion &lt;None&gt; VISIBLE NONE;&quot;</span> <span class="o">+</span>
+             <span class="s2">&quot;Region &lt;None&gt; VISIBLE NONE;ZIP ZIP &lt;None&gt; VISIBLE NONE;ZIP4 &lt;None&gt; VISIBLE NONE;&quot;</span> <span class="o">+</span>
+             <span class="s2">&quot;Country Country VISIBLE NONE&quot;</span><span class="p">)</span>
+
+<span class="n">geocode_result</span> <span class="o">=</span> <span class="n">geocode_result</span><span class="o">.</span><span class="n">shp</span><span class="s2">&quot;</span>
+
+<span class="n">arcpy</span><span class="o">.</span><span class="n">GeocodeAddresses_geocoding</span><span class="p">(</span><span class="n">address_table</span><span class="p">,</span> <span class="n">address_locator</span><span class="p">,</span>
+                                 <span class="n">address_fields</span><span class="p">,</span> <span class="n">geocode_result</span><span class="p">,</span>
+                                 <span class="s1">&#39;STATIC&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Create a Locator object from a locator item on your own ArcGIS Enterprise Portal</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+
+<span class="c1"># Sign in to your portal</span>
+<span class="n">username</span> <span class="o">=</span> <span class="s2">&quot;MyPortalUsername&quot;</span>
+<span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;MyPortalPassword&quot;</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">SignInToPortal</span><span class="p">(</span><span class="s2">&quot;https://myenterpriseportal.esri.com/portal&quot;</span><span class="p">,</span><span class="n">username</span><span class="p">,</span><span class="n">password</span><span class="p">)</span>
+
+<span class="c1"># Create a new Locator object from the locator on your portal</span>
+<span class="n">locator_path</span> <span class="o">=</span> <span class="s2">&quot;https://myenterpriseportal.esri.com/server/rest/services/Geocode/Atlanta/GeocodeServer/Atlanta&quot;</span>
+<span class="n">locator</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">geocoding</span><span class="o">.</span><span class="n">Locator</span><span class="p">(</span><span class="n">locator_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Geocoding with Geopandas</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+import geopandas as gpd
+from shapely.geometry import Point
+
+# Filepath
+fp = &quot;data/Helsinki/addresses.txt&quot;
+
+# Read the data
+data = pd.read_csv(fp, sep=”;”)
+
+len(data) data.head()
+
+# Import the geocoding tool
+from geopandas.tools import geocode
+
+# Geocode addresses using Nominatim. # You can provide your own
+geo = geocode(
+data[“addr”], provider=”nominatim”, user_agent=”pythongis_book”, timeout=10)
+
+geo.head()
+
+join = geo.join(data)
+
+join.head()
+
+# Output file path outfp = “data/Helsinki/addresses.shp”
+
+# Save to Shapefile join.to_file(outfp)
+</pre></div>
+</div>
+<p><a class="reference external" href="https://pythongis.org/part2/chapter-06/nb/05-geocoding.html">https://pythongis.org/part2/chapter-06/nb/05-geocoding.html</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Geocoding with ArcGIS API for Python</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arcgis.gis</span> <span class="kn">import</span> <span class="n">GIS</span>
+<span class="kn">from</span> <span class="nn">arcgis.geocoding</span> <span class="kn">import</span> <span class="n">geocode</span>
+
+<span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">()</span>
+
+<span class="n">geocoded_features</span> <span class="o">=</span> <span class="n">geocode</span><span class="p">(</span>
+    <span class="n">address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">118.71511</span><span class="p">,</span> <span class="mf">34.09042</span><span class="p">],</span>
+    <span class="n">category</span><span class="o">=</span><span class="s2">&quot;Coffee shop&quot;</span><span class="p">,</span>
+    <span class="n">out_fields</span><span class="o">=</span><span class="s2">&quot;Place_addr, PlaceName&quot;</span><span class="p">,</span>
+    <span class="n">max_locations</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+    <span class="n">as_featureset</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">geocoded_df</span> <span class="o">=</span> <span class="n">geocoded_features</span><span class="o">.</span><span class="n">sdf</span>
+<span class="n">geocoded_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">gis</span><span class="o">.</span><span class="n">map</span><span class="p">()</span>
+<span class="n">m</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="p">[</span><span class="mf">34.09042</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.71511</span><span class="p">]</span>
+<span class="n">m</span><span class="o">.</span><span class="n">zoom</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">m</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">geocoded_features</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="querying_rasters.html" class="btn btn-neutral float-left" title="11. Querying Rasters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="terrain_analysis.html" class="btn btn-neutral float-right" title="13. Terrain Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Hugh Semple.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

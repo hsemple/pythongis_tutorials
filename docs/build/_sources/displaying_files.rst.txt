@@ -1354,7 +1354,7 @@ Rasterio has a show( ) method for displaying rasters. However, the library can a
 
 |
 
-|
+
 
 **Displaying a Raster in QGIS Using Python**
 
@@ -1374,61 +1374,81 @@ Rasterio has a show( ) method for displaying rasters. However, the library can a
 **Displaying Web Maps and Feature Layers Stored in ArcGIS Online Using ArcGIS API for Python**
 
 
-*Making an Anonymous Connection*
+*Making an Anonymous Connection to ArcGIS Online*
 
-The code sample below makes an anonymous connection to ArcGIS Online then searches for a publicly available web map entitled LA Parks and Trails Map owned by esri_devlabs. The web map contains datasets about Los Angeles, CA parks and trails.  After the web map is retrieved from the list of items,  the WebMap class is imported and used to visualize the web map.  The code sample comes from `this ESRI webpage <https://developers.arcgis.com/python/guide/display-a-webmap>`_ 
-
+The code sample code below lets you connect anonymously to Arcgis Online and search for content that are related to 'Michigan' and that are publicly available.
 
 
 .. code-block:: python
 
    from arcgis.gis import GIS
+	gis = GIS()  # Connect to ArcGIS Online as an anonymous user
+	search_subset = gis.content.search("Michigan", max_items=100)
+	search_subset
 
-   gis = GIS()
 
-   webmap_search = gis.content.search(
-      query="LA Parks and Trails Map (styled) tags:tutorial owner:esri_devlabs",
-	  item_type="Web Map"
-	)
-	
-	webmap_search
+The results should be similar to the illustration below.
 
-	webmap_item = webmap_search[0]
-	print (webmap_item)
-
-	from arcgis.mapping import WebMap
-	la_park_trails = WebMap(webmap_item)
-	la_park_trails
+.. image:: img/search_arcgisonline.png
+   :alt: Search Arcgisonline 
 
 
 
 
-.. image:: img/arcgis_online_webmap.png
-   :alt: ArcGIS Online Web Map
-
-
-|
-
-
-*Connect to your ArcGIS Online Account8*
-
+Now, let's search for a particular layer named "BA Web App Suitability Analysis Data"
 
 .. code-block:: python
 
 	from arcgis.gis import GIS
+	gis = GIS()  # Connect to ArcGIS Online as an anonymous user
+	search_subset = gis.content.search("BA Web App Suitability Analysis Data")
+	search_subset
 
-	gis = GIS("https://www.arcgis.com/", username="username", password="password")
-	print("Successfully logged in as: " + gis.properties.user.username)
 
-	webmap_search= gis.content.search("COVID-19 Deaths by State", item_type="Web Map")
-	webmap_search
+The result is:
 
-	webmap_item = webmap_search[0]
-	print (webmap_item)
+[<Item title:"Justice40 Tracts Map April 2022" type:Web Map owner:esri_demographics>,
+ <Item title:"Justice40 Tracts Map May 2022" type:Web Map owner:esri_demographics>,
+ <Item title:"Live Fire Web App (Hosted by Paul Doherty) " type:Web Mapping Application owner:pjdohertygis>,
+ <Item title:"10 Minute Drive Access to Grocery Stores" type:Map Image Layer owner:UOdocent>,
+ <Item title:"10 Minute Walk Access to Grocery Stores" type:Map Image Layer owner:UOdocent>,
+ <Item title:"BA Web App Suitability Analysis Data" type:Web Mapping Application owner:bpeverall22@COAGIS>, 
 
-	from arcgis.mapping import WebMap
-	covid19_webmap = WebMap(webmap_item)
-	covid19_webmap
+
+
+Let's get the first item from the list.
+
+.. code-block:: python
+
+	from arcgis.gis import GIS
+	gis = GIS()  # Connect to ArcGIS Online as an anonymous user
+	search_subset = gis.content.search("BA Web App Suitability Analysis Data")
+	subset_item = search_subset[0]
+	subset_item
+
+
+.. image:: img/Justice40Tracts.png
+   :alt: Search Arcgisonline 
+
+
+
+
+
+*Connect to your ArcGIS Online Account*
+
+Let's log into our own ArcGIS Online Account and display some of the content. The general syntax is shown below.  Notice that we are passing in the URL of the ArcGIS Online server (or portal), our username, and password to "GIS".
+
+
+.. code-block:: python
+
+	import arcgis
+	from arcgis.gis import GIS
+
+	#connect to your GIS
+	gis = GIS("https://www.arcgis.com","username","password")
+	my_content = gis.content.search(query="owner:" + gis.users.me.username, max_items=100)
+	my_content
+
 
 
 |
@@ -1441,7 +1461,7 @@ The code sample below makes an anonymous connection to ArcGIS Online then search
 	# Establish a connection to your GIS.
 	from arcgis.gis import GIS
 	from IPython.display import display
-	gis = GIS() # anonymous connection to www.arcgis.com
+	gis = GIS("https://www.arcgis.com","username","password")
 
 	# Search for 'USA major cities' feature layer collection
 	search_results = gis.content.search('title: USA Major Cities',
@@ -1456,17 +1476,22 @@ The code sample below makes an anonymous connection to ArcGIS Online then search
 |
 
 
-*Connect to a Feature Layer using ItemID*
+*Connect to a Feature Layer using the Feature's ItemID*
+
 
 .. code-block:: python
 
-	# Establish a connection to your GIS.
 	from arcgis.gis import GIS
 	from IPython.display import display
 	gis = GIS() # anonymous connection to www.arcgis.com
 
 	freeways = gis.content.get('91c6a5f6410b4991ab0db1d7c26daacb')
 	freeways
+
+
+.. image:: img/USAFreewaySystem.png
+   :alt: Search Arcgisonline 
+
 
 
 For more information, please visit the link below:
