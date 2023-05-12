@@ -57,11 +57,16 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">4. Conditional Statements and Looping</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">5. Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">6. Basic Concepts in Object Oriented Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="displaying_files.html">7. Reading and Displaying Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="map_projections.html">8. Map Projections</a></li>
-<li class="toctree-l1"><a class="reference internal" href="attribute_and_spatial_queries.html">9. Attribute and Spatial Queries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">10. Terrain Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error_handling.html">6. Error Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">7. Basic Concepts in Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="displaying_files.html">8. Reading and Displaying Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_projections.html">9. Map Projections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="attribute_and_spatial_queries.html">10. Attribute and Spatial Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="querying_rasters.html">11. Querying Rasters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geocoding.html">12. Geocoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">13. Terrain Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">14. Batch Processing &amp; Workflow Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">15. Retrieving Data from APIs</a></li>
 </ul>
 
         </div>
@@ -183,10 +188,10 @@
 <div class="line"><br /></div>
 </div>
 <p>string.upper()</p>
-<p>text = “I love learning Javascript”</p>
+<p>text = “I love learning Python”</p>
 <p># convert message to lowercase
 print(text.upper())
-I LOVE LEARNING JAVASCRIPT</p>
+I LOVE LEARNING PYTHON</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -339,6 +344,9 @@ String stride 2</p>
 <span class="go">&#39;rbo&#39;</span>
 </pre></div>
 </div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p><strong>j. Formatting String Variables Using the % Operator</strong></p>
 <p>The program below illustrates the use of string formatting using the % operator.    With this method,  the percentage sign followed by a letter and some numbers indicate how a variable should be formatted. The variable itself is stored as a tuple to the right of the string.   Here are some basic argument specifiers you should know:</p>
 <blockquote>
@@ -422,15 +430,12 @@ String stride 2</p>
 <section id="list-operations">
 <h2><span class="section-number">3.4. </span>List Operations<a class="headerlink" href="#list-operations" title="Permalink to this heading"></a></h2>
 <p><strong>a. Get the length of a List</strong></p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list1</span> <span class="o">=</span>  <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;world&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">list1</span> <span class="o">=</span>  <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;world&quot;</span><span class="p">]</span>
+
+<span class="nb">len</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span> <span class="c1"># Use the len function</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span> <span class="c1"># Use the len function</span>
-</pre></div>
-</div>
-<blockquote>
-<div><p>4</p>
-</div></blockquote>
+<p>4</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -443,7 +448,7 @@ String stride 2</p>
 <div class="line"><br /></div>
 </div>
 <p><strong>c. Deleting List Elements</strong></p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">list1</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">list1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -451,40 +456,39 @@ String stride 2</p>
 </div>
 <p><strong>d. Append values to a List</strong></p>
 <p>List append will add the item at the end. If you want to add at the beginning, you can use the insert function.</p>
-<p>list = [“Movies”, “Music”, “Pictures”]
-list.append(“Documents” ) # will add “Document” to the list</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span>
-<span class="go">[&quot;Movies&quot;, &quot;Music&quot;, &quot;Pictures&quot;, &quot;Documents&quot;]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Movies&quot;</span><span class="p">,</span> <span class="s2">&quot;Music&quot;</span><span class="p">,</span> <span class="s2">&quot;Pictures&quot;</span><span class="p">]</span>
+<span class="nb">list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Documents&quot;</span> <span class="p">)</span> <span class="c1"># will add &quot;Document&quot; to the list</span>
+<span class="nb">list</span>
 </pre></div>
 </div>
+<p>[“Movies”, “Music”, “Pictures”, “Documents”]</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>e. Sorting a List</strong></p>
 <p>You can sort a list with the following code:</p>
-<p>list = [“Movies”, “Pictures”, “Actors”, “Cinemas”]
-list.sort()</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span>
-<span class="go">[&#39;Actors&#39;, &#39;Cinemas&#39;, &#39;Movies&#39;, &#39;Pictures&#39;]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Movies&quot;</span><span class="p">,</span> <span class="s2">&quot;Pictures&quot;</span><span class="p">,</span> <span class="s2">&quot;Actors&quot;</span><span class="p">,</span> <span class="s2">&quot;Cinemas&quot;</span><span class="p">]</span>
+<span class="nb">list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">list</span>
 </pre></div>
 </div>
+<p>[‘Actors’, ‘Cinemas’, ‘Movies’, ‘Pictures’]</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>f. Summing a List</strong></p>
-<p>You can sum a list with the following code:</p>
+<p>There are many ways to sum a list.  The code below uses Python’s built in <a class="reference external" href="https://python-reference.readthedocs.io/en/latest/docs/functions/sum.html">sum function</a> to sum the list.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">890</span><span class="p">,</span> <span class="mi">786</span><span class="p">,</span> <span class="mi">1234</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">345</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
 <span class="linenos">2</span><span class="n">Sumlist</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
 <span class="linenos">3</span><span class="nb">print</span> <span class="p">(</span><span class="n">Sumlist</span><span class="p">)</span>
-<span class="linenos">4</span>
-<span class="linenos">5</span><span class="o">&gt;&gt;&gt;</span> <span class="mi">3820</span>
 </pre></div>
 </div>
+<p>3820</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>g. Adding Two List Elements</strong></p>
-<p>Lists cannot be added with the simple use of an addition sign, i.e., list1 + list2. We have to iterate the list, grab the corresponding values and do the addition.</p>
+<p>Lists cannot be added with the simple use of an addition sign, i.e., list1 + list2. We have to iterate or loop over each element in the list, grab the corresponding values and do the addition.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># Set up the lists</span>
 <span class="linenos"> 2</span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">26</span><span class="p">]</span>
 <span class="linenos"> 3</span><span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">35</span><span class="p">]</span>
@@ -584,21 +588,24 @@ Coordinate values whose sequence must be maintained to draw a polygon can be sto
 <h2><span class="section-number">3.6. </span>Basic Tuples Operations<a class="headerlink" href="#basic-tuples-operations" title="Permalink to this heading"></a></h2>
 <p>Tuple operations are similar to list operations</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="go"> 3    - Length</span>
 </pre></div>
 </div>
+<p>3</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="go"> (1, 2, 3, 4, 5, 6)   - Concatenation</span>
 </pre></div>
 </div>
+<p>(1, 2, 3, 4, 5, 6)   - Concatenation</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="s1">&#39;Hi!&#39;</span><span class="p">,)</span> <span class="o">*</span> <span class="mi">4</span>
-<span class="go">(&#39;Hi!&#39;, &#39;Hi!&#39;, &#39;Hi!&#39;, &#39;Hi!&#39;)   - Repetition</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="nb">print</span> <span class="n">x</span><span class="p">,</span>
-<span class="go"> 1 2 3  -  Iteration</span>
+<blockquote>
+<div><p>(‘Hi!’, ‘Hi!’, ‘Hi!’, ‘Hi!’)   - Repetition</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span> <span class="n">x</span><span class="p">,</span>
 </pre></div>
 </div>
+<p>1 2 3</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -607,8 +614,10 @@ Coordinate values whose sequence must be maintained to draw a polygon can be sto
 <li><p>Write a program to reverse the content of the list shown below.</p>
 <p>list1 = [100, 200, 300, 400, 500]</p>
 </li>
-<li></li>
 </ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p><strong>References</strong></p>
 <p><a class="reference external" href="https://www.techbeamers.com/python-add-two-list-elements/">https://www.techbeamers.com/python-add-two-list-elements/</a></p>
 </section>

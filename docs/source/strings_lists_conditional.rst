@@ -113,11 +113,11 @@ i love writing python code
 
 string.upper()  
 
-text = "I love learning Javascript"
+text = "I love learning Python"
 
 # convert message to lowercase
 print(text.upper())
-I LOVE LEARNING JAVASCRIPT
+I LOVE LEARNING PYTHON
 
 
 
@@ -307,6 +307,8 @@ You can specify a negative stride value as well, in which case Python steps back
 'rbo'
  
 
+|
+
 
 
 **j. Formatting String Variables Using the % Operator**
@@ -430,11 +432,13 @@ List Operations
 
 **a. Get the length of a List**
 
->>> list1 =  ["1", "hello", 2, "world"]
+.. code-block:: python
 
->>> len(list1) # Use the len function
+   list1 =  ["1", "hello", 2, "world"]
 
- 4
+   len(list1) # Use the len function
+
+4
 
 |
 
@@ -452,7 +456,7 @@ Use the index of the value in the list surrounded by square brackets to get to t
 
 **c. Deleting List Elements**
 
->>> del list1[2];
+>>> del list1[2] 
 
 
 
@@ -463,13 +467,13 @@ Use the index of the value in the list surrounded by square brackets to get to t
 
 List append will add the item at the end. If you want to add at the beginning, you can use the insert function.
 
+.. code-block:: python
 
-list = ["Movies", "Music", "Pictures"] 
-list.append("Documents" ) # will add "Document" to the list
+  list = ["Movies", "Music", "Pictures"] 
+  list.append("Documents" ) # will add "Document" to the list
+  list 
 
-
->>> list 
-["Movies", "Music", "Pictures", "Documents"]   
+["Movies", "Music", "Pictures", "Documents"] 
 
 |
 
@@ -479,10 +483,12 @@ list.append("Documents" ) # will add "Document" to the list
 
 You can sort a list with the following code:
 
-list = ["Movies", "Pictures", "Actors", "Cinemas"] 
-list.sort() 
+.. code-block:: python
 
->>> list
+  list = ["Movies", "Pictures", "Actors", "Cinemas"] 
+  list.sort() 
+  list
+
 ['Actors', 'Cinemas', 'Movies', 'Pictures']
 
 
@@ -491,7 +497,7 @@ list.sort()
 
 **f. Summing a List**
 
-You can sum a list with the following code:
+There are many ways to sum a list.  The code below uses Python's built in `sum function <https://python-reference.readthedocs.io/en/latest/docs/functions/sum.html>`_ to sum the list.
 
 
 .. code-block:: python
@@ -501,14 +507,14 @@ You can sum a list with the following code:
    Sumlist = sum(list)
    print (Sumlist)
 
-   >>> 3820
+3820
 
 | 
 
 
 **g. Adding Two List Elements**
 
-Lists cannot be added with the simple use of an addition sign, i.e., list1 + list2. We have to iterate the list, grab the corresponding values and do the addition.
+Lists cannot be added with the simple use of an addition sign, i.e., list1 + list2. We have to iterate or loop over each element in the list, grab the corresponding values and do the addition.
 
 .. code-block:: python
    :linenos:
@@ -637,16 +643,28 @@ Basic Tuples Operations
 Tuple operations are similar to list operations
 
 >>> len((1, 2, 3)) 
- 3    - Length
+
+3    
+
 
 >>> (1, 2, 3) + (4, 5, 6)  
- (1, 2, 3, 4, 5, 6)   - Concatenation
 
->>> ('Hi!',) * 4  
-('Hi!', 'Hi!', 'Hi!', 'Hi!')   - Repetition
+(1, 2, 3, 4, 5, 6)   - Concatenation
 
->>> for x in (1, 2, 3): print x,  
- 1 2 3  -  Iteration
+
+
+>>> ('Hi!',) * 4 
+
+ ('Hi!', 'Hi!', 'Hi!', 'Hi!')   - Repetition
+
+
+
+.. code-block:: python
+
+   for x in (1, 2, 3):
+       print x,  
+
+1 2 3 
 
 
 |
@@ -658,7 +676,11 @@ Tuple operations are similar to list operations
 
     list1 = [100, 200, 300, 400, 500]
 
-2.
+
+
+|
+
+
 
 
 **References**

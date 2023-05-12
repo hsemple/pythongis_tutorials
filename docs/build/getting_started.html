@@ -60,11 +60,16 @@
 <li class="toctree-l1"><a class="reference internal" href="strings_lists_conditional.html">3. Strings and Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">4. Conditional Statements and Looping</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">5. Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">6. Basic Concepts in Object Oriented Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="displaying_files.html">7. Reading and Displaying Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="map_projections.html">8. Map Projections</a></li>
-<li class="toctree-l1"><a class="reference internal" href="attribute_and_spatial_queries.html">9. Attribute and Spatial Queries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">10. Terrain Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error_handling.html">6. Error Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">7. Basic Concepts in Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="displaying_files.html">8. Reading and Displaying Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_projections.html">9. Map Projections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="attribute_and_spatial_queries.html">10. Attribute and Spatial Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="querying_rasters.html">11. Querying Rasters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geocoding.html">12. Geocoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">13. Terrain Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">14. Batch Processing &amp; Workflow Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">15. Retrieving Data from APIs</a></li>
 </ul>
 
         </div>
@@ -93,16 +98,16 @@
              
   <section id="setting-up-development-environments">
 <h1><span class="section-number">1. </span>Setting up Development Environments<a class="headerlink" href="#setting-up-development-environments" title="Permalink to this heading"></a></h1>
-<p>For these tutorials, we will run our Python scripts in different development environments depending on what needs to be accomplished.bWe will use the following development environments: the Standard Python Distribution, Anaconda Distribution, ArcGIS Pro, ArcGIS API for Python, and QGIS. This will give users an opportunity to familiarize themselves with these various platforms.</p>
+<p>For these tutorials, we will run our Python scripts in different development environments depending on what needs to be accomplished. We will use the following development environments: the Standard Python Distribution, Anaconda Distribution, ArcGIS Pro, ArcGIS API for Python, and QGIS. This will give users an opportunity to familiarize themselves with these various platforms.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <section id="the-standard-python-distribution">
 <h2><span class="section-number">1.1. </span>The Standard Python Distribution<a class="headerlink" href="#the-standard-python-distribution" title="Permalink to this heading"></a></h2>
-<p>Many people use the standard Python distribution as the central platform for development. Scripts are executed in IDLE, which is Python’s default integrated development environment.  Following installation, you will notice that the standard Python distribution lacks many packages that are needed for GIS work so you will have to install these manually. Sometimes, installing these packages and their dependencies can be challenging, but these challenges are great opportunities for learning the inner details of Python.</p>
+<p>Many people use the Standard Python Distribution as their central platform for development. Scripts are executed in IDLE, which is Python’s default integrated development environment.  After installation, you will notice that the Standard Python Distribution lacks many packages that are needed for GIS work so you will have to install these manually. Sometimes, installing these packages and their dependencies can be challenging, but these challenges are great opportunities for learning the inner details of Python.</p>
 <ol class="arabic simple">
 <li><p>To download the Standard Python Distribution, visit Python’s <a class="reference external" href="https://www.python.org/downloads/">homepage</a>. Download the latest version.</p></li>
-<li><p>If you are using a Windows computer, after downloading. install the program on your computer using the Windows installer.</p></li>
+<li><p>If you are using a Windows computer, install the program on your computer using the Windows installer.</p></li>
 </ol>
 <blockquote>
 <div><img alt="Install Python" src="_images/install_python.png" />
@@ -114,24 +119,22 @@
 </div>
 </li>
 <li><p>Accept starting the installation and the license and it will be installed automatically.</p></li>
-<li><p>To install Homebrew automatically, run the command below:</p></li>
-</ol>
+<li><p>To install Homebrew automatically, run the command below:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</span>
 </pre></div>
 </div>
-<ol class="arabic" start="6">
+</li>
 <li><p>After installing Python on Windows or macOS check the version of Python that will be run from the command prompt. To do this type:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">which</span> <span class="n">python3</span>
 </pre></div>
 </div>
 </li>
 <li><p>You should get  /usr/local/bin/python3 or something similar.</p></li>
-<li><p>Check also that the Python 3x Directory has been added to your System’s Path Environment Variable.  To check for this type, type:</p></li>
-</ol>
+<li><p>Check also that the Python 3x Directory has been added to your System’s Path Environment Variable.  To check for this type, type:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $PATH
 </pre></div>
 </div>
-<ol class="arabic" start="9">
+</li>
 <li><p>To install new packages, you need to use Pip.  The basic structure of the command is “pip install &lt;package_name&gt;”. To install a library nameD <em>matplotlib</em>, type:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
 </pre></div>
@@ -142,7 +145,9 @@
 <blockquote>
 <div><img alt="Python Interpreter and IDLE" src="_images/interpreter_idle.png" />
 </div></blockquote>
-<p>After installing Pyhton, you may realize that you have more than one Python installations on your computer. This is not an issue except that sometimes when you try to start Python from the command prompt, you may find that the Python installation you wish to start is not the recent one that you installed.  There are many ways to resolve this problem.  This <a class="reference external" href="https://betterprogramming.pub/the-best-way-we-create-and-manage-multiple-versions-of-python-22363e065a43">document</a> contains some tips on how to resolve this issue. You can google similar documents on the topic.</p>
+<ol class="arabic simple" start="11">
+<li><p>After installing Pyhton, you may realize that you have more than one Python installations on your computer. This is not an issue except that when you try to start Python from the command prompt, you may find that the Python installation you wish to start is not the recent one that you installed.  There are many ways to resolve this problem.  This <a class="reference external" href="https://betterprogramming.pub/the-best-way-we-create-and-manage-multiple-versions-of-python-22363e065a43">document</a> contains some tips on how to resolve this issue. You can google similar documents on the topic.</p></li>
+</ol>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -151,43 +156,40 @@
 <h2><span class="section-number">1.2. </span>Python Virtual Environments<a class="headerlink" href="#python-virtual-environments" title="Permalink to this heading"></a></h2>
 <p>When working with Python, it is a good idea to work with virtual environments. Virtual environments are isolated environments that Python developers can use to install and run packages for a specific project.  Thus, instead of installing the packages for the entire system, users can install the packages needed for a particular project. This allows each project to have its own dependencies regardless of what dependencies other projects may be using.</p>
 <p><strong>How to Install and Create Virtual Environment</strong></p>
-<ol class="arabic simple">
-<li><p>At the Python prompt, type</p></li>
-</ol>
+<ol class="arabic">
+<li><p>At the Python prompt, type</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip3</span> <span class="n">install</span> <span class="n">virtualenv</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
-<li><p>Make a new directory to keep all your virtual environments in one place.</p></li>
-</ol>
+</li>
+<li><p>Make a new directory to keep all your virtual environments in one place.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mkdir</span> <span class="n">python</span><span class="o">-</span><span class="n">virtual</span><span class="o">-</span><span class="n">environments</span> <span class="o">&amp;&amp;</span> <span class="n">cd</span> <span class="n">python</span><span class="o">-</span><span class="n">virtual</span><span class="o">-</span><span class="n">environments</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
-<li><p>Create a new virtual environment inside the ‘python-virtual-environments’ directory.</p></li>
-</ol>
+</li>
+<li><p>Create a new virtual environment inside the ‘python-virtual-environments’ directory.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">project_env</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
-<li><p>To activate the ‘project_env virtual envirnonment’ you created in the previous step, run the code below.</p></li>
-</ol>
+</li>
+<li><p>To activate the ‘project_env virtual envirnonment’ you created in the previous step, run the code below.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="n">project_env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
+</li>
 <li><p>Notice how your prompt is now prefixed with the name of your environment (project_env, in our case). This indicates that ‘project_env’ is currently active, which means the python executable will only use this environment’s packages and settings.</p></li>
-<li><p>To stop using the virtual environment, run the code below.</p></li>
-</ol>
+<li><p>To stop using the virtual environment, run the code below.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">deactivate</span>
 </pre></div>
 </div>
+</li>
+</ol>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>References
-* Python Virtual Environments Explained with Examples - <a class="reference external" href="https://www.freecodecamp.org/news/python-virtual-environments-explained-with-examples/">https://www.freecodecamp.org/news/python-virtual-environments-explained-with-examples/</a></p>
+<p><strong>References</strong></p>
 <ul class="simple">
+<li><p>Python Virtual Environments Explained with Examples - <a class="reference external" href="https://www.freecodecamp.org/news/python-virtual-environments-explained-with-examples/">https://www.freecodecamp.org/news/python-virtual-environments-explained-with-examples/</a></p></li>
 <li><p>Python Virtual Environments - <a class="reference external" href="https://autogis-site.readthedocs.io/en/latest/course-info/create-python-gis-environment.html">https://autogis-site.readthedocs.io/en/latest/course-info/create-python-gis-environment.html</a></p></li>
 <li><p>Python GIS environment - <a class="reference external" href="https://gist.github.com/ThomasG77/223064813d8aefda5b3cdb05c2588fa1">https://gist.github.com/ThomasG77/223064813d8aefda5b3cdb05c2588fa1</a></p></li>
 </ul>
@@ -315,7 +317,7 @@
 <ul class="simple">
 <li><p>Getting Started With Python Programming (QGIS3) - <a class="reference external" href="https://www.qgistutorials.com/en/docs/3/getting_started_with_pyqgis.html">https://www.qgistutorials.com/en/docs/3/getting_started_with_pyqgis.html</a></p></li>
 <li><p>Customizing QGIS with Python (Full Course Material) - <a class="reference external" href="https://courses.spatialthoughts.com/pyqgis-in-a-day.html">https://courses.spatialthoughts.com/pyqgis-in-a-day.html</a></p></li>
-<li><p>GIS Python API documentation - <a class="reference external" href="https://qgis.org/pyqgis/master/">https://qgis.org/pyqgis/master/</a></p></li>
+<li><p>QGIS Python API documentation - <a class="reference external" href="https://qgis.org/pyqgis/master/">https://qgis.org/pyqgis/master/</a></p></li>
 <li><p>PyQGIS Developer Cookbook - <a class="reference external" href="https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/index.html">https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/index.html</a></p></li>
 <li><p>Streamlining GIS with Automation - <a class="reference external" href="https://www.geospatialworld.net/prime/technology-and-innovation/streamlining-gis-with-automation/">https://www.geospatialworld.net/prime/technology-and-innovation/streamlining-gis-with-automation/</a></p></li>
 <li><p>Getting started with Anaconda - <a class="reference external" href="https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-nav-mac">https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-nav-mac</a></p></li>

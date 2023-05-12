@@ -33,7 +33,7 @@ In this module, we will look at the following aspects of the Python language:
 
 **Hello World Program**
 
-Enter the line below in the Python development environment that you are working in and then run the code.  You will have to look up how to run the code in the development environment in which you are working.  Do not enter ">>>". That symbol is to indicate the Python's command prompt if there is one. 
+Enter the line below in the Python development environment that you are working in and then run the code.  You will have to look up how to run the code in the development environment in which you are working.  Do not enter ">>>". That symbol indicates the Python's command prompt if there is one. 
 
 >>> print('Hello, world!')
  
@@ -43,12 +43,12 @@ Enter the line below in the Python development environment that you are working 
 
 **Variables**
 
-In programming, a variable is a container for storing values used in a program.  Values are assigned to variables using the assignment operator “=“, as shown below. Please note that variable names are case sensitive. A variable with the name "my_age" is not the same variable as "My_Age".
+In programming, a variable is a memory location for storing values used in a program.  Values are assigned to variables using the assignment operator “=“, as shown below. Please note that variable names are case sensitive. A variable with the name "my_age" is not the same as a variable with the name "My_Age".
   
 >>> my_age = 29           
 
 
-In Python, we can create a name for the variable and then assign it a value in one statement. The values stored in variables may change during the course of program execution. 
+In Python, we can create a name for a variable and then assign it a value in one statement. The values stored in variables may change during the course of program execution. 
 
 Although a variable need not be assigned to any particular data type, if you want to specify the data type of a variable, this can be done with casting. For example: 
 
@@ -141,13 +141,17 @@ A dictionary is a data structure used to store groups of objects whose values oc
 In the example above, the names of the students is called the key while the test scores are the values.  A dictionary allows many operations to be performed on the key value pairs.  For example, new key values pairs can be inserted into the dictionary while existing ones can be deleted.
 
 
-
+|
 
 *Lists*
+
 Lists are collections of objects that may or may not be related to each other.  In Python, lists items are enclosed in square brackets and each item is separated by a comma, as shown below:
 
 >>> a = ['foo', 'Tom', '12', '45']
 
+
+
+|
 
 
 *Tuples*
@@ -178,8 +182,6 @@ In the example below, the program uses two single line comments to remind the pr
     #Calculate the interaction between places
     PI= (int(P1)*int(P2))/(float(Distance)*float(Distance))
 
-
-|
 
 
 *Multiple Line Comments*
@@ -248,14 +250,33 @@ For Examples 7 through 10, the arcpy package must be loaded into memory using th
    average = (num1 + num2 + num3) / 3
 
    # Print out the test score
-   print ("the average score is: ", round(average,2))
-
+   print ("The average score is: ", round(average,2))
 
 
 |
 
 
-**2.** Write a program that converts the temperature in Fahrenheit to Celsius
+**2.**  Write a program to calculate the mean of a set of numbers.
+
+If you have a list of 1,000 numbers and wish to find the mean of the set of numbers, then one approach is to use Python library is numpy that has a built-in function to calculate the mean.  The code below uses numpy.mean() to calculate the mean.  The function takes a list of numbers as an input. For more on this function, let's look at numpy's `documentation <https://numpy.org/doc/stable/reference/generated/numpy.mean.html#numpy.mean>`_  
+
+
+.. code-block:: python
+
+    import numpy
+
+    arr_mean = numpy.mean([31,35,46,59,71,80,84,82,75,62,48,36]) 
+ 
+    print("The arithmetic mean is :", arr_mean)
+
+
+After calculating the mean of the dataset using numpy, search numpy's documentation and verify how to calculate other basic statistics such as minimum, maximum, standard deviation, and variance.
+
+|
+
+
+
+**3.** Write a program that converts temperature from Fahrenheit to Celsius.
 
 Please note the formatting of the results in the print statement. The function, str(round(Celsius,2)), converts formats the results to two decimal places then converts the value to a string.   The plus sign concatenates or joins the first string with the second second string.
 
@@ -270,23 +291,23 @@ Please note the formatting of the results in the print statement. The function, 
 
 |
 
-**3.** Write a program to calculate the square root of a number
+**4.** Write a program to calculate the square root of a number
 
-In the code below, %0.2f and %0.4f' are formatted place holders for two variables. The variables appear at the end of the string in the form of a tuple preceded by a % sign. 
+The purpose of the example below is to illustrate the use of string formatting when printing out statements, In the code below, %0.2f is placeholder that is also used used to format the floating-point number 'num_sqrt' with two digits after the decimal point.  The formatted place holder is included in the string. The variable appear at the end of the string preceded by a % sign. 
 
 
 .. code-block:: python
 
    num = float(input('Enter a number: '))
    num_sqrt = num ** 0.5
-   print ('The square root of', num, 'is', num_sqrt)
+   print ('The square root of', num, 'is %0.2f' % num_sqrt)
 
 
 
 |
 
 
-**4.** Write a program to calculate the area of a triangle.
+**5.** Write a program to calculate the area of a triangle.
 
 
 .. code-block:: python
@@ -305,9 +326,9 @@ In the code below, %0.2f and %0.4f' are formatted place holders for two variable
 
 
 
-**5.** Write a program to calculate the area of a circle.
+**6.** Write a program to calculate the area of a circle.
 
-The script below illustrates how to import a library (math) and use a function from the math library. Note that the dot notation is used to show that the pi function is related to the math library. 
+In the script below, we are highlighting how to import one of Python's built-in modules, i.e., the math module into a script and use the pi unction from the math module to solve a problem. Note that the dot notation is used to show that the pi function is linked to the math module.  Without this association, Python would not where to look for the pi function.
 
 .. code-block:: python
 
@@ -331,23 +352,6 @@ The script below illustrates how to import a library (math) and use a function f
    print('The area of the circle is', round(circle_area,2))
 
 
-|
-
-
-**6.**  Write a program to calculate the mean of a set of numbers.
-
-This code uses the mean() function within a module named numpy module to calculate the mean.  The function takes a list of numbers as an imput.
-
-
-.. code-block:: python
-
-    import numpy
-
-    arr_mean = numpy.mean([31,35,46,59,71,80,84,82,75,62,48,36]) 
- 
-    print("The arithmetic mean is :", arr_mean)
-
-
 
 |
 
@@ -366,6 +370,7 @@ This code uses the mean() function within a module named numpy module to calcula
     print("The arithmetic mean is :", round(arr_mean,4))
 
 
+|
 
 
 **8.** Write a program that calculates the spatial interaction between two places using a simple form of the gravity model.
@@ -388,11 +393,7 @@ This code uses the mean() function within a module named numpy module to calcula
    PI = (int(P1)*int(P2))/(float(Distance)*float(Distance))
 
    #Print the result
-   print (”The potential interaction between the two cities is", round(PI,2) )   
- 
-   #End of the program
-   print ("Thanks for using this program...")
-   print ('The area of the triangle is', triangle_area)
+   print (”The potential interaction between the two cities is", round(PI,2) )      
 
 
 |
@@ -401,7 +402,7 @@ This code uses the mean() function within a module named numpy module to calcula
 **6.**  Write a Python program to display the calendar for any given month of a specified year.
 
 
-The script below illustrates how to import the calendar library and use a function from the calendar library. Enter month and year as integers. 
+The script below illustrates how to import the calendar module and use a function from the calendar module. You can read about the `calendar module and its functions <https://docs.python.org/3/library/calendar.html?highlight=calendar#module-calendar>`_ in Python's documentation.
 
 
 .. code-block:: python
@@ -422,12 +423,13 @@ The script below illustrates how to import the calendar library and use a functi
 
 |
 
-**7.** Write a program to create a time stamp**
+**7.** Write a program to create a time stamp
+
+In this script, we are highlighting hhe use of the datetime module. We are also highlighting the use of the plus sign to join or concatenate strings to create a single string.
+
 
 .. code-block:: python
    :linenos:
-
-   #Note the use of concatenation, i.e., the use of the plus sign to join strings to create a single string.
 
    from datetime import datetime  
    now = datetime.now()
@@ -490,7 +492,7 @@ The programm will first prompt the user for a current population as an integer, 
 |
 
 
-**4.** Run the program below that plots average monthly temperature values for Ann Arbor for 2022. The programs depends on a library called matplotlib to do the graphing. If matplotlib is not installed on your computer the program will fail. Therefore, you must first install matplotlib for the program to work. Matplotlib is installed with Jupyter Notebook, therefore, one option is run this program within Jupyter Notebook. 
+**4.** Run the program below that plots average monthly temperature values for Ann Arbor for 2022. The programs depends on a library called matplotlib to do the graphing. If matplotlib is not installed on your computer the program will fail. Therefore, you must first install matplotlib for the program to work. Matplotlib is installed with Jupyter Notebook, therefore, one option is run this program within Jupyter Notebook.  After running the code, explain what each line of the code does.
 
 
 .. code-block:: python
@@ -512,9 +514,17 @@ The programm will first prompt the user for a current population as an integer, 
  
 
 
-**6.** Buffer a line using Jupyter Notebook 
+**6.**  The script below will draw a buffer of 100 meters aound each point representing cities in the shapefile. You can change the shapefile to suit any situation. The script uses ESRI' arcpy library.   The arcpy library supplies the additional capability that Python needs to execute ArcGIS commands. Also, the script is intended to run as an ArcGIS standalone script.  Please verify the meaning of the term "ArcGIS Standalone script".  
 
-The program below depends on an ESRI library called arcpy.  It is the arcpy library that supplies the additional capability that Python needs to execute ArcGIS commands. The code is intentended to run as a standalone script or from Jupyter Notebook within ArcGIS Pro.  Copy the script and paste it into Jupyter Notebook within ArcGIS Pro and run it. 
+Now, copy the script and paste it into Jupyter Notebook within ArcGIS Pro and run it.  The arcpy library has many sub modules and methods for specialized operations. After running the code, research and explain each what of the following aspects of arcpy library does. Also, if you were working with ArcGIS Pro from the menu, where would you find the equivalent of .env?
+
+* arcpy.env
+* arcpy.env.overwriteOutput
+* arcpy.env.workspace
+* arcpy.Buffer_analysis()
+* arcpy.AddMessage()
+
+Note: Remember to also use the `ArcPy documentation <https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm>`_ in your research.
 
 
 .. code-block:: python
@@ -541,7 +551,7 @@ The program below depends on an ESRI library called arcpy.  It is the arcpy libr
 
 **7.** Buffer a line using the Python Window in ArcGIS Pro 
 
-The code below is written for the arcpy environment and is intentended to be run in ArcGIS Pro Python Window.  Copy the script and paste it into the Python Window.
+The code below is intentended to run in Python Window of ArcGIS Pro. Copy the script, paste it into the Python Window, then run it.  What is the peculiar characteristic of scripts that run in ArcGIS Python Window?
 
 
 

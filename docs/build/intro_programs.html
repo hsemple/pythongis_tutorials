@@ -63,6 +63,7 @@
 <li class="toctree-l1"><a class="reference internal" href="geocoding.html">12. Geocoding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">13. Terrain Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">14. Batch Processing &amp; Workflow Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">15. Retrieving Data from APIs</a></li>
 </ul>
 
         </div>
@@ -112,7 +113,7 @@
 <div class="line"><br /></div>
 </div>
 <p><strong>Hello World Program</strong></p>
-<p>Enter the line below in the Python development environment that you are working in and then run the code.  You will have to look up how to run the code in the development environment in which you are working.  Do not enter “&gt;&gt;&gt;”. That symbol is to indicate the Python’s command prompt if there is one.</p>
+<p>Enter the line below in the Python development environment that you are working in and then run the code.  You will have to look up how to run the code in the development environment in which you are working.  Do not enter “&gt;&gt;&gt;”. That symbol indicates the Python’s command prompt if there is one.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -120,11 +121,11 @@
 <div class="line"><br /></div>
 </div>
 <p><strong>Variables</strong></p>
-<p>In programming, a variable is a container for storing values used in a program.  Values are assigned to variables using the assignment operator “=“, as shown below. Please note that variable names are case sensitive. A variable with the name “my_age” is not the same variable as “My_Age”.</p>
+<p>In programming, a variable is a memory location for storing values used in a program.  Values are assigned to variables using the assignment operator “=“, as shown below. Please note that variable names are case sensitive. A variable with the name “my_age” is not the same as a variable with the name “My_Age”.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_age</span> <span class="o">=</span> <span class="mi">29</span>
 </pre></div>
 </div>
-<p>In Python, we can create a name for the variable and then assign it a value in one statement. The values stored in variables may change during the course of program execution.</p>
+<p>In Python, we can create a name for a variable and then assign it a value in one statement. The values stored in variables may change during the course of program execution.</p>
 <p>Although a variable need not be assigned to any particular data type, if you want to specify the data type of a variable, this can be done with casting. For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">x</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>      <span class="c1"># x will be &#39;10&#39;</span>
 <span class="linenos">2</span><span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">55</span><span class="p">)</span>      <span class="c1"># y will be 55</span>
@@ -198,10 +199,16 @@
 </pre></div>
 </div>
 <p>In the example above, the names of the students is called the key while the test scores are the values.  A dictionary allows many operations to be performed on the key value pairs.  For example, new key values pairs can be inserted into the dictionary while existing ones can be deleted.</p>
-<p><em>Lists</em>
-Lists are collections of objects that may or may not be related to each other.  In Python, lists items are enclosed in square brackets and each item is separated by a comma, as shown below:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><em>Lists</em></p>
+<p>Lists are collections of objects that may or may not be related to each other.  In Python, lists items are enclosed in square brackets and each item is separated by a comma, as shown below:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;12&#39;</span><span class="p">,</span> <span class="s1">&#39;45&#39;</span><span class="p">]</span>
 </pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
 <p><em>Tuples</em></p>
 <p>A tuple is a collection of items, similar to a list, but with the important distinction that the order of the items are fixed. This is important for storing certain values, for example, a list of coordinates for polygon or a line.  Whereas list items are enclosed in square brackets, tuple items are enclosed in parenthesis.</p>
@@ -224,9 +231,6 @@ Lists are collections of objects that may or may not be related to each other.  
 </pre></div>
 </div>
 </div></blockquote>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p><em>Multiple Line Comments</em></p>
 <p>The example below shows how multiple line comments are written.  Either single quotes or double quotes can be used, but they can’t be mixed.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39; I&#39;m very long-winded and I really need to take up more than one line.</span>
@@ -267,13 +271,26 @@ Lists are collections of objects that may or may not be related to each other.  
 <span class="n">average</span> <span class="o">=</span> <span class="p">(</span><span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span> <span class="o">+</span> <span class="n">num3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">3</span>
 
 <span class="c1"># Print out the test score</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;the average score is: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">average</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;The average score is: &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">average</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>2.</strong> Write a program that converts the temperature in Fahrenheit to Celsius</p>
+<p><strong>2.</strong>  Write a program to calculate the mean of a set of numbers.</p>
+<p>If you have a list of 1,000 numbers and wish to find the mean of the set of numbers, then one approach is to use Python library is numpy that has a built-in function to calculate the mean.  The code below uses numpy.mean() to calculate the mean.  The function takes a list of numbers as an input. For more on this function, let’s look at numpy’s <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.mean.html#numpy.mean">documentation</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+
+<span class="n">arr_mean</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="mi">31</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">46</span><span class="p">,</span><span class="mi">59</span><span class="p">,</span><span class="mi">71</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">82</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">62</span><span class="p">,</span><span class="mi">48</span><span class="p">,</span><span class="mi">36</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The arithmetic mean is :&quot;</span><span class="p">,</span> <span class="n">arr_mean</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After calculating the mean of the dataset using numpy, search numpy’s documentation and verify how to calculate other basic statistics such as minimum, maximum, standard deviation, and variance.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>3.</strong> Write a program that converts temperature from Fahrenheit to Celsius.</p>
 <p>Please note the formatting of the results in the print statement. The function, str(round(Celsius,2)), converts formats the results to two decimal places then converts the value to a string.   The plus sign concatenates or joins the first string with the second second string.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Fahrenheit</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the temperature in Fahrenheit: &quot;</span><span class="p">))</span>
 <span class="n">Celsius</span> <span class="o">=</span> <span class="p">(</span><span class="n">Fahrenheit</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mf">5.0</span><span class="o">/</span><span class="mf">9.0</span>
@@ -283,17 +300,17 @@ Lists are collections of objects that may or may not be related to each other.  
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>3.</strong> Write a program to calculate the square root of a number</p>
-<p>In the code below, %0.2f and %0.4f’ are formatted place holders for two variables. The variables appear at the end of the string in the form of a tuple preceded by a % sign.</p>
+<p><strong>4.</strong> Write a program to calculate the square root of a number</p>
+<p>The purpose of the example below is to illustrate the use of string formatting when printing out statements, In the code below, %0.2f is placeholder that is also used used to format the floating-point number ‘num_sqrt’ with two digits after the decimal point.  The formatted place holder is included in the string. The variable appear at the end of the string preceded by a % sign.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter a number: &#39;</span><span class="p">))</span>
 <span class="n">num_sqrt</span> <span class="o">=</span> <span class="n">num</span> <span class="o">**</span> <span class="mf">0.5</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;The square root of&#39;</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="n">num_sqrt</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;The square root of&#39;</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="s1">&#39;is </span><span class="si">%0.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">num_sqrt</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>4.</strong> Write a program to calculate the area of a triangle.</p>
+<p><strong>5.</strong> Write a program to calculate the area of a triangle.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get inputs from the user</span>
 <span class="n">base</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter length of the base of the triangle: &#39;</span><span class="p">))</span>
 <span class="n">height</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter the height of the triangle &#39;</span><span class="p">))</span>
@@ -308,8 +325,8 @@ Lists are collections of objects that may or may not be related to each other.  
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>5.</strong> Write a program to calculate the area of a circle.</p>
-<p>The script below illustrates how to import a library (math) and use a function from the math library. Note that the dot notation is used to show that the pi function is related to the math library.</p>
+<p><strong>6.</strong> Write a program to calculate the area of a circle.</p>
+<p>In the script below, we are highlighting how to import one of Python’s built-in modules, i.e., the math module into a script and use the pi unction from the math module to solve a problem. Note that the dot notation is used to show that the pi function is linked to the math module.  Without this association, Python would not where to look for the pi function.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#import the math library that contains math functions</span>
 <span class="kn">import</span> <span class="nn">math</span>
 
@@ -332,18 +349,6 @@ Lists are collections of objects that may or may not be related to each other.  
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>6.</strong>  Write a program to calculate the mean of a set of numbers.</p>
-<p>This code uses the mean() function within a module named numpy module to calculate the mean.  The function takes a list of numbers as an imput.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
-
-<span class="n">arr_mean</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="mi">31</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">46</span><span class="p">,</span><span class="mi">59</span><span class="p">,</span><span class="mi">71</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">82</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">62</span><span class="p">,</span><span class="mi">48</span><span class="p">,</span><span class="mi">36</span><span class="p">])</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The arithmetic mean is :&quot;</span><span class="p">,</span> <span class="n">arr_mean</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p><strong>7.</strong> Write a program that reads a simple text file with one entry per line.  Once the list is read and parsed, use it to calculate the mean.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;/Users/hsemple/Desktop/equqke_depth.csv&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
@@ -353,6 +358,9 @@ Lists are collections of objects that may or may not be related to each other.  
 <span class="n">arr_mean</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">data</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The arithmetic mean is :&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">arr_mean</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 </pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
 <p><strong>8.</strong> Write a program that calculates the spatial interaction between two places using a simple form of the gravity model.</p>
 <img alt="Spatial Interpolation Concept" src="_images/interaction.png" />
@@ -366,17 +374,13 @@ Lists are collections of objects that may or may not be related to each other.  
 <span class="linenos"> 8</span>
 <span class="linenos"> 9</span>#Print the result
 <span class="linenos">10</span>print (”The potential interaction between the two cities is&quot;, round(PI,2) )
-<span class="linenos">11</span>
-<span class="linenos">12</span>#End of the program
-<span class="linenos">13</span>print (&quot;Thanks for using this program...&quot;)
-<span class="linenos">14</span>print (&#39;The area of the triangle is&#39;, triangle_area)
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>6.</strong>  Write a Python program to display the calendar for any given month of a specified year.</p>
-<p>The script below illustrates how to import the calendar library and use a function from the calendar library. Enter month and year as integers.</p>
+<p>The script below illustrates how to import the calendar module and use a function from the calendar module. You can read about the <a class="reference external" href="https://docs.python.org/3/library/calendar.html?highlight=calendar#module-calendar">calendar module and its functions</a> in Python’s documentation.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">#import calendar library</span>
 <span class="linenos">2</span><span class="kn">import</span> <span class="nn">calendar</span>
 <span class="linenos">3</span>
@@ -391,19 +395,18 @@ Lists are collections of objects that may or may not be related to each other.  
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>7.</strong> Write a program to create a time stamp**</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">#Note the use of concatenation, i.e., the use of the plus sign to join strings to create a single string.</span>
-<span class="linenos"> 2</span>
-<span class="linenos"> 3</span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-<span class="linenos"> 4</span><span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-<span class="linenos"> 5</span><span class="n">mm</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">month</span><span class="p">)</span>
-<span class="linenos"> 6</span><span class="n">dd</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
-<span class="linenos"> 7</span><span class="n">yyyy</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
-<span class="linenos"> 8</span><span class="n">hour</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span>
-<span class="linenos"> 9</span><span class="n">mi</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">minute</span><span class="p">)</span>
-<span class="linenos">10</span><span class="n">ss</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">second</span><span class="p">)</span>
-<span class="linenos">11</span>
-<span class="linenos">12</span><span class="nb">print</span> <span class="p">(</span><span class="n">mm</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">dd</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">yyyy</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">hour</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">mi</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">ss</span><span class="p">)</span>
+<p><strong>7.</strong> Write a program to create a time stamp</p>
+<p>In this script, we are highlighting hhe use of the datetime module. We are also highlighting the use of the plus sign to join or concatenate strings to create a single string.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="linenos"> 2</span><span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="linenos"> 3</span><span class="n">mm</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">month</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">dd</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">yyyy</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">hour</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="n">mi</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">minute</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="n">ss</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">second</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="nb">print</span> <span class="p">(</span><span class="n">mm</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">dd</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">yyyy</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">hour</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">mi</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">ss</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -431,7 +434,7 @@ Lists are collections of objects that may or may not be related to each other.  
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>4.</strong> Run the program below that plots average monthly temperature values for Ann Arbor for 2022. The programs depends on a library called matplotlib to do the graphing. If matplotlib is not installed on your computer the program will fail. Therefore, you must first install matplotlib for the program to work. Matplotlib is installed with Jupyter Notebook, therefore, one option is run this program within Jupyter Notebook.</p>
+<p><strong>4.</strong> Run the program below that plots average monthly temperature values for Ann Arbor for 2022. The programs depends on a library called matplotlib to do the graphing. If matplotlib is not installed on your computer the program will fail. Therefore, you must first install matplotlib for the program to work. Matplotlib is installed with Jupyter Notebook, therefore, one option is run this program within Jupyter Notebook.  After running the code, explain what each line of the code does.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span>
@@ -443,8 +446,16 @@ Lists are collections of objects that may or may not be related to each other.  
 </pre></div>
 </div>
 <p><strong>5.</strong> Write a program that reads a simple text file with one entry per line.  Once the list is read and parsed, use it to calculate the following” maximum value, minimum value, standard deviation, variance.</p>
-<p><strong>6.</strong> Buffer a line using Jupyter Notebook</p>
-<p>The program below depends on an ESRI library called arcpy.  It is the arcpy library that supplies the additional capability that Python needs to execute ArcGIS commands. The code is intentended to run as a standalone script or from Jupyter Notebook within ArcGIS Pro.  Copy the script and paste it into Jupyter Notebook within ArcGIS Pro and run it.</p>
+<p><strong>6.</strong>  The script below will draw a buffer of 100 meters aound each point representing cities in the shapefile. You can change the shapefile to suit any situation. The script uses ESRI’ arcpy library.   The arcpy library supplies the additional capability that Python needs to execute ArcGIS commands. Also, the script is intended to run as an ArcGIS standalone script.  Please verify the meaning of the term “ArcGIS Standalone script”.</p>
+<p>Now, copy the script and paste it into Jupyter Notebook within ArcGIS Pro and run it.  The arcpy library has many sub modules and methods for specialized operations. After running the code, research and explain each what of the following aspects of arcpy library does. Also, if you were working with ArcGIS Pro from the menu, where would you find the equivalent of .env?</p>
+<ul class="simple">
+<li><p>arcpy.env</p></li>
+<li><p>arcpy.env.overwriteOutput</p></li>
+<li><p>arcpy.env.workspace</p></li>
+<li><p>arcpy.Buffer_analysis()</p></li>
+<li><p>arcpy.AddMessage()</p></li>
+</ul>
+<p>Note: Remember to also use the <a class="reference external" href="https://pro.arcgis.com/en/pro-app/latest/arcpy/main/arcgis-pro-arcpy-reference.htm">ArcPy documentation</a> in your research.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">arcpy</span>
 <span class="linenos"> 2</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="linenos"> 3</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data&quot;</span>
@@ -466,7 +477,7 @@ Lists are collections of objects that may or may not be related to each other.  
 <div class="line"><br /></div>
 </div>
 <p><strong>7.</strong> Buffer a line using the Python Window in ArcGIS Pro</p>
-<p>The code below is written for the arcpy environment and is intentended to be run in ArcGIS Pro Python Window.  Copy the script and paste it into the Python Window.</p>
+<p>The code below is intentended to run in Python Window of ArcGIS Pro. Copy the script, paste it into the Python Window, then run it.  What is the peculiar characteristic of scripts that run in ArcGIS Python Window?</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">arcpy</span>
 <span class="linenos">2</span><span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data&quot;</span>
 <span class="linenos">3</span><span class="n">arcpy</span><span class="o">.</span><span class="n">Buffer_analysis</span><span class="p">(</span><span class="s2">&quot;roads&quot;</span><span class="p">,</span> <span class="s2">&quot;C:/output/major_roadsBuffered&quot;</span><span class="p">,</span> <span class="s2">&quot;100 Feet&quot;</span><span class="p">,</span> <span class="s2">&quot;FULL&quot;</span><span class="p">,</span> <span class="s2">&quot;ROUND&quot;</span><span class="p">,</span> <span class="s2">&quot;LIST&quot;</span><span class="p">,</span> <span class="s2">&quot;Distance&quot;</span><span class="p">)</span>

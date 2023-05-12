@@ -442,7 +442,7 @@
 <p><strong>Generate Curvature Maps Using Arcpy</strong></p>
 <p>The first two scripts below show how to calculate curvature using ArcPy.  The third script shows how to compute profile with the richdem library.</p>
 <ol class="arabic simple">
-<li><p>Curvature Example 1. Use in ArcGIS Python Window</p></li>
+<li><p>Curvature Example for Use in ArcGIS Python Window</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arcpy.ia</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">out_curvature_raster</span> <span class="o">=</span> <span class="n">Curvature</span><span class="p">(</span><span class="s2">&quot;curvature_input.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;profile&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -461,7 +461,7 @@
 <span class="kn">from</span> <span class="nn">arcpy.ia</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="c1"># Set the analysis environments</span>
-<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/arcpyExamples/data&quot;</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;C:/data&quot;</span>
 
 <span class="c1"># Set the local variables</span>
 <span class="n">in_raster</span> <span class="o">=</span> <span class="s2">&quot;curvature_input.tif&quot;</span>
@@ -470,10 +470,10 @@
 <span class="n">out_curvature_raster</span> <span class="o">=</span> <span class="n">Curvature</span><span class="p">(</span><span class="n">in_raster</span><span class="p">,</span> <span class="s2">&quot;planform&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
 <span class="c1"># Save the output</span>
-<span class="n">out_curvature_raster</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/arcpyExamples/outputs/cur_planform.tif&quot;</span><span class="p">)</span>
+<span class="n">out_curvature_raster</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;C:/data/outputs/cur_planform.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Click on this link for more code samples - <a class="reference external" href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst">https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst</a></p>
+<p>Click on the hyperlink for more code samples - <a class="reference external" href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst">https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst</a></p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -482,8 +482,8 @@
 </ol>
 <p>port richdem as rd
 import matplotlib.pyplot as plt</p>
-<p>dem = rd.LoadGDAL(‘/Users/hsemple/Desktop/Stowe_Dataset/elevation’)
-#dem = rasterio.open(‘/Users/hsemple/Desktop/Stowe_Dataset/elevation’)</p>
+<p>dem = rd.LoadGDAL(‘/Users/…/Stowe_Dataset/elevation’)
+#dem = rasterio.open(‘/Users/…/Stowe_Dataset/elevation’)</p>
 <p>profile_curvature = rd.TerrainAttribute(dem, attrib=’profile_curvature’)
 rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 <p>plt.show()</p>
@@ -527,8 +527,8 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pysheds.grid</span> <span class="kn">import</span> <span class="n">Grid</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">grid</span> <span class="o">=</span> <span class="n">Grid</span><span class="o">.</span><span class="n">from_raster</span><span class="p">(</span><span class="s1">&#39;/Users/hsemple/Desktop/Stowe_Dataset/elevation&#39;</span><span class="p">)</span>
-<span class="n">dem</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">read_raster</span><span class="p">(</span><span class="s1">&#39;/Users/hsemple/Desktop/Stowe_Dataset/elevation&#39;</span><span class="p">)</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">Grid</span><span class="o">.</span><span class="n">from_raster</span><span class="p">(</span><span class="s1">&#39;/Users/.../Stowe_Dataset/elevation&#39;</span><span class="p">)</span>
+<span class="n">dem</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">read_raster</span><span class="p">(</span><span class="s1">&#39;/Users/.../Stowe_Dataset/elevation&#39;</span><span class="p">)</span>
 
 
 <span class="c1"># Fill Sinks</span>
@@ -568,7 +568,7 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 
 <span class="c1"># Delineate the catchment</span>
 <span class="n">catch</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">catchment</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_snap</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_snap</span><span class="p">,</span> <span class="n">fdir</span><span class="o">=</span><span class="n">fdir</span><span class="p">,</span> <span class="n">dirmap</span><span class="o">=</span><span class="n">dirmap</span><span class="p">,</span>
-                       <span class="n">xytype</span><span class="o">=</span><span class="s1">&#39;coordinate&#39;</span><span class="p">)</span>
+         <span class="n">xytype</span><span class="o">=</span><span class="s1">&#39;coordinate&#39;</span><span class="p">)</span>
 
 
 
@@ -587,7 +587,7 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 <span class="c1"># Calculate distance to outlet from each cell</span>
 <span class="c1"># -------------------------------------------</span>
 <span class="n">dist</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">distance_to_outlet</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_snap</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_snap</span><span class="p">,</span> <span class="n">fdir</span><span class="o">=</span><span class="n">fdir</span><span class="p">,</span> <span class="n">dirmap</span><span class="o">=</span><span class="n">dirmap</span><span class="p">,</span>
-                               <span class="n">xytype</span><span class="o">=</span><span class="s1">&#39;coordinate&#39;</span><span class="p">)</span>
+       <span class="n">xytype</span><span class="o">=</span><span class="s1">&#39;coordinate&#39;</span><span class="p">)</span>
 
 
 
@@ -612,72 +612,77 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 <h2><span class="section-number">13.8. </span>Working with GDAL Command Line Utilities<a class="headerlink" href="#working-with-gdal-command-line-utilities" title="Permalink to this heading"></a></h2>
 <p>GDAL (Geospatial Data Abstraction Library) is perhaps the most established library for reading and processing raster and vector geographical data. It is used by many GIS including ArcGIS and QGIS.  GDAL is written in the C++ programming language, but bindings are available that allow it to called from other languages.</p>
 <p>GDAL also has some special programs called <a class="reference external" href="https://gdal.org/programs/index.html">Utilities</a>, which are useful for performing many popular GIS tasks.  These utilities can be called from the command line assuming that proper path is set. They can also be from within Python.  In this section, we will look at how to call GDAL Utilities from the command line.  In the next section, we will look at calling GDAL from within Python.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p><strong>Getting Information about a Raster</strong></p>
 <p>Let’s try the gdalifo command which can be executed from the command prompt. Gdalifo returns a lengthy list of details about the raster.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdalinfo /Users/.../WhiteadderDEM.tif
-
-Driver: AIG/Arc/Info Binary Grid
-Files: /Users/.../Desktop/Stowe_Dataset/elevation
-Size is 775, 756
-Coordinate System is:
-PROJCRS[&quot;unnamed&quot;,
-    BASEGEOGCRS[&quot;NAD83&quot;,
-        DATUM[&quot;North American Datum 1983&quot;,
-            ELLIPSOID[&quot;GRS 1980&quot;,6378137,298.257222101,
-                LENGTHUNIT[&quot;metre&quot;,1]]],
-        PRIMEM[&quot;Greenwich&quot;,0,
-            ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
-        ID[&quot;EPSG&quot;,4269]],
-    CONVERSION[&quot;unnamed&quot;,
-        METHOD[&quot;Transverse Mercator&quot;,
-            ID[&quot;EPSG&quot;,9807]],
-        PARAMETER[&quot;Latitude of natural origin&quot;,42.5,
-            ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
-            ID[&quot;EPSG&quot;,8801]],
-        PARAMETER[&quot;Longitude of natural origin&quot;,-72.5,
-            ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
-            ID[&quot;EPSG&quot;,8802]],
-        PARAMETER[&quot;Scale factor at natural origin&quot;,0.999964286,
-            SCALEUNIT[&quot;unity&quot;,1],
-            ID[&quot;EPSG&quot;,8805]],
-        PARAMETER[&quot;False easting&quot;,500000,
-            LENGTHUNIT[&quot;METERS&quot;,1],
-            ID[&quot;EPSG&quot;,8806]],
-        PARAMETER[&quot;False northing&quot;,0,
-            LENGTHUNIT[&quot;METERS&quot;,1],
-            ID[&quot;EPSG&quot;,8807]]],
-    CS[Cartesian,2],
-        AXIS[&quot;easting&quot;,east,
-            ORDER[1],
-            LENGTHUNIT[&quot;METERS&quot;,1]],
-        AXIS[&quot;northing&quot;,north,
-            ORDER[2],
-            LENGTHUNIT[&quot;METERS&quot;,1]]]
-Data axis to CRS axis mapping: 1,2
-Origin = (470957.412858718482312,231421.559170683787670)
-Pixel Size = (30.680581002795002,-30.680581002795002)
-Metadata:
-  DataType=Generic
-Corner Coordinates:
-Upper Left  (  470957.413,  231421.559) ( 72d51&#39;56.55&quot;W, 44d34&#39;56.75&quot;N)
-Lower Left  (  470957.413,  208227.040) ( 72d51&#39;51.86&quot;W, 44d22&#39;25.30&quot;N)
-Upper Right (  494734.863,  231421.559) ( 72d33&#39;58.68&quot;W, 44d34&#39;58.78&quot;N)
-Lower Right (  494734.863,  208227.040) ( 72d33&#39;57.83&quot;W, 44d22&#39;27.33&quot;N)
-Center      (  482846.138,  219824.300) ( 72d42&#39;56.23&quot;W, 44d28&#39;42.39&quot;N)
-Band 1 Block=256x16 Type=Float32, ColorInterp=Undefined
-  Description = elevation
-  Min=133.493 Max=1335.372
-  Minimum=134.525, Maximum=1333.913, Mean=476.449, StdDev=214.550
-  NoData Value=-3.4028234663852886e+38
-  Overviews: 388x378, 194x189
-  Metadata:
-    RepresentationType=ATHEMATIC
-    STATISTICS_APPROXIMATE=YES
-    STATISTICS_MAXIMUM=1333.9129638672
-    STATISTICS_MEAN=476.44892214671
-    STATISTICS_MINIMUM=134.52473449707
-    STATISTICS_STDDEV=214.55017815777
-    STATISTICS_VALID_PERCENT=98.84
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ gdalinfo /Users/.../WhiteadderDEM.tif
+</pre></div>
+</div>
+<p>The results are shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Driver</span><span class="p">:</span> <span class="n">AIG</span><span class="o">/</span><span class="n">Arc</span><span class="o">/</span><span class="n">Info</span> <span class="n">Binary</span> <span class="n">Grid</span>
+<span class="n">Files</span><span class="p">:</span> <span class="o">/</span><span class="n">Users</span><span class="o">/.../</span><span class="n">Desktop</span><span class="o">/</span><span class="n">Stowe_Dataset</span><span class="o">/</span><span class="n">elevation</span>
+<span class="n">Size</span> <span class="ow">is</span> <span class="mi">775</span><span class="p">,</span> <span class="mi">756</span>
+<span class="n">Coordinate</span> <span class="n">System</span> <span class="ow">is</span><span class="p">:</span>
+<span class="n">PROJCRS</span><span class="p">[</span><span class="s2">&quot;unnamed&quot;</span><span class="p">,</span>
+    <span class="n">BASEGEOGCRS</span><span class="p">[</span><span class="s2">&quot;NAD83&quot;</span><span class="p">,</span>
+        <span class="n">DATUM</span><span class="p">[</span><span class="s2">&quot;North American Datum 1983&quot;</span><span class="p">,</span>
+            <span class="n">ELLIPSOID</span><span class="p">[</span><span class="s2">&quot;GRS 1980&quot;</span><span class="p">,</span><span class="mi">6378137</span><span class="p">,</span><span class="mf">298.257222101</span><span class="p">,</span>
+                <span class="n">LENGTHUNIT</span><span class="p">[</span><span class="s2">&quot;metre&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">]]],</span>
+        <span class="n">PRIMEM</span><span class="p">[</span><span class="s2">&quot;Greenwich&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">ANGLEUNIT</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span><span class="mf">0.0174532925199433</span><span class="p">]],</span>
+        <span class="n">ID</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="mi">4269</span><span class="p">]],</span>
+    <span class="n">CONVERSION</span><span class="p">[</span><span class="s2">&quot;unnamed&quot;</span><span class="p">,</span>
+        <span class="n">METHOD</span><span class="p">[</span><span class="s2">&quot;Transverse Mercator&quot;</span><span class="p">,</span>
+            <span class="n">ID</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="mi">9807</span><span class="p">]],</span>
+        <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;Latitude of natural origin&quot;</span><span class="p">,</span><span class="mf">42.5</span><span class="p">,</span>
+            <span class="n">ANGLEUNIT</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span><span class="mf">0.0174532925199433</span><span class="p">],</span>
+            <span class="n">ID</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="mi">8801</span><span class="p">]],</span>
+        <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;Longitude of natural origin&quot;</span><span class="p">,</span><span class="o">-</span><span class="mf">72.5</span><span class="p">,</span>
+            <span class="n">ANGLEUNIT</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span><span class="mf">0.0174532925199433</span><span class="p">],</span>
+            <span class="n">ID</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="mi">8802</span><span class="p">]],</span>
+        <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;Scale factor at natural origin&quot;</span><span class="p">,</span><span class="mf">0.999964286</span><span class="p">,</span>
+            <span class="n">SCALEUNIT</span><span class="p">[</span><span class="s2">&quot;unity&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">ID</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="mi">8805</span><span class="p">]],</span>
+        <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;False easting&quot;</span><span class="p">,</span><span class="mi">500000</span><span class="p">,</span>
+            <span class="n">LENGTHUNIT</span><span class="p">[</span><span class="s2">&quot;METERS&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">ID</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="mi">8806</span><span class="p">]],</span>
+        <span class="n">PARAMETER</span><span class="p">[</span><span class="s2">&quot;False northing&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">LENGTHUNIT</span><span class="p">[</span><span class="s2">&quot;METERS&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">ID</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="mi">8807</span><span class="p">]]],</span>
+    <span class="n">CS</span><span class="p">[</span><span class="n">Cartesian</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
+        <span class="n">AXIS</span><span class="p">[</span><span class="s2">&quot;easting&quot;</span><span class="p">,</span><span class="n">east</span><span class="p">,</span>
+            <span class="n">ORDER</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">LENGTHUNIT</span><span class="p">[</span><span class="s2">&quot;METERS&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">]],</span>
+        <span class="n">AXIS</span><span class="p">[</span><span class="s2">&quot;northing&quot;</span><span class="p">,</span><span class="n">north</span><span class="p">,</span>
+            <span class="n">ORDER</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+            <span class="n">LENGTHUNIT</span><span class="p">[</span><span class="s2">&quot;METERS&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">]]]</span>
+<span class="n">Data</span> <span class="n">axis</span> <span class="n">to</span> <span class="n">CRS</span> <span class="n">axis</span> <span class="n">mapping</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span>
+<span class="n">Origin</span> <span class="o">=</span> <span class="p">(</span><span class="mf">470957.412858718482312</span><span class="p">,</span><span class="mf">231421.559170683787670</span><span class="p">)</span>
+<span class="n">Pixel</span> <span class="n">Size</span> <span class="o">=</span> <span class="p">(</span><span class="mf">30.680581002795002</span><span class="p">,</span><span class="o">-</span><span class="mf">30.680581002795002</span><span class="p">)</span>
+<span class="n">Metadata</span><span class="p">:</span>
+  <span class="n">DataType</span><span class="o">=</span><span class="n">Generic</span>
+<span class="n">Corner</span> <span class="n">Coordinates</span><span class="p">:</span>
+<span class="n">Upper</span> <span class="n">Left</span>  <span class="p">(</span>  <span class="mf">470957.413</span><span class="p">,</span>  <span class="mf">231421.559</span><span class="p">)</span> <span class="p">(</span> <span class="mi">72</span><span class="n">d51</span><span class="s1">&#39;56.55&quot;W, 44d34&#39;</span><span class="mf">56.75</span><span class="s2">&quot;N)</span>
+<span class="n">Lower</span> <span class="n">Left</span>  <span class="p">(</span>  <span class="mf">470957.413</span><span class="p">,</span>  <span class="mf">208227.040</span><span class="p">)</span> <span class="p">(</span> <span class="mi">72</span><span class="n">d51</span><span class="s1">&#39;51.86&quot;W, 44d22&#39;</span><span class="mf">25.30</span><span class="s2">&quot;N)</span>
+<span class="n">Upper</span> <span class="n">Right</span> <span class="p">(</span>  <span class="mf">494734.863</span><span class="p">,</span>  <span class="mf">231421.559</span><span class="p">)</span> <span class="p">(</span> <span class="mi">72</span><span class="n">d33</span><span class="s1">&#39;58.68&quot;W, 44d34&#39;</span><span class="mf">58.78</span><span class="s2">&quot;N)</span>
+<span class="n">Lower</span> <span class="n">Right</span> <span class="p">(</span>  <span class="mf">494734.863</span><span class="p">,</span>  <span class="mf">208227.040</span><span class="p">)</span> <span class="p">(</span> <span class="mi">72</span><span class="n">d33</span><span class="s1">&#39;57.83&quot;W, 44d22&#39;</span><span class="mf">27.33</span><span class="s2">&quot;N)</span>
+<span class="n">Center</span>      <span class="p">(</span>  <span class="mf">482846.138</span><span class="p">,</span>  <span class="mf">219824.300</span><span class="p">)</span> <span class="p">(</span> <span class="mi">72</span><span class="n">d42</span><span class="s1">&#39;56.23&quot;W, 44d28&#39;</span><span class="mf">42.39</span><span class="s2">&quot;N)</span>
+<span class="n">Band</span> <span class="mi">1</span> <span class="n">Block</span><span class="o">=</span><span class="mi">256</span><span class="n">x16</span> <span class="n">Type</span><span class="o">=</span><span class="n">Float32</span><span class="p">,</span> <span class="n">ColorInterp</span><span class="o">=</span><span class="n">Undefined</span>
+  <span class="n">Description</span> <span class="o">=</span> <span class="n">elevation</span>
+  <span class="n">Min</span><span class="o">=</span><span class="mf">133.493</span> <span class="n">Max</span><span class="o">=</span><span class="mf">1335.372</span>
+  <span class="n">Minimum</span><span class="o">=</span><span class="mf">134.525</span><span class="p">,</span> <span class="n">Maximum</span><span class="o">=</span><span class="mf">1333.913</span><span class="p">,</span> <span class="n">Mean</span><span class="o">=</span><span class="mf">476.449</span><span class="p">,</span> <span class="n">StdDev</span><span class="o">=</span><span class="mf">214.550</span>
+  <span class="n">NoData</span> <span class="n">Value</span><span class="o">=-</span><span class="mf">3.4028234663852886e+38</span>
+  <span class="n">Overviews</span><span class="p">:</span> <span class="mi">388</span><span class="n">x378</span><span class="p">,</span> <span class="mi">194</span><span class="n">x189</span>
+  <span class="n">Metadata</span><span class="p">:</span>
+    <span class="n">RepresentationType</span><span class="o">=</span><span class="n">ATHEMATIC</span>
+    <span class="n">STATISTICS_APPROXIMATE</span><span class="o">=</span><span class="n">YES</span>
+    <span class="n">STATISTICS_MAXIMUM</span><span class="o">=</span><span class="mf">1333.9129638672</span>
+    <span class="n">STATISTICS_MEAN</span><span class="o">=</span><span class="mf">476.44892214671</span>
+    <span class="n">STATISTICS_MINIMUM</span><span class="o">=</span><span class="mf">134.52473449707</span>
+    <span class="n">STATISTICS_STDDEV</span><span class="o">=</span><span class="mf">214.55017815777</span>
+    <span class="n">STATISTICS_VALID_PERCENT</span><span class="o">=</span><span class="mf">98.84</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -808,7 +813,7 @@ Band 1 Block=256x16 Type=Float32, ColorInterp=Undefined
 </section>
 <section id="resources">
 <h2><span class="section-number">13.11. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
-<p>PDraping an orthophoto over a DEM
+<p>Draping an orthophoto over a DEM
 <a class="reference external" href="https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem">https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem</a></p>
 <p>Batch processing – automatizing the use of GDAL and SAGA GIS tools using Bash Shell scripts
 <a class="reference external" href="https://www.luisalucchese.com/post/batch-processing-gdal-saga-gis-bash/">https://www.luisalucchese.com/post/batch-processing-gdal-saga-gis-bash/</a></p>

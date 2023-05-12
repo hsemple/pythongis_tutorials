@@ -2,7 +2,7 @@
 Setting up Development Environments
 ======================================
 
-For these tutorials, we will run our Python scripts in different development environments depending on what needs to be accomplished.bWe will use the following development environments: the Standard Python Distribution, Anaconda Distribution, ArcGIS Pro, ArcGIS API for Python, and QGIS. This will give users an opportunity to familiarize themselves with these various platforms.
+For these tutorials, we will run our Python scripts in different development environments depending on what needs to be accomplished. We will use the following development environments: the Standard Python Distribution, Anaconda Distribution, ArcGIS Pro, ArcGIS API for Python, and QGIS. This will give users an opportunity to familiarize themselves with these various platforms.
 
 
 |
@@ -11,13 +11,13 @@ For these tutorials, we will run our Python scripts in different development env
 The Standard Python Distribution 
 -----------------------------------
 
-Many people use the standard Python distribution as the central platform for development. Scripts are executed in IDLE, which is Python's default integrated development environment.  Following installation, you will notice that the standard Python distribution lacks many packages that are needed for GIS work so you will have to install these manually. Sometimes, installing these packages and their dependencies can be challenging, but these challenges are great opportunities for learning the inner details of Python.
+Many people use the Standard Python Distribution as their central platform for development. Scripts are executed in IDLE, which is Python's default integrated development environment.  After installation, you will notice that the Standard Python Distribution lacks many packages that are needed for GIS work so you will have to install these manually. Sometimes, installing these packages and their dependencies can be challenging, but these challenges are great opportunities for learning the inner details of Python.
 
 
 1. To download the Standard Python Distribution, visit Python's `homepage <https://www.python.org/downloads/>`_. Download the latest version.
 
 
-2. If you are using a Windows computer, after downloading. install the program on your computer using the Windows installer.
+2. If you are using a Windows computer, install the program on your computer using the Windows installer.
 
  .. image:: img/install_python.png
    :alt: Install Python
@@ -25,14 +25,14 @@ Many people use the standard Python distribution as the central platform for dev
 
 3. If you are using a mac computer, first download and install `Homebrew <https://brew.sh/)>`_ . Homebrew is a package manager that helps users to quickly install software packages on Mac computers using the command line.  Prior to installing homebrew, you need to install Xcode’s Command Line Tools. Xcode is a macOS integrated development environment (IDE). You can use it to make apps for all mac OSs, iOS, iPad OS, watch OS, and tv OS. To download and install it, run the following command in the Terminal:
 
-   >>> xcode-select --install
+    >>> xcode-select --install
 
 4. Accept starting the installation and the license and it will be installed automatically.
 
 
 5.  To install Homebrew automatically, run the command below:
 
- >>> /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    >>> /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 
 6. After installing Python on Windows or macOS check the version of Python that will be run from the command prompt. To do this type:
@@ -44,7 +44,7 @@ Many people use the standard Python distribution as the central platform for dev
 
 8. Check also that the Python 3x Directory has been added to your System's Path Environment Variable.  To check for this type, type:
     
-  >>> $PATH
+    >>> $PATH
 
 
 9. To install new packages, you need to use Pip.  The basic structure of the command is "pip install <package_name>". To install a library nameD *matplotlib*, type:
@@ -58,7 +58,7 @@ Many people use the standard Python distribution as the central platform for dev
    :alt: Python Interpreter and IDLE
 
 
-After installing Pyhton, you may realize that you have more than one Python installations on your computer. This is not an issue except that sometimes when you try to start Python from the command prompt, you may find that the Python installation you wish to start is not the recent one that you installed.  There are many ways to resolve this problem.  This `document <https://betterprogramming.pub/the-best-way-we-create-and-manage-multiple-versions-of-python-22363e065a43>`_ contains some tips on how to resolve this issue. You can google similar documents on the topic.
+11. After installing Pyhton, you may realize that you have more than one Python installations on your computer. This is not an issue except that when you try to start Python from the command prompt, you may find that the Python installation you wish to start is not the recent one that you installed.  There are many ways to resolve this problem.  This `document <https://betterprogramming.pub/the-best-way-we-create-and-manage-multiple-versions-of-python-22363e065a43>`_ contains some tips on how to resolve this issue. You can google similar documents on the topic.
 
 
 
@@ -77,22 +77,22 @@ When working with Python, it is a good idea to work with virtual environments. V
 
 1. At the Python prompt, type
 
->>> pip3 install virtualenv
+    >>> pip3 install virtualenv
 
 
 2. Make a new directory to keep all your virtual environments in one place.
 
->>> mkdir python-virtual-environments && cd python-virtual-environments
+    >>> mkdir python-virtual-environments && cd python-virtual-environments
 
 
 3. Create a new virtual environment inside the 'python-virtual-environments' directory.
 
->>> python3 -m venv project_env
+   >>> python3 -m venv project_env
 
 
 4. To activate the 'project_env virtual envirnonment' you created in the previous step, run the code below.  
 
->>> source project_env/bin/activate
+   >>> source project_env/bin/activate
 
 
 5. Notice how your prompt is now prefixed with the name of your environment (project_env, in our case). This indicates that 'project_env' is currently active, which means the python executable will only use this environment’s packages and settings.
@@ -100,12 +100,13 @@ When working with Python, it is a good idea to work with virtual environments. V
 
 6. To stop using the virtual environment, run the code below.
 
->>> deactivate
+    >>> deactivate
  
 
 |
 
-References
+**References**
+
 * Python Virtual Environments Explained with Examples - https://www.freecodecamp.org/news/python-virtual-environments-explained-with-examples/
 
 * Python Virtual Environments - https://autogis-site.readthedocs.io/en/latest/course-info/create-python-gis-environment.html
@@ -285,7 +286,7 @@ Resources
 
 * Customizing QGIS with Python (Full Course Material) - https://courses.spatialthoughts.com/pyqgis-in-a-day.html
 
-* GIS Python API documentation - https://qgis.org/pyqgis/master/
+* QGIS Python API documentation - https://qgis.org/pyqgis/master/
 
 * PyQGIS Developer Cookbook - https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/index.html
 

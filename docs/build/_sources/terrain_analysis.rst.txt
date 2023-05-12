@@ -470,7 +470,7 @@ Curvature Maps
 The first two scripts below show how to calculate curvature using ArcPy.  The third script shows how to compute profile with the richdem library. 
 
 
-1. Curvature Example 1. Use in ArcGIS Python Window
+1. Curvature Example for Use in ArcGIS Python Window
 
 .. code-block:: python
 
@@ -495,7 +495,7 @@ This example calculates the curvature of a given slope. Use in Idle or Python No
 	from arcpy.ia import *
 
 	# Set the analysis environments
-	arcpy.env.workspace = "C:/arcpyExamples/data"
+	arcpy.env.workspace = "C:/data"
 
 	# Set the local variables
 	in_raster = "curvature_input.tif"
@@ -504,11 +504,11 @@ This example calculates the curvature of a given slope. Use in Idle or Python No
 	out_curvature_raster = Curvature(in_raster, "planform", 3)
 
 	# Save the output
-	out_curvature_raster.save("C:/arcpyExamples/outputs/cur_planform.tif")
+	out_curvature_raster.save("C:/data/outputs/cur_planform.tif")
 
 
 
-Click on this link for more code samples - https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst
+Click on the hyperlink for more code samples - https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst
 
 
 |
@@ -520,8 +520,8 @@ Click on this link for more code samples - https://pro.arcgis.com/en/pro-app/lat
 port richdem as rd
 import matplotlib.pyplot as plt
 
-dem = rd.LoadGDAL('/Users/hsemple/Desktop/Stowe_Dataset/elevation')
-#dem = rasterio.open('/Users/hsemple/Desktop/Stowe_Dataset/elevation')
+dem = rd.LoadGDAL('/Users/.../Stowe_Dataset/elevation')
+#dem = rasterio.open('/Users/.../Stowe_Dataset/elevation')
 
 profile_curvature = rd.TerrainAttribute(dem, attrib='profile_curvature')
 rd.rdShow(profile_curvature, axes=False, cmap='jet', figsize=(6,4))
@@ -587,8 +587,8 @@ I came across a library called pysheds that can be used for watershed delineatio
 	from pysheds.grid import Grid
 	import numpy as np
 
-	grid = Grid.from_raster('/Users/hsemple/Desktop/Stowe_Dataset/elevation')
-	dem = grid.read_raster('/Users/hsemple/Desktop/Stowe_Dataset/elevation')
+	grid = Grid.from_raster('/Users/.../Stowe_Dataset/elevation')
+	dem = grid.read_raster('/Users/.../Stowe_Dataset/elevation')
 
 
 	# Fill Sinks
@@ -628,7 +628,7 @@ I came across a library called pysheds that can be used for watershed delineatio
 
 	# Delineate the catchment
 	catch = grid.catchment(x=x_snap, y=y_snap, fdir=fdir, dirmap=dirmap,
-	                       xytype='coordinate')
+	         xytype='coordinate')
 
 
 
@@ -647,7 +647,7 @@ I came across a library called pysheds that can be used for watershed delineatio
 	# Calculate distance to outlet from each cell
 	# -------------------------------------------
 	dist = grid.distance_to_outlet(x=x_snap, y=y_snap, fdir=fdir, dirmap=dirmap,
-	                               xytype='coordinate')
+	       xytype='coordinate')
 
 
 
@@ -682,6 +682,7 @@ GDAL (Geospatial Data Abstraction Library) is perhaps the most established libra
 GDAL also has some special programs called `Utilities <https://gdal.org/programs/index.html>`_, which are useful for performing many popular GIS tasks.  These utilities can be called from the command line assuming that proper path is set. They can also be from within Python.  In this section, we will look at how to call GDAL Utilities from the command line.  In the next section, we will look at calling GDAL from within Python.
 
 
+|
 
 **Getting Information about a Raster**
 
@@ -689,9 +690,14 @@ GDAL also has some special programs called `Utilities <https://gdal.org/programs
 Let's try the gdalifo command which can be executed from the command prompt. Gdalifo returns a lengthy list of details about the raster.
 
 
+	>>> $ gdalinfo /Users/.../WhiteadderDEM.tif
+
+
+The results are shown below:
+
+
 .. code-block:: python
 
-	>>> $ gdalinfo /Users/.../WhiteadderDEM.tif
 
 	Driver: AIG/Arc/Info Binary Grid
 	Files: /Users/.../Desktop/Stowe_Dataset/elevation
@@ -829,7 +835,6 @@ See this link for more info: https://www.geos.ed.ac.uk/~smudd/TopoTutorials/html
 First, run gdalinfo and get the minimum and maximum elevation of the DEM.  Next, use these values to make some elevation breaks and some corresponding RGB colors for each break. In the example below, the first number in each row represents the upper breakpoint for the color range while the next three values are RGB values.  In the example, echo takes everything between the quotations and places it into a file called color-relief.txt usng the > operator:
 
 
-
 | echo '0 0 0 0
 | 26 110 220 110
 | 51 240 250 160
@@ -841,7 +846,7 @@ First, run gdalinfo and get the minimum and maximum elevation of the DEM.  Next,
 
 Once the color map file is completed, we can use it generate a colored relief, as shown in the example below:
 
- >>> gdaldem color-relief -of PNG sf-dem.tif color-relief.txt sf-dem-coloredRelief.tif
+>>> gdaldem color-relief -of PNG sf-dem.tif color-relief.txt sf-dem-coloredRelief.tif
 
 
 |
@@ -948,8 +953,7 @@ Exercises
 Resources
 ------------
 
-
-PDraping an orthophoto over a DEM
+Draping an orthophoto over a DEM
 https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem
 
 Batch processing – automatizing the use of GDAL and SAGA GIS tools using Bash Shell scripts

@@ -482,7 +482,7 @@ Whereas batch processing involves repeating tasks many times, automating workflo
 
 **Automating Thematic Mapping**
 
- Here's a Python workflow that takes a CSV file containing total counts of COVID-19 cases for each county, plots these on a shapefile of counties using Geopandas and create a graduated color map with five classes and natural breaks classification:
+Here's a Python workflow that takes a CSV file containing total counts of COVID-19 cases for each county, plots these on a shapefile of counties using Geopandas and create a graduated color map with five classes and natural breaks classification:
 
 .. code-block:: python
 
