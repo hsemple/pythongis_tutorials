@@ -137,25 +137,85 @@ With len(), you can check the length of Python strings.  The len(s) method retur
 
 
 
-**g. String formatting with the format method**
+**g. Formatting String Variables Using the % Operator**
 
-Curly braces can serve as place-holders for the variables you would like to store inside a string. In order to pass variables to a string you must call upon the .format() method.
+The program below illustrates the use of string formatting using the % operator.    With this method,  the percentage sign followed by a letter and some numbers indicate how a variable should be formatted. The variable itself is stored as a tuple to the right of the string.   Here are some basic argument specifiers you should know:
+
+ * %s - means format the variable as a string
+ * %d - means format the variable as an integer
+ * %f - means format the variable as as floating point number
+ * %0.3f means format the variable as a floating point numbers with three digits to the right of the decimal value.
+
+
+
+In the code below, %0.2f is a placeholder for a variable that will be formatted with two digits to the right of the decimal value.. The name of the variable appears at the end of the string preceded by a % sign. 
+
 
 .. code-block:: python
    :linenos:
 
-   fname = "John"
-   lname = "Doe"
-   age = "24"
 
-   print ("{} {} is {} years old." .format(fname, lname, age))
+   # Get inputs from the user
+   base = float(input('Enter length of the base of the triangle: '))
+   height = float(input('Enter the height of the triangle '))
+ 
+   # calculate the area of the triangle
+   triangle_area = (base * height) / 2
 
+   # Display the results
+   print ('The area of the triangle is %0.2f' % triangle_area)
+
+   
+
+|
+
+
+When more than one variables is being formatted, a tuple is used to store the variable names at the end of the string.  This is demonstrated in the code below.
+
+
+
+.. code-block:: python
+   :linenos:
+
+   num = float(input('Enter a number: '))
+   num_sqrt = num ** 0.5
+   print ('The square root of %0.2f is %0.4f' %(num, num_sqrt))
 
 
 
 |
 
-**h. String Indexing**
+
+
+**h. String formatting with the format method**
+
+The .format() method is another way to format strings. With this method, we use empty curly braces {} as placeholders to store variables. In order to pass the variables the curly brackets, we use the .format() method. Within the format method, the variables are placed in the order in which they should appear in the program statement.
+
+.. code-block:: python
+   :linenos:
+
+   fname = "John"
+   lname = "Doe"'
+   age = "24"
+
+   print ("{} {} is {} years old." .format(fname, lname, age))
+
+John Doe is 24 years old.
+
+
+
+
+Note: You can also use:
+
+
+| print ("{0} {1} is {2} years old." .format(fname, lname, age))
+| where the number indicate the position of the placeholders
+
+
+
+|
+
+**i. String Indexing**
 
 In programming, individual items in an ordered set of data can be accessed directly using a numeric index or key value. This process is referred to as indexing.
 
@@ -207,7 +267,7 @@ String indices can also be specified with negative numbers, in which case indexi
 
 |
 
-**i. String Slicing**
+**j. String Slicing**
 
 Python also allows a form of indexing syntax that extracts substrings from a string, known as string slicing. If s is a string, an expression of the form  s[m:n]  returns the portion of  s starting with position m, and up to but not including position n:
 
@@ -246,7 +306,7 @@ Omitting both indices returns the original string, in its entirety.
 |
 
 
-**j. Slicing with Negative indices**
+**k. Slicing with Negative indices**
 
 Negative indices can be used with slicing as well. -1 refers to the last character, -2, the second-to-last, and so on, just as with simple indexing. The diagram below shows how to slice the substring 'oob' from the string 'foobar' using both positive and negative indices:
 String index 3
@@ -267,7 +327,7 @@ True
 |
 
 
-**Specifying a Stride in a String Slice**
+**l. Specifying a Stride in a String Slice**
 
 Adding an additional colon (:) and a third index designates a stride (also called a step), which indicates how many characters to jump after retrieving each character in the slice.
 
@@ -311,86 +371,11 @@ You can specify a negative stride value as well, in which case Python steps back
 
 
 
-**j. Formatting String Variables Using the % Operator**
-
-The program below illustrates the use of string formatting using the % operator.    With this method,  the percentage sign followed by a letter and some numbers indicate how a variable should be formatted. The variable itself is stored as a tuple to the right of the string.   Here are some basic argument specifiers you should know:
-
- * %s - means format the variable as a string
- * %d - means format the variable as an integer
- * %f - means format the variable as as floating point number
- * %0.3f means format the variable as a floating point numbers with three digits to the right of the decimal value.
-
-
-
-In the code below, %0.2f is a placeholder for a variable that will be formatted with two digits to the right of the decimal value.. The name of the variable appears at the end of the string preceded by a % sign. 
-
-
-.. code-block:: python
-   :linenos:
-
-
-   # Get inputs from the user
-   base = float(input('Enter length of the base of the triangle: '))
-   height = float(input('Enter the height of the triangle '))
- 
-   # calculate the area of the triangle
-   triangle_area = (base * height) / 2
-
-   # Display the results
-   print ('The area of the triangle is %0.2f' % triangle_area)
-
-   
-
-|
-
-
-When more than one variables is being formatted, a tuple is used to store the variable names at the end of the string.  This is demonstrated in the code below.
-
-
-
-.. code-block:: python
-   :linenos:
-
-   num = float(input('Enter a number: '))
-   num_sqrt = num ** 0.5
-   print ('The square root of %0.2f is %0.4f' %(num, num_sqrt))
-
 
 
 |
 
-
-
-**k. String formatting with the format method**
-
-The .format() method is another way to format strings. With this method, we use empty curly braces {} as placeholders to store variables. In order to pass the variables the curly brackets, we use the .format() method. Within the format method, the variables are placed in the order in which they should appear in the program statement.
-
-.. code-block:: python
-   :linenos:
-
-   fname = "John"
-   lname = "Doe"'
-   age = "24"
-
-   print ("{} {} is {} years old." .format(fname, lname, age))
-
-John Doe is 24 years old.
-
-
-
-
-
-Note: You can also use:
-
-
-| print ("{0} {1} is {2} years old." .format(fname, lname, age))
-| where the number indicate the position of the placeholders
-
-
-
-|
-
-**l. Mathematical Opeerations and Strings**
+**m. Mathematical Opeerations and Strings**
 
 In general, mathematical operations on strings are illegal:
 

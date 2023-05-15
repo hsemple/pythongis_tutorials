@@ -205,19 +205,59 @@ I LOVE LEARNING PYTHON</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>g. String formatting with the format method</strong></p>
-<p>Curly braces can serve as place-holders for the variables you would like to store inside a string. In order to pass variables to a string you must call upon the .format() method.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;John&quot;</span>
-<span class="linenos">2</span><span class="n">lname</span> <span class="o">=</span> <span class="s2">&quot;Doe&quot;</span>
-<span class="linenos">3</span><span class="n">age</span> <span class="o">=</span> <span class="s2">&quot;24&quot;</span>
+<p><strong>g. Formatting String Variables Using the % Operator</strong></p>
+<p>The program below illustrates the use of string formatting using the % operator.    With this method,  the percentage sign followed by a letter and some numbers indicate how a variable should be formatted. The variable itself is stored as a tuple to the right of the string.   Here are some basic argument specifiers you should know:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>%s - means format the variable as a string</p></li>
+<li><p>%d - means format the variable as an integer</p></li>
+<li><p>%f - means format the variable as as floating point number</p></li>
+<li><p>%0.3f means format the variable as a floating point numbers with three digits to the right of the decimal value.</p></li>
+</ul>
+</div></blockquote>
+<p>In the code below, %0.2f is a placeholder for a variable that will be formatted with two digits to the right of the decimal value.. The name of the variable appears at the end of the string preceded by a % sign.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># Get inputs from the user</span>
+<span class="linenos">2</span><span class="n">base</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter length of the base of the triangle: &#39;</span><span class="p">))</span>
+<span class="linenos">3</span><span class="n">height</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter the height of the triangle &#39;</span><span class="p">))</span>
 <span class="linenos">4</span>
-<span class="linenos">5</span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> is </span><span class="si">{}</span><span class="s2"> years old.&quot;</span> <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">lname</span><span class="p">,</span> <span class="n">age</span><span class="p">))</span>
+<span class="linenos">5</span><span class="c1"># calculate the area of the triangle</span>
+<span class="linenos">6</span><span class="n">triangle_area</span> <span class="o">=</span> <span class="p">(</span><span class="n">base</span> <span class="o">*</span> <span class="n">height</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="linenos">7</span>
+<span class="linenos">8</span><span class="c1"># Display the results</span>
+<span class="linenos">9</span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;The area of the triangle is </span><span class="si">%0.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">triangle_area</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>h. String Indexing</strong></p>
+<p>When more than one variables is being formatted, a tuple is used to store the variable names at the end of the string.  This is demonstrated in the code below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">num</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter a number: &#39;</span><span class="p">))</span>
+<span class="linenos">2</span><span class="n">num_sqrt</span> <span class="o">=</span> <span class="n">num</span> <span class="o">**</span> <span class="mf">0.5</span>
+<span class="linenos">3</span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;The square root of </span><span class="si">%0.2f</span><span class="s1"> is </span><span class="si">%0.4f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">num_sqrt</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>h. String formatting with the format method</strong></p>
+<p>The .format() method is another way to format strings. With this method, we use empty curly braces {} as placeholders to store variables. In order to pass the variables the curly brackets, we use the .format() method. Within the format method, the variables are placed in the order in which they should appear in the program statement.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;John&quot;</span>
+<span class="linenos">2</span><span class="n">lname</span> <span class="o">=</span> <span class="s2">&quot;Doe&quot;</span><span class="s1">&#39;</span>
+<span class="linenos">3</span><span class="n">age</span> <span class="o">=</span> <span class="s2">&quot;24&quot;</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> is </span><span class="si">{}</span><span class="s2"> years old.&quot;</span> <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">lname</span><span class="p">,</span> <span class="n">age</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>John Doe is 24 years old.</p>
+<p>Note: You can also use:</p>
+<div class="line-block">
+<div class="line">print (“{0} {1} is {2} years old.” .format(fname, lname, age))</div>
+<div class="line">where the number indicate the position of the placeholders</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>i. String Indexing</strong></p>
 <p>In programming, individual items in an ordered set of data can be accessed directly using a numeric index or key value. This process is referred to as indexing.</p>
 <p>In Python, strings are ordered sequences of character data, and thus can be indexed in this way. Individual characters in a string can be accessed by specifying the string name followed by a number in square brackets [ ].</p>
 <p>String indexing in Python is zero-based: the first character in the string has index 0, the next has index 1, and so on. The index of the last character will be the length of the string minus one.</p>
@@ -265,7 +305,7 @@ IndexError: string index out of range</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>i. String Slicing</strong></p>
+<p><strong>j. String Slicing</strong></p>
 <p>Python also allows a form of indexing syntax that extracts substrings from a string, known as string slicing. If s is a string, an expression of the form  s[m:n]  returns the portion of  s starting with position m, and up to but not including position n:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;foobar&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
@@ -295,7 +335,7 @@ IndexError: string index out of range</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>j. Slicing with Negative indices</strong></p>
+<p><strong>k. Slicing with Negative indices</strong></p>
 <p>Negative indices can be used with slicing as well. -1 refers to the last character, -2, the second-to-last, and so on, just as with simple indexing. The diagram below shows how to slice the substring ‘oob’ from the string ‘foobar’ using both positive and negative indices:
 String index 3</p>
 <p>Here is the corresponding Python code:</p>
@@ -313,7 +353,7 @@ String index 3</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Specifying a Stride in a String Slice</strong></p>
+<p><strong>l. Specifying a Stride in a String Slice</strong></p>
 <p>Adding an additional colon (:) and a third index designates a stride (also called a step), which indicates how many characters to jump after retrieving each character in the slice.</p>
 <p>For example, for the string ‘foobar’, the slice 0:6:2  starts with the first character and ends with the last character (the whole string), and every second character is skipped. This is shown in the following diagram:
 String stride 1</p>
@@ -347,59 +387,10 @@ String stride 2</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>j. Formatting String Variables Using the % Operator</strong></p>
-<p>The program below illustrates the use of string formatting using the % operator.    With this method,  the percentage sign followed by a letter and some numbers indicate how a variable should be formatted. The variable itself is stored as a tuple to the right of the string.   Here are some basic argument specifiers you should know:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>%s - means format the variable as a string</p></li>
-<li><p>%d - means format the variable as an integer</p></li>
-<li><p>%f - means format the variable as as floating point number</p></li>
-<li><p>%0.3f means format the variable as a floating point numbers with three digits to the right of the decimal value.</p></li>
-</ul>
-</div></blockquote>
-<p>In the code below, %0.2f is a placeholder for a variable that will be formatted with two digits to the right of the decimal value.. The name of the variable appears at the end of the string preceded by a % sign.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># Get inputs from the user</span>
-<span class="linenos">2</span><span class="n">base</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter length of the base of the triangle: &#39;</span><span class="p">))</span>
-<span class="linenos">3</span><span class="n">height</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter the height of the triangle &#39;</span><span class="p">))</span>
-<span class="linenos">4</span>
-<span class="linenos">5</span><span class="c1"># calculate the area of the triangle</span>
-<span class="linenos">6</span><span class="n">triangle_area</span> <span class="o">=</span> <span class="p">(</span><span class="n">base</span> <span class="o">*</span> <span class="n">height</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-<span class="linenos">7</span>
-<span class="linenos">8</span><span class="c1"># Display the results</span>
-<span class="linenos">9</span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;The area of the triangle is </span><span class="si">%0.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">triangle_area</span><span class="p">)</span>
-</pre></div>
-</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>When more than one variables is being formatted, a tuple is used to store the variable names at the end of the string.  This is demonstrated in the code below.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">num</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter a number: &#39;</span><span class="p">))</span>
-<span class="linenos">2</span><span class="n">num_sqrt</span> <span class="o">=</span> <span class="n">num</span> <span class="o">**</span> <span class="mf">0.5</span>
-<span class="linenos">3</span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;The square root of </span><span class="si">%0.2f</span><span class="s1"> is </span><span class="si">%0.4f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">num_sqrt</span><span class="p">))</span>
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p><strong>k. String formatting with the format method</strong></p>
-<p>The .format() method is another way to format strings. With this method, we use empty curly braces {} as placeholders to store variables. In order to pass the variables the curly brackets, we use the .format() method. Within the format method, the variables are placed in the order in which they should appear in the program statement.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;John&quot;</span>
-<span class="linenos">2</span><span class="n">lname</span> <span class="o">=</span> <span class="s2">&quot;Doe&quot;</span><span class="s1">&#39;</span>
-<span class="linenos">3</span><span class="n">age</span> <span class="o">=</span> <span class="s2">&quot;24&quot;</span>
-<span class="linenos">4</span>
-<span class="linenos">5</span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> is </span><span class="si">{}</span><span class="s2"> years old.&quot;</span> <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">lname</span><span class="p">,</span> <span class="n">age</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>John Doe is 24 years old.</p>
-<p>Note: You can also use:</p>
-<div class="line-block">
-<div class="line">print (“{0} {1} is {2} years old.” .format(fname, lname, age))</div>
-<div class="line">where the number indicate the position of the placeholders</div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p><strong>l. Mathematical Opeerations and Strings</strong></p>
+<p><strong>m. Mathematical Opeerations and Strings</strong></p>
 <p>In general, mathematical operations on strings are illegal:</p>
 <p>‘2’-‘1’    ‘eggs’/’easy’    ‘third’ * ‘a charm’</p>
 <div class="line-block">
