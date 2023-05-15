@@ -354,16 +354,10 @@ String stride 2</p>
 <li><p>%s - means format the variable as a string</p></li>
 <li><p>%d - means format the variable as an integer</p></li>
 <li><p>%f - means format the variable as as floating point number</p></li>
-<li><p>%.3f means format the variable as a floating point numbers with three digits to the right of the decimal value.</p></li>
+<li><p>%0.3f means format the variable as a floating point numbers with three digits to the right of the decimal value.</p></li>
 </ul>
 </div></blockquote>
-<p>In the code below, %0.2f and %0.4f’ are formatted place holders for two variables. The variables appear at the end of the string in the form of a tuple preceded by a % sign.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">num</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter a number: &#39;</span><span class="p">))</span>
-<span class="linenos">2</span><span class="n">num_sqrt</span> <span class="o">=</span> <span class="n">num</span> <span class="o">**</span> <span class="mf">0.5</span>
-<span class="linenos">3</span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;The square root of </span><span class="si">%0.2f</span><span class="s1"> is </span><span class="si">%0.4f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">num_sqrt</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>When only one variable is being formatted, a tuple is not used. This is demonstrated in the code below.</p>
+<p>In the code below, %0.2f is a placeholder for a variable that will be formatted with two digits to the right of the decimal value.. The name of the variable appears at the end of the string preceded by a % sign.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># Get inputs from the user</span>
 <span class="linenos">2</span><span class="n">base</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter length of the base of the triangle: &#39;</span><span class="p">))</span>
 <span class="linenos">3</span><span class="n">height</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter the height of the triangle &#39;</span><span class="p">))</span>
@@ -373,6 +367,15 @@ String stride 2</p>
 <span class="linenos">7</span>
 <span class="linenos">8</span><span class="c1"># Display the results</span>
 <span class="linenos">9</span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;The area of the triangle is </span><span class="si">%0.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">triangle_area</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>When more than one variables is being formatted, a tuple is used to store the variable names at the end of the string.  This is demonstrated in the code below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">num</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter a number: &#39;</span><span class="p">))</span>
+<span class="linenos">2</span><span class="n">num_sqrt</span> <span class="o">=</span> <span class="n">num</span> <span class="o">**</span> <span class="mf">0.5</span>
+<span class="linenos">3</span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;The square root of </span><span class="si">%0.2f</span><span class="s1"> is </span><span class="si">%0.4f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">num_sqrt</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="line-block">

@@ -318,23 +318,11 @@ The program below illustrates the use of string formatting using the % operator.
  * %s - means format the variable as a string
  * %d - means format the variable as an integer
  * %f - means format the variable as as floating point number
- * %.3f means format the variable as a floating point numbers with three digits to the right of the decimal value.
+ * %0.3f means format the variable as a floating point numbers with three digits to the right of the decimal value.
 
 
 
-In the code below, %0.2f and %0.4f' are formatted place holders for two variables. The variables appear at the end of the string in the form of a tuple preceded by a % sign. 
-
-.. code-block:: python
-   :linenos:
-
-   num = float(input('Enter a number: '))
-   num_sqrt = num ** 0.5
-   print ('The square root of %0.2f is %0.4f' %(num, num_sqrt))
-
- 
-
- 
-When only one variable is being formatted, a tuple is not used. This is demonstrated in the code below.
+In the code below, %0.2f is a placeholder for a variable that will be formatted with two digits to the right of the decimal value.. The name of the variable appears at the end of the string preceded by a % sign. 
 
 
 .. code-block:: python
@@ -352,6 +340,23 @@ When only one variable is being formatted, a tuple is not used. This is demonstr
    print ('The area of the triangle is %0.2f' % triangle_area)
 
    
+
+|
+
+
+When more than one variables is being formatted, a tuple is used to store the variable names at the end of the string.  This is demonstrated in the code below.
+
+
+
+.. code-block:: python
+   :linenos:
+
+   num = float(input('Enter a number: '))
+   num_sqrt = num ** 0.5
+   print ('The square root of %0.2f is %0.4f' %(num, num_sqrt))
+
+
+
 |
 
 
