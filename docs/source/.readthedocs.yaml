@@ -27,3 +27,23 @@ sphinx:
 python:
    install:
    - requirements: docs/requirements.txt
+
+
+
+Street_Name='SIDNEY COVE DRIVE'&Parish='TRELAWNY'
+https://data.gov.jm/api/action/datastore/search.json?Street_Name="SIDNEY COVE DRIVE" &Parish="TRELAWNY"
+
+
+https://data.gov.jm/api/action/datastore/search.json?resource_id=6fe1e0b6-e429-4d10-b6be-3822e7032a27&Street_Name="SIDNEY COVE DRIVE" &Parish="TRELAWNY"
+
+
+SIDNEY COVE DRIVE, TRELAWNY
+
+
+Write a script for ArGIS ApI for Python to access ArcGIS Enterprise, download records and upload the records to a Postgresql database.
+
+
+
+
+(IATA: PTY, ICAO: MPTO) is the primary international airport serving Panama City, the capital of Panama. The airport serves as the homebase for Copa Airlines and is a regional hub to and from The Caribbean, South, North and Central America and additionally features routes to some European and Asian cities.
+

@@ -30,7 +30,7 @@ There are lots of API endpoints or data sets available through this API.  Click 
 |
 
 
-**Retrieving Data Using Python**
+**Retrieving API Data Using Python**
 
 Instead of using the browser to view the json file at the API endpoint, we can use Python to make a call to the API, retreive the data, and view the data.  The script below illustrates how this works:
 
@@ -222,5 +222,5 @@ https://www.earthdatascience.org/courses/use-data-open-source-python/intro-to-ap
 
 https://www.artlembo.com/post/parallel-processing-with-gis-on-desktop-pcs?utm_campaign=2023-05-05&utm_term=16905998&utm_content=educational&utm_source=email-sendgrid&utm_medium=649690
 
-
+JSON Parser- https://jsonformatter.org/json-parser
 

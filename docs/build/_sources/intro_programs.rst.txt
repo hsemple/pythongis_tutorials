@@ -332,7 +332,6 @@ In the script below, we are highlighting how to import one of Python's built-in 
 
 .. code-block:: python
 
-   
    #import the math library that contains math functions
    import math
 

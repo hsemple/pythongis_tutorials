@@ -1087,7 +1087,7 @@ Displaying Rasters
 --------------------
 
 
-In programming, rasters are considered as *arrays*.  An array is a collection of items of the same data type that can be manipulated as a single entity.  In Python,  a list is a one dimensional array.  However, when we are thinking about rasters, we are typically thinking of two dimensional arrays that are matrices of numbers defined by rows and columns.  
+In programming, rasters are considered as *arrays*.  An array is a collection of items of the same data type that can be manipulated as a single entity.  In Python,  a list is a one dimensional array.  However, when we are thinking about rasters, we are typically thinking of two dimensional arrays that are defined by rows and columns.  
 
 In Python, one difference between a list and a two-dimensional array is that whereas a list can store multiple data types, a two-dimensional array can store only one data type.  
 
@@ -1096,11 +1096,11 @@ In Python, one difference between a list and a two-dimensional array is that whe
    :alt: One and Two Dimensional Arrays
 
 
-Python has specialized libraries for manipulating arrays. Two popular ones are the "numpy" library and the “array" module. Numpy appears to be more popular.  To import Numpy, type:    
+Python has specialized libraries for manipulating arrays. Two popular ones are the "numpy" library and the “array" module. Numpy appears to be more popular.  To import Numpy into your script, type:    
 
 >>> import numpy as np
 
-To learn more about arrays, please click on `this link <https://jakevdp.github.io/PythonDataScienceHandbook/02.02-the-basics-of-numpy-arrays.html>`_.
+The "np" is a nickname by convention. To learn more about arrays, please click on `this link <https://jakevdp.github.io/PythonDataScienceHandbook/02.02-the-basics-of-numpy-arrays.html>`_.
 
 
 |

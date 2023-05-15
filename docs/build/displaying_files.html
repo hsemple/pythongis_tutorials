@@ -71,6 +71,7 @@
 <li class="toctree-l1"><a class="reference internal" href="geocoding.html">12. Geocoding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">13. Terrain Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">14. Batch Processing &amp; Workflow Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">15. Retrieving Data from APIs</a></li>
 </ul>
 
         </div>
@@ -884,14 +885,14 @@ the objective with this code sample is to illustrate some details that is involv
 </section>
 <section id="displaying-rasters">
 <h2><span class="section-number">8.9. </span>Displaying Rasters<a class="headerlink" href="#displaying-rasters" title="Permalink to this heading"></a></h2>
-<p>In programming, rasters are considered as <em>arrays</em>.  An array is a collection of items of the same data type that can be manipulated as a single entity.  In Python,  a list is a one dimensional array.  However, when we are thinking about rasters, we are typically thinking of two dimensional arrays that are matrices of numbers defined by rows and columns.</p>
+<p>In programming, rasters are considered as <em>arrays</em>.  An array is a collection of items of the same data type that can be manipulated as a single entity.  In Python,  a list is a one dimensional array.  However, when we are thinking about rasters, we are typically thinking of two dimensional arrays that are defined by rows and columns.</p>
 <p>In Python, one difference between a list and a two-dimensional array is that whereas a list can store multiple data types, a two-dimensional array can store only one data type.</p>
 <img alt="One and Two Dimensional Arrays" src="_images/arrays1.png" />
-<p>Python has specialized libraries for manipulating arrays. Two popular ones are the “numpy” library and the “array” module. Numpy appears to be more popular.  To import Numpy, type:</p>
+<p>Python has specialized libraries for manipulating arrays. Two popular ones are the “numpy” library and the “array” module. Numpy appears to be more popular.  To import Numpy into your script, type:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
-<p>To learn more about arrays, please click on <a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/02.02-the-basics-of-numpy-arrays.html">this link</a>.</p>
+<p>The “np” is a nickname by convention. To learn more about arrays, please click on <a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/02.02-the-basics-of-numpy-arrays.html">this link</a>.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
