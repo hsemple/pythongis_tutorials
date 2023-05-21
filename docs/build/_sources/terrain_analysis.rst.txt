@@ -37,7 +37,7 @@ Terrain analysis starts with displaying digital elevation models.  We have touch
 
 
 Generating Hillshades
-----------------------
+-------------------------
 
 Hillshades are used in terrain analysis to give elevation data a 3-dimensional appearance thereby making it easier to visualize variations in topography. Hillshades are also frequently used in GIS and Cartography as underlays to make other kinds of data more visually interesting. Google Maps use hillshades extensivelly to portray terrain features of the earth.
 
@@ -236,8 +236,7 @@ In this example, both the elevation layer and the hillshade layer are displayed 
 
 
 
-<<<<<<< HEAD:docs/source/terrain_analysis.rst
-=======
+
 Displaying Terrain Data in 3D
 -------------------------------
 
@@ -454,9 +453,6 @@ Now, let's look at a script that drapes an orthopho over the bare earth DEM mode
 |
 
 
-
-
->>>>>>> 9e9fd24 (New  commit):source/terrain_analysis.rst
 
 Slope Mapping
 ----------------
@@ -1108,7 +1104,7 @@ For more information, see https://man.archlinux.org/man/community/gdal/gdal_view
 
 
 Running GDAL Commands from Python
-----------------------------------
+------------------------------------
 
 It is possible to call GDAL commands from Python and other scripting languages. This allows for easy iteration through geoprocessing tasks, or integration of geoprocessing steps into complex scripted workflows.  For more information, please visit this page: https://gdal.org/tutorials/raster_api_tut.html. Below are some code samples for using GDAL from within Python.
 
@@ -1155,12 +1151,7 @@ We have already seen this structure in previous Python scripts that used the gda
 
 
 
-
-<<<<<<< HEAD:docs/source/terrain_analysis.rst
-=======
 |
-
->>>>>>> 9e9fd24 (New  commit):source/terrain_analysis.rst
 
 
 Exercises
@@ -1191,12 +1182,7 @@ https://geobgu.xyz/py/rasterio.html
 Popular GDAL commands. https://github.com/dwtkns/gdal-cheat-sheet
 
 Classify a Raster Using Threshold Values in Python - 2017 - https://www.neonscience.org/resources/learning-hub/tutorials/classify-raster-thresholds-py
-
-<<<<<<< HEAD:docs/source/terrain_analysis.rst
-=======
 https://www.blendernation.com/2016/09/03/owen-powell-maps-terrain-models/
 
-
->>>>>>> 9e9fd24 (New  commit):source/terrain_analysis.rst
 
 

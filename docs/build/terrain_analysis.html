@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="17. Batch Processing &amp; Workflow Automation" href="workflow_automation.html" />
+    <link rel="next" title="14. Batch Processing &amp; Workflow Automation" href="workflow_automation.html" />
     <link rel="prev" title="12. Geocoding" href="geocoding.html" /> 
 </head>
 
@@ -59,27 +59,20 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">13. Terrain Analysis</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#displaying-dem">13.1. Displaying DEM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#generating-hillshades">13.2. Generating Hillshades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#displaying-terrain-data-in-3d">13.3. Displaying Terrain Data in 3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#slope-mapping">13.4. Slope Mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aspect-mapping">13.5. Aspect Mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#curvature-maps">13.6. Curvature Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#computing-viewshed">13.7. Computing Viewshed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#watershed-delineation-using-pysheds">13.8. Watershed Delineation Using PySheds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-gdal-command-line-utilities">13.9. Working with GDAL Command Line Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-gdal-commands-from-python">13.10. Running GDAL Commands from Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">13.11. Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resources">13.12. Resources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#head-docs-source-terrain-analysis-rst">14. &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#displaying-terrain-data-in-3d">14.1. Displaying Terrain Data in 3D</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#slope-mapping">14.2. Slope Mapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#aspect-mapping">14.3. Aspect Mapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#curvature-maps">14.4. Curvature Maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#computing-viewshed">14.5. Computing Viewshed</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#watershed-delineation-using-pysheds">14.6. Watershed Delineation Using PySheds</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#working-with-gdal-command-line-utilities">14.7. Working with GDAL Command Line Utilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#running-gdal-commands-from-python">14.8. Running GDAL Commands from Python</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#id1">15. &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#exercises">15.1. Exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#resources">15.2. Resources</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#id2">16. &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst</a></li>
-<li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">17. Batch Processing &amp; Workflow Automation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">18. Retrieving Data from APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">14. Batch Processing &amp; Workflow Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">15. Retrieving Data from APIs</a></li>
 </ul>
 
         </div>
@@ -283,11 +276,8 @@
 <div class="line"><br /></div>
 </div>
 </section>
-</section>
-<section id="head-docs-source-terrain-analysis-rst">
-<h1><span class="section-number">14. </span>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst<a class="headerlink" href="#head-docs-source-terrain-analysis-rst" title="Permalink to this heading"></a></h1>
 <section id="displaying-terrain-data-in-3d">
-<h2><span class="section-number">14.1. </span>Displaying Terrain Data in 3D<a class="headerlink" href="#displaying-terrain-data-in-3d" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">13.3. </span>Displaying Terrain Data in 3D<a class="headerlink" href="#displaying-terrain-data-in-3d" title="Permalink to this heading"></a></h2>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -469,10 +459,9 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt; 9e9fd24 (New  commit):source/terrain_analysis.rst</p>
 </section>
 <section id="slope-mapping">
-<h2><span class="section-number">14.2. </span>Slope Mapping<a class="headerlink" href="#slope-mapping" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">13.4. </span>Slope Mapping<a class="headerlink" href="#slope-mapping" title="Permalink to this heading"></a></h2>
 <p><strong>Generate Slope Map with Arcpy</strong></p>
 <p>The two scripts below show how to calculate slope using ArcPy.</p>
 <ol class="arabic simple">
@@ -567,7 +556,7 @@
 </div>
 </section>
 <section id="aspect-mapping">
-<h2><span class="section-number">14.3. </span>Aspect Mapping<a class="headerlink" href="#aspect-mapping" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">13.5. </span>Aspect Mapping<a class="headerlink" href="#aspect-mapping" title="Permalink to this heading"></a></h2>
 <p><strong>Calculate Aspect Using Arcpy</strong></p>
 <p>The script below show how to generate an aspect map using ArcPy.</p>
 <ol class="arabic simple">
@@ -634,7 +623,7 @@
 </div>
 </section>
 <section id="curvature-maps">
-<h2><span class="section-number">14.4. </span>Curvature Maps<a class="headerlink" href="#curvature-maps" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">13.6. </span>Curvature Maps<a class="headerlink" href="#curvature-maps" title="Permalink to this heading"></a></h2>
 <p><strong>Generate Curvature Maps Using Arcpy</strong></p>
 <p>The first two scripts below show how to calculate curvature using ArcPy.  The third script shows how to compute profile with the richdem library.</p>
 <ol class="arabic simple">
@@ -691,7 +680,7 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 </div>
 </section>
 <section id="computing-viewshed">
-<h2><span class="section-number">14.5. </span>Computing Viewshed<a class="headerlink" href="#computing-viewshed" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">13.7. </span>Computing Viewshed<a class="headerlink" href="#computing-viewshed" title="Permalink to this heading"></a></h2>
 <p><strong>Viewshed Using Arcpy</strong></p>
 <p>This sample script comes from <a class="reference external" href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/3d-analyst/viewshed.htm">ESRI</a>. It calculates surface locations that are visible to a set of observers defined in a shapefile. The script requires the 3D Analyst Extension</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
@@ -718,7 +707,7 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 </div>
 </section>
 <section id="watershed-delineation-using-pysheds">
-<h2><span class="section-number">14.6. </span>Watershed Delineation Using PySheds<a class="headerlink" href="#watershed-delineation-using-pysheds" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">13.8. </span>Watershed Delineation Using PySheds<a class="headerlink" href="#watershed-delineation-using-pysheds" title="Permalink to this heading"></a></h2>
 <p>I came across a library called pysheds that can be used for watershed delineation. Tested sample code is presented below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pysheds.grid</span> <span class="kn">import</span> <span class="n">Grid</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -805,7 +794,7 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 </div>
 </section>
 <section id="working-with-gdal-command-line-utilities">
-<h2><span class="section-number">14.7. </span>Working with GDAL Command Line Utilities<a class="headerlink" href="#working-with-gdal-command-line-utilities" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">13.9. </span>Working with GDAL Command Line Utilities<a class="headerlink" href="#working-with-gdal-command-line-utilities" title="Permalink to this heading"></a></h2>
 <p>GDAL (Geospatial Data Abstraction Library) is perhaps the most established library for reading and processing raster and vector geographical data. It is used by many GIS including ArcGIS and QGIS.  GDAL is written in the C++ programming language, but bindings are available that allow it to called from other languages.</p>
 <p>GDAL also has some special programs called <a class="reference external" href="https://gdal.org/programs/index.html">Utilities</a>, which are useful for performing many popular GIS tasks.  These utilities can be called from the command line assuming that proper path is set. They can also be from within Python.  In this section, we will look at how to call GDAL Utilities from the command line.  In the next section, we will look at calling GDAL from within Python.</p>
 <div class="line-block">
@@ -968,7 +957,7 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 </div>
 </section>
 <section id="running-gdal-commands-from-python">
-<h2><span class="section-number">14.8. </span>Running GDAL Commands from Python<a class="headerlink" href="#running-gdal-commands-from-python" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">13.10. </span>Running GDAL Commands from Python<a class="headerlink" href="#running-gdal-commands-from-python" title="Permalink to this heading"></a></h2>
 <p>It is possible to call GDAL commands from Python and other scripting languages. This allows for easy iteration through geoprocessing tasks, or integration of geoprocessing steps into complex scripted workflows.  For more information, please visit this page: <a class="reference external" href="https://gdal.org/tutorials/raster_api_tut.html">https://gdal.org/tutorials/raster_api_tut.html</a>. Below are some code samples for using GDAL from within Python.</p>
 <p><strong>Open a Raster with GDAL</strong></p>
 <p>We have already seen this structure in previous Python scripts that used the gdal library.</p>
@@ -996,16 +985,12 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</section>
-</section>
-<section id="id1">
-<h1><span class="section-number">15. </span>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt; 9e9fd24 (New  commit):source/terrain_analysis.rst</p>
+</section>
 <section id="exercises">
-<h2><span class="section-number">15.1. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">13.11. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Write a script that prompts the user for the path to an input DEM and an input satellite imagery.  Afterwards, the script should generate a hillshade of the area. Finally, the script should drape the satellite imagery over the hillshade. You can download <a class="reference external" href="https://www.dropbox.com/s/r61wulyhlctvdcf/Washington_Data.zip?dl=0">sample data here</a></p></li>
 <li><p>Instead of generating a hillshade, write a second script to generate a 3D model of the area. Afterward, let the script drape a satellite imagery over the 3D model of the area.</p></li>
@@ -1015,7 +1000,7 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 </div>
 </section>
 <section id="resources">
-<h2><span class="section-number">15.2. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">13.12. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
 <p>Draping an orthophoto over a DEM
 <a class="reference external" href="https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem">https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem</a></p>
 <p>Batch processing – automatizing the use of GDAL and SAGA GIS tools using Bash Shell scripts
@@ -1023,13 +1008,9 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 <p>Working with Rasterio
 <a class="reference external" href="https://geobgu.xyz/py/rasterio.html">https://geobgu.xyz/py/rasterio.html</a></p>
 <p>Popular GDAL commands. <a class="reference external" href="https://github.com/dwtkns/gdal-cheat-sheet">https://github.com/dwtkns/gdal-cheat-sheet</a></p>
-<p>Classify a Raster Using Threshold Values in Python - 2017 - <a class="reference external" href="https://www.neonscience.org/resources/learning-hub/tutorials/classify-raster-thresholds-py">https://www.neonscience.org/resources/learning-hub/tutorials/classify-raster-thresholds-py</a></p>
+<p>Classify a Raster Using Threshold Values in Python - 2017 - <a class="reference external" href="https://www.neonscience.org/resources/learning-hub/tutorials/classify-raster-thresholds-py">https://www.neonscience.org/resources/learning-hub/tutorials/classify-raster-thresholds-py</a>
+<a class="reference external" href="https://www.blendernation.com/2016/09/03/owen-powell-maps-terrain-models/">https://www.blendernation.com/2016/09/03/owen-powell-maps-terrain-models/</a></p>
 </section>
-</section>
-<section id="id2">
-<h1><span class="section-number">16. </span>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h1>
-<p><a class="reference external" href="https://www.blendernation.com/2016/09/03/owen-powell-maps-terrain-models/">https://www.blendernation.com/2016/09/03/owen-powell-maps-terrain-models/</a></p>
-<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt; 9e9fd24 (New  commit):source/terrain_analysis.rst</p>
 </section>
 
 
@@ -1037,7 +1018,7 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="geocoding.html" class="btn btn-neutral float-left" title="12. Geocoding" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="workflow_automation.html" class="btn btn-neutral float-right" title="17. Batch Processing &amp; Workflow Automation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="workflow_automation.html" class="btn btn-neutral float-right" title="14. Batch Processing &amp; Workflow Automation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
