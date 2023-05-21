@@ -1,4 +1,10 @@
 
+<<<<<<< HEAD:docs/build/html/_sources/getting_started.rst.txt
+Setting up Development Environments
+======================================
+
+For these tutorials, we will run our Python scripts in different development environments depending on what needs to be accomplished. We will use the following development environments: the Standard Python Distribution, Anaconda Distribution, ArcGIS Pro, ArcGIS API for Python, and QGIS. This will give users an opportunity to familiarize themselves with these various platforms.
+=======
 
 
 
@@ -7,11 +13,24 @@ Development Environments
 ==========================
 
 For these tutorials, we will run Python in the following development environments: The Standard Python Distribution, Anaconda Distribution, ArcGIS Pro, ArcGIS APII for Python, and QGIS. 
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/getting_started.rst.txt
 
 
 |
 
 
+<<<<<<< HEAD:docs/build/html/_sources/getting_started.rst.txt
+The Standard Python Distribution 
+-----------------------------------
+
+Many people use the Standard Python Distribution as their central platform for development. Scripts are executed in IDLE, which is Python's default integrated development environment.  After installation, you will notice that the Standard Python Distribution lacks many packages that are needed for GIS work so you will have to install these manually. Sometimes, installing these packages and their dependencies can be challenging, but these challenges are great opportunities for learning the inner details of Python.
+
+
+1. To download the Standard Python Distribution, visit Python's `homepage <https://www.python.org/downloads/>`_. Download the latest version.
+
+
+2. If you are using a Windows computer, install the program on your computer using the Windows installer.
+=======
 The Python Core Distribution 
 -----------------------------------------
 
@@ -22,11 +41,50 @@ Many people still use the core Python distribution to run their code. However, b
 
 
 2. After downloading, install the program on your computer.
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/getting_started.rst.txt
 
  .. image:: img/install_python.png
    :alt: Install Python
 
 
+<<<<<<< HEAD:docs/build/html/_sources/getting_started.rst.txt
+3. If you are using a mac computer, first download and install `Homebrew <https://brew.sh/)>`_ . Homebrew is a package manager that helps users to quickly install software packages on Mac computers using the command line.  Prior to installing homebrew, you need to install Xcode’s Command Line Tools. Xcode is a macOS integrated development environment (IDE). You can use it to make apps for all mac OSs, iOS, iPad OS, watch OS, and tv OS. To download and install it, run the following command in the Terminal:
+
+    >>> xcode-select --install
+
+4. Accept starting the installation and the license and it will be installed automatically.
+
+
+5.  To install Homebrew automatically, run the command below:
+
+    >>> /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+
+6. After installing Python on Windows or macOS check the version of Python that will be run from the command prompt. To do this type:
+
+     >>> which python3
+
+7. You should get  /usr/local/bin/python3 or something similar.
+
+
+8. Check also that the Python 3x Directory has been added to your System's Path Environment Variable.  To check for this type, type:
+    
+    >>> $PATH
+
+
+9. To install new packages, you need to use Pip.  The basic structure of the command is "pip install <package_name>". To install a library nameD *matplotlib*, type:
+
+    >>> pip install matplotlib
+
+   
+10. To begin entering code into Python, start either the Python Interpreter or IDLE then enter the code.  
+
+ .. image:: img/interpreter_idle.png
+   :alt: Python Interpreter and IDLE
+
+
+11. After installing Pyhton, you may realize that you have more than one Python installations on your computer. This is not an issue except that when you try to start Python from the command prompt, you may find that the Python installation you wish to start is not the recent one that you installed.  There are many ways to resolve this problem.  This `document <https://betterprogramming.pub/the-best-way-we-create-and-manage-multiple-versions-of-python-22363e065a43>`_ contains some tips on how to resolve this issue. You can google similar documents on the topic.
+=======
 3. Follow the `instructions <https://aaronstannard.com/how-to-setup-a-proper-python-environment-on-windows/>`_ on this page to do the following:
 
   a. Add the Python 2.7 Directory to your System Path Environment Variable. ...
@@ -42,10 +100,95 @@ Many people still use the core Python distribution to run their code. However, b
 
 
 5. To install new packages, you need to install Pip.  Click `this link <https://phoenixnap.com/kb/install-pip-windows>`_ to learn more about how to work with Pip.  
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/getting_started.rst.txt
 
 
 
 |
+<<<<<<< HEAD:docs/build/html/_sources/getting_started.rst.txt
+
+
+Python Virtual Environments
+-----------------------------
+
+When working with Python, it is a good idea to work with virtual environments. Virtual environments are isolated environments that Python developers can use to install and run packages for a specific project.  Thus, instead of installing the packages for the entire system, users can install the packages needed for a particular project. This allows each project to have its own dependencies regardless of what dependencies other projects may be using.   
+
+
+
+**How to Install and Create Virtual Environment**
+
+
+1. At the Python prompt, type
+
+    >>> pip3 install virtualenv
+
+
+2. Make a new directory to keep all your virtual environments in one place.
+
+    >>> mkdir python-virtual-environments && cd python-virtual-environments
+
+
+3. Create a new virtual environment inside the 'python-virtual-environments' directory.
+
+   >>> python3 -m venv project_env
+
+
+4. To activate the 'project_env virtual envirnonment' you created in the previous step, run the code below.  
+
+   >>> source project_env/bin/activate
+
+
+5. Notice how your prompt is now prefixed with the name of your environment (project_env, in our case). This indicates that 'project_env' is currently active, which means the python executable will only use this environment’s packages and settings.
+
+
+6. To stop using the virtual environment, run the code below.
+
+    >>> deactivate
+ 
+
+|
+
+**References**
+
+* Python Virtual Environments Explained with Examples - https://www.freecodecamp.org/news/python-virtual-environments-explained-with-examples/
+
+* Python Virtual Environments - https://autogis-site.readthedocs.io/en/latest/course-info/create-python-gis-environment.html
+
+* Python GIS environment - https://gist.github.com/ThomasG77/223064813d8aefda5b3cdb05c2588fa1
+
+
+|
+
+
+
+
+ 
+Jupyter Notebook in Anaconda 
+------------------------------
+
+Anaconda is a large Python distribution that has become very popular over the last several years.  One reason for its popularity is that it comes  with many pre-installed packages. Also, users can run their code using Jupyter Notebook, which is a nice, browser-based environment for running code. I strongly recommend that you use Jupyter Notebook as much as you can for your Python GIS programming.
+
+
+1. Download the Anaconda Distribution at `this site <https://www.anaconda.com/products/distribution>`_ (https://www.anaconda.com/products/distribution). 
+
+
+2. After intallation, start Anaconda, then launch the Jupyter Notebook. 
+
+
+ .. image:: img/jupyter_notebook.png
+   :alt: Anaconda Navigator
+
+
+3. Click on this `link <https://www.edlitera.com/en/blog/posts/guide-how-to-start-jupyter-notebook#mcetoc_1gcqvj0h63>`_ (https://www.edlitera.com/en/blog/posts/guide-how-to-start-jupyter-notebook#mcetoc_1gcqvj0h63) for information on how to open a Jupyter Notebook on macOS or Windows.  The Jupyter development environment should appear as shown below.
+
+
+ .. image:: img/jupyter_dev_environment.png
+   :alt: Jupyter Notebook Development Environment
+
+
+
+4. If you need to install new packages, including spatial packakes, look for the Anaconda folder at the Windows Start button, then click on Anaconda prompt.  When the Anaconda prompt appears, enter the command below to install a new package. Conda installs many packages with ease, so you should use it often.
+=======
  
 
 
@@ -75,14 +218,23 @@ Anaconda is a large Python distribution that has become very popular over the la
 
 
 4. If you need to install a new package, open the Anaconda folder in Windows, look for Anaconda prompt.  When the Anaconda prompt starts, enter the command below to search for an install a new package. Conda installs many packages with ease, so you should use it often.
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/getting_started.rst.txt
 
            conda install package_name
 
 
+<<<<<<< HEAD:docs/build/html/_sources/getting_started.rst.txt
+5. Alternatively, you can install new packages from within Anaconda Navigator. This works for either Windows or macOS.
+
+ .. image:: img/install_packages.png
+   :alt: Anaconda Navigator Environment
+
+=======
 5. Alternatively, you can install new packages from within Anaconda Navigatot.
 
  .. image:: img/install_packages.png
    :alt: Install Python
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/getting_started.rst.txt
 
 
  
@@ -92,16 +244,28 @@ Anaconda is a large Python distribution that has become very popular over the la
 Jupyter Notebook within ArcGIS Pro
 -------------------------------------
 
+<<<<<<< HEAD:docs/build/html/_sources/getting_started.rst.txt
+1. If you have ArcGIS Pro installed on your computer, you can run Python using the Jupyter Notebook that is installed with ArcGIS Pro.  This is a good development environment to use as the connection between ArcGIS Pro and Jupyter Notebook is already configured.   
+=======
 1. If you have ArcGIS Pro installed on your computer, you can run Python using Jupyter Notebook that is installed with ArcGIS Pro.  This is a good development environment to use  as the connection between Python and Jupyter Notebook is already configured.   
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/getting_started.rst.txt
 
 
 2. To run Python using Jupyter Notebook that is installed with ArcGIS Pro, open ArcGIS Pro, then click on Project | Python | Python Notebook, This shown in the illustration below.
 
+<<<<<<< HEAD:docs/build/html/_sources/getting_started.rst.txt
+ .. image:: img/jupyter_notebook_arcgis_pro.png
+   :alt: Python's Notebook in ArcGIS Pro 
+
+
+3. If you wish to add new libraries to ArcGIS, you will first have to clone the Python's default environment in ArcGIS Pro then install the new libraries to the cloned environment.  This `ESRI tutorial <https://support.esri.com/en/technical-article/000020560>`_ shows how to clone Python's default environment within ArcGIS Pro.
+=======
  .. image:: img/python_notebook.png
    :alt: Python's Notebook in ArcGIS Pro 
 
 
 3. If you wish to add new libraries to ArcGIS, you will first have to clone Python's default environment in ArcGIS Pro then install the new libraries to the cloned environment.  This `ESRI tutorial <https://support.esri.com/en/technical-article/000020560>`_shows  how to clone Python's default environment within ArcGIS Pro.
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/getting_started.rst.txt
  
 
  
@@ -111,6 +275,15 @@ Jupyter Notebook within ArcGIS Pro
 Python Window in ArcGIS Pro 
 -----------------------------
 
+<<<<<<< HEAD:docs/build/html/_sources/getting_started.rst.txt
+1. In ArcGIS Pro, click on Project | Python | Python Window.  
+  
+
+ .. image:: img/jupyter_notebook_arcgis_pro2.png
+   :alt: New Python Notebook
+
+  
+=======
 1. In ArcGIS Pro, select the Analysis tab. Depending on your version of ArcGIS Pro, you will be able to select the Python Window. As shown below, in Python 2.7, you can click the drop-down menu to the right of the Python button and click Python Window. In other versions, or you may just have to click on the Python Window.
   
 
@@ -119,6 +292,7 @@ Python Window in ArcGIS Pro
 
   
  
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/getting_started.rst.txt
  2. This opens the Python window.
    
 
@@ -126,10 +300,17 @@ Python Window in ArcGIS Pro
    :alt: ArcGIS Python Notebook
 
 
+<<<<<<< HEAD:docs/build/html/_sources/getting_started.rst.txt
+3. The top section of the Python Window is called the transcript. The bottom section is called the prompt. The transcript is initially blank. The transcript provides a record of previously entered code and its results.
+
+
+4. The prompt is where you type your code. When the Python window first opens, the message in the prompt reads Initializing Python interpreter, which means the window is getting ready to receive your code. After a few seconds the message is replaced with Enter Python code here, which means you can start typing your code. See this link for a tutorial.
+=======
 3. The top section of the Python Window is called the transcript, and the bottom section is called the prompt. The transcript is initially blank. The transcript provides a record of previously entered code and its results.
 
 4. The prompt is where you type your code. When the Python window first opens, the message in the prompt reads Initializing Python interpreter, which means the window is getting ready to receive your code. After a few seconds the message is replaced with Enter Python code here, which means you can start typing your code. After you have opened the Python window for the first time, these messages don’t appear again in the current session.
 See this link for a tutorial.
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/getting_started.rst.txt
  
 
 
@@ -154,6 +335,21 @@ The Python Console within QGIS
 **Running Python from the Console Shell**
 
 
+<<<<<<< HEAD:docs/build/html/_sources/getting_started.rst.txt
+1. Open QGIS.  From the main menu in QGIS, select Plugins | Python Console.  This will cause the Python Console to appear. It may open up towards the bottom of the application, however, if you wish, you can detach it from the main window and place it whereever you wish.
+
+
+ .. image:: img/qgis_python_console1.png
+   :alt: New Python Notebook
+
+
+2. The lower part of the Console display with the >>> prompt. This is is where you type commands.  
+
+
+3. The Python statements can be pure Python commands that have nothing to do with QGIS, or they can be Python statements ained at manipulating QGIS cser data i QGIS.
+
+
+=======
 1. Open QGIS and add this WFS layer. To do so, click on Add Layer | Add WFS Layer..., then select New and provide this URL: https://maps.gns.cri.nz/geology/wfs
 
 2. Highlight the layer called NZL_GNS_250K_faults and select Add Layer to Project. 
@@ -189,6 +385,7 @@ The Python Console within QGIS
 9. Now, let us get a count of the number of features in the layer:
 
 >>> layer.featureCount()
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/getting_started.rst.txt
 
 
 |
@@ -196,6 +393,26 @@ The Python Console within QGIS
 
 **Accessing the QGIS Python Editor**
 
+<<<<<<< HEAD:docs/build/html/_sources/getting_started.rst.txt
+1.  The editor is used to write scripts that are too lengthy to be edited and executed from the Console Shell.   It can be accessed by clicking "Show Editor" in the upper part of the console.
+
+
+
+2.  To illustrate the use of the editor, we will execute a simple script to print the mean of a set of numbers. The script is provided below along with an illustration of how it appers in QGIS.
+
+.. code-block:: python
+   :linenos:
+
+   import numpy
+   arr_mean = numpy.mean([31,35,46,59,71,80,84,82,75,62,48,36])
+   print("The arithmetic mean is :", arr_mean)
+
+
+.. image:: img/qgis_python_console2.png
+   :alt: Python Script Print Name of Attribute Fields
+
+
+=======
 1.  The editor is used to write scripts that would be too lengthy to run from the Console Shell.   It can be accessed by right-clicking Show Editor in the upper part of the console.
 
 2.  We will write a simple script to print the names of the fields in the attribute table of the WFC layer ::
@@ -219,6 +436,7 @@ The Python Console within QGIS
         print(sum(lengths))
 
 
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/getting_started.rst.txt
 
 |
 
@@ -228,9 +446,13 @@ Jupyter Notebook with QGIS
 
 1. It is possible to run Jupyter notebook from within QGIS.  First, you must install the pyqgis modules into an environment. After than, you can with QGIS outside of the application itself. 
 
+<<<<<<< HEAD:docs/build/html/_sources/getting_started.rst.txt
+2. Create a Python GIS environment  - https://lerryws.xyz/posts/Install-Jupyter-Notebook-in-QGIS3
+=======
 2. Create a Python GIS environment  - https://autogis-site.readthedocs.io/en/latest/course-info/create-python-gis-environment.html
 
 
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/getting_started.rst.txt
 
 
 |
@@ -241,6 +463,27 @@ Jupyter Notebook with QGIS
 Resources
 ------------
 
+<<<<<<< HEAD:docs/build/html/_sources/getting_started.rst.txt
+* Getting Started With Python Programming (QGIS3) - https://www.qgistutorials.com/en/docs/3/getting_started_with_pyqgis.html
+
+* Customizing QGIS with Python (Full Course Material) - https://courses.spatialthoughts.com/pyqgis-in-a-day.html
+
+* QGIS Python API documentation - https://qgis.org/pyqgis/master/
+
+* PyQGIS Developer Cookbook - https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/index.html
+
+* Streamlining GIS with Automation - https://www.geospatialworld.net/prime/technology-and-innovation/streamlining-gis-with-automation/
+
+* Getting started with Anaconda - https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-nav-mac
+
+* QGIS Developers Cookbook - https://docs.qgis.org/2.18/pdf/en/QGIS-2.18-PyQGISDeveloperCookbook-en.pdf
+
+* Getting Started With Python Programming - http://www.qgistutorials.com/en/docs/getting_started_with_pyqgis.html
+
+* GeoPython - AutoGIS  - https://automating-gis-processes.github.io/2016/index.html
+
+* Python Virtual Environments Explained with Examples - https://www.freecodecamp.org/news/python-virtual-environments-explained-with-examples/
+=======
 Getting Started With Python Programming (QGIS3) - https://www.qgistutorials.com/en/docs/3/getting_started_with_pyqgis.html
 
 Customizing QGIS with Python (Full Course Material) - https://courses.spatialthoughts.com/pyqgis-in-a-day.html
@@ -255,6 +498,7 @@ Streamlining GIS with Automation - https://www.geospatialworld.net/prime/technol
 
 Getting started with Anaconda - https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-nav-mac
 
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/getting_started.rst.txt
 
  
 

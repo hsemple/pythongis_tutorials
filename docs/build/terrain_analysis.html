@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="14. Batch Processing &amp; Workflow Automation" href="workflow_automation.html" />
+    <link rel="next" title="17. Batch Processing &amp; Workflow Automation" href="workflow_automation.html" />
     <link rel="prev" title="12. Geocoding" href="geocoding.html" /> 
 </head>
 
@@ -59,19 +59,27 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">13. Terrain Analysis</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#displaying-dem">13.1. Displaying DEM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#generating-hillshades">13.2. Generating Hillshades</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#slope-mapping">13.3. Slope Mapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#aspect-mapping">13.4. Aspect Mapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#curvature-maps">13.5. Curvature Maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#computing-viewshed">13.6. Computing Viewshed</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#watershed-delineation-using-pysheds">13.7. Watershed Delineation Using PySheds</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#working-with-gdal-command-line-utilities">13.8. Working with GDAL Command Line Utilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#running-gdal-commands-from-python">13.9. Running GDAL Commands from Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exercises">13.10. Exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#resources">13.11. Resources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">14. Batch Processing &amp; Workflow Automation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">15. Retrieving Data from APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#head-docs-source-terrain-analysis-rst">14. &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#displaying-terrain-data-in-3d">14.1. Displaying Terrain Data in 3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#slope-mapping">14.2. Slope Mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aspect-mapping">14.3. Aspect Mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#curvature-maps">14.4. Curvature Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#computing-viewshed">14.5. Computing Viewshed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#watershed-delineation-using-pysheds">14.6. Watershed Delineation Using PySheds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-gdal-command-line-utilities">14.7. Working with GDAL Command Line Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-gdal-commands-from-python">14.8. Running GDAL Commands from Python</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#id1">15. &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">15.1. Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resources">15.2. Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#id2">16. &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">17. Batch Processing &amp; Workflow Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">18. Retrieving Data from APIs</a></li>
 </ul>
 
         </div>
@@ -275,8 +283,196 @@
 <div class="line"><br /></div>
 </div>
 </section>
+</section>
+<section id="head-docs-source-terrain-analysis-rst">
+<h1><span class="section-number">14. </span>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst<a class="headerlink" href="#head-docs-source-terrain-analysis-rst" title="Permalink to this heading"></a></h1>
+<section id="displaying-terrain-data-in-3d">
+<h2><span class="section-number">14.1. </span>Displaying Terrain Data in 3D<a class="headerlink" href="#displaying-terrain-data-in-3d" title="Permalink to this heading"></a></h2>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>3D Modeling Using Matplotlib</strong></p>
+<p>It is possible to display terrain data in 3D using matplotlib, but this library by itself is too slow for most GIS data processing.  However, if you choose to use matplotlib, ensure that nodata values are not among the z-values that will be used to render the 3D model.</p>
+<p>Below is a sample script to display terrain data in 3D using matplotlib.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">osgeo.gdal</span> <span class="k">as</span> <span class="nn">gdal</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Open the grid file using GDAL</span>
+<span class="n">grid_file</span> <span class="o">=</span> <span class="s1">&#39;/Users/hsemple/Desktop/Python Scripts/stowe/StoweDEM2.tif&#39;</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">grid_file</span><span class="p">)</span>
+
+<span class="c1"># Get the grid&#39;s geotransform and projection information</span>
+<span class="n">geotransform</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">GetGeoTransform</span><span class="p">()</span>
+
+<span class="c1"># Get the grid size (number of rows and columns)</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">RasterYSize</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">RasterXSize</span>
+
+<span class="c1"># Read the grid data as a numpy array</span>
+<span class="n">grid_data</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span>
+
+<span class="c1"># Get the NoData value from the grid metadata</span>
+<span class="n">no_data_value</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">GetNoDataValue</span><span class="p">()</span>
+
+<span class="c1"># Generate the x and y coordinates</span>
+<span class="n">x_origin</span> <span class="o">=</span> <span class="n">geotransform</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y_origin</span> <span class="o">=</span> <span class="n">geotransform</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">pixel_width</span> <span class="o">=</span> <span class="n">geotransform</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">pixel_height</span> <span class="o">=</span> <span class="n">geotransform</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="n">x_coords</span> <span class="o">=</span> <span class="n">x_origin</span> <span class="o">+</span> <span class="n">pixel_width</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span>
+<span class="n">y_coords</span> <span class="o">=</span> <span class="n">y_origin</span> <span class="o">+</span> <span class="n">pixel_height</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+
+<span class="c1"># Convert the 2D grid into separate x, y, and z arrays</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x_coords</span><span class="p">,</span> <span class="n">y_coords</span><span class="p">)</span>
+<span class="c1">#z = grid_data</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">grid_data</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+<span class="c1"># Mask the NoData values in the z array</span>
+<span class="n">z_masked</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_values</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">no_data_value</span><span class="p">)</span>
+
+<span class="c1"># Plot the coordinates</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="c1">#fig = plt.figure()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z_masked</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">z_masked</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;terrain&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Elevation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Close the dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p>Matplotlib often produces plots that have jagged peaks. These can be addressed by using some type of data smoothing algorithm.</p>
+<img alt="3D Terrain Modeling" src="img/matplotlib_terrain_modeling.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>3D Modeling Using Plotly</strong></p>
+<p>The plotly library produces quick results when creating 3D DEMS. A sample script for using Plotly is presented below.  The script uses rasterio to load the DEM.  It also uses  Gaussian smoothing to the DEM dataa before converting to 3D.  This is important because at times the plot can have jagged peaks. If this is the case, apply higher sigma values.  The final plot is configured with axis titles and aspect ratio settings. The plot is saved as an HTML file using go_offline.plot(). Open the generated HTML file in a web browser to view the 3D model.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">rasterio</span>
+<span class="kn">import</span> <span class="nn">plotly.offline</span> <span class="k">as</span> <span class="nn">go_offline</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+<span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">gaussian_filter</span>
+
+<span class="c1"># Load DEM data</span>
+<span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/Users/.../StoweDEM2.tif&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="n">dem_data</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">nodata</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">nodata</span>
+
+<span class="c1"># Set the no data values to NaN</span>
+<span class="n">dem_data</span><span class="p">[</span><span class="n">dem_data</span> <span class="o">==</span> <span class="n">nodata</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="c1"># Apply Gaussian smoothing to the DEM data</span>
+<span class="n">smoothed_dem</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">dem_data</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># Generate x, y coordinates for each pixel in the DEM</span>
+<span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">dem_data</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">x_coords</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">xy</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">src</span><span class="o">.</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span>
+<span class="n">y_coords</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">xy</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">src</span><span class="o">.</span><span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x_coords</span><span class="p">,</span> <span class="n">y_coords</span><span class="p">)</span>
+
+<span class="c1"># Create a 3D surface plot with the smoothed DEM data</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">go</span><span class="o">.</span><span class="n">Surface</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">smoothed_dem</span><span class="p">)])</span>
+
+<span class="c1"># Configure the layout of the plot</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;3D Model from DEM (Smoothed)&quot;</span><span class="p">,</span>
+    <span class="n">scene</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span>
+        <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span>
+        <span class="n">zaxis_title</span><span class="o">=</span><span class="s2">&quot;Elevation&quot;</span><span class="p">,</span>
+        <span class="n">aspectratio</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">0.2</span><span class="p">),</span>
+        <span class="n">aspectmode</span><span class="o">=</span><span class="s2">&quot;manual&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Save the plot as an HTML file</span>
+<span class="n">go_offline</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;3d_model_smoothed20.html&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="3D Terrain Modeling" src="img/plotly_3dModeling.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>3D Modeling Using ArcGIS Pro</strong></p>
+<p>Generating 3D plots can be done very efficienty using the 3D engine of ArcGIS Pro or QGIS. We can write code to perform the 3D modeling in these software. Below is a sample script for converting a 2D DEM into a 3D DEM using Arcpy within ArcGIS Pro.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+
+<span class="c1"># Set the workspace and input DEM raster</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\path\to\workspace&quot;</span>
+<span class="n">input_dem</span> <span class="o">=</span> <span class="s2">&quot;input_dem.tif&quot;</span>
+
+<span class="c1"># Output 3D feature class</span>
+<span class="n">output_feature_class</span> <span class="o">=</span> <span class="s2">&quot;output_3d_dem&quot;</span>
+
+<span class="c1"># Convert the 2D DEM to 3D using arcpy</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">RasterToGeometricNetwork</span><span class="p">(</span><span class="n">input_dem</span><span class="p">,</span> <span class="n">output_feature_class</span><span class="p">)</span>
+
+<span class="c1"># Add the 3D DEM to the current map</span>
+<span class="n">aprx</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">ArcGISProject</span><span class="p">(</span><span class="s2">&quot;CURRENT&quot;</span><span class="p">)</span>
+<span class="n">map_view</span> <span class="o">=</span> <span class="n">aprx</span><span class="o">.</span><span class="n">activeView</span>
+<span class="n">map_view</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">setExtent</span><span class="p">(</span><span class="n">map_view</span><span class="o">.</span><span class="n">getLayerExtent</span><span class="p">(</span><span class="n">output_feature_class</span><span class="p">))</span>
+<span class="n">map_view</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">roll</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Set the camera roll angle to 0</span>
+
+<span class="c1"># Refresh the map view to display the 3D DEM</span>
+<span class="n">map_view</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+
+<span class="c1"># Save the project</span>
+<span class="n">aprx</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Draping Orthophoto over 3D Plots</strong></p>
+<p>Now, let’s look at a script that drapes an orthopho over the bare earth DEM model.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
+
+<span class="c1"># Set the workspace and input DEM and orthophoto rasters</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\path\to\workspace&quot;</span>
+<span class="n">input_dem</span> <span class="o">=</span> <span class="s2">&quot;input_dem.tif&quot;</span>
+<span class="n">orthophoto</span> <span class="o">=</span> <span class="s2">&quot;orthophoto.tif&quot;</span>
+
+<span class="c1"># Output 3D feature class</span>
+<span class="n">output_feature_class</span> <span class="o">=</span> <span class="s2">&quot;output_3d_dem&quot;</span>
+
+<span class="c1"># Convert the 2D DEM to 3D using arcpy</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">conversion</span><span class="o">.</span><span class="n">RasterToGeometricNetwork</span><span class="p">(</span><span class="n">input_dem</span><span class="p">,</span> <span class="n">output_feature_class</span><span class="p">)</span>
+
+<span class="c1"># Add the orthophoto as a raster layer to the current map</span>
+<span class="n">aprx</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">ArcGISProject</span><span class="p">(</span><span class="s2">&quot;CURRENT&quot;</span><span class="p">)</span>
+<span class="n">map_view</span> <span class="o">=</span> <span class="n">aprx</span><span class="o">.</span><span class="n">activeView</span>
+<span class="nb">map</span> <span class="o">=</span> <span class="n">map_view</span><span class="o">.</span><span class="n">map</span>
+<span class="n">orthophoto_layer</span> <span class="o">=</span> <span class="nb">map</span><span class="o">.</span><span class="n">addRasterLayer</span><span class="p">(</span><span class="n">orthophoto</span><span class="p">)</span>
+
+<span class="c1"># Add the 3D DEM to the current map</span>
+<span class="n">dem_layer</span> <span class="o">=</span> <span class="nb">map</span><span class="o">.</span><span class="n">addFeatureClass</span><span class="p">(</span><span class="n">output_feature_class</span><span class="p">)</span>
+
+<span class="c1"># Set the elevation surface to the 3D DEM</span>
+<span class="nb">map</span><span class="o">.</span><span class="n">setElevationLayer</span><span class="p">(</span><span class="n">dem_layer</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1"># Set the orthophoto as the base map layer</span>
+<span class="nb">map</span><span class="o">.</span><span class="n">setBasemapLayer</span><span class="p">(</span><span class="n">orthophoto_layer</span><span class="p">)</span>
+
+<span class="c1"># Refresh the map view to display the draped orthophoto on the 3D DEM</span>
+<span class="n">map_view</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+
+<span class="c1"># Save the project</span>
+<span class="n">aprx</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt; 9e9fd24 (New  commit):source/terrain_analysis.rst</p>
+</section>
 <section id="slope-mapping">
-<h2><span class="section-number">13.3. </span>Slope Mapping<a class="headerlink" href="#slope-mapping" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.2. </span>Slope Mapping<a class="headerlink" href="#slope-mapping" title="Permalink to this heading"></a></h2>
 <p><strong>Generate Slope Map with Arcpy</strong></p>
 <p>The two scripts below show how to calculate slope using ArcPy.</p>
 <ol class="arabic simple">
@@ -371,7 +567,7 @@
 </div>
 </section>
 <section id="aspect-mapping">
-<h2><span class="section-number">13.4. </span>Aspect Mapping<a class="headerlink" href="#aspect-mapping" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.3. </span>Aspect Mapping<a class="headerlink" href="#aspect-mapping" title="Permalink to this heading"></a></h2>
 <p><strong>Calculate Aspect Using Arcpy</strong></p>
 <p>The script below show how to generate an aspect map using ArcPy.</p>
 <ol class="arabic simple">
@@ -438,7 +634,7 @@
 </div>
 </section>
 <section id="curvature-maps">
-<h2><span class="section-number">13.5. </span>Curvature Maps<a class="headerlink" href="#curvature-maps" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.4. </span>Curvature Maps<a class="headerlink" href="#curvature-maps" title="Permalink to this heading"></a></h2>
 <p><strong>Generate Curvature Maps Using Arcpy</strong></p>
 <p>The first two scripts below show how to calculate curvature using ArcPy.  The third script shows how to compute profile with the richdem library.</p>
 <ol class="arabic simple">
@@ -495,7 +691,7 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 </div>
 </section>
 <section id="computing-viewshed">
-<h2><span class="section-number">13.6. </span>Computing Viewshed<a class="headerlink" href="#computing-viewshed" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.5. </span>Computing Viewshed<a class="headerlink" href="#computing-viewshed" title="Permalink to this heading"></a></h2>
 <p><strong>Viewshed Using Arcpy</strong></p>
 <p>This sample script comes from <a class="reference external" href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/3d-analyst/viewshed.htm">ESRI</a>. It calculates surface locations that are visible to a set of observers defined in a shapefile. The script requires the 3D Analyst Extension</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
@@ -522,7 +718,7 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 </div>
 </section>
 <section id="watershed-delineation-using-pysheds">
-<h2><span class="section-number">13.7. </span>Watershed Delineation Using PySheds<a class="headerlink" href="#watershed-delineation-using-pysheds" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.6. </span>Watershed Delineation Using PySheds<a class="headerlink" href="#watershed-delineation-using-pysheds" title="Permalink to this heading"></a></h2>
 <p>I came across a library called pysheds that can be used for watershed delineation. Tested sample code is presented below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pysheds.grid</span> <span class="kn">import</span> <span class="n">Grid</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -609,7 +805,7 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 </div>
 </section>
 <section id="working-with-gdal-command-line-utilities">
-<h2><span class="section-number">13.8. </span>Working with GDAL Command Line Utilities<a class="headerlink" href="#working-with-gdal-command-line-utilities" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.7. </span>Working with GDAL Command Line Utilities<a class="headerlink" href="#working-with-gdal-command-line-utilities" title="Permalink to this heading"></a></h2>
 <p>GDAL (Geospatial Data Abstraction Library) is perhaps the most established library for reading and processing raster and vector geographical data. It is used by many GIS including ArcGIS and QGIS.  GDAL is written in the C++ programming language, but bindings are available that allow it to called from other languages.</p>
 <p>GDAL also has some special programs called <a class="reference external" href="https://gdal.org/programs/index.html">Utilities</a>, which are useful for performing many popular GIS tasks.  These utilities can be called from the command line assuming that proper path is set. They can also be from within Python.  In this section, we will look at how to call GDAL Utilities from the command line.  In the next section, we will look at calling GDAL from within Python.</p>
 <div class="line-block">
@@ -772,7 +968,7 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 </div>
 </section>
 <section id="running-gdal-commands-from-python">
-<h2><span class="section-number">13.9. </span>Running GDAL Commands from Python<a class="headerlink" href="#running-gdal-commands-from-python" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.8. </span>Running GDAL Commands from Python<a class="headerlink" href="#running-gdal-commands-from-python" title="Permalink to this heading"></a></h2>
 <p>It is possible to call GDAL commands from Python and other scripting languages. This allows for easy iteration through geoprocessing tasks, or integration of geoprocessing steps into complex scripted workflows.  For more information, please visit this page: <a class="reference external" href="https://gdal.org/tutorials/raster_api_tut.html">https://gdal.org/tutorials/raster_api_tut.html</a>. Below are some code samples for using GDAL from within Python.</p>
 <p><strong>Open a Raster with GDAL</strong></p>
 <p>We have already seen this structure in previous Python scripts that used the gdal library.</p>
@@ -801,8 +997,15 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 <div class="line"><br /></div>
 </div>
 </section>
+</section>
+<section id="id1">
+<h1><span class="section-number">15. </span>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt; 9e9fd24 (New  commit):source/terrain_analysis.rst</p>
 <section id="exercises">
-<h2><span class="section-number">13.10. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">15.1. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Write a script that prompts the user for the path to an input DEM and an input satellite imagery.  Afterwards, the script should generate a hillshade of the area. Finally, the script should drape the satellite imagery over the hillshade. You can download <a class="reference external" href="https://www.dropbox.com/s/r61wulyhlctvdcf/Washington_Data.zip?dl=0">sample data here</a></p></li>
 <li><p>Instead of generating a hillshade, write a second script to generate a 3D model of the area. Afterward, let the script drape a satellite imagery over the 3D model of the area.</p></li>
@@ -812,7 +1015,7 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 </div>
 </section>
 <section id="resources">
-<h2><span class="section-number">13.11. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">15.2. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
 <p>Draping an orthophoto over a DEM
 <a class="reference external" href="https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem">https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem</a></p>
 <p>Batch processing – automatizing the use of GDAL and SAGA GIS tools using Bash Shell scripts
@@ -823,13 +1026,18 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 <p>Classify a Raster Using Threshold Values in Python - 2017 - <a class="reference external" href="https://www.neonscience.org/resources/learning-hub/tutorials/classify-raster-thresholds-py">https://www.neonscience.org/resources/learning-hub/tutorials/classify-raster-thresholds-py</a></p>
 </section>
 </section>
+<section id="id2">
+<h1><span class="section-number">16. </span>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h1>
+<p><a class="reference external" href="https://www.blendernation.com/2016/09/03/owen-powell-maps-terrain-models/">https://www.blendernation.com/2016/09/03/owen-powell-maps-terrain-models/</a></p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt; 9e9fd24 (New  commit):source/terrain_analysis.rst</p>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="geocoding.html" class="btn btn-neutral float-left" title="12. Geocoding" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="workflow_automation.html" class="btn btn-neutral float-right" title="14. Batch Processing &amp; Workflow Automation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="workflow_automation.html" class="btn btn-neutral float-right" title="17. Batch Processing &amp; Workflow Automation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

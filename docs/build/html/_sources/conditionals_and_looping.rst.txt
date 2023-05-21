@@ -11,7 +11,11 @@ Unless otherwise directed, lines of codes in a procedure run sequentially, from 
 
 Python uses the If statement for testing conditions. If the condition is true, then the code block following the if statement is executed. If it is not true, the program jumps to the end of the code block.
 
+<<<<<<< HEAD:docs/build/html/_sources/conditionals_and_looping.rst.txt
+In Python, a colon is placed at the end of the statement that contains the condition, and the lines below the condition statement are indented. 
+=======
 In Python, a colon is placed at the end of the conditional statement, and the lines below the condition statement are indented. 
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/conditionals_and_looping.rst.txt
 
 There are three types of conditional structures in Python:
 
@@ -31,7 +35,11 @@ The structure of the if .. conditional statement is shown below.
 .. code-block:: python
    :linenos:
 
+<<<<<<< HEAD:docs/build/html/_sources/conditionals_and_looping.rst.txt
+   if condition:  # i.e., if the variable is defined
+=======
    if condition:  # if the variable is defined
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/conditionals_and_looping.rst.txt
        execute statement
 
 
@@ -165,7 +173,10 @@ The if.. elif.. else statement is designed to test multiple conditions and make 
 
 Here is a simple example of the use of an if.. elif.. else statement.
 
+<<<<<<< HEAD:docs/build/html/_sources/conditionals_and_looping.rst.txt
+=======
 
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/conditionals_and_looping.rst.txt
 .. code-block:: python
    :linenos:
  
@@ -283,9 +294,14 @@ For loops are great for manipulating lists
    :linenos:
 
    a = [‘cat’, ‘dog’, ‘window’, ‘Main Street’]
+<<<<<<< HEAD:docs/build/html/_sources/conditionals_and_looping.rst.txt
+       for x in a:
+          print (x)
+=======
    for x in a:
       print (x)
  
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/conditionals_and_looping.rst.txt
 | cat
 | dog
 | window
@@ -304,10 +320,17 @@ For loops are great for manipulating lists
    suits = ['Spades', 'Clubs', 'Diamonds', 'Hearts']
    values = ['Ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King']
    for suit in suits:
+<<<<<<< HEAD:docs/build/html/_sources/conditionals_and_looping.rst.txt
+       for value in values:
+           print (str(value) + " of " + str(suit))
+
+       print ( " " )
+=======
       for value in values:
           print (str(value) + " of " + str(suit))
 
       print ( " " )
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/conditionals_and_looping.rst.txt
 
 
 In the above code, the program enters the first loop visiting “Spades”, then immediately jumps to the nested loop printing out the value for each card.  When the program reaches the end of the list of “values’, it jumps out of the nested loop and return to the first loop to get to “Clubs. Next, it loops through all values in the second suit and print the card names. This process continues until all the suits and values have been looped through.
@@ -341,7 +364,10 @@ The code below uses a 'for loop' to step through a list of road types. For each 
 .. code-block:: python
    :linenos:
 
+<<<<<<< HEAD:docs/build/html/_sources/conditionals_and_looping.rst.txt
+=======
 
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/conditionals_and_looping.rst.txt
    listOfRoadTypes = [‘Highway’,’Street’,’Boulevard’]
    for RoadType in listOfRoadTypes:
        print RoadType.upper()
@@ -561,7 +587,11 @@ Try the code below to see how 'continue' works.
  
  |
 
+<<<<<<< HEAD:docs/build/html/_sources/conditionals_and_looping.rst.txt
+.. code-block:: python
+=======
  .. code-block:: python
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/conditionals_and_looping.rst.txt
    :linenos:
 
    for i in range (100):
@@ -574,6 +604,48 @@ Try the code below to see how 'continue' works.
 |
 
 
+<<<<<<< HEAD:docs/build/html/_sources/conditionals_and_looping.rst.txt
+**Summing Values in a List**
+
+When summing values in a list, you can iterate over the list of items and add each element to a variable which stores the sum of the ith element. The "+=" term tells Python to add the current sum to the next i in the list.
+
+.. code-block:: python
+   :linenos:
+ 
+   L = [4, 5, 1, 2, 9, 7, 10, 8]
+
+   # Initialize a variable to store the sum of the list
+   sum = 0
+ 
+   # Finding the sum
+   for i in L:
+       sum += i
+
+   print("sum = ", sum)
+   
+
+
+In many cases, instead of using the "+=" term, you will see people using "sum = sum + i" to add the current sum to the next i in the list:
+
+.. code-block:: python
+   :linenos:
+ 
+   L = [4, 5, 1, 2, 9, 7, 10, 8]
+
+   # Initialize a variable to store the sum of the list
+   sum = 0
+ 
+   # Finding the sum
+   for i in L:
+       sum = X + i
+
+   print("Sum = ", sum)
+
+
+
+|
+=======
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/conditionals_and_looping.rst.txt
 
 
 While Loops
@@ -581,19 +653,31 @@ While Loops
 
 While loops are used when you cannot predict at runtime the number of times an operation will occur. The basic while loop structure is shown below:
 
+<<<<<<< HEAD:docs/build/html/_sources/conditionals_and_looping.rst.txt
+.. code-block:: python
+=======
  .. code-block:: python
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/conditionals_and_looping.rst.txt
    :linenos:
 
    while condition:
        statements
 
 
+<<<<<<< HEAD:docs/build/html/_sources/conditionals_and_looping.rst.txt
+As long as the condition is true, the while statement will execute. Each time a loop occurs, the value of the counter is increased by 1. Prior to the first loop, the counter x is equal to 1. Aftr the print statement, the 1 will be added to x thereby increasing its value to 2. At the beginning of the second loop, Python will check the value of x. Since x is less that 5, the loop will execute and the same pattern will be repeated.  When x becomes 5, the expression will evaluaate to False and the loop halts.  
+=======
 As long as the condition is true, the while statement will execute. When the expression is evaluated as False, the loop halts.
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/conditionals_and_looping.rst.txt
 
 
 Example 1
 
+<<<<<<< HEAD:docs/build/html/_sources/conditionals_and_looping.rst.txt
+.. code-block:: python
+=======
  .. code-block:: python
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/conditionals_and_looping.rst.txt
    :linenos:
 
    x = 1
@@ -610,6 +694,11 @@ Example 1
 |
 
 
+<<<<<<< HEAD:docs/build/html/_sources/conditionals_and_looping.rst.txt
+Example 1
+
+.. code-block:: python
+=======
 **Use of Plus Equal**
 
 When writing counters, you can write  x = x + 1
@@ -629,6 +718,7 @@ You can also use the plus equal term "+=" to add another value to the variable's
 
 
  .. code-block:: python
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/conditionals_and_looping.rst.txt
    :linenos:
 
    x = 1
@@ -636,6 +726,14 @@ You can also use the plus equal term "+=" to add another value to the variable's
        print (x)
    x += 1 # counter
 
+<<<<<<< HEAD:docs/build/html/_sources/conditionals_and_looping.rst.txt
+|
+
+
+Example 3
+
+.. code-block:: python
+=======
 
 Operators such as "-=", "*=", /= behave similarly similar for subtraction, multiplication and division.
 
@@ -645,6 +743,7 @@ Operators such as "-=", "*=", /= behave similarly similar for subtraction, multi
 Example 2
 
  .. code-block:: python
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/conditionals_and_looping.rst.txt
    :linenos:
 
    max = 5
@@ -662,8 +761,12 @@ Example 2
 |
 
 
+<<<<<<< HEAD:docs/build/html/_sources/conditionals_and_looping.rst.txt
+Example 4
+=======
 Example 3
 
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/conditionals_and_looping.rst.txt
 
  .. code-block:: python
    :linenos:
@@ -737,7 +840,10 @@ While Loop Example With "Break"
 
 
 
+<<<<<<< HEAD:docs/build/html/_sources/conditionals_and_looping.rst.txt
+=======
 
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/conditionals_and_looping.rst.txt
 **Repeating a program until the user wants to quit**
 
  .. code-block:: python
@@ -804,6 +910,18 @@ List comprehensions provide a concise way of looping, populating lists, and perf
 
 
 
+<<<<<<< HEAD:docs/build/html/_sources/conditionals_and_looping.rst.txt
+Instead of populating a list using the method shown above, you can reduce your looping code by using a list comprehension.  The general syntax is:
+
+ 
+new_list = [expression for member in iterable object, for loop to generate the numbers to feed into the expression]
+
+
+#Example.  Square the values in the list 
+
+
+.. code-block:: python
+=======
  Instead of populating a list using the method shown above, you can reduce your looping code by using a list comprehension.  The general syntax is:
 
  
@@ -816,6 +934,7 @@ new_list = [expression for member in iterable object, for loop to generate the n
 
 
  .. code-block:: python
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/conditionals_and_looping.rst.txt
    :linenos:
 
    nums = [1, 2, 3, 4, 5]
@@ -824,8 +943,16 @@ new_list = [expression for member in iterable object, for loop to generate the n
 
 [0.5, 1.0, 1.5, 2.0]
 
+<<<<<<< HEAD:docs/build/html/_sources/conditionals_and_looping.rst.txt
+
+
 |
 
+
+=======
+|
+
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/conditionals_and_looping.rst.txt
 To use the syntax, do the following:
 
 * Define your list that you wish to iterate
@@ -839,7 +966,11 @@ To use the syntax, do the following:
 The syntax can be expanded to include more than 1 for clause.  It can also include if statements.
 
 
+<<<<<<< HEAD:docs/build/html/_sources/conditionals_and_looping.rst.txt
+.. code-block:: python
+=======
  .. code-block:: python
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/conditionals_and_looping.rst.txt
    :linenos:
 
    nums = [0, 1, 2, 3, 4]
@@ -853,4 +984,53 @@ The syntax can be expanded to include more than 1 for clause.  It can also inclu
 
 
 
+<<<<<<< HEAD:docs/build/html/_sources/conditionals_and_looping.rst.txt
+Exercises
+-----------
+
+
+1. Complete the practice exercises below. Submit screenshots in a word document as proof that you completed the exercises:
+
+    a. `Complete these if else exercises <https://www.w3schools.com/python/exercise.asp?filename=exercise_ifelse1>`_
+    b. `For Loop Exercises <https://www.w3schools.com/python/exercise.asp?filename=exercise_for_loops1>`_
+    c. `Complete this while loop exercises <https://www.w3schools.com/python/exercise.asp?filename=exercise_while_loops1>`_
+
+
+
+2. Given the list below, write a program that loops through the list and prints out each element in the list. Submit a screenshot showing your program code and the results of running the code.
+
+    my_list = [1,4,5,10, 34, 67, 89, 90, 124]
+
+
+3. Write a program that squares each value in the list below and then prints out the squared values.
+  
+     my_list = [11,14,15,100, 34, 67, 89, 90, 98]
+
+
+4. Write a program that loops through values from zero to 50 and prints out every other value in the range.
+
+
+5. Write a program that cumulatively adds the elements of the list below and prints out the results after each addition.
+
+    list1 = [11,21, 34, 12, 31, 55, 23, 24, 100, 56,90, 100] 
+
+
+6. Extend the spatial interpolation program you worked on in the first lab by adding looping functionality to the program.  The program should work in this way: once the initial round of calculations are completed and the results printed to the screen, the code should prompt the user to enter a new set of z-values and associated distance values.  The program should carry out the next round of calculations and then prompt the user again for values for an additional round of calculation. The program should keep looping until no more rounds of calculation are needed. At that stage, the user should be able to quit the program gracefully.
+
+
+7. Look up how to work with ArcPy's `ListFeatureClasses function <https://pro.arcgis.com/en/pro-app/latest/arcpy/functions/listfeatureclasses.htm>`_, then write Python code that uses ArcPy's ListFeatureClasses function to print out a list of feature classes or shapefiles in one of your folders.
+
+8. Run the codes in Section 5.1 of this document that deal with displaying layers in QGIS if the layer (either vector or raster) is an active layer. Run the code using your own data and show that you can display either a raster or vector in QGIS if it is an active layer.
+
+
+9. In what way is the "Break" statment in Python different from "Continue". Give coding examples to show the difference.
+
+10. When is a "for loop" used in Python as opposed to a while loop. Give coding examples to support your answer.
+
+11. Write a program to calculate the average of the numbers in the list below:
+
+    L = [41, 25, 21, 2, 96, 79, 108, 83,1,4,5,10, 34, 67, 89, 90, 124]
+
+=======
+>>>>>>> 9e9fd24 (New  commit):build/html/_sources/conditionals_and_looping.rst.txt
 

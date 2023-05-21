@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>14. Batch Processing &amp; Workflow Automation &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+  <title>17. Batch Processing &amp; Workflow Automation &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="15. Retrieving Data from APIs" href="api.html" />
+    <link rel="next" title="18. Retrieving Data from APIs" href="api.html" />
     <link rel="prev" title="13. Terrain Analysis" href="terrain_analysis.html" /> 
 </head>
 
@@ -57,14 +57,17 @@
 <li class="toctree-l1"><a class="reference internal" href="querying_rasters.html">11. Querying Rasters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geocoding.html">12. Geocoding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">13. Terrain Analysis</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">14. Batch Processing &amp; Workflow Automation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#batch-processing-using-gdal">14.1. Batch Processing Using GDAL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#batch-processing-using-arcpy">14.2. <strong>Batch Processing Using Arcpy</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#automating-gis-workflows">14.3. Automating GIS Workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#reading">14.4. Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html#head-docs-source-terrain-analysis-rst">14. &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html#id1">15. &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html#id2">16. &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">17. Batch Processing &amp; Workflow Automation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#batch-processing-using-gdal">17.1. Batch Processing Using GDAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#batch-processing-using-arcpy">17.2. <strong>Batch Processing Using Arcpy</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automating-gis-workflows">17.3. Automating GIS Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading">17.4. Reading</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">15. Retrieving Data from APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">18. Retrieving Data from APIs</a></li>
 </ul>
 
         </div>
@@ -81,7 +84,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">14. </span>Batch Processing &amp; Workflow Automation</li>
+      <li class="breadcrumb-item active"><span class="section-number">17. </span>Batch Processing &amp; Workflow Automation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/workflow_automation.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -92,7 +95,7 @@
            <div itemprop="articleBody">
              
   <section id="batch-processing-workflow-automation">
-<h1><span class="section-number">14. </span>Batch Processing &amp; Workflow Automation<a class="headerlink" href="#batch-processing-workflow-automation" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">17. </span>Batch Processing &amp; Workflow Automation<a class="headerlink" href="#batch-processing-workflow-automation" title="Permalink to this heading"></a></h1>
 <p>Batch processing is the process of automating repetitive tasks as a block of work rather than attempting to process each operation manually. In GIS, it may be that you have to clip 1000 shapefiles to the extent of some regions. Instead of clipping the shapefiles individually, one can perform batch clipping in which we use a script to complete the task. Batch proessing is far faster than human processing.  It is often done in off-peak hours when computing resources are more commonly available, such as at the end of the day or overnight.</p>
 <p>In GIS, many large volume geoprocessing operations are carried out by batch scripting the operation.  The scripts below provide an introduction to batch operations using various Python libraries.</p>
 <p>With the appearance of ChatGPT, it now very easy to develop workflow scripts.  Simply describe the workflow in an much detail as you can and enter it into ChatGPT. ChatGPT will return a sample script that most often will work, but often also after a small amount of modification and testing.</p>
@@ -100,7 +103,7 @@
 <div class="line"><br /></div>
 </div>
 <section id="batch-processing-using-gdal">
-<h2><span class="section-number">14.1. </span>Batch Processing Using GDAL<a class="headerlink" href="#batch-processing-using-gdal" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">17.1. </span>Batch Processing Using GDAL<a class="headerlink" href="#batch-processing-using-gdal" title="Permalink to this heading"></a></h2>
 <p>There are many code samples for processing a single file.  However, code samples for batch processing are not frequently encountered.  Below is an example for converting multiple .hdr files into .tif files using GDAL.</p>
 <p>In GDAL, if you wanted to change the file format of a single raster, you can write a script similar to the one below:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gdal_translate</span> <span class="o">-</span><span class="n">of</span> <span class="n">GTiff</span> <span class="n">elevation</span><span class="o">.</span><span class="n">hdr</span> <span class="n">elevation</span><span class="o">.</span><span class="n">tif</span>
@@ -151,7 +154,7 @@ rst2tif &lt;ENTER&gt;</p>
 </div>
 </section>
 <section id="batch-processing-using-arcpy">
-<h2><span class="section-number">14.2. </span><strong>Batch Processing Using Arcpy</strong><a class="headerlink" href="#batch-processing-using-arcpy" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">17.2. </span><strong>Batch Processing Using Arcpy</strong><a class="headerlink" href="#batch-processing-using-arcpy" title="Permalink to this heading"></a></h2>
 <p><strong>Buffering Multiple Shapefiles using Arcpy</strong></p>
 <p>The script below can buffer any number of rasters.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
@@ -327,7 +330,7 @@ rst2tif &lt;ENTER&gt;</p>
 </div>
 </section>
 <section id="automating-gis-workflows">
-<h2><span class="section-number">14.3. </span>Automating GIS Workflows<a class="headerlink" href="#automating-gis-workflows" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">17.3. </span>Automating GIS Workflows<a class="headerlink" href="#automating-gis-workflows" title="Permalink to this heading"></a></h2>
 <p>Whereas batch processing involves repeating tasks many times, automating workflows involves writng codes to carry out tasks that involves multiple tools and multiple steps. Typically, the output of one step becomes the input for the next step.  The code samples below illustrates workflow automation for basic GIS tasks such as watershed delineation, site stelection analysis, geocoding, and thematic mapping. Workflow automation is required in a wide range of scenarios by organizations and GIS developers are deeply involved in these tasks.</p>
 <p><strong>Watershed Delineation (Arcpy)</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import system modules</span>
@@ -679,7 +682,7 @@ rst2tif &lt;ENTER&gt;</p>
 </div>
 </section>
 <section id="reading">
-<h2><span class="section-number">14.4. </span>Reading<a class="headerlink" href="#reading" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">17.4. </span>Reading<a class="headerlink" href="#reading" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.e-education.psu.edu/geog485/node/202">The need for GIS automation</a></p></li>
 <li><p><a class="reference external" href="https://www.geospatialworld.net/prime/technology-and-innovation/streamlining-gis-with-automation/">Streamlining GIS with Automation</a></p></li>
@@ -702,7 +705,7 @@ rst2tif &lt;ENTER&gt;</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="terrain_analysis.html" class="btn btn-neutral float-left" title="13. Terrain Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="api.html" class="btn btn-neutral float-right" title="15. Retrieving Data from APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="api.html" class="btn btn-neutral float-right" title="18. Retrieving Data from APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

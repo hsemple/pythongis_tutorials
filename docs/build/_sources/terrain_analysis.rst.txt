@@ -236,6 +236,227 @@ In this example, both the elevation layer and the hillshade layer are displayed 
 
 
 
+<<<<<<< HEAD:docs/source/terrain_analysis.rst
+=======
+Displaying Terrain Data in 3D
+-------------------------------
+
+|
+
+**3D Modeling Using Matplotlib**
+
+
+It is possible to display terrain data in 3D using matplotlib, but this library by itself is too slow for most GIS data processing.  However, if you choose to use matplotlib, ensure that nodata values are not among the z-values that will be used to render the 3D model. 
+
+Below is a sample script to display terrain data in 3D using matplotlib. 
+
+.. code-block:: python
+
+	import osgeo.gdal as gdal
+	import numpy as np
+	import matplotlib.pyplot as plt
+
+	# Open the grid file using GDAL
+	grid_file = '/Users/hsemple/Desktop/Python Scripts/stowe/StoweDEM2.tif'
+	dataset = gdal.Open(grid_file)
+
+	# Get the grid's geotransform and projection information
+	geotransform = dataset.GetGeoTransform()
+
+	# Get the grid size (number of rows and columns)
+	rows = dataset.RasterYSize
+	cols = dataset.RasterXSize
+
+	# Read the grid data as a numpy array
+	grid_data = dataset.ReadAsArray()
+
+	# Get the NoData value from the grid metadata
+	no_data_value = dataset.GetRasterBand(1).GetNoDataValue()
+
+	# Generate the x and y coordinates
+	x_origin = geotransform[0]
+	y_origin = geotransform[3]
+	pixel_width = geotransform[1]
+	pixel_height = geotransform[5]
+
+	x_coords = x_origin + pixel_width * np.arange(cols)
+	y_coords = y_origin + pixel_height * np.arange(rows)
+
+	# Convert the 2D grid into separate x, y, and z arrays
+	x, y = np.meshgrid(x_coords, y_coords)
+	#z = grid_data
+	z = grid_data.flatten()
+
+	# Mask the NoData values in the z array
+	z_masked = np.ma.masked_values(z, no_data_value)
+
+	# Plot the coordinates
+	fig = plt.figure(figsize=(10,8))
+	#fig = plt.figure()
+	ax = fig.add_subplot(111, projection='3d')
+	ax.scatter(x, y, z_masked, c=z_masked, cmap='terrain')
+	ax.set_xlabel('X')
+	ax.set_ylabel('Y')
+	ax.set_zlabel('Elevation')
+	plt.show()
+
+	# Close the dataset
+	dataset = None
+
+
+Matplotlib often produces plots that have jagged peaks. These can be addressed by using some type of data smoothing algorithm.
+
+
+.. image:: img/matplotlib_terrain_modeling.png
+   :alt: 3D Terrain Modeling
+
+
+
+|
+
+**3D Modeling Using Plotly**
+
+The plotly library produces quick results when creating 3D DEMS. A sample script for using Plotly is presented below.  The script uses rasterio to load the DEM.  It also uses  Gaussian smoothing to the DEM dataa before converting to 3D.  This is important because at times the plot can have jagged peaks. If this is the case, apply higher sigma values.  The final plot is configured with axis titles and aspect ratio settings. The plot is saved as an HTML file using go_offline.plot(). Open the generated HTML file in a web browser to view the 3D model.
+
+
+.. code-block:: python
+
+	import numpy as np
+	import rasterio
+	import plotly.offline as go_offline
+	import plotly.graph_objects as go
+	from scipy.ndimage import gaussian_filter
+
+	# Load DEM data 
+	with rasterio.open("/Users/.../StoweDEM2.tif") as src:
+	    dem_data = src.read(1)
+	    nodata = src.nodata
+
+	# Set the no data values to NaN
+	dem_data[dem_data == nodata] = np.nan
+
+	# Apply Gaussian smoothing to the DEM data
+	smoothed_dem = gaussian_filter(dem_data, sigma=15)
+
+	# Generate x, y coordinates for each pixel in the DEM
+	rows, cols = dem_data.shape
+	x_coords = src.xy(0, 0)[0] + src.res[0] * np.arange(cols)
+	y_coords = src.xy(0, 0)[1] + src.res[1] * np.arange(rows)
+	x, y = np.meshgrid(x_coords, y_coords)
+
+	# Create a 3D surface plot with the smoothed DEM data
+	fig = go.Figure(data=[go.Surface(x=x, y=y, z=smoothed_dem)])
+
+	# Configure the layout of the plot
+	fig.update_layout(
+	    title="3D Model from DEM (Smoothed)",
+	    scene=dict(
+	        xaxis_title="X",
+	        yaxis_title="Y",
+	        zaxis_title="Elevation",
+	        aspectratio=dict(x=1, y=1, z=0.2),
+	        aspectmode="manual"
+	    )
+	)
+
+	# Save the plot as an HTML file
+	go_offline.plot(fig, filename="3d_model_smoothed20.html")
+
+
+.. image:: img/plotly_3dModeling.png
+   :alt: 3D Terrain Modeling
+
+
+
+
+|
+
+**3D Modeling Using ArcGIS Pro**
+
+Generating 3D plots can be done very efficienty using the 3D engine of ArcGIS Pro or QGIS. We can write code to perform the 3D modeling in these software. Below is a sample script for converting a 2D DEM into a 3D DEM using Arcpy within ArcGIS Pro.
+
+
+.. code-block:: python
+
+	import arcpy
+
+	# Set the workspace and input DEM raster
+	arcpy.env.workspace = r"C:\path\to\workspace"
+	input_dem = "input_dem.tif"
+
+	# Output 3D feature class
+	output_feature_class = "output_3d_dem"
+
+	# Convert the 2D DEM to 3D using arcpy
+	arcpy.conversion.RasterToGeometricNetwork(input_dem, output_feature_class)
+
+	# Add the 3D DEM to the current map
+	aprx = arcpy.mp.ArcGISProject("CURRENT")
+	map_view = aprx.activeView
+	map_view.camera.setExtent(map_view.getLayerExtent(output_feature_class))
+	map_view.camera.roll = 0  # Set the camera roll angle to 0
+
+	# Refresh the map view to display the 3D DEM
+	map_view.refresh()
+
+	# Save the project
+	aprx.save()
+
+
+
+
+|
+
+
+**Draping Orthophoto over 3D Plots**
+
+
+Now, let's look at a script that drapes an orthopho over the bare earth DEM model.
+
+.. code-block:: python
+
+	import arcpy
+
+	# Set the workspace and input DEM and orthophoto rasters
+	arcpy.env.workspace = r"C:\path\to\workspace"
+	input_dem = "input_dem.tif"
+	orthophoto = "orthophoto.tif"
+
+	# Output 3D feature class
+	output_feature_class = "output_3d_dem"
+
+	# Convert the 2D DEM to 3D using arcpy
+	arcpy.conversion.RasterToGeometricNetwork(input_dem, output_feature_class)
+
+	# Add the orthophoto as a raster layer to the current map
+	aprx = arcpy.mp.ArcGISProject("CURRENT")
+	map_view = aprx.activeView
+	map = map_view.map
+	orthophoto_layer = map.addRasterLayer(orthophoto)
+
+	# Add the 3D DEM to the current map
+	dem_layer = map.addFeatureClass(output_feature_class)
+
+	# Set the elevation surface to the 3D DEM
+	map.setElevationLayer(dem_layer, "", "", "")
+
+	# Set the orthophoto as the base map layer
+	map.setBasemapLayer(orthophoto_layer)
+
+	# Refresh the map view to display the draped orthophoto on the 3D DEM
+	map_view.refresh()
+
+	# Save the project
+	aprx.save()
+
+
+
+|
+
+
+
+
+>>>>>>> 9e9fd24 (New  commit):source/terrain_analysis.rst
 
 Slope Mapping
 ----------------
@@ -935,6 +1156,11 @@ We have already seen this structure in previous Python scripts that used the gda
 
 
 
+<<<<<<< HEAD:docs/source/terrain_analysis.rst
+=======
+|
+
+>>>>>>> 9e9fd24 (New  commit):source/terrain_analysis.rst
 
 
 Exercises
@@ -966,5 +1192,11 @@ Popular GDAL commands. https://github.com/dwtkns/gdal-cheat-sheet
 
 Classify a Raster Using Threshold Values in Python - 2017 - https://www.neonscience.org/resources/learning-hub/tutorials/classify-raster-thresholds-py
 
+<<<<<<< HEAD:docs/source/terrain_analysis.rst
+=======
+https://www.blendernation.com/2016/09/03/owen-powell-maps-terrain-models/
+
+
+>>>>>>> 9e9fd24 (New  commit):source/terrain_analysis.rst
 
 

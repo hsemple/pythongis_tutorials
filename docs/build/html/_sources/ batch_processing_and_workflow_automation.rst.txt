@@ -1,0 +1,81 @@
+
+Batch Processing & Workflow Automation
+========================================
+
+
+|
+
+
+
+Batch Processing Using GDAL  
+-------------------------------
+
+
+There are many code samples for processing a single file.  However, code samples for batch processing are not frequently encountered.  Below is an example for converting multiple .rst files into .tif files using GDAL.
+ 
+
+Recall that for one raster file conversion we would use this:
+gdal_translate -of GTiff 01_State19900101.rst 01_State19900101.tif
+
+
+Now we're going to make a batch file which includes a loop to convert all files in the folder.
+
+Open a text editor, e.g. Notepad, and add the following code:
+
+
+.. code-block:: python
+
+	for %%f in (*.rst) do (
+	   echo %%~nf
+	   gdal_translate -of GTiff %%f %%~nf.tif
+	)
+
+
+Save the batchfile as rst2tif.bat in the folder with the land-use rasters.
+
+In the code above,  %%f is the variable that contains the filename of each file. With echo we can print something to the screen. Here we print %%~nf , which is the part of the filename before the dot that separates it from the extension. Then we use the gdal_translate command with output format GeoTiff. At the end of the line we add the .tif extension to the filename.
+
+5. Execute the batchfile. Type
+rst2tif <ENTER>
+
+6. Check the results
+
+
+Source:  https://courses.gisopencourseware.org/mod/book/view.php?id=78&chapterid=193
+
+
+
+
+|
+
+
+
+Automating Workflows
+---------------------
+
+
+Suppose that you have to manually draw a polygon around an XY event layer of locations each time they are updated. You find that this  process takes a lot of time and is not entirely accurate.   So you decide to write a script to automate the process. Below is a script sample.  The script takes a table of customer locations and creates an outer polygon boundary of those locations. 
+
+
+.. code-block:: python
+
+	import arcpy, csv
+	xyData = 'r:C:\mydata.csv'
+	outConvexHull = 'C:\Boundary.shp'
+
+	xyLocations = []
+	csvFile = open(xyData)
+	csvReader = csv.reader(csvFile)
+	next(csvReader)
+
+	for row in (csvReader):
+	    xyLocations.append(row)
+
+
+	customerPoints = arcpy.Multipoint(arcpy.Array([arcpy.Point(*coords) for coords in xyLocations])))
+
+	convexHull = customerPoints.convexHull()
+	arcpy.CopyFeatures_management(convexHull, outConvedHull)
+
+
+
