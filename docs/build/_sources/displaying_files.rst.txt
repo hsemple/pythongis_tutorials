@@ -244,23 +244,26 @@ b. `Python Zip Function <https://www.programiz.com/python-programming/methods/bu
 	    yvar.append(mag)
 	    sum = sum + mag
 
-#Calculate mean
-average = sum / count
+	#Calculate mean
+	average = sum / count
 
-rint ("Average is", round(average,5))
-print ("")
+	rint ("Average is", round(average,5))
+	print ("")
 
-width = 1
+	width = 1
 
-fig, ax = plt.subplots(figsize=(6, 4))
-ax.bar(xvar, yvar, width, color='orangered')
-ax.set_yscale('log')  # Set y-axis to logarithmic scale
-ax.set_xlabel("No. of Earthquakes", fontweight='bold', fontsize=12, color='black')
-ax.set_ylabel("Magnitude", fontweight='bold', color='black', fontsize=12)
-ax.set_title("Magnitude of Earthquakes")
+	fig, ax = plt.subplots(figsize=(6, 4))
+	ax.bar(xvar, yvar, width, color='orangered')
+	ax.set_yscale('log')  # Set y-axis to logarithmic scale
+	ax.set_xlabel("No. of Earthquakes", fontweight='bold', fontsize=12, color='black')
+	ax.set_ylabel("Magnitude", fontweight='bold', color='black', fontsize=12)
+	ax.set_title("Magnitude of Earthquakes")
 
-plt.tight_layout()  # Adjust figure spacing
-plt.show()
+	plt.tight_layout()  # Adjust figure spacing
+	plt.show()
+
+
+
 
 
 

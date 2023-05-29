@@ -280,21 +280,26 @@ the objective with this code sample is to illustrate some details that is involv
     <span class="n">xvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
     <span class="n">yvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mag</span><span class="p">)</span>
     <span class="nb">sum</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">+</span> <span class="n">mag</span>
+
+<span class="c1">#Calculate mean</span>
+<span class="n">average</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">/</span> <span class="n">count</span>
+
+<span class="n">rint</span> <span class="p">(</span><span class="s2">&quot;Average is&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">average</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">width</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">xvar</span><span class="p">,</span> <span class="n">yvar</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orangered&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>  <span class="c1"># Set y-axis to logarithmic scale</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;No. of Earthquakes&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Magnitude of Earthquakes&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>  <span class="c1"># Adjust figure spacing</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>#Calculate mean
-average = sum / count</p>
-<p>rint (“Average is”, round(average,5))
-print (“”)</p>
-<p>width = 1</p>
-<p>fig, ax = plt.subplots(figsize=(6, 4))
-ax.bar(xvar, yvar, width, color=’orangered’)
-ax.set_yscale(‘log’)  # Set y-axis to logarithmic scale
-ax.set_xlabel(“No. of Earthquakes”, fontweight=’bold’, fontsize=12, color=’black’)
-ax.set_ylabel(“Magnitude”, fontweight=’bold’, color=’black’, fontsize=12)
-ax.set_title(“Magnitude of Earthquakes”)</p>
-<p>plt.tight_layout()  # Adjust figure spacing
-plt.show()</p>
 <img alt="Formatted Table" src="_images/earth_magnitude_graph.png" />
 <div class="line-block">
 <div class="line"><br /></div>
