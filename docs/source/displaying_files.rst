@@ -244,20 +244,24 @@ b. `Python Zip Function <https://www.programiz.com/python-programming/methods/bu
 	    yvar.append(mag)
 	    sum = sum + mag
 
-	    #Calculate mean
-	    average = sum / count
+#Calculate mean
+average = sum / count
 
-	print ("Average is",average)
-	print ("")
+rint ("Average is", round(average,5))
+print ("")
 
-	width = 1
+width = 1
 
-	plt.figure(figsize=(4, 8)) 
-	plt.bar(xvar, yvar, width, facecolor='orangered')
-	plt.xlabel("No. of Earthquakes", fontweight='bold', fontsize='17', color = 'orange')
-	plt.ylabel("Magnitude", fontweight='bold', color = 'orange', fontsize='12')
-	plt.title("Magnitude of Earthquakes")
-	plt.show()
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.bar(xvar, yvar, width, color='orangered')
+ax.set_yscale('log')  # Set y-axis to logarithmic scale
+ax.set_xlabel("No. of Earthquakes", fontweight='bold', fontsize=12, color='black')
+ax.set_ylabel("Magnitude", fontweight='bold', color='black', fontsize=12)
+ax.set_title("Magnitude of Earthquakes")
+
+plt.tight_layout()  # Adjust figure spacing
+plt.show()
+
 
 
 
@@ -649,6 +653,19 @@ or
 
 
 
+
+|
+
+*Notes:*
+
+* ax is the axes on which to draw the map
+* cmap is the name of the `colormap <https://matplotlib.org/stable/tutorials/colors/colormaps.html>`_
+* legend & legend_kwds control the display of the legend.
+
+
+|
+
+
 Writing to a File
 --------------------
 
@@ -840,7 +857,74 @@ See the `Geopandas User Guide <https://geopandas.org/en/stable/docs/user_guide/m
    :alt: Thematic Map
 
 
+|
 
+
+Displaying Shapefiles Using Fiona
+-----------------------------------
+
+Fiona is a low-level library that focuses on reading and writing geospatial data formats. It acts as a Pythonic interface to the OGR library, providing direct access to the capabilities of OGR for working with vector data. Fiona is known for its efficiency, simplicity, and interoperability with various geospatial file formats. It is often used when specific data access or format-related functionalities are required.
+
+
+.. code-block:: python
+
+	import fiona
+	import matplotlib.pyplot as plt
+	from shapely.geometry import shape
+
+	# Path to the shapefile
+	shapefile_path = '/Users/.../cities.shp'
+
+
+	# Open the shapefile using Fiona
+	with fiona.open(shapefile_path, 'r') as shp:
+	    # Create a new figure
+	    plt.figure(figsize=(10, 10))
+
+	    # Iterate over each feature in the shapefile
+	    
+	    if geometry is not None:
+	        
+	        for feature in shp:
+	            geometry = shape(feature['geometry'])
+	            properties = feature['properties']
+
+	            # Check the type of geometry
+	            if geometry.geom_type == 'Point':
+	                # Handle points
+	                plt.plot(geometry.x, geometry.y, 'ro')
+	                # Add label
+	                plt.text(geometry.x, geometry.y, properties['NAME'], fontsize=8, ha='center', va='bottom')
+	            elif geometry.geom_type == 'LineString':
+	                # Handle lines
+	                plt.plot(*geometry.xy, 'b-')
+	                # Add label
+	                centroid = geometry.centroid
+	                plt.text(centroid.x, centroid.y, properties['NAME'], fontsize=8, ha='center', va='bottom')
+	            elif geometry.geom_type == 'Polygon':
+	                # Handle polygons
+	                plt.plot(*geometry.exterior.xy, 'g-')
+	                for interior in geometry.interiors:
+	                    plt.plot(*interior.xy, 'g--')
+	                # Add label
+	                centroid = geometry.centroid
+	                plt.text(centroid.x, centroid.y, properties['NAME'], fontsize=8, ha='center', va='bottom')
+
+	        # Set the plot limits and labels
+	        plt.xlabel('Longitude')
+	        plt.ylabel('Latitude')
+	        plt.title('Shapefile Visualization')
+	        plt.grid(True)
+
+	        # Show the plot
+	        plt.show()
+
+
+
+
+
+
+|
 
 *Notes:*
 
@@ -1200,6 +1284,15 @@ In the script below, ulx and uly are the coordinates in the the upper left corne
    :alt: Wayne DEM
 
 
+
+*References*
+
+Raster data processing with Python and GDAL -
+https://notebook.community/Automating-GIS-processes/Lesson-7-Automating-Raster-Data-Processing/Python-and-Gdal
+
+
+Introduction to NumPy and OpenCV.
+http://vision.deis.unibo.it/~smatt/DIDATTICA/Sistemi_Digitali_M/PDF/Introduction_to_NumPy_and_OpenCV.pdf
 
 
 |

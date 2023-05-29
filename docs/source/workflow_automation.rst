@@ -733,6 +733,210 @@ In this workflow, we first prompt the user for an address and then geocode the a
 
 
 
+**Geodatabase Administration**
+
+ The code example below perform the following operations as the geodatabase administrator:
+
+    * Identify connected users.
+    * Send an email notification.
+    * Prevent the geodatabase from accepting new connections.
+    * Disconnect users.
+    * Reconcile versions and post changes.
+    * Compress the geodatabase.
+    * Allow the geodatabase to begin accepting new connections.
+    * Rebuild indexes and update statistics on system tables.
+
+
+
+.. code-block:: python
+
+	import arcpy, time, smtplib
+
+	# Set the workspace 
+	arcpy.env.workspace = 'C:\\Projects\\MyProject\\admin.sde'
+
+	# Set a variable for the workspace
+	adminConn = arcpy.env.workspace
+
+	# Get a list of connected users.
+	userList = arcpy.ListUsers(adminConn)
+
+	# Get a list of user names of users currently connected and make email addresses
+	emailList = [user.Name + "@yourcompany.com" for user in arcpy.ListUsers(adminConn)]
+
+	# Take the email list and use it to send an email to connected users.
+	SERVER = "mailserver.yourcompany.com"
+	FROM = "SDE Admin <python@yourcompany.com>"
+	TO = emailList
+	SUBJECT = "Maintenance is about to be performed"
+	MSG = "Auto generated Message.\n\rServer maintenance will be performed in 15 minutes. Please log off."
+
+	# Prepare actual message
+	MESSAGE = """\
+	From: %s
+	To: %s
+	Subject: %s
+
+	%s
+	""" % (FROM, ", ".join(TO), SUBJECT, MSG)
+
+	# Send the mail
+	print("Sending email to connected users")
+	server = smtplib.SMTP(SERVER)
+	server.sendmail(FROM, TO, MESSAGE)
+	server.quit()
+
+	# Block new connections to the database.
+	print("The database is no longer accepting connections")
+	arcpy.AcceptConnections(adminConn, False)
+
+	# Wait 15 minutes
+	time.sleep(900)
+
+	# Disconnect all users from the database.
+	print("Disconnecting all users")
+	arcpy.DisconnectUser(adminConn, "ALL")
+
+	# Get a list of versions to pass into the ReconcileVersions tool.
+	# Only reconcile versions that are children of Default
+	print("Compiling a list of versions to reconcile")
+	verList = arcpy.ListVersions(adminConn)
+	versionList = [ver.name for ver in verList if ver.parentVersionName == 'sde.DEFAULT']
+
+	# Execute the ReconcileVersions tool.
+	print("Reconciling all versions")
+	arcpy.ReconcileVersions_management(adminConn, "ALL_VERSIONS", "sde.DEFAULT", versionList, "LOCK_ACQUIRED", "NO_ABORT", "BY_OBJECT", "FAVOR_TARGET_VERSION", "POST", "DELETE_VERSION", "c:/temp/reconcilelog.txt")
+
+	# Run the compress tool. 
+	print("Running compress")
+	arcpy.Compress_management(adminConn)
+
+	# Allow the database to begin accepting connections again
+	print("Allow users to connect to the database again")
+	arcpy.AcceptConnections(adminConn, True)
+
+	# Update statistics and indexes for the system tables
+	# Note: to use the "SYSTEM" option the user must be an geodatabase or database administrator.
+	# Rebuild indexes on the system tables
+	print("Rebuilding indexes on the system tables")
+	arcpy.RebuildIndexes_management(adminConn, "SYSTEM")
+
+	# Update statistics on the system tables
+	print("Updating statistics on the system tables")
+	arcpy.AnalyzeDatasets_management(adminConn, "SYSTEM")
+
+	print("Finished.")
+
+
+See this link for explanation of this code - https://desktop.arcgis.com/en/arcmap/latest/manage-data/geodatabases/using-python-scripting-to-batch-reconcile-and-post-versions.htm#GUID-913CD4A9-F765-4253-87DC-C5665A4AF2CC
+
+
+
+
+|
+
+**Moving Data from Survey123 Data Tables to Postgresql Database**
+
+Python script that lets a user log into Arcgis Enterprise and move data from a Survey123 data table to a Postgresql Database with daily updates.
+
+.. code-block:: python
+	import getpass
+	import schedule
+	import time
+	from arcgis.gis import GIS
+	from arcgis.features import FeatureLayerCollection
+	import psycopg2
+
+	# ArcGIS Enterprise credentials
+	portal_url = "https://your_portal_url/arcgis"  # Replace with your ArcGIS Enterprise URL
+	username = input("Enter your ArcGIS Enterprise username: ")
+	password = getpass.getpass("Enter your ArcGIS Enterprise password: ")
+
+	# Survey123 feature service details
+	survey123_item_id = "1234567890abcdef"  # Replace with the Survey123 feature service item ID
+	survey123_layer_id = 0  # Replace with the Survey123 feature layer ID
+
+	# PostgreSQL database details
+	database_host = "localhost"  # Replace with the PostgreSQL database host
+	database_name = "your_database_name"  # Replace with the PostgreSQL database name
+	database_user = "your_database_user"  # Replace with the PostgreSQL database username
+	database_password = getpass.getpass("Enter your PostgreSQL database password: ")
+
+	# Function to move data from Survey123 to PostgreSQL
+	def move_data():
+	    try:
+	        # Connect to ArcGIS Enterprise
+	        gis = GIS(portal_url, username, password)
+
+	        # Get the Survey123 feature layer collection
+	        survey123_item = gis.content.get(survey123_item_id)
+	        survey123_flc = FeatureLayerCollection.fromitem(survey123_item)
+
+	        # Query the Survey123 data
+	        query_result = survey123_flc.layers[survey123_layer_id].query()
+
+	        # Connect to the PostgreSQL database
+	        conn = psycopg2.connect(
+	            host=database_host,
+	            database=database_name,
+	            user=database_user,
+	            password=database_password
+	        )
+	        cursor = conn.cursor()
+
+	        # Iterate over the features and insert into the PostgreSQL database
+	        for feature in query_result.features:
+	            # Extract the required attributes from the feature
+	            attribute1 = feature.attributes['attribute1']  # Replace with the attribute names in your Survey123 form
+	            attribute2 = feature.attributes['attribute2']
+	            # Add more attributes as needed
+
+	            # Prepare the SQL insert statement
+	            sql = "INSERT INTO your_table_name (attribute1, attribute2) VALUES (%s, %s);"  # Replace with your table name and attributes
+
+	            # Execute the SQL insert statement
+	            cursor.execute(sql, (attribute1, attribute2))  # Add more attribute values as needed
+
+	        # Commit the changes and close the database connection
+	        conn.commit()
+	        cursor.close()
+	        conn.close()
+
+	        print("Data successfully moved to the PostgreSQL database.")
+
+	    except Exception as e:
+	        print("An error occurred:", str(e))
+
+	# Schedule the data movement at a specific time each day
+	schedule.every().day.at("08:00").do(move_data)  # Replace "08:00" with your desired time
+
+	# Continuously run the scheduled tasks
+	while True:
+	    schedule.run_pending()
+	    time.sleep(1)
+
+
+
+|
+
+
+**Other Workflow Examples**
+
+
+* Locator rebuilder (Rebuild, Republish)
+* Create Custom reports from Survey 123 results
+* Replicate data to file geodatabases
+* Rebuild address locators
+* Rebuild tiles for cached map services
+* Extract data and upload zipped geodatabase to FTP
+* Update datasets from map services 
+* Compress enterprise geodatabase
+
+
+|
+
+
+
 
 Reading
 ----------
@@ -760,6 +964,15 @@ Reading
 * GIS Python API documentation - https://qgis.org/pyqgis/master/
 
 * PyQGIS Developer Cookbook - https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/index.html
+
+* Geocoding Workflows in Python - https://mediaspace.esri.com/media/t/1_rcrehowf
+
+*  https://cdn.tnris.org/documents/potts-georodeo-20180514.pdf
+
+*  https://desktop.arcgis.com/en/arcmap/latest/manage-data/geodatabases/using-python-scripting-to-batch-reconcile-and-post-versions.htm#GUID-913CD4A9-F765-4253-87DC-C5665A4AF2CC
+
+
+* Scheduling Scripts - https://pnmcartodesign.com/assets/documents/automating-workflows-python-scripts-pa-gis-conference-2017.pdf
 
 
 

@@ -14,7 +14,7 @@ This website provides information on the use of Python in GIS. Python has many u
 
    4. Python can be used for building APIs and and for reading data from APIs.
 
-Python uses many widely available geospatial libraries to perform GIS operations. Such libraries include gdal, geopandas, rasterio, leafmap, shapely, plotly, fiona, earthpy, and many others. It also relies extensively matplotlib for visualization.
+Python uses many widely available geospatial libraries to perform GIS operations. Such libraries include gdal, geopandas, rasterio, leafmap, shapely, plotly, fiona, earthpy, and many others. It also relies extensively on matplotlib for visualization.
 
 As these are introductory tutorials, the topics covered deal mostly with using Python for traditional GIS operations, batch processing, and automating workflows. 
 
@@ -39,8 +39,10 @@ Since Python scripting in GIS relies on different spatial libraries, the example
    attribute_and_spatial_queries.rst
    querying_rasters.rst
    geocoding.rst
+   spatial_analysis.rst
    terrain_analysis.rst
    workflow_automation.rst
    api.rst
+   search_algorithms.rst
 
 

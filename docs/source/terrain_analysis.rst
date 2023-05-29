@@ -12,7 +12,7 @@ There are many python libraries that are available for terrain analysis.  Below,
 
 
 
-Displaying DEM
+Displaying DEMS
 ----------------
 
 Terrain analysis starts with displaying digital elevation models.  We have touched on this topic before.  Below, a DEM of Stowe, VT is displayed with the RichDEM library.  
@@ -36,10 +36,10 @@ Terrain analysis starts with displaying digital elevation models.  We have touch
 
 
 
-Generating Hillshades
+Hillshades
 -------------------------
 
-Hillshades are used in terrain analysis to give elevation data a 3-dimensional appearance thereby making it easier to visualize variations in topography. Hillshades are also frequently used in GIS and Cartography as underlays to make other kinds of data more visually interesting. Google Maps use hillshades extensivelly to portray terrain features of the earth.
+Hillshades are used in terrain analysis to give elevation data a 3-dimensional appearance thereby making it easier to visualize variations in topography. Hillshades are also frequently used in GIS and Cartography as underlays to make other kinds of data more visually interesting. As shown in the illustration below, Google Maps use hillshades extensivelly to portray terrain features of the earth.
 
 
 .. image:: img/google_hillshade_map.png
@@ -1183,6 +1183,10 @@ Popular GDAL commands. https://github.com/dwtkns/gdal-cheat-sheet
 
 Classify a Raster Using Threshold Values in Python - 2017 - https://www.neonscience.org/resources/learning-hub/tutorials/classify-raster-thresholds-py
 https://www.blendernation.com/2016/09/03/owen-powell-maps-terrain-models/
+
+3D Modeling with Matplotlib  - https://thinkinfi.com/3d-digital-surface-model-with-python-and-pylidar/
+
+Visualizing Topography and Maps with PyVista - https://gemgis.readthedocs.io/en/latest/getting_started/tutorial/14_visualizing_topography_and_maps_with_pyvista.html
 
 
 

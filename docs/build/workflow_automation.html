@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>14. Batch Processing &amp; Workflow Automation &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+  <title>15. Batch Processing &amp; Workflow Automation &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="15. Retrieving Data from APIs" href="api.html" />
-    <link rel="prev" title="13. Terrain Analysis" href="terrain_analysis.html" /> 
+    <link rel="next" title="16. Retrieving Data from APIs" href="api.html" />
+    <link rel="prev" title="14. Terrain Analysis" href="terrain_analysis.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,15 +56,17 @@
 <li class="toctree-l1"><a class="reference internal" href="attribute_and_spatial_queries.html">10. Attribute and Spatial Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="querying_rasters.html">11. Querying Rasters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geocoding.html">12. Geocoding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">13. Terrain Analysis</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">14. Batch Processing &amp; Workflow Automation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#batch-processing-using-gdal">14.1. Batch Processing Using GDAL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#batch-processing-using-arcpy">14.2. <strong>Batch Processing Using Arcpy</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#automating-gis-workflows">14.3. Automating GIS Workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#reading">14.4. Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spatial_analysis.html">13. Spatial Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">14. Terrain Analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">15. Batch Processing &amp; Workflow Automation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#batch-processing-using-gdal">15.1. Batch Processing Using GDAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#batch-processing-using-arcpy">15.2. <strong>Batch Processing Using Arcpy</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automating-gis-workflows">15.3. Automating GIS Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading">15.4. Reading</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">15. Retrieving Data from APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">16. Retrieving Data from APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search_algorithms.html">17. Search Algorithms</a></li>
 </ul>
 
         </div>
@@ -81,7 +83,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">14. </span>Batch Processing &amp; Workflow Automation</li>
+      <li class="breadcrumb-item active"><span class="section-number">15. </span>Batch Processing &amp; Workflow Automation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/workflow_automation.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -92,7 +94,7 @@
            <div itemprop="articleBody">
              
   <section id="batch-processing-workflow-automation">
-<h1><span class="section-number">14. </span>Batch Processing &amp; Workflow Automation<a class="headerlink" href="#batch-processing-workflow-automation" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">15. </span>Batch Processing &amp; Workflow Automation<a class="headerlink" href="#batch-processing-workflow-automation" title="Permalink to this heading"></a></h1>
 <p>Batch processing is the process of automating repetitive tasks as a block of work rather than attempting to process each operation manually. In GIS, it may be that you have to clip 1000 shapefiles to the extent of some regions. Instead of clipping the shapefiles individually, one can perform batch clipping in which we use a script to complete the task. Batch proessing is far faster than human processing.  It is often done in off-peak hours when computing resources are more commonly available, such as at the end of the day or overnight.</p>
 <p>In GIS, many large volume geoprocessing operations are carried out by batch scripting the operation.  The scripts below provide an introduction to batch operations using various Python libraries.</p>
 <p>With the appearance of ChatGPT, it now very easy to develop workflow scripts.  Simply describe the workflow in an much detail as you can and enter it into ChatGPT. ChatGPT will return a sample script that most often will work, but often also after a small amount of modification and testing.</p>
@@ -100,7 +102,7 @@
 <div class="line"><br /></div>
 </div>
 <section id="batch-processing-using-gdal">
-<h2><span class="section-number">14.1. </span>Batch Processing Using GDAL<a class="headerlink" href="#batch-processing-using-gdal" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">15.1. </span>Batch Processing Using GDAL<a class="headerlink" href="#batch-processing-using-gdal" title="Permalink to this heading"></a></h2>
 <p>There are many code samples for processing a single file.  However, code samples for batch processing are not frequently encountered.  Below is an example for converting multiple .hdr files into .tif files using GDAL.</p>
 <p>In GDAL, if you wanted to change the file format of a single raster, you can write a script similar to the one below:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gdal_translate</span> <span class="o">-</span><span class="n">of</span> <span class="n">GTiff</span> <span class="n">elevation</span><span class="o">.</span><span class="n">hdr</span> <span class="n">elevation</span><span class="o">.</span><span class="n">tif</span>
@@ -151,7 +153,7 @@ rst2tif &lt;ENTER&gt;</p>
 </div>
 </section>
 <section id="batch-processing-using-arcpy">
-<h2><span class="section-number">14.2. </span><strong>Batch Processing Using Arcpy</strong><a class="headerlink" href="#batch-processing-using-arcpy" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">15.2. </span><strong>Batch Processing Using Arcpy</strong><a class="headerlink" href="#batch-processing-using-arcpy" title="Permalink to this heading"></a></h2>
 <p><strong>Buffering Multiple Shapefiles using Arcpy</strong></p>
 <p>The script below can buffer any number of rasters.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
@@ -327,7 +329,7 @@ rst2tif &lt;ENTER&gt;</p>
 </div>
 </section>
 <section id="automating-gis-workflows">
-<h2><span class="section-number">14.3. </span>Automating GIS Workflows<a class="headerlink" href="#automating-gis-workflows" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">15.3. </span>Automating GIS Workflows<a class="headerlink" href="#automating-gis-workflows" title="Permalink to this heading"></a></h2>
 <p>Whereas batch processing involves repeating tasks many times, automating workflows involves writng codes to carry out tasks that involves multiple tools and multiple steps. Typically, the output of one step becomes the input for the next step.  The code samples below illustrates workflow automation for basic GIS tasks such as watershed delineation, site stelection analysis, geocoding, and thematic mapping. Workflow automation is required in a wide range of scenarios by organizations and GIS developers are deeply involved in these tasks.</p>
 <p><strong>Watershed Delineation (Arcpy)</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import system modules</span>
@@ -677,9 +679,126 @@ rst2tif &lt;ENTER&gt;</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<p><strong>Geodatabase Administration</strong></p>
+<blockquote>
+<div><p>The code example below perform the following operations as the geodatabase administrator:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Identify connected users.</p></li>
+<li><p>Send an email notification.</p></li>
+<li><p>Prevent the geodatabase from accepting new connections.</p></li>
+<li><p>Disconnect users.</p></li>
+<li><p>Reconcile versions and post changes.</p></li>
+<li><p>Compress the geodatabase.</p></li>
+<li><p>Allow the geodatabase to begin accepting new connections.</p></li>
+<li><p>Rebuild indexes and update statistics on system tables.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">smtplib</span>
+
+<span class="c1"># Set the workspace</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Projects</span><span class="se">\\</span><span class="s1">MyProject</span><span class="se">\\</span><span class="s1">admin.sde&#39;</span>
+
+<span class="c1"># Set a variable for the workspace</span>
+<span class="n">adminConn</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span>
+
+<span class="c1"># Get a list of connected users.</span>
+<span class="n">userList</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListUsers</span><span class="p">(</span><span class="n">adminConn</span><span class="p">)</span>
+
+<span class="c1"># Get a list of user names of users currently connected and make email addresses</span>
+<span class="n">emailList</span> <span class="o">=</span> <span class="p">[</span><span class="n">user</span><span class="o">.</span><span class="n">Name</span> <span class="o">+</span> <span class="s2">&quot;@yourcompany.com&quot;</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListUsers</span><span class="p">(</span><span class="n">adminConn</span><span class="p">)]</span>
+
+<span class="c1"># Take the email list and use it to send an email to connected users.</span>
+<span class="n">SERVER</span> <span class="o">=</span> <span class="s2">&quot;mailserver.yourcompany.com&quot;</span>
+<span class="n">FROM</span> <span class="o">=</span> <span class="s2">&quot;SDE Admin &lt;python@yourcompany.com&gt;&quot;</span>
+<span class="n">TO</span> <span class="o">=</span> <span class="n">emailList</span>
+<span class="n">SUBJECT</span> <span class="o">=</span> <span class="s2">&quot;Maintenance is about to be performed&quot;</span>
+<span class="n">MSG</span> <span class="o">=</span> <span class="s2">&quot;Auto generated Message.</span><span class="se">\n\r</span><span class="s2">Server maintenance will be performed in 15 minutes. Please log off.&quot;</span>
+
+<span class="c1"># Prepare actual message</span>
+<span class="n">MESSAGE</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">From: </span><span class="si">%s</span><span class="s2"></span>
+<span class="s2">To: </span><span class="si">%s</span><span class="s2"></span>
+<span class="s2">Subject: </span><span class="si">%s</span><span class="s2"></span>
+
+<span class="si">%s</span><span class="s2"></span>
+<span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">FROM</span><span class="p">,</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">TO</span><span class="p">),</span> <span class="n">SUBJECT</span><span class="p">,</span> <span class="n">MSG</span><span class="p">)</span>
+
+<span class="c1"># Send the mail</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sending email to connected users&quot;</span><span class="p">)</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">(</span><span class="n">SERVER</span><span class="p">)</span>
+<span class="n">server</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">FROM</span><span class="p">,</span> <span class="n">TO</span><span class="p">,</span> <span class="n">MESSAGE</span><span class="p">)</span>
+<span class="n">server</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+
+<span class="c1"># Block new connections to the database.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The database is no longer accepting connections&quot;</span><span class="p">)</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">AcceptConnections</span><span class="p">(</span><span class="n">adminConn</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Wait 15 minutes</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">900</span><span class="p">)</span>
+
+<span class="c1"># Disconnect all users from the database.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Disconnecting all users&quot;</span><span class="p">)</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">DisconnectUser</span><span class="p">(</span><span class="n">adminConn</span><span class="p">,</span> <span class="s2">&quot;ALL&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get a list of versions to pass into the ReconcileVersions tool.</span>
+<span class="c1"># Only reconcile versions that are children of Default</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Compiling a list of versions to reconcile&quot;</span><span class="p">)</span>
+<span class="n">verList</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListVersions</span><span class="p">(</span><span class="n">adminConn</span><span class="p">)</span>
+<span class="n">versionList</span> <span class="o">=</span> <span class="p">[</span><span class="n">ver</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">ver</span> <span class="ow">in</span> <span class="n">verList</span> <span class="k">if</span> <span class="n">ver</span><span class="o">.</span><span class="n">parentVersionName</span> <span class="o">==</span> <span class="s1">&#39;sde.DEFAULT&#39;</span><span class="p">]</span>
+
+<span class="c1"># Execute the ReconcileVersions tool.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reconciling all versions&quot;</span><span class="p">)</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">ReconcileVersions_management</span><span class="p">(</span><span class="n">adminConn</span><span class="p">,</span> <span class="s2">&quot;ALL_VERSIONS&quot;</span><span class="p">,</span> <span class="s2">&quot;sde.DEFAULT&quot;</span><span class="p">,</span> <span class="n">versionList</span><span class="p">,</span> <span class="s2">&quot;LOCK_ACQUIRED&quot;</span><span class="p">,</span> <span class="s2">&quot;NO_ABORT&quot;</span><span class="p">,</span> <span class="s2">&quot;BY_OBJECT&quot;</span><span class="p">,</span> <span class="s2">&quot;FAVOR_TARGET_VERSION&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="s2">&quot;DELETE_VERSION&quot;</span><span class="p">,</span> <span class="s2">&quot;c:/temp/reconcilelog.txt&quot;</span><span class="p">)</span>
+
+<span class="c1"># Run the compress tool.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running compress&quot;</span><span class="p">)</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">Compress_management</span><span class="p">(</span><span class="n">adminConn</span><span class="p">)</span>
+
+<span class="c1"># Allow the database to begin accepting connections again</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Allow users to connect to the database again&quot;</span><span class="p">)</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">AcceptConnections</span><span class="p">(</span><span class="n">adminConn</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Update statistics and indexes for the system tables</span>
+<span class="c1"># Note: to use the &quot;SYSTEM&quot; option the user must be an geodatabase or database administrator.</span>
+<span class="c1"># Rebuild indexes on the system tables</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rebuilding indexes on the system tables&quot;</span><span class="p">)</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">RebuildIndexes_management</span><span class="p">(</span><span class="n">adminConn</span><span class="p">,</span> <span class="s2">&quot;SYSTEM&quot;</span><span class="p">)</span>
+
+<span class="c1"># Update statistics on the system tables</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Updating statistics on the system tables&quot;</span><span class="p">)</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">AnalyzeDatasets_management</span><span class="p">(</span><span class="n">adminConn</span><span class="p">,</span> <span class="s2">&quot;SYSTEM&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finished.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See this link for explanation of this code - <a class="reference external" href="https://desktop.arcgis.com/en/arcmap/latest/manage-data/geodatabases/using-python-scripting-to-batch-reconcile-and-post-versions.htm#GUID-913CD4A9-F765-4253-87DC-C5665A4AF2CC">https://desktop.arcgis.com/en/arcmap/latest/manage-data/geodatabases/using-python-scripting-to-batch-reconcile-and-post-versions.htm#GUID-913CD4A9-F765-4253-87DC-C5665A4AF2CC</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Moving Data from Survey123 Data Tables to Postgresql Database</strong></p>
+<p>Python script that lets a user log into Arcgis Enterprise and move data from a Survey123 data table to a Postgresql Database with daily updates.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Other Workflow Examples</strong></p>
+<ul class="simple">
+<li><p>Locator rebuilder (Rebuild, Republish)</p></li>
+<li><p>Create Custom reports from Survey 123 results</p></li>
+<li><p>Replicate data to file geodatabases</p></li>
+<li><p>Rebuild address locators</p></li>
+<li><p>Rebuild tiles for cached map services</p></li>
+<li><p>Extract data and upload zipped geodatabase to FTP</p></li>
+<li><p>Update datasets from map services</p></li>
+<li><p>Compress enterprise geodatabase</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </section>
 <section id="reading">
-<h2><span class="section-number">14.4. </span>Reading<a class="headerlink" href="#reading" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">15.4. </span>Reading<a class="headerlink" href="#reading" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.e-education.psu.edu/geog485/node/202">The need for GIS automation</a></p></li>
 <li><p><a class="reference external" href="https://www.geospatialworld.net/prime/technology-and-innovation/streamlining-gis-with-automation/">Streamlining GIS with Automation</a></p></li>
@@ -693,6 +812,10 @@ rst2tif &lt;ENTER&gt;</p>
 <li><p>Customizing QGIS with Python (Full Course Material) - <a class="reference external" href="https://courses.spatialthoughts.com/pyqgis-in-a-day.html">https://courses.spatialthoughts.com/pyqgis-in-a-day.html</a></p></li>
 <li><p>GIS Python API documentation - <a class="reference external" href="https://qgis.org/pyqgis/master/">https://qgis.org/pyqgis/master/</a></p></li>
 <li><p>PyQGIS Developer Cookbook - <a class="reference external" href="https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/index.html">https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/index.html</a></p></li>
+<li><p>Geocoding Workflows in Python - <a class="reference external" href="https://mediaspace.esri.com/media/t/1_rcrehowf">https://mediaspace.esri.com/media/t/1_rcrehowf</a></p></li>
+<li><p><a class="reference external" href="https://cdn.tnris.org/documents/potts-georodeo-20180514.pdf">https://cdn.tnris.org/documents/potts-georodeo-20180514.pdf</a></p></li>
+<li><p><a class="reference external" href="https://desktop.arcgis.com/en/arcmap/latest/manage-data/geodatabases/using-python-scripting-to-batch-reconcile-and-post-versions.htm#GUID-913CD4A9-F765-4253-87DC-C5665A4AF2CC">https://desktop.arcgis.com/en/arcmap/latest/manage-data/geodatabases/using-python-scripting-to-batch-reconcile-and-post-versions.htm#GUID-913CD4A9-F765-4253-87DC-C5665A4AF2CC</a></p></li>
+<li><p>Scheduling Scripts - <a class="reference external" href="https://pnmcartodesign.com/assets/documents/automating-workflows-python-scripts-pa-gis-conference-2017.pdf">https://pnmcartodesign.com/assets/documents/automating-workflows-python-scripts-pa-gis-conference-2017.pdf</a></p></li>
 </ul>
 </section>
 </section>
@@ -701,8 +824,8 @@ rst2tif &lt;ENTER&gt;</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="terrain_analysis.html" class="btn btn-neutral float-left" title="13. Terrain Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="api.html" class="btn btn-neutral float-right" title="15. Retrieving Data from APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="terrain_analysis.html" class="btn btn-neutral float-left" title="14. Terrain Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral float-right" title="16. Retrieving Data from APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

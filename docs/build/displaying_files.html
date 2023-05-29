@@ -60,21 +60,21 @@
 <li class="toctree-l2"><a class="reference internal" href="#plotting-graphs">8.6. Plotting Graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#writing-to-a-file">8.7. Writing to a File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#plotting-shapefiles">8.8. Plotting Shapefiles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#displaying-rasters">8.9. Displaying Rasters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#exercises">8.10. Exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#resources">8.11. Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#displaying-shapefiles-using-fiona">8.9. Displaying Shapefiles Using Fiona</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#displaying-rasters">8.10. Displaying Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">8.11. Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resources">8.12. Resources</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="map_projections.html">9. Map Projections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="attribute_and_spatial_queries.html">10. Attribute and Spatial Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="querying_rasters.html">11. Querying Rasters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geocoding.html">12. Geocoding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">13. Terrain Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html#head-docs-source-terrain-analysis-rst">14. &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst</a></li>
-<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html#id1">15. &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst</a></li>
-<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html#id2">16. &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst</a></li>
-<li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">17. Batch Processing &amp; Workflow Automation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">18. Retrieving Data from APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spatial_analysis.html">13. Spatial Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">14. Terrain Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">15. Batch Processing &amp; Workflow Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">16. Retrieving Data from APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search_algorithms.html">17. Search Algorithms</a></li>
 </ul>
 
         </div>
@@ -280,23 +280,21 @@ the objective with this code sample is to illustrate some details that is involv
     <span class="n">xvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
     <span class="n">yvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mag</span><span class="p">)</span>
     <span class="nb">sum</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">+</span> <span class="n">mag</span>
-
-    <span class="c1">#Calculate mean</span>
-    <span class="n">average</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">/</span> <span class="n">count</span>
-
-<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Average is&quot;</span><span class="p">,</span><span class="n">average</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-
-<span class="n">width</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">xvar</span><span class="p">,</span> <span class="n">yvar</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;orangered&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;No. of Earthquakes&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;17&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;orange&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;12&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Magnitude of Earthquakes&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>#Calculate mean
+average = sum / count</p>
+<p>rint (“Average is”, round(average,5))
+print (“”)</p>
+<p>width = 1</p>
+<p>fig, ax = plt.subplots(figsize=(6, 4))
+ax.bar(xvar, yvar, width, color=’orangered’)
+ax.set_yscale(‘log’)  # Set y-axis to logarithmic scale
+ax.set_xlabel(“No. of Earthquakes”, fontweight=’bold’, fontsize=12, color=’black’)
+ax.set_ylabel(“Magnitude”, fontweight=’bold’, color=’black’, fontsize=12)
+ax.set_title(“Magnitude of Earthquakes”)</p>
+<p>plt.tight_layout()  # Adjust figure spacing
+plt.show()</p>
 <img alt="Formatted Table" src="_images/earth_magnitude_graph.png" />
 <div class="line-block">
 <div class="line"><br /></div>
@@ -573,6 +571,18 @@ the objective with this code sample is to illustrate some details that is involv
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><em>Notes:</em></p>
+<ul class="simple">
+<li><p>ax is the axes on which to draw the map</p></li>
+<li><p>cmap is the name of the <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">colormap</a></p></li>
+<li><p>legend &amp; legend_kwds control the display of the legend.</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </section>
 <section id="writing-to-a-file">
 <h2><span class="section-number">8.7. </span>Writing to a File<a class="headerlink" href="#writing-to-a-file" title="Permalink to this heading"></a></h2>
@@ -712,6 +722,68 @@ the objective with this code sample is to illustrate some details that is involv
 </pre></div>
 </div>
 <img alt="Thematic Map" src="_images/world_population.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="displaying-shapefiles-using-fiona">
+<h2><span class="section-number">8.9. </span>Displaying Shapefiles Using Fiona<a class="headerlink" href="#displaying-shapefiles-using-fiona" title="Permalink to this heading"></a></h2>
+<p>Fiona is a low-level library that focuses on reading and writing geospatial data formats. It acts as a Pythonic interface to the OGR library, providing direct access to the capabilities of OGR for working with vector data. Fiona is known for its efficiency, simplicity, and interoperability with various geospatial file formats. It is often used when specific data access or format-related functionalities are required.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiona</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">shape</span>
+
+<span class="c1"># Path to the shapefile</span>
+<span class="n">shapefile_path</span> <span class="o">=</span> <span class="s1">&#39;/Users/.../cities.shp&#39;</span>
+
+
+<span class="c1"># Open the shapefile using Fiona</span>
+<span class="k">with</span> <span class="n">fiona</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">shapefile_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">shp</span><span class="p">:</span>
+    <span class="c1"># Create a new figure</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+    <span class="c1"># Iterate over each feature in the shapefile</span>
+
+    <span class="k">if</span> <span class="n">geometry</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">shp</span><span class="p">:</span>
+            <span class="n">geometry</span> <span class="o">=</span> <span class="n">shape</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">])</span>
+            <span class="n">properties</span> <span class="o">=</span> <span class="n">feature</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">]</span>
+
+            <span class="c1"># Check the type of geometry</span>
+            <span class="k">if</span> <span class="n">geometry</span><span class="o">.</span><span class="n">geom_type</span> <span class="o">==</span> <span class="s1">&#39;Point&#39;</span><span class="p">:</span>
+                <span class="c1"># Handle points</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">geometry</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">geometry</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+                <span class="c1"># Add label</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">geometry</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">geometry</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">properties</span><span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">geometry</span><span class="o">.</span><span class="n">geom_type</span> <span class="o">==</span> <span class="s1">&#39;LineString&#39;</span><span class="p">:</span>
+                <span class="c1"># Handle lines</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">geometry</span><span class="o">.</span><span class="n">xy</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">)</span>
+                <span class="c1"># Add label</span>
+                <span class="n">centroid</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">centroid</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">centroid</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">centroid</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">properties</span><span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">geometry</span><span class="o">.</span><span class="n">geom_type</span> <span class="o">==</span> <span class="s1">&#39;Polygon&#39;</span><span class="p">:</span>
+                <span class="c1"># Handle polygons</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">geometry</span><span class="o">.</span><span class="n">exterior</span><span class="o">.</span><span class="n">xy</span><span class="p">,</span> <span class="s1">&#39;g-&#39;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">interior</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">interiors</span><span class="p">:</span>
+                    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">interior</span><span class="o">.</span><span class="n">xy</span><span class="p">,</span> <span class="s1">&#39;g--&#39;</span><span class="p">)</span>
+                <span class="c1"># Add label</span>
+                <span class="n">centroid</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">centroid</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">centroid</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">centroid</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">properties</span><span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Set the plot limits and labels</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Longitude&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Shapefile Visualization&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Show the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p><em>Notes:</em></p>
 <ul class="simple">
 <li><p>ax is the axes on which to draw the map</p></li>
@@ -887,7 +959,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="displaying-rasters">
-<h2><span class="section-number">8.9. </span>Displaying Rasters<a class="headerlink" href="#displaying-rasters" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">8.10. </span>Displaying Rasters<a class="headerlink" href="#displaying-rasters" title="Permalink to this heading"></a></h2>
 <p>In programming, rasters are considered as <em>arrays</em>.  An array is a collection of items of the same data type that can be manipulated as a single entity.  In Python,  a list is a one dimensional array.  However, when we are thinking about rasters, we are typically thinking of two dimensional arrays that are defined by rows and columns.</p>
 <p>In Python, one difference between a list and a two-dimensional array is that whereas a list can store multiple data types, a two-dimensional array can store only one data type.</p>
 <img alt="One and Two Dimensional Arrays" src="_images/arrays1.png" />
@@ -969,6 +1041,11 @@ the objective with this code sample is to illustrate some details that is involv
 </pre></div>
 </div>
 <img alt="Wayne DEM" src="_images/wayne_dem_gdal.png" />
+<p><em>References</em></p>
+<p>Raster data processing with Python and GDAL -
+<a class="reference external" href="https://notebook.community/Automating-GIS-processes/Lesson-7-Automating-Raster-Data-Processing/Python-and-Gdal">https://notebook.community/Automating-GIS-processes/Lesson-7-Automating-Raster-Data-Processing/Python-and-Gdal</a></p>
+<p>Introduction to NumPy and OpenCV.
+<a class="reference external" href="http://vision.deis.unibo.it/~smatt/DIDATTICA/Sistemi_Digitali_M/PDF/Introduction_to_NumPy_and_OpenCV.pdf">http://vision.deis.unibo.it/~smatt/DIDATTICA/Sistemi_Digitali_M/PDF/Introduction_to_NumPy_and_OpenCV.pdf</a></p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -1183,7 +1260,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="exercises">
-<h2><span class="section-number">8.10. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">8.11. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Visit <a class="reference external" href="https://nextgenstats.nfl.com/stats/passing#max-completed-air-distance">this NFL website</a> and copy the quarter back data. Paste the data into Excel and save it in CSV format.  Use the standard library in Python or pandas to plot a simple histogram and boxplot of the data in the passing attempts field (ATT).   Also, calculate the mean and standard deviation of passing attempts.   Explain what your data is portraying in short paragraph.</p></li>
 <li><p>Using Geopandas, create a thematic map for the USA or <a class="reference external" href="https://www.michigan.gov/coronavirus/stats">Michigan</a> showing the distribution of Covid19 cases across the country or state for the date for which you have data.  Write comments to explain what your code is doing.   Repeat the process using another Python library of your choice.</p></li>
@@ -1197,7 +1274,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="resources">
-<h2><span class="section-number">8.11. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">8.12. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://automating-gis-processes.github.io/CSC18/index.html">https://automating-gis-processes.github.io/CSC18/index.html</a></p></li>
 <li><p>Python Shapefile Library - <a class="reference external" href="https://pythonhosted.org/Python%20Shapefile%20Library/">https://pythonhosted.org/Python%20Shapefile%20Library/</a></p></li>

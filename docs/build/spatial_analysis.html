@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>13. Spatial Analysis &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="14. Terrain Analysis" href="terrain_analysis.html" />
+    <link rel="prev" title="12. Geocoding" href="geocoding.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Python GIS Tutorials
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">1. Setting up Development Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_programs.html">2. Introduction to the Python Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings_lists_conditional.html">3. Strings and Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditionals_and_looping.html">4. Conditional Statements and Looping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">5. Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error_handling.html">6. Error Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">7. Basic Concepts in Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="displaying_files.html">8. Reading and Displaying Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="map_projections.html">9. Map Projections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="attribute_and_spatial_queries.html">10. Attribute and Spatial Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="querying_rasters.html">11. Querying Rasters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geocoding.html">12. Geocoding</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">13. Spatial Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mean-center">13.1. Mean Center</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mean-center-and-standard-distance-circle">13.2. Mean Center and Standard Distance Circle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mean-center-from-a-set-of-points">13.3. Mean Center from a Set of Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spatial-interpolation">13.4. Spatial Interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">13.5. References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">14. Terrain Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">15. Batch Processing &amp; Workflow Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">16. Retrieving Data from APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search_algorithms.html">17. Search Algorithms</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python GIS Tutorials</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">13. </span>Spatial Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/spatial_analysis.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="spatial-analysis">
+<h1><span class="section-number">13. </span>Spatial Analysis<a class="headerlink" href="#spatial-analysis" title="Permalink to this heading"></a></h1>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="mean-center">
+<h2><span class="section-number">13.1. </span>Mean Center<a class="headerlink" href="#mean-center" title="Permalink to this heading"></a></h2>
+<p>This is a simple script that generates a randon set of x and y coordinates, calculates the mean center of the points, then plots the coordinates of the random points and mean center.  If you haven’t looked up numpy’s docuentation on its random and mean functions. now might be a good time to do so.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+    <span class="c1"># Set the number of random points</span>
+    <span class="n">num_points</span> <span class="o">=</span> <span class="mi">100</span>
+
+    <span class="c1"># Generate random x and y coordinates. These are 1-dimensional array with random values.</span>
+    <span class="n">x_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num_points</span><span class="p">)</span> <span class="o">*</span> <span class="mi">900000</span>
+<span class="n">y_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num_points</span><span class="p">)</span> <span class="o">*</span> <span class="mi">700000</span>
+
+    <span class="c1"># Calculate the mean center</span>
+    <span class="n">mean_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_coords</span><span class="p">)</span>
+    <span class="n">mean_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_coords</span><span class="p">)</span>
+
+    <span class="c1"># Plot the random points</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_coords</span><span class="p">,</span> <span class="n">y_coords</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Random Points&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Plot the mean center point</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">mean_x</span><span class="p">,</span> <span class="n">mean_y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean Center&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Set plot title and labels</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Random Points and Mean Center&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Add legend</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+    <span class="c1"># Display the plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="Mean Center" src="_images/numpy_mean_center.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="mean-center-and-standard-distance-circle">
+<h2><span class="section-number">13.2. </span>Mean Center and Standard Distance Circle<a class="headerlink" href="#mean-center-and-standard-distance-circle" title="Permalink to this heading"></a></h2>
+<p>These are popular visualization in GIS.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Set the number of random points</span>
+<span class="n">num_points</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># Generate random x and y coordinates</span>
+<span class="n">x_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num_points</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">y_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num_points</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1"># Calculate the mean center</span>
+<span class="n">mean_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_coords</span><span class="p">)</span>
+<span class="n">mean_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_coords</span><span class="p">)</span>
+
+<span class="c1"># Calculate the standard deviation of X and Y coordinates</span>
+<span class="n">std_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x_coords</span><span class="p">)</span>
+<span class="n">std_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">y_coords</span><span class="p">)</span>
+
+<span class="c1"># Calculate the radius as one standard deviation</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">std_x</span><span class="p">,</span> <span class="n">std_y</span><span class="p">)</span>
+
+<span class="c1"># Plot the random points</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_coords</span><span class="p">,</span> <span class="n">y_coords</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Random Points&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the mean center point</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">mean_x</span><span class="p">,</span> <span class="n">mean_y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean Center&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the standard distance circle</span>
+<span class="n">circle</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="n">mean_x</span><span class="p">,</span> <span class="n">mean_y</span><span class="p">),</span> <span class="n">radius</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Standard Distance Circle&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">circle</span><span class="p">)</span>
+
+<span class="c1"># Set plot title and labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Random Points, Mean Center, and Standard Distance Circle&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add legend</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Set axis equal and adjust plot limits</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x_coords</span><span class="p">)</span> <span class="o">-</span> <span class="mi">10</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">x_coords</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">y_coords</span><span class="p">)</span> <span class="o">-</span> <span class="mi">10</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">y_coords</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Display the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="mean-center-from-a-set-of-points">
+<h2><span class="section-number">13.3. </span>Mean Center from a Set of Points<a class="headerlink" href="#mean-center-from-a-set-of-points" title="Permalink to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Path to the points shapefile</span>
+<span class="n">shapefile_path</span> <span class="o">=</span> <span class="s1">&#39;path_to_shapefile.shp&#39;</span>
+
+<span class="c1"># Read the shapefile</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">shapefile_path</span><span class="p">)</span>
+
+<span class="c1"># Calculate the mean center</span>
+<span class="n">mean_center</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">centroid</span>
+
+<span class="c1"># Plot the points</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Points&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the mean center</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">mean_center</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">mean_center</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean Center&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set plot title and labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Points and Mean Center&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Longitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add legend</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Show the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In the script above, GeoPandas uses Shapely geometry objects to represent and manipulate the geometries within a GeoDataFrame.  You can directly call any Shapely geometry methods on the geometry column of a GeoDataFrame. This means that you can utilize the full range of Shapely’s geometric operations, such as buffering, intersection, union, difference, and many more, by accessing the geometry column.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="spatial-interpolation">
+<h2><span class="section-number">13.4. </span>Spatial Interpolation<a class="headerlink" href="#spatial-interpolation" title="Permalink to this heading"></a></h2>
+<p>The script below calculates spatial interpolation using the IDW method.  It is taken from this website - <a class="reference external" href="https://www.geodose.com/2019/09/3d-terrain-modelling-in-python.html#google_vignette">https://www.geodose.com/2019/09/3d-terrain-modelling-in-python.html#google_vignette</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<p>import csv</p>
+<p># DISTANCE FUNCTION
+def distance(x1, y1, x2, y2):</p>
+<blockquote>
+<div><p>d = np.sqrt((x1 - x2)**2 + (y1 - y2)**2)
+return d</p>
+</div></blockquote>
+<p># CREATING IDW FUNCTION
+def idw_npoint(xz, yz, n_point, p, csv_file):</p>
+<blockquote>
+<div><p>x = []
+y = []
+z = []</p>
+<p># Read x, y, z values from the CSV file
+with open(csv_file, ‘r’) as file:</p>
+<blockquote>
+<div><p>reader = csv.reader(file)
+next(reader)  # Skip the header row if present
+for row in reader:</p>
+<blockquote>
+<div><p>x.append(float(row[0]))
+y.append(float(row[1]))
+z.append(float(row[2]))</p>
+</div></blockquote>
+</div></blockquote>
+<p>r = 10  # block radius iteration distance
+nf = 0
+while nf &lt;= n_point:  # will stop when np reaching at least n_point</p>
+<blockquote>
+<div><p>x_block = []
+y_block = []
+z_block = []
+r += 10  # add 10 units each iteration
+xr_min = xz - r
+xr_max = xz + r
+yr_min = yz - r
+yr_max = yz + r
+for i in range(len(x)):</p>
+<blockquote>
+<div><p># condition to test if a point is within the block
+if ((x[i] &gt;= xr_min and x[i] &lt;= xr_max) and (y[i] &gt;= yr_min and y[i] &lt;= yr_max)):</p>
+<blockquote>
+<div><p>x_block.append(x[i])
+y_block.append(y[i])
+z_block.append(z[i])</p>
+</div></blockquote>
+</div></blockquote>
+<p>nf = len(x_block)  # calculate the number of points in the block</p>
+</div></blockquote>
+<p># calculate weight based on distance and p value
+w_list = []
+for j in range(len(x_block)):</p>
+<blockquote>
+<div><p>d = distance(xz, yz, x_block[j], y_block[j])
+if d &gt; 0:</p>
+<blockquote>
+<div><p>w = 1 / (d**p)
+w_list.append(w)
+z0 = 0</p>
+</div></blockquote>
+<dl class="simple">
+<dt>else:</dt><dd><p>w_list.append(0)  # if this condition is met, it means d &lt;= 0, weight is set to 0</p>
+</dd>
+</dl>
+</div></blockquote>
+<p># check if there is 0 in the weight list
+w_check = 0 in w_list
+if w_check == True:</p>
+<blockquote>
+<div><p>idx = w_list.index(0)  # find the index for weight = 0
+z_idw = z_block[idx]  # set the value to the current sample value</p>
+</div></blockquote>
+<dl class="simple">
+<dt>else:</dt><dd><p>wt = np.transpose(w_list)
+z_idw = np.dot(z_block, wt) / sum(w_list)  # idw calculation using dot product</p>
+</dd>
+</dl>
+<p>return z_idw</p>
+</div></blockquote>
+</section>
+<section id="references">
+<h2><span class="section-number">13.5. </span>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://www.geodose.com/2019/09/3d-terrain-modelling-in-python.html#google_vignette">https://www.geodose.com/2019/09/3d-terrain-modelling-in-python.html#google_vignette</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="geocoding.html" class="btn btn-neutral float-left" title="12. Geocoding" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="terrain_analysis.html" class="btn btn-neutral float-right" title="14. Terrain Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Hugh Semple.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
