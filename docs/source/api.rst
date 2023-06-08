@@ -199,7 +199,7 @@ As GIS researchers, we are also interested in mapping lat\long coordinates that 
 **Mapping with Python & Folium - Creating Maps from Raw CSV Data**
 
 
-This video is a tutorial on how to create Folium maps from raw CSV data in Python. The video covers loading the data into Python, transforming the data, extracting latitude/longitude, and creating interactive maps based on the data.
+This video tutorial shows how to create Folium maps from raw CSV data in Python. The video covers loading the data into Python, transforming the data, extracting latitude/longitude, and creating interactive maps based on the data.
 
 .. raw:: html
 
@@ -208,7 +208,69 @@ This video is a tutorial on how to create Folium maps from raw CSV data in Pytho
 
 
 |
+
+**Retrieving Data from the Twitter API and Mapping the Coordinates of Tweets**
+
+
+.. raw:: html
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/EAvEa5fLwRA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+	Here is the author's code:
+
+
+	.. code-block:: python
+
+	from TwitterAPI import TwitterAPI
+	import matplotlib.pyplot as plt
+	import descartes
+	import geopandas as gpd
+	import json
+
+	consumer_key= ""
+	consumer_secret= ""
+	access_token_key= ""
+	access_token_secret= ""
+
+
+	api = TwitterAPI(consumer_key,
+	                 consumer_secret,
+	                 access_token_key,
+	                 access_token_secret)
+
+	response = api.request("statuses/filter", {"track": ["harry", "and", "meghan"]})
+	tweets = response.get_iterator()
+
+	coordinates = []
+	count = 0
+
+	while count < 100:
+		tweet = next(tweets)
+		if "place" in tweet and tweet["place"] != None:
+			location = tweet["place"]["bounding_box"]["coordinates"][0][0]
+			coordinates.append(location)
+			count += 1
+
+	world_map = gpd.read_file("C:/Users/Brian/Desktop/TM_WORLD_BORDERS_SIMPL-0.3/TM_WORLD_BORDERS_SIMPL-0.3.shp")
+
+	fig, ax = plt.subplots(figsize = (15, 15))
+	world_map.plot(ax=ax)
+
+	for x, y in coordinates:
+		plt.scatter(x, y, marker="o", c="red")
+
+	plt.savefig("map.png")
+
+
+
+Source:  https://github.com/kiteco/python-youtube-code/blob/master/Twitter-api-geolocator/twitter-api-geolocator.py
+
+
 |
+
+
+
 
 
 **Readings**

@@ -1,0 +1,19 @@
+
+
+Database Interaction and SQL
+=============================
+
+
+|
+
+In this module, we will lean how to connect Python with databases using libraries like SQLite3 or SQLAlchemy.  We will also focus on understanding SQL basics for querying and manipulating data in databases.
+
+
+
+|
+
+Recommended YouTube Videos:
+----------------------------
+
+* Corey Schafer's Python SQLite Database: https://youtu.be/pd-0G0MigUA
+* Corey Schafer's Python SQLAlchemy Tutorial: https://youtu.be/eXfDB6n_xO0

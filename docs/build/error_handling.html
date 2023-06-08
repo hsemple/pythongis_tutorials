@@ -61,12 +61,11 @@
 <li class="toctree-l1"><a class="reference internal" href="attribute_and_spatial_queries.html">10. Attribute and Spatial Queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="querying_rasters.html">11. Querying Rasters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geocoding.html">12. Geocoding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">13. Terrain Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html#head-docs-source-terrain-analysis-rst">14. &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst</a></li>
-<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html#id1">15. &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst</a></li>
-<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html#id2">16. &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:docs/source/terrain_analysis.rst</a></li>
-<li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">17. Batch Processing &amp; Workflow Automation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">18. Retrieving Data from APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spatial_analysis.html">13. Spatial Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">14. Terrain Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">15. Batch Processing &amp; Workflow Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">16. Retrieving Data from APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search_algorithms.html">17. Search Algorithms</a></li>
 </ul>
 
         </div>
@@ -95,7 +94,7 @@
              
   <section id="error-handling">
 <h1><span class="section-number">6. </span>Error Handling<a class="headerlink" href="#error-handling" title="Permalink to this heading"></a></h1>
-<p>In computing, exceptions are unusual or error conditions that occur in your code. Exception statements in Python enable you to trap and handle errors in your code, allowing you to gracefully recover from error conditions.</p>
+<p>In computing, exceptions are error conditions that occur in your code. Exception statements in Python enable you to trap and handle errors in your code, allowing you to gracefully recover from error conditions.</p>
 <p>Exception handling makes your code more robust as it helps anticipate potential failures that would cause the program to stop in an uncontrolled manner.  Errors can be defined as the following types:</p>
 <blockquote>
 <div><ul class="simple">
@@ -112,20 +111,19 @@
 <section id="id1">
 <h2><span class="section-number">6.1. </span>Error Handling<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
-<li><p>If error handling is not explicitly dealt with, Python handles it.  In the code below, the correct path to myfile.txt is not given, so the Python interpreter throws an exception.</p></li>
+<li><p>If error handling is not explicitly dealt with, Python will handle it for you, though in terse way that users may not always find easy to understand. In the code below, the correct path to myfile.txt is not given, so the Python interpreter throws an exception.</p></li>
 </ol>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;myfile.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><em>Traceback (most recent call last):
-File “&lt;pyshell#31&gt;”, line 1, in &lt;module&gt;`
+<p><cite>Traceback (most recent call last):
+File “&lt;pyshell#31&gt;”, line 1, in &lt;module&gt;
 f = open(‘myfile.txt’)
-FileNotFoundError: [Errno 2] No such file or directory: ‘myfile.txt’</em></p>
-<p>Note</p>
-<p>Tracebacks are very important in figuring out what is wrong in your code.  When reading a traceback, start with the last line in the traceback. There, you will see the type of  error and a brief explanation. Above that you will the text that is causing the error, then above that you will be given the file and line number of the error.</p>
-<ol class="arabic simple" start="2">
-<li><p>To capture error, at a minimum, you can create a try … except blocks, as shown below and enclose your code in the try block. Next, write an error message and place it in the except block.  When the code runs, if an exception occurs, it will be handled by the except block.</p></li>
-</ol>
+FileNotFoundError: [Errno 2] No such file or directory: ‘myfile.txt’</cite></p>
+<p>Tracebacks are very important in figuring out what is wrong in your code and the line number in which the error lies.  When reading a traceback, start with the last line in the traceback. There, you will see the type of error and a brief explanation of the error. Above that you will see the text that is causing the error, then above that you will be given the file and line number of the error.</p>
+<p>Although tracebacks are useful, they are not the most graceful way to handle errors in your code. It is possible to write code so that errors are handled gracefully.</p>
+<p><strong>Try … Except Block</strong></p>
+<p>To capture errors and deal with them gracefully, at a minimum, you can create a <em>try … except</em> blocks, as shown below and enclose your code in the try block. Next, write an error message and place it in the except block.  When the code runs, if an exception occurs, it will be handled by the except block.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
      <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;myfile.txt&#39;</span><span class="p">)</span>
 
@@ -134,9 +132,8 @@ FileNotFoundError: [Errno 2] No such file or directory: ‘myfile.txt’</em></p
 </pre></div>
 </div>
 <p>Sorry. This file does not not exist.</p>
-<ol class="arabic simple" start="3">
-<li><p>The “Exception” keyword  catches all types of error.   However, you can catch specific errors by using specific keywords. Note that you can have more than 1 exception blocks in your code.</p></li>
-</ol>
+<p><strong>The “Exception” keyword</strong></p>
+<p>The “Exception” keyword  catches all types of error.  However, you can catch specific errors by using specific keywords. Note that you can have more than 1 exception blocks in your code.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
       <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;myfile.txt&#39;</span><span class="p">)</span>
 
@@ -147,10 +144,8 @@ FileNotFoundError: [Errno 2] No such file or directory: ‘myfile.txt’</em></p
        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Sorry. Something went wrong.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
-<li><p>Here are some Python specific Exceptions - <a class="reference external" href="https://docs.python.org/3/library/exceptions.html">https://docs.python.org/3/library/exceptions.html</a></p></li>
-<li><p>Instead of writing your own error message, use Python’s message.   Use (e) to capture the error message</p></li>
-</ol>
+<p>Here are some Python specific Exceptions - <a class="reference external" href="https://docs.python.org/3/library/exceptions.html">https://docs.python.org/3/library/exceptions.html</a></p>
+<p>Instead of writing your own error message, use Python’s message.   Use (e) to capture the error message</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;myfile.txt&#39;</span><span class="p">)</span>
 
@@ -162,9 +157,11 @@ FileNotFoundError: [Errno 2] No such file or directory: ‘myfile.txt’</em></p
 </pre></div>
 </div>
 <p>[Errno 2] No such file or directory: ‘myfile.txt’</p>
-<ol class="arabic simple" start="6">
-<li><p>In addition to the try… except block, you can also include an “else” block in your code. If there are no errors in the try block, the else block is executed.</p></li>
-</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Try…Except…Else</strong></p>
+<p>In addition to the try… except block, you can also include an “else” block in your code. If there are no errors in the try block, the else block is executed.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
       <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/Users/semple/Desktop/test_file.txt&#39;</span><span class="p">)</span>
 

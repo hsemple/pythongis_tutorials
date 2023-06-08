@@ -19,6 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="18. Database Interaction and SQL" href="databases.html" />
     <link rel="prev" title="16. Retrieving Data from APIs" href="api.html" /> 
 </head>
 
@@ -60,9 +61,12 @@
 <li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">15. Batch Processing &amp; Workflow Automation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">16. Retrieving Data from APIs</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">17. Search Algorithms</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#references">17.1. References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#binary-search">17.1. Binary Search*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">17.2. References</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="databases.html">18. Database Interaction and SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web_scraping.html">19. Web Scraping and APIs</a></li>
 </ul>
 
         </div>
@@ -91,21 +95,230 @@
              
   <section id="search-algorithms">
 <h1><span class="section-number">17. </span>Search Algorithms<a class="headerlink" href="#search-algorithms" title="Permalink to this heading"></a></h1>
+<p>In this module, we will explore common algorithms and data manipulation techniques, such as sorting, searching, and graph algorithms.  These algorithms appear in many GIS functions that we call. However, at times, when creating our our tools, we may want to implement our own versions of these algortithms, thus it is important to learn how these algorithms in the context of GIS. Below, we discuss several search algorithms commonly used in GIS:</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<p><strong>Linear Search</strong></p>
+<p>Linear sesarch algorithms sequentially search through each element of a dataset until a match is found.  After the first match is found, the program stops.</p>
+<img alt="Linear Search" src="_images/LinearSearch.png" />
+<p><em>Linear Search Code- Example 1</em></p>
+<p>Here is a real-world GIS use caseof a linear search algorithm.  Let’s say you have a dataset containing information about different points of interest (POIs) in a city. Each POI has attributes like name, category, latitude, and longitude. You want to search for a specific POI based on its name using a linear search algorithm. The code below illustrates how this can be done.</p>
+<p># Sample dataset of points of interest (POIs)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">poi_data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Restaurant A&quot;</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;Restaurant&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">40.7128</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">74.0060</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Park B&quot;</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;Park&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">40.7456</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">73.9870</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Hospital C&quot;</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;Hospital&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">40.7309</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">73.9988</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Museum D&quot;</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;Museum&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">40.7580</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">73.9855</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Shopping Center E&quot;</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;Shopping&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">40.7410</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">73.9896</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="c1"># Function to perform linear search based on POI name</span>
+<span class="k">def</span> <span class="nf">linear_search_poi</span><span class="p">(</span><span class="n">poi_name</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">poi</span> <span class="ow">in</span> <span class="n">poi_data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">poi</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">poi_name</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">poi</span>
+    <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># Return None if POI is not found</span>
+
+<span class="c1"># Example usage</span>
+<span class="n">poi_name</span> <span class="o">=</span> <span class="s2">&quot;Hospital C&quot;</span>
+<span class="n">found_poi</span> <span class="o">=</span> <span class="n">linear_search_poi</span><span class="p">(</span><span class="n">poi_name</span><span class="p">)</span>
+
+<span class="c1"># Check if POI is found and print its details</span>
+<span class="k">if</span> <span class="n">found_poi</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;POI Found!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Name:&quot;</span><span class="p">,</span> <span class="n">found_poi</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Category:&quot;</span><span class="p">,</span> <span class="n">found_poi</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Latitude:&quot;</span><span class="p">,</span> <span class="n">found_poi</span><span class="p">[</span><span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Longitude:&quot;</span><span class="p">,</span> <span class="n">found_poi</span><span class="p">[</span><span class="s2">&quot;longitude&quot;</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;POI not found!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the above example, we have a dataset poi_data that represents various points of interest in a city. The linear_search_poi function performs a linear search through the dataset to find a specific POI based on its name. If the POI is found, its details are printed. Otherwise, it prints a message indicating that the POI was not found.</p>
+<p>Note: The dataset poi_data is just a sample for illustration purposes. In a real-world scenario, you would typically have a larger dataset and may use data structures like spatial indices for efficient searching. The linear search algorithm shown here is useful when the dataset is small or when there are no specific indexing structures available.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><em>Linear Search Code - Example 2</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">search_country</span><span class="p">(</span><span class="n">countries</span><span class="p">,</span> <span class="n">country_to_search</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">country</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">countries</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">country</span> <span class="o">==</span> <span class="n">country_to_search</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">country</span>
+
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;France&quot;</span><span class="p">,</span> <span class="s2">&quot;Spain&quot;</span><span class="p">,</span> <span class="s2">&quot;United Kingdom&quot;</span><span class="p">,</span> <span class="s2">&quot;Italy&quot;</span><span class="p">,</span> <span class="s2">&quot;Portugal&quot;</span><span class="p">,</span> <span class="s2">&quot;Ireland&quot;</span><span class="p">,</span> <span class="s2">&quot;Poland&quot;</span><span class="p">,</span> <span class="s2">&quot;Norway&quot;</span><span class="p">]</span>
+<span class="n">country_to_search</span> <span class="o">=</span> <span class="s2">&quot;USA&quot;</span>
+
+<span class="n">matched_country</span> <span class="o">=</span> <span class="n">search_country</span><span class="p">(</span><span class="n">countries</span><span class="p">,</span> <span class="n">country_to_search</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">matched_country</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We have a match. What do you want to do with&quot;</span><span class="p">,</span> <span class="n">matched_country</span><span class="p">,</span> <span class="s2">&quot;?&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Country not found.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The enumerate function is used to get both the index and value of each element. The index is not used in this case, so it is not included in the loop.
+For each iteration, the country variable represents the current country being examined.
+If the country matches the country_to_search, the function immediately returns the matching country using the return statement.
+If no match is found after looping through all countries, the function returns None to indicate that the country was not found.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>** More on Linear Searches** - <a class="reference external" href="https://www.geeksforgeeks.org/linear-search/">https://www.geeksforgeeks.org/linear-search/</a></p>
+<p>While linear searches can be used in the GIS use cases such as Point of Interest (POI) Search, Attribute Query:, Coordinate Lookup, and Data Validation, their usage depends on the specific requirements, dataset size, and performance considerations. In practice, linear searches may not be the most efficient approach for large-scale GIS applications due to their time complexity of O(n), where n represents the size of the dataset.</p>
+<p>GIS applications often deal with large volumes of spatial data, and as datasets grow in size, the performance of linear searches may become a limiting factor. In such cases, more advanced search algorithms and spatial indexing techniques are often preferred to optimize search operations and improve efficiency.</p>
+<p>For example, in point of interest (POI) search or attribute queries, databases with spatial indexing capabilities (such as R-tree or Quadtree) are commonly employed to speed up the search process by exploiting spatial relationships and reducing the search space.</p>
+<p>Similarly, network analysis tasks often utilize graph-based algorithms (e.g., Dijkstra’s algorithm) or spatial indexing techniques (e.g., network-based indexing) to efficiently find shortest paths or locate nearest facilities.</p>
+<p>While linear searches can still be used for smaller datasets or simple applications, larger-scale GIS systems tend to rely on more optimized and efficient search algorithms to handle the complexities and scale of spatial data.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="binary-search">
+<h2><span class="section-number">17.1. </span>Binary Search*<a class="headerlink" href="#binary-search" title="Permalink to this heading"></a></h2>
 <ul class="simple">
-<li><p>Linear Search</p></li>
-<li><p>Binary Search</p></li>
+<li><p>Requires the dataset to be sorted in ascending order.</p></li>
+<li><p>Divides the dataset in half repeatedly, discarding the half that does not contain the target element.</p></li>
+<li><p>Efficient for sorted datasets, significantly reducing the number of comparisons needed.</p></li>
+</ul>
+<p><em>Binary Search Code - Example 1</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">low</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">high</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="k">while</span> <span class="n">low</span> <span class="o">&lt;=</span> <span class="n">high</span><span class="p">:</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">guess</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">guess</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">mid</span>
+        <span class="k">elif</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">target</span><span class="p">:</span>
+            <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="c1"># Example usage</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="n">target</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">binary_search</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">result</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Target found at index&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Target not found in the list.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The binary_search function takes two parameters: arr (the sorted list of numbers) and target (the value we are searching for).</p>
+<p>It initializes two variables, low and high, to define the range of the search within the list. low is set to the index of the first element (0), and high is set to the index of the last element (len(arr) - 1).</p>
+<p>Inside the while loop, the algorithm compares the target value with the middle element of the current range (arr[mid]). If they are equal, it means the target value has been found, and the function returns the index mid.</p>
+<p>If the guess is less than the target, it means the target is likely in the right half of the range. The low index is updated to mid + 1 to search in the remaining higher indices.</p>
+<p>If the guess is greater than the target, it means the target is likely in the left half of the range.</p>
+<p>The high index is updated to mid - 1 to search in the remaining lower indices.</p>
+<p>If the target is not found after iterating through the loop and the low index becomes greater than the high index, the function returns -1 to indicate that the target was not found in the list.</p>
+<p>In the example usage section, a list called numbers and a target value of 15 are defined. The binary_search function is called with these inputs, and the returned result is stored in the variable result.</p>
+<p>Finally, a conditional statement is used to check if the result is not equal to -1. If it is not -1, it means the target was found, and the corresponding message is printed. Otherwise, a message indicating that the target was not found is printed.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>R-tree Search</strong></p>
+<ul class="simple">
+<li><p>Used for spatial indexing and searching in multi-dimensional space.</p></li>
+<li><p>A tree data structure that hierarchically partitions the space into rectangular bounding boxes.</p></li>
+<li><p>Enables efficient range searches and nearest neighbor searches in spatial datasets.</p></li>
 </ul>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<p><strong>Quadtree Search</strong></p>
+<ul class="simple">
+<li><p>A tree data structure used for indexing and searching spatial data in two-dimensional space.</p></li>
+<li><p>Divides the space into quadrants recursively, forming a tree structure.</p></li>
+<li><p>Efficient for range searches and point location queries.</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>k-d Tree Search</strong></p>
+<ul class="simple">
+<li><p>A binary tree structure used for organizing k-dimensional data.</p></li>
+<li><p>Each internal node partitions the space along one of the dimensions.</p></li>
+<li><p>Enables efficient k-nearest neighbor searches and range searches.</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Hash-based Search</strong></p>
+<ul class="simple">
+<li><p>Utilizes a hash function to map keys to array indices, enabling fast data retrieval.</p></li>
+<li><p>Commonly used for attribute indexing and quick access to records based on a key value.</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Grid-based Search</strong></p>
+<ul class="simple">
+<li><p>Divides the space into a regular grid of cells.</p></li>
+<li><p>Enables efficient spatial indexing and retrieval operations.</p></li>
+<li><p>Commonly used for raster data and grid-based spatial analysis.</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>** Raster Search**</p>
+<ul class="simple">
+<li><p>Involves searching and retrieving information from raster datasets.</p></li>
+<li><p>Involves techniques such as nearest neighbor search, resampling, and interpolation.</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Network Search</strong></p>
+<ul class="simple">
+<li><p>Specific to network datasets, used for routing and network analysis.</p></li>
+<li><p>Algorithms like Dijkstra’s Algorithm, A* Search, and breadth-first search are used to find the shortest path between network nodes.</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Range Search</strong></p>
+<ul class="simple">
+<li><p>Searches for objects within a given spatial extent or distance.</p></li>
+<li><p>Involves techniques like bounding box checks, range queries on spatial indices, and spatial overlays.</p></li>
+</ul>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div></blockquote>
+<p><strong>Nearest Neighbor Search</strong></p>
+<ul class="simple">
+<li><p>Identifies the closest objects to a given point or object.</p></li>
+<li><p>Algorithms like k-d trees, R-trees, and spatial hashing are used to efficiently find nearest neighbors.</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Spatial Hashing</strong></p>
+<ul class="simple">
+<li><p>Maps spatial objects to a hash table using a grid or hashing function.</p></li>
+<li><p>Enables efficient spatial indexing and nearest neighbor searches.</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
 <section id="references">
-<h2><span class="section-number">17.1. </span>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
-<p><a class="reference external" href="https://favtutor.com/blogs/searching-algorithms">https://favtutor.com/blogs/searching-algorithms</a></p>
-<p>Spatial Interpolation
-<a class="reference external" href="https://www.geodose.com/2019/09/3d-terrain-modelling-in-python.html#google_vignette">https://www.geodose.com/2019/09/3d-terrain-modelling-in-python.html#google_vignette</a></p>
+<h2><span class="section-number">17.2. </span>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Python Data Structures and Algorithms: <a class="reference external" href="https://youtu.be/HGOBQPFzWKo">https://youtu.be/HGOBQPFzWKo</a></p></li>
+<li><p>Python Sorting Algorithms: <a class="reference external" href="https://youtu.be/JUOYkyCvMp8">https://youtu.be/JUOYkyCvMp8</a></p></li>
+<li><p><a class="reference external" href="https://favtutor.com/blogs/searching-algorithms">https://favtutor.com/blogs/searching-algorithms</a></p></li>
+<li><p>Spatial Interpolation. <a class="reference external" href="https://www.geodose.com/2019/09/3d-terrain-modelling-in-python.html#google_vignette">https://www.geodose.com/2019/09/3d-terrain-modelling-in-python.html#google_vignette</a></p></li>
+</ul>
 </section>
 </section>
 
@@ -114,6 +327,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="api.html" class="btn btn-neutral float-left" title="16. Retrieving Data from APIs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="databases.html" class="btn btn-neutral float-right" title="18. Database Interaction and SQL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

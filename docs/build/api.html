@@ -19,6 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="17. Search Algorithms" href="search_algorithms.html" />
     <link rel="prev" title="15. Batch Processing &amp; Workflow Automation" href="workflow_automation.html" /> 
 </head>
 
@@ -59,6 +60,7 @@
 <li class="toctree-l1"><a class="reference internal" href="terrain_analysis.html">14. Terrain Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workflow_automation.html">15. Batch Processing &amp; Workflow Automation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">16. Retrieving Data from APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search_algorithms.html">17. Search Algorithms</a></li>
 </ul>
 
         </div>
@@ -232,9 +234,59 @@
 <div class="line"><br /></div>
 </div>
 <p><strong>Mapping with Python &amp; Folium - Creating Maps from Raw CSV Data</strong></p>
-<p>This video is a tutorial on how to create Folium maps from raw CSV data in Python. The video covers loading the data into Python, transforming the data, extracting latitude/longitude, and creating interactive maps based on the data.</p>
+<p>This video tutorial shows how to create Folium maps from raw CSV data in Python. The video covers loading the data into Python, transforming the data, extracting latitude/longitude, and creating interactive maps based on the data.</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/H8Ypb8Ei9YA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="line-block">
 <div class="line"><br /></div>
+</div>
+<p><strong>Retrieving Data from the Twitter API and Mapping the Coordinates of Tweets</strong></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EAvEa5fLwRA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+Here is the author's code:
+
+
+.. code-block:: python
+
+from TwitterAPI import TwitterAPI
+import matplotlib.pyplot as plt
+import descartes
+import geopandas as gpd
+import json
+
+consumer_key= ""
+consumer_secret= ""
+access_token_key= ""
+access_token_secret= ""
+
+
+api = TwitterAPI(consumer_key,
+                 consumer_secret,
+                 access_token_key,
+                 access_token_secret)
+
+response = api.request("statuses/filter", {"track": ["harry", "and", "meghan"]})
+tweets = response.get_iterator()
+
+coordinates = []
+count = 0
+
+while count < 100:
+        tweet = next(tweets)
+        if "place" in tweet and tweet["place"] != None:
+                location = tweet["place"]["bounding_box"]["coordinates"][0][0]
+                coordinates.append(location)
+                count += 1
+
+world_map = gpd.read_file("C:/Users/Brian/Desktop/TM_WORLD_BORDERS_SIMPL-0.3/TM_WORLD_BORDERS_SIMPL-0.3.shp")
+
+fig, ax = plt.subplots(figsize = (15, 15))
+world_map.plot(ax=ax)
+
+for x, y in coordinates:
+        plt.scatter(x, y, marker="o", c="red")
+
+plt.savefig("map.png")<p>Source:  <a class="reference external" href="https://github.com/kiteco/python-youtube-code/blob/master/Twitter-api-geolocator/twitter-api-geolocator.py">https://github.com/kiteco/python-youtube-code/blob/master/Twitter-api-geolocator/twitter-api-geolocator.py</a></p>
+<div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>Readings</strong></p>
@@ -251,6 +303,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="workflow_automation.html" class="btn btn-neutral float-left" title="15. Batch Processing &amp; Workflow Automation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="search_algorithms.html" class="btn btn-neutral float-right" title="17. Search Algorithms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

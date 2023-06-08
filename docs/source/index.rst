@@ -44,5 +44,7 @@ Since Python scripting in GIS relies on different spatial libraries, the example
    workflow_automation.rst
    api.rst
    search_algorithms.rst
+   databases.rst
+   web_scraping.rst
 
 
