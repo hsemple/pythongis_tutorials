@@ -904,7 +904,7 @@ Exercises
 
 7. Look up how to work with ArcPy's `ListFeatureClasses function <https://pro.arcgis.com/en/pro-app/latest/arcpy/functions/listfeatureclasses.htm>`_, then write Python code that uses ArcPy's ListFeatureClasses function to print out a list of feature classes or shapefiles in one of your folders.
 
-8. Run the codes in Section 5.1 of this document that deal with displaying layers in QGIS if the layer (either vector or raster) is an active layer. Run the code using your own data and show that you can display either a raster or vector in QGIS if it is an active layer.
+8. Run the codes in Section 4.1 of this document that deal with displaying layers in QGIS if the layer (either vector or raster) is an active layer. Run the code using your own data and show that you can display either a raster or vector in QGIS if it is an active layer.
 
 
 9. In what way is the "Break" statment in Python different from "Continue". Give coding examples to show the difference.

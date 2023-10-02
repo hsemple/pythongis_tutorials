@@ -121,9 +121,11 @@ While linear searches can still be used for smaller datasets or simple applicati
 Binary Search*
 --------------------
 
-* Requires the dataset to be sorted in ascending order.
-* Divides the dataset in half repeatedly, discarding the half that does not contain the target element.
-* Efficient for sorted datasets, significantly reducing the number of comparisons needed.
+In a binary search, the search space is divided in half in each iteration, resulting in a logarithmic time complexity. This means that as the size of the input (n) grows, the time it takes to perform the binary search increases at a much slower rate compared to linear search algorithms (O(n)).
+
+The logarithmic time complexity of O(log n) indicates that the binary search algorithm is very efficient for large datasets. It can quickly locate the target value by reducing the search space in each step, making it much faster than linear search algorithms that examine each element sequentially.
+
+It's important to note that the O(log n) complexity assumes that the input list is sorted. If the list is not sorted, additional steps would be required to sort the list, which could increase the overall time complexity.
 
 
 
@@ -181,6 +183,15 @@ In the example usage section, a list called numbers and a target value of 15 are
 Finally, a conditional statement is used to check if the result is not equal to -1. If it is not -1, it means the target was found, and the corresponding message is printed. Otherwise, a message indicating that the target was not found is printed.
 
 
+|
+
+**Specifying Binary Search**
+
+In Python, it is not necessary to explicitly specify that you want to perform a binary search when searching the attribute table of a shapefile. The process of searching for a value in the attribute table is typically handled by the underlying GIS library or module you are using, such as ArcPy or GDAL.
+
+These GIS libraries often implement optimized search algorithms, including binary search, to efficiently search attribute tables. When you perform a search operation using functions provided by these libraries, the search algorithm used will be determined by the library itself based on the data structure and indexing methods employed.
+
+Therefore, as a Python programmer, you typically don't need to worry about specifying the search algorithm explicitly. Instead, you can rely on the GIS library to handle the search operation efficiently, ensuring optimal performance for attribute and spatial queries.
 
 |
 

@@ -1637,7 +1637,7 @@ Resources
 * Create Random Hex Color Code Using Python - https://www.geeksforgeeks.org/create-random-hex-color-code-using-python/#
 * Plotting large shapefiles with matplotlib - https://gis.stackexchange.com/questions/202839/plotting-large-shapefiles-with-matplotlib/266675#266675
 * ArcGIS API for Python. Working with web maps and web scenes - https://developers.arcgis.com/python/guide/working-with-web-maps-and-web-scenes/
-
+https://mapscaping.com/how-to-read-a-shapefile-using-python/
 
 
 |
