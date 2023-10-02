@@ -12,7 +12,7 @@ build:
   
 # Specify the documentation source directory and Sphinx configuration file
 python:
-  version: 3.8
+  version: 3.11.4
   setup_py_install: true
   pip_install: true
   extra_requirements: docs
