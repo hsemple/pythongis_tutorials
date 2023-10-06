@@ -207,7 +207,7 @@ Variable-length arguments in Python Functions
 Functions do not always have a fixed number of arguments. Sometimes, it is not always possible to know beforehand how many arguments will be passed to the function.  For example, in a spatial interpolation exercise, it is possible to estimate the unknown value from three or four or any number of nearby values.  In such a case, the function must be designed to handle any number of arguments that will be passed to it.
 
 
-In Python, we define a variable argument using an asterisk ('*') followed by a variable name.  By convention, the variable name is called "aargs" but  name can be used.  A tuple is used to store the values passed to *args and you can send zero or more arguments to the function.  Also, a formal argument cab be placed before the *args variable but not after it. 
+In Python, we define a variable argument using an asterisk ('*') followed by a variable name. By convention, the variable name is called **"aargs"** but but name can be used.  A tuple is used to store the values passed to *args and you can send zero or more arguments to the function.  Also, a formal argument cab be placed before the *args variable but not after it. 
 
 
 

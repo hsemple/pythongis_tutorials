@@ -840,6 +840,7 @@ See this link for explanation of this code - https://desktop.arcgis.com/en/arcma
 Python script that lets a user log into Arcgis Enterprise and move data from a Survey123 data table to a Postgresql Database with daily updates.
 
 .. code-block:: python
+
 	import getpass
 	import schedule
 	import time

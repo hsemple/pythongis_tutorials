@@ -284,10 +284,15 @@ For loops are great for manipulating lists
    a = [‘cat’, ‘dog’, ‘window’, ‘Main Street’]
        for x in a:
           print (x)
+
+
+
 | cat
 | dog
 | window
 | Main Street
+
+
 
 
 |

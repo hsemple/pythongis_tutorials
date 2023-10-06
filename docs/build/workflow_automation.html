@@ -781,6 +781,82 @@ rst2tif &lt;ENTER&gt;</p>
 </div>
 <p><strong>Moving Data from Survey123 Data Tables to Postgresql Database</strong></p>
 <p>Python script that lets a user log into Arcgis Enterprise and move data from a Survey123 data table to a Postgresql Database with daily updates.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">getpass</span>
+<span class="kn">import</span> <span class="nn">schedule</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">arcgis.gis</span> <span class="kn">import</span> <span class="n">GIS</span>
+<span class="kn">from</span> <span class="nn">arcgis.features</span> <span class="kn">import</span> <span class="n">FeatureLayerCollection</span>
+<span class="kn">import</span> <span class="nn">psycopg2</span>
+
+<span class="c1"># ArcGIS Enterprise credentials</span>
+<span class="n">portal_url</span> <span class="o">=</span> <span class="s2">&quot;https://your_portal_url/arcgis&quot;</span>  <span class="c1"># Replace with your ArcGIS Enterprise URL</span>
+<span class="n">username</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter your ArcGIS Enterprise username: &quot;</span><span class="p">)</span>
+<span class="n">password</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Enter your ArcGIS Enterprise password: &quot;</span><span class="p">)</span>
+
+<span class="c1"># Survey123 feature service details</span>
+<span class="n">survey123_item_id</span> <span class="o">=</span> <span class="s2">&quot;1234567890abcdef&quot;</span>  <span class="c1"># Replace with the Survey123 feature service item ID</span>
+<span class="n">survey123_layer_id</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Replace with the Survey123 feature layer ID</span>
+
+<span class="c1"># PostgreSQL database details</span>
+<span class="n">database_host</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span>  <span class="c1"># Replace with the PostgreSQL database host</span>
+<span class="n">database_name</span> <span class="o">=</span> <span class="s2">&quot;your_database_name&quot;</span>  <span class="c1"># Replace with the PostgreSQL database name</span>
+<span class="n">database_user</span> <span class="o">=</span> <span class="s2">&quot;your_database_user&quot;</span>  <span class="c1"># Replace with the PostgreSQL database username</span>
+<span class="n">database_password</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Enter your PostgreSQL database password: &quot;</span><span class="p">)</span>
+
+<span class="c1"># Function to move data from Survey123 to PostgreSQL</span>
+<span class="k">def</span> <span class="nf">move_data</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Connect to ArcGIS Enterprise</span>
+        <span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">(</span><span class="n">portal_url</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+
+        <span class="c1"># Get the Survey123 feature layer collection</span>
+        <span class="n">survey123_item</span> <span class="o">=</span> <span class="n">gis</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">survey123_item_id</span><span class="p">)</span>
+        <span class="n">survey123_flc</span> <span class="o">=</span> <span class="n">FeatureLayerCollection</span><span class="o">.</span><span class="n">fromitem</span><span class="p">(</span><span class="n">survey123_item</span><span class="p">)</span>
+
+        <span class="c1"># Query the Survey123 data</span>
+        <span class="n">query_result</span> <span class="o">=</span> <span class="n">survey123_flc</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">survey123_layer_id</span><span class="p">]</span><span class="o">.</span><span class="n">query</span><span class="p">()</span>
+
+        <span class="c1"># Connect to the PostgreSQL database</span>
+        <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+            <span class="n">host</span><span class="o">=</span><span class="n">database_host</span><span class="p">,</span>
+            <span class="n">database</span><span class="o">=</span><span class="n">database_name</span><span class="p">,</span>
+            <span class="n">user</span><span class="o">=</span><span class="n">database_user</span><span class="p">,</span>
+            <span class="n">password</span><span class="o">=</span><span class="n">database_password</span>
+        <span class="p">)</span>
+        <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+        <span class="c1"># Iterate over the features and insert into the PostgreSQL database</span>
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">query_result</span><span class="o">.</span><span class="n">features</span><span class="p">:</span>
+            <span class="c1"># Extract the required attributes from the feature</span>
+            <span class="n">attribute1</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;attribute1&#39;</span><span class="p">]</span>  <span class="c1"># Replace with the attribute names in your Survey123 form</span>
+            <span class="n">attribute2</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s1">&#39;attribute2&#39;</span><span class="p">]</span>
+            <span class="c1"># Add more attributes as needed</span>
+
+            <span class="c1"># Prepare the SQL insert statement</span>
+            <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO your_table_name (attribute1, attribute2) VALUES (</span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">);&quot;</span>  <span class="c1"># Replace with your table name and attributes</span>
+
+            <span class="c1"># Execute the SQL insert statement</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="p">(</span><span class="n">attribute1</span><span class="p">,</span> <span class="n">attribute2</span><span class="p">))</span>  <span class="c1"># Add more attribute values as needed</span>
+
+        <span class="c1"># Commit the changes and close the database connection</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data successfully moved to the PostgreSQL database.&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;An error occurred:&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+<span class="c1"># Schedule the data movement at a specific time each day</span>
+<span class="n">schedule</span><span class="o">.</span><span class="n">every</span><span class="p">()</span><span class="o">.</span><span class="n">day</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="s2">&quot;08:00&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">move_data</span><span class="p">)</span>  <span class="c1"># Replace &quot;08:00&quot; with your desired time</span>
+
+<span class="c1"># Continuously run the scheduled tasks</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">schedule</span><span class="o">.</span><span class="n">run_pending</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
