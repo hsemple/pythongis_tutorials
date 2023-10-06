@@ -108,7 +108,6 @@ These are popular visualization in GIS.
 
 .. image:: img/numpy_stdistcircle.png
    :alt: Standard Distance
-
    
 
   | 
