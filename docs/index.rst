@@ -26,23 +26,22 @@ Since Python scripting in GIS relies on different spatial libraries, the example
    :hidden:
    :numbered:
 
-   getting_started.rst
-   intro_programs.rst
-   strings_lists_conditional.rst
-   conditionals_and_looping.rst 
-   functions.rst
-   error_handling.rst
-   object_oriented_programming.rst
-   displaying_files.rst
-   map_projections.rst
-   attribute_and_spatial_queries.rst
-   querying_rasters.rst
-   geocoding.rst
-   spatial_analysis.rst
-   terrain_analysis.rst
-   workflow_automation.rst
-   api.rst
-   search_algorithms.rst
-   databases.rst
-   web_scraping.rst
+   source/getting_started.rst
+   source/intro_programs.rst
+   source/strings_lists_conditional.rst
+   source/conditionals_and_looping.rst 
+   source/functions.rst
+   source/error_handling.rst
+   source/displaying_files.rst
+   source/map_projections.rst
+   source/attribute_and_spatial_queries.rst
+   source/querying_rasters.rst
+   source/geocoding.rst
+   source/spatial_analysis.rst
+   source/terrain_analysis.rst
+   source/workflow_automation.rst
+   source/api.rst
+   source/search_algorithms.rst
+   source/databases.rst
+   source/web_scraping.rst
 
