@@ -18,7 +18,7 @@ Python uses many widely available geospatial libraries to perform GIS operations
 
 As these are introductory tutorials, the topics covered deal mostly with using Python for traditional GIS operations, batch processing, and automating workflows. 
 
-Since Python scripting in GIS relies on different spatial libraries, the example scripts provided in these tutorials are drawn from different spatial libraries.  This approach is intended to give readers a broad-based exposure to working with Python in GIS.  In addition, readers will be exposed to arcpy for the ArcGIS Desktop platform, PyQGIS for QGIS, and ArcGIS API for those working with ESRI products in a web-based environment.  
+Since Python scripting in GIS relies on different spatial libraries, the example scripts provided in these tutorials are drawn from the different spatial libraries.  This approach will give readers a broad-based exposure to working with Python in GIS.  In addition, readers will be exposed to arcpy for the ArcGIS Desktop platform, PyQGIS for QGIS, and ArcGIS API for those working with ESRI products in a web-based environment.  
 
 
 .. toctree::
