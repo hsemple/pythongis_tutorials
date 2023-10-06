@@ -24,7 +24,6 @@ Since Python scripting in GIS relies on different spatial libraries, the example
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-   :hidden:
    :numbered:
 
    getting_started.rst
