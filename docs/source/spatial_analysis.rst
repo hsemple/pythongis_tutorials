@@ -106,11 +106,16 @@ These are popular visualization in GIS.
 	plt.show()
 
 
+
+
 .. image:: img/numpy_stdistcircle.png
    :alt: Standard Distance
-   
 
-  | 
+
+
+
+
+| 
 
 
 
