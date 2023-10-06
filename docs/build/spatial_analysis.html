@@ -235,87 +235,69 @@
 <h2><span class="section-number">13.4. </span>Spatial Interpolation<a class="headerlink" href="#spatial-interpolation" title="Permalink to this heading"></a></h2>
 <p>The script below calculates spatial interpolation using the IDW method.  It is taken from this website - <a class="reference external" href="https://www.geodose.com/2019/09/3d-terrain-modelling-in-python.html#google_vignette">https://www.geodose.com/2019/09/3d-terrain-modelling-in-python.html#google_vignette</a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="c1"># DISTANCE FUNCTION</span>
+<span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y1</span> <span class="o">-</span> <span class="n">y2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">d</span>
+
+<span class="c1"># CREATING IDW FUNCTION</span>
+<span class="k">def</span> <span class="nf">idw_npoint</span><span class="p">(</span><span class="n">xz</span><span class="p">,</span> <span class="n">yz</span><span class="p">,</span> <span class="n">n_point</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">csv_file</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Read x, y, z values from the CSV file</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="nb">next</span><span class="p">(</span><span class="n">reader</span><span class="p">)</span>  <span class="c1"># Skip the header row if present</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="n">z</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+
+    <span class="n">r</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># block radius iteration distance</span>
+    <span class="n">nf</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">nf</span> <span class="o">&lt;=</span> <span class="n">n_point</span><span class="p">:</span>  <span class="c1"># will stop when np reaching at least n_point</span>
+        <span class="n">x_block</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">y_block</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">z_block</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">r</span> <span class="o">+=</span> <span class="mi">10</span>  <span class="c1"># add 10 units each iteration</span>
+        <span class="n">xr_min</span> <span class="o">=</span> <span class="n">xz</span> <span class="o">-</span> <span class="n">r</span>
+        <span class="n">xr_max</span> <span class="o">=</span> <span class="n">xz</span> <span class="o">+</span> <span class="n">r</span>
+        <span class="n">yr_min</span> <span class="o">=</span> <span class="n">yz</span> <span class="o">-</span> <span class="n">r</span>
+        <span class="n">yr_max</span> <span class="o">=</span> <span class="n">yz</span> <span class="o">+</span> <span class="n">r</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+            <span class="c1"># condition to test if a point is within the block</span>
+            <span class="k">if</span> <span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">xr_min</span> <span class="ow">and</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">xr_max</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">yr_min</span> <span class="ow">and</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">yr_max</span><span class="p">)):</span>
+                <span class="n">x_block</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                <span class="n">y_block</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                <span class="n">z_block</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">nf</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_block</span><span class="p">)</span>  <span class="c1"># calculate the number of points in the block</span>
+
+    <span class="c1"># calculate weight based on distance and p value</span>
+    <span class="n">w_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_block</span><span class="p">)):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">xz</span><span class="p">,</span> <span class="n">yz</span><span class="p">,</span> <span class="n">x_block</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">y_block</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">d</span><span class="o">**</span><span class="n">p</span><span class="p">)</span>
+            <span class="n">w_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+            <span class="n">z0</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">w_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># if this condition is met, it means d &lt;= 0, weight is set to 0</span>
+
+    <span class="c1"># check if there is 0 in the weight list</span>
+    <span class="n">w_check</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">in</span> <span class="n">w_list</span>
+    <span class="k">if</span> <span class="n">w_check</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">w_list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># find the index for weight = 0</span>
+        <span class="n">z_idw</span> <span class="o">=</span> <span class="n">z_block</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>  <span class="c1"># set the value to the current sample value</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">wt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">w_list</span><span class="p">)</span>
+        <span class="n">z_idw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">z_block</span><span class="p">,</span> <span class="n">wt</span><span class="p">)</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">w_list</span><span class="p">)</span>  <span class="c1"># idw calculation using dot product</span>
+    <span class="k">return</span> <span class="n">z_idw</span>
 </pre></div>
 </div>
-<p>import csv</p>
-<p># DISTANCE FUNCTION
-def distance(x1, y1, x2, y2):</p>
-<blockquote>
-<div><p>d = np.sqrt((x1 - x2)**2 + (y1 - y2)**2)
-return d</p>
-</div></blockquote>
-<p># CREATING IDW FUNCTION
-def idw_npoint(xz, yz, n_point, p, csv_file):</p>
-<blockquote>
-<div><p>x = []
-y = []
-z = []</p>
-<p># Read x, y, z values from the CSV file
-with open(csv_file, ‘r’) as file:</p>
-<blockquote>
-<div><p>reader = csv.reader(file)
-next(reader)  # Skip the header row if present
-for row in reader:</p>
-<blockquote>
-<div><p>x.append(float(row[0]))
-y.append(float(row[1]))
-z.append(float(row[2]))</p>
-</div></blockquote>
-</div></blockquote>
-<p>r = 10  # block radius iteration distance
-nf = 0
-while nf &lt;= n_point:  # will stop when np reaching at least n_point</p>
-<blockquote>
-<div><p>x_block = []
-y_block = []
-z_block = []
-r += 10  # add 10 units each iteration
-xr_min = xz - r
-xr_max = xz + r
-yr_min = yz - r
-yr_max = yz + r
-for i in range(len(x)):</p>
-<blockquote>
-<div><p># condition to test if a point is within the block
-if ((x[i] &gt;= xr_min and x[i] &lt;= xr_max) and (y[i] &gt;= yr_min and y[i] &lt;= yr_max)):</p>
-<blockquote>
-<div><p>x_block.append(x[i])
-y_block.append(y[i])
-z_block.append(z[i])</p>
-</div></blockquote>
-</div></blockquote>
-<p>nf = len(x_block)  # calculate the number of points in the block</p>
-</div></blockquote>
-<p># calculate weight based on distance and p value
-w_list = []
-for j in range(len(x_block)):</p>
-<blockquote>
-<div><p>d = distance(xz, yz, x_block[j], y_block[j])
-if d &gt; 0:</p>
-<blockquote>
-<div><p>w = 1 / (d**p)
-w_list.append(w)
-z0 = 0</p>
-</div></blockquote>
-<dl class="simple">
-<dt>else:</dt><dd><p>w_list.append(0)  # if this condition is met, it means d &lt;= 0, weight is set to 0</p>
-</dd>
-</dl>
-</div></blockquote>
-<p># check if there is 0 in the weight list
-w_check = 0 in w_list
-if w_check == True:</p>
-<blockquote>
-<div><p>idx = w_list.index(0)  # find the index for weight = 0
-z_idw = z_block[idx]  # set the value to the current sample value</p>
-</div></blockquote>
-<dl class="simple">
-<dt>else:</dt><dd><p>wt = np.transpose(w_list)
-z_idw = np.dot(z_block, wt) / sum(w_list)  # idw calculation using dot product</p>
-</dd>
-</dl>
-<p>return z_idw</p>
-</div></blockquote>
 </section>
 <section id="references">
 <h2><span class="section-number">13.5. </span>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
