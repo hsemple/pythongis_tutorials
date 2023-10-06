@@ -16,6 +16,13 @@ release = '0.0.0.1'
 
 extensions = []
 
+
+# Set the master document (main entry point)
+master_doc = 'index'
+
+# Specify the source file suffix
+source_suffix = '.rst'
+
 templates_path = ['_templates']
 exclude_patterns = []
 
