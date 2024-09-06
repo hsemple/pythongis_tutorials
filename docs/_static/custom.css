@@ -1,140 +1,58 @@
-/* General Body Styles */
+/* Change the background color of the entire page */
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f5f5f5; /* Light gray background */
-    color: #333; /* Dark text color */
+    background-color: #f5f5f5;  /* Light gray background */
 }
 
-/* Header Styles */
-#header {
-    background-color: #007acc; /* Dark blue background */
-    color: #fff; /* White text color */
-    padding: 1rem 0;
-    border-bottom: 3px solid #005fa3; /* Darker blue border */
+/* Customize the font family and size of the body text */
+body, p {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
 }
 
-#header .navbar {
-    margin: 0;
+/* Change the color and style of the sidebar */
+div.sphinxsidebar {
+    background-color: #e3e3e3;  /* Lighter gray for sidebar */
+    border-right: 1px solid #ccc;
 }
 
-#header .navbar a {
-    color: #fff;
+/* Customize the width of the sidebar */
+div.sphinxsidebarwrapper {
+    width: 250px;
 }
 
-#header .navbar .navbar-nav > li > a {
-    color: #fff;
+/* Style the sidebar links */
+div.sphinxsidebar a {
+    color: #0056b3;   /* Dark blue links */
+    text-decoration: none;
 }
 
-/* Sidebar Styles */
-#sidebar {
-    background-color: #ffffff; /* White background */
-    border-right: 1px solid #ddd; /* Light gray border */
+div.sphinxsidebar a:hover {
+    color: #d9534f;   /* Red on hover */
 }
 
-#sidebar .sphinxsidebarwrapper {
-    padding: 1rem;
+/* Customize the color of headers */
+h1, h2, h3, h4 {
+    color: #333333;  /* Darker text for headings */
 }
 
-#sidebar .sphinxsidebarwrapper .sphinxsidebar {
-    border: none;
-}
-
-/* Main Content Styles */
-#content {
-    background-color: #ffffff; /* White background for content */
-    padding: 2rem;
-}
-
-/* Navigation Bar Styles */
-#navbar {
-    background-color: #007acc; /* Dark blue background */
-    border-bottom: 2px solid #005fa3; /* Darker blue border */
-}
-
-#navbar .navbar-inner {
-    background-color: #007acc; /* Dark blue background */
-}
-
-#navbar .navbar .navbar-nav > li > a {
-    color: #fff;
-}
-
-/* Code Block Styles */
-.code, pre {
-    background-color: #f7f7f7; /* Light gray background for code blocks */
-    border: 1px solid #ddd; /* Light gray border */
-    padding: 1rem;
-    border-radius: 4px;
-}
-
-.highlight-python .hll { background-color: #ffffcc }
-.highlight-python .c1, .highlight-python .cp { color: #408080 }
-.highlight-python .c2 { color: #800000 }
-.highlight-python .c3 { color: #008000 }
-.highlight-python .c4 { color: #800080 }
-.highlight-python .c5 { color: #0000ff }
-.highlight-python .c6 { color: #808080 }
-.highlight-python .cd { color: #008000 }
-.highlight-python .ch { color: #008000 }
-.highlight-python .cl { color: #0000ff }
-.highlight-python .cm { color: #800000 }
-.highlight-python .cp { color: #0000ff }
-.highlight-python .cq { color: #008000 }
-.highlight-python .cr { color: #000000 }
-.highlight-python .cs { color: #ff0000 }
-.highlight-python .cu { color: #008000 }
-.highlight-python .dv { color: #000000 }
-.highlight-python .do { color: #800000 }
-.highlight-python .dp { color: #000000 }
-.highlight-python .dr { color: #000000 }
-.highlight-python .dt { color: #000000 }
-.highlight-python .em { color: #800000 }
-.highlight-python .err { color: #ff0000 }
-.highlight-python .gt { color: #000000 }
-.highlight-python .ge { color: #000000 }
-.highlight-python .nm { color: #000000 }
-.highlight-python .nt { color: #000000 }
-.highlight-python .k { color: #0000ff }
-.highlight-python .l { color: #0000ff }
-.highlight-python .o { color: #ff0000 }
-.highlight-python .p { color: #ff0000 }
-.highlight-python .s { color: #000000 }
-.highlight-python .sb { color: #ff0000 }
-.highlight-python .sc { color: #000000 }
-.highlight-python .sd { color: #000000 }
-.highlight-python .se { color: #ff0000 }
-.highlight-python .sh { color: #000000 }
-.highlight-python .si { color: #ff0000 }
-.highlight-python .ss { color: #ff0000 }
-.highlight-python .sr { color: #000000 }
-.highlight-python .s2 { color: #000000 }
-.highlight-python .s3 { color: #000000 }
-.highlight-python .si { color: #000000 }
-.highlight-python .sm { color: #000000 }
-.highlight-python .s1 { color: #000000 }
-.highlight-python .s2 { color: #000000 }
-.highlight-python .s3 { color: #000000 }
-.highlight-python .ss { color: #000000 }
-.highlight-python .sc { color: #000000 }
-.highlight-python .k { color: #0000ff }
-.highlight-python .n { color: #000000 }
-.highlight-python .i { color: #000000 }
-.highlight-python .k { color: #0000ff }
-.highlight-python .k { color: #0000ff }
-.highlight-python .k { color: #0000ff }
-.highlight-python .k { color: #0000ff }
-
-/* Footer Styles */
-#footer {
-    background-color: #007acc; /* Dark blue background */
-    color: #fff; /* White text color */
-    padding: 1rem 0;
-    border-top: 3px solid #005fa3; /* Darker blue border */
+/* Customize the footer area */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
     text-align: center;
 }
 
-#footer a {
-    color: #fff;
+/* Customize the "relbar" (navigation bar at the top) */
+div#relbar {
+    background-color: #000;  /* Black relbar */
+    color: white;
 }
 
+div#relbar a {
+    color: white;
+}
+
+div#relbar a:hover {
+    color: #ffcc00;  /* Yellow on hover */
+}
