@@ -1,30 +1,39 @@
-/* Change the background color of the entire page */
-body {
-    background-color: #f0f0f0;  /* Light gray */
+/* Sidebar text should remain white */
+div.sphinxsidebar {
+    background-color: #333;  /* Dark sidebar background */
+    color: white;
 }
 
-/* Customize the font family and size */
+/* Sidebar links should be white and hover effect should be lighter gray */
+div.sphinxsidebar a {
+    color: white;  /* White links */
+    text-decoration: none;
+}
+
+div.sphinxsidebar a:hover {
+    color: #ccc;  /* Light gray on hover */
+}
+
+/* Sidebar captions (section titles) should be blue like sphinx_rtd_theme */
+div.sphinxsidebar h3 {
+    color: #2980b9;  /* Blue for sidebar section headers */
+}
+
+/* Padding for the first page header (Welcome message) */
+h1 {
+    padding-top: 20px;  /* Adds space at the top of the first header */
+    padding-left: 10px; /* Adds space from the left to prevent text touching the edge */
+    font-size: 2em;     /* Adjust the size if needed */
+}
+
+/* General body and text styling */
 body, p {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 16px;
     color: #333;
 }
 
-/* Style the sidebar */
-div.sphinxsidebar {
-    background-color: #333;  /* Dark background for sidebar */
-    color: white;
-}
-
-div.sphinxsidebar a {
-    color: #ffcc00;  /* Yellow links in sidebar */
-}
-
-div.sphinxsidebar a:hover {
-    color: #ff9900;  /* Orange on hover */
-}
-
-/* Style the footer */
+/* Customize the footer */
 footer {
     background-color: #333;
     color: white;
@@ -41,12 +50,6 @@ pre {
     font-family: 'Courier New', monospace;
 }
 
-/* Headings */
-h1, h2, h3, h4, h5 {
-    font-weight: 600;
-    color: #444;
-}
-
 /* Links */
 a {
     color: #007acc;  /* Blue links */
@@ -56,17 +59,4 @@ a {
 a:hover {
     color: #005f99;
     text-decoration: underline;
-}
-
-/* Button styles */
-button {
-    background-color: #007acc;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-}
-
-button:hover {
-    background-color: #005f99;
 }
