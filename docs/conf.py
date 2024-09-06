@@ -26,7 +26,7 @@ exclude_patterns = []
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-import import pydata_sphinx_theme
+import pydata_sphinx_theme
 
 html_theme = 'pydata_sphinx_theme'
 
