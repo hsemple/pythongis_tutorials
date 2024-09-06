@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
+<html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2. Introduction to the Python Language &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
 
   
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=9e850157"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -97,7 +97,7 @@
            <div itemprop="articleBody">
              
   <section id="introduction-to-the-python-language">
-<h1><span class="section-number">2. </span>Introduction to the Python Language<a class="headerlink" href="#introduction-to-the-python-language" title="Link to this heading"></a></h1>
+<h1><span class="section-number">2. </span>Introduction to the Python Language<a class="headerlink" href="#introduction-to-the-python-language" title="Permalink to this heading"></a></h1>
 <p>Python is an open-source programming language that can be used for a wide variety of programming tasks, from basic scripting to complex and intricate applications.</p>
 <p>Python is also an interpreted language. This means that the program code is compiled into machine readable code at the moment it is run by the  interpreter.  This is in contrast to a compiled language like C++, or Java where the program code is compiled into machine readable code by a language compiler before the code is run. The compiler creates an executable in the machine’s native language that can then be run many times.</p>
 <p>Python is also a dynamically typed language. This means that developers do not have to declare variables prior to using them. Additionally, Python is an object oriented language. The default installation is a set of core modules, but hundreds of libraries, e.g., SciPy, Numpy, Arcpy, etc., are available for specialized tasks.</p>
@@ -105,7 +105,7 @@
 <div class="line"><br /></div>
 </div>
 <section id="basic-aspects-of-python">
-<h2><span class="section-number">2.1. </span>Basic Aspects of Python<a class="headerlink" href="#basic-aspects-of-python" title="Link to this heading"></a></h2>
+<h2><span class="section-number">2.1. </span>Basic Aspects of Python<a class="headerlink" href="#basic-aspects-of-python" title="Permalink to this heading"></a></h2>
 <p>In this module, we will look at the following aspects of the Python language:</p>
 <ul class="simple">
 <li><p>Hello World program</p></li>
@@ -263,7 +263,7 @@
 </div>
 </section>
 <section id="practice-programs">
-<h2><span class="section-number">2.2. </span>Practice Programs<a class="headerlink" href="#practice-programs" title="Link to this heading"></a></h2>
+<h2><span class="section-number">2.2. </span>Practice Programs<a class="headerlink" href="#practice-programs" title="Permalink to this heading"></a></h2>
 <p>The scripts below are intended to show how to use Python statements to create programs.  The programs are all sequential meaning that each line in the program is run after the preceding line.  There is no branching or repeating of operations.</p>
 <p>The first six examples do not require any specialized Python packages. They can all be run using Python’s standard library. If you do not have a Python’ interpreter already installed, you can can use the interpreter at this <a class="reference external" href="https://www.programiz.com/python-programming/online-compiler/">website</a></p>
 <p>For Examples 7 through 10, the arcpy package must be loaded into memory using the import statement. If arcpy is not installed, the scripts will return an error.</p>
@@ -370,16 +370,16 @@
 </div>
 <p><strong>8.</strong> Write a program that calculates the spatial interaction between two places using a simple form of the gravity model.</p>
 <img alt="Spatial Interpolation Concept" src="_images/interaction.png" />
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">#Get the user&#39;s input</span>
-<span class="linenos"> 2</span><span class="n">P1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please input the size of the first city: &quot;</span><span class="p">)</span>
-<span class="linenos"> 3</span><span class="n">P2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please input the size of the second city: &quot;</span><span class="p">)</span>
-<span class="linenos"> 4</span><span class="n">Distance</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please input the distance between the two cities: &quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>#Get the user&#39;s input
+<span class="linenos"> 2</span>P1 = input(&quot;Please input the size of the first city: &quot;)
+<span class="linenos"> 3</span>P2 = input(&quot;Please input the size of the second city: &quot;)
+<span class="linenos"> 4</span>Distance = input(&quot;Please input the distance between the two cities: &quot;)
 <span class="linenos"> 5</span>
-<span class="linenos"> 6</span><span class="c1"># Calculate the interaction ,with output of decimal format</span>
-<span class="linenos"> 7</span><span class="n">PI</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">P1</span><span class="p">)</span><span class="o">*</span><span class="nb">int</span><span class="p">(</span><span class="n">P2</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">Distance</span><span class="p">)</span><span class="o">*</span><span class="nb">float</span><span class="p">(</span><span class="n">Distance</span><span class="p">))</span>
+<span class="linenos"> 6</span># Calculate the interaction ,with output of decimal format
+<span class="linenos"> 7</span>PI = (int(P1)*int(P2))/(float(Distance)*float(Distance))
 <span class="linenos"> 8</span>
-<span class="linenos"> 9</span><span class="c1">#Print the result</span>
-<span class="linenos">10</span><span class="nb">print</span> <span class="p">(</span><span class="err">”</span><span class="n">The</span> <span class="n">potential</span> <span class="n">interaction</span> <span class="n">between</span> <span class="n">the</span> <span class="n">two</span> <span class="n">cities</span> <span class="ow">is</span><span class="s2">&quot;, round(PI,2) )</span>
+<span class="linenos"> 9</span>#Print the result
+<span class="linenos">10</span>print (”The potential interaction between the two cities is&quot;, round(PI,2) )
 </pre></div>
 </div>
 <div class="line-block">
@@ -420,7 +420,7 @@
 </div>
 </section>
 <section id="exercises">
-<h2><span class="section-number">2.3. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<h2><span class="section-number">2.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
 <p><strong>1.</strong> Geographers use gravity model to estimate the amount of spatial interaction between two or more places. Write a program that calculates the spatial interaction between two places using a simple form of the gravity model shown in the formula below.  In the formula, P1 and P2 are the population of the two places while <em>d</em> is the distance between the places.*</p>
 <img alt="Spatial Interpolation Concept" src="_images/interaction.png" />
 <div class="line-block">

@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
+<html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>8. Reading and Displaying Files &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
 
   
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=9e850157"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -106,7 +106,7 @@
            <div itemprop="articleBody">
              
   <section id="reading-and-displaying-files">
-<h1><span class="section-number">8. </span>Reading and Displaying Files<a class="headerlink" href="#reading-and-displaying-files" title="Link to this heading"></a></h1>
+<h1><span class="section-number">8. </span>Reading and Displaying Files<a class="headerlink" href="#reading-and-displaying-files" title="Permalink to this heading"></a></h1>
 <p>To read a file, we must first open the file. This is done using Python’s built-in open() function. The open() function returns a file object, which has a read() method for reading  files and storing their contents as variables .  Once a file is read and stored as a variable, the original file can be closed.  We can then loop through the file variable and do stuff with its contents.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
 <span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
@@ -140,7 +140,7 @@
 <div class="line"><br /></div>
 </div>
 <section id="writing-file-paths">
-<h2><span class="section-number">8.1. </span>Writing File Paths<a class="headerlink" href="#writing-file-paths" title="Link to this heading"></a></h2>
+<h2><span class="section-number">8.1. </span>Writing File Paths<a class="headerlink" href="#writing-file-paths" title="Permalink to this heading"></a></h2>
 <p>In Python, it is better not to write your file paths with backslashes as shown below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:\Users\student\Desktop\earthquakes.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
 </pre></div>
@@ -203,7 +203,7 @@
 </div>
 </section>
 <section id="opening-a-file-using-the-with-statement">
-<h2><span class="section-number">8.2. </span>Opening a file using the “With” Statement<a class="headerlink" href="#opening-a-file-using-the-with-statement" title="Link to this heading"></a></h2>
+<h2><span class="section-number">8.2. </span>Opening a file using the “With” Statement<a class="headerlink" href="#opening-a-file-using-the-with-statement" title="Permalink to this heading"></a></h2>
 <p>A second way second way to open a file is to use the “with” statement.  The with statement automatically takes care of closing the file once it leaves the with block, even in cases of error. I highly recommend that you use the with statement as much as possible, as it allows for cleaner code and makes handling any unexpected errors easier for you.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/Equakes2.csv&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
    <span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
@@ -216,7 +216,7 @@
 </div>
 </section>
 <section id="opening-a-csv-file-using-python-s-standard-library">
-<h2><span class="section-number">8.3. </span>Opening a csv File using Python’s Standard Library<a class="headerlink" href="#opening-a-csv-file-using-python-s-standard-library" title="Link to this heading"></a></h2>
+<h2><span class="section-number">8.3. </span>Opening a csv File using Python’s Standard Library<a class="headerlink" href="#opening-a-csv-file-using-python-s-standard-library" title="Permalink to this heading"></a></h2>
 <p>Let’s open a csv data file using some basic Python statements. First, we will let Python read the file and create a file object. Next, we will split the file contents into inidividual columns, and then store the column data in variables. This is a long-winded way of displaying csv files, but
 the objective with this code sample is to illustrate some details that is involved in opening these files.  For regular work, we use libraries such as Pandas which it much easier to display the csv files. Pandas will be discussed shortly.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/student/Desktop/earthquakes.csv&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -310,7 +310,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="the-matplotlib-figure-object">
-<h2><span class="section-number">8.4. </span>The Matplotlib Figure Object<a class="headerlink" href="#the-matplotlib-figure-object" title="Link to this heading"></a></h2>
+<h2><span class="section-number">8.4. </span>The Matplotlib Figure Object<a class="headerlink" href="#the-matplotlib-figure-object" title="Permalink to this heading"></a></h2>
 <p>When working with Python, it is important to know how to manipulate matplotlib’s figure object.  Almost all of your graphical output will require the use of this figure object either directly or indirectly. The links below provide some information on ths topic.</p>
 <p>In terms of a general overview, in matplotlib’s languge, the figure object is the top level object. It serves as the container for all other plot-related objects.</p>
 <p>The figure object can contain one or more axes or plotting objects. Axes are actual X,Y plots or diagrams that appear in the document.  Axes contain the X-axis and the Y-axis, which are the XY lines in the plots. Axes also have plot objects, titles, legends, etc.</p>
@@ -454,7 +454,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="reading-csv-files-using-pandas">
-<h2><span class="section-number">8.5. </span>Reading CSV Files Using Pandas<a class="headerlink" href="#reading-csv-files-using-pandas" title="Link to this heading"></a></h2>
+<h2><span class="section-number">8.5. </span>Reading CSV Files Using Pandas<a class="headerlink" href="#reading-csv-files-using-pandas" title="Permalink to this heading"></a></h2>
 <p>The script above used many lines of code to open the csv file, compute average, and plot a graph.  We can achieve the same results with far fewer lines of code by using a specialized library named Pandas.  Pandas is a very powerful, popular and easy to use Python library for data analysis.  It has many Excel-like functions. Its primary object is the DataFrame, which can be thought of as an abstract database table or spreadsheet.  Once you create a dataframe object, you can use it to display tables, plot columns, create and run queries, with just a few lines of code.</p>
 <p>Let’s plot the earthquake dataset using Pandas.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -496,7 +496,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="plotting-graphs">
-<h2><span class="section-number">8.6. </span>Plotting Graphs<a class="headerlink" href="#plotting-graphs" title="Link to this heading"></a></h2>
+<h2><span class="section-number">8.6. </span>Plotting Graphs<a class="headerlink" href="#plotting-graphs" title="Permalink to this heading"></a></h2>
 <p>Many types of graphs can be plotted by pandas. Below are seven types of graphs that are useful to know how to create.</p>
 <p>The kind parameter accepts eleven different string values and determines which kind of plot you’ll create:</p>
 <blockquote>
@@ -594,7 +594,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="writing-to-a-file">
-<h2><span class="section-number">8.7. </span>Writing to a File<a class="headerlink" href="#writing-to-a-file" title="Link to this heading"></a></h2>
+<h2><span class="section-number">8.7. </span>Writing to a File<a class="headerlink" href="#writing-to-a-file" title="Permalink to this heading"></a></h2>
 <p>Once we are done with data analysis, we can also write to a file, as shown below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/.../john.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -647,7 +647,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="plotting-shapefiles">
-<h2><span class="section-number">8.8. </span>Plotting Shapefiles<a class="headerlink" href="#plotting-shapefiles" title="Link to this heading"></a></h2>
+<h2><span class="section-number">8.8. </span>Plotting Shapefiles<a class="headerlink" href="#plotting-shapefiles" title="Permalink to this heading"></a></h2>
 <p>There are many libraries available for plotting shapefiles. Such libraries include Geopandas, Shapely, Fiona, OGR, and descartes. Altogether, one of the main contributions of these libraries is that we no longer have to rely on GIS software to view shapefiles and their attribute data. This can be done easily with Python.</p>
 <p>Among the various libraries, Geopandas is perhaps the most widely used for plotting shapefiles as it only requires a few lines of code to display the shapefile. Also, attribute tables can be easily manipulated as a panda/geopanda dataframes.</p>
 <p>The other libraries are also important depending on the task that you would like to perform.  Since geopandas hides almost all its implementation, you will find that studying the code of other libaries gives you a clearer picture of how to handle shapefiles from a Python perspective.</p>
@@ -736,7 +736,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="displaying-shapefiles-using-fiona">
-<h2><span class="section-number">8.9. </span>Displaying Shapefiles Using Fiona<a class="headerlink" href="#displaying-shapefiles-using-fiona" title="Link to this heading"></a></h2>
+<h2><span class="section-number">8.9. </span>Displaying Shapefiles Using Fiona<a class="headerlink" href="#displaying-shapefiles-using-fiona" title="Permalink to this heading"></a></h2>
 <p>Fiona is a low-level library that focuses on reading and writing geospatial data formats. It acts as a Pythonic interface to the OGR library, providing direct access to the capabilities of OGR for working with vector data. Fiona is known for its efficiency, simplicity, and interoperability with various geospatial file formats. It is often used when specific data access or format-related functionalities are required.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiona</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -968,7 +968,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="displaying-rasters">
-<h2><span class="section-number">8.10. </span>Displaying Rasters<a class="headerlink" href="#displaying-rasters" title="Link to this heading"></a></h2>
+<h2><span class="section-number">8.10. </span>Displaying Rasters<a class="headerlink" href="#displaying-rasters" title="Permalink to this heading"></a></h2>
 <p>In programming, rasters are considered as <em>arrays</em>.  An array is a collection of items of the same data type that can be manipulated as a single entity.  In Python,  a list is a one dimensional array.  However, when we are thinking about rasters, we are typically thinking of two dimensional arrays that are defined by rows and columns.</p>
 <p>In Python, one difference between a list and a two-dimensional array is that whereas a list can store multiple data types, a two-dimensional array can store only one data type.</p>
 <img alt="One and Two Dimensional Arrays" src="_images/arrays1.png" />
@@ -1269,7 +1269,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="exercises">
-<h2><span class="section-number">8.11. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<h2><span class="section-number">8.11. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Visit <a class="reference external" href="https://nextgenstats.nfl.com/stats/passing#max-completed-air-distance">this NFL website</a> and copy the quarter back data. Paste the data into Excel and save it in CSV format.  Use the standard library in Python or pandas to plot a simple histogram and boxplot of the data in the passing attempts field (ATT).   Also, calculate the mean and standard deviation of passing attempts.   Explain what your data is portraying in short paragraph.</p></li>
 <li><p>Using Geopandas, create a thematic map for the USA or <a class="reference external" href="https://www.michigan.gov/coronavirus/stats">Michigan</a> showing the distribution of Covid19 cases across the country or state for the date for which you have data.  Write comments to explain what your code is doing.   Repeat the process using another Python library of your choice.</p></li>
@@ -1283,7 +1283,7 @@ the objective with this code sample is to illustrate some details that is involv
 </div>
 </section>
 <section id="resources">
-<h2><span class="section-number">8.12. </span>Resources<a class="headerlink" href="#resources" title="Link to this heading"></a></h2>
+<h2><span class="section-number">8.12. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://automating-gis-processes.github.io/CSC18/index.html">https://automating-gis-processes.github.io/CSC18/index.html</a></p></li>
 <li><p>Python Shapefile Library - <a class="reference external" href="https://pythonhosted.org/Python%20Shapefile%20Library/">https://pythonhosted.org/Python%20Shapefile%20Library/</a></p></li>
