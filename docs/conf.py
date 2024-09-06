@@ -1,25 +1,46 @@
 # Configuration file for the Sphinx documentation builder.
+#
+# For the full list of built-in configuration values, see the documentation:
+# https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # -- Project information -----------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
+
 project = 'Python GIS Tutorials'
-copyright = '2023, Hugh Semple'
+copyright = '2024, Hugh Semple'
 author = 'Hugh Semple'
 release = '0.0.0.1'
 
 # -- General configuration ---------------------------------------------------
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
+
+extensions = [
+    'sphinx.ext.autodoc',  # Automatically document code
+    'sphinx.ext.napoleon',  # Support for Google style and NumPy style docstrings
+    # Add other extensions as needed
+]
+
 templates_path = ['_templates']
 exclude_patterns = []
 
 # -- Options for HTML output -------------------------------------------------
-html_theme = 'sphinx_book_theme'
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
+
+import sphinx_rtd_theme
+
+html_theme = 'sphinx_rtd_theme'
+
+# Optional: Customize theme options
 html_theme_options = {
-    'repository_url': 'https://github.com/username/repository',
-    'repository_branch': 'main',
-    'path_to_docs': 'docs',
+    'collapse_navigation': True,
+    'sticky_navigation': True,
+    'navigation_depth': 4,
+    'includehidden': True,
+    'titles_only': False,
 }
 
-html_static_path = ['_static']
-html_css_files = [
-    'custom.css',
-]
+# Optional: Specify the path to the theme
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+
+# Optional: Specify static files (like CSS or JavaScript) if needed
+# html_static_path = ['_static']
