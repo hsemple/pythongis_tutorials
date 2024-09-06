@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>14. Terrain Analysis &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
   
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=9e850157"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -106,7 +106,7 @@
            <div itemprop="articleBody">
              
   <section id="terrain-analysis">
-<h1><span class="section-number">14. </span>Terrain Analysis<a class="headerlink" href="#terrain-analysis" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">14. </span>Terrain Analysis<a class="headerlink" href="#terrain-analysis" title="Link to this heading"></a></h1>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -115,7 +115,7 @@
 <div class="line"><br /></div>
 </div>
 <section id="displaying-dems">
-<h2><span class="section-number">14.1. </span>Displaying DEMS<a class="headerlink" href="#displaying-dems" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.1. </span>Displaying DEMS<a class="headerlink" href="#displaying-dems" title="Link to this heading"></a></h2>
 <p>Terrain analysis starts with displaying digital elevation models.  We have touched on this topic before.  Below, a DEM of Stowe, VT is displayed with the RichDEM library.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">richdem</span> <span class="k">as</span> <span class="nn">rd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -131,7 +131,7 @@
 </div>
 </section>
 <section id="hillshades">
-<h2><span class="section-number">14.2. </span>Hillshades<a class="headerlink" href="#hillshades" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.2. </span>Hillshades<a class="headerlink" href="#hillshades" title="Link to this heading"></a></h2>
 <p>Hillshades are used in terrain analysis to give elevation data a 3-dimensional appearance thereby making it easier to visualize variations in topography. Hillshades are also frequently used in GIS and Cartography as underlays to make other kinds of data more visually interesting. As shown in the illustration below, Google Maps use hillshades extensivelly to portray terrain features of the earth.</p>
 <img alt="DEM Loaded with RichDEM" src="_images/google_hillshade_map.png" />
 <div class="line-block">
@@ -283,7 +283,7 @@
 </div>
 </section>
 <section id="displaying-terrain-data-in-3d">
-<h2><span class="section-number">14.3. </span>Displaying Terrain Data in 3D<a class="headerlink" href="#displaying-terrain-data-in-3d" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.3. </span>Displaying Terrain Data in 3D<a class="headerlink" href="#displaying-terrain-data-in-3d" title="Link to this heading"></a></h2>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -467,7 +467,7 @@
 </div>
 </section>
 <section id="slope-mapping">
-<h2><span class="section-number">14.4. </span>Slope Mapping<a class="headerlink" href="#slope-mapping" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.4. </span>Slope Mapping<a class="headerlink" href="#slope-mapping" title="Link to this heading"></a></h2>
 <p><strong>Generate Slope Map with Arcpy</strong></p>
 <p>The two scripts below show how to calculate slope using ArcPy.</p>
 <ol class="arabic simple">
@@ -562,7 +562,7 @@
 </div>
 </section>
 <section id="aspect-mapping">
-<h2><span class="section-number">14.5. </span>Aspect Mapping<a class="headerlink" href="#aspect-mapping" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.5. </span>Aspect Mapping<a class="headerlink" href="#aspect-mapping" title="Link to this heading"></a></h2>
 <p><strong>Calculate Aspect Using Arcpy</strong></p>
 <p>The script below show how to generate an aspect map using ArcPy.</p>
 <ol class="arabic simple">
@@ -629,7 +629,7 @@
 </div>
 </section>
 <section id="curvature-maps">
-<h2><span class="section-number">14.6. </span>Curvature Maps<a class="headerlink" href="#curvature-maps" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.6. </span>Curvature Maps<a class="headerlink" href="#curvature-maps" title="Link to this heading"></a></h2>
 <p><strong>Generate Curvature Maps Using Arcpy</strong></p>
 <p>The first two scripts below show how to calculate curvature using ArcPy.  The third script shows how to compute profile with the richdem library.</p>
 <ol class="arabic simple">
@@ -686,7 +686,7 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 </div>
 </section>
 <section id="computing-viewshed">
-<h2><span class="section-number">14.7. </span>Computing Viewshed<a class="headerlink" href="#computing-viewshed" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.7. </span>Computing Viewshed<a class="headerlink" href="#computing-viewshed" title="Link to this heading"></a></h2>
 <p><strong>Viewshed Using Arcpy</strong></p>
 <p>This sample script comes from <a class="reference external" href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/3d-analyst/viewshed.htm">ESRI</a>. It calculates surface locations that are visible to a set of observers defined in a shapefile. The script requires the 3D Analyst Extension</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
@@ -713,7 +713,7 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 </div>
 </section>
 <section id="watershed-delineation-using-pysheds">
-<h2><span class="section-number">14.8. </span>Watershed Delineation Using PySheds<a class="headerlink" href="#watershed-delineation-using-pysheds" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.8. </span>Watershed Delineation Using PySheds<a class="headerlink" href="#watershed-delineation-using-pysheds" title="Link to this heading"></a></h2>
 <p>I came across a library called pysheds that can be used for watershed delineation. Tested sample code is presented below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pysheds.grid</span> <span class="kn">import</span> <span class="n">Grid</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -800,7 +800,7 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 </div>
 </section>
 <section id="working-with-gdal-command-line-utilities">
-<h2><span class="section-number">14.9. </span>Working with GDAL Command Line Utilities<a class="headerlink" href="#working-with-gdal-command-line-utilities" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.9. </span>Working with GDAL Command Line Utilities<a class="headerlink" href="#working-with-gdal-command-line-utilities" title="Link to this heading"></a></h2>
 <p>GDAL (Geospatial Data Abstraction Library) is perhaps the most established library for reading and processing raster and vector geographical data. It is used by many GIS including ArcGIS and QGIS.  GDAL is written in the C++ programming language, but bindings are available that allow it to called from other languages.</p>
 <p>GDAL also has some special programs called <a class="reference external" href="https://gdal.org/programs/index.html">Utilities</a>, which are useful for performing many popular GIS tasks.  These utilities can be called from the command line assuming that proper path is set. They can also be from within Python.  In this section, we will look at how to call GDAL Utilities from the command line.  In the next section, we will look at calling GDAL from within Python.</p>
 <div class="line-block">
@@ -963,7 +963,7 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 </div>
 </section>
 <section id="running-gdal-commands-from-python">
-<h2><span class="section-number">14.10. </span>Running GDAL Commands from Python<a class="headerlink" href="#running-gdal-commands-from-python" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.10. </span>Running GDAL Commands from Python<a class="headerlink" href="#running-gdal-commands-from-python" title="Link to this heading"></a></h2>
 <p>It is possible to call GDAL commands from Python and other scripting languages. This allows for easy iteration through geoprocessing tasks, or integration of geoprocessing steps into complex scripted workflows.  For more information, please visit this page: <a class="reference external" href="https://gdal.org/tutorials/raster_api_tut.html">https://gdal.org/tutorials/raster_api_tut.html</a>. Below are some code samples for using GDAL from within Python.</p>
 <p><strong>Open a Raster with GDAL</strong></p>
 <p>We have already seen this structure in previous Python scripts that used the gdal library.</p>
@@ -996,7 +996,7 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 </div>
 </section>
 <section id="exercises">
-<h2><span class="section-number">14.11. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.11. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Write a script that prompts the user for the path to an input DEM and an input satellite imagery.  Afterwards, the script should generate a hillshade of the area. Finally, the script should drape the satellite imagery over the hillshade. You can download <a class="reference external" href="https://www.dropbox.com/s/r61wulyhlctvdcf/Washington_Data.zip?dl=0">sample data here</a></p></li>
 <li><p>Instead of generating a hillshade, write a second script to generate a 3D model of the area. Afterward, let the script drape a satellite imagery over the 3D model of the area.</p></li>
@@ -1006,7 +1006,7 @@ rd.rdShow(profile_curvature, axes=False, cmap=’jet’, figsize=(6,4))</p>
 </div>
 </section>
 <section id="resources">
-<h2><span class="section-number">14.12. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">14.12. </span>Resources<a class="headerlink" href="#resources" title="Link to this heading"></a></h2>
 <p>Draping an orthophoto over a DEM
 <a class="reference external" href="https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem">https://subscription.packtpub.com/book/big-data-and-business-intelligence/9781783555079/10/ch10lvl1sec73/draping-an-orthophoto-over-a-dem</a></p>
 <p>Batch processing – automatizing the use of GDAL and SAGA GIS tools using Bash Shell scripts

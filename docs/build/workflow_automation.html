@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>15. Batch Processing &amp; Workflow Automation &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
   
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=9e850157"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -98,7 +98,7 @@
            <div itemprop="articleBody">
              
   <section id="batch-processing-workflow-automation">
-<h1><span class="section-number">15. </span>Batch Processing &amp; Workflow Automation<a class="headerlink" href="#batch-processing-workflow-automation" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">15. </span>Batch Processing &amp; Workflow Automation<a class="headerlink" href="#batch-processing-workflow-automation" title="Link to this heading"></a></h1>
 <p>Batch processing is the process of automating repetitive tasks as a block of work rather than attempting to process each operation manually. In GIS, it may be that you have to clip 1000 shapefiles to the extent of some regions. Instead of clipping the shapefiles individually, one can perform batch clipping in which we use a script to complete the task. Batch proessing is far faster than human processing.  It is often done in off-peak hours when computing resources are more commonly available, such as at the end of the day or overnight.</p>
 <p>In GIS, many large volume geoprocessing operations are carried out by batch scripting the operation.  The scripts below provide an introduction to batch operations using various Python libraries.</p>
 <p>With the appearance of ChatGPT, it now very easy to develop workflow scripts.  Simply describe the workflow in an much detail as you can and enter it into ChatGPT. ChatGPT will return a sample script that most often will work, but often also after a small amount of modification and testing.</p>
@@ -106,7 +106,7 @@
 <div class="line"><br /></div>
 </div>
 <section id="batch-processing-using-gdal">
-<h2><span class="section-number">15.1. </span>Batch Processing Using GDAL<a class="headerlink" href="#batch-processing-using-gdal" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">15.1. </span>Batch Processing Using GDAL<a class="headerlink" href="#batch-processing-using-gdal" title="Link to this heading"></a></h2>
 <p>There are many code samples for processing a single file.  However, code samples for batch processing are not frequently encountered.  Below is an example for converting multiple .hdr files into .tif files using GDAL.</p>
 <p>In GDAL, if you wanted to change the file format of a single raster, you can write a script similar to the one below:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gdal_translate</span> <span class="o">-</span><span class="n">of</span> <span class="n">GTiff</span> <span class="n">elevation</span><span class="o">.</span><span class="n">hdr</span> <span class="n">elevation</span><span class="o">.</span><span class="n">tif</span>
@@ -157,7 +157,7 @@ rst2tif &lt;ENTER&gt;</p>
 </div>
 </section>
 <section id="batch-processing-using-arcpy">
-<h2><span class="section-number">15.2. </span><strong>Batch Processing Using Arcpy</strong><a class="headerlink" href="#batch-processing-using-arcpy" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">15.2. </span><strong>Batch Processing Using Arcpy</strong><a class="headerlink" href="#batch-processing-using-arcpy" title="Link to this heading"></a></h2>
 <p><strong>Buffering Multiple Shapefiles using Arcpy</strong></p>
 <p>The script below can buffer any number of rasters.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arcpy</span>
@@ -333,7 +333,7 @@ rst2tif &lt;ENTER&gt;</p>
 </div>
 </section>
 <section id="automating-gis-workflows">
-<h2><span class="section-number">15.3. </span>Automating GIS Workflows<a class="headerlink" href="#automating-gis-workflows" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">15.3. </span>Automating GIS Workflows<a class="headerlink" href="#automating-gis-workflows" title="Link to this heading"></a></h2>
 <p>Whereas batch processing involves repeating tasks many times, automating workflows involves writng codes to carry out tasks that involves multiple tools and multiple steps. Typically, the output of one step becomes the input for the next step.  The code samples below illustrates workflow automation for basic GIS tasks such as watershed delineation, site stelection analysis, geocoding, and thematic mapping. Workflow automation is required in a wide range of scenarios by organizations and GIS developers are deeply involved in these tasks.</p>
 <p><strong>Watershed Delineation (Arcpy)</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import system modules</span>
@@ -878,7 +878,7 @@ rst2tif &lt;ENTER&gt;</p>
 </div>
 </section>
 <section id="reading">
-<h2><span class="section-number">15.4. </span>Reading<a class="headerlink" href="#reading" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">15.4. </span>Reading<a class="headerlink" href="#reading" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.e-education.psu.edu/geog485/node/202">The need for GIS automation</a></p></li>
 <li><p><a class="reference external" href="https://www.geospatialworld.net/prime/technology-and-innovation/streamlining-gis-with-automation/">Streamlining GIS with Automation</a></p></li>

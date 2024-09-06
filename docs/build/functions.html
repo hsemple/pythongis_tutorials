@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>5. Functions &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
   
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=9e850157"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -102,12 +102,12 @@
            <div itemprop="articleBody">
              
   <section id="functions">
-<h1><span class="section-number">5. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">5. </span>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h1>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <section id="what-are-functions">
-<h2><span class="section-number">5.1. </span>What are Functions?<a class="headerlink" href="#what-are-functions" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">5.1. </span>What are Functions?<a class="headerlink" href="#what-are-functions" title="Link to this heading"></a></h2>
 <p>In programming, a function is a named sequence of statements that performs a computation.  Functions are used to avoid rewriting code everytime a particular task is required to be completed. For example, suppose you have to write a program in which you have to calculate the area of five different fields at different times in the program. Instead of rewriting the code to calculate area each of the five times, we can write a single function to compute area so whenever an area calculation is needed in the program, we simply call the function to do the job.</p>
 <p>Each time we call the area function, we would have to pass it the length and width parameters of the field and the computation would be performed. After performing the computation, the function would return the answer to the statement that called it.</p>
 <p>The example below shows a function that calculates area based on length and width values that have been passed to it.</p>
@@ -142,7 +142,7 @@
 </div>
 </section>
 <section id="function-examples">
-<h2><span class="section-number">5.2. </span>Function Examples<a class="headerlink" href="#function-examples" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">5.2. </span>Function Examples<a class="headerlink" href="#function-examples" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>The code below is an example of a function that takes the temperature in Celsius and then prints the results in Fahrenheit results.</p></li>
 </ol>
@@ -225,7 +225,7 @@ print(multiply(mylist))</p>
 </div>
 </section>
 <section id="pythons-in-built-functions">
-<h2><span class="section-number">5.3. </span>Python’s In-built Functions<a class="headerlink" href="#pythons-in-built-functions" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">5.3. </span>Python’s In-built Functions<a class="headerlink" href="#pythons-in-built-functions" title="Link to this heading"></a></h2>
 <p>Python has many built in functions. For example, input() is a function which reads and returns the text you type. However, on many occasions, we have to write our own functions.</p>
 <p><strong>Type Conversion Functions</strong></p>
 <div class="line-block">
@@ -261,7 +261,7 @@ print(multiply(mylist))</p>
 </div>
 </section>
 <section id="variable-length-arguments-in-python-functions">
-<h2><span class="section-number">5.4. </span>Variable-length arguments in Python Functions<a class="headerlink" href="#variable-length-arguments-in-python-functions" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">5.4. </span>Variable-length arguments in Python Functions<a class="headerlink" href="#variable-length-arguments-in-python-functions" title="Link to this heading"></a></h2>
 <p>Functions do not always have a fixed number of arguments. Sometimes, it is not always possible to know beforehand how many arguments will be passed to the function.  For example, in a spatial interpolation exercise, it is possible to estimate the unknown value from three or four or any number of nearby values.  In such a case, the function must be designed to handle any number of arguments that will be passed to it.</p>
 <p>In Python, we define a variable argument using an asterisk (‘*’) followed by a variable name. By convention, the variable name is called <strong>“aargs”</strong> but but name can be used.  A tuple is used to store the values passed to <a href="#id1"><span class="problematic" id="id2">*</span></a>args and you can send zero or more arguments to the function.  Also, a formal argument cab be placed before the <a href="#id3"><span class="problematic" id="id4">*</span></a>args variable but not after it.</p>
 <p>The following example demonstrates the usage of a function that takes variable length arguments.</p>
@@ -286,7 +286,7 @@ print(multiply(mylist))</p>
 </div>
 </section>
 <section id="python-docstrings">
-<h2><span class="section-number">5.5. </span>Python Docstrings<a class="headerlink" href="#python-docstrings" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">5.5. </span>Python Docstrings<a class="headerlink" href="#python-docstrings" title="Link to this heading"></a></h2>
 <p>Python docstrings are strings used to document code.  They are placed right after the definition of a function, as in the example below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Takes in a number n, returns the square of n&#39;&#39;&#39;</span>
@@ -307,7 +307,7 @@ print(multiply(mylist))</p>
 </div>
 </section>
 <section id="arcpy-functions">
-<h2><span class="section-number">5.6. </span>Arcpy Functions<a class="headerlink" href="#arcpy-functions" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">5.6. </span>Arcpy Functions<a class="headerlink" href="#arcpy-functions" title="Link to this heading"></a></h2>
 <p>Arcpy has many functions which are used to support ArcGIS workflows from a Python perspective.  Take a look at this <a class="reference external" href="https://pro.arcgis.com/en/pro-app/latest/arcpy/functions/alphabetical-list-of-arcpy-functions.htm">list of ArcPy functions</a></p>
 <p>When working with arcpy’s functions, we must first import the arcpy library into our development environment then call the function. To call the function, we write arcpy followed by the name of the function and any arguments that the function requires, for example, arcpy.function_name(arguments).</p>
 <p>In the code sample below, we are using ArcPy’s ListField() function to print out a list of the fieldnames in a shapefile’s attribute table.</p>
@@ -383,7 +383,7 @@ print(multiply(mylist))</p>
 </div>
 </section>
 <section id="resources">
-<h2><span class="section-number">5.7. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">5.7. </span>Resources<a class="headerlink" href="#resources" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://vimeo.com/107270986">Creating and Using Functions</a></p></li>
 <li><p><a class="reference external" href="https://pro.arcgis.com/en/pro-app/latest/arcpy/functions/alphabetical-list-of-arcpy-functions.htm">An overview of ArcPy functions</a></p></li>
@@ -393,7 +393,7 @@ print(multiply(mylist))</p>
 </div>
 </section>
 <section id="exercises">
-<h2><span class="section-number">5.8. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">5.8. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Write a Python function that squares each value in a list that is passed to it. The results should be passed to the calling statement and printed out.</p>
 <blockquote>

@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>4. Conditional Statements and Looping &mdash; Python GIS Tutorials 0.0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
   
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=9e850157"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -101,12 +101,12 @@
            <div itemprop="articleBody">
              
   <section id="conditional-statements-and-looping">
-<h1><span class="section-number">4. </span>Conditional Statements and Looping<a class="headerlink" href="#conditional-statements-and-looping" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">4. </span>Conditional Statements and Looping<a class="headerlink" href="#conditional-statements-and-looping" title="Link to this heading"></a></h1>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <section id="conditionals">
-<h2><span class="section-number">4.1. </span>Conditionals<a class="headerlink" href="#conditionals" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.1. </span>Conditionals<a class="headerlink" href="#conditionals" title="Link to this heading"></a></h2>
 <p>Unless otherwise directed, lines of codes in a procedure run sequentially, from first to last. Conditional statements can change the sequential flow of a program based on whether a given condition is true or false.</p>
 <p>Python uses the If statement for testing conditions. If the condition is true, then the code block following the if statement is executed. If it is not true, the program jumps to the end of the code block.</p>
 <p>In Python, a colon is placed at the end of the statement that contains the condition, and the lines below the condition statement are indented.</p>
@@ -234,7 +234,7 @@
 </div>
 </section>
 <section id="comparison-operators">
-<h2><span class="section-number">4.2. </span>Comparison Operators<a class="headerlink" href="#comparison-operators" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.2. </span>Comparison Operators<a class="headerlink" href="#comparison-operators" title="Link to this heading"></a></h2>
 <dl>
 <dt>Python has many different operators for testing conditions including:</dt><dd><div class="line-block">
 <div class="line">== (Double equal sign) : tests equality, is equal to</div>
@@ -259,7 +259,7 @@
 </div>
 </section>
 <section id="looping">
-<h2><span class="section-number">4.3. </span>Looping<a class="headerlink" href="#looping" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.3. </span>Looping<a class="headerlink" href="#looping" title="Link to this heading"></a></h2>
 <p>In programming, looping is used to execute a block of code repeatedly until a certain condition is met.  It is a simple concept that has widespread usage in programming.</p>
 <p>Python uses the for loop and the while loop for iteration or repetitions.  For loops are used when you know, beforehand, the amount of times you want to loop.  While Loops enable you to test for a particular condition and are used when you don’t know beforehand how many times the loop will occur.</p>
 <div class="line-block">
@@ -267,7 +267,7 @@
 </div>
 </section>
 <section id="for-loops">
-<h2><span class="section-number">4.4. </span>For Loops<a class="headerlink" href="#for-loops" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.4. </span>For Loops<a class="headerlink" href="#for-loops" title="Link to this heading"></a></h2>
 <p>The general pattern of the for loop is illustrated below.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>  <span class="c1"># for each item of a variable that is in a particular sequence</span>
 <span class="linenos">2</span>     <span class="n">statements</span>       <span class="c1"># do something.</span>
@@ -293,9 +293,9 @@ The variable name “num” is a made-up one.  You can use any name.  In Pyhton,
 </div>
 <p><strong>For Loops and Lists</strong></p>
 <p>For loops are great for manipulating lists</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>a = [‘cat’, ‘dog’, ‘window’, ‘Main Street’]
-<span class="linenos">2</span>    for x in a:
-<span class="linenos">3</span>       print (x)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="err">‘</span><span class="n">cat</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">dog</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">window</span><span class="err">’</span><span class="p">,</span> <span class="err">‘</span><span class="n">Main</span> <span class="n">Street</span><span class="err">’</span><span class="p">]</span>
+<span class="linenos">2</span>    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+<span class="linenos">3</span>       <span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -334,9 +334,9 @@ The variable name “num” is a made-up one.  You can use any name.  In Pyhton,
 </div>
 <p><strong>Looping through a list of Roads</strong></p>
 <p>The code below uses a ‘for loop’ to step through a list of road types. For each each element of the list, an action is performed, i.e., the item is printed out in upper case.  Normally, more complex action is performed.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>listOfRoadTypes = [‘Highway’,’Street’,’Boulevard’]
-<span class="linenos">2</span>for RoadType in listOfRoadTypes:
-<span class="linenos">3</span>    print RoadType.upper()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">listOfRoadTypes</span> <span class="o">=</span> <span class="p">[</span><span class="err">‘</span><span class="n">Highway</span><span class="err">’</span><span class="p">,</span><span class="err">’</span><span class="n">Street</span><span class="err">’</span><span class="p">,</span><span class="err">’</span><span class="n">Boulevard</span><span class="err">’</span><span class="p">]</span>
+<span class="linenos">2</span><span class="k">for</span> <span class="n">RoadType</span> <span class="ow">in</span> <span class="n">listOfRoadTypes</span><span class="p">:</span>
+<span class="linenos">3</span>    <span class="nb">print</span> <span class="n">RoadType</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -427,7 +427,7 @@ The variable name “num” is a made-up one.  You can use any name.  In Pyhton,
 </div>
 </section>
 <section id="for-loops-with-break-and-continue">
-<h2><span class="section-number">4.5. </span>For Loops with Break and Continue<a class="headerlink" href="#for-loops-with-break-and-continue" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.5. </span>For Loops with Break and Continue<a class="headerlink" href="#for-loops-with-break-and-continue" title="Link to this heading"></a></h2>
 <p><strong>Break</strong></p>
 <p>Break is typically part of a conditional looping situation in the program.  If the “if condition” evaluates to false, break will not be activated and the program will keep looping normally.   If the condition evaluates to true, ‘break’ is activated and the code jumps out of the loop entirely and moves to the next block in the program.</p>
 <p>Run the code below to study “break”</p>
@@ -541,7 +541,7 @@ Although the maximum value in the range is 100 million, as soon as the loop gets
 </div>
 </section>
 <section id="while-loops">
-<h2><span class="section-number">4.6. </span>While Loops<a class="headerlink" href="#while-loops" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.6. </span>While Loops<a class="headerlink" href="#while-loops" title="Link to this heading"></a></h2>
 <p>While loops are used when you cannot predict at runtime the number of times an operation will occur. The basic while loop structure is shown below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">while</span> <span class="n">condition</span><span class="p">:</span>
 <span class="linenos">2</span>    <span class="n">statements</span>
@@ -740,7 +740,7 @@ Although the maximum value in the range is 100 million, as soon as the loop gets
 </div>
 </section>
 <section id="exercises">
-<h2><span class="section-number">4.7. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">4.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Complete the practice exercises below. Submit screenshots in a word document as proof that you completed the exercises:</p>
 <blockquote>
