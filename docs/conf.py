@@ -26,21 +26,16 @@ exclude_patterns = []
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-import pydata_sphinx_theme
-
-html_theme = 'pydata_sphinx_theme'
+html_theme = 'alabaster'
 
 # Optional: Customize theme options
 html_theme_options = {
-    'collapse_navigation': True,
-    'sticky_navigation': True,
-    'navigation_depth': 4,
-    'includehidden': True,
-    'titles_only': False,
+    'description': 'A description of your project',
+    'fixed_sidebar': True,
+    'sidebar_collapse': True,
+    'show_powered_by': False,
+    # Add other options as needed
 }
-
-# Optional: Specify the path to the theme
-html_theme_path = [pydata_sphinx_theme.get_html_theme_path()]
 
 # Optional: Specify static files (like CSS or JavaScript) if needed
 html_static_path = ['_static']
