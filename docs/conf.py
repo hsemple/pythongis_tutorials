@@ -43,4 +43,4 @@ html_theme_options = {
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # Optional: Specify static files (like CSS or JavaScript) if needed
-# html_static_path = ['_static']
+html_static_path = ['docs/_static']
