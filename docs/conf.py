@@ -38,7 +38,7 @@ html_css_files = [
 
 # Optional: Customize theme options
 html_theme_options = {
-    'description': 'A description of your project',
+    'description': 'Introductory tutorials to get started with Python for GIS',
     'fixed_sidebar': True,
     'sidebar_collapse': True,
     'show_powered_by': False,
