@@ -280,7 +280,7 @@ For loops are great for manipulating lists
 
 .. code-block:: python
    :linenos:
-
+   
    a = [‘cat’, ‘dog’, ‘window’, ‘Main Street’]
        for x in a:
           print (x)
