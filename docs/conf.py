@@ -26,9 +26,9 @@ exclude_patterns = []
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-import sphinx_rtd_theme
+import pydata_sphinx_theme
 
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'pydata_sphinx_theme'
 
 # Optional: Customize theme options
 html_theme_options = {
@@ -40,7 +40,7 @@ html_theme_options = {
 }
 
 # Optional: Specify the path to the theme
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+html_theme_path = [pydata_sphinx_theme.get_html_theme_path()]
 
 # Optional: Specify static files (like CSS or JavaScript) if needed
 html_static_path = ['_static']
