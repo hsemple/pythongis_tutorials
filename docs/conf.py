@@ -28,6 +28,14 @@ exclude_patterns = []
 
 html_theme = 'alabaster'
 
+# Add custom static files
+html_static_path = ['_static']
+
+# Add custom CSS file
+html_css_files = [
+    'custom.css',
+]
+
 # Optional: Customize theme options
 html_theme_options = {
     'description': 'A description of your project',
@@ -36,6 +44,3 @@ html_theme_options = {
     'show_powered_by': False,
     # Add other options as needed
 }
-
-# Optional: Specify static files (like CSS or JavaScript) if needed
-html_static_path = ['_static']

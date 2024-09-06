@@ -1,0 +1,19 @@
+/* _static/custom.css */
+
+/* Change background color */
+body {
+    background-color: #f0f0f0; /* Light grey background */
+}
+
+/* Change the sidebar background color */
+#sidebar {
+    background-color: #ffffff; /* White background for sidebar */
+}
+
+/* Customize header styles */
+#header {
+    background-color: #007acc; /* Blue background for header */
+    color: #ffffff; /* White text color for header */
+}
+
+/* Customize other elements as needed */
