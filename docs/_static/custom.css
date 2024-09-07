@@ -1,35 +1,45 @@
-/* Sidebar styling remains the same */
+/* Sidebar background color similar to sphinx_rtd_theme */
 div.sphinxsidebar {
-    background-color: #2268AA;
-    color: white;
+    background-color: #1a1a1a;  /* Black background */
+    color: white;  /* White text */
 }
 
+/* Sidebar links - white text */
 div.sphinxsidebar a {
-    color: white;
+    color: white;  /* White links */
     text-decoration: none;
 }
 
+/* Hover effect for sidebar links */
 div.sphinxsidebar a:hover {
-    color: #B3D4F5;
+    color: #4CAF50;  /* Green hover effect */
 }
 
+/* Sidebar captions (section titles) */
 div.sphinxsidebar h3 {
     color: white;
+    font-size: 1.1em;  /* Adjust the font size similar to sphinx_rtd_theme */
+    font-weight: normal;  /* No bold */
 }
 
+/* Sidebar description (for "Introductory tutorials to get started with Python for GIS") */
 div.sphinxsidebar .caption {
-    color: white;
+    color: white;  /* White text for the description */
+    font-size: 0.9em;  /* Adjust font size similar to sphinx_rtd_theme */
+    font-weight: normal;  /* Not bold */
 }
 
+/* "Content" text under Navigation should be white and not bold */
 div.sphinxsidebar .sphinxsidebarwrapper ul:first-of-type li {
-    color: white;
-    font-weight: bold;
+    color: white;  /* White "Content" text */
+    font-size: 0.9em;  /* Similar to sphinx_rtd_theme */
+    font-weight: normal;  /* No bold */
 }
 
-/* Padding for the first page header */
+/* Padding for the first page header (Welcome message) */
 h1 {
-    padding-top: 20px;
-    padding-left: 10px;
+    padding-top: 20px;  /* Adds space at the top of the first header */
+    padding-left: 10px; /* Adds space from the left */
     font-size: 2em;
 }
 
@@ -48,23 +58,23 @@ footer {
     text-align: center;
 }
 
-/* Style for code blocks */
+/* Style for code blocks with a white background */
 pre {
-    background-color: #f5f5dc;  /* Light cream background */
-    color: black;  /* Black text color */
+    background-color: white;  /* White background for code blocks */
+    color: black;  /* Black text */
     padding: 10px;
     border-radius: 5px;
     font-family: 'Courier New', monospace;
-    border: 1px solid #ccc;  /* Optional: light border */
+    border: 1px solid #ccc;  /* Light border */
 }
 
 /* Inline code block */
 code {
-    background-color: #f5f5dc;  /* Light cream background for inline code */
+    background-color: white;  /* White background for inline code */
     color: black;
     padding: 2px 5px;
     border-radius: 3px;
-    border: 1px solid #ccc;  /* Optional: light border */
+    border: 1px solid #ccc;  /* Light border */
 }
 
 /* Links */
