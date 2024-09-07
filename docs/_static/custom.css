@@ -1,22 +1,33 @@
-/* Sidebar text should remain white */
+/* Sidebar background and text */
 div.sphinxsidebar {
-    background-color: #333;  /* Dark sidebar background */
-    color: white;
+    background-color: #2268AA;  /* Sidebar background color */
+    color: white;  /* Sidebar text color */
 }
 
-/* Sidebar links should be white and hover effect should be lighter gray */
+/* Sidebar links should be white and hover effect light blue */
 div.sphinxsidebar a {
     color: white;  /* White links */
     text-decoration: none;
 }
 
 div.sphinxsidebar a:hover {
-    color: #ccc;  /* Light gray on hover */
+    color: #B3D4F5;  /* Light blue on hover */
 }
 
-/* Sidebar captions (section titles) should be blue like sphinx_rtd_theme */
+/* Sidebar captions (section titles) should be white */
 div.sphinxsidebar h3 {
-    color: #2980b9;  /* Blue for sidebar section headers */
+    color: white;  /* White captions */
+}
+
+/* Sidebar description (for "Introductory tutorials to get started with Python for GIS") */
+div.sphinxsidebar .caption {
+    color: white;  /* White text for the description */
+}
+
+/* "Content" word under Navigation should be white */
+div.sphinxsidebar .sphinxsidebarwrapper ul:first-of-type li {
+    color: white;  /* White "Content" text */
+    font-weight: bold;  /* Optional: makes "Content" stand out */
 }
 
 /* Padding for the first page header (Welcome message) */
