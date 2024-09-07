@@ -1,40 +1,36 @@
-/* Sidebar background and text */
+/* Sidebar styling remains the same */
 div.sphinxsidebar {
-    background-color: #2268AA;  /* Sidebar background color */
-    color: white;  /* Sidebar text color */
+    background-color: #2268AA;
+    color: white;
 }
 
-/* Sidebar links should be white and hover effect light blue */
 div.sphinxsidebar a {
-    color: white;  /* White links */
+    color: white;
     text-decoration: none;
 }
 
 div.sphinxsidebar a:hover {
-    color: #B3D4F5;  /* Light blue on hover */
+    color: #B3D4F5;
 }
 
-/* Sidebar captions (section titles) should be white */
 div.sphinxsidebar h3 {
-    color: white;  /* White captions */
+    color: white;
 }
 
-/* Sidebar description (for "Introductory tutorials to get started with Python for GIS") */
 div.sphinxsidebar .caption {
-    color: white;  /* White text for the description */
+    color: white;
 }
 
-/* "Content" word under Navigation should be white */
 div.sphinxsidebar .sphinxsidebarwrapper ul:first-of-type li {
-    color: white;  /* White "Content" text */
-    font-weight: bold;  /* Optional: makes "Content" stand out */
+    color: white;
+    font-weight: bold;
 }
 
-/* Padding for the first page header (Welcome message) */
+/* Padding for the first page header */
 h1 {
-    padding-top: 20px;  /* Adds space at the top of the first header */
-    padding-left: 10px; /* Adds space from the left to prevent text touching the edge */
-    font-size: 2em;     /* Adjust the size if needed */
+    padding-top: 20px;
+    padding-left: 10px;
+    font-size: 2em;
 }
 
 /* General body and text styling */
@@ -54,16 +50,26 @@ footer {
 
 /* Style for code blocks */
 pre {
-    background-color: #272822;
-    color: #f8f8f2;
+    background-color: #f5f5dc;  /* Light cream background */
+    color: black;  /* Black text color */
     padding: 10px;
     border-radius: 5px;
     font-family: 'Courier New', monospace;
+    border: 1px solid #ccc;  /* Optional: light border */
+}
+
+/* Inline code block */
+code {
+    background-color: #f5f5dc;  /* Light cream background for inline code */
+    color: black;
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;  /* Optional: light border */
 }
 
 /* Links */
 a {
-    color: #007acc;  /* Blue links */
+    color: #007acc;
     text-decoration: none;
 }
 
